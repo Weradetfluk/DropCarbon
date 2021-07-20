@@ -5,7 +5,7 @@ class Dcb_controller extends CI_Controller
 {
   public function index()
 	{
-		//comments
+	
 		$this->load->view('welcome_message');
 	}
 }
