@@ -34,7 +34,7 @@
                      <div class="modal-body">
                          <p>กรุณาระบุเหตุผล</p>
                          <form action="<?php echo base_url() . 'Admin/Admin_approval/reject_entrepreneur'; ?>" method="POST">
-                             <input type="hidden" id="email">
+                             <input type="hidden" id="email" name="email">
                              <input type="hidden" id="ent_id" name="ent_id">
                              <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
                      </div>

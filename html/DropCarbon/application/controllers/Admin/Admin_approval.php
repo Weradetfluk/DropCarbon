@@ -111,10 +111,11 @@ class Admin_approval extends DCS_controller
 
     $this->mdce->ent_id = $this->input->post('ent_id');
     $reson_admin = $this->input->post('admin_reason');
+    $user_email = $this->input->post('email');
 
     $status_number = 3;
     $this->mdce->update_approve($status_number);
-    $this->email_send($reson_admin);
+    $this->email_send($reson_admin,$user_email);
   }
 
 
