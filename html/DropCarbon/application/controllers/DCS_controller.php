@@ -56,5 +56,37 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Admin/footer');
     }
 
+    /*
+    * output_login_entrepreneur
+    * show form login entrepreneur
+    * @input 
+    * @output -
+    * @author Suwapat Saowarod
+    * @Create Date 2021-07-19
+    * @Update Date -
+    */
+    public function output_login_entrepreneur($view, $data=null){
+        $this->load->view('template/Entrepreneur/header_entrepreneur');
+        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
+        $this->load->view($view,$data);
+        $this->load->view('template/Entrepreneur/footer');
+    }
+
+    /*
+    * output_company
+    * show list company
+    * @input 
+    * @output -
+    * @author Suwapat Saowarod
+    * @Create Date 2021-07-18
+    * @Update Date -
+    */
+    public function output_company($data=null){
+        $this->load->view('template/Entrepreneur/header_entrepreneur');
+        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
+        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
+        $this->load->view('entrepreneur/v_list_company', $data);
+        $this->load->view('template/Entrepreneur/footer');
+      }
 }
 
