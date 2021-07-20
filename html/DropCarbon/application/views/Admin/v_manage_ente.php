@@ -1,0 +1,271 @@
+ <!-- main content -->
+
+ <!-- do not indent code auto -->
+
+ <div class="content">
+     <div class="container-fluid">
+         <div class="card card-nav-tabs">
+             <div class="card-header color-test" style="background-color: #60839f">
+                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                 <div class="nav-tabs-navigation">
+                     <div class="nav-tabs-wrapper">
+                         <ul class="nav nav-tabs" data-tabs="tabs">
+                             <li class="nav-item">
+                                 <a class="nav-link active" href="#home" data-toggle="tab">ยังไม่ได้รับอนุมัติ</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="#updates" data-toggle="tab">อนุมัติแล้ว</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+
+
+             <!-- Tab1 -->
+             <div class="card-body ">
+                 <div class="tab-content">
+                     <div class="tab-pane active" id="home">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="card">
+                                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                                         <center>
+                                             <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
+                                         </center>
+                                     </div>
+                                     <div class="card-body">
+                                         <div class="table-responsive" id="data_entre_consider">
+
+                                             <!-- table consider ajax  -->
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <!-- Tab 2  -->
+                     <div class="tab-pane" id="updates">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="card">
+                                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                         <center>
+                                             <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
+                                         </center>
+                                     </div>
+                                     <div class="card-body">
+                                         <div class="table-responsive" id="data_entre_approve">
+
+                                             <!-- table approve ajax  -->
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <?php require 'v_modal.php' ?>
+
+         <script>
+             // jquery start
+
+             $(document).ready(function() {
+
+                 get_data_entrepreneur_consider();
+                 get_data_entrepreneur_approve();
+
+             }); // Jqurey
+
+
+             function get_data_entrepreneur_consider() {
+                 $.ajax({
+                     type: "POST",
+                     dataType: "JSON",
+                     url: '<?php echo base_url('Admin/Admin_approval/show_data_consider_ajax'); ?>',
+                     success: function(json_res) {
+                         create_table(json_res);
+                     },
+                     error: function() {
+                         alert('ajax Not working');
+                     }
+                 });
+             }
+
+
+             function get_data_entrepreneur_approve() {
+                 $.ajax({
+                     type: "POST",
+                     dataType: "JSON",
+                     url: '<?php echo base_url('Admin/Admin_approval/show_data_approve_ajax'); ?>',
+                     success: function(json_res) {
+                         create_table_approve(json_res);
+                     },
+                     error: function() {
+                         alert('ajax Not working');
+                     }
+                 });
+             }
+
+
+             function create_table(arr_en) {
+                 let html_code = '';
+                 html_code += '<table class="table" style="text-align: center;" id="entre_tale">';
+                 html_code += '<thead class="text-white" style="background-color: #d8b7a8; text-align: center;">';
+                 html_code += '<tr>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >ลำดับ</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >ชื่อ-นามสกุล</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >เบอร์โทร</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;"  >อีเมล</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;"  >ดำเนินการ</th>';
+                 html_code += '</tr>';
+                 html_code += ' </thead>';
+                 html_code += ' <tbody class="list">';
+
+                 //loop fetch data
+
+                 arr_en.forEach((row_tsm, index_tsm) => {
+                     let i = index_tsm + 1;
+                     html_code += '<tr style="text-align: center;">';
+                     html_code += '<td >' + i + '</td>';
+                     html_code += '<td >' + row_tsm['ent_name'] + '</td>';
+                     html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
+                     html_code += '<td >' + row_tsm['ent_email'] + '</td>';
+                     html_code += '<td >' + '<button class="btn btn-success" id = "accept" onclick = "confirm_approve(' + row_tsm['ent_id'] + ' )">อนุมัติ</button>';
+                     html_code += '<button class="btn btn-danger" id = "reject"  onclick = "confirm_reject(\'' + row_tsm['ent_id'] + '\',\'' + row_tsm['ent_email'] + '\' )" >ปฏิเสธ</button>' + '</td>';
+                     html_code += '</tr>';
+
+                 });
+                 html_code += '</tbody>';
+                 html_code += ' </table>';
+
+                 $('#data_entre_consider').html(html_code);
+
+                 $('#entre_tale').dataTable({
+                     "ordering": false,
+                     "lengthMenu": [
+                         [10, 25, 50, -1],
+                         [10, 25, 50, "All"]
+                     ]
+                 });
+             }
+
+
+             function create_table_approve(arr_en) {
+                 let html_code = '';
+                 html_code += '<table class="table" style="text-align: center;"  id="entre_tale_approve">';
+                 html_code += '<thead class="text-white" style="background-color: #d8b7a8; text-align: center;">';
+                 html_code += '<tr>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >ลำดับ</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >ชื่อ-นามสกุล</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;" >เบอร์โทร</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;"  >อีเมล</th>';
+                 html_code += '<th   style="text-align: center;font-size: 16px;"  >ดำเนินการ</th>';
+                 html_code += '</tr>';
+                 html_code += ' </thead>';
+                 html_code += ' <tbody class="list">';
+                 arr_en.forEach((row_tsm, index_tsm) => {
+                     //loop fetch data
+                     let i = index_tsm + 1;
+                     html_code += '<tr style="text-align: center;">';
+                     html_code += '<td >' + i + '</td>';
+                     html_code += '<td >' + row_tsm['ent_name'] + '</td>';
+                     html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
+                     html_code += '<td >' + row_tsm['ent_email'] + '</td>';
+                     html_code += '<td >' + '<button class="btn btn-danger">บล็อค</button>' + '</td>';
+                     html_code += '</tr>';
+
+                 });
+                 html_code += '</tbody>';
+                 html_code += ' </table>';
+
+                 $('#data_entre_approve').html(html_code);
+
+                 $('#entre_tale_approve').dataTable({
+                     "ordering": false,
+                     "lengthMenu": [
+                         [10, 25, 50, -1],
+                         [10, 25, 50, "All"]
+                     ]
+                 });
+             }
+
+
+             function confirm_approve(ent_id) {
+                 $('#Aprovemodal').modal();
+
+                 $('#approve').click(function() {
+
+                     approve_entrepreneur(ent_id) //line 227
+
+                 });
+
+             }
+
+
+             function confirm_reject(ent_id, ent_email) {
+                 $('#Rejectmodal').modal();
+                 
+                   $('#email').val(ent_email);
+                   $('#ent_id').val( ent_id);
+
+                 console.log(ent_id);
+                 console.log(ent_email);
+             }
+
+             function approve_entrepreneur(ent_id) {
+                 $.ajax({
+                     type: "POST",
+                     data: {
+                         ent_id: ent_id
+                     },
+                     url: '<?php echo base_url('Admin/Admin_approval/approval_entrepreneur'); ?>',
+                     success: function() {
+                         swal({
+                             title: "อนุมัติสำเร็จ",
+                             text: "อนุมัติผู้ประกอบการสำเร็จ",
+                             type: "success",
+                         })
+
+                         get_data_entrepreneur_consider();
+                         get_data_entrepreneur_approve();
+
+                     },
+                     error: function() {
+                         alert('ajax error working');
+                     }
+                 });
+             }
+
+
+             function reject_entrepreneur(ent_id, admin_reason) {
+                 $.ajax({
+                     type: "POST",
+                     data: {
+                         ent_id: ent_id,
+                         admin_reason: admin_reason
+                     },
+                     url: '<?php echo base_url('Admin/Admin_approval/reject_entrepreneur'); ?>',
+                     success: function() {
+                         swal({
+                             title: "อนุมัติสำเร็จ",
+                             text: "อนุมัติผู้ประกอบการสำเร็จ",
+                             type: "success",
+                         })
+
+                         get_data_entrepreneur_consider();
+                         get_data_entrepreneur_approve();
+
+                     },
+                     error: function() {
+                         alert('ajax error working');
+                     }
+                 });
+             }
+         </script>
