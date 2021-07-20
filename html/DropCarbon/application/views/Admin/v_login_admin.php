@@ -34,7 +34,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                     <div class="card-body">
                         <!-- form login  -->
 
-                        <form action="<?php echo base_url() . '/Admin/Login_admin/input_login_form'; ?>" method="POST">
+                        <form action="<?php echo site_url() . '/Admin/Login_admin/input_login_form'; ?>" method="POST">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
