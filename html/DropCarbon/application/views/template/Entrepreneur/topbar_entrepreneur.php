@@ -26,18 +26,6 @@
               <p>จัดการกิจกรรม</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">content_paste</i>
-              <p>จัดการผู้ประกอบการ</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">library_books</i>
-              <p>จัดการนักท่องเที่ยว</p>
-            </a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
               <i class="material-icons">bubble_chart</i>
@@ -71,9 +59,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="<?php echo site_url().'Entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">แก้ไขข้อมูลส่วนตัว</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="<?php echo base_url() . 'Login/Login_entrepreneur' ?>">Log out</a>
+                  <a class="dropdown-item" href="<?php echo base_url() . 'Login/Login_entrepreneur' ?>">ออกจากระบบ</a>
                 </div>
               </li>
             </ul>
