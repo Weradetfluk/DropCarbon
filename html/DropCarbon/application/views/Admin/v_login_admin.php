@@ -3,6 +3,8 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 ?>
 
 
+ <!-- navbar -->
+
 <nav class="navbar" style="color: #81b14f;">
         <div class="container">
             <a class="navbar-brand" href="javascript:;">DropCarbon for Admin</a>

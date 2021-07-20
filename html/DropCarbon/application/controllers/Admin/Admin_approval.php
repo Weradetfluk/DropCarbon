@@ -129,7 +129,7 @@ class Admin_approval extends DCS_controller
     * @Update Date -
     */
 
-  function email_send($reason)
+  function email_send($reason, $user_email)
   {
     // Load PHPMailer library
     $this->load->library('phpmailer_lib');
@@ -151,10 +151,9 @@ class Admin_approval extends DCS_controller
 
 
     // Add a recipient
-    $mail->addAddress('62160010@go.buu.ac.th');
+    $mail->addAddress( $user_email);
 
-    // Add cc or bcc 
-    $mail->addCC('cc@example.com');
+    $mail->addCC('fluk.weradet@gmail.com');
 
     // Email subject
     $mail->Subject = 'Admin has been rejected ';

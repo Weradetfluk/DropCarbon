@@ -6,6 +6,7 @@
  }
  ?>
  
+<!--  side bar -->
 
 <div class="wrapper ">
     <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
@@ -50,6 +51,8 @@
     </div>
     <div class="main-panel">
      
+
+    
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
@@ -73,7 +76,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">     
-                  <a class="dropdown-item"  href="<?php echo base_url() . 'AdminLogin/Login_admin/logout' ?>">Log out</a>
+                  <a class="dropdown-item"  href="<?php echo base_url() . '/Admin/Login_admin/logout' ?>">Log out</a>
                 </div>
               </li>
             </ul>
