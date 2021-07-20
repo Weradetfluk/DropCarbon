@@ -1,25 +1,3 @@
-    <!-- warnning aprove  -->
-    <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">คุณต้องการอนุมัติ ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>คุณต้องการอนุมัติผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="approve" data-dismiss="modal">ยืนยัน</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
       <!-- warnning reject  -->
       <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">

@@ -71,6 +71,29 @@
              </div>
          </div>
 
+
+
+         <!-- warnning aprove  -->
+         <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">คุณต้องการอนุมัติ ?</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <p>คุณต้องการอนุมัติผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
          <?php require 'v_modal.php' ?>
 
          <script>
@@ -112,7 +135,7 @@
 
 
 
-               /*
+             /*
               * get_data_entrepreneur_approve
               * get data entrepreneur in Admin/Admin_approval/show_data_approve_ajax
               * using by ajax
@@ -137,8 +160,8 @@
                  });
              }
 
-             
-               /*
+
+             /*
               * create_table_consider
               * create table consider data
               * @input 
@@ -194,7 +217,7 @@
 
 
 
-                /*
+             /*
               * create_table_approve
               * 
               * using by ajax
@@ -259,8 +282,8 @@
              function confirm_approve(ent_id) {
                  $('#Aprovemodal').modal();
 
-                 $('#approve').click(function() {
-
+                 $('#approves').click(function() {
+                     console.log("check");
                      approve_entrepreneur(ent_id) //function 
 
                  });
@@ -268,7 +291,7 @@
              }
 
 
-                /*
+             /*
               * confirm_approve
               * open modal id = Aprovemodal 
               * @input 
@@ -327,7 +350,7 @@
 
 
 
-    
+
              /*
               * reject_entrepreneur
               * change status to reject
