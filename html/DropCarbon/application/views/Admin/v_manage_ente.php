@@ -79,6 +79,7 @@
              $(document).ready(function() {
 
                  get_data_entrepreneur_consider();
+                 
                  get_data_entrepreneur_approve();
 
              }); // Jqurey

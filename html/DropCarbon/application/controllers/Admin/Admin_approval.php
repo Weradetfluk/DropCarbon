@@ -151,7 +151,7 @@ class Admin_approval extends DCS_controller
 
 
     // Add a recipient
-    $mail->addAddress('62160088@go.buu.ac.th');
+    $mail->addAddress('62160010@go.buu.ac.th');
 
     // Add cc or bcc 
     $mail->addCC('cc@example.com');
