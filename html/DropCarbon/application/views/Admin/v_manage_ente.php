@@ -5,7 +5,7 @@
  <div class="content">
      <div class="container-fluid">
          <div class="card card-nav-tabs">
-             <div class="card-header color-test" style="background-color: #60839f">
+             <div class="card-header" style="background-color: #60839f">
                  <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
