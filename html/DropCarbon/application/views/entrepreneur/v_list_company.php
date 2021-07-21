@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card">
                       <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-                        <center><h4 class="card-title text-white">ตารางจัดการกิจกรรม</h4></center>
+                        <center><h4 class="card-title text-white">ตารางจัดการสถานที่</h4></center>
                       </div>
                       <br>
                       
