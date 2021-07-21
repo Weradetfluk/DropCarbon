@@ -16,7 +16,7 @@ class DCS_controller extends CI_Controller
 
 	public function index()
 	{
-        $this->output_login_admin('/Admin/v_login_admin'); //path
+        $this->output_regis('register/v_regis'); //path
 	}
 
 
