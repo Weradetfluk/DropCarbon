@@ -46,8 +46,8 @@ class Login_entrepreneur extends DCS_controller
         if ($result) {
         $ent_username =  $result->ent_username;
         $ent_name = $result->ent_name;
-
-        $this->set_session($ent_username, $ent_name);
+        $ent_id= $result->ent_id;
+        $this->set_session($ent_username, $ent_name, $ent_id);
 
         redirect("Entrepreneur/Company_list/show_list_company");
 
@@ -84,10 +84,11 @@ class Login_entrepreneur extends DCS_controller
     * @Create Date 2021-07-19
     * @Update Date -
     */
-    public function set_session($username, $name)
+    public function set_session($username, $name, $id)
     {
         $this->session->set_userdata("username", $username);
         $this->session->set_userdata("Entrepreneur_name", $name);
+        $this->session->set_userdata("Entrepreneur_id", $id);
     }
 
     /*
@@ -103,5 +104,6 @@ class Login_entrepreneur extends DCS_controller
     {
         $this->session->unset_userdata("username");
         $this->session->unset_userdata("Entrepreneur_name");
+        $this->session->unset_userdata("Entrepreneur_id");
     }
 }

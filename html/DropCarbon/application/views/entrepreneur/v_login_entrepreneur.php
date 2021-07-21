@@ -38,14 +38,14 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                         <span class="input-group-text">
                                         </span>
                                     </div class="form-group">
-                                    <label for="username">ชื่อผู้ใช้งาน</label>
+                                    <!-- <label for="username">ชื่อผู้ใช้งาน</label> -->
                                     <input type="text" class="form-control" class="form-control" id="username" placeholder="ชื่อผู้ใช้" name="username">
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"></span>
                                     </div>
-                                    <label for="password">รหัสผ่าน</label>
+                                    <!-- <label for="password">รหัสผ่าน</label> -->
                                     <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน" name="password">
                                 </div>
                                 <span style="color: red; margin-left: 30px;">

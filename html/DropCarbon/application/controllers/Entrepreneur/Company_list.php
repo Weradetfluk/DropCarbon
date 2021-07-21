@@ -9,7 +9,7 @@ class Company_list extends DCS_controller{
 
     /*
     * show_list_company
-    * show list company in database
+    * show list company by id in database
     * @input 
     * @output -
     * @author Suwapat Saowarod
@@ -18,6 +18,8 @@ class Company_list extends DCS_controller{
     */
     public function show_list_company(){
         $this->load->model('M_dcs_company', 'mcom');
+        // echo $this->session->userdata("Entrepreneur_id");
+        $this->mcom->com_ent_id=$this->session->userdata("Entrepreneur_id");
         $data['arr_company'] = $this->mcom->get_all()->result();
         $this->output_company($data);
     }

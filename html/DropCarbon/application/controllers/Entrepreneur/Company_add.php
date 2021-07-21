@@ -39,6 +39,7 @@ class Company_add extends DCS_controller{
         $this->mcom->com_lat=0;
         $this->mcom->com_lon=0;
         $this->mcom->com_description=$this->input->post('com_description');
+        $this->mcom->com_ent_id=$this->session->userdata("Entrepreneur_id");
         $this->mcom->add_company();
         redirect('Entrepreneur/Company_list/show_list_company');
     }

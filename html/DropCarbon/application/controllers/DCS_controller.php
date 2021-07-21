@@ -88,5 +88,13 @@ class DCS_controller extends CI_Controller
         $this->load->view('entrepreneur/v_list_company', $data);
         $this->load->view('template/Entrepreneur/footer');
       }
+
+      public function output_regis($view,$data=null){
+        $this->load->view('template/Register/header_register');
+        $this->load->view('template/Register/javascript_register');
+        $this->load->view('template/Register/topbar_register');
+        $this->load->view($view,$data);
+        $this->load->view('template/Register/footer');
+      }
 }
 

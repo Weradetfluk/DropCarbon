@@ -28,4 +28,18 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql);
         return $query;
     }
+    /*
+    *get_ent
+    *get data entrepreneur form database
+    *@input -
+    *@insert -
+    *@author Thanisron thumsawanit 62160088
+    *@Create Date 2564-07-15
+    */
+    function get_ent()
+    {
+        $sql = "SELECT * FROM {$this->db_name}.dcs_entrepreneur ";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

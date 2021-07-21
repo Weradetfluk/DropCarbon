@@ -17,8 +17,14 @@ class Da_dcs_entrepreneur extends DCS_model
         parent::__construct();
     }
 
-    public function insert() {
-        $sql = "INSERT INTO {$this->db_name}.dcs_entrepreneur VALUES(?, ?, ?, ?, ?, ?, ?)";
+    /*
+    * Function : insert_entrepreneur
+    *@input $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password
+     *@author Thanisorn thumsawanit 62160088
+    *@Create Date 2564-07-15
+    */
+    public function insert_entrepreneur() {
+        $sql = "INSERT INTO dcs_entrepreneur(ent_pre_id, ent_name, ent_tel, ent_id_card, ent_email, ent_username, ent_password) VALUES(?, ?, ?, ?, ?, ?, ?)";
         $this->db->query($sql, array($this->ent_pre_id, $this->ent_name, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_username, $this->ent_password));
     }
 
