@@ -60,43 +60,61 @@
                                 <div class="w3-row">
                                     <div class="w3-container w3-twothird con">
                                         <div>
-                                            <input type="radio" name="ent_pre_id" value=1>
+                                            <?php
+                                            $checked_prefix_1 = '';
+                                            $checked_prefix_2 = '';
+                                            $checked_prefix_3 = '';
+
+                                            if ($this->session->userdata("pre_id") == "1") {
+                                                $checked_prefix_1 = 'checked';
+                                            } else if ($this->session->userdata("pre_id") == "2") {
+                                                $checked_prefix_2 = 'checked';
+                                            }else{
+                                                $checked_prefix_3 = 'checked';
+                                            }
+                                            ?>
+
+                                            <input type="radio" name="ent_pre_id" value=1 <?php echo $checked_prefix_1 ?>>
                                             <label style="font-size: 120%">นาย</label>
-                                            <input type="radio" name="ent_pre_id" value=2>
+                                            <input type="radio" name="ent_pre_id" value=2 <?php echo $checked_prefix_2 ?>>
                                             <label style="font-size: 120%">นาง</label>
-                                            <input type="radio" name="ent_pre_id" value=3>
+                                            <input type="radio" name="ent_pre_id" value=3 <?php echo $checked_prefix_3 ?>>
                                             <label style="font-size: 120%">นางสาว</label>
                                         </div><br>
                                         <div class="w3-row row1">
                                             <div class="w3-col s3">
+                                                <?php
+                                                $fname = $this->session->userdata("Entrepreneur_name");
+                                                $lname = $this->session->userdata("Entrepreneur_name");
+                                                ?>
                                                 <label>ชื่อ:</label><br>
-                                                <input type='text' class="box" name='etp_fname' required>
+                                                <input type='text' class="box" name='ent_fname' value='<?php echo substr($fname, 0, strrpos($fname, ' ')); ?>'>
                                             </div>
                                             <div class="w3-col s3">
                                                 <label>นามสกุล:</label><br>
-                                                <input type='text' class="box" name='etp_lastname' required> <br><br>
+                                                <input type='text' class="box" name='ent_lastname' value='<?php echo substr($lname, strrpos($lname, ' ')); ?>'> <br><br>
                                             </div>
                                         </div>
                                         <div class="w3-row row1">
                                             <div class="w3-col s3">
                                                 <label>เบอร์โทร:</label><br>
-                                                <input type='text' class="box" name='ent_tel' required>
+                                                <input type='text' class="box" name='ent_tel' value="<?php echo $this->session->userdata("tel"); ?>">
                                             </div>
                                             <div class="w3-col s3">
                                                 <label>บัตรประชาชน:</label><br>
-                                                <input type='text' class="box" name='ent_id_card' required> <br><br>
+                                                <input type='text' class="box" name='ent_id_card' value="<?php echo $this->session->userdata("card"); ?>"> <br><br>
                                             </div>
                                         </div>
                                         <div class="w3-row row1">
                                             <div class="w3-col s2">
                                                 <label>อีเมล:</label><br>
-                                                <input type='text' class="boxemail" name='ent_email' required> <br><br>
+                                                <input type='text' class="boxemail" name='ent_email' value="<?php echo $this->session->userdata("email"); ?>"> <br><br>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="w3-container w3-third">
                                         <div class="w3-col s2 ">
-                                            <img src="http://localhost/DropCarbonSystem/img/3.jpg" width="200px" height="200px">
+                                            <img src="http://localhost/DropCarbon/assets/templete/material-dashboard-master/assets/img/new_logo.png" width="200px" height="200px">
                                         </div>
                                     </div>
                                 </div>
@@ -106,24 +124,24 @@
                                     <div class="w3-row">
                                         <div class="w3-col s3">
                                             <label>ชื่อผู้ใช้:</label><br>
-                                            <input type='text' class="box" name='ent_username' required> <br><br>
+                                            <input type='text' class="box" name='ent_username' value="<?php echo $this->session->userdata("username"); ?>"> <br><br>
                                         </div>
                                     </div>
                                     <div class="w3-row">
                                         <div class="w3-col s3">
                                             <label>รหัสผ่าน:</label><br>
-                                            <input type='password' class="box" id="pass" name='ent_password' required>
+                                            <input type='password' class="box" id="pass" name='ent_password' value="<?php echo $this->session->userdata("password"); ?>">
                                         </div>
                                         <div class="w3-col s3">
                                             <label>ยืนยันรหัสผ่าน:</label><br>
-                                            <input type='password' class="box" id="confirm" name='cfp' oninput="confirmpassword();" required> <br><br>
+                                            <input type='password' class="box" id="confirm" name='cfp' oninput="confirmpassword();" value="<?php echo $this->session->userdata("password"); ?>"> <br><br>
                                             <div id="errorpassword" class="text-danger"></div>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="w3-row">
-                                        <button type="submit" class="btn btn-success">บันทึก</button>
-                                        <button type="submit" class="btn btn-danger">ยกเลิก</button>
+                                        <input type="submit" class="btn btn-success" value="บันทึก"></input>
+                                        <a class="btn btn-danger"" href=" <?php echo site_url() . 'Entrepreneur/Company_list/show_list_company'; ?>">ยกเลิก</a>
                                     </div>
                                     <br>
                                 </div>
