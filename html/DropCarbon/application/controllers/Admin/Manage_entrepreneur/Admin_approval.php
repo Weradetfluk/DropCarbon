@@ -141,13 +141,13 @@ class Admin_approval extends DCS_controller
     $mail->isSMTP();
     $mail->Host     = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'fluk.weradet@gmail.com';
-    $mail->Password = 'fluk@1234';
+    $mail->Username = 'dropcarbonsystem@gmail.com';
+    $mail->Password = 'dropcarbon1234';
     $mail->SMTPSecure = 'tls';
     $mail->Port     = 587;
     $mail->charSet = "UTF-8";
 
-    $mail->setFrom('fluk.weradet@gmail.com', 'Dropcarbonsystem');
+    $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
 
 
     // Add a recipient
