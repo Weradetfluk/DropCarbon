@@ -76,7 +76,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">     
-                  <a class="dropdown-item"  href="<?php echo base_url() . '/Admin/Login_admin/logout' ?>">ออกจากระบบ</a>
+                  <a class="dropdown-item"  href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">ออกจากระบบ</a>
                 </div>
               </li>
             </ul>
