@@ -23,8 +23,8 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 
                 <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                     <div class="card card-login">
-                        <div class="card-header text-center card-header-success">
-                            <h4 class="card-title">ลงชื่อเข้าใช้</h4>
+                        <div class="card-header text-center" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                            <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
                             <div class="social-line">
 
                             </div>
