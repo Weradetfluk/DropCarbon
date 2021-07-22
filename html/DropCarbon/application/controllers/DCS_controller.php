@@ -16,7 +16,7 @@ class DCS_controller extends CI_Controller
 
 	public function index()
 	{
-        $this->output_regis('register/v_regis'); //path
+        $this->output_regis('landing_page/register/v_regis'); //path
 	}
 
 
@@ -52,7 +52,7 @@ class DCS_controller extends CI_Controller
     public function output_login_admin(){
         $this->load->view('template/Admin/header_admin'); //path
         $this->load->view('template/Admin/javascript_admin'); 
-        $this->load->view('Admin/v_login_admin');
+        $this->load->view('admin/auth/v_login_admin');
         $this->load->view('template/Admin/footer');
     }
 
@@ -85,7 +85,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/v_list_company', $data);
+        $this->load->view('entrepreneur/manage_company/v_list_company', $data);
         $this->load->view('template/Entrepreneur/footer');
       }
 
