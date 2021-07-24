@@ -1,12 +1,46 @@
  <!-- main content -->
 
- <!-- do not indent code auto -->
+
+
+ <style>
+     .table-responsive::-webkit-scrollbar {
+         -webkit-appearance: none;
+     }
+
+     .table-responsive::-webkit-scrollbar:vertical {
+         width: 12px;
+     }
+
+     .table-responsive::-webkit-scrollbar:horizontal {
+         height: 12px;
+     }
+
+     .table-responsive::-webkit-scrollbar-thumb {
+         background-color: rgba(0, 0, 0, .5);
+         border-radius: 10px;
+         border: 2px solid #ffffff;
+     }
+
+     .table-responsive::-webkit-scrollbar-track {
+         border-radius: 10px;
+         background-color: #ffffff;
+     }
+ </style>
+
+
+
+
+
 
  <div class="content">
      <div class="container-fluid">
+
+        <!-- warnning  -->
+        <!-- read me -->
+        <!-- do not indent code auto in tab-->
+
          <div class="card card-nav-tabs">
              <div class="card-header" style="background-color: #60839f">
-                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
@@ -73,7 +107,7 @@
 
 
 
-         <!-- warnning aprove  -->
+         <!-- warnning aprove Modal  -->
          <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
@@ -94,8 +128,8 @@
              </div>
          </div>
 
-      <!-- warnning reject  -->
-      <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
+         <!-- warnning reject  -->
+         <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
@@ -229,13 +263,7 @@
 
                  $('#data_entre_consider').html(html_code);
 
-                 $('#entre_tale').dataTable({
-                     "ordering": false,
-                     "lengthMenu": [
-                         [10, 25, 50, -1],
-                         [10, 25, 50, "All"]
-                     ]
-                 });
+
              }
 
 
@@ -283,13 +311,7 @@
 
                  $('#data_entre_approve').html(html_code);
 
-                 $('#entre_tale_approve').dataTable({
-                     "ordering": false,
-                     "lengthMenu": [
-                         [10, 25, 50, -1],
-                         [10, 25, 50, "All"]
-                     ]
-                 });
+
              }
 
 

@@ -10,7 +10,7 @@
 <script src="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-<!-- datatable -->
-<script type="text/javascript" src="<?php echo base_url() . 'assets/plugin' ?>/DataTables/datatables.min.js"></script>
 <!-- Sweet alert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js" integrity="sha512-t89+ZHqiI+cJO2EZ1zy846TMzc7K0VH22insNeb32hMoVymAMd0aYeLzmNF4WuRLDUXPVo6dzbZ1zI7MBWlqlQ==" crossorigin="anonymous"></script>
+
+
+<script src="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.js'?>"></script>
