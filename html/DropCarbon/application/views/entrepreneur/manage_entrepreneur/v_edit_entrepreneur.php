@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-body">
                             <b>ข้อมูลของคุณ</b><br><br>
-                            <form method='POST' action="<?php echo site_url('Dcs_register/Etp_input/insert_etp') ?>">
+                            <form action="<?php echo site_url() . 'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/update_entrepreneur'; ?>" method="POST">
                                 <div class="w3-row">
                                     <div class="w3-container w3-twothird con">
                                         <div>
@@ -69,7 +69,7 @@
                                                 $checked_prefix_1 = 'checked';
                                             } else if ($this->session->userdata("pre_id") == "2") {
                                                 $checked_prefix_2 = 'checked';
-                                            }else{
+                                            } else {
                                                 $checked_prefix_3 = 'checked';
                                             }
                                             ?>
@@ -84,31 +84,31 @@
                                         <div class="w3-row row1">
                                             <div class="w3-col s3">
                                                 <?php
-                                                $fname = $this->session->userdata("Entrepreneur_name");
-                                                $lname = $this->session->userdata("Entrepreneur_name");
+                                                $ent_fname = $this->session->userdata("Entrepreneur_name");
+                                                $ent_lastname = $this->session->userdata("Entrepreneur_name");
                                                 ?>
                                                 <label>ชื่อ:</label><br>
-                                                <input type='text' class="box" name='ent_fname' value='<?php echo substr($fname, 0, strrpos($fname, ' ')); ?>'>
+                                                <input type='text' class="box" name='ent_fname' value='<?php echo substr($ent_fname, 0, strrpos($ent_fname, ' ')); ?>' required>
                                             </div>
                                             <div class="w3-col s3">
                                                 <label>นามสกุล:</label><br>
-                                                <input type='text' class="box" name='ent_lastname' value='<?php echo substr($lname, strrpos($lname, ' ')); ?>'> <br><br>
+                                                <input type='text' class="box" name='ent_lastname' value='<?php echo substr($ent_lastname, strrpos($ent_lastname, ' ')); ?>' required> <br><br>
                                             </div>
                                         </div>
                                         <div class="w3-row row1">
                                             <div class="w3-col s3">
                                                 <label>เบอร์โทร:</label><br>
-                                                <input type='text' class="box" name='ent_tel' value="<?php echo $this->session->userdata("tel"); ?>">
+                                                <input type='text' class="box" name='ent_tel' value="<?php echo $this->session->userdata("tel"); ?>" required>
                                             </div>
                                             <div class="w3-col s3">
                                                 <label>บัตรประชาชน:</label><br>
-                                                <input type='text' class="box" name='ent_id_card' value="<?php echo $this->session->userdata("card"); ?>"> <br><br>
+                                                <input type='text' class="box" name='ent_id_card' value="<?php echo $this->session->userdata("card"); ?>" required> <br><br>
                                             </div>
                                         </div>
                                         <div class="w3-row row1">
                                             <div class="w3-col s2">
                                                 <label>อีเมล:</label><br>
-                                                <input type='text' class="boxemail" name='ent_email' value="<?php echo $this->session->userdata("email"); ?>"> <br><br>
+                                                <input type='text' class="boxemail" name='ent_email' value="<?php echo $this->session->userdata("email"); ?>" required> <br><br>
                                             </div>
                                         </div>
                                     </div>
@@ -124,24 +124,24 @@
                                     <div class="w3-row">
                                         <div class="w3-col s3">
                                             <label>ชื่อผู้ใช้:</label><br>
-                                            <input type='text' class="box" name='ent_username' value="<?php echo $this->session->userdata("username"); ?>"> <br><br>
+                                            <input type='text' class="box" name='ent_username' value="<?php echo $this->session->userdata("username"); ?>" required> <br><br>
                                         </div>
                                     </div>
                                     <div class="w3-row">
                                         <div class="w3-col s3">
                                             <label>รหัสผ่าน:</label><br>
-                                            <input type='password' class="box" id="pass" name='ent_password' value="<?php echo $this->session->userdata("password"); ?>">
+                                            <input type='password' class="box" id="pass" name='ent_password' value="<?php echo $this->session->userdata("password"); ?>" required>
                                         </div>
                                         <div class="w3-col s3">
                                             <label>ยืนยันรหัสผ่าน:</label><br>
-                                            <input type='password' class="box" id="confirm" name='cfp' oninput="confirmpassword();" value="<?php echo $this->session->userdata("password"); ?>"> <br><br>
+                                            <input type='password' class="box" id="confirm" name='cfp' oninput="confirmpassword();" value="<?php echo $this->session->userdata("password"); ?>" required> <br><br>
                                             <div id="errorpassword" class="text-danger"></div>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="w3-row">
                                         <input type="submit" class="btn btn-success" value="บันทึก"></input>
-                                        <a class="btn btn-danger"" href=" <?php echo site_url() . 'Entrepreneur/Company_list/show_list_company'; ?>">ยกเลิก</a>
+                                        <a class="btn btn-danger"" href=" <?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
                                     </div>
                                     <br>
                                 </div>

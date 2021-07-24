@@ -20,14 +20,6 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql);
         return $query;
     }
-
-    public function get_by_id($ent_id)
-    {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_entrepreneur
-                WHERE ent_id = $ent_id";
-        $query = $this->db->query($sql);
-        return $query;
-    }
     /*
     *get_ent
     *get data entrepreneur form database
@@ -51,7 +43,8 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Suwapat Saowarod 
     *@Create Date 2564-07-19
     */
-    function login(){
+    function login()
+    {
         $sql = "SELECT * 
                 from dcs_entrepreneur 
                 where ent_username = ? AND  ent_password = ? AND ent_status = 2";
@@ -59,10 +52,10 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql, array($this->ent_username, $this->ent_password));
 
         $query_row = $query->num_rows();
-        
-        if($query_row){
+
+        if ($query_row) {
             return $query->row();
-        }else{
+        } else {
             return false;
         }
     }
