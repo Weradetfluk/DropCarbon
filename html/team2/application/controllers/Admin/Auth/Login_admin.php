@@ -78,7 +78,7 @@ class Login_admin extends DCS_controller
 
        $this->set_session($adm_username, $adm_name);
 
-       redirect("Admin/Manage_entrepreneur/Admin_approval");
+       redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur");
 
     } else {
       $data_warning = array();

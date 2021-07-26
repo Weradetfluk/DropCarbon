@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-class Admin_approval extends DCS_controller
+class Admin_approval_entrepreneur extends DCS_controller
 {
   /*
     * @author Weradet Nopsombun 62160110
@@ -170,7 +170,7 @@ class Admin_approval extends DCS_controller
       echo 'Message could not be sent.';
       echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-      redirect("Admin/Manage_entrepreneur/Admin_approval");
+      redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur");
     }
   }
 }

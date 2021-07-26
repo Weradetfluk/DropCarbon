@@ -3,9 +3,9 @@
  <div class="content">
      <div class="container-fluid">
 
-        <!-- warnning  -->
-        <!-- read me -->
-        <!-- do not indent code auto in tab-->
+         <!-- warnning  -->
+         <!-- read me -->
+         <!-- do not indent code auto in tab-->
 
          <div class="card card-nav-tabs">
              <div class="card-header" style="background-color: #60839f">
@@ -108,13 +108,13 @@
                      </div>
                      <div class="modal-body">
                          <p>กรุณาระบุเหตุผล</p>
-                         <form action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval/reject_entrepreneur'; ?>" method="POST">
+                         <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>">
                              <input type="hidden" id="email" name="email">
                              <input type="hidden" id="ent_id" name="ent_id">
                              <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
                      </div>
                      <div class="modal-footer">
-                         <button type="submit" class="btn btn-success" id="reject">ยืนยัน</button>
+                         <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
                          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                          </form>
                      </div>
@@ -137,7 +137,7 @@
 
              /*
               * get_data_entrepreneur_consider
-              * get data entrepreneur in Admin/Admin_approval/show_data_consider_ajax
+              * get data entrepreneur in Admin/Admin_approval_entrepreneur/show_data_consider_ajax
               * using by ajax
               * @input 
               * @output -
@@ -150,8 +150,9 @@
                  $.ajax({
                      type: "POST",
                      dataType: "JSON",
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval/show_data_consider_ajax'); ?>',
+                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider_ajax'); ?>',
                      success: function(json_data_consider_ente) {
+                         console.log(json_data_consider_ente);
                          create_table_consider(json_data_consider_ente);
                      },
                      error: function() {
@@ -177,7 +178,7 @@
                  $.ajax({
                      type: "POST",
                      dataType: "JSON",
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval/show_data_approve_ajax'); ?>',
+                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve_ajax'); ?>',
                      success: function(json_data_approve_ente) {
                          create_table_approve(json_data_approve_ente);
                      },
@@ -212,28 +213,34 @@
                  html_code += ' </thead>';
                  html_code += ' <tbody class="list">';
 
-                 //loop fetch data
 
-                 arr_en.forEach((row_tsm, index_tsm) => {
-                     let i = index_tsm + 1;
+
+                 //check array of lentgh
+                 if (arr_en.length == 0) {
                      html_code += '<tr style="text-align: center;">';
-                     html_code += '<td >' + i + '</td>';
-                     html_code += '<td >' + row_tsm['ent_name'] + '</td>';
-                     html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
-                     html_code += '<td >' + row_tsm['ent_email'] + '</td>';
-                     html_code += '<td >' + '<button class="btn btn-success" id = "accept" onclick = "confirm_approve(' + row_tsm['ent_id'] + ' )">อนุมัติ</button>';
-                     html_code += '<button class="btn btn-danger" id = "reject"  onclick = "confirm_reject(\'' + row_tsm['ent_id'] + '\',\'' + row_tsm['ent_email'] + '\' )" >ปฏิเสธ</button>' + '</td>';
-                     html_code += '</tr>';
+                     html_code += '<td colspan = "5">ไม่พบข้อมูลในตาราง</td>';
+                     html_code += '</tr">';
+                 } else {
+                     //loop fetch data
 
-                 });
+                     arr_en.forEach((row_tsm, index_tsm) => {
+                         let i = index_tsm + 1;
+                         html_code += '<tr style="text-align: center;">';
+                         html_code += '<td >' + i + '</td>';
+                         html_code += '<td >' + row_tsm['ent_name'] + '</td>';
+                         html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
+                         html_code += '<td >' + row_tsm['ent_email'] + '</td>';
+                         html_code += '<td >' + '<button class="btn btn-success" id = "accept" onclick = "confirm_approve(' + row_tsm['ent_id'] + ' )">อนุมัติ</button>';
+                         html_code += '<button class="btn btn-danger" id = "reject"  onclick = "confirm_reject(\'' + row_tsm['ent_id'] + '\',\'' + row_tsm['ent_email'] + '\' )" >ปฏิเสธ</button>' + '</td>';
+                         html_code += '</tr>';
+
+                     });
+                 }
                  html_code += '</tbody>';
                  html_code += ' </table>';
 
                  $('#data_entre_consider').html(html_code);
-
-
              }
-
 
 
 
@@ -262,18 +269,25 @@
                  html_code += '</tr>';
                  html_code += ' </thead>';
                  html_code += ' <tbody class="list">';
-                 arr_en.forEach((row_tsm, index_tsm) => {
-                     //loop fetch data
-                     let i = index_tsm + 1;
-                     html_code += '<tr style="text-align: center;">';
-                     html_code += '<td >' + i + '</td>';
-                     html_code += '<td >' + row_tsm['ent_name'] + '</td>';
-                     html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
-                     html_code += '<td >' + row_tsm['ent_email'] + '</td>';
-                     html_code += '<td >' + '<button class="btn btn-danger">บล็อค</button>' + '</td>';
-                     html_code += '</tr>';
 
-                 });
+                 if (arr_en.length == 0) {
+                     html_code += '<tr style="text-align: center;">';
+                     html_code += '<td colspan = "5">ไม่พบข้อมูลในตาราง</td>';
+                     html_code += '</tr">';
+                 } else {
+                     arr_en.forEach((row_tsm, index_tsm) => {
+                         //loop fetch data
+                         let i = index_tsm + 1;
+                         html_code += '<tr style="text-align: center;">';
+                         html_code += '<td >' + i + '</td>';
+                         html_code += '<td >' + row_tsm['ent_name'] + '</td>';
+                         html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
+                         html_code += '<td >' + row_tsm['ent_email'] + '</td>';
+                         html_code += '<td >' + '<button class="btn btn-danger">บล็อค</button>' + '</td>';
+                         html_code += '</tr>';
+
+                     });
+                 }
                  html_code += '</tbody>';
                  html_code += ' </table>';
 
@@ -281,6 +295,8 @@
 
 
              }
+
+
 
 
 
@@ -321,9 +337,19 @@
 
                  $('#email').val(ent_email);
                  $('#ent_id').val(ent_id);
+           
+                 $('#rejected').click(function() {
+                    $('#Rejectmodal').modal('toggle');
+                    swal({
+                             title: "ปฏิเสธสำเร็จ",
+                             text: "ปฏิเสธผู้ประกอบการสำเร็จ",
+                             type: "success",
+                         })
 
-                 console.log(ent_id);
-                 console.log(ent_email);
+
+                 });
+
+             
              }
 
 
@@ -344,7 +370,7 @@
                      data: {
                          ent_id: ent_id
                      },
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval/approval_entrepreneur'); ?>',
+                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/approval_entrepreneur'); ?>',
                      success: function() {
                          //sweet alert
                          swal({
@@ -366,38 +392,6 @@
 
 
 
-             /*
-              * reject_entrepreneur
-              * change status to reject
-              * @input 
-              * @output table approve and consider
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
-              * @Update -
-              */
+      
 
-             function reject_entrepreneur(ent_id, admin_reason) {
-                 $.ajax({
-                     type: "POST",
-                     data: {
-                         ent_id: ent_id,
-                         admin_reason: admin_reason
-                     },
-                     url: '<?php echo base_url('Admin/Entrepreneur/Admin_approval/reject_entrepreneur'); ?>',
-                     success: function() {
-                         swal({
-                             title: "อนุมัติสำเร็จ",
-                             text: "อนุมัติผู้ประกอบการสำเร็จ",
-                             type: "success",
-                         })
-
-                         get_data_entrepreneur_consider();
-                         get_data_entrepreneur_approve();
-
-                     },
-                     error: function() {
-                         alert('ajax error working');
-                     }
-                 });
-             }
          </script>
