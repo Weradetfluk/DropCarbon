@@ -1,6 +1,6 @@
 <?php
 if (!$this->session->has_userdata("username")) {
-  $path = site_url() . "Admin/Login_admin";
+  $path = site_url() . "Admin/Auth/Login_admin";
   header("Location: " . $path);
   exit();
 }
