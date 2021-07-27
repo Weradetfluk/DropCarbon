@@ -30,7 +30,9 @@ class Da_dcs_entrepreneur extends DCS_model
         $this->db->query($sql, array($this->ent_pre_id, $this->ent_name, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_username, $this->ent_password));
     }
 
-    public function update_approve($status_number)
+
+    
+    public function update_status($status_number)
     {
         $sql = "UPDATE {$this->db_name}.dcs_entrepreneur SET ent_status = ?
         Where ent_id = ?";

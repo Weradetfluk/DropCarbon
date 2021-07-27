@@ -92,7 +92,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     $status_number = 2;
 
-    $this->mdce->update_approve($status_number);
+    $this->mdce->update_status($status_number);
   }
 
 
@@ -114,9 +114,12 @@ class Admin_approval_entrepreneur extends DCS_controller
     $user_email = $this->input->post('email');
 
     $status_number = 3;
-    $this->mdce->update_approve($status_number);
+    $this->mdce->update_status($status_number);
     $this->email_send($reson_admin,$user_email);
   }
+
+
+
 
 
   /*

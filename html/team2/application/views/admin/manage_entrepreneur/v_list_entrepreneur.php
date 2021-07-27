@@ -96,6 +96,9 @@
              </div>
          </div>
 
+
+
+
          <!-- warnning reject  -->
          <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
              <div class="modal-dialog" role="document">
@@ -121,6 +124,37 @@
                  </div>
              </div>
          </div>
+
+
+
+         <!-- warnning block Modal  -->
+         <div class="modal" tabindex="-1" role="dialog" id="blockmodal">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">คุณต้องการบล็อค ?</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <p>คุณต้องการบล็อคผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+
+
+
+
+
+
+
 
 
          <script>
@@ -283,7 +317,7 @@
                          html_code += '<td >' + row_tsm['ent_name'] + '</td>';
                          html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
                          html_code += '<td >' + row_tsm['ent_email'] + '</td>';
-                         html_code += '<td >' + '<button class="btn btn-danger">บล็อค</button>' + '</td>';
+                         html_code += '<td >' + '<button class="btn btn-danger" onclick = "confirm_block(' + row_tsm['ent_id'] + ' )">บล็อค</button>' + '</td>';
                          html_code += '</tr>';
 
                      });
@@ -299,12 +333,72 @@
 
 
 
+              /*
+              * confirm_block
+              * open modal id = blockmodal 
+              * @input 
+              * @output modal to confirm block user 
+              * @author Weradet Nopsombun
+              * @Create Date 2564-07-27
+              * @Update -
+              */
+
+             function confirm_block(ent_id) {
+                 $('#blockmodal').modal();
+
+                 $('#blocked').click(function() {
+                     console.log("check");
+                    block_user(ent_id);
+
+                 });
+
+             }
+
+
+               /*
+              * block_user
+              * send ajax into block_user controller
+              * @input ent_id
+              * @output sweet alert
+              * @author Weradet Nopsombun
+              * @Create Date 2564-07-27
+              * @Update -
+              */
+
+            function block_user(ent_id){
+                $.ajax({
+                     type: "POST",
+                     data: {
+                         ent_id: ent_id
+                     },
+                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_block_user/block_user_ajax'); ?>',
+                     success: function() {
+                         //sweet alert
+                         swal({
+                             title: "บล็อคผู้ใช้งานสำเร็จ",
+                             text: "บล็อคผู้ประกอบการสำเร็จ",
+                             type: "success",
+                         })
+
+                         get_data_entrepreneur_consider(); // get data in table
+                         get_data_entrepreneur_approve();
+
+                     },
+                     error: function() {
+                         alert('ajax block user error working');
+                     }
+                 });
+
+            }
+
+
+
 
              /*
               * confirm_approve
               * open modal id = Aprovemodal 
               * @input 
-              * @output modal to confirm approve modal file path = v_modal.php
+              * @output modal to confirm approve modal
               * @author Weradet Nopsombun
               * @Create Date 2564-07-17
               * @Update -
@@ -314,7 +408,6 @@
                  $('#Aprovemodal').modal();
 
                  $('#approves').click(function() {
-                     console.log("check");
                      approve_entrepreneur(ent_id) //function 
 
                  });
@@ -326,7 +419,7 @@
               * confirm_approve
               * open modal id = Aprovemodal 
               * @input 
-              * @output modal to reject  modal file path = v_modal.php
+              * @output modal to reject  modal 
               * @author Weradet Nopsombun
               * @Create Date 2564-07-17
               * @Update -
@@ -337,19 +430,19 @@
 
                  $('#email').val(ent_email);
                  $('#ent_id').val(ent_id);
-           
+
                  $('#rejected').click(function() {
-                    $('#Rejectmodal').modal('toggle');
-                    swal({
-                             title: "ปฏิเสธสำเร็จ",
-                             text: "ปฏิเสธผู้ประกอบการสำเร็จ",
-                             type: "success",
-                         })
+                     $('#Rejectmodal').modal('toggle');
+                     swal({
+                         title: "ปฏิเสธสำเร็จ",
+                         text: "ปฏิเสธผู้ประกอบการสำเร็จ",
+                         type: "success",
+                     })
 
 
                  });
 
-             
+
              }
 
 
@@ -388,10 +481,4 @@
                      }
                  });
              }
-
-
-
-
-      
-
          </script>
