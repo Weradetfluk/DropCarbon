@@ -144,8 +144,8 @@ class Admin_approval_entrepreneur extends DCS_controller
     $mail->isSMTP();
     $mail->Host     = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'dropcarbonsystem@gmail.com';
-    $mail->Password = 'dropcarbon1234';
+    $mail->Username = 'fluk.weradet@gmail.com';
+    $mail->Password = 'fluk@1234';
     $mail->SMTPSecure = 'tls';
     $mail->Port     = 587;
     $mail->charSet = "UTF-8";
