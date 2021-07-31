@@ -125,13 +125,7 @@ CREATE TABLE `dcs_tourist` (
   `tus_email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tus_cur_score` int(10) DEFAULT NULL,
   `tus_status` int(1) DEFAULT NULL,
-  `tus_pre_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`tus_id`, `tus_pre_id`), 
-  CONSTRAINT `fk_dcs_tourist_dcs_prefix1`
-  FOREIGN KEY (`tus_pre_id`)
-  REFERENCES `dcs_prefix` (`pre_id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION
+  `tus_pre_id` int(10) DEFAULT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -175,7 +169,13 @@ ALTER TABLE `dcs_company`
 ALTER TABLE `dcs_entrepreneur`
   ADD PRIMARY KEY (`ent_id`),
   ADD KEY `ent_pre_id` (`ent_pre_id`);
-
+  
+--
+-- Indexes for table `dcs_tourist`
+--
+ALTER TABLE `dcs_tourist`
+  ADD PRIMARY KEY (`tus_id`),
+  ADD KEY `tus_pre_id` (`tus_pre_id`);
 --
 -- Indexes for table `dcs_prefix`
 --
@@ -205,6 +205,12 @@ ALTER TABLE `dcs_entrepreneur`
   MODIFY `ent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `dcs_tourist`
+--
+ALTER TABLE `dcs_tourist`
+  MODIFY `tus_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `dcs_prefix`
 --
 ALTER TABLE `dcs_prefix`
@@ -225,6 +231,13 @@ ALTER TABLE `dcs_company`
 --
 ALTER TABLE `dcs_entrepreneur`
   ADD CONSTRAINT `dcs_entrepreneur_ibfk_1` FOREIGN KEY (`ent_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
+COMMIT;
+
+--
+-- Constraints for table `dcs_entrepreneur`
+--
+ALTER TABLE `dcs_tourist`
+  ADD CONSTRAINT `dcs_tourist_ibfk_1` FOREIGN KEY (`tus_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
