@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="#">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="<?php echo base_url() . 'Landing_page/Register/Landing_page' ?>">
                 Logo
             </a>
 
