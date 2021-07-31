@@ -16,7 +16,7 @@
                 <div class="flex-fill">
                     <ul class="nav d-flex justify-content-end mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur' ?>">ผูัประกอบการ</a>
+                            <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur' ?>">ผู้ประกอบการ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" #">เข้าสู่ระบบ</a>
