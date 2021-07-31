@@ -37,6 +37,21 @@
                                          </center>
                                      </div>
                                      <div class="card-body">
+
+                                         <div class="row">
+                                             <div class="col-sm-3">
+                                                 <form class="navbar-form">
+                                                     <div class="input-group no-border has-success">
+                                                         <input type="text" value="" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
+                                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                                             <i class="material-icons">search</i>
+
+                                                         </button>
+                                                     </div>
+                                                 </form>
+                                             </div>
+                                         </div>
+
                                          <div class="table-responsive" id="data_entre_consider">
 
                                              <!-- table consider ajax  -->
@@ -53,60 +68,74 @@
                                                  <tbody class="list">
 
                                                      <?php
-                                                        for ($i = 0; $i < count($arr_entrepreneur); $i++) { ?>
-                                                         <tr>
-                                                             <!-- column ลำดับ -->
-                                                             <td style='text-align: center;'>
-                                                                 <?php echo ($i + 1); ?>
-                                                             </td>
 
-                                                             <!-- column ชื่อ-สกุล -->
-                                                             <td>
-                                                                 <?php echo $arr_entrepreneur[$i]->ent_name; ?>
-                                                             </td>
+                                                        if (sizeof($arr_entrepreneur) == 0) {
+                                                            echo "<td colspan = '5'>";
+                                                            echo "ไม่มีข้อมูลในตารางนี้";
+                                                            echo "</td>";
+                                                        } else {
 
+                                                            for ($i = 0; $i < count($arr_entrepreneur); $i++) { ?>
+                                                             <tr>
+                                                                 <!-- column ลำดับ -->
+                                                                 <td style='text-align: center;'>
+                                                                     <?php echo ($i + 1); ?>
+                                                                 </td>
 
-                                                             <td>
-                                                                 <?php echo $arr_entrepreneur[$i]->ent_tel; ?>
-                                                             </td>
-
-
-                                                             <td>
-                                                                 <?php echo $arr_entrepreneur[$i]->ent_email; ?>
-                                                             </td>
+                                                                 <!-- column ชื่อ-สกุล -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur[$i]->ent_name; ?>
+                                                                 </td>
 
 
-                                                             <!-- column ดำเนินการ -->
-                                                             <td style='text-align: center;'>
+                                                                 <!-- column เบอร์โทร -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur[$i]->ent_tel; ?>
+                                                                 </td>
 
-                                                                 <!-- ปุ่มแก้ไข -->
+                                                                 <!-- column Email -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur[$i]->ent_email; ?>
+                                                                 </td>
 
-                                                                 <button class="btn btn-success" id="accept" style="font-size:10px;" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
-                                                                     <i class="material-icons">done</i>
-                                                                 </button>
+
+                                                                 <!-- column ดำเนินการ -->
+                                                                 <td style='text-align: center;'>
 
 
-                                                                 <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
-                                                                     <i class="material-icons">
+                                                                     <button class="btn btn-success" id="accept" style="font-size:10px;" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
+                                                                         <i class="material-icons">done</i>
+                                                                     </button>
+
+
+                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
+                                                                         <i class="material-icons">
                                                                              clear
-                                                                         </span></i>
-                                                                 </button>
+                                                                             </span></i>
+                                                                     </button>
 
 
-                                                                 <button class="btn " id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>")'>
-                                                                     <i class="material-icons">   
-                                                                                 search
-                                                                     </i>
-                                                                 </button>
+                                                                     <button class="btn " id="reject" style="font-size:10px;" onclick=''>
+                                                                         <i class="material-icons">
+                                                                             search
+                                                                         </i>
+                                                                     </button>
+                                                                 </td>
 
 
-                                                             </td>
-                                                         </tr>
+
+                                                             </tr>
+
+                                                         <?php } ?>
                                                      <?php } ?>
+
+
                                                  </tbody>
                                              </table>
                                          </div>
+
                                          <p><?php echo $links; ?></p>
+
                                      </div>
                                  </div>
                              </div>
@@ -128,7 +157,67 @@
                                          <div class="table-responsive" id="data_entre_approve">
 
                                              <!-- table approve ajax  -->
+                                             <table class="table" style="text-align: center;" id="entre_tale_approve">
+                                                 <thead class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                                                     <tr>
+                                                         <th style="text-align: center;font-size: 16px;">ลำดับ</th>
+                                                         <th style="text-align: center;font-size: 16px;">ชื่อ-นามสกุล</th>
+                                                         <th style="text-align: center;font-size: 16px;">เบอร์โทร</th>
+                                                         <th style="text-align: center;font-size: 16px;">อีเมล</th>
+                                                         <th style="text-align: center;font-size: 16px;">ดำเนินการ</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody class="list">
+                                                     <?php
+                                                        if (sizeof($arr_entrepreneur_approve) == 0) {
+                                                            echo "<td colspan = '5'>";
+                                                            echo "ไม่มีข้อมูลในตารางนี้";
+                                                            echo "</td>";
+                                                        } else {
 
+                                                            for ($i = 0; $i < count($arr_entrepreneur_approve); $i++) { ?>
+                                                             <tr>
+                                                                 <!-- column ลำดับ -->
+                                                                 <td style='text-align: center;'>
+                                                                     <?php echo ($i + 1); ?>
+                                                                 </td>
+
+                                                                 <!-- column ชื่อ-สกุล -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur_approve[$i]->ent_name; ?>
+                                                                 </td>
+
+
+                                                                 <!-- column เบอร์โทร -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur_approve[$i]->ent_tel; ?>
+                                                                 </td>
+
+                                                                 <!-- column Email -->
+                                                                 <td>
+                                                                     <?php echo $arr_entrepreneur_approve[$i]->ent_email; ?>
+                                                                 </td>
+
+
+                                                                 <!-- column ดำเนินการ -->
+                                                                 <td style='text-align: center;'>
+                                                                     <button class="btn btn-success" id="accept" style="font-size:10px;" onclick="confirm_block(  <?php echo $arr_entrepreneur_approve[$i]->ent_id; ?>)">
+                                                                         <i class="material-icons"><span class="material-icons-outlined">
+                                                                                 highlight_off
+                                                                             </span></i>
+                                                                     </button>
+
+                                                                 </td>
+
+
+
+                                                             </tr>
+
+                                                         <?php } ?>
+                                                     <?php } ?>
+
+                                                 </tbody>
+                                             </table>
                                          </div>
                                      </div>
                                  </div>
@@ -163,7 +252,7 @@
          </div>
 
 
-         
+
          <!-- warnning reject  -->
          <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
              <div class="modal-dialog" role="document">
@@ -213,15 +302,6 @@
              </div>
          </div>
 
-
-
-
-
-
-
-
-
-
          <script>
              // jquery start
 
@@ -229,12 +309,9 @@
 
 
 
-                 get_data_entrepreneur_approve();
+                 //  get_data_entrepreneur_approve();
 
              }); // Jqurey
-
-
-
 
 
              /*
@@ -261,118 +338,6 @@
                      }
                  });
              }
-
-
-             /*
-              * create_table_consider
-              * create table consider data
-              * @input 
-              * @output table in data  html id = data_entre_consider
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
-              * @Update -
-              */
-
-             function create_table_consider(arr_en, sno) {
-
-                 sno = Number(sno);
-                 $('#data_entre_consider').empty();
-                 let html_code = '';
-                 html_code += '<table class="table" style="text-align: center;" id="entre_tale">';
-                 html_code += '<thead class="text-white" style="background-color: #d8b7a8; text-align: center;">';
-                 html_code += '<tr>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >ลำดับ</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >ชื่อ-นามสกุล</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >เบอร์โทร</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;"  >อีเมล</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;"  >ดำเนินการ</th>';
-                 html_code += '</tr>';
-                 html_code += ' </thead>';
-                 html_code += ' <tbody class="list">';
-
-
-
-                 //check array of lentgh
-                 if (arr_en.length == 0) {
-                     html_code += '<tr style="text-align: center;">';
-                     html_code += '<td colspan = "5">ไม่พบข้อมูลในตาราง</td>';
-                     html_code += '</tr">';
-                 } else {
-                     //loop fetch data
-
-                     arr_en.forEach((row_tsm, index_tsm) => {
-                         let i = index_tsm + 1;
-                         html_code += '<tr style="text-align: center;">';
-                         html_code += '<td >' + i + '</td>';
-                         html_code += '<td >' + row_tsm['ent_name'] + '</td>';
-                         html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
-                         html_code += '<td >' + row_tsm['ent_email'] + '</td>';
-                         html_code += '<td >' + '<button class="btn btn-success" id = "accept" onclick = "confirm_approve(' + row_tsm['ent_id'] + ' )">อนุมัติ</button>';
-                         html_code += '<button class="btn btn-danger" id = "reject"  onclick = "confirm_reject(\'' + row_tsm['ent_id'] + '\',\'' + row_tsm['ent_email'] + '\' )" >ปฏิเสธ</button>' + '</td>';
-                         html_code += '</tr>';
-
-                     });
-                 }
-                 html_code += '</tbody>';
-                 html_code += ' </table>';
-
-                 $('#data_entre_consider').html(html_code);
-             }
-
-
-
-
-             /*
-              * create_table_approve
-              * 
-              * using by ajax
-              * @input 
-              * @output table in data  html id = entre_tale_approve
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
-              * @Update -
-              */
-
-             function create_table_approve(arr_en) {
-                 let html_code = '';
-                 html_code += '<table class="table" style="text-align: center;"  id="entre_tale_approve">';
-                 html_code += '<thead class="text-white" style="background-color: #d8b7a8; text-align: center;">';
-                 html_code += '<tr>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >ลำดับ</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >ชื่อ-นามสกุล</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;" >เบอร์โทร</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;"  >อีเมล</th>';
-                 html_code += '<th   style="text-align: center;font-size: 16px;"  >ดำเนินการ</th>';
-                 html_code += '</tr>';
-                 html_code += ' </thead>';
-                 html_code += ' <tbody class="list">';
-
-                 if (arr_en.length == 0) {
-                     html_code += '<tr style="text-align: center;">';
-                     html_code += '<td colspan = "5">ไม่พบข้อมูลในตาราง</td>';
-                     html_code += '</tr">';
-                 } else {
-                     arr_en.forEach((row_tsm, index_tsm) => {
-                         //loop fetch data
-                         let i = index_tsm + 1;
-                         html_code += '<tr style="text-align: center;">';
-                         html_code += '<td >' + i + '</td>';
-                         html_code += '<td >' + row_tsm['ent_name'] + '</td>';
-                         html_code += '<td >' + row_tsm['ent_tel'] + '</td>';
-                         html_code += '<td >' + row_tsm['ent_email'] + '</td>';
-                         html_code += '<td >' + '<button class="btn btn-danger" onclick = "confirm_block(' + row_tsm['ent_id'] + ' )">บล็อค</button>' + '</td>';
-                         html_code += '</tr>';
-
-                     });
-                 }
-                 html_code += '</tbody>';
-                 html_code += ' </table>';
-
-                 $('#data_entre_approve').html(html_code);
-
-
-             }
-
 
 
 
@@ -421,11 +386,12 @@
                              title: "บล็อคผู้ใช้งานสำเร็จ",
                              text: "บล็อคผู้ประกอบการสำเร็จ",
                              type: "success",
+                             showConfirmButton: false,
+                             timer: 3000,
+                         }, function() {
+                             location.reload();
+
                          })
-
-                         get_data_entrepreneur_consider(); // get data in table
-                         get_data_entrepreneur_approve();
-
                      },
                      error: function() {
                          alert('ajax block user error working');
@@ -478,17 +444,19 @@
                      $('#Rejectmodal').modal('toggle');
                      swal({
                          title: "ปฏิเสธสำเร็จ",
-                         text: "ปฏิเสธผู้ประกอบการสำเร็จ",
+                         text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
                          type: "success",
-                     })
+                         showConfirmButton: false,
+                         timer: 3000,
+                     }, function() {
+                         showConfirmButton: true
+                         location.reload();
 
-
+                     });
                  });
 
 
              }
-
-
 
 
              /*
@@ -513,11 +481,12 @@
                              title: "อนุมัติสำเร็จ",
                              text: "อนุมัติผู้ประกอบการสำเร็จ",
                              type: "success",
+                             showConfirmButton: false,
+                             timer: 3000,
+                         }, function() {
+                             location.reload();
+
                          })
-
-                         get_data_entrepreneur_consider(); // get data in table
-                         get_data_entrepreneur_approve();
-
                      },
                      error: function() {
                          alert('ajax error working');

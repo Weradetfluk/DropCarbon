@@ -21,11 +21,35 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $query->result();
     }
 
+
+    
+    function get_all_data_approve($limit, $start)
+    {
+
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_entrepreneur');
+        $this->db->where('ent_status = 2');
+        $query = $this->db->get();
+       
+        //$query = $this->db->get('dcs_entrepreneur');
+        return $query->result();
+    }
+
     function get_count_all_consider()
     {
         $this->db->select('*');
         $this->db->from('dcs_entrepreneur ');
         $this->db->where('ent_status = 1');
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
+    function get_count_all_approve()
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_entrepreneur ');
+        $this->db->where('ent_status = 2');
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
