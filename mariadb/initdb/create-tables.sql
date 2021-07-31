@@ -109,24 +109,6 @@ INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_name`, `ent_username`, `ent_passw
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `dcs_tourist`
---
-
-CREATE TABLE `dcs_tourist` (
-  `tus_id` int(10) NOT NULL AUTO_INCREMENT,
-  `tus_firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tus_lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tus_username` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tus_password` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tus_birthdate` DATE DEFAULT NULL,
-  `tus_tel` int(10) DEFAULT NULL,
-  `tus_score` INT(10) DEFAULT NULL,
-  `tus_email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tus_cur_score` int(10) DEFAULT NULL,
-  `tus_status` int(1) DEFAULT NULL,
-  `tus_pre_id` int(10) DEFAULT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Table structure for table `dcs_prefix`
@@ -145,6 +127,25 @@ INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 (1, 'นาย'),
 (2, 'นาง'),
 (3, 'นางสาว');
+
+--
+-- Table structure for table `dcs_tourist`
+--
+
+CREATE TABLE `dcs_tourist` (
+  `tus_id` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `tus_firstname` varchar(50),
+  `tus_lastname` varchar(50),
+  `tus_username` varchar(30),
+  `tus_password` varchar(30),
+  `tus_birthdate` DATE,
+  `tus_tel` int(10),
+  `tus_score` INT(10),
+  `tus_email` varchar(30) NULL,
+  `tus_cur_score` int(10),
+  `tus_status` int(1) DEFAULT 1,
+  `tus_pre_id` int(10)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -169,13 +170,7 @@ ALTER TABLE `dcs_company`
 ALTER TABLE `dcs_entrepreneur`
   ADD PRIMARY KEY (`ent_id`),
   ADD KEY `ent_pre_id` (`ent_pre_id`);
-  
---
--- Indexes for table `dcs_tourist`
---
-ALTER TABLE `dcs_tourist`
-  ADD PRIMARY KEY (`tus_id`),
-  ADD KEY `tus_pre_id` (`tus_pre_id`);
+
 --
 -- Indexes for table `dcs_prefix`
 --
@@ -205,12 +200,6 @@ ALTER TABLE `dcs_entrepreneur`
   MODIFY `ent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `dcs_tourist`
---
-ALTER TABLE `dcs_tourist`
-  MODIFY `tus_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `dcs_prefix`
 --
 ALTER TABLE `dcs_prefix`
@@ -234,10 +223,10 @@ ALTER TABLE `dcs_entrepreneur`
 COMMIT;
 
 --
--- Constraints for table `dcs_entrepreneur`
+-- Constraints for table `dcs_tourist`
 --
 ALTER TABLE `dcs_tourist`
-  ADD CONSTRAINT `dcs_tourist_ibfk_1` FOREIGN KEY (`tus_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
+  ADD CONSTRAINT `tus_pre_id` FOREIGN KEY (`tus_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
