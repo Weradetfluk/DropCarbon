@@ -40,13 +40,79 @@
                                          <div class="table-responsive" id="data_entre_consider">
 
                                              <!-- table consider ajax  -->
+                                             <table class="table" style="text-align: center;" id="entre_tale">
+                                                 <thead class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                                                     <tr>
+                                                         <th style="text-align: center;font-size: 16px;">ลำดับ</th>
+                                                         <th style="text-align: center;font-size: 16px;">ชื่อ-นามสกุล</th>
+                                                         <th style="text-align: center;font-size: 16px;">เบอร์โทร</th>
+                                                         <th style="text-align: center;font-size: 16px;">อีเมล</th>
+                                                         <th style="text-align: center;font-size: 16px;">ดำเนินการ</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody class="list">
 
+                                                     <?php
+                                                        for ($i = 0; $i < count($arr_entrepreneur); $i++) { ?>
+                                                         <tr>
+                                                             <!-- column ลำดับ -->
+                                                             <td style='text-align: center;'>
+                                                                 <?php echo ($i + 1); ?>
+                                                             </td>
+
+                                                             <!-- column ชื่อ-สกุล -->
+                                                             <td>
+                                                                 <?php echo $arr_entrepreneur[$i]->ent_name; ?>
+                                                             </td>
+
+
+                                                             <td>
+                                                                 <?php echo $arr_entrepreneur[$i]->ent_tel; ?>
+                                                             </td>
+
+
+                                                             <td>
+                                                                 <?php echo $arr_entrepreneur[$i]->ent_email; ?>
+                                                             </td>
+
+
+                                                             <!-- column ดำเนินการ -->
+                                                             <td style='text-align: center;'>
+
+                                                                 <!-- ปุ่มแก้ไข -->
+
+                                                                 <button class="btn btn-success" id="accept" style="font-size:10px;" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
+                                                                     <i class="material-icons">done</i>
+                                                                 </button>
+
+
+                                                                 <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
+                                                                     <i class="material-icons">
+                                                                             clear
+                                                                         </span></i>
+                                                                 </button>
+
+
+                                                                 <button class="btn " id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>")'>
+                                                                     <i class="material-icons">   
+                                                                                 search
+                                                                     </i>
+                                                                 </button>
+
+
+                                                             </td>
+                                                         </tr>
+                                                     <?php } ?>
+                                                 </tbody>
+                                             </table>
                                          </div>
+                                         <p><?php echo $links; ?></p>
                                      </div>
                                  </div>
                              </div>
                          </div>
                      </div>
+
 
                      <!-- Tab 2  -->
                      <div class="tab-pane" id="approve">
@@ -97,8 +163,7 @@
          </div>
 
 
-
-
+         
          <!-- warnning reject  -->
          <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
              <div class="modal-dialog" role="document">
@@ -162,38 +227,13 @@
 
              $(document).ready(function() {
 
-                 get_data_entrepreneur_consider();
+
 
                  get_data_entrepreneur_approve();
 
              }); // Jqurey
 
 
-             /*
-              * get_data_entrepreneur_consider
-              * get data entrepreneur in Admin/Admin_approval_entrepreneur/show_data_consider_ajax
-              * using by ajax
-              * @input 
-              * @output -
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
-              * @Update -
-              */
-
-             function get_data_entrepreneur_consider() {
-                 $.ajax({
-                     type: "POST",
-                     dataType: "JSON",
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider_ajax'); ?>',
-                     success: function(json_data_consider_ente) {
-                         console.log(json_data_consider_ente);
-                         create_table_consider(json_data_consider_ente);
-                     },
-                     error: function() {
-                         alert('ajax Not working');
-                     }
-                 });
-             }
 
 
 
@@ -210,7 +250,7 @@
 
              function get_data_entrepreneur_approve() {
                  $.ajax({
-                     type: "POST",
+                     type: "GET",
                      dataType: "JSON",
                      url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve_ajax'); ?>',
                      success: function(json_data_approve_ente) {
@@ -233,7 +273,10 @@
               * @Update -
               */
 
-             function create_table_consider(arr_en) {
+             function create_table_consider(arr_en, sno) {
+
+                 sno = Number(sno);
+                 $('#data_entre_consider').empty();
                  let html_code = '';
                  html_code += '<table class="table" style="text-align: center;" id="entre_tale">';
                  html_code += '<thead class="text-white" style="background-color: #d8b7a8; text-align: center;">';
@@ -333,7 +376,7 @@
 
 
 
-              /*
+             /*
               * confirm_block
               * open modal id = blockmodal 
               * @input 
@@ -348,14 +391,14 @@
 
                  $('#blocked').click(function() {
                      console.log("check");
-                    block_user(ent_id);
+                     block_user(ent_id);
 
                  });
 
              }
 
 
-               /*
+             /*
               * block_user
               * send ajax into block_user controller
               * @input ent_id
@@ -365,8 +408,8 @@
               * @Update -
               */
 
-            function block_user(ent_id){
-                $.ajax({
+             function block_user(ent_id) {
+                 $.ajax({
                      type: "POST",
                      data: {
                          ent_id: ent_id
@@ -389,7 +432,7 @@
                      }
                  });
 
-            }
+             }
 
 
 

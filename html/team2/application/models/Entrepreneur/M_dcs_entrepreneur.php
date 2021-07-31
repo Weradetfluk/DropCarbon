@@ -8,18 +8,40 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         parent::__construct();
     }
 
-    function get_all_consider()
+    function get_all_consider($limit, $start)
     {
-        $sql = "SELECT *  from  {$this->db_name}.dcs_entrepreneur  where ent_status = 1";
-        $query = $this->db->query($sql);
-        return $query;
+
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_entrepreneur');
+        $this->db->where('ent_status = 1');
+        $query = $this->db->get();
+       
+        //$query = $this->db->get('dcs_entrepreneur');
+        return $query->result();
     }
+
+    function get_count_all_consider()
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_entrepreneur ');
+        $this->db->where('ent_status = 1');
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
+
+
     function get_all_approve()
     {
         $sql = "SELECT *  from  {$this->db_name}.dcs_entrepreneur  where ent_status = 2";
         $query = $this->db->query($sql);
         return $query;
     }
+
+
+
+
     /*
     *get_ent
     *get data entrepreneur form database
