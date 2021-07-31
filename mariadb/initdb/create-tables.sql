@@ -115,8 +115,8 @@ INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_name`, `ent_username`, `ent_passw
 
 CREATE TABLE `dcs_tourist` (
   `tus_id` INT(10) NOT NULL AUTO_INCREMENT,
-  `tus_firstname` varchar(50), NOT NULL,
-  `tus_lastname` varchar(50), NOT NULL,
+  `tus_firstname` varchar(50) NOT NULL,
+  `tus_lastname` varchar(50) NOT NULL,
   `tus_username` VARCHAR(30) NOT NULL,
   `tus_password` VARCHAR(30) NOT NULL,
   `tus_birthdate` DATE NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE `dcs_tourist` (
   FOREIGN KEY (`tus_pre_id`)
   REFERENCES `dcs_prefix` (`pre_id`)
   ON DELETE NO ACTION
-  ON UPDATE NO ACTION)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  ON UPDATE NO ACTION);
 
 --
 -- Table structure for table `dcs_prefix`
