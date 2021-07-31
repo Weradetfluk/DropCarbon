@@ -97,7 +97,7 @@ class DCS_controller extends CI_Controller
     {
         $this->load->view('template/Register/header_register');
         $this->load->view('template/Register/javascript_register');
-        $this->load->view('template/Register/topbar_register');
+        $this->load->view('template/Landing_page/topbar_landing');
         $this->load->view($view, $data);
         $this->load->view('template/Register/footer');
     }
@@ -117,5 +117,22 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');
         $this->load->view('entrepreneur/manage_entrepreneur/v_edit_entrepreneur');
         $this->load->view('template/Entrepreneur/footer');
+    }
+
+    /*
+    * output_Landing_page
+    * show Landing page for every one
+    * @input -
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2021-07-31
+    */
+    public function output_Landing_page()
+    {
+        $this->load->view('template/Landing_page/head_landing');
+        $this->load->view('template/Landing_page/javascript_landing');
+        $this->load->view('template/Landing_page/topbar_landing');
+        $this->load->view('landing_page/register/v_landing_page');
+        $this->load->view('template/Landing_page/footer');
     }
 }
