@@ -114,24 +114,25 @@ INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_name`, `ent_username`, `ent_passw
 --
 
 CREATE TABLE `dcs_tourist` (
-  `tus_id` INT(10) NOT NULL AUTO_INCREMENT,
-  `tus_firstname` varchar(50) NOT NULL,
-  `tus_lastname` varchar(50) NOT NULL,
-  `tus_username` VARCHAR(30) NOT NULL,
-  `tus_password` VARCHAR(30) NOT NULL,
-  `tus_birthdate` DATE NOT NULL,
-  `tus_tel` INT(10) NOT NULL,
-  `tus_score` INT(10) NOT NULL,
-  `tus_email` VARCHAR(30) NOT NULL,
-  `tus_cur_score` INT(10) NOT NULL,
-  `tus_status` INT(1) NOT NULL,
-  `tus_pre_id` INT(10) NOT NULL,
+  `tus_id` int(10) NOT NULL AUTO_INCREMENT,
+  `tus_firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tus_lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tus_username` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tus_password` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tus_birthdate` DATE DEFAULT NULL,
+  `tus_tel` int(10) DEFAULT NULL,
+  `tus_score` INT(10) DEFAULT NULL,
+  `tus_email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tus_cur_score` int(10) DEFAULT NULL,
+  `tus_status` int(1) DEFAULT NULL,
+  `tus_pre_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`tus_id`, `tus_pre_id`), 
   CONSTRAINT `fk_dcs_tourist_dcs_prefix1`
   FOREIGN KEY (`tus_pre_id`)
   REFERENCES `dcs_prefix` (`pre_id`)
   ON DELETE NO ACTION
-  ON UPDATE NO ACTION);
+  ON UPDATE NO ACTION
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Table structure for table `dcs_prefix`
