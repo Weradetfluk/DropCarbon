@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `DcbSystem`
 --
-CREATE DATABASE IF NOT EXISTS `DcsSystem` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `DcsSystem`;
+CREATE DATABASE IF NOT EXISTS `team2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `team2`;
 
 -- --------------------------------------------------------
 

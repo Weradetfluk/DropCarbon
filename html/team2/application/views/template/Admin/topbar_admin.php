@@ -48,7 +48,7 @@ if (!$this->session->has_userdata("username")) {
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#">
-            <i class="material-icons">person</i>
+            <i class="material-icons">library_books</i>
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
@@ -61,7 +61,7 @@ if (!$this->session->has_userdata("username")) {
 
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="material-icons">library_books</i>
+            <i class="material-icons">content_paste</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>
         </li>
@@ -69,6 +69,12 @@ if (!$this->session->has_userdata("username")) {
           <a class="nav-link" href="#">
             <i class="material-icons">bubble_chart</i>
             <p>จัดการโปรโมชัน</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">
+            <i class="material-icons">person</i>
+            <p>ออกจากระบบ</p>
           </a>
         </li>
       </ul>
@@ -93,7 +99,7 @@ if (!$this->session->has_userdata("username")) {
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link" href="" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link"  href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
                 <?php echo $this->session->userdata("Admin_name"); ?>
                 <p class="d-lg-none d-md-block">

@@ -40,9 +40,10 @@ class Login_admin extends DCS_controller
     * @Update -
     */
 
-  public function warnning($data = NULL)
+  public function warnning($data)
   {
-    $this->output_login_admin('admin/auth/v_login_admin', $data);
+     $this->output_login_admin('admin/auth/v_login_admin', $data);
+    //echo $data['warning'];
   }
 
 
@@ -78,13 +79,14 @@ class Login_admin extends DCS_controller
 
        $this->set_session($adm_username, $adm_name);
 
-       redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur");
+       redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
 
     } else {
       $data_warning = array();
-      $data_warning['warning'] = "test";
+      $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
 
-      $this->index($data_warning);
+      $this->warnning($data_warning);
+      
     }
 
   }

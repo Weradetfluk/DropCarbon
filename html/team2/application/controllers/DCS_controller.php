@@ -50,11 +50,11 @@ class DCS_controller extends CI_Controller
     * @Update -
     */
 
-    public function output_login_admin()
+    public function output_login_admin($view, $data = null)
     {
         $this->load->view('template/Admin/header_admin'); //path
         $this->load->view('template/Admin/javascript_admin');
-        $this->load->view('admin/auth/v_login_admin');
+        $this->load->view($view,$data);
         $this->load->view('template/Admin/footer');
     }
 

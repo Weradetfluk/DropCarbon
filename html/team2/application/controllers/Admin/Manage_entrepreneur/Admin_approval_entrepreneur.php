@@ -11,6 +11,7 @@ class Admin_approval_entrepreneur extends DCS_controller
   {
     parent::__construct();
     $this->load->library('email');
+    $this->load->library('pagination');
   }
 
 
@@ -24,9 +25,9 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Update Date -
     */
 
-  public function index()
+  public function index($data = NULL)
   {
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur');
+    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur',$data);
   }
 
 
@@ -40,16 +41,58 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Update Date -
     */
 
-  public function show_data_consider_ajax()
+  public function show_data_consider()
   {
+ 
+ 
     $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
 
-    $data['arr_json_entre'] = $this->mdce->get_all_consider()->result();
+     $all_count = $this->mdce->get_count_all_consider();
 
-    $data['json_message'] = 'success: get_all_data';
 
-    echo json_encode($data['arr_json_entre']);
+     $config = array();
+     $config['base_url'] = base_url()."Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider";
+     $config['total_rows'] = $all_count;
+     $config['per_page'] = 5;
+     $config["uri_segment"] = 5;
+
+     $config['full_tag_open'] = '<ul class="pagination">';        
+     $config['full_tag_close'] = '</ul>';                
+     $config['first_tag_open'] = '<li class="page-item disabled"><span class="page-link">';        
+     $config['first_tag_close'] = '</span></li>';        
+     $config['prev_link'] = '&laquo';        
+     $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';        
+     $config['prev_tag_close'] = '</span></li>';        
+     $config['next_link'] = '&raquo';        
+     $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';        
+     $config['next_tag_close'] = '</span></li>';        
+     $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';        
+     $config['last_tag_close'] = '</span></li>';        
+     $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';        
+     $config['cur_tag_close'] = '</a></li>';        
+     $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';        
+     $config['num_tag_close'] = '</span></li>';
+
+     $this->pagination->initialize($config);
+
+    $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
+    $data['arr_entrepreneur'] = $this->mdce->get_all_consider($config["per_page"], $page);
+
+    $data["links"] = $this->pagination->create_links();
+
+    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur',$data);
+
+
+
+    
   }
+
+
+
+
+
+
 
 
 
@@ -173,7 +216,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       echo 'Message could not be sent.';
       echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-      redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur");
+      redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider_ajax");
     }
   }
 }
