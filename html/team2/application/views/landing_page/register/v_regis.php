@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col">
             <div class="card h-100" id="card">
-                <a href=" <?php echo site_url() . 'register/Tourist_regis/tourist_register_show'; ?>">
+                <a href=" <?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">
                     <div class="h-100 py-5 services-icon-wap shadow">
                         <div class="h1 text-success text-center">
                             <i class="fa fa-user fa-4x"></i>
