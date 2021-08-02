@@ -1,21 +1,18 @@
  <!-- main content -->
 
- <div class="content">
-     <div class="container-fluid">
-
          <div class="card card-nav-tabs">
              <div class="card-header" style="background-color: #60839f">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url().'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url().'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="#approve">ผู้ใช้ที่ถูกบล็อค</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
                              </li>
                          </ul>
                      </div>
@@ -39,13 +36,13 @@
 
                                          <div class="row">
                                              <div class="col-sm-3">
-                                                 <form class="navbar-form">
+                                                 <form class="navbar-form" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
                                                      <div class="input-group no-border has-success">
-                                                         <input type="text" value="" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
-                                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                                         <input type="text" value="" name="value_search" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
+                                                         <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
                                                              <i class="material-icons">search</i>
-
                                                          </button>
+
                                                      </div>
                                                  </form>
                                              </div>
@@ -114,7 +111,7 @@
                                                                      </button>
 
 
-                                                                     <button class="btn " id="reject" style="font-size:10px;" onclick=''>
+                                                                     <button class="btn " id="reject" style="font-size:10px;" onclick='view_data(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
                                                                          <i class="material-icons">
                                                                              search
                                                                          </i>
@@ -141,7 +138,7 @@
                          </div>
                      </div>
 
-                     
+
 
                  </div>
              </div>
@@ -172,6 +169,65 @@
 
 
 
+
+         <div class="modal fade" role="dialog"  id="datamodal">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">รายละเอียด</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <form>
+                             <div class="form-row">
+                                 <div class="form-group col-md-6">
+                                     <label>ชื่อ-นามสกุล</label>
+                                     <input type="text" class="form-control">
+                                 </div>
+                                 <div class="form-group col-md-6">
+                                     <label>เบอร์โทร</label>
+                                     <input type="text" class="form-control">
+                                 </div>
+                             </div>
+
+                             <div class="form-group">
+                                 <label for="inputAddress">รหัสประจำตัวประชาชน</label>
+                                 <input type="text" class="form-control">
+                             </div>
+
+                             <div class="form-group">
+                                 <label for="inputAddress">ที่อยู่</label>
+                                 <input type="text" class="form-control">
+                             </div>
+                             
+                             <div class="form-row">
+                                 <div class="form-group col-md-6">
+                                     <label>จังหวัด</label>
+                                     <input type="text" class="form-control" id="inputCity">
+                                 </div>
+                                
+                             
+                                 <div class="form-group col-md-6">
+                                     <label>อีเมล</label>
+                                     <input type="text" class="form-control" id="inputCity">
+                                 </div>
+
+                             </div>
+                            
+
+                         </form>
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+
+
+
          <!-- warnning reject  -->
          <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
              <div class="modal-dialog" role="document">
@@ -199,8 +255,9 @@
          </div>
 
 
-         <script>
 
+
+         <script>
              /*
               * confirm_approve
               * open modal id = Aprovemodal 
@@ -220,6 +277,25 @@
                  });
 
              }
+
+
+             function view_data(ent_id) {
+                 $.ajax({
+                     type: "POST",
+                     data: {
+                         ent_id: ent_id
+                     },
+                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_by_id_ajax'); ?>',
+                     success: function(res) {
+                         $('#datamodal').modal();
+                        console.log(res);
+                     },
+                     error: function() {
+                         alert('ajax error working');
+                     }
+                 });
+             }
+
 
 
              /*

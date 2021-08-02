@@ -12,6 +12,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     parent::__construct();
     $this->load->library('email');
     $this->load->library('pagination');
+    $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
   }
 
 
@@ -27,28 +28,162 @@ class Admin_approval_entrepreneur extends DCS_controller
 
   public function index($data = NULL)
   {
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur', $data);
+    $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_consider', $data);
+  }
+
+
+
+
+
+
+  /*
+    * show_data_consider
+    * get all data entrepreneur not approve and show table
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-17
+    * @Update Date 2564-07-31
+    */
+
+  public function show_data_consider()
+  {
+
+
+    $number_status = 1;
+
+    if (isset($_POST['search'])) {
+
+      $value_search  = $this->input->post("value_search");
+      $data['arr_entrepreneur'] = $this->mdce->get_search($value_search,  $number_status)->result();
+    } else {
+      $all_count = $this->mdce->get_count_all($number_status); //get all count consider
+
+      $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider');
+      $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+      $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider');
+      $data['arr_entrepreneur'] = $this->mdce->get_all_data($config["per_page"], $page,  $number_status);
+      $this->pagination->initialize($config);
+    }
+    $data["links"] = $this->pagination->create_links();
+    $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_consider', $data);
   }
 
 
   /*
-    * show_data_ajax
-    * get all data entrepreneur not approve and show table by ajax
+    * show_data_approve_ajax
+    * get all data entrepreneur approve  and show table by ajax
     * @input 
     * @output -
     * @author Weradet Nopsombun
     * @Create Date 2564-07-17
     * @Update Date -
     */
-
-  public function show_data_consider()
+  public function show_data_approve()
   {
-    $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
 
-    $all_count = $this->mdce->get_count_all_consider(); //get all count consider
+    $number_status = 2;
+
+    if (isset($_POST['search'])) {
+
+      $value_search  = $this->input->post("value_search");
+      $data['arr_entrepreneur'] = $this->mdce->get_search($value_search,  $number_status)->result();
+    } else {
+
+
+      $all_count = $this->mdce->get_count_all($number_status); //get all count approve
+
+      $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_approve"');
+
+
+      $this->pagination->initialize($config);
+
+      $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
+      $data['arr_entrepreneur_approve'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+    }
+    $data["link_approve"] = $this->pagination->create_links();
+    $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data);
+  }
+
+
+
+  /*
+    * show_data_block
+    * get all data entrepreneur approve  and show table
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-08-1
+    * @Update Date -
+    */
+  public function show_data_reject()
+  {
+
+    $number_status = 3;
+
+    if (isset($_POST['search'])) {
+
+      $value_search  = $this->input->post("value_search");
+      $data['arr_entrepreneur_block'] = $this->mdce->get_search($value_search,  $number_status)->result();
+    } else {
+
+      $all_count = $this->mdce->get_count_all($number_status); //get all count approve
+
+      $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
+
+
+      $this->pagination->initialize($config);
+
+      $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
+      $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+    }
+    $data["link_block"] = $this->pagination->create_links();
+    $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_reject', $data);
+  }
+
+
+
+  /*
+    * get_entrepreneur_by_id_ajax
+    * get all data entrepreneur by id 
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-08-01
+    * @Update Date
+    */
+  public function get_entrepreneur_by_id_ajax()
+  {
+    $this->mdce->ent_id = $this->input->post('ent_id');
+
+
+
+    $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
+
+
+    echo json_encode($data['arr_data']);
+  }
+
+
+
+ /*
+    * get_config_pagination
+    * get_config_pagination codeigniter "1 2 3 4..." page
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-08-01
+    * @Update Date
+    */
+
+
+  public function get_config_pagination($all_count, $view)
+  {
 
     $config = array();
-    $config['base_url'] = base_url() . "Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider";
+    $config['base_url'] = base_url() .  $view;
     $config['total_rows'] = $all_count;
     $config['per_page'] = 5;
     $config["uri_segment"] = 5;
@@ -70,79 +205,8 @@ class Admin_approval_entrepreneur extends DCS_controller
     $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
     $config['num_tag_close'] = '</span></li>';
 
-
-    $this->pagination->initialize($config);
-
-    $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-
-    $data['arr_entrepreneur'] = $this->mdce->get_all_consider($config["per_page"], $page);
-
-    $data["links"] = $this->pagination->create_links();
-
-  
-
-
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur', $data);
-
+    return $config;
   }
-
-
-
-  /*
-    * show_data_approve_ajax
-    * get all data entrepreneur approve  and show table by ajax
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-07-17
-    * @Update Date -
-    */
-  public function show_data_approve()
-  {
-
-
-    $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
-
-    $all_count_approve = $this->mdce->get_count_all_approve(); //get all count approve
-  
-
-    $config_approve = array();
-    $config_approve['base_url'] = base_url() . "Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_approve";
-    $config_approve['total_rows'] = $all_count_approve;
-    $config_approve['per_page'] = 5;
-    $config_approve["uri_segment"] = 5;
-
-    $config_approve['full_tag_open'] = '<ul class="pagination">';
-    $config_approve['full_tag_close'] = '</ul>';
-    $config_approve['first_tag_open'] = '<li class="page-item disabled"><span class="page-link">';
-    $config_approve['first_tag_close'] = '</span></li>';
-    $config_approve['prev_link'] = '&laquo';
-    $config_approve['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
-    $config_approve['prev_tag_close'] = '</span></li>';
-    $config_approve['next_link'] = '&raquo';
-    $config_approve['next_tag_open'] = '<li class="page-item"><span class="page-link">';
-    $config_approve['next_tag_close'] = '</span></li>';
-    $config_approve['last_tag_open'] = '<li class="page-item"><span class="page-link">';
-    $config_approve['last_tag_close'] = '</span></li>';
-    $config_approve['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-    $config_approve['cur_tag_close'] = '</a></li>';
-    $config_approve['num_tag_open'] = '<li class="page-item"><span class="page-link">';
-    $config_approve['num_tag_close'] = '</span></li>';
-
-
-    $this->pagination->initialize($config_approve);
-
-    $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-
-    $data['arr_entrepreneur_approve'] = $this->mdce->get_all_data_approve($config_approve["per_page"], $page_aprove);
-
-    $data["link_approve"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data);
-
-
-  }
-
-
 
 
   /*
@@ -156,7 +220,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function approval_entrepreneur()
   {
-    $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
+
 
     $this->mdce->ent_id = $this->input->post('ent_id');
 
@@ -177,7 +241,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function reject_entrepreneur()
   {
-    $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
+
 
     $this->mdce->ent_id = $this->input->post('ent_id');
     $reson_admin = $this->input->post('admin_reason');
@@ -187,6 +251,34 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->mdce->update_status($status_number);
     $this->email_send($reson_admin, $user_email);
   }
+
+
+
+
+ /*
+    * get_data_card_entrepreneur_ajax
+    * get data consider, approve, rejected, block <- number of people
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
+
+
+  function get_data_card_entrepreneur_ajax()
+  {
+    $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result();
+  
+    echo json_encode($data['arr_data']);
+  }
+
+
+
+
+
+
+
 
   /*
     * email_send
