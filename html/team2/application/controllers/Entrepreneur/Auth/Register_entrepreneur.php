@@ -8,7 +8,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
     * insert_ent
     * @author Thanisorn thumsawanit 62160088
-    * @Create Date 2564-07-15
+    * @Create Date 2564-08-02
     */
 
     public function show_regis_ent() {
