@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
+<style src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
     body {
         background-color: #56ae6c;
     }
@@ -49,19 +49,24 @@ input, select {
             </div>
             </div>
             
+            <div class="row">
             <div class="form-group col-md-6 mb-3">
                         <label for="inputemail">อีเมล</label>
                         <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="อีเมล" required>
                     </div>
-
+            </div>
             เอกสารจดทะเบียนเชิงพาณิชย์ :
-            <input type="file" id="myfile" id="myfile" name="myfile" multiple><br><br>
+            
+            <input type="file" id="myfile" id="myfile" name="myfile" multiple>
+            </button>
+            <br><br>
+            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
 
-            <b style="font-size: 30px;">สร้างรหัสผ่าน</b><br><br>
-
+            <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="username">ชื่อผู้ใช้</label>
                 <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" placeholder="ชื่อผู้ใช้" required>
+            </div>
             </div>
             <div class="row">
             <div class="form-group col-md-6 mb-3">
