@@ -44,4 +44,16 @@ class Company_add extends DCS_controller{
         redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
     }
     
+    /*
+    * show_google_map
+    * show_google_map 
+    * @input 
+    * @output -
+    * @author Suwapat Saowarod
+    * @Create Date 2021-07-31
+    * @Update Date -
+    */
+    public function show_google_map(){
+        $this->load->view('entrepreneur/manage_copany/v_map_company');
+    }
 }

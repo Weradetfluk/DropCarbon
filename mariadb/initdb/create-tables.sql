@@ -89,7 +89,8 @@ CREATE TABLE `dcs_document` (
 
 CREATE TABLE `dcs_entrepreneur` (
   `ent_id` int(10) NOT NULL,
-  `ent_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_birthdate` date DEFAULT NULL,
