@@ -376,7 +376,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     $mail->Host     = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'weradet2543@gmail.com';
-    $mail->Password = 'fluk@1234';
+    $mail->Password = 'sykildxigujdlfnz';
     $mail->SMTPSecure = 'tls';
     $mail->Port     = 587;
     $mail->charSet = "UTF-8";
