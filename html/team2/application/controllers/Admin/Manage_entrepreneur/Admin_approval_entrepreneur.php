@@ -194,13 +194,33 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->mdce->ent_id = $this->input->post('ent_id');
 
 
-
     $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
-
 
     echo json_encode($data['arr_data']);
   }
 
+
+   /*
+    * get_entrepreneur_reject_by_id_ajax
+    * get all data entrepreneur by id 
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-08-01
+    * @Update Date
+    */
+    public function get_entrepreneur_reject_by_id_ajax()
+    {
+
+      $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
+
+      $ent_id = $this->input->post('ent_id');
+
+  
+      $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result();
+  
+      echo json_encode($data['arr_data']);
+    }
 
 
  /*
@@ -277,11 +297,29 @@ class Admin_approval_entrepreneur extends DCS_controller
   public function reject_entrepreneur()
   {
 
-
+    // set value from font end 
     $this->mdce->ent_id = $this->input->post('ent_id');
     $reson_admin = $this->input->post('admin_reason');
     $user_email = $this->input->post('email');
+    $admin_id =  $this->session->userdata("Admin_id");
 
+
+
+    //load model for save rejected data
+    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
+
+
+
+
+    //save data reject to data base
+    $this->mdre->enr_admin_reason = $reson_admin;
+    $this->mdre->enr_ent_id =  $this->mdce->ent_id;
+    $this->mdre->enr_adm_id = $admin_id;
+
+    $this->mdre->insert();
+
+
+    //update status entrepreneur
     $status_number = 3;
     $this->mdce->update_status($status_number);
     $this->email_send($reson_admin, $user_email);

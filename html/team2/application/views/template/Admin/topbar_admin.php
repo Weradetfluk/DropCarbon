@@ -53,14 +53,14 @@ if (!$this->session->has_userdata("username")) {
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">
             <i class="material-icons">content_paste</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">content_paste</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>

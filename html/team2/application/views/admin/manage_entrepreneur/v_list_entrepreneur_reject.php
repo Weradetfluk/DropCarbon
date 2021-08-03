@@ -4,10 +4,10 @@
              <div class="nav-tabs-wrapper">
                  <ul class="nav nav-tabs" data-tabs="tabs">
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> "">ยังไม่ได้รับอนุมัติ</a>
-                             </li>
-                             <li class=" nav-item">
-                             <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                     </li>
+                     <li class=" nav-item">
+                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link  active" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
@@ -79,7 +79,7 @@
 
                                                          <!-- column ชื่อ-สกุล -->
                                                          <td>
-                                                         <?php echo $arr_entrepreneur_reject[$i]->ent_firstname." ".$arr_entrepreneur_reject[$i]->ent_lastname; ?>
+                                                             <?php echo $arr_entrepreneur_reject[$i]->ent_firstname . " " . $arr_entrepreneur_reject[$i]->ent_lastname; ?>
                                                          </td>
 
 
@@ -96,7 +96,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn" id="accept" style="font-size:10px;" onclick="">
+                                                             <button class="btn" id="accept" style="font-size:10px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          search
                                                                      </span></i>
@@ -123,3 +123,65 @@
          </div>
      </div>
  </div>
+
+
+ <div class="modal fade" role="dialog"  id="datamodal">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">รายละเอียด</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <form>
+                       
+                             <div class="form-group">
+                                 <label>เหตุผลที่ปฏิเสธ</label>
+                                 <input type="text" id="enr_admin_reason" class="form-control" disabled>
+                             </div>
+                                
+                        
+                             <div class="form-group">
+                                     <label>ผู้ปฏิเสธ</label>
+                                     <input type="text" class="form-control" id="adm_name" disabled>
+                                 </div>  
+
+                            
+                            
+
+                             </div>
+                            
+
+                         </form>
+
+
+                     </div>
+                 </div>
+             </div>
+
+
+
+ <script>
+     function view_data_detail_reject(ent_id) {
+
+         $.ajax({
+             type: "POST",
+             dataType: 'JSON',
+             data: {
+                 ent_id: ent_id
+             },
+             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_reject_by_id_ajax'); ?>',
+             success: function(data_detail) {
+                 $('#datamodal').modal();
+                 console.log(data_detail);
+                 $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
+                 $('#adm_name').val(data_detail[0]['adm_name']);
+             },
+             error: function() {
+                 alert('ajax error working');
+             }
+         });
+     }
+ </script>

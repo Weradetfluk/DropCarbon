@@ -76,8 +76,9 @@ class Login_admin extends DCS_controller
     if ($result) {
       $adm_username =  $result->adm_username;
       $adm_name = $result->adm_name;
+      $adm_id = $result->adm_id;
 
-       $this->set_session($adm_username, $adm_name);
+       $this->set_session($adm_username, $adm_name, $adm_id);
 
        redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
 
@@ -117,10 +118,12 @@ class Login_admin extends DCS_controller
     * @Update -
     */
 
-  public function set_session($username, $name)
+  public function set_session($username, $name, $id)
   {
     $this->session->set_userdata("username", "$username");
     $this->session->set_userdata("Admin_name", "$name");
+    $this->session->set_userdata("Admin_id", "$id");
+
   }
 
  

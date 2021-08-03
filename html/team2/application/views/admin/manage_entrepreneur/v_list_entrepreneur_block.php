@@ -30,7 +30,7 @@
                          <div class="card">
                              <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                                  <center>
-                                     <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
+                                     <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ถูกบล็อค</h4>
                                  </center>
                              </div>
                              <div class="card-body">
