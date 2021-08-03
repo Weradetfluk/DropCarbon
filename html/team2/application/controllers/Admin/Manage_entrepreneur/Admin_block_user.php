@@ -29,6 +29,15 @@ class Admin_block_user extends DCS_controller
     }
 
 
+    /*
+    * block_user_ajax
+    * chage status block to database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */    
     
     public function block_user_ajax()
     {
@@ -37,6 +46,27 @@ class Admin_block_user extends DCS_controller
         $this->mdce->ent_id = $this->input->post('ent_id');
 
         $status_number = 4;
+
+        $this->mdce->update_status($status_number);
+    }
+
+    /*
+    * index
+    * chage status approve to database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
+
+    public function unblock_user_ajax()
+    {
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
+
+        $this->mdce->ent_id = $this->input->post('ent_id');
+
+        $status_number = 2;
 
         $this->mdce->update_status($status_number);
     }

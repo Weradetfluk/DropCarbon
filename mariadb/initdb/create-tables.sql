@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `DcbSystem`
+-- Database: `team2`
 --
 CREATE DATABASE IF NOT EXISTS `team2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `team2`;
@@ -89,8 +89,8 @@ CREATE TABLE `dcs_document` (
 
 CREATE TABLE `dcs_entrepreneur` (
   `ent_id` int(10) NOT NULL,
-  `ent_firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_birthdate` date DEFAULT NULL,
@@ -104,9 +104,6 @@ CREATE TABLE `dcs_entrepreneur` (
 --
 -- Dumping data for table `dcs_entrepreneur`
 --
-
-INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_name`, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
-(2, 'สุวพัฒน์  เสาวรส', 'Entrepreneur2', '1234', NULL, '0922563953', '777777777777', '62160340@go.buu.ac.th', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -147,6 +144,8 @@ CREATE TABLE `dcs_tourist` (
   `tus_status` int(1) DEFAULT 1,
   `tus_pre_id` int(10)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 
 --
 -- Indexes for dumped tables

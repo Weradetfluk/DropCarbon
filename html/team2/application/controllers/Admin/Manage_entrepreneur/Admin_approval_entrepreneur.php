@@ -125,7 +125,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     if (isset($_POST['search'])) {
 
       $value_search  = $this->input->post("value_search");
-      $data['arr_entrepreneur_block'] = $this->mdce->get_search($value_search,  $number_status)->result();
+      $data['arr_entrepreneur_reject'] = $this->mdce->get_search($value_search,  $number_status)->result();
     } else {
 
       $all_count = $this->mdce->get_count_all($number_status); //get all count approve
@@ -137,13 +137,48 @@ class Admin_approval_entrepreneur extends DCS_controller
 
       $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
 
-      $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+      $data['arr_entrepreneur_reject'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_block"] = $this->pagination->create_links();
     $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_reject', $data);
   }
 
 
+
+   /*
+    * show_data_block
+    * get all data entrepreneur approve  and show table
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-08-1
+    * @Update Date -
+    */
+    public function show_data_block()
+    {
+  
+      $number_status = 4;
+  
+      if (isset($_POST['search'])) {
+  
+        $value_search  = $this->input->post("value_search");
+        $data['arr_entrepreneur_block'] = $this->mdce->get_search($value_search,  $number_status)->result();
+      } else {
+  
+        $all_count = $this->mdce->get_count_all($number_status); //get all count approve
+  
+        $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
+  
+  
+        $this->pagination->initialize($config);
+  
+        $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+  
+        $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+      }
+      $data["link_block"] = $this->pagination->create_links();
+      $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_block', $data);
+    }
 
   /*
     * get_entrepreneur_by_id_ajax

@@ -5,7 +5,8 @@ class Da_dcs_entrepreneur extends DCS_model
 {
     public $ent_id;
     public $ent_pre_id;
-    public $ent_name;
+    public $ent_firstname;
+    public $ent_lastname;
     public $ent_tel;
     public $ent_id_card;
     public $ent_email;
