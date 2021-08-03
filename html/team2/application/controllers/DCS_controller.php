@@ -163,4 +163,21 @@ class DCS_controller extends CI_Controller
         $this->load->view('landing_page/register/v_landing_page');
         $this->load->view('template/Landing_page/footer');
     }
+
+    /*
+    * output_event
+    * show Landing page for every one
+    * @input $view
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2021-08-03
+    */
+    public function output_event($view)
+    {
+        $this->load->view('template/Tourist/head_tourist');
+        $this->load->view('template/Tourist/javascript_tourist');
+        $this->load->view('template/Tourist/topbar_tourist');
+        $this->load->view($view);
+        $this->load->view('template/Tourist/footer');
+    }
 }
