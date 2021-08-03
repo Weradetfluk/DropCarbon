@@ -387,8 +387,6 @@ class Admin_approval_entrepreneur extends DCS_controller
     // Add a recipient
     $mail->addAddress($user_email);
 
-    $mail->addCC('fluk.weradet@gmail.com');
-
     // Email subject
     $mail->Subject = 'Admin has been rejected ';
 
