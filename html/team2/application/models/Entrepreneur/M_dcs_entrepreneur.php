@@ -138,13 +138,13 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Suwapat Saowarod 
     *@Create Date 2564-07-19
     */
-    function login()
+    function get_by_username_password()
     {
         $sql = "SELECT * 
                 from dcs_entrepreneur 
-                where ent_username = ? AND  ent_password = ? AND ent_status = 2";
+                where ent_username = ? AND  ent_password = ? AND ent_status = ?";
 
-        $query = $this->db->query($sql, array($this->ent_username, $this->ent_password));
+        $query = $this->db->query($sql, array($this->ent_username, $this->ent_password, $this->ent_status));
 
         $query_row = $query->num_rows();
 

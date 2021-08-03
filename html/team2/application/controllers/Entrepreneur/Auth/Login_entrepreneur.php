@@ -36,31 +36,31 @@ class Login_entrepreneur extends DCS_controller
         $username = $this->input->post('username');
         $password = $this->input->post('password'); //รับค่า username & password
 
-        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mlog');  //load database
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');  //load database
 
-        $this->mlog->ent_username = $username;
-        $this->mlog->ent_password = $password;
-
-        $result = $this->mlog->login(); //function in model
+        $this->ment->ent_username = $username;
+        $this->ment->ent_password = $password;
+        $this->ment->ent_status = 2; 
+        $result = $this->ment->get_by_username_password(); //function in model
         
         if ($result) {
-        $ent_username =  $result->ent_username;
-        $ent_name = $result->ent_name;
-        $ent_id= $result->ent_id;
-        $ent_password = $result->ent_password;
-        $ent_tel = $result->ent_tel;
-        $ent_id_card = $result->ent_id_card;
-        $ent_email = $result->ent_email;
-        $ent_pre_id = $result->ent_pre_id;
-        $this->set_session($ent_username, $ent_name, $ent_id, $ent_password, $ent_tel, $ent_id_card, $ent_email, $ent_pre_id);
+            $ent_username =  $result->ent_username;
+            $ent_name = $result->ent_name;
+            $ent_id= $result->ent_id;
+            $ent_password = $result->ent_password;
+            $ent_tel = $result->ent_tel;
+            $ent_id_card = $result->ent_id_card;
+            $ent_email = $result->ent_email;
+            $ent_pre_id = $result->ent_pre_id;
+            $this->set_session($ent_username, $ent_name, $ent_id, $ent_password, $ent_tel, $ent_id_card, $ent_email, $ent_pre_id);
 
-        redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
+            redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
 
         } else {
-        $data_warning = array();
-        $data_warning['warning'] = "Username or password incorrect";
+            $data_warning = array();
+            $data_warning['warning'] = "Username or password incorrect";
 
-        $this->index($data_warning);
+            $this->index($data_warning);
         }
 
     }

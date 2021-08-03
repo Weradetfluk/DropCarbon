@@ -32,12 +32,15 @@ class File_upload extends DCS_controller{
         }
 
         if($error_file != 'false'){
-            for($i = 0; $i < count($file); $i++){
+            for($i = 0; $i < count($fileName); $i++){
                 $fileNewName[$i] = uniqid('', true).'.'.$fileActaulExt[$i];
                 $fileDestination[$i] = './upload_file/'.$fileNewName[$i];
                 move_uploaded_file($fileTmpName[$i], $fileDestination[$i]);
                 header("Location: index?UploadSuccess");
             }
+            // echo '<pre>';
+            //     print_r($fileActaulExt);
+            // echo '</pre>';
         }else{
             echo "upload file fail !!!";
         }
