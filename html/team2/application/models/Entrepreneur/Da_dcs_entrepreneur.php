@@ -46,14 +46,13 @@ class Da_dcs_entrepreneur extends DCS_model
     * @Update $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password 
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-15
+    * @Update Date 2564-08-02
     */
-    public function update_entrepreneur($ent_id)
+    public function update_entrepreneur()
     {
         $sql = "UPDATE {$this->db_name}.dcs_entrepreneur 
-                SET ent_pre_id = ?, ent_name = ?, ent_tel = ?, ent_id_card = ?, ent_email = ?, ent_username = ?, ent_password = ?
+                SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?
                 WHERE ent_id = ?";
-
-        $this->ent_id = $ent_id;
-        $this->db->query($sql, array($this->ent_pre_id, $this->ent_name, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_username, $this->ent_password, $this->ent_id));
+        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_id));
     }
 }

@@ -138,12 +138,12 @@ class DCS_controller extends CI_Controller
     * @author Naaka Punparich 62160082
     * @Create Date 2021-07-24
     */
-    public function output_edit_entrepreneur()
+    public function output_edit_entrepreneur($data)
     {
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/manage_entrepreneur/v_edit_entrepreneur');
+        $this->load->view('entrepreneur/manage_entrepreneur/v_edit_entrepreneur', $data);
         $this->load->view('template/Entrepreneur/footer');
     }
 

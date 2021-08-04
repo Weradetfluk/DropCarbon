@@ -372,7 +372,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     //   $filePath = './document_file_entrepreneur/'.$fileName;
     //   // $data = file_get_contents(base_url('/document_file_entrepreneur/'.$fileName));
 
-    //   force_download($filePath, NULL);
+    //   force_download(FCPATH$filePath, NULL);
 
     //   echo $filePath;
     // }
@@ -383,20 +383,19 @@ class Admin_approval_entrepreneur extends DCS_controller
 
       if (!empty($file_Name) && file_exists($filePath)) {
 
-        // header("Cache-Control: public");
-        // header("Content-Description: File Tranfer");
-        // header("Content-Disposition: attachment; filename=$file_Name");
-        // header("Content-Type: application/zip");
-        // header("Content-Tranfer-Emcoding: binary");
-        header("Content-type:application/pdf");
-        header('Content-Disposition: attachment; filename=' . $filePath);
+        header("Cache-Control: public");
+        header("Content-Description: File Tranfer");
+        header("Content-disposition: attachment; filename=\"$filePath\"");
+        header("Content-Type: application/octet-stream");
+        header("Content-Tranfer-Emcoding: Binary");
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
 
         readfile($filePath);
         exit;
       } else {
         echo "don't have file!!!";
       }
-      // echo $file_Name;
     }
   }
 

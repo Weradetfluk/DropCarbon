@@ -27,6 +27,6 @@ class Register_tourist extends DCS_controller {
         $this->tr->tus_username = $this->input->post('tus_username');
         $this->tr->tus_password = $this->input->post('tus_password');
         $this->tr->insert_tourist();
-        redirect('Entrepreneur/Auth/Login_entrepreneur');
+        redirect('Landing_page/Landing_page');
     }
 }
