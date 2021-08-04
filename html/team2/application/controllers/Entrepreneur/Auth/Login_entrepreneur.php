@@ -28,7 +28,7 @@ class Login_entrepreneur extends DCS_controller
     * @output -
     * @author Suwapat Saowarod
     * @Create Date 2021-07-19
-    * @Update Date -
+    * @Update Date 2021-08-03
     */
     function input_login_form()
     {
@@ -45,7 +45,7 @@ class Login_entrepreneur extends DCS_controller
         
         if ($result) {
             $ent_username =  $result->ent_username;
-            $ent_name = $result->ent_name;
+            $ent_name = $result->ent_firstname.' '.$result->ent_lastname;
             $ent_id= $result->ent_id;
             $ent_password = $result->ent_password;
             $ent_tel = $result->ent_tel;

@@ -186,17 +186,21 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Weradet Nopsombun
-    * @Create Date 2564-08-01
+    * @Create Date 2564-08-03
     * @Update Date
     */
   public function get_entrepreneur_by_id_ajax()
   {
+    $this->load->model('Document/M_dcs_document', 'mdoc');
+    $this->mdoc->doc_ent_id = $this->input->post('ent_id');
+    $data['arr_file'] = $this->mdoc->get_by_ent_id()->result();
+
     $this->mdce->ent_id = $this->input->post('ent_id');
 
 
     $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
 
-    echo json_encode($data['arr_data']);
+    echo json_encode($data);
   }
 
 
@@ -346,6 +350,46 @@ class Admin_approval_entrepreneur extends DCS_controller
     echo json_encode($data['arr_data']);
   }
 
+    /*
+    * download_file_ajax
+    * get doc_path, doc_ent_id
+    * @input 
+    * @output -
+    * @author Suwapat Saowarod
+    * @Create Date 2564-08-03
+    * @Update Date -
+    */
+    function download_file_ajax(){
+      echo $this->input->post('fileName');
+
+      // if(!empty($fileName))
+      // {
+      //   $this->load->helper('download');
+      //   $filePath = './document_file_entrepreneur/'.$fileName;
+
+      //   force_download($filePath, NULL);
+      // }
+
+      // if(!empty($_GET['file']))
+      // {
+      //   $fileName = basename($_GET['file']);
+      //   $filePath = './document_file_entrepreneur/'.$fileName;
+
+      //   if(!empty($fileName) && file_exists($filePath)){
+      //     header("Cache-Control: public");
+      //     header("Content-Description: File Tranfer");
+      //     header("Content-Disposition: attachment; filename=$fileName");
+      //     header("Content-Type: application/zip");
+      //     header("Content-Tranfer-Emcoding: binary");
+
+      //     readfile($filePath);
+      //     exit;
+      //   }else{
+      //     echo "don't have file!!!";
+      //   }
+      // }
+
+    }
 
 
 

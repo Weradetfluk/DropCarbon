@@ -131,12 +131,12 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     }
 
     /*
-    *login
+    *get_by_username_password
     *get data entrepreneur form database
     *@input -
     *@insert -
     *@author Suwapat Saowarod 
-    *@Create Date 2564-07-19
+    *@Create Date 2564-08-03
     */
     function get_by_username_password()
     {

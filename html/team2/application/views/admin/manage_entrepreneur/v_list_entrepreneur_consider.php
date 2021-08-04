@@ -110,11 +110,11 @@
                                                              <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
                                                                  <i class="material-icons">
                                                                      clear
-                                                                     </span></i>
+                                                                   </i>
                                                              </button>
 
 
-                                                             <button class="btn " id="reject" style="font-size:10px;" onclick='view_data(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
+                                                             <button class="btn " style="font-size:10px;" onclick='view_data( <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
                                                                  <i class="material-icons">
                                                                      search
                                                                  </i>
@@ -201,7 +201,7 @@
                              </div>
                                 
                              <div class="form-row">
-                             <div class="form-group col-md-6">
+                                <div class="form-group col-md-6">
                                      <label>อีเมล</label>
                                      <input type="text" class="form-control" id="ent_email" disabled>
                                  </div>  
@@ -211,8 +211,10 @@
                                      <input type="text" class="form-control" id="ent_birthdate" disabled>
                                  </div>
                              </div>
-                            
 
+                                    <label>เอกสารที่เกี่ยวข้อง</label>
+                             <div id="file_dowload">
+                                    
                              </div>
                             
 
@@ -222,12 +224,13 @@
                      </div>
                  </div>
              </div>
+</div>
          
 
 
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="Rejectmodal">
+ <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -287,12 +290,35 @@
              url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_by_id_ajax'); ?>',
              success: function(data_detail) {
                  $('#datamodal').modal();
-                 console.log(data_detail);
-                         $('#ent_name').val(data_detail[0]['ent_firstname']+" "+data_detail[0]['ent_lastname']);
-                         $('#ent_tel').val(data_detail[0]['ent_tel']);
-                         $('#ent_id_card').val(data_detail[0]['ent_id_card']);
-                         $('#ent_email').val(data_detail[0]['ent_email']);
-                         $('#ent_birthdate').val(data_detail[0]['ent_birthdate']);
+                         $('#ent_name').val(data_detail['arr_data'][0]['ent_firstname']+" "+data_detail['arr_data'][0]['ent_lastname']);
+                         $('#ent_tel').val(data_detail['arr_data'][0]['ent_tel']);
+                         $('#ent_id_card').val(data_detail['arr_data'][0]['ent_id_card']);
+                         $('#ent_email').val(data_detail['arr_data'][0]['ent_email']);      
+                         $('#ent_birthdate').val(data_detail['arr_data'][0]['ent_birthdate']);
+
+
+                console.log(data_detail['arr_file']);
+                let html_code = '';
+                let i = 1;
+
+                data_detail['arr_file'].forEach((row_file, index_file) => {
+                    let fileName = row_file['doc_path'];
+                    html_code += '<button type="button" id="download' + i +  '" class="btn btn-primary"';
+                    html_code += 'value ="';
+                    html_code += row_file['doc_path'] + '">download ' + i + '</button>';
+                    i += 1;
+                });
+                
+                $(document).on("click", ".btn", function() {
+                    // alert($(this).attr("id"))
+                    // console.log($(this).attr("value"));
+                    doc_download_ajax($(this).attr("value"));
+                    
+                });
+                
+                $('#file_dowload').html(html_code);
+
+
              },
              error: function() {
                  alert('ajax error working');
@@ -313,13 +339,13 @@
       */
 
      function confirm_reject(ent_id, ent_email) {
-         $('#Rejectmodal').modal();
+         $('#Rejectent').modal();
 
          $('#email').val(ent_email);
          $('#ent_id').val(ent_id);
 
          $('#rejected').click(function() {
-             $('#Rejectmodal').modal('toggle');
+             $('#Rejectent').modal('toggle');
              swal({
                  title: "ปฏิเสธสำเร็จ",
                  text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
@@ -327,13 +353,9 @@
                  showConfirmButton: false,
                  timer: 3000,
              }, function() {
-                 showConfirmButton: true
                  location.reload();
-
              });
          });
-
-
      }
 
 
@@ -363,7 +385,6 @@
                      timer: 3000,
                  }, function() {
                      location.reload();
-
                  })
              },
              error: function() {
@@ -371,4 +392,30 @@
              }
          });
      }
+
+    /*
+      * doc_download
+      * link 
+      * @input 
+      * @output table approve and consider
+      * @author Weradet Nopsombun
+      * @Create Date 2564-07-17
+      * @Update -
+      */
+    function doc_download_ajax(name_path) {
+        $.ajax({
+             type: "POST",
+             dataType : 'JSON',
+             data: {
+                 fileName: name_path
+             },
+             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/download_file_ajax'); ?>',
+             success: function(data) {
+                alert('download success! ');
+             },
+             error: function() {
+                 alert('ajax error working');
+             }
+         });
+    }
  </script>
