@@ -405,13 +405,12 @@
     function doc_download_ajax(name_path) {
         $.ajax({
              type: "POST",
-             dataType : 'JSON',
              data: {
-                 fileName: name_path
+                name_path: name_path
              },
-             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/download_file_ajax'); ?>',
-             success: function(data) {
-                alert('download success! ');
+             url:  '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/download_file_ajax'); ?>',
+             success: function(a) {
+                console.log(a)
              },
              error: function() {
                  alert('ajax error working');

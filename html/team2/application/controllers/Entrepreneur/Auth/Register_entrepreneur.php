@@ -63,7 +63,7 @@ class Register_entrepreneur extends DCS_controller {
                 $fileNewName[$i] = uniqid('', true);
                 $fileDestination[$i] = './document_file_entrepreneur/'.$fileNewName[$i].'.'.$fileActaulExt[$i];
                 move_uploaded_file($fileTmpName[$i], $fileDestination[$i]);
-                $this->mdoc->doc_path = $fileNewName[$i];
+                $this->mdoc->doc_path = $fileNewName[$i].'.'.$fileActaulExt[$i];
                 $this->mdoc->insert_document();
             }
         }else{

@@ -145,7 +145,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
 
 
-   /*
+  /*
     * show_data_block
     * get all data entrepreneur approve  and show table
     * @input 
@@ -154,31 +154,31 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Create Date 2564-08-1
     * @Update Date -
     */
-    public function show_data_block()
-    {
-  
-      $number_status = 4;
-  
-      if (isset($_POST['search'])) {
-  
-        $value_search  = $this->input->post("value_search");
-        $data['arr_entrepreneur_block'] = $this->mdce->get_search($value_search,  $number_status)->result();
-      } else {
-  
-        $all_count = $this->mdce->get_count_all($number_status); //get all count approve
-  
-        $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
-  
-  
-        $this->pagination->initialize($config);
-  
-        $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-  
-        $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
-      }
-      $data["link_block"] = $this->pagination->create_links();
-      $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_block', $data);
+  public function show_data_block()
+  {
+
+    $number_status = 4;
+
+    if (isset($_POST['search'])) {
+
+      $value_search  = $this->input->post("value_search");
+      $data['arr_entrepreneur_block'] = $this->mdce->get_search($value_search,  $number_status)->result();
+    } else {
+
+      $all_count = $this->mdce->get_count_all($number_status); //get all count approve
+
+      $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
+
+
+      $this->pagination->initialize($config);
+
+      $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
+      $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
+    $data["link_block"] = $this->pagination->create_links();
+    $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_block', $data);
+  }
 
   /*
     * get_entrepreneur_by_id_ajax
@@ -204,7 +204,7 @@ class Admin_approval_entrepreneur extends DCS_controller
   }
 
 
-   /*
+  /*
     * get_entrepreneur_reject_by_id_ajax
     * get all data entrepreneur by id 
     * @input 
@@ -213,21 +213,21 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Create Date 2564-08-01
     * @Update Date
     */
-    public function get_entrepreneur_reject_by_id_ajax()
-    {
+  public function get_entrepreneur_reject_by_id_ajax()
+  {
 
-      $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
+    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
 
-      $ent_id = $this->input->post('ent_id');
-
-  
-      $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result();
-  
-      echo json_encode($data['arr_data']);
-    }
+    $ent_id = $this->input->post('ent_id');
 
 
- /*
+    $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result();
+
+    echo json_encode($data['arr_data']);
+  }
+
+
+  /*
     * get_config_pagination
     * get_config_pagination codeigniter "1 2 3 4..." page
     * @input 
@@ -332,7 +332,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
 
 
- /*
+  /*
     * get_data_card_entrepreneur_ajax
     * get data consider, approve, rejected, block <- number of people
     * @input 
@@ -346,11 +346,11 @@ class Admin_approval_entrepreneur extends DCS_controller
   function get_data_card_entrepreneur_ajax()
   {
     $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result();
-  
+
     echo json_encode($data['arr_data']);
   }
 
-    /*
+  /*
     * download_file_ajax
     * get doc_path, doc_ent_id
     * @input 
@@ -359,37 +359,46 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Create Date 2564-08-03
     * @Update Date -
     */
-    function download_file_ajax(){
-      echo $this->input->post('fileName');
+  function download_file_ajax()
+  {
+    // echo $this->input->post('name_path');
 
-      // if(!empty($fileName))
-      // {
-      //   $this->load->helper('download');
-      //   $filePath = './document_file_entrepreneur/'.$fileName;
+    $fileName =  $this->input->post('name_path');
 
-      //   force_download($filePath, NULL);
-      // }
 
-      // if(!empty($_GET['file']))
-      // {
-      //   $fileName = basename($_GET['file']);
-      //   $filePath = './document_file_entrepreneur/'.$fileName;
+    // if(!empty($fileName))
+    // {
+    //   $this->load->helper('download');
+    //   $filePath = './document_file_entrepreneur/'.$fileName;
+    //   // $data = file_get_contents(base_url('/document_file_entrepreneur/'.$fileName));
 
-      //   if(!empty($fileName) && file_exists($filePath)){
-      //     header("Cache-Control: public");
-      //     header("Content-Description: File Tranfer");
-      //     header("Content-Disposition: attachment; filename=$fileName");
-      //     header("Content-Type: application/zip");
-      //     header("Content-Tranfer-Emcoding: binary");
+    //   force_download($filePath, NULL);
 
-      //     readfile($filePath);
-      //     exit;
-      //   }else{
-      //     echo "don't have file!!!";
-      //   }
-      // }
+    //   echo $filePath;
+    // }
 
+    if (!empty($fileName)) {
+      $file_Name = basename($fileName);
+      $filePath = './document_file_entrepreneur/' . $file_Name;
+
+      if (!empty($file_Name) && file_exists($filePath)) {
+
+        // header("Cache-Control: public");
+        // header("Content-Description: File Tranfer");
+        // header("Content-Disposition: attachment; filename=$file_Name");
+        // header("Content-Type: application/zip");
+        // header("Content-Tranfer-Emcoding: binary");
+        header("Content-type:application/pdf");
+        header('Content-Disposition: attachment; filename=' . $filePath);
+
+        readfile($filePath);
+        exit;
+      } else {
+        echo "don't have file!!!";
+      }
+      // echo $file_Name;
     }
+  }
 
 
 
