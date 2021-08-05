@@ -11,9 +11,10 @@
 
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css">
     
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"> 
-  
-
+    <!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"> 
+   -->
+   <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">
+     
 </head>
 
 <body>
