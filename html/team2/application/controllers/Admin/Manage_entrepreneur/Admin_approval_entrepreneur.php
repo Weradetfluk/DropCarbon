@@ -337,7 +337,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     * get data consider, approve, rejected, block <- number of people
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update Date -
     */
