@@ -303,22 +303,16 @@
 
                 data_detail['arr_file'].forEach((row_file, index_file) => {
                     let fileName = row_file['doc_path'];
-                    html_code += '<button type="button" id="download' + i +  '" class="btn btn-primary"';
-                    html_code += 'value ="';
+                    html_code += '<button type="button" id="download' + i + '" class="btn btn-primary"'
+                    html_code += 'onclick="doc_download(' + row_file['doc_path'] + ')"' + 'value ="';
                     html_code += row_file['doc_path'] + '">download ' + i + '</button>';
                     i += 1;
                 });
                 
                 $(document).on("click", ".btn", function() {
-                    // alert($(this).attr("id"))
-                    // console.log($(this).attr("value"));
-                    doc_download_ajax($(this).attr("value"));
-                    
+                    doc_download($(this).attr("value"));
                 });
-                
                 $('#file_dowload').html(html_code);
-
-
              },
              error: function() {
                  alert('ajax error working');
@@ -402,19 +396,12 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-    function doc_download_ajax(name_path) {
-        $.ajax({
-             type: "POST",
-             data: {
-                name_path: name_path
-             },
-             url:  '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/download_file_ajax'); ?>',
-             success: function(a) {
-                console.log(a)
-             },
-             error: function() {
-                 alert('ajax error working');
-             }
-         });
+    function doc_download(name_path) {
+        var link = document.createElement("a");
+        link.setAttribute('download', name_path);
+        link.href = "<?php echo base_url()?>" + "./document_file_entrepreneur/" + name_path;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     }
  </script>

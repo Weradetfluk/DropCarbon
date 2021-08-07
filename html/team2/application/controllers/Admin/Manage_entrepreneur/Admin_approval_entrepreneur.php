@@ -350,60 +350,6 @@ class Admin_approval_entrepreneur extends DCS_controller
     echo json_encode($data['arr_data']);
   }
 
-  /*
-    * download_file_ajax
-    * get doc_path, doc_ent_id
-    * @input 
-    * @output -
-    * @author Suwapat Saowarod
-    * @Create Date 2564-08-03
-    * @Update Date -
-    */
-  function download_file_ajax()
-  {
-    // echo $this->input->post('name_path');
-
-    $fileName =  $this->input->post('name_path');
-
-
-    // if(!empty($fileName))
-    // {
-    //   $this->load->helper('download');
-    //   $filePath = './document_file_entrepreneur/'.$fileName;
-    //   // $data = file_get_contents(base_url('/document_file_entrepreneur/'.$fileName));
-
-    //   force_download(FCPATH$filePath, NULL);
-
-    //   echo $filePath;
-    // }
-
-    if (!empty($fileName)) {
-      $file_Name = basename($fileName);
-      $filePath = './document_file_entrepreneur/' . $file_Name;
-
-      if (!empty($file_Name) && file_exists($filePath)) {
-
-        header("Cache-Control: public");
-        header("Content-Description: File Tranfer");
-        header("Content-disposition: attachment; filename=\"$filePath\"");
-        header("Content-Type: application/octet-stream");
-        header("Content-Tranfer-Emcoding: Binary");
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-
-        readfile($filePath);
-        exit;
-      } else {
-        echo "don't have file!!!";
-      }
-    }
-  }
-
-
-
-
-
-
 
   /*
     * email_send

@@ -14,4 +14,10 @@ class M_dcs_company extends Da_dcs_company{
                 WHERE com_status = 1 AND com_id = ?";
         return $this->db->query($sql, array($this->com_id));
     }
+
+    public function get_by_name(){
+        $sql = "SELECT * FROM dcs_company
+                WHERE com_name = ? AND com_status != 3";
+        return $this->db->query($sql, array($this->com_name));
+    }
 }
