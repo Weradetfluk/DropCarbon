@@ -304,14 +304,14 @@
                 data_detail['arr_file'].forEach((row_file, index_file) => {
                     let fileName = row_file['doc_path'];
                     html_code += '<button type="button" id="download' + i + '" class="btn btn-primary"'
-                    html_code += 'onclick="doc_download(' + row_file['doc_path'] + ')"' + 'value ="';
+                    html_code += 'onclick="doc_download(\'' + row_file['doc_path'] + '\')"' + 'value ="';
                     html_code += row_file['doc_path'] + '">download ' + i + '</button>';
                     i += 1;
                 });
                 
-                $(document).on("click", ".btn", function() {
-                    doc_download($(this).attr("value"));
-                });
+                // $(document).on("click", ".btn", function() {
+                //     doc_download($(this).attr("value"));
+                // });
                 $('#file_dowload').html(html_code);
              },
              error: function() {
