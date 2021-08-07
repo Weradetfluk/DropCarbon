@@ -166,7 +166,7 @@ class DCS_controller extends CI_Controller
 
     /*
     * output_event
-    * show Landing page for every one
+    * show every thing about 
     * @input $view
     * @output -
     * @author Naaka Punparich 62160082
