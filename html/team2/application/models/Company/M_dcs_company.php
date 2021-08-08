@@ -14,6 +14,7 @@ class M_dcs_company extends Da_dcs_company{
                 WHERE com_status = 1 AND com_id = ?";
         return $this->db->query($sql, array($this->com_id));
     }
+<<<<<<< HEAD
     function get_count_all($num_status){
         $this->db->select('*');
         $this->db->from('dcs_company ');
@@ -42,4 +43,12 @@ class M_dcs_company extends Da_dcs_company{
 
     }
     
+=======
+
+    public function get_by_name(){
+        $sql = "SELECT * FROM dcs_company
+                WHERE com_name = ? AND com_status != 3";
+        return $this->db->query($sql, array($this->com_name));
+    }
+>>>>>>> a3b37d2535729f8f343e5be96e73425142620517
 }

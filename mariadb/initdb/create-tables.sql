@@ -30,7 +30,7 @@ USE `team2`;
 --
 
 CREATE TABLE `dcs_admin` (
-  `adm_id` int(10) NOT NULL,
+  `adm_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
   `adm_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `adm_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `adm_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE dcs_com_category (
 --
 
 CREATE TABLE `dcs_company` (
-  `com_id` int(10) NOT NULL,
+  `com_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
   `com_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `com_num_visitor` int(10) DEFAULT 0,
   `com_lat` float DEFAULT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `dcs_document` (
 --
 
 CREATE TABLE `dcs_entrepreneur` (
-  `ent_id` int(10) NOT NULL,
+  `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
   `ent_firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE `dcs_entrepreneur` (
 --
 
 CREATE TABLE `dcs_prefix` (
-  `pre_id` int(10) NOT NULL,
+  `pre_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
   `pre_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -161,28 +161,7 @@ CREATE TABLE `dcs_tourist` (
 --
 -- Indexes for table `dcs_admin`
 --
-ALTER TABLE `dcs_admin`
-  ADD PRIMARY KEY (`adm_id`);
 
---
--- Indexes for table `dcs_company`
---
-ALTER TABLE `dcs_company`
-  ADD PRIMARY KEY (`com_id`),
-  ADD KEY `com_ent_id` (`com_ent_id`);
-
---
--- Indexes for table `dcs_entrepreneur`
---
-ALTER TABLE `dcs_entrepreneur`
-  ADD PRIMARY KEY (`ent_id`),
-  ADD KEY `ent_pre_id` (`ent_pre_id`);
-
---
--- Indexes for table `dcs_prefix`
---
-ALTER TABLE `dcs_prefix`
-  ADD PRIMARY KEY (`pre_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -306,26 +285,6 @@ CREATE TABLE dcs_tou_promotion (
 --
 -- AUTO_INCREMENT for table `dcs_admin`
 --
-ALTER TABLE `dcs_admin`
-  MODIFY `adm_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `dcs_company`
---
-ALTER TABLE `dcs_company`
-  MODIFY `com_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `dcs_entrepreneur`
---
-ALTER TABLE `dcs_entrepreneur`
-  MODIFY `ent_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `dcs_prefix`
---
-ALTER TABLE `dcs_prefix`
-  MODIFY `pre_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
