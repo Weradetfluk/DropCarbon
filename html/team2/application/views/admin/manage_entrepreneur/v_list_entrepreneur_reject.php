@@ -96,7 +96,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn" id="accept" style="font-size:10px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
+                                                             <button class="btn" id="accept"style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          search
                                                                      </span></i>

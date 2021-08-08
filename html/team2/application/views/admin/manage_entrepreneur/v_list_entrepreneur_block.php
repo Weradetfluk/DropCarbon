@@ -96,7 +96,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn btn-warning" id="accept" style="font-size:10px;" onclick="confirm_unblock(<?php echo $arr_entrepreneur_block[$i]->ent_id; ?>)">
+                                                             <button class="btn btn-warning" id="accept" style="font-size:10px; padding:12px;" onclick="confirm_unblock(<?php echo $arr_entrepreneur_block[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          cached
                                                                      </span></i>

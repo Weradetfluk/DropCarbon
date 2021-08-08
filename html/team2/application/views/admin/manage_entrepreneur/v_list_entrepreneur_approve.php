@@ -99,7 +99,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn btn-danger" id="accept" style="font-size:10px;" onclick="confirm_block(  <?php echo $arr_entrepreneur_approve[$i]->ent_id; ?>)">
+                                                             <button class="btn btn-danger" id="accept" style="font-size:10px; padding:12px;" onclick="confirm_block(  <?php echo $arr_entrepreneur_approve[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          highlight_off
                                                                      </span></i>
@@ -144,7 +144,7 @@
                  <p>คุณต้องการบล็อคผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
+                 <button type="button" class="btn btn-success"  id="blocked" data-dismiss="modal">ยืนยัน</button>
                  <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
