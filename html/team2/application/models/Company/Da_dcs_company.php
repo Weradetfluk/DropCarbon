@@ -38,4 +38,11 @@ class Da_dcs_company extends DCS_model{
 				WHERE com_id=?";
 		$this->db->query($sql, array($this->com_name, $this->com_description, $this->com_id));
 	}
+	public function update_status($status_number)
+    {
+        $sql = "UPDATE {$this->db_name}.dcs_company SET com_status = ?
+        Where com_id = ?";
+
+        $this->db->query($sql, array($status_number, $this->com_id));
+    }
 }

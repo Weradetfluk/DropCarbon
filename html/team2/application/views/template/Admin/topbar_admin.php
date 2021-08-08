@@ -41,7 +41,7 @@ if (!$this->session->has_userdata("username")) {
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item  ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'?> ">
             <i class="material-icons">dashboard</i>
             <p>จัดการสถานที่</p>
           </a>
