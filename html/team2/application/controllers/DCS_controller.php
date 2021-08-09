@@ -188,4 +188,58 @@ class DCS_controller extends CI_Controller
         $this->load->view('landing_page_tourist/v_landing_page_tourist');
         $this->load->view('template/Landing_page/footer');
     }
-}
+
+
+  /*
+    * email_send
+    * send email to user
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
+
+    function email_send($reason, $user_email, $subject, $mail_content_h1)
+    {
+      // Load PHPMailer library
+      $this->load->library('phpmailer_lib');
+  
+      // PHPMailer object
+      $mail = $this->phpmailer_lib->load();
+  
+      // SMTP configuration
+      $mail->isSMTP();
+      $mail->Host     = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'weradet2543@gmail.com';
+      $mail->Password = 'sykildxigujdlfnz';
+      $mail->SMTPSecure = 'tls';
+      $mail->Port     = 587;
+      $mail->charSet = "UTF-8";
+  
+      $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
+  
+  
+      // Add a recipient
+      $mail->addAddress($user_email);
+  
+      // Email subject
+      $mail->Subject = $subject; 
+  
+      // Set email format to HTML
+      $mail->isHTML(true);
+  
+      // Email body content
+      $mail_content = "<h1>".$mail_content_h1."</h1>" . "<p>.$reason.</p>";
+      $mail->Body = $mail_content;
+  
+      // Send email
+      if (!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+      } else {
+        redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
+      }
+    }
+  }
