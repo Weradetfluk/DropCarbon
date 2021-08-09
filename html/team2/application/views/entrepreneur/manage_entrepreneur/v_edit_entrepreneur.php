@@ -1,53 +1,3 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <style>
-    b {
-        padding-left: 2.5em;
-        font-size: 30px;
-    }
-
-    div.con {
-        padding-left: 5em;
-    }
-
-    input.box {
-        width: 80%;
-        border-radius: 4px;
-        background-color: white;
-        color: black;
-        border: 2px solid #c8c8c8;
-    }
-
-    input.boxemail {
-        width: 120%;
-        border-radius: 4px;
-        background-color: white;
-        color: black;
-        border: 2px solid #c8c8c8;
-    }
-
-    label {
-        color: black;
-    }
-
-    div.w3-row {
-        padding-left: 3em;
-    }
-
-    div.row1 {
-        padding-left: 0em;
-    }
-    </style>
-</head>
-
-<body>
-    <!-- 
-
- -->
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -80,27 +30,28 @@
 
                                             <input type="radio" name="ent_pre_id" value=1
                                                 <?php echo $checked_prefix_1 ?>>
-                                            <label style="font-size: 120%">นาย</label>
+                                            <label style="color:black">นาย</label>
                                             <input type="radio" name="ent_pre_id" value=2
                                                 <?php echo $checked_prefix_2 ?>>
-                                            <label style="font-size: 120%">นาง</label>
+                                            <label style="color:black">นาง</label>
                                             <input type="radio" name="ent_pre_id" value=3
                                                 <?php echo $checked_prefix_3 ?>>
-                                            <label style="font-size: 120%">นางสาว</label>
+                                            <label style="color:black">นางสาว</label>
                                         </div><br>
 
                                         <form>
                                             <!-- กรอกชื่อ -->
                                             <div class="row">
-                                                <div class="col">
-
+                                                <div class="col-4">
+                                                    <label for="ent_firstname" style="color:black">ชื่อจริง</label>
                                                     <input type="text" class="form-control" placeholder="ชื่อภาษาไทย"
                                                         name='ent_firstname'
                                                         value='<?php echo $arr_ent[0]->ent_firstname; ?>' required>
                                                 </div>
 
                                                 <!-- กรอกนามสกุล -->
-                                                <div class="col">
+                                                <div class="col-4">
+                                                    <label for="ent_lastname" style="color:black">นามสกุล</label>
                                                     <input type="text" class="form-control" placeholder="นามสกุลภาษาไทย"
                                                         name='ent_lastname'
                                                         value='<?php echo $arr_ent[0]->ent_lastname; ?>' required>
@@ -111,6 +62,7 @@
                                             <!-- กรอกเบอร์โทรศัพท์ -->
                                             <div class="row">
                                                 <div class="col-6">
+                                                    <label for="ent_tel" style="color:black">เบอร์โทรศัพท์</label>
                                                     <input type="text" class="form-control"
                                                         placeholder="หมายเลขโทรศัพท์" name='ent_tel'
                                                         value="<?php  echo $arr_ent[0]->ent_tel; ?>" required>
@@ -121,6 +73,7 @@
                                             <!-- กรอกหมายเลขบัตรประชาชน -->
                                             <div class="row">
                                                 <div class="col-6">
+                                                    <label for="ent_id_card" style="color:black">เลขบัตรประชาชน</label>
                                                     <input type="text" class="form-control"
                                                         placeholder="หมายเลขบัตรประชาชน" name='ent_id_card'
                                                         value="<?php  echo $arr_ent[0]->ent_id_card; ?>" disabled>
@@ -131,6 +84,7 @@
                                             <!-- กรอกอีเมล -->
                                             <div class="row">
                                                 <div class="col-6">
+                                                    <label for="ent_email" style="color:black">อีเมล</label>
                                                     <input type="text" class="form-control" placeholder="E-mail"
                                                         name='ent_email' value="<?php echo $arr_ent[0]->ent_email; ?>"
                                                         required>
@@ -142,7 +96,7 @@
                                     <br>
 
 
-                                    <div class="row" style="width:25%;float:right;">
+                                    <div class="row" style="width:35%;float:right;">
                                         <input type="submit" class="btn btn-success" value="บันทึก"></input>
                                         <a class="btn btn-danger"
                                             href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
@@ -158,4 +112,3 @@
             </div>
         </div>
     </div>
-</body>

@@ -37,11 +37,14 @@ class Company_add extends DCS_controller{
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->mcom->com_name=$this->input->post('com_name');
-        $this->mcom->com_lat=0;
-        $this->mcom->com_lon=0;
+        $this->mcom->com_lat=$this->input->post('com_lat');
+        $this->mcom->com_lon=$this->input->post('com_lon');
         $this->mcom->com_description=$this->input->post('com_description');
         $this->mcom->com_ent_id=$this->session->userdata("Entrepreneur_id");
         $this->mcom->com_tel = $this->input->post('com_tel');
+
+        // var_dump($this->input->post('com_lat'));
+        // var_dump($this->input->post('com_lon'));
 
         //สร้างตัวแปรเก็บข้อมูลไฟล์
         $fileName = array();
@@ -96,6 +99,13 @@ class Company_add extends DCS_controller{
     * @Update Date -
     */
     public function show_google_map(){
-        $this->load->view('entrepreneur/manage_company/v_map_company');
+        $data['com_name'] = $this->input->post('com_name');
+        $data['com_description'] = $this->input->post('com_description');
+        $data['com_tel'] = $this->input->post('com_tel');
+        $data['com_file'] = $this->input->post('com_file');
+        $this->load->view('template/Entrepreneur/header_entrepreneur');
+        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
+        $this->load->view('entrepreneur/manage_company/v_map_company', $data);
+        $this->load->view('template/Entrepreneur/footer');
     }
 }

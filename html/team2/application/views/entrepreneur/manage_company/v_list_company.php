@@ -29,8 +29,8 @@
                                 <td><?php echo $arr_company[$i]->com_name;?></td>
                                 <td><?php echo $arr_company[$i]->com_description;?></td>
                                 <td>
-                                  <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="fas fa-pen"></i></a>
-                                  <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="fas fa-trash-alt"></i></button>
+                                  <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">done</i></a>
+                                  <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="material-icons">clear</i></button>
                                 </td>
                               </tr>
                             <?php }?>
