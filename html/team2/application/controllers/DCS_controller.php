@@ -180,4 +180,21 @@ class DCS_controller extends CI_Controller
         $this->load->view($view);
         $this->load->view('template/Tourist/footer');
     }
+
+     /*
+    * output_Landing_page
+    * show Landing page tourist for every one
+    * @input -
+    * @output -
+    * @author Jutamas Thaptong 62160079
+    * @Create Date 2021-08-02
+    */
+    public function output_Landing_page_tourist()
+    {
+        $this->load->view('template/Landing_page/head_landing');
+        $this->load->view('template/Landing_page/javascript_landing');
+        // $this->load->view('template/Landing_page/topbar_landing');
+        $this->load->view('landing_page_tourist/v_landing_page_tourist');
+        $this->load->view('template/Landing_page/footer');
+    }
 }
