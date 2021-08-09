@@ -1,16 +1,16 @@
- <div class="card card-nav-tabs">
-     <div class="card-header" style="background-color: #60839f">
+<div class="card card-nav-tabs">
+     <div class="card-header" style="background-color: #5F9EA0;">
          <div class="nav-tabs-navigation">
              <div class="nav-tabs-wrapper">
                  <ul class="nav nav-tabs" data-tabs="tabs">
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                         <a class="nav-link " href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
                      </li>
-                     <li class=" nav-item">
+                     <li class="nav-item">
                          <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link  active" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
+                         <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
@@ -23,37 +23,41 @@
 
      <!-- Tab1 -->
      <div class="card-body ">
+         <div class="row" style="padding: 10px;">
+             <div class="col-sm-3"></div>
+             <div class="col-sm-3"></div>
+             <div class="col-sm-3"></div>
+             <div class="col-sm-3">
+                 <form class="navbar-form" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
+
+                     <div class="input-group no-border has-success">
+
+                         <input type="text" value="" name="value_search" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
+                         <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                             <i class="material-icons">search</i>
+                         </button>
+
+                     </div>
+                 </form>
+             </div>
+         </div>
          <div class="tab-content">
              <div class="tab-pane active" id="consider">
                  <div class="row">
                      <div class="col-md-12">
                          <div class="card">
-                             <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                             <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                                  <center>
-                                     <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
+                                     <h4 class="card-title text-white">ตารางแสดงข้อมูลผู้ประกอบการที่ถูกปฏิเสธ</h4>
                                  </center>
                              </div>
                              <div class="card-body">
-
-                                 <div class="row">
-                                     <div class="col-sm-3">
-                                         <form class="navbar-form" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>" method="POST">
-                                             <div class="input-group no-border has-success">
-                                                 <input type="text" value="" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon">
-                                                     <i class="material-icons">search</i>
-
-                                                 </button>
-                                             </div>
-                                         </form>
-                                     </div>
-                                 </div>
 
                                  <div class="table-responsive" id="data_entre_consider">
 
                                      <!-- table approve ajax  -->
                                      <table class="table" style="text-align: center;" id="entre_tale_approve">
-                                         <thead class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                                         <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                              <tr>
                                                  <th style="text-align: center;font-size: 16px;">ลำดับ</th>
                                                  <th style="text-align: center;font-size: 16px;">ชื่อ-นามสกุล</th>
@@ -96,7 +100,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn" id="accept"style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
+                                                             <button class="btn btn-info" id="accept"style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          search
                                                                      </span></i>

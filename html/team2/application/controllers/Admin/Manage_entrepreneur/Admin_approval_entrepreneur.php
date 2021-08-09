@@ -303,8 +303,15 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     // set value from font end 
     $this->mdce->ent_id = $this->input->post('ent_id');
+
+
+
+    // set data for send mail
     $reson_admin = $this->input->post('admin_reason');
     $user_email = $this->input->post('email');
+    $mail_subject = 'Admin has been rejected';
+    $mail_content_header = "คุณถูกปฎิเสธการลงทะเบียนของผู้ประกอบการ";
+    
     $admin_id =  $this->session->userdata("Admin_id");
 
 
@@ -326,7 +333,10 @@ class Admin_approval_entrepreneur extends DCS_controller
     //update status entrepreneur
     $status_number = 3;
     $this->mdce->update_status($status_number);
-    $this->email_send($reson_admin, $user_email);
+    
+     
+
+    $this->email_send($reson_admin, $user_email,  $mail_subject, $mail_content_header);
   }
 
 
@@ -361,7 +371,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Update Date -
     */
 
-  function email_send($reason, $user_email)
+  function email_send($reason, $user_email, $subject, $mail_content_h1)
   {
     // Load PHPMailer library
     $this->load->library('phpmailer_lib');
@@ -386,14 +396,14 @@ class Admin_approval_entrepreneur extends DCS_controller
     $mail->addAddress($user_email);
 
     // Email subject
-    $mail->Subject = 'Admin has been rejected ';
+    $mail->Subject = $subject; 
 
     // Set email format to HTML
     $mail->isHTML(true);
 
     // Email body content
-    $mailContent = "<h1>คุณถูกปฏิเสธการลงทะเบียน</h1>" . "<p>.$reason.</p>";
-    $mail->Body = $mailContent;
+    $mail_content = "<h1>".$mail_content_h1."</h1>" . "<p>.$reason.</p>";
+    $mail->Body = $mail_content;
 
     // Send email
     if (!$mail->send()) {

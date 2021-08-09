@@ -17,4 +17,4 @@
      
 </head>
 
-<body>
+<body style="font-size: 18px; font-weight:700;">

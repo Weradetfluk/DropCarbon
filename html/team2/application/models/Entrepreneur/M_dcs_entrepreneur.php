@@ -22,9 +22,11 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     {
 
         $this->db->limit($limit, $start);
+
         $this->db->select('*');
         $this->db->from('dcs_entrepreneur');
-        $this->db->where("ent_status = '$number_status'");
+        $this->db->where("ent_status = '$number_status'"); 
+
         $query = $this->db->get();
        
         //$query = $this->db->get('dcs_entrepreneur');
@@ -130,6 +132,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $query;
     }
 
+
+
+    
     /*
     *get_by_username_password
     *get data entrepreneur form database

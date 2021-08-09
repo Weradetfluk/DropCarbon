@@ -29,13 +29,17 @@ if (!$this->session->has_userdata("username")) {
     border-radius: 10px;
     background-color: #ffffff;
   }
+
+  .navbar{
+    background-color: red;
+  }
 </style>
 
 <!--  side bar -->
 
 <div class="wrapper ">
   <div class="sidebar"  data-color="purple" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
-    <div class="logo text-center text-white" style="background-color: #60839f; height: 70px;">
+    <div class="logo text-center text-white " style="background-color: #5F9EA0; height: 82px;">
       <h5 style=" margin-top:10px;">DropCarbonSystem</h5>
       </div>
     <div class="sidebar-wrapper">
@@ -83,10 +87,12 @@ if (!$this->session->has_userdata("username")) {
   <div class="main-panel">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top ">
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">จัดการผู้ประกอบการ</a>
+          <!-- <a class="navbar-brand" href="javascript:;">จัดการผู้ประกอบการ</a> -->
+          <!-- <img  src="<?php echo base_url() . 'assets/templete/picture' ?>/./Logo.jpg" alt="" style="width: 100px; height: 80px;"> -->
+           <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>

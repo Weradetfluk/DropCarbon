@@ -57,15 +57,6 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
-
-
-
-
-
-
-
-
-
     
 
     /*

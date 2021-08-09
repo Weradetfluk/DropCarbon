@@ -3,23 +3,23 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 ?>
 
 
- <!-- navbar -->
+<!-- navbar -->
 
 <nav class="navbar" style="color: #81b14f;">
-        <div class="container">
-            <a class="navbar-brand" href="javascript:;">DropCarbon for Admin</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-            
-                </ul>
-            </div>
+    <div class="container">
+        <a class="navbar-brand" href="javascript:;">DropCarbon for Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
 
 <div class="container-fluid" style="margin-top: 100px;">
@@ -27,7 +27,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
-                    <div class="card-header text-center"  style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)"  >
+                    <div class="card-header text-center" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
                         <div class="social-line">
 
@@ -50,21 +50,76 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                     </span>
                                 </div>
                                 <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password">
-                            </div>              
-                                <span style="color: red; margin-left: 30px;" >
-                                    <?php
-                                    if ($warning != NULL) {
-                                        echo $warning;
-                                    }
-                                    ?>
-                                </span>
+                            </div>
+                            <span style="color: red; margin-left: 30px;">
+                                <?php
+                                if ($warning != NULL) {
+                                    echo $warning;
+                                }
+                                ?>
+                            </span>
 
                     </div>
                     <div class="card-footer">
-                       <button type="submit" style="margin-left: 150px;" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
+                        <button type="submit" style="margin-left: 150px;" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
                     </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="card card-login">
+                <form class="form" method="" action="">
+                    <div class="card-header card-header-primary text-center">
+                        <h4 class="card-title">Login</h4>
+                        <div class="social-line">
+                            <a href="#pablo" class="btn btn-just-icon btn-link  text-white">
+                                <i class="material-icons">facebook</i>
+                                <div class="ripple-container"></div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <span class="bmd-form-group">
+                            <div class="input-group" style="padding: 10px;">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">face</i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="First Name...">
+                            </div>
+                        </span>
+                        <div class="input-group" style="padding: 10px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">lock_outline</i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Password...">
+                        </div></span>
+                    </div>
+                    <div class="footer" style="text-align: center;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="" class="btn btn-primary ">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
             </div>
         </div>
     </div>
