@@ -1,4 +1,5 @@
 <!-- Make by : Naaka Punparich 62160082 -->
+
 <body>
     <!-- Open topbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
@@ -17,7 +18,7 @@
                             <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur' ?>">ผู้ประกอบการ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" #">เข้าสู่ระบบ</a>
+                            <a class="nav-link" href="<?php echo base_url() . 'Tourist/Auth/Login_tourist' ?>">เข้าสู่ระบบ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Register/Select_register' ?>">สมัครสมาชิก</a>
@@ -25,7 +26,7 @@
                     </ul>
                 </div>
             </div>
-            
+
         </div>
     </nav>
     <!-- Close topbar -->
