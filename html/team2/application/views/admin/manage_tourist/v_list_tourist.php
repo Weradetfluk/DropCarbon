@@ -86,7 +86,7 @@
 
                                                                  <!-- column ดำเนินการ -->
                                                                  <td style='text-align: center;'>
-                                                                     <button class="btn btn-danger" id="accept" style="font-size:10px;" onclick="confirm_block(  <?php echo $arr_tourist[$i]->tus_id; ?>)">
+                                                                     <button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block(  <?php echo $arr_tourist[$i]->tus_id; ?>)">
                                                                          <i class="material-icons"><span class="material-icons-outlined">
                                                                                  block
                                                                              </span></i>
