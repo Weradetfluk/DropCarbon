@@ -136,7 +136,7 @@
                                 <div class="form-group">
                                     <label for="com_file">รูปภาพประกอบสถานที่</label>
                                 </div>
-                                <input type="file" id="com_file" name="com_file[]" multiple><br><br>
+                                <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
 
                                 <input type="hidden" id="com_lat" name="com_lat" value="<?php echo $arr_company[0]->com_lat;?>">
                                 <input type="hidden" id="com_lon" name="com_lon" value=" <?php echo $arr_company[0]->com_lon;?>"><br>

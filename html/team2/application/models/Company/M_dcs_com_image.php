@@ -7,5 +7,9 @@ class M_dcs_com_image extends Da_dcs_com_image{
     {
         parent::__construct();
     }
-
+    public function get_by_com_id(){
+        $sql = "SELECT * FROM dcs_com_image
+                WHERE com_img_com_id = ?";
+        return $this->db->query($sql, array($this->com_img_com_id));
+    }
 }
