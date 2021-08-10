@@ -90,8 +90,6 @@ if (!$this->session->has_userdata("username")) {
     <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <!-- <a class="navbar-brand" href="javascript:;">จัดการผู้ประกอบการ</a> -->
-          <!-- <img  src="<?php echo base_url() . 'assets/templete/picture' ?>/./Logo.jpg" alt="" style="width: 100px; height: 80px;"> -->
            <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

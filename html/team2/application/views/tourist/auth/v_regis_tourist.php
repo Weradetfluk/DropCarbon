@@ -5,30 +5,70 @@
     body {
         background-color: #56ae6c;
     }
+
     .w3-btn {
-        width:150px;
+        width: 150px;
     }
-    
-    input, select {
+
+    input,
+    select {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
+
+
+    a {
+        text-decoration: none;
+    }
+
+    ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: #eee;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: ">";
+    }
+
+    ul.breadcrumb li a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    ul.breadcrumb li a:hover {
+        color: #01447e;
+        text-decoration: underline;
+    }
 </style>
-    <br><br><br>
-    <!-- Form Register -->
-    <div class="container py-5" style="background-color: white; border-radius: 25px;">
-        <br><br>
-        </h1><h1 class="h1" style="text-align: center;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
-        <br>
-        <form class="container py-5" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
-            <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
-            <div>
-                <input type="radio" id ="tus_pre_id1" name="tus_pre_id" value=1>&nbsp;นาย
-                <input type="radio" id ="tus_pre_id2" name="tus_pre_id" value=2>&nbsp;นาง
-                <input type="radio" id ="tus_pre_id3" name="tus_pre_id" value=3>&nbsp;นางสาว
-            </div><br>
-            <div class="row">
+<br><br><br>
+<!-- Form Register -->
+<div class="container py-5" style="background-color: white; border-radius: 25px;">
+    <ul class="breadcrumb">
+        <li><a href="#" style="color: green;">หน้าหลัก</a></li>
+        <li><a href="#" style="color: green;">สมัครสมาชิก</a></li>
+        <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
+    </ul>
+    <br><br>
+    </h1>
+    <h1 class="h1" style="text-align: center;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
+    <br>
+    <form class="container py-5" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+        <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
+        <div>
+            <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1>&nbsp;นาย
+            <input type="radio" id="tus_pre_id2" name="tus_pre_id" value=2>&nbsp;นาง
+            <input type="radio" id="tus_pre_id3" name="tus_pre_id" value=3>&nbsp;นางสาว
+        </div><br>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="inputname">ชื่อ</label>
                 <input type="text" class="form-control mt-1" id="tus_firstname" name="tus_firstname" placeholder="ชื่อ" required>
@@ -39,35 +79,35 @@
                 <input type="text" class="form-control mt-1" id="tus_lastname" name="tus_lastname" placeholder="นามสกุล" required>
                 <span id="pfatf"></span>
             </div>
-            </div>
-            <div class="row">
+        </div>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="tell">เบอร์โทร</label>
                 <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" placeholder="เบอร์โทร" required>
             </div>
-            
+
             <div class="form-group col-md-6 mb-3">
                 <label for="idcard">วันเกิด</label>
                 <input type="date" class="form-control mt-1" id="tus_birthdate" name="tus_birthdate" placeholder="วันเกิด" required>
             </div>
-            </div>
+        </div>
 
-            <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">อีเมล</label>
-                        <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
-                    </div>
-            <br>
-            รูปโปรไฟล์ :
-            <input type="file" name="myfile"required>
-            <br><br>
+        <div class="form-group col-md-6 mb-3">
+            <label for="inputemail">อีเมล</label>
+            <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
+        </div>
+        <br>
+        รูปโปรไฟล์ :
+        <input type="file" name="myfile" required>
+        <br><br>
 
-            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
-            <div class="form-group col-md-6 mb-3">
-                <label for="username">ชื่อผู้ใช้</label>
-                <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" placeholder="ชื่อผู้ใช้" required>
-                <span id="usernameavailable"></span>
-            </div>
-            <div class="row">
+        <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
+        <div class="form-group col-md-6 mb-3">
+            <label for="username">ชื่อผู้ใช้</label>
+            <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
+            <span id="usernameavailable"></span>
+        </div>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="password">รหัสผ่าน</label>
                 <input type="password" class="form-control mt-1" id="pass" name="tus_password" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
@@ -80,41 +120,41 @@
 
                 </div>
             </div>
-            </div>
-            <button type="submit" id ="next_btn" class="w3-button w3-round-large btn btn-success btn-lg px-3" style="color: white;">ถัดไป</button>
-            
-        </form>
-    </div>
-    <script>    
-        var tus_pre_id =" ";
-        var tus_firstname =" ";
-        var tus_lastname =" ";
-        var tus_tel =" ";
-        var tus_email =" ";
-        var tus_username =" ";
-        var tus_password =" ";
-        /*
-        * 
-        * confirmpassword
-        *@input password
-        *@parameter -
-        *output  checkconfirmpassword
-        *@author Thanisorn thumsawanit 62160088
-        *@Create Date 2564-07-31
-        *@update Date 2564-07-31
-        */
-        function confirmpassword(){
-            if($('#pass').val()!=$('#confirm').val()){
-                $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
-                $('#next_btn').prop('disabled', true);
-            }else{
-                $('#errorpassword').text('');
-                $('#next_btn').prop('disabled', false);
-            }
-        }
-    
+        </div>
+        <button type="submit" id="next_btn" class="w3-button w3-round-large btn btn-success btn-lg px-3" style="color: white;">ถัดไป</button>
 
-        function check_username() {
+    </form>
+</div>
+<script>
+    var tus_pre_id = " ";
+    var tus_firstname = " ";
+    var tus_lastname = " ";
+    var tus_tel = " ";
+    var tus_email = " ";
+    var tus_username = " ";
+    var tus_password = " ";
+    /*
+     * 
+     * confirmpassword
+     *@input password
+     *@parameter -
+     *output  checkconfirmpassword
+     *@author Thanisorn thumsawanit 62160088
+     *@Create Date 2564-07-31
+     *@update Date 2564-07-31
+     */
+    function confirmpassword() {
+        if ($('#pass').val() != $('#confirm').val()) {
+            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
+            $('#next_btn').prop('disabled', true);
+        } else {
+            $('#errorpassword').text('');
+            $('#next_btn').prop('disabled', false);
+        }
+    }
+
+
+    function check_username() {
         let tus_username = $('#tus_username').val();
         $.ajax({
             url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_username_tourist_ajax'); ?>',
@@ -131,8 +171,8 @@
                     });
 
                     $('#usernameavailable').html("username not available");
-                    $('#next_btn').prop('disabled', true);                   
-                }else{
+                    $('#next_btn').prop('disabled', true);
+                } else {
                     $('#next_btn').prop('disabled', false);
                 }
 
@@ -140,7 +180,7 @@
         });
 
     }
-    </script>  
+</script>
 </body>
 
 </html>

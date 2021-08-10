@@ -329,7 +329,7 @@
 
 
      /*
-      * confirm_approve
+      * confirm_reject
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to reject  modal 

@@ -19,9 +19,44 @@
     a {
         text-decoration: none;
     }
+
+    ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: #eee;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: ">";
+    }
+
+    ul.breadcrumb li a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    ul.breadcrumb li a:hover {
+        color: #01447e;
+        text-decoration: underline;
+    }
 </style>
 
 <div class="container py-5">
+
+
+    <ul class="breadcrumb">
+        <li><a href="#" style="color: green;">หน้าหลัก</a></li>
+        <li>สมัครสมาชิก</li>
+    </ul>
+
+
     <h2 align="center">Drop Carbon System</h2>
     <div class="row">
         <div class="col">

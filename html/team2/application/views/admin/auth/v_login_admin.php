@@ -3,54 +3,58 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 ?>
 
 
+<style>
+   
+
+</style>
+
+
 <!-- navbar -->
 
-<nav class="navbar" style="color: #81b14f;">
-    <div class="container">
-        <a class="navbar-brand" href="javascript:;">DropCarbon for Admin</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-
-            </ul>
-        </div>
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
+    <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
     </div>
 </nav>
 
 
-<div class="container-fluid" style="margin-top: 100px;">
-    <div class="container">
+
+
+<div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
+    <div class="container" style="margin-top: 200px; ">
         <div class="row">
-            <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
-                    <div class="card-header text-center" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-                        <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
-                        <div class="social-line">
+                    <form class="form" action="<?php echo site_url() . 'Admin/Auth/Login_admin/input_login_form'; ?>" method="POST">
+                        <div class="card-header text-center" style="background-color: #5F9EA0;">
+                            <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
+                            <div class="social-line">
+                                <a href="#pablo" class="btn btn-just-icon btn-link  text-white">
+                                    <i class="material-icons">facebook</i>
+                                    <div class="ripple-container"></div>
+                                </a>
 
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- form login  -->
-
-                        <form action="<?php echo site_url() . 'Admin/Auth/Login_admin/input_login_form'; ?>" method="POST">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username">
                             </div>
-                            <div class="input-group">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username">
+                                </div>
+                            </span>
+                            <div class="input-group" style="padding: 10px;">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
+                                        <i class="material-icons">lock_outline</i>
                                     </span>
                                 </div>
                                 <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password">
-                            </div>
+                            </div></span>
                             <span style="color: red; margin-left: 30px;">
                                 <?php
                                 if ($warning != NULL) {
@@ -58,69 +62,26 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                 }
                                 ?>
                             </span>
+                        </div>
+                        <div class="footer" style="text-align: center;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <a href="" style="color: #5F9EA0;">ลืมรหัสผ่านใช่หรือไม่</a>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" style="margin-left: 150px;" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
-                    </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-            <div class="card card-login">
-                <form class="form" method="" action="">
-                    <div class="card-header card-header-primary text-center">
-                        <h4 class="card-title">Login</h4>
-                        <div class="social-line">
-                            <a href="#pablo" class="btn btn-just-icon btn-link  text-white">
-                                <i class="material-icons">facebook</i>
-                                <div class="ripple-container"></div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <span class="bmd-form-group">
-                            <div class="input-group" style="padding: 10px;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="material-icons">face</i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="First Name...">
-                            </div>
-                        </span>
-                        <div class="input-group" style="padding: 10px;">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="material-icons">lock_outline</i>
-                                </span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="Password...">
-                        </div></span>
-                    </div>
-                    <div class="footer" style="text-align: center;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="" class="btn btn-primary ">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
