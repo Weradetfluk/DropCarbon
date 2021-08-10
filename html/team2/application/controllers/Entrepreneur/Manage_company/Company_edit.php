@@ -56,7 +56,53 @@ class Company_edit extends DCS_controller{
         $this->mcom->com_name=$this->input->post('com_name');
         $this->mcom->com_description=$this->input->post('com_description');
         $this->mcom->com_id=$this->input->post('com_id');
-        $this->mcom->edit_company();
-        redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
+        $this->mcom->com_lat=$this->input->post('com_lat');
+        $this->mcom->com_lon=$this->input->post('com_lon');
+        $this->mcom->com_tel = $this->input->post('com_tel');
+
+         if(isset($_FILES['com_file'])){
+            //สร้างตัวแปรเก็บข้อมูลไฟล์
+            $fileName = array();
+            $fileTmpName = array();
+            $fileSize = array();
+            $fileError = array();
+            $fileExt = array();
+            $fileActaulExt = array();
+            $error_file='';
+
+            //กำหนดค่าเก็บข้อมูลไฟล์
+            $file = $_FILES['com_file'];
+            $fileName = $_FILES['com_file']['name'];
+            $fileTmpName = $_FILES['com_file']['tmp_name'];
+            $fileSize = $_FILES['com_file']['size']; 
+            $fileError = $_FILES['com_file']['error'];
+
+            for($i = 0; $i < count($fileName); $i++){
+                  $fileExt[$i] = explode('.', $fileName[$i]);
+                  $fileActaulExt[$i] = strtolower(end($fileExt[$i]));
+
+                  if($fileError[$i] != 0 || $fileSize[$i] >= 1000000){
+                     $error_file = 'false';
+                     break;
+                  }
+            }
+
+            if($error_file != 'false'){
+               $this->mcom->edit_company();
+               $this->mimg->com_img_com_id = $this->input->post('com_id');
+               for($i = 0; $i < count($fileName); $i++){
+                  $fileNewName[$i] = uniqid('', true);
+                  $fileDestination[$i] = './image_company/'.$fileNewName[$i].'.'.$fileActaulExt[$i];
+                  move_uploaded_file($fileTmpName[$i], $fileDestination[$i]);
+                  $this->mimg->com_img_path = $fileNewName[$i].'.'.$fileActaulExt[$i];
+                  $this->mimg->insert_image_company();
+               }
+            }else{
+            redirect("Entrepreneur/Manage_company/Company_add/show_edit_company");
+            }
+         }else{
+            $this->mcom->edit_company();
+         }
+         redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
      }
 }

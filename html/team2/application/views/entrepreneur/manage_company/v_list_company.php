@@ -16,21 +16,22 @@
                         <table class="table table-hover table-striped ">
                           <thead class="bg-secondary text-white">
                             <tr>
-                              <th>ID</th>
-                              <th>Name</th>
-                              <th>Description</th>
+                              <th>ลำดับ</th>
+                              <th>ชื่อสถานที่</th>
+                              <th>รายละเอียด</th>
                               <th>ดำเนินการ</th>
                             </tr>
                           </thead>
                           <tbody>
                             <?php for($i = 0; $i < count($arr_company); $i++){?>
                               <tr>
-                                <td><?php echo $arr_company[$i]->com_id;?></td>
+                                <td><?php echo $i+1;?></td>
                                 <td><?php echo $arr_company[$i]->com_name;?></td>
                                 <td><?php echo $arr_company[$i]->com_description;?></td>
                                 <td>
-                                  <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">done</i></a>
+                                  <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">edit</i></a>
                                   <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="material-icons">clear</i></button>
+                                  <a class="btn btn-info" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_detail/show_detail_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">search</i></a>
                                 </td>
                               </tr>
                             <?php }?>
