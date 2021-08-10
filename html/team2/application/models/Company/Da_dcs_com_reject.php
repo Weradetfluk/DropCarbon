@@ -15,7 +15,7 @@ class Da_dcs_com_reject extends Dcs_model
 
     public function insert(){
         $sql = "INSERT INTO dcs_company_reject(com_admin_reason, com_ent_id, com_adm_id) VALUES(?, ?, ?)";
-        $this->db->query($sql, array( $this->mdcre->com_admin_reason, $this->com_ent_id, $this->com_adm_id));
+        $this->db->query($sql, array( $this->com_admin_reason, $this->com_ent_id, $this->com_adm_id));
     }
  
 }

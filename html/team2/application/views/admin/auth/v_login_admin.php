@@ -22,7 +22,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 <div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
-            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
                     <form class="form" action="<?php echo site_url() . 'Admin/Auth/Login_admin/input_login_form'; ?>" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">

@@ -55,24 +55,6 @@ CREATE TABLE dcs_com_category (
 -- Table structure for table `dcs_company`
 --
 
-CREATE TABLE `dcs_company` (
-  `com_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `com_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `com_num_visitor` int(10) DEFAULT 0,
-  `com_lat` float DEFAULT NULL,
-  `com_lon` float DEFAULT NULL,
-  `com_status` int(1) DEFAULT 1,
-  `com_description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `com_ent_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `dcs_company`
---
-
-INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`) VALUES
-(1, 'ศูนย์อนุรักษ์สิ่งแวดล้อม สาขา 2', 0, 0, 0, 1, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา และสามารถติดต่อได้ที่ เบอร์ 0914143234', 2),
-(2, 'สุวพัฒน์อนุรักษ์', 0, 0, 0, 4, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา', 2);
 
 -- --------------------------------------------------------
 
@@ -84,30 +66,6 @@ CREATE TABLE `dcs_document` (
   `doc_path` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `doc_ent_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dcs_entrepreneur`
---
-
-CREATE TABLE `dcs_entrepreneur` (
-  `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `ent_firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_birthdate` date DEFAULT NULL,
-  `ent_tel` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_id_card` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_status` int(1) DEFAULT 1,
-  `ent_pre_id` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `dcs_entrepreneur`
---
 
 -- --------------------------------------------------------
 
@@ -130,6 +88,35 @@ INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 (2, 'นาง'),
 (3, 'นางสาว');
 
+
+
+--
+-- Table structure for table `dcs_entrepreneur`
+--
+
+CREATE TABLE `dcs_entrepreneur` (
+  `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
+  `ent_firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_birthdate` date DEFAULT NULL,
+  `ent_tel` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_id_card` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_status` int(1) DEFAULT 1,
+  `ent_pre_id` int(1) DEFAULT NULL,
+   FOREIGN KEY (ent_pre_id) REFERENCES dcs_prefix(pre_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `dcs_entrepreneur`
+--
+
+-- --------------------------------------------------------
+
+
+
 --
 -- Table structure for table `dcs_tourist`
 --
@@ -146,9 +133,35 @@ CREATE TABLE `dcs_tourist` (
   `tus_email` varchar(30) NULL,
   `tus_cur_score` int(10),
   `tus_status` int(1) DEFAULT 1,
-  `tus_pre_id` int(10)
+  `tus_pre_id` int(10),
+   FOREIGN KEY (tus_pre_id) REFERENCES dcs_prefix(pre_id)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+CREATE TABLE `dcs_company` (
+  `com_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
+  `com_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `com_num_visitor` int(10) DEFAULT 0,
+  `com_lat` float(20),
+  `com_lon` float(20),
+  `com_status` int(1) DEFAULT 1,
+  `com_description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `com_ent_id` int(10),
+  `com_tel` varchar(10),
+   FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `dcs_company`
+--
+
+INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_firstname`, ent_lastname, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
+(2, 'สุวพัฒน์', 'เสาวรส', 'Entrepreneur2', '1234', NULL, '0922563953', '777777777777', '62160340@go.buu.ac.th', 2, 1),
+(3, 'วีรเดช', 'นพสมบูรณ์', NULL, NULL, NULL, '0852812191', '1249900858895', 'fluk.weradet@gmail.com', 1, 1);
+
+INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`) VALUES
+(1, 'ศูนย์อนุรักษ์สิ่งแวดล้อม สาขา 2', 0, 0, 0, 1, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา และสามารถติดต่อได้ที่ เบอร์ 0914143234', 2),
+(2, 'สุวพัฒน์อนุรักษ์', 0, 0, 0, 4, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา', 2);
 
 
 
@@ -282,6 +295,16 @@ CREATE TABLE dcs_tou_promotion (
   FOREIGN KEY (tou_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+CREATE TABLE dcs_company_reject (
+  com_id int(10) NOT NULL primary key AUTO_INCREMENT,
+  com_admin_reason varchar(100) COLLATE utf8_unicode_ci,
+  com_ent_id int(10),
+  com_adm_id int(10),
+   FOREIGN KEY (com_ent_id) REFERENCES dcs_company(com_id),
+   FOREIGN KEY (com_adm_id) REFERENCES dcs_admin(adm_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- AUTO_INCREMENT for table `dcs_admin`
 --
@@ -293,22 +316,16 @@ CREATE TABLE dcs_tou_promotion (
 --
 -- Constraints for table `dcs_company`
 --
-ALTER TABLE `dcs_company`
-  ADD CONSTRAINT `dcs_company_ibfk_1` FOREIGN KEY (`com_ent_id`) REFERENCES `dcs_entrepreneur` (`ent_id`);
 
 --
 -- Constraints for table `dcs_entrepreneur`
 --
-ALTER TABLE `dcs_entrepreneur`
-  ADD CONSTRAINT `dcs_entrepreneur_ibfk_1` FOREIGN KEY (`ent_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
-COMMIT;
+
 
 --
 -- Constraints for table `dcs_tourist`
 --
-ALTER TABLE `dcs_tourist`
-  ADD CONSTRAINT `tus_pre_id` FOREIGN KEY (`tus_pre_id`) REFERENCES `dcs_prefix` (`pre_id`);
-COMMIT;
+
 
 
 
