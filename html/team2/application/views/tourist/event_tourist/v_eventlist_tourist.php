@@ -91,7 +91,7 @@
         <div class="container py-5">
             <div class="row text-left py-3">
                 <div class="m-auto">
-                    <h1 class="h1" style="padding-bottom: 2%">กิจกรรมของฉัน</h1>
+                    <h1 class="h1" style="padding-bottom: 2%">กิจกรรมทั้งหมด</h1>
                 </div>
             </div>
             <div class="row">
@@ -104,7 +104,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
                         <div align="center">
-                            <button class="buttonIN">Check in</button>
+                            <!-- <button class="buttonIN">Check in</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -118,7 +118,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
                         <div align="center">
-                            <button class="buttonOUT">Check out</button>
+                            <!-- <button class="buttonOUT">Check out</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -132,7 +132,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
                         </div>
                         <div align="center">
-                            <button class="buttonSUC" disabled>Success</button>
+                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -148,7 +148,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
                         <div align="center">
-                            <button class="buttonSUC" disabled>Success</button>
+                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -162,7 +162,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
                         <div align="center">
-                            <button class="buttonSUC" disabled>Success</button>
+                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -176,7 +176,7 @@
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
                         </div>
                         <div align="center">
-                            <button class="buttonSUC" disabled>Success</button>
+                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
