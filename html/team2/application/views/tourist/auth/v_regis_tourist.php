@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
     body {
-        background-color: white;
+        background-color: #56ae6c;
+    }
+    .w3-btn {
+        width:150px;
+    }
+    
+    input, select {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 </style>
+    <br><br><br>
     <!-- Form Register -->
-    <div class="container py-5">
+    <div class="container py-5" style="background-color: white; border-radius: 25px;">
         <br><br>
-        </h1><h1 class="h1">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
+        </h1><h1 class="h1" style="text-align: center;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
         <br>
-        <form class="container py-5" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>'>
-            <b style="font-size: 30px;">ข้อมูลของคุณ</b><br><br>
+        <form class="container py-5" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+            <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
                 <input type="radio" id ="tus_pre_id1" name="tus_pre_id" value=1>&nbsp;นาย
                 <input type="radio" id ="tus_pre_id2" name="tus_pre_id" value=2>&nbsp;นาง
@@ -22,10 +32,12 @@
             <div class="form-group col-md-6 mb-3">
                 <label for="inputname">ชื่อ</label>
                 <input type="text" class="form-control mt-1" id="tus_firstname" name="tus_firstname" placeholder="ชื่อ" required>
+                <span id="pfatf"></span>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="inputlastname">นามสกุล</label>
                 <input type="text" class="form-control mt-1" id="tus_lastname" name="tus_lastname" placeholder="นามสกุล" required>
+                <span id="pfatf"></span>
             </div>
             </div>
             <div class="row">
@@ -45,10 +57,15 @@
                         <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
                     </div>
             <br>
-            <b style="font-size: 30px;">สร้างรหัสผ่าน</b><br><br>
+            รูปโปรไฟล์ :
+            <input type="file" name="myfile"required>
+            <br><br>
+
+            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
             <div class="form-group col-md-6 mb-3">
                 <label for="username">ชื่อผู้ใช้</label>
                 <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" placeholder="ชื่อผู้ใช้" required>
+                <span id="usernameavailable"></span>
             </div>
             <div class="row">
             <div class="form-group col-md-6 mb-3">
@@ -64,11 +81,18 @@
                 </div>
             </div>
             </div>
-            <button type="submit" id ="next_btn" class="btn btn-success btn-lg px-3">ถัดไป</button>
+            <button type="submit" id ="next_btn" class="w3-button w3-round-large btn btn-success btn-lg px-3" style="color: white;">ถัดไป</button>
             
         </form>
     </div>
-    <script>
+    <script>    
+        var tus_pre_id =" ";
+        var tus_firstname =" ";
+        var tus_lastname =" ";
+        var tus_tel =" ";
+        var tus_email =" ";
+        var tus_username =" ";
+        var tus_password =" ";
         /*
         * 
         * confirmpassword
@@ -88,6 +112,34 @@
                 $('#next_btn').prop('disabled', false);
             }
         }
+    
+
+        function check_username() {
+        let tus_username = $('#tus_username').val();
+        $.ajax({
+            url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_username_tourist_ajax'); ?>',
+            type: "POST",
+            data: {
+                tus_username: tus_username
+
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {
+                    $("#usernameavailable").css({
+                        "color": "red"
+                    });
+
+                    $('#usernameavailable').html("username not available");
+                    $('#next_btn').prop('disabled', true);                   
+                }else{
+                    $('#next_btn').prop('disabled', false);
+                }
+
+            }
+        });
+
+    }
     </script>  
 </body>
 
