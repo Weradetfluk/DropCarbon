@@ -32,7 +32,7 @@ class Da_dcs_entrepreneur extends DCS_model
     }
 
 
-    
+
     public function update_status($status_number)
     {
         $sql = "UPDATE {$this->db_name}.dcs_entrepreneur SET ent_status = ?
