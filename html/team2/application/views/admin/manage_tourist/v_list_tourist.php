@@ -4,7 +4,7 @@
      <div class="container-fluid">
 
          <div class="card card-nav-tabs">
-             <div class="card-header" style="background-color: #60839f">
+             <div class="card-header" style="background-color: #5F9EA0">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
@@ -27,7 +27,7 @@
                          <div class="row">
                              <div class="col-md-12">
                                  <div class="card">
-                                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                                     <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                                          <center>
                                              <h4 class="card-title text-white">ตารางแสดงข้อมูลบัญชีของนักท่องเที่ยว
                                                  </h4>

@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
          <div class="card card-nav-tabs">
-             <div class="card-header" style="background-color: #60839f">
+             <div class="card-header" style="background-color: #5F9EA0">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
@@ -15,11 +15,8 @@
                                  <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="">สถานที่ที่ถูกปฏิเสธ</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
                              </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="">ผู้ใช้ที่ถูกบล็อค</a>
-                            </li>
                          </ul>
                      </div>
                  </div>
@@ -33,7 +30,7 @@
                          <div class="row">
                              <div class="col-md-12">
                                  <div class="card">
-                                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                                     <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                                          <center>
                                              <h4 class="card-title text-white">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
                                          </center>
@@ -110,14 +107,14 @@
                                                                      </button>
 
 
-                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->com_email;  ?>")'>
+                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
                                                                          <i class="material-icons">
                                                                              clear
                                                                          </i>
                                                                      </button>
 
 
-                                                                     <button class="btn " style="font-size:10px;" onclick='view_data( <?php echo $arr_company[$i]->com_id; ?>)'>
+                                                                     <button class="btn " style="font-size:10px;">
                                                                          <i class="material-icons">
                                                                              search
                                                                          </i>
@@ -175,7 +172,7 @@
 
 
 
-
+        <!-- warnning data Modal  -->
          <div class="modal fade" role="dialog" id="datamodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
@@ -244,7 +241,7 @@
                      </div>
                      <div class="modal-body">
                          <p>กรุณาระบุเหตุผล</p>
-                         <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>">
+                         <form method="POST" action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>">
                              <input type="hidden" id="email" name="email">
                              <input type="hidden" id="com_id" name="com_id">
                              <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
@@ -282,58 +279,9 @@
 
              }
 
-
-             function view_data(com_id) {
-                 $.ajax({
-                     type: "POST",
-                     dataType: 'JSON',
-                     data: {
-                         com_id: com_id
-                     },
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_by_id_ajax'); ?>',
-                     success: function(data_detail) {
-                         $('#datamodal').modal();
-                         $('#com_name').val(data_detail['arr_data'][0]['com_firstname'] + " " + data_detail['arr_data'][0]['com_lastname']);
-                         $('#com_tel').val(data_detail['arr_data'][0]['com_tel']);
-                         $('#com_id_card').val(data_detail['arr_data'][0]['com_id_card']);
-                         $('#com_email').val(data_detail['arr_data'][0]['com_email']);
-                         $('#com_birthdate').val(data_detail['arr_data'][0]['com_birthdate']);
-
-
-                         console.log(data_detail['arr_file']);
-                         let html_code = '';
-                         let i = 1;
-
-                         data_detail['arr_file'].forEach((row_file, index_file) => {
-                             let fileName = row_file['doc_path'];
-                             html_code += '<button type="button" id="download' + i + '" class="btn btn-primary"';
-                             html_code += 'value ="';
-                             html_code += row_file['doc_path'] + '">download ' + i + '</button>';
-                             i += 1;
-                         });
-
-                         $(document).on("click", ".btn", function() {
-                             // alert($(this).attr("id"))
-                             // console.log($(this).attr("value"));
-                             doc_download_ajax($(this).attr("value"));
-
-                         });
-
-                         $('#file_dowload').html(html_code);
-
-
-                     },
-                     error: function() {
-                         alert('ajax error working');
-                     }
-                 });
-             }
-
-
-
              /*
-              * confirm_approve
-              * open modal id = Aprovemodal 
+              * confirm_reject
+              * open modal id = Rejectent
               * @input 
               * @output modal to reject  modal 
               * @author Weradet Nopsombun
@@ -341,10 +289,10 @@
               * @Update -
               */
 
-             function confirm_reject(com_id, com_email) {
+             function confirm_reject(com_id, ent_email) {
                  $('#Rejectent').modal();
 
-                 $('#email').val(com_email);
+                $('#email').val(ent_email);
                  $('#com_id').val(com_id);
 
                  $('#rejected').click(function() {
@@ -395,6 +343,7 @@
                      }
                  });
              }
+
 
              /*
               * doc_download
