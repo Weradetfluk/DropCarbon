@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                      <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center><h4 class="card-title text-white">ตารางจัดการสถานที่</h4></center>
                       </div>
                       <br>
@@ -14,7 +14,7 @@
                       </div>
                       <div class="table-responsive" id="data_entre">
                         <table class="table table-hover table-striped ">
-                          <thead class="bg-secondary text-white">
+                          <thead  class="text-white" style="background-color: #d8b7a8; text-align: center;">
                             <tr>
                               <th>ลำดับ</th>
                               <th>ชื่อสถานที่</th>
@@ -22,7 +22,7 @@
                               <th>ดำเนินการ</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody class="list">
                             <?php for($i = 0; $i < count($arr_company); $i++){?>
                               <tr>
                                 <td><?php echo $i+1;?></td>

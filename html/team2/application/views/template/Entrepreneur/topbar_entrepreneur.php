@@ -9,9 +9,9 @@
 
 <div class="wrapper ">
     <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
-    <div class="logo text-center bg-success text-white">
-          ผู้ประกอบการ
-        </a></div>
+    <div class="logo text-center text-white " style="background-color: #5F9EA0; height: 82px;">
+      <h5 style=" margin-top:10px;">DropCarbonSystem</h5>
+      </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
@@ -37,7 +37,7 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:;">Drop Carbon System</a>
