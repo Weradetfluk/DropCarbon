@@ -36,8 +36,8 @@ if (!$this->session->has_userdata("username")) {
                         <a class="nav-link" href="#"><?= $point ?> point</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="#"><i class="bi bi-person "></i><?php echo $this->session->userdata("Tourist_name"); ?></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                        <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="bi bi-person"></i><?php echo $this->session->userdata("Tourist_name"); ?></a>
+                        <div class="dropdown-menu">
                             <a class="dropdown-item" href="<?php echo base_url() . 'Tourist/Auth/Login_tourist/logout' ?>">ออกจากระบบ</a>
                         </div>
                     </li>
