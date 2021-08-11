@@ -80,7 +80,7 @@ class Login_tourist extends DCS_controller
             $tus_id = $result->tus_id;
 
             $this->set_session($tus_username, $tus_name, $tus_id);
-
+            //echo $tus_name;
             redirect("Landing_page_tourist/Landing_page_tourist");
         } else {
             $data_warning = array();
