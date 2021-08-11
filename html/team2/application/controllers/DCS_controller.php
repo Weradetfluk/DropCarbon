@@ -189,6 +189,15 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Landing_page/footer');
     }
 
+    public function output_edit_tourist($data)
+    {
+        $this->load->view('template/Tourist/head_tourist');
+        $this->load->view('template/Tourist/javascript_tourist');
+        $this->load->view('template/Tourist/topbar_tourist');
+        $this->load->view('tourist/manage_tourist/v_edit_tourist', $data);
+        $this->load->view('template/Tourist/footer');
+    }
+
 
   /*
     * email_send

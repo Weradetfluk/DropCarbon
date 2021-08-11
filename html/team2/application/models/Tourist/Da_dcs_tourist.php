@@ -62,4 +62,12 @@ class Da_dcs_tourist extends DCS_model
 
         $this->db->query($sql, array($status_number, $this->tus_id));
     }
+
+    public function update_tourist()
+    {
+        $sql = "UPDATE {$this->db_name}.dcs_tourist 
+                SET tus_pre_id = ?, tus_firstname = ?, tus_lastname = ?, tus_tel = ?, tus_birthdate = ?,  tus_email = ?
+                WHERE tus_id = ?";
+        $this->db->query($sql, array($this->tus_pre_id, $this->tus_firstname, $this->tus_lastname, $this->tus_tel, $this->tus_birthdate, $this->tus_email, $this->tus_id));
+    }
 }

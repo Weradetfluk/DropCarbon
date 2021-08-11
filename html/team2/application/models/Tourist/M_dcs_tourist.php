@@ -91,4 +91,12 @@ class M_dcs_tourist extends Da_dcs_tourist
             return false;
         }
     }
+
+    function get_tourist_by_id()
+    {
+        $sql = "SELECT * FROM {$this->db_name}.dcs_tourist  where tus_id = ? ";
+        $query = $this->db->query($sql, array($this->tus_id));
+     
+        return $query;
+    }
 }
