@@ -102,19 +102,19 @@
                                                                  <td style='text-align: center;'>
 
 
-                                                                     <button class="btn btn-success" id="accept" style="font-size:10px;" onclick="confirm_approve(  <?php echo $arr_company[$i]->com_id; ?>)">
+                                                                     <button class="btn btn-success" id="accept" style="font-size:10px; padding:12px;" onclick="confirm_approve(  <?php echo $arr_company[$i]->com_id; ?>)">
                                                                          <i class="material-icons">done</i>
                                                                      </button>
 
 
-                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px;" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
+                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px; padding:12px;" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
                                                                          <i class="material-icons">
                                                                              clear
                                                                          </i>
                                                                      </button>
 
 
-                                                                     <button class="btn " style="font-size:10px;">
+                                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;">
                                                                          <i class="material-icons">
                                                                              search
                                                                          </i>
