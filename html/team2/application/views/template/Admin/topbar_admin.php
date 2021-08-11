@@ -75,7 +75,7 @@ if (!$this->session->has_userdata("username")) {
 
 
   <div class="sidebar"  data-color="purple" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
-    <div class="sidebar-wrapper" style="margin-top: 60px;">
+    <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav"  id="active_menu">
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'?> "">

@@ -41,7 +41,7 @@
 <div class="wrapper ">
     <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
    
-      <div class="sidebar-wrapper" style="margin-top: 60px;">
+      <div class="sidebar-wrapper" style="margin-top: 70px;">
         <ul class="nav">
           <li class="nav-item  ">
             <a class="nav-link" href="#">
