@@ -37,12 +37,45 @@ if (!$this->session->has_userdata("username")) {
 
 <!--  side bar -->
 
+
+
+
 <div class="wrapper ">
-  <div class="sidebar"  data-color="purple" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
-    <div class="logo text-center text-white " style="background-color: #5F9EA0; height: 82px;">
-      <h5 style=" margin-top:10px;">DropCarbonSystem</h5>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+           <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav nav-moblie-menu">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+                <?php echo $this->session->userdata("Admin_name"); ?>
+                <p class="d-lg-none d-md-block">
+                  Account
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">ออกจากระบบ</a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    <div class="sidebar-wrapper">
+    </nav>
+
+
+  <div class="sidebar"  data-color="purple" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
+    <div class="sidebar-wrapper" style="margin-top: 60px;">
       <ul class="nav"  id="active_menu">
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'?> "">
@@ -86,36 +119,7 @@ if (!$this->session->has_userdata("username")) {
   </div>
   <div class="main-panel">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
-      <div class="container-fluid">
-        <div class="navbar-wrapper">
-           <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav nav-moblie-menu">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">person</i>
-                <?php echo $this->session->userdata("Admin_name"); ?>
-                <p class="d-lg-none d-md-block">
-                  Account
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">ออกจากระบบ</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    
 
 
     
