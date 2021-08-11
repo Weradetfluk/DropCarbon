@@ -7,7 +7,7 @@ class M_dcs_company extends Da_dcs_company
     public function get_all()
     {
         $sql = "SELECT * FROM dcs_company 
-                WHERE com_status != 3 AND com_status != 4 AND com_ent_id = ?";
+                WHERE  com_status != 4 AND com_ent_id = ?";
         return $this->db->query($sql, array($this->com_ent_id));
     }
 

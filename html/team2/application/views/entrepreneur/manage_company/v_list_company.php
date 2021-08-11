@@ -13,27 +13,45 @@
                         <a class="btn btn-success" style="float: right;" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_add/show_add_company'?>">เพิ่มสถานที่</a>
                       </div>
                       <div class="table-responsive" id="data_entre">
-                        <table class="table table-hover table-striped ">
+                        <table class="table table-hover table-striped " style="text-align: center;">
                           <thead  class="text-white" style="background-color: #d8b7a8; text-align: center;">
                             <tr>
                               <th>ลำดับ</th>
                               <th>ชื่อสถานที่</th>
                               <th>รายละเอียด</th>
+                              <th>สถานะ</th>
                               <th>ดำเนินการ</th>
                             </tr>
                           </thead>
                           <tbody class="list">
-                            <?php for($i = 0; $i < count($arr_company); $i++){?>
-                              <tr>
-                                <td><?php echo $i+1;?></td>
-                                <td><?php echo $arr_company[$i]->com_name;?></td>
-                                <td><?php echo $arr_company[$i]->com_description;?></td>
-                                <td style="text-align: center;">
-                                  <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">edit</i></a>
-                                  <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="material-icons">clear</i></button>
-                                  <a class="btn btn-info" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_detail/show_detail_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">search</i></a>
-                                </td>
-                              </tr>
+                            <?php if(sizeof($arr_company) == 0) {
+                                  echo "<td colspan = '5'>";
+                                  echo "ไม่มีข้อมูลในตารางนี้";
+                                  echo "</td>";
+                                } else {
+                                  for ($i = 0; $i < count($arr_company); $i++) { ?>
+                                    <tr>
+                                      <td><?php echo $i+1;?></td>
+                                      <td><?php echo $arr_company[$i]->com_name;?></td>
+                                      <td><?php echo $arr_company[$i]->com_description;?></td>
+
+                                      <?php if($arr_company[$i]->com_status == 1){?>
+                                        <td style="color: #CCCC00;">รออนุมัติ</td>
+                                      <?php }?>
+                                      <?php if($arr_company[$i]->com_status == 2){?>
+                                        <td style="color: #669900;">อนุมัติ</td>
+                                      <?php }?>
+                                      <?php if($arr_company[$i]->com_status == 3){?>
+                                        <td style="color: red;">ปฏิเสธ</td>
+                                      <?php }?>
+
+                                      <td>
+                                        <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">edit</i></a>
+                                        <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="material-icons">clear</i></button>
+                                        <a class="btn btn-info" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_detail/show_detail_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">search</i></a>
+                                      </td>
+                                    </tr>
+                                  <?php }?>
                             <?php }?>
                           </tbody>
                         </table>
@@ -90,7 +108,7 @@
           type: "success"},
           function() {
             location.reload();
-        })
+          })
  
       },
         error: function() {

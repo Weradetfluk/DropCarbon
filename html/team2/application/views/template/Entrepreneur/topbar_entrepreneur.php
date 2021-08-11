@@ -9,7 +9,7 @@
  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Drop Carbon System</a>
+            <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -44,7 +44,7 @@
       <div class="sidebar-wrapper" style="margin-top: 70px;">
         <ul class="nav">
           <li class="nav-item  ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
               <i class="material-icons">dashboard</i>
               <p>จัดการสถานที่</p>
             </a>
