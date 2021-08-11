@@ -5,39 +5,8 @@
 //      exit();
 //  }
  ?>
- 
-
-<div class="wrapper ">
-    <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
-    <div class="logo text-center text-white " style="background-color: #5F9EA0; height: 82px;">
-      <h5 style=" margin-top:10px;">DropCarbonSystem</h5>
-      </div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item  ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">dashboard</i>
-              <p>จัดการสถานที่</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
-              <p>จัดการกิจกรรม</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">bubble_chart</i>
-              <p>จัดการโปรโมชัน</p>
-            </a>
-          </li>        
-        </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:;">Drop Carbon System</a>
@@ -68,6 +37,35 @@
           </div>
         </div>
       </nav>
+
+<div class="wrapper ">
+    <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
+   
+      <div class="sidebar-wrapper" style="margin-top: 60px;">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">dashboard</i>
+              <p>จัดการสถานที่</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">person</i>
+              <p>จัดการกิจกรรม</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">bubble_chart</i>
+              <p>จัดการโปรโมชัน</p>
+            </a>
+          </li>        
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      
 
 
 
