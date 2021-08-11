@@ -8,15 +8,15 @@
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
                         <ul class="nav nav-tabs" data-tabs="tabs">
-                        <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
-                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
                                             <!-- table approve ajax  -->
                                             <table class="table" style="text-align: center;" id="entre_tale_approve">
-                                                <thead class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                                                <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                                     <tr>
                                                         <th style="text-align: center;font-size: 16px;">ลำดับ</th>
                                                         <th style="text-align: center;font-size: 16px;">ชื่อสถานที่</th>
@@ -98,10 +98,10 @@
 
                                                                 <!-- column ดำเนินการ -->
                                                                 <td style='text-align: center;'>
-                                                                    <button class="btn btn-danger" id="accept" style="font-size:10px;" onclick="confirm_block(  <?php echo $arr_company_approve[$i]->ent_id; ?>)">
-                                                                        <i class="material-icons"><span class="material-icons-outlined">
-                                                                                highlight_off
-                                                                            </span></i>
+                                                                    <button class="btn " style="font-size:10px;">
+                                                                        <i class="material-icons">
+                                                                            search
+                                                                        </i>
                                                                     </button>
 
                                                                 </td>

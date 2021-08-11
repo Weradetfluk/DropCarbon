@@ -8,15 +8,15 @@
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
                         <ul class="nav nav-tabs" data-tabs="tabs">
-                        <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
-                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
                                             <!-- table approve ajax  -->
                                             <table class="table" style="text-align: center;" id="entre_tale_reject">
-                                                <thead class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                                                <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                                     <tr>
                                                         <th style="text-align: center;font-size: 16px;">ลำดับ</th>
                                                         <th style="text-align: center;font-size: 16px;">ชื่อสถานที่</th>
@@ -98,10 +98,10 @@
 
                                                                 <!-- column ดำเนินการ -->
                                                                 <td style='text-align: center;'>
-                                                                    <button class="btn btn-danger" id="accept" style="font-size:10px;" onclick="confirm_reject(  <?php echo $arr_company_reject[$i]->com_id; ?>)">
-                                                                        <i class="material-icons"><span class="material-icons-outlined">
-                                                                                highlight_off
-                                                                            </span></i>
+                                                                    <button class="btn " style="font-size:10px;">
+                                                                        <i class="material-icons">
+                                                                            search
+                                                                        </i>
                                                                     </button>
 
                                                                 </td>
@@ -129,63 +129,63 @@
         </div>
 
 
-        <div class="modal fade" role="dialog"  id="datamodal">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title">รายละเอียด</h5>
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                         </button>
-                     </div>
-                     <div class="modal-body">
-                         <form>
-                       
-                             <div class="form-group">
-                                 <label>เหตุผลที่ปฏิเสธ</label>
-                                 <input type="text" id="enr_admin_reason" class="form-control" disabled>
-                             </div>
-                                
-                        
-                             <div class="form-group">
-                                     <label>ผู้ปฏิเสธ</label>
-                                     <input type="text" class="form-control" id="adm_name" disabled>
-                                 </div>  
+        <div class="modal fade" role="dialog" id="datamodal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">รายละเอียด</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
 
-                            
-                            
-
-                             </div>
-                            
-
-                         </form>
+                            <div class="form-group">
+                                <label>เหตุผลที่ปฏิเสธ</label>
+                                <input type="text" id="enr_admin_reason" class="form-control" disabled>
+                            </div>
 
 
-                     </div>
-                 </div>
-             </div>
+                            <div class="form-group">
+                                <label>ผู้ปฏิเสธ</label>
+                                <input type="text" class="form-control" id="adm_name" disabled>
+                            </div>
 
 
 
- <script>
-     function view_data_detail_reject(com_id) {
 
-         $.ajax({
-             type: "POST",
-             dataType: 'JSON',
-             data: {
-                 com_id: com_id
-             },
-             url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_company_by_id_ajax'); ?>',
-             success: function(data_detail) {
-                 $('#datamodal').modal();
-                 console.log(data_detail);
-                 $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
-                 $('#adm_name').val(data_detail[0]['adm_name']);
-             },
-             error: function() {
-                 alert('ajax error working');
-             }
-         });
-     }
- </script>
+                    </div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            function view_data_detail_reject(com_id) {
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {
+                        com_id: com_id
+                    },
+                    url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_company_by_id_ajax'); ?>',
+                    success: function(data_detail) {
+                        $('#datamodal').modal();
+                        console.log(data_detail);
+                        $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
+                        $('#adm_name').val(data_detail[0]['adm_name']);
+                    },
+                    error: function() {
+                        alert('ajax error working');
+                    }
+                });
+            }
+        </script>
