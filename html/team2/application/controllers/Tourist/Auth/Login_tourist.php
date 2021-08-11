@@ -81,7 +81,7 @@ class Login_tourist extends DCS_controller
 
             $this->set_session($tus_username, $tus_name, $tus_id);
 
-            redirect("Landing_page/Register/Landing_page");
+            redirect("Landing_page_tourist/Landing_page_tourist");
         } else {
             $data_warning = array();
             $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
