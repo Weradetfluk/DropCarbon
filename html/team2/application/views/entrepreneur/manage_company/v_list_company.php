@@ -28,7 +28,7 @@
                                 <td><?php echo $i+1;?></td>
                                 <td><?php echo $arr_company[$i]->com_name;?></td>
                                 <td><?php echo $arr_company[$i]->com_description;?></td>
-                                <td>
+                                <td style="text-align: center;">
                                   <a class="btn btn-warning" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_edit/show_edit_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">edit</i></a>
                                   <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name?>', <?php echo $arr_company[$i]->com_id?>)"><i class="material-icons">clear</i></button>
                                   <a class="btn btn-info" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_detail/show_detail_company/'.$arr_company[$i]->com_id;?>"><i class="material-icons">search</i></a>

@@ -17,7 +17,7 @@ class Register_tourist extends DCS_controller {
 
 	public function insert_tourist() {
         $this->load->model('Tourist/M_dcs_tourist', 'tr');
-        $this->load->model('profile_picture/M_dcs_profile_picture', 'mpic');
+        $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
         $this->tr->tus_pre_id = intval($this->input->post('tus_pre_id'));
         $this->tr->tus_firstname = $this->input->post('tus_firstname');
         $this->tr->tus_lastname = $this->input->post('tus_lastname');

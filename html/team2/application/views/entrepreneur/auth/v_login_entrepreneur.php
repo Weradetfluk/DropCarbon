@@ -1,69 +1,87 @@
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
-<nav class="navbar" style="color: #81b14f;">
-    <div class="container">
-        <a class="navbar-brand" href="javascript:;">DropCarbon for Entrepreneur</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
 
-            </ul>
-        </div>
+
+<style>
+   
+
+</style>
+
+
+<!-- navbar -->
+
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
+    <h2 style="color: #66CC33; padding: 10px;">DCS Entrepreneur</h2>
     </div>
 </nav>
-<div class="content">
-    <div class="container-fluid" style="margin-top: 100px;">
-        <div class="container">
-            <div class="row">
 
-                <div class="col-lg-5 col-md-6 ml-auto mr-auto">
-                    <div class="card card-login">
-                        <div class="card-header text-center" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+
+
+
+<div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
+    <div class="container" style="margin-top: 200px; ">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <form action="<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/input_login_form'; ?>" method="POST">
+                        <div class="card-header text-center" style="background-color: #5F9EA0;">
                             <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
                             <div class="social-line">
+                                <a href="#pablo" class="btn btn-just-icon btn-link  text-white">
+                                    <i class="material-icons">facebook</i>
+                                    <div class="ripple-container"></div>
+                                </a>
 
                             </div>
                         </div>
-                        <div class="card-body">
-                            <!-- form login  -->
 
-                            <form action="<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/input_login_form'; ?>" method="POST">
-                                <div class="input-group">
+                        <div class="card-body">
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
+                                            <i class="material-icons">face</i>
                                         </span>
-                                    </div class="form-group">
-                                    <!-- <label for="username">ชื่อผู้ใช้งาน</label> -->
-                                    <input type="text" class="form-control" class="form-control" id="username" placeholder="ชื่อผู้ใช้" name="username">
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"></span>
                                     </div>
-                                    <!-- <label for="password">รหัสผ่าน</label> -->
-                                    <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน" name="password">
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username">
                                 </div>
-                                <span style="color: red; margin-left: 30px;">
-                                    <?php
-                                    if ($warning != NULL) {
-                                        echo $warning;
-                                    }
-                                    ?>
-                                </span>
+                            </span>
+                            <div class="input-group" style="padding: 10px;">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password">
+                            </div></span>
+                            <span style="color: red; margin-left: 30px;">
+                                <?php
+                                if ($warning != NULL) {
+                                    echo $warning;
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        <div class="footer" style="text-align: center;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col">
+                                        <a href="" style="color: #5F9EA0;">ลืมรหัสผ่านใช่หรือไม่</a>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
-                            <div class="card-footer">
-                                <button type="submit" style="margin-left: 150px;" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
-                            </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
