@@ -153,14 +153,11 @@
                                     <div class="row">
                                         <div class="col-lg-4"> 
                                             <label for="com_lat">Latitude</label>                             
-                                            <input type="text" id="com_lat" name="com_lat" class="form-control" value="" oninput="">
+                                            <input type="text" id="com_lat" name="com_lat" class="form-control" value="">
                                         </div>
                                         <div class="col-lg-4"> 
                                             <label for="com_lon">Longitude</label>
                                             <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
-                                        </div>
-                                        <div> 
-                                            <button class="btn btn-success" style="border-radius: 50%;" onclick="show_maker(com_lon, com_lat)"><i class="material-icons">done</i></button>
                                         </div>
                                     </div>
                                 </div>
