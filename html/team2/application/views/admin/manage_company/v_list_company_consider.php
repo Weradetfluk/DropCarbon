@@ -282,10 +282,10 @@
              /*
               * confirm_reject
               * open modal id = Rejectent
-              * @input 
+              * @input com_id, ent_email
               * @output modal to reject  modal 
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-10
               * @Update -
               */
 

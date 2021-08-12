@@ -148,8 +148,8 @@
               * open modal id = blockmodal 
               * @input 
               * @output modal to confirm block user 
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-27
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-02
               * @Update -
               */
 
@@ -168,10 +168,10 @@
              /*
               * block_user
               * send ajax into block_user controller
-              * @input ent_id
+              * @input tus_id
               * @output sweet alert
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-27
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-02
               * @Update -
               */
 

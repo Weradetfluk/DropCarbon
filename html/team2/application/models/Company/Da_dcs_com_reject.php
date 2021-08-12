@@ -13,6 +13,15 @@ class Da_dcs_com_reject extends Dcs_model
        parent::__construct();
     }
 
+    /*
+    * insert
+    * insert email detail to database
+    * @input -
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-02
+    * @Update -
+    */
     public function insert(){
         $sql = "INSERT INTO dcs_company_reject(com_admin_reason, com_ent_id, com_adm_id) VALUES(?, ?, ?)";
         $this->db->query($sql, array( $this->com_admin_reason, $this->com_ent_id, $this->com_adm_id));

@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_block_tourist extends DCS_controller
 {
     /*
-    * @author Weradet Nopsombun 62160110
+    * @author Nantasiri Saiwaew 62160093
     */
 
     public function __construct()
@@ -84,6 +84,15 @@ class Admin_block_tourist extends DCS_controller
   
     }
     
+    /*
+    * block_user_ajax
+    * For block tourist user with ajax
+    * @input 
+    * @output -
+    * @author Nantasirir Saiwaew 62160093
+    * @Create Date 2564-08-01
+    * @Update Date -
+    */
     public function block_user_ajax()
     {
         $this->load->model('Tourist/M_dcs_tourist', 'mdct');

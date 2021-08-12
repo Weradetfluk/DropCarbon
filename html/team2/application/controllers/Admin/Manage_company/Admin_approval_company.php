@@ -108,11 +108,11 @@ class Admin_approval_company extends DCS_controller
 
    /*
     * show_data_approve_ajax
-    * get all data company approve  and show table by ajax
+    * get all data company reject  and show table by ajax
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-07-17
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-10
     * @Update Date -
     */
   public function show_data_reject()
@@ -126,7 +126,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_reject'] = $this->mdcc->get_search($value_search,  $number_status)->result();
     } else {
 
-      $all_count = $this->mdcc->get_count_all($number_status); //get all count approve
+      $all_count = $this->mdcc->get_count_all($number_status); //get all count 
 
       $config =  $this->get_config_pagination($all_count, 'Admin/Manage_company/Admin_approval_company/get_data_reject"');
 
@@ -226,6 +226,15 @@ class Admin_approval_company extends DCS_controller
     $this->mdcc->update_status($status_number);
   }
 
+   /*
+    * reject_company
+    * change com_status and send email to entrepreneur 
+    * @input 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-10
+    * @Update Date -
+    */
   public function reject_company()
   {
 
@@ -246,8 +255,6 @@ class Admin_approval_company extends DCS_controller
 
       //load model for save rejected data
       $this->load->model('Company/M_dcs_com_reject', 'mdcre');
-
-
 
 
       //save data reject to data base

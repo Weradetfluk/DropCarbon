@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_list_tourist extends DCS_controller
 {
   /*
-    * @author Weradet Nopsombun 62160110
+    * @author Nantasiri Saiwaew 62160093
     */
 
   public function __construct()
@@ -20,7 +20,7 @@ class Admin_list_tourist extends DCS_controller
     * call function in Dcs_controller
     * @input 
     * @output -
-    * @author Nantasiri Saiwaew
+    * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-01
     * @Update Date -
     */
@@ -36,8 +36,8 @@ class Admin_list_tourist extends DCS_controller
     * and show table all tourist user
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-07-17
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-01
     * @Update Date -
     */
 
