@@ -153,6 +153,15 @@
         }
     }
 
+    /*
+     * 
+     * check_username
+     *@input tus_username
+     *@parameter -
+     *output  username validation
+     *@author Thanisorn thumsawanit 62160088
+     *@Create Date 2564-08-10
+     */
 
     function check_username() {
         let tus_username = $('#tus_username').val();

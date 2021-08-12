@@ -6,7 +6,7 @@ class Register_tourist extends DCS_controller {
         parent::__construct();
     }
     /*
-    * insert_tourist
+    * show_regis_tourist
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
     */
@@ -15,6 +15,12 @@ class Register_tourist extends DCS_controller {
         $this->output_regis('tourist/auth/v_regis_tourist');
     }
 
+    /*
+    * insert_tourist
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-07-31
+    * @Update Date 2564-08-11
+    */
 	public function insert_tourist() {
         $this->load->model('Tourist/M_dcs_tourist', 'tr');
         $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
@@ -57,11 +63,16 @@ class Register_tourist extends DCS_controller {
                 $this->mpic->insert_img();
             
         }else{
-            redirect("Tourist/Auth/Register_tourist/show_regis_tourist");
+            redirect("Tourist/Auth/Register_tourist/show_regis_tourist");//redirect ไปที่หน้าฟอร์มกรอกข้อมูล
         }
-        redirect('Landing_page/Register/Select_register');
+        redirect('Landing_page/Register/Select_register');//redirect ไปที่หน้าหลัก
     }
 
+    /*
+    * check_username_tourist_ajax
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-08-10
+    */
     public function check_username_tourist_ajax(){
         $this->load->model('Tourist/M_dcs_tourist', 'tr');
         $this->tr->tus_username = $this->input->post('tus_username');
