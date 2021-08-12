@@ -3,11 +3,6 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 ?>
 
 
-<style>
-   
-
-</style>
-
 
 <!-- navbar -->
 
@@ -72,7 +67,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                 </div>
                                 <div class="row py-2">
                                     <div class="col">
-                                        <a href="" style="color: #5F9EA0;">ลืมรหัสผ่านใช่หรือไม่</a>
+                                        <a href="<?php echo site_url() . 'Admin/Auth/Login_admin/forgot_password_page'; ?>" style="color: #5F9EA0;">ลืมรหัสผ่านใช่หรือไม่</a>
                                     </div>
                                 </div>
                             </div>

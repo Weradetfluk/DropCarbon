@@ -18,7 +18,7 @@ class Login_admin extends DCS_controller
     * index 
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -35,7 +35,7 @@ class Login_admin extends DCS_controller
     * show warnning 
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -52,7 +52,7 @@ class Login_admin extends DCS_controller
     * Login admin and get data 
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -66,7 +66,7 @@ class Login_admin extends DCS_controller
 
     //$password = md5($password);
 
-    $this->load->model('Admin/M_dcs_login_admin', 'login');  //load database
+    $this->load->model('Admin/M_dcs_admin', 'login');  //load database
 
     $this->login->adm_username =  $username;
     $this->login->adm_password = $password;
@@ -97,7 +97,7 @@ class Login_admin extends DCS_controller
     * Logout and remove session
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -113,7 +113,7 @@ class Login_admin extends DCS_controller
     * set session data
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -132,7 +132,7 @@ class Login_admin extends DCS_controller
     * remove session data
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -142,4 +142,172 @@ class Login_admin extends DCS_controller
     $this->session->unset_userdata("username");
     $this->session->unset_userdata("Admin_name");
   }
+
+
+    /*
+    * forgot_password_page
+    * load view forgot pass
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110 
+    * @Create Date 2564-08-12
+    * @Update -
+    */
+
+
+  public function forgot_password_page(){
+    $this->output_login_admin('admin/auth/v_forgot_password_admin');
+
+  }
+
+
+
+
+
+    /*
+    * check_email_admin
+    * check email in database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110 
+    * @Create Date 2564-08-12
+    * @Update -
+    */
+
+
+
+  public function check_email_admin(){
+
+    $email = $this->input->post('user_email');
+
+    $this->load->model('Admin/M_dcs_admin', 'login');  //load database
+
+    $this->login->adm_email = $email;
+
+    $result =  $this->login->check_email();
+
+
+    if($result){
+      echo 1;
+
+      $this->send_mail_reset($email);
+
+    }else{
+      echo 2;
+    }
+    
+  }
+
+  /*
+    * send_mail_reset
+    * check email in database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110 
+    * @Create Date 2564-08-12
+    * @Update -
+    */
+
+  public function send_mail_reset($email){
+
+
+
+    // set userpassword in token 
+    $token = rand(1000,9999);
+  
+    
+    $this->load->model('Admin/M_dcs_admin', 'login');  //load database
+
+    $this->login->adm_email = $email;
+
+    $this->login->update_pass_token($token);
+
+      // Load PHPMailer library
+      $this->load->library('phpmailer_lib');
+  
+      // PHPMailer object
+      $mail = $this->phpmailer_lib->load();
+  
+      // SMTP configuration
+      $mail->isSMTP();
+      $mail->Host     = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'weradet2543@gmail.com';
+      $mail->Password = 'sykildxigujdlfnz';
+      $mail->SMTPSecure = 'tls';
+      $mail->Port     = 587;
+      $mail->charSet = "UTF-8";
+  
+      $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
+  
+  
+      // Add a recipient
+      $mail->addAddress($email);
+  
+      // Email subject
+      $mail->Subject = "Reset Password"; 
+  
+      // Set email format to HTML
+      $mail->isHTML(true);
+  
+      // Email body content
+      $mail_content = "<h1>"."กรุณาคลิกที่ลิ้งด้านล่างเพื่อเปลี่ยนรหัสผ่าน"."</h1><br>" ."<a href='".base_url('Admin/Auth/Login_admin/reset_password_page?token=').$token."'>Reset Password</a>";
+      $mail->Body = $mail_content;
+      if (!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+      }
+  }
+
+
+
+
+
+   /*
+    * reset_password_page
+    * check email in database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110 
+    * @Create Date 2564-08-12
+    * @Update -
+    */
+
+
+
+  public function reset_password_page(){
+    $data['token'] = $this->input->get('token');
+    $this->output_login_admin('admin/auth/v_reset_password_admin',$data);
+  }
+
+
+
+    /*
+    * update_password_ajax
+    * check email in database
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110 
+    * @Create Date 2564-08-12
+    * @Update -
+    */
+
+
+  public function update_password_ajax(){
+    $password = $this->input->post('password');
+
+    $token = $this->input->post('token');
+
+    $this->load->model('Admin/M_dcs_admin', 'login');  //load database
+
+    $this->login->adm_password = $password;
+
+    $this->login->update_pass($token);
+
+
+  }
+
+
+
+
 }

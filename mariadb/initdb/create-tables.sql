@@ -32,6 +32,7 @@ USE `team2`;
 CREATE TABLE `dcs_admin` (
   `adm_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
   `adm_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adm_email` varchar(30) NULL,
   `adm_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `adm_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `adm_status` int(1) DEFAULT 1
