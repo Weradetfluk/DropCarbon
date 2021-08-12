@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                <div class="card" style="border-radius: 25px;">
+                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
                         <center><h4 class="card-title text-white">ตารางจัดการสถานที่</h4></center>
                       </div>
                       <br>

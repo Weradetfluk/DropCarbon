@@ -29,12 +29,13 @@ class Company_edit extends DCS_controller{
     * @output -
     * @author Suwapat Saowarod
     * @Create Date 2021-07-19
-    * @Update Date -
+    * @Update Date 2021-08-12
     */
      public function show_edit_company($com_id){
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_id=$com_id;
         $data['arr_company']=$this->mcom->get_by_id()->result();
+      //   print_r($data['arr_company']);
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');

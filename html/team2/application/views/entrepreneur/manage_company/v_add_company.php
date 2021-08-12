@@ -8,17 +8,13 @@
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script>
         var map, vectorLayer, selectedFeature;
-        var lat = 13.286340;
-        var lon = 100.927170;
-        // console.log(lat + ' ' + lon);
         var zoom = 16;
         var curpos = new Array();
         var markers = new OpenLayers.Layer.Markers("Markers");
         var position;
-
         var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
         var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        var cntrposition = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+       
 
         OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
             initialize: function (name, options) {
@@ -32,10 +28,10 @@
             },
         });
 
-        function init() {
-            console.log(lat + ' ' + lon);
-            $('#com_lat').val(lat);
-            $('#com_lon').val(lon);
+        function init(lat, lon) {
+            var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
+            // console.log(lat, lon);
+            
             map = new OpenLayers.Map("map");
             var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
             map.addLayer(cycleLayer);
@@ -93,9 +89,19 @@
             map.setCenter(lonLat, zoom);
         }
         
+        function set_lat_lon(){
+            navigator.geolocation.getCurrentPosition((position) => {
+                $('#com_lat').val(position.coords.latitude);
+                $('#com_lon').val(position.coords.longitude);
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                init(lat, lon);
+            });
+        }
+
     </script>
 </head>
-<body onload='init();'>
+<body onload='set_lat_lon();'>
 
 <div class="content" >
     <div class="container-fluid">
@@ -141,9 +147,25 @@
                                     <label for="com_file">รูปภาพประกอบสถานที่</label>
                                 </div>
                                 <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple required><br><br>                                
-                                <!-- lat lon map -->                               
-                                <input type="hidden" id="com_lat" name="com_lat" value="">
-                                <input type="hidden" id="com_lon" name="com_lon" value=""><br>
+                                
+                                <!-- lat lon map --> 
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-4"> 
+                                            <label for="com_lat">Latitude</label>                             
+                                            <input type="text" id="com_lat" name="com_lat" class="form-control" value="" oninput="">
+                                        </div>
+                                        <div class="col-lg-4"> 
+                                            <label for="com_lon">Longitude</label>
+                                            <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
+                                        </div>
+                                        <div> 
+                                            <button class="btn btn-success" style="border-radius: 50%;" onclick="show_maker(com_lon, com_lat)"><i class="material-icons">done</i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <br>
                                 <div class="container-fluid">
                                     <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
                                     <table class="table table-responsive" >
