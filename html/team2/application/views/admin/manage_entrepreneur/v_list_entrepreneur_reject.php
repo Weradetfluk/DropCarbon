@@ -165,6 +165,15 @@
 
 
  <script>
+      /*
+      * view_data_detail_reject
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to confirm approve modal
+      * @author Weradet Nopsombun
+      * @Create Date 2564-07-27
+      * @Update -
+      */
      function view_data_detail_reject(ent_id) {
 
          $.ajax({

@@ -292,7 +292,7 @@
       * @input 
       * @output modal to confirm approve modal
       * @author Weradet Nopsombun
-      * @Create Date 2564-07-17
+      * @Create Date 2564-07-27
       * @Update -
       */
      function view_data(ent_id) {

@@ -21,7 +21,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * call function in Dcs_controller
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update Date -
       */
@@ -36,7 +36,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur not approve and show table
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update Date 2564-07-31
       */
@@ -67,7 +67,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur approve  and show table by ajax
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update Date -
       */
@@ -101,7 +101,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur approve  and show table
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-08-1
       * @Update Date -
       */
@@ -135,7 +135,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur approve  and show table
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-08-1
       * @Update Date -
       */
@@ -167,7 +167,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur by id
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-08-03
       * @Update Date
       */
@@ -191,7 +191,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get all data entrepreneur by id
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-08-01
       * @Update Date
       */
@@ -213,7 +213,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * get_config_pagination codeigniter "1 2 3 4..." page
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-08-01
       * @Update Date
       */
@@ -253,7 +253,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * change ent_status
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update Date -
       */
@@ -272,7 +272,7 @@ class Admin_approval_entrepreneur extends DCS_controller
       * change ent_status
       * @input
       * @output -
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update Date -
       */

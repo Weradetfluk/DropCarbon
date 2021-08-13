@@ -1,5 +1,35 @@
 <!-- navbar -->
 
+
+<style>
+
+ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: #F5F5F5;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: ">";
+    }
+
+    ul.breadcrumb li a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    ul.breadcrumb li a:hover {
+        color: #01447e;
+        text-decoration: underline;
+    }
+</style>
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
     <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
     </div>
@@ -7,7 +37,9 @@
 
 
 <div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
+    
     <div class="container" style="margin-top: 200px; ">
+    
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
@@ -60,7 +92,7 @@
 
             check_email_user(user_email);
 
-        }); 
+        });
 
     }); // Jqurey
 
@@ -68,17 +100,17 @@
 
 
     /*
-    * check_email_user
-    * check e-mail in database using ajax
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
-    * @Update -
-    */
+     * check_email_user
+     * check e-mail in database using ajax
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-08-12
+     * @Update -
+     */
 
 
-    function check_email_user(user_email){
+    function check_email_user(user_email) {
 
 
         $.ajax({
@@ -88,18 +120,16 @@
                 user_email: user_email
             },
             success: function(json_res) {
-
-                console.log(json_res);
-
                 if (json_res == 1) {
+                  
                     swal({
                         title: "ระบบกำลังส่งอีเมลของท่าน",
                         text: 'กำลังส่งอีเมล...',
                         type: "success",
                         timer: 3000
                     }, function() {
-            window.location = "<?php echo site_url() . 'Admin/Auth/Login_admin/'; ?>";
-        })
+                        window.location = "<?php echo site_url() . 'Admin/Auth/Login_admin/'; ?>";
+                    })
 
                 } else {
                     swal({

@@ -7,7 +7,15 @@ class M_dcs_admin extends Da_dcs_admin
         parent::__construct();
     }
 
-
+/*
+    * login
+    * check username and password
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-12
+    * @Update Date -
+    */
 
 
  function login(){
@@ -27,6 +35,17 @@ class M_dcs_admin extends Da_dcs_admin
     }
  
 
+
+
+   /*
+    * check_email
+    * check email user
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-12
+    * @Update Date -
+    */
     
  function check_email(){
     $sql = "SELECT * 

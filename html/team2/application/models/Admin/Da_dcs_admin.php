@@ -14,6 +14,16 @@ class Da_dcs_admin extends Dcs_model
 
 
 
+  /*
+    * update_pass_token
+    * update password with number ramdom
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-12
+    * @Update Date -
+    */
+
     public function update_pass_token($token){
 
         $sql = "UPDATE dcs_admin
@@ -24,6 +34,18 @@ class Da_dcs_admin extends Dcs_model
     }
 
 
+
+
+    
+    /*
+    * update_pass
+    * update password with email user
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-12
+    * @Update Date -
+    */
     public function update_pass($token){
 
         $sql = "UPDATE dcs_admin

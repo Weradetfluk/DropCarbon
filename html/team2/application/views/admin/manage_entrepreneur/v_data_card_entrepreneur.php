@@ -23,7 +23,7 @@
                         </div>
                         <p class="card-category">อนุมัติ</p>
                         <h3 class="card-title" id="approve">
-                         
+
                         </h3>
                     </div>
 
@@ -37,7 +37,7 @@
                         </div>
                         <p class="card-category">ปฏิเสธ</p>
                         <h3 class="card-title" id="reject">
-                        
+
                         </h3>
                     </div>
 
@@ -51,7 +51,7 @@
                         </div>
                         <p class="card-category">ถูกบล็อค</p>
                         <h3 class="card-title" id="block">
-                        
+
                         </h3>
                     </div>
 
@@ -70,6 +70,16 @@
                 get_data_card_entrepreneur()
             });
 
+
+            /*
+             * get_data_card_entrepreneur
+             * get data consider, approve, rejected, block <- number of people
+             * @input
+             * @output -
+             * @author Weradet Nopsombun 62160110
+             * @Create Date 2564-07-17
+             * @Update Date -
+             */
             function get_data_card_entrepreneur() {
                 $.ajax({
                     type: 'post',
@@ -79,19 +89,19 @@
                         console.log(json_data);
 
                         $("#consider").text(json_data[0].consider);
-                        
+
                         $("#approve").text(json_data[0].approve);
-                        
+
                         $("#reject").text(json_data[0].reject);
-                        
+
                         $("#block").text(json_data[0].blocked);
-               
+
                     },
                     error: function() {
                         alert('ajax ass user error working');
                     }
                 });
-             
+
 
             }
         </script>

@@ -9,7 +9,7 @@ class DCS_controller extends CI_Controller
     * index Main Drop carbon Systems
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -24,7 +24,7 @@ class DCS_controller extends CI_Controller
     * output admin page
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -43,7 +43,7 @@ class DCS_controller extends CI_Controller
     * output admin page card
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-02
     * @Update -
     */
@@ -64,7 +64,7 @@ class DCS_controller extends CI_Controller
     * output admin login  page
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
@@ -204,7 +204,7 @@ class DCS_controller extends CI_Controller
     * send email to user
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update Date -
     */

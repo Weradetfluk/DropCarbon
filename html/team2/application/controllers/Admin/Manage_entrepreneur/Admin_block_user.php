@@ -18,7 +18,7 @@ class Admin_block_user extends DCS_controller
     * call function in Dcs_controller
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update Date -
     */
@@ -34,7 +34,7 @@ class Admin_block_user extends DCS_controller
     * chage status block to database
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update Date -
     */    
@@ -55,7 +55,7 @@ class Admin_block_user extends DCS_controller
     * chage status approve to database
     * @input 
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update Date -
     */

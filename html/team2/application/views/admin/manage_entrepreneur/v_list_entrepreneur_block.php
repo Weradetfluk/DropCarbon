@@ -160,6 +160,15 @@
      }
 
 
+      /*
+      * unblock_user
+      * send ajax to unblock file Admin_block_user
+      * @input ent_id
+      * @output sweet alert
+      * @author Weradet Nopsombun
+      * @Create Date 2564-07-27
+      * @Update -
+      */
      function unblock_user(ent_id) {
          $.ajax({
              type: "POST",

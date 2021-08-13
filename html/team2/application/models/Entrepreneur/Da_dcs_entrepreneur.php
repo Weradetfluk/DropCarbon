@@ -31,7 +31,14 @@ class Da_dcs_entrepreneur extends DCS_model
         $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_username, $this->ent_password));
     }
 
-
+    /*
+    *update_status
+    * update status entrepreneur
+    *@input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
+    *@insert -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-07-15
+    */
 
     public function update_status($status_number)
     {
