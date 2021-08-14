@@ -74,17 +74,17 @@ if (!$this->session->has_userdata("username")) {
     </nav>
 
 
-  <div class="sidebar"  data-color="purple" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
+  <div class="sidebar"  data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav"  id="active_menu">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'?> "">
             <i class="material-icons">dashboard</i>
             <p>จัดการสถานที่</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="#">
             <i class="material-icons">library_books</i>
             <p>จัดการกิจกรรม</p>
           </a>
