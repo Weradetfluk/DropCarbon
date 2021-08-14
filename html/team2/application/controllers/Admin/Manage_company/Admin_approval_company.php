@@ -21,29 +21,25 @@ class Admin_approval_company extends DCS_controller
     * call function in Dcs_controller
     * @input 
     * @output -
-    * @author Kasama Donwong
-    * @Create Date 2564-08-06
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
     * @Update Date -
     */
 
   public function index($data = NULL)
   {
-    $this->output_company_card('admin/manage_company/v_list_company_consider', $data);
+    $this->output_admin('admin/manage_company/v_list_company_consider', $data);
   }
-
-
-
-
 
 
   /*
     * show_data_consider
-    * get all data company not approve and show table
+    * get all data company consider and show table
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-07-17
-    * @Update Date 2564-07-31
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
+    * @Update Date -
     */
 
   public function show_data_consider()
@@ -73,9 +69,9 @@ class Admin_approval_company extends DCS_controller
   /*
     * show_data_approve_ajax
     * get all data company approve  and show table by ajax
-    * @input 
+    * @input -
     * @output -
-    * @author Weradet Nopsombun
+    * @author Kasama Donwong 62160074
     * @Create Date 2564-07-17
     * @Update Date -
     */
@@ -147,8 +143,8 @@ class Admin_approval_company extends DCS_controller
     * get all data company by id 
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-08-03
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
     * @Update Date
     */
   public function get_company_by_id_ajax()
@@ -171,8 +167,8 @@ class Admin_approval_company extends DCS_controller
     * get_config_pagination codeigniter "1 2 3 4..." page
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-08-01
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
     * @Update Date
     */
 
@@ -209,11 +205,11 @@ class Admin_approval_company extends DCS_controller
 
   /*
     * Approval
-    * change ent_status 
+    * change com_status 
     * @input 
     * @output -
-    * @author Weradet Nopsombun
-    * @Create Date 2564-07-17
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
     * @Update Date -
     */
   public function approval_company()

@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_list_company_approve
+* Display approved company table
+* @input -
+* @output approved company list
+* @author Kasama Donwong 62160074
+* @Create Date 2561-08-08
+*/ 
+-->
+
 <!-- main content -->
 
 <div class="content">
@@ -98,27 +109,19 @@
 
                                                                 <!-- column ดำเนินการ -->
                                                                 <td style='text-align: center;'>
-                                                                    <button class="btn " style="font-size:10px;">
+                                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;">
                                                                         <i class="material-icons">
                                                                             search
                                                                         </i>
                                                                     </button>
-
                                                                 </td>
-
-
-
                                                             </tr>
-
                                                         <?php } ?>
                                                     <?php } ?>
-
                                                 </tbody>
                                             </table>
                                         </div>
-
                                         <p><?php echo $link_approve; ?></p>
-
                                     </div>
                                 </div>
                             </div>
@@ -127,87 +130,3 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- warnning block Modal  -->
-        <div class="modal" tabindex="-1" role="dialog" id="blockmodal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">คุณต้องการบล็อค ?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>คุณต้องการบล็อคสถานที่นี้ใช่หรือไม่ ?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <script>
-            /*
-             * confirm_block
-             * open modal id = blockmodal 
-             * @input 
-             * @output modal to confirm block user 
-             * @author Weradet Nopsombun
-             * @Create Date 2564-07-27
-             * @Update -
-             */
-
-            function confirm_block(ent_id) {
-                $('#blockmodal').modal();
-
-                $('#blocked').click(function() {
-                    console.log("check");
-                    block_user(ent_id);
-
-                });
-
-            }
-
-
-            /*
-             * block_user
-             * send ajax into block_user controller
-             * @input ent_id
-             * @output sweet alert
-             * @author Weradet Nopsombun
-             * @Create Date 2564-07-27
-             * @Update -
-             */
-
-            function block_user(ent_id) {
-                $.ajax({
-                    type: "POST",
-                    data: {
-                        ent_id: ent_id
-                    },
-                    url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_block_user/block_user_ajax'); ?>',
-                    success: function() {
-                        //sweet alert
-                        swal({
-                            title: "บล็อคผู้ใช้งานสำเร็จ",
-                            text: "บล็อคผู้ประกอบการสำเร็จ",
-                            type: "success",
-                            showConfirmButton: false,
-                            timer: 3000,
-                        }, function() {
-                            location.reload();
-
-                        })
-                    },
-                    error: function() {
-                        alert('ajax block user error working');
-                    }
-                });
-
-            }
-        </script>

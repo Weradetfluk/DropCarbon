@@ -17,8 +17,14 @@ class M_dcs_company extends Da_dcs_company
                 WHERE com_status != 4 AND com_id = ?";
         return $this->db->query($sql, array($this->com_id));
     }
-
-
+    /*
+    *get_count_all
+    *get data count company by form database
+    *@input -
+    *@insert -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-07-31
+    */
     function get_count_all($num_status)
     {
         $this->db->select('*');
@@ -27,6 +33,14 @@ class M_dcs_company extends Da_dcs_company
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+    /*
+    *get_all_data
+    *get data entrepreneur&company form database
+    *@input $limit, $start, $number_status
+    *@output entrepreneur data & company data
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-08-08
+    */
     function get_all_data($limit, $start, $number_status)
     {
 
@@ -36,9 +50,16 @@ class M_dcs_company extends Da_dcs_company
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
         $this->db->where("com_status = '$number_status'");
         $query = $this->db->get();
-        //$query = $this->db->get('dcs_entrepreneur');
         return $query->result();
     }
+    /*
+    *get_search
+    *get data with search
+    *@input -
+    *@insert -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-08-08
+    */
     function get_search($search, $number_status)
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_company where com_name =  '$search'  And com_status = '$number_status' ";

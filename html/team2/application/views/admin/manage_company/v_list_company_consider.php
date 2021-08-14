@@ -1,3 +1,13 @@
+ <!-- 
+/*
+* v_list_company_consider
+* Display consider company table
+* @input -
+* @output consider company list
+* @author Kasama Donwong 62160074
+* @Create Date 2561-08-08
+*/ 
+-->
  <!-- main content -->
 
  <div class="content">
@@ -262,10 +272,10 @@
              /*
               * confirm_approve
               * open modal id = Aprovemodal 
-              * @input 
+              * @input click button approve
               * @output modal to confirm approve modal
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
+              * @author Kasama Donwong 62160074
+              * @Create Date 2564-08-08
               * @Update -
               */
 
@@ -313,10 +323,10 @@
              /*
               * approve_entrepreneur
               * change status to approve 
-              * @input 
-              * @output table approve and consider
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
+              * @input click button approve
+              * @output change status to 2
+              * @author Kasama Donwong 62160074
+              * @Create Date 2564-08-08
               * @Update -
               */
              function approve_company(com_id) {
@@ -337,32 +347,6 @@
                          }, function() {
                              location.reload();
                          })
-                     },
-                     error: function() {
-                         alert('ajax error working');
-                     }
-                 });
-             }
-
-
-             /*
-              * doc_download
-              * link 
-              * @input 
-              * @output table approve and consider
-              * @author Weradet Nopsombun
-              * @Create Date 2564-07-17
-              * @Update -
-              */
-             function doc_download_ajax(name_path) {
-                 $.ajax({
-                     type: "POST",
-                     data: {
-                         name_path: name_path
-                     },
-                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/download_file_ajax'); ?>',
-                     success: function(a) {
-                         console.log(a)
                      },
                      error: function() {
                          alert('ajax error working');
