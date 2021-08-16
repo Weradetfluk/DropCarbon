@@ -12,7 +12,7 @@ class Login_entrepreneur extends DCS_controller
     * show form login entrepreneur 
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */
@@ -26,7 +26,7 @@ class Login_entrepreneur extends DCS_controller
     * Login admin and get data  
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date 2021-08-03
     */
@@ -70,7 +70,7 @@ class Login_entrepreneur extends DCS_controller
     * remove session and back to login  
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */
@@ -85,7 +85,7 @@ class Login_entrepreneur extends DCS_controller
     * set_session username and Entrepreneur_name
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */

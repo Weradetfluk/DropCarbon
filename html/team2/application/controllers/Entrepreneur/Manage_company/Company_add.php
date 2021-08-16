@@ -12,7 +12,7 @@ class Company_add extends DCS_controller{
     * show form add company
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-18
     * @Update Date -
     */
@@ -24,7 +24,7 @@ class Company_add extends DCS_controller{
         $this->load->view('template/Entrepreneur/footer');
     }
 
-     /*
+    /*
     * add_company
     * add company to database
     * @input 
@@ -43,10 +43,7 @@ class Company_add extends DCS_controller{
         $this->mcom->com_ent_id=$this->session->userdata("Entrepreneur_id");
         $this->mcom->com_tel = $this->input->post('com_tel');
 
-        // var_dump($this->input->post('com_lat'));
-        // var_dump($this->input->post('com_lon'));
-
-        //สร้างตัวแปรเก็บข้อมูลไฟล์
+        // Create file storage variables
         $fileName = array();
         $fileTmpName = array();
         $fileSize = array();
@@ -55,7 +52,7 @@ class Company_add extends DCS_controller{
         $fileActaulExt = array();
         $error_file='';
 
-        //กำหนดค่าเก็บข้อมูลไฟล์
+        // Configure file storage
         $file = $_FILES['com_file'];
         $fileName = $_FILES['com_file']['name'];
         $fileTmpName = $_FILES['com_file']['tmp_name'];
@@ -66,6 +63,7 @@ class Company_add extends DCS_controller{
             $fileExt[$i] = explode('.', $fileName[$i]);
             $fileActaulExt[$i] = strtolower(end($fileExt[$i]));
 
+            // Check if there is a problem with the image file. or the file size exceeds 1000000?
             if($fileError[$i] != 0 || $fileSize[$i] >= 1000000){
                 $error_file = 'false';
                 break;
@@ -76,6 +74,8 @@ class Company_add extends DCS_controller{
             $this->mcom->add_company();
             $result = $this->mcom->get_by_name()->row();
             $this->mimg->com_img_com_id = $result->com_id;
+            
+            // Loop to upload files
             for($i = 0; $i < count($fileName); $i++){
                 $fileNewName[$i] = uniqid('', true);
                 $fileDestination[$i] = './image_company/'.$fileNewName[$i].'.'.$fileActaulExt[$i];
@@ -83,29 +83,9 @@ class Company_add extends DCS_controller{
                 $this->mimg->com_img_path = $fileNewName[$i].'.'.$fileActaulExt[$i];
                 $this->mimg->insert_image_company();
             }
+            redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
         }else{
             redirect("Entrepreneur/Manage_company/Company_add/show_add_company");
         }
-            redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
-    }
-    
-    /*
-    * show_google_map
-    * show_google_map 
-    * @input 
-    * @output -
-    * @author Suwapat Saowarod
-    * @Create Date 2021-07-31
-    * @Update Date -
-    */
-    public function show_google_map(){
-        $data['com_name'] = $this->input->post('com_name');
-        $data['com_description'] = $this->input->post('com_description');
-        $data['com_tel'] = $this->input->post('com_tel');
-        $data['com_file'] = $this->input->post('com_file');
-        $this->load->view('template/Entrepreneur/header_entrepreneur');
-        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-        $this->load->view('entrepreneur/manage_company/v_map_company', $data);
-        $this->load->view('template/Entrepreneur/footer');
     }
 }

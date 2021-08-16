@@ -1,8 +1,22 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+    /*
+    * @author Acharaporn pornpattanasap 62160344
+    */
 class Company_detail extends DCS_controller
 {
+
+    /*
+    * show_add_company
+    * show form add company
+    * @input 
+    * @output -
+    * @author Acharaporn pornpattanasap 62160344
+    * @Create Date 2021-08-05
+    * @Update Date -
+    */
     public function show_detail_company($com_id)
     {
         $this->load->model('Company/M_dcs_company', 'mcom');

@@ -11,7 +11,7 @@ class Company_edit extends DCS_controller{
     * update com_status = 4 in database
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */
@@ -27,7 +27,7 @@ class Company_edit extends DCS_controller{
     * update show form edit company
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date 2021-08-12
     */
@@ -48,7 +48,7 @@ class Company_edit extends DCS_controller{
     * edit company to database
     * @input 
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */
@@ -62,7 +62,7 @@ class Company_edit extends DCS_controller{
         $this->mcom->com_tel = $this->input->post('com_tel');
 
          if(isset($_FILES['com_file'])){
-            //สร้างตัวแปรเก็บข้อมูลไฟล์
+            // Create file storage variables
             $fileName = array();
             $fileTmpName = array();
             $fileSize = array();
@@ -71,7 +71,7 @@ class Company_edit extends DCS_controller{
             $fileActaulExt = array();
             $error_file='';
 
-            //กำหนดค่าเก็บข้อมูลไฟล์
+            // Configure file storage
             $file = $_FILES['com_file'];
             $fileName = $_FILES['com_file']['name'];
             $fileTmpName = $_FILES['com_file']['tmp_name'];
@@ -82,6 +82,7 @@ class Company_edit extends DCS_controller{
                   $fileExt[$i] = explode('.', $fileName[$i]);
                   $fileActaulExt[$i] = strtolower(end($fileExt[$i]));
 
+                  // Check if there is a problem with the image file. or the file size exceeds 1000000?
                   if($fileError[$i] != 0 || $fileSize[$i] >= 1000000){
                      $error_file = 'false';
                      break;
@@ -91,6 +92,8 @@ class Company_edit extends DCS_controller{
             if($error_file != 'false'){
                $this->mcom->edit_company();
                $this->mimg->com_img_com_id = $this->input->post('com_id');
+
+               // Loop to upload files
                for($i = 0; $i < count($fileName); $i++){
                   $fileNewName[$i] = uniqid('', true);
                   $fileDestination[$i] = './image_company/'.$fileNewName[$i].'.'.$fileActaulExt[$i];

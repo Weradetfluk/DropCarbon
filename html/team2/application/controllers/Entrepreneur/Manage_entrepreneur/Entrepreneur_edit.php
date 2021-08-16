@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+   
+   /*
+    * @author Thanchanok Thongjumroon 62160089
+    */
 
 class Entrepreneur_edit extends DCS_controller
 {
@@ -25,8 +29,9 @@ class Entrepreneur_edit extends DCS_controller
     * Update information for Entrepreneur by id in database
     * @input -
     * @output -
-    * @author Naaka Punparich 62160082
+    * @author Thanchanok Thongjumroon 62160089
     * @Create Date 2021-07-24
+    * @Update Date 2021-08-05
    */
   public function update_entrepreneur()
   {
@@ -39,8 +44,6 @@ class Entrepreneur_edit extends DCS_controller
      $this->ent->ent_email = $this->input->post('ent_email');
      $this->ent->ent_id = $this->session->userdata('Entrepreneur_id');
      $this->ent->update_entrepreneur();
-     //print_r($this->ent->ent_lastname);
-     //echo $this->ent_firstname;
      $ent_pre_id = $this->ent->ent_pre_id;
      $ent_name = $this->ent->ent_firstname.' '. $this->ent->ent_lastname;
      $ent_tel = $this->ent->ent_tel;
