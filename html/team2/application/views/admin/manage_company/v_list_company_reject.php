@@ -2,9 +2,8 @@
 
 <div class="content">
     <div class="container-fluid">
-
-        <div class="card card-nav-tabs">
-            <div class="card-header" style="background-color: #5F9EA0">
+        <div class="card card-nav-tabs" style="border-radius: 25px;">
+            <div class="card-header" style="background-color: #5F9EA0 ;  border-radius: 10px;">
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
                         <ul class="nav nav-tabs" data-tabs="tabs">
@@ -25,31 +24,32 @@
 
             <!-- Tab1 -->
             <div class="card-body ">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="reject">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-                                        <center>
-                                            <h4 class="card-title text-white">ตารางแสดงข้อมูลสถานที่ที่ถูกปฏิเสธ</h4>
-                                        </center>
-                                    </div>
+                 <div class="tab-content">
+                     <div class="tab-pane active" id="consider">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="card" style="border-radius: 25px;">
+                                     <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+                                     <div class="row">
+                                     <div class="col py-2">
+                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ถูกปฏิเสธ</h4>
+                                     </div>
+                                     <div class="col">
+                                         <form class="form-inline" action="#" method="POST" style="width: 200px; float:right;">
+
+                                             <div class="input-group ">
+
+                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
+                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                     <i class="material-icons">search</i>
+                                                 </button>
+
+                                             </div>
+                                         </form>
+                                     </div>
+                                 </div>
+                                     </div>
                                     <div class="card-body">
-
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <form class="navbar-form">
-                                                    <div class="input-group no-border has-success">
-                                                        <input type="text" value="" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
-                                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                                            <i class="material-icons">search</i>
-
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
 
                                         <div class="table-responsive" id="data_entre_reject">
 
