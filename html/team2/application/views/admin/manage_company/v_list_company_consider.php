@@ -11,10 +11,10 @@
  <!-- main content -->
 
  <div class="content">
-    <div class="container-fluid">
+     <div class="container-fluid">
 
          <div class="card card-nav-tabs" style="border-radius: 25px;">
-             <div class="card-header" style="background-color: #5F9EA0;  ">
+             <div class="card-header" style="background-color: #5F9EA0; border-radius: 10px;">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
@@ -41,28 +41,28 @@
                              <div class="col-md-12">
                                  <div class="card" style="border-radius: 25px;">
                                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-                                     <div class="row">
-                                     <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
-                                     </div>
-                                     <div class="col">
-                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
-
-                                             <div class="input-group ">
-
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
-                                                     <i class="material-icons">search</i>
-                                                 </button>
-
+                                         <div class="row">
+                                             <div class="col py-2">
+                                                 <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
                                              </div>
-                                         </form>
-                                     </div>
-                                 </div>
+                                             <div class="col">
+                                                 <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
+
+                                                     <div class="input-group ">
+
+                                                         <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
+                                                         <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                             <i class="material-icons">search</i>
+                                                         </button>
+
+                                                     </div>
+                                                 </form>
+                                             </div>
+                                         </div>
                                      </div>
                                      <div class="card-body">
 
-                                      
+
 
                                          <div class="table-responsive" id="data_entre_consider">
 
@@ -102,7 +102,7 @@
 
                                                                  <!-- column ชื่อผู้ประกอบการ -->
                                                                  <td>
-                                                                     <?php echo $arr_company[$i]->ent_firstname." ".$arr_company[$i]->ent_lastname; ?>
+                                                                     <?php echo $arr_company[$i]->ent_firstname . " " . $arr_company[$i]->ent_lastname; ?>
                                                                  </td>
 
                                                                  <!-- column Email -->
@@ -185,7 +185,7 @@
 
 
 
-        <!-- warnning data Modal  -->
+         <!-- warnning data Modal  -->
          <div class="modal fade" role="dialog" id="datamodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
@@ -305,7 +305,7 @@
              function confirm_reject(com_id, ent_email) {
                  $('#Rejectent').modal();
 
-                $('#email').val(ent_email);
+                 $('#email').val(ent_email);
                  $('#com_id').val(com_id);
 
                  $('#rejected').click(function() {

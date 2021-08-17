@@ -41,29 +41,28 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-                                        <center>
-                                            <h4 class="card-title text-white">ตารางแสดงข้อมูลสถานที่ที่ได้รับอนุมัติแล้ว</h4>
-                                        </center>
-                                    </div>
-                                    <div class="card-body">
-
+                                    <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
                                         <div class="row">
-                                            <div class="col-sm-3">
-                                                <form class="navbar-form">
-                                                    <div class="input-group no-border has-success">
-                                                        <input type="text" value="" class="form-control" placeholder="ค้นหาชื่อได้ที่นี่...">
-                                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                                            <i class="material-icons">search</i>
+                                            <div class="col py-2">
+                                                <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ได้รับอนุมัติแล้ว</h4>
+                                            </div>
+                                            <div class="col">
+                                                <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
 
+                                                    <div class="input-group ">
+
+                                                        <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
+                                                        <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                            <i class="material-icons">search</i>
                                                         </button>
+
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="card-body">
                                         <div class="table-responsive" id="data_entre_consider">
-
                                             <!-- table approve ajax  -->
                                             <table class="table" style="text-align: center;" id="entre_tale_approve">
                                                 <thead class="text-white" style="background-color: #e4a487; text-align: center;">

@@ -98,7 +98,7 @@
 
                                                                 <!-- column ดำเนินการ -->
                                                                 <td style='text-align: center;'>
-                                                                    <button class="btn btn-info" style="font-size:10px;">
+                                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;">
                                                                         <i class="material-icons">
                                                                             search
                                                                         </i>
