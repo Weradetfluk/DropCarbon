@@ -14,8 +14,8 @@
 <div class="content">
     <div class="container-fluid">
 
-        <div class="card card-nav-tabs">
-            <div class="card-header" style="background-color: #5F9EA0">
+        <div class="card card-nav-tabs" style="border-radius: 25px;">
+            <div class="card-header" style="background-color: #5F9EA0; border-radius: 10px;">
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
                         <ul class="nav nav-tabs" data-tabs="tabs">

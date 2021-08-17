@@ -1,13 +1,19 @@
 <?php
+
+// check session
+
 if (!$this->session->has_userdata("username")) {
   $path = site_url() . "Admin/Auth/Login_admin";
   header("Location: " . $path);
   exit();
 }
+
 if (!isset($_SESSION['tab_number'])) {
   $_SESSION['tab_number'] = 1;
 }
 ?>
+
+
 
 <style>
   .table-responsive::-webkit-scrollbar {
@@ -49,11 +55,13 @@ if (!isset($_SESSION['tab_number'])) {
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
       <div class="container-fluid">
-  
-        <a href="#" class="navbar-brand">
+   
+     <a href="#" class="navbar-brand">
             <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
         </a>
-      
+         
+         <!-- nav with responesive -->
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
@@ -79,6 +87,8 @@ if (!isset($_SESSION['tab_number'])) {
       </div>
     </nav>
 
+
+<!-- side bar admin -->
 
   <div class="sidebar"  data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
