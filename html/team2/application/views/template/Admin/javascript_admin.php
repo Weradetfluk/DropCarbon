@@ -12,21 +12,3 @@
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 <!-- Sweet alert -->
 <script src="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.js' ?>"></script>
-
-<script>
-    var btnContainer = document.getElementById("active_menu");
-
-    // Get all buttons with class="btn" inside the container
-    var item = btnContainer.getElementsByClassName("nav-item ");
-
-    // Loop through the buttons and add the active class to the current/clicked button
-    for (var i = 0; i < item.length; i++) {
-        item[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.className += " active";
-        });
-    }
-</script>

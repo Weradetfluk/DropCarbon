@@ -7,8 +7,9 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 <!-- navbar -->
 
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
-    <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
-    </div>
+        <a href="" class="navbar-brand">
+            <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" class="logo" height = "150" alt="">
+        </a>
 </nav>
 
 

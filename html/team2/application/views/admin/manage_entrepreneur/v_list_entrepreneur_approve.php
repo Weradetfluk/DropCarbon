@@ -36,7 +36,7 @@
                                          <h4 class="card-title text-white ">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
                                      </div>
                                      <div class="col">
-                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
+                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve'; ?>" method="POST" style="width: 200px; float:right;">
 
                                              <div class="input-group ">
 

@@ -5,9 +5,9 @@ class DCS_controller extends CI_Controller
 
 
     /*
-    * index main 
+    * index main
     * index Main Drop carbon Systems
-    * @input 
+    * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -22,7 +22,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_admin
     * output admin page
-    * @input 
+    * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -31,6 +31,7 @@ class DCS_controller extends CI_Controller
 
     public function output_admin($view, $data = null)
     {
+      
         $this->load->view('template/Admin/header_admin'); // path
         $this->load->view('template/Admin/topbar_admin');
         $this->load->view('template/Admin/javascript_admin');
@@ -41,7 +42,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_admin_card
     * output admin page card
-    * @input 
+    * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-02
@@ -62,7 +63,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_login_admin
     * output admin login  page
-    * @input 
+    * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -73,14 +74,14 @@ class DCS_controller extends CI_Controller
     {
         $this->load->view('template/Admin/header_admin'); //path
         $this->load->view('template/Admin/javascript_admin');
-        $this->load->view($view,$data);
+        $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
 
     /*
     * output_login_entrepreneur
     * show form login entrepreneur
-    * @input 
+    * @input
     * @output -
     * @author Suwapat Saowarod
     * @Create Date 2021-07-19
@@ -97,7 +98,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_company
     * show list company
-    * @input 
+    * @input
     * @output -
     * @author Suwapat Saowarod
     * @Create Date 2021-07-18
@@ -157,7 +158,7 @@ class DCS_controller extends CI_Controller
 
     /*
     * output_event
-    * show every thing about 
+    * show every thing about
     * @input $view
     * @output -
     * @author Naaka Punparich 62160082
@@ -172,7 +173,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/footer');
     }
 
-     /*
+    /*
     * output_Landing_page
     * show Landing page tourist for every one
     * @input -
@@ -199,56 +200,72 @@ class DCS_controller extends CI_Controller
     }
 
 
-  /*
-    * email_send
-    * send email to user
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-07-17
-    * @Update Date -
-    */
+    /*
+      * email_send
+      * send email to user
+      * @input
+      * @output -
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update Date -
+      */
 
-    function email_send($reason, $user_email, $subject, $mail_content_h1)
+    public function email_send($reason, $user_email, $subject, $mail_content_h1)
     {
-      // Load PHPMailer library
-      $this->load->library('phpmailer_lib');
+        // Load PHPMailer library
+        $this->load->library('phpmailer_lib');
   
-      // PHPMailer object
-      $mail = $this->phpmailer_lib->load();
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
   
-      // SMTP configuration
-      $mail->isSMTP();
-      $mail->Host     = 'smtp.gmail.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'weradet2543@gmail.com';
-      $mail->Password = 'sykildxigujdlfnz';
-      $mail->SMTPSecure = 'tls';
-      $mail->Port     = 587;
-      $mail->charSet = "UTF-8";
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host     = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'weradet2543@gmail.com';
+        $mail->Password = 'sykildxigujdlfnz';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port     = 587;
+        $mail->charSet = "UTF-8";
   
-      $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
+        $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
   
   
-      // Add a recipient
-      $mail->addAddress($user_email);
+        // Add a recipient
+        $mail->addAddress($user_email);
   
-      // Email subject
-      $mail->Subject = $subject; 
+        // Email subject
+        $mail->Subject = $subject;
   
-      // Set email format to HTML
-      $mail->isHTML(true);
+        // Set email format to HTML
+        $mail->isHTML(true);
   
-      // Email body content
-      $mail_content = "<h1>".$mail_content_h1."</h1>" . "<p>.$reason.</p>";
-      $mail->Body = $mail_content;
+        // Email body content
+        $mail_content = "<h1>".$mail_content_h1."</h1>" . "<p>.$reason.</p>";
+        $mail->Body = $mail_content;
   
-      // Send email
-      if (!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-      } else {
-        redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
-      }
+        // Send email
+        if (!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
+        }
     }
-  }
+  
+
+
+
+    /*
+    * change_tab_number_ajax
+    * Change tab number
+    * @input tab
+    * @output -
+    * @author weradet nopsombun 62160110
+    * @Create Date 2021-08-14
+    */
+    public function change_tab_number_ajax()
+    {
+        $_SESSION['tab_number'] = $this->input->post('tab');
+    }
+}

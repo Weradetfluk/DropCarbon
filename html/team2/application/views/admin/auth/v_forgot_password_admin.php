@@ -3,32 +3,7 @@
 
 <style>
 
-ul.breadcrumb {
-        padding: 10px 16px;
-        list-style: none;
-        background-color: #F5F5F5;
-    }
 
-    ul.breadcrumb li {
-        display: inline;
-        font-size: 18px;
-    }
-
-    ul.breadcrumb li+li:before {
-        padding: 8px;
-        color: black;
-        content: ">";
-    }
-
-    ul.breadcrumb li a {
-        color: #0275d8;
-        text-decoration: none;
-    }
-
-    ul.breadcrumb li a:hover {
-        color: #01447e;
-        text-decoration: underline;
-    }
 </style>
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
     <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
@@ -37,9 +12,9 @@ ul.breadcrumb {
 
 
 <div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
-    
+
     <div class="container" style="margin-top: 200px; ">
-    
+
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
@@ -66,7 +41,7 @@ ul.breadcrumb {
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" class="btn btn-success" id="forgotpass" name="signin">ส่งอีเมล</button>
+                                        <button type="button" class="btn btn-success" id="forgotpass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
                                     </div>
                                 </div>
 
@@ -86,11 +61,13 @@ ul.breadcrumb {
     $(document).ready(function() {
 
         $("#forgotpass").on('click', function() {
+            var existingHTML =  $("#forgotpass").html() //store exiting button HTML
             let user_email = $('#admin_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
-
-            console.log(user_email);
-
-            check_email_user(user_email);
+            $(this).prop("disabled", true);
+            $(this).html(
+                '<span class="material-icons">cached</span>Loading...'
+            );
+            check_email_user(user_email, existingHTML);
 
         });
 
@@ -110,33 +87,40 @@ ul.breadcrumb {
      */
 
 
-    function check_email_user(user_email) {
+    function check_email_user(user_email, existingHTML) {
 
 
         $.ajax({
+            
             type: "POST",
             url: '<?php echo site_url() . 'Admin/Auth/Login_admin/check_email_admin'; ?>',
             data: {
                 user_email: user_email
             },
-            success: function(json_res) {
+            success: function(json_res) { //respone to alert
                 if (json_res == 1) {
-                  
+               
                     swal({
-                        title: "ระบบกำลังส่งอีเมลของท่าน",
-                        text: 'กำลังส่งอีเมล...',
+                        title: "ระบบได้จัดส่งส่งอีเมลของท่านเรียบร้อยแล้ว",
+                        text: 'โปรดตรวจสอบอีเมลของท่าน',
                         type: "success",
-                        timer: 3000
                     }, function() {
+
+                        //go to login page
                         window.location = "<?php echo site_url() . 'Admin/Auth/Login_admin/'; ?>";
                     })
 
                 } else {
+                    $("#forgotpass").html(existingHTML).prop('disabled', false) //show original HTML and enable
+
                     swal({
+
                         title: "ไม่พบอีเมลของท่านในระบบ",
                         text: 'ไม่พบอีเมลในระบบ กรุณากรอกใหม่',
                         type: "warning",
+
                     })
+
                 }
 
 
@@ -148,4 +132,5 @@ ul.breadcrumb {
 
         });
     }
+
 </script>

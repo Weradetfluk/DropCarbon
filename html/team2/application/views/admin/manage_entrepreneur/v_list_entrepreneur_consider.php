@@ -141,7 +141,7 @@
                                      </table>
                                  </div>
 
-                                 <p><?php echo $links; ?></p>
+                                 <div><?php echo $links; ?></div>
 
                              </div>
                          </div>
