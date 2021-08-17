@@ -26,7 +26,7 @@ class Login_tourist extends DCS_controller
 
     public function index()
     {
-        $this->output_login_admin('tourist/auth/v_login_tourist');
+        $this->output_login_tourist('tourist/auth/v_login_tourist');
     }
 
 
@@ -43,7 +43,7 @@ class Login_tourist extends DCS_controller
 
     public function warnning($data)
     {
-        $this->output_login_admin('tourist/auth/v_login_tourist', $data);
+        $this->output_login_tourist('tourist/auth/v_login_tourist', $data);
         //echo $data['warning'];
     }
 

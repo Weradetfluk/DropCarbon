@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+body {
+    align-items    : center;
+    text-align     : center;
+    justify-content: center;
+    place-items    : center;
+    overflow       : hidden;
+    margin         : 0 auto;
+
+}
+
+.container-1 {
+    position       : relative;
+    width          : 420px;
+    height         : 560px;
+    border-radius  : 20px;
+    padding        : 40px;
+    box-sizing     : border-box;
+    background     : white;
+    box-shadow     : 15px 20px 20px rgba(255, 255, 255, 0.4), -15px -20px 20px rgba(255, 255, 255, 0.4), 15px -20px 20px rgba(255, 255, 255, 0.4), -15px 20px 20px rgba(255, 255, 255, 0.4);
+    margin         : 0;
+    align-items    : center;
+    text-align     : center;
+    justify-content: center;
+    place-items    : center;
+    overflow       : hidden;
+    display        : inline-block;
+    margin-top     : 7%;
+}
+
+.brand-logo img {
+
+    height: 130px;
+    width : 140px;
+    margin: auto;
+}
+
+.brand-title {
+    margin-top    : 10px;
+    font-weight   : 900;
+    font-size     : 1.8rem;
+    color         : #59ab6e;
+    letter-spacing: 1px;
+}
+
+.inputs {
+    text-align: left;
+    margin-top: 30px;
+}
+
+label,
+input,
+button {
+    display   : block;
+    width     : 100%;
+    padding   : 0;
+    border    : none;
+    outline   : none;
+    box-sizing: border-box;
+}
+
+label {
+    margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+    margin-top: 12px;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+input {
+    background   : #fff;
+    padding      : 10px;
+    padding-left : 20px;
+    height       : 50px;
+    font-size    : 14px;
+    border-radius: 50px;
+    box-shadow   : inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgba(226, 226, 226, 0.2);
+}
+
+button {
+    margin-top   : 10px;
+    background   : #59ab6e;
+    height       : 40px;
+    border-radius: 20px;
+    cursor       : pointer;
+    font-weight  : 900;
+    box-shadow   : 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition   : 0.5s;
+}
+
+button:hover {
+    box-shadow: none;
+}
+
+#submit {
+    color: #fff;
+}
+
+body {
+    background     : linear-gradient(-45deg, #7fd759be, #25e9bb, #7fd759be, #25e9bb);
+    background-size: 400% 400%;
+    animation      : gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#forgetID {
+    display        : inline-block;
+    color          : #59ab6e;
+    text-decoration: none;
+    padding-top    : 0.5em;
+
+    text-align: right;
+    width     : 100%;
+}

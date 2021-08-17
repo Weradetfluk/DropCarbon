@@ -31,7 +31,7 @@ class DCS_controller extends CI_Controller
 
     public function output_admin($view, $data = null)
     {
-      
+
         $this->load->view('template/Admin/header_admin'); // path
         $this->load->view('template/Admin/topbar_admin');
         $this->load->view('template/Admin/javascript_admin');
@@ -58,7 +58,7 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
-    
+
 
     /*
     * output_login_admin
@@ -149,7 +149,7 @@ class DCS_controller extends CI_Controller
     */
     public function output_Landing_page()
     {
-        $this->load->view('template/Landing_page/head_landing');
+        $this->load->view('template/Landing_page/header_landing');
         $this->load->view('template/Landing_page/javascript_landing');
         $this->load->view('template/Landing_page/topbar_landing');
         $this->load->view('landing_page/register/v_landing_page');
@@ -183,7 +183,7 @@ class DCS_controller extends CI_Controller
     */
     public function output_Landing_page_tourist()
     {
-        $this->load->view('template/Landing_page/head_landing');
+        $this->load->view('template/Landing_page/header_landing');
         $this->load->view('template/Landing_page/javascript_landing');
         // $this->load->view('template/Landing_page/topbar_landing');
         $this->load->view('landing_page_tourist/v_landing_page_tourist');
@@ -192,9 +192,9 @@ class DCS_controller extends CI_Controller
 
     public function output_edit_tourist($data)
     {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist');
+        $this->load->view('template/Register/header_register');
+        $this->load->view('template/Register/javascript_register');
+        $this->load->view('template/Tourist/topbar_tourist_login');
         $this->load->view('tourist/manage_tourist/v_edit_tourist', $data);
         $this->load->view('template/Tourist/footer');
     }
@@ -214,10 +214,10 @@ class DCS_controller extends CI_Controller
     {
         // Load PHPMailer library
         $this->load->library('phpmailer_lib');
-  
+
         // PHPMailer object
         $mail = $this->phpmailer_lib->load();
-  
+
         // SMTP configuration
         $mail->isSMTP();
         $mail->Host     = 'smtp.gmail.com';
@@ -227,23 +227,23 @@ class DCS_controller extends CI_Controller
         $mail->SMTPSecure = 'tls';
         $mail->Port     = 587;
         $mail->charSet = "UTF-8";
-  
+
         $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
-  
-  
+
+
         // Add a recipient
         $mail->addAddress($user_email);
-  
+
         // Email subject
         $mail->Subject = $subject;
-  
+
         // Set email format to HTML
         $mail->isHTML(true);
-  
+
         // Email body content
-        $mail_content = "<h1>".$mail_content_h1."</h1>" . "<p>.$reason.</p>";
+        $mail_content = "<h1>" . $mail_content_h1 . "</h1>" . "<p>.$reason.</p>";
         $mail->Body = $mail_content;
-  
+
         // Send email
         if (!$mail->send()) {
             echo 'Message could not be sent.';
@@ -252,9 +252,25 @@ class DCS_controller extends CI_Controller
             redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
         }
     }
-  
 
+    /*
+    * output_login_tourist
+    * output tourist login  page
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-07-17
+    * @Update -
+    */
 
+    public function output_login_tourist($view, $data = null)
+    {
+        $this->load->view('template/Tourist/header_tourist');
+        $this->load->view('template/Tourist/javascript_tourist');
+        $this->load->view('template/Tourist/topbar_tourist');
+        $this->load->view($view, $data);
+        $this->load->view('template/Tourist/footer');
+    }
 
     /*
     * change_tab_number_ajax

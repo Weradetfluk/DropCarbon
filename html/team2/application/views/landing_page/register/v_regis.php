@@ -49,8 +49,35 @@
         height: 250px;
     }
 
-    #card:hover h1{
-        color: white;    
+    #card:hover h1 {
+        color: white;
+    }
+
+    ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: #eee;
+    }
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: ">";
+    }
+
+    ul.breadcrumb li a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    ul.breadcrumb li a:hover {
+        color: #01447e;
+        text-decoration: underline;
     }
 </style>
 
@@ -82,7 +109,7 @@
                         <a href=" <?php echo site_url() . 'Entrepreneur/Auth/Register_entrepreneur/show_regis_ent'; ?>">
                             <div class="py-3 services-icon-wap shadow">
                                 <div class="h1 text-success text-center">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./Entrepreneur.png">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./Entrepreneur.png">
                                     <h1 class="h2 mt-4 text-center">สำหรับผู้ประกอบการ</h1>
                                 </div>
                             </div>
