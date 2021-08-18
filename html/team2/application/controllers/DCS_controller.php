@@ -166,7 +166,7 @@ class DCS_controller extends CI_Controller
     */
     public function output_event($view)
     {
-        $this->load->view('template/Tourist/header_tourist');
+        $this->load->view('template/Landing_page/header_landing');
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist');
         $this->load->view($view);
