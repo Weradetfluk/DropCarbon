@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="next_btn" class="w3-button w3-round-large btn btn-success btn-lg px-3" style="color: white;">ถัดไป</button>
+            <button type="submit" id="next_btn" class="btn btn-success" style="color: white; float: right;">ถัดไป</button>
 
         </form>
     </div>

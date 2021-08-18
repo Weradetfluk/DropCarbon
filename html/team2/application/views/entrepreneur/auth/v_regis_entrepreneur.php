@@ -112,7 +112,7 @@
                     <div id="errorpassword" class="text-danger"></div>
                 </div>
             </div>
-            <p><button type="submit" id="next_btn" class="w3-button w3-round-large btn btn-success btn-lg px-3" style="color: white;">ยืนยันการลงทะเบียน</button></p>
+            <p><button type="submit" id="next_btn" class="btn btn-success" style="color: white; float:right;">ยืนยันการลงทะเบียน</button></p>
 
         </form>
     </div>
