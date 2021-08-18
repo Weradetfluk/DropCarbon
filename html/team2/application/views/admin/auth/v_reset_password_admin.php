@@ -1,9 +1,13 @@
 <!-- navbar -->
 
-<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
-    <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
-    </div>
+<!-- navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
+        <a href="" class="navbar-brand">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
+        </a>
 </nav>
+
 
 
 <div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
@@ -71,7 +75,6 @@
         $("#resetpass").on('click', function() {
             let password = $('#admin_password').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             let token = $('#token').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
-            console.log(password + " " + token);
             reset_password(password, token);
         }); // Event Keyup
 

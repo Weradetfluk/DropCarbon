@@ -6,16 +6,16 @@
              <div class="nav-tabs-wrapper">
                  <ul class="nav nav-tabs" data-tabs="tabs">
                      <li class="nav-item">
-                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> " style="font-size: 16px;">ยังไม่ได้รับอนุมัติ</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                         <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> "style="font-size: 16px;">อนุมัติแล้ว</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
+                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>"style="font-size: 16px;">ผู้ใช้ที่ถูกปฏิเสธ</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
+                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>"style="font-size: 16px;">ผู้ใช้ที่ถูกบล็อค</a>
                      </li>
                  </ul>
              </div>
@@ -36,11 +36,11 @@
                                          <h4 class="card-title text-white ">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
                                      </div>
                                      <div class="col">
-                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve'; ?>" method="POST" style="width: 200px; float:right;">
+                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve'; ?>" method="POST" style="width: 250px; float:right;">
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
+                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..."style="background-color:white; border-radius: 10px; width: 200px;">
                                                  <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
                                                      <i class="material-icons">search</i>
                                                  </button>
@@ -57,11 +57,11 @@
                                      <table class="table" style="text-align: center;" id="entre_tale_approve">
                                          <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                              <tr>
-                                                 <th style="text-align: center;font-size: 16px;">ลำดับ</th>
-                                                 <th style="text-align: center;font-size: 16px;">ชื่อ-นามสกุล</th>
-                                                 <th style="text-align: center;font-size: 16px;">เบอร์โทร</th>
-                                                 <th style="text-align: center;font-size: 16px;">อีเมล</th>
-                                                 <th style="text-align: center;font-size: 16px;">ดำเนินการ</th>
+                                                 <th style="font-weight:700;">ลำดับ</th>
+                                                 <th style="font-weight:700;">ชื่อ-นามสกุล</th>
+                                                 <th style="font-weight:700;">เบอร์โทร</th>
+                                                 <th style="font-weight:700;">อีเมล</th>
+                                                 <th style="font-weight:700;">ดำเนินการ</th>
                                              </tr>
                                          </thead>
                                          <tbody class="list">

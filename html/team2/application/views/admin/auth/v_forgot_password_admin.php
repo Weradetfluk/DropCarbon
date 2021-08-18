@@ -1,17 +1,16 @@
 <!-- navbar -->
 
 
-<style>
+<!-- navbar -->
 
-
-</style>
-<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " style="color: #81b14f;">
-    <h2 style="color: #66CC33; padding: 10px;">DCS</h2>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
+        <a href="" class="navbar-brand">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
+        </a>
 </nav>
 
 
-<div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
+<div class="page-header header-filter" >
 
     <div class="container" style="margin-top: 200px; ">
 
@@ -65,7 +64,7 @@
             let user_email = $('#admin_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             $(this).prop("disabled", true);
             $(this).html(
-                '<span class="material-icons">cached</span>Loading...'
+                '<span class="material-icons">cached</span> Loading...'
             );
             check_email_user(user_email, existingHTML);
 

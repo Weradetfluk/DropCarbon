@@ -1,3 +1,4 @@
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -17,7 +18,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
+                    <div class="card-header card-header-success card-header-icon header-green">
                         <div class="card-icon">
                             <i class="material-icons">done</i>
                         </div>
