@@ -105,6 +105,7 @@ class Login_admin extends DCS_controller
   public function logout()
   {
     $this->remove_session();
+    unset($_SESSION['tab_number']);
    $this->index(); //back to login
   }
 

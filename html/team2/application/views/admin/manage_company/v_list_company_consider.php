@@ -19,13 +19,13 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> "  style="font-size: 16px;">ยังไม่ได้รับอนุมัติ</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> " style="font-size: 16px;">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>"  style="font-size: 16px;">สถานที่ที่ถูกปฏิเสธ</a>
                              </li>
                          </ul>
                      </div>
@@ -43,7 +43,7 @@
                                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
                                          <div class="row">
                                              <div class="col py-2">
-                                                 <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
+                                                 <h4 class="card-title text-white " style="font-family: 'Prompt', sans-serif;">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
                                              </div>
                                              <div class="col">
                                                  <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
@@ -70,11 +70,11 @@
                                              <table class="table" style="text-align: center;" id="entre_tale">
                                                  <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                                      <tr>
-                                                         <th style="text-align: center;font-size: 16px;">ลำดับ</th>
-                                                         <th style="text-align: center;font-size: 16px;">ชื่อสถานที่</th>
-                                                         <th style="text-align: center;font-size: 16px;">ชื่อผู้ประกอบการ</th>
-                                                         <th style="text-align: center;font-size: 16px;">อีเมล</th>
-                                                         <th style="text-align: center;font-size: 16px;">ดำเนินการ</th>
+                                                         <th style="font-weight:500;">ลำดับ</th>
+                                                         <th style="font-weight:500;">ชื่อสถานที่</th>
+                                                         <th style="font-weight:500;">ชื่อผู้ประกอบการ</th>
+                                                         <th style="font-weight:500;">อีเมล</th>
+                                                         <th style="font-weight:500;">ดำเนินการ</th>
                                                      </tr>
                                                  </thead>
                                                  <tbody class="list">

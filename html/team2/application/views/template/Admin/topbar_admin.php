@@ -114,7 +114,7 @@ if (!isset($_SESSION['tab_number'])) {
         </li>
 
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?> " onclick="change_tab_number(4);">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> " onclick="change_tab_number(4);">
             <i class="material-icons">content_paste</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>

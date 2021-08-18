@@ -33,7 +33,7 @@
                              <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
                              <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
+                                         <h4 class="card-title text-white " style="font-family: 'Prompt', sans-serif;">ตารางแสดงข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h4>
                                      </div>
                                      <div class="col">
                                          <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve'; ?>" method="POST" style="width: 250px; float:right;">
@@ -41,7 +41,7 @@
                                              <div class="input-group ">
 
                                                  <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..."style="background-color:white; border-radius: 10px; width: 200px;">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
 
@@ -57,11 +57,11 @@
                                      <table class="table" style="text-align: center;" id="entre_tale_approve">
                                          <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                                              <tr>
-                                                 <th style="font-weight:700;">ลำดับ</th>
-                                                 <th style="font-weight:700;">ชื่อ-นามสกุล</th>
-                                                 <th style="font-weight:700;">เบอร์โทร</th>
-                                                 <th style="font-weight:700;">อีเมล</th>
-                                                 <th style="font-weight:700;">ดำเนินการ</th>
+                                                 <th style="font-weight:500;">ลำดับ</th>
+                                                 <th style="font-weight:500;">ชื่อ-นามสกุล</th>
+                                                 <th style="font-weight:500;">เบอร์โทร</th>
+                                                 <th style="font-weight:500;">อีเมล</th>
+                                                 <th style="font-weight:500;">ดำเนินการ</th>
                                              </tr>
                                          </thead>
                                          <tbody class="list">
