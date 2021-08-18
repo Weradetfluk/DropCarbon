@@ -113,6 +113,15 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Entrepreneur/footer');
     }
 
+    /*
+    * output_company
+    * show list company
+    * @input
+    * @output -
+    * @author Suwapat Saowarod
+    * @Create Date 2021-07-18
+    * @Update Date -
+    */
     public function output_regis($view, $data = null)
     {
         $this->load->view('template/Register/header_register');

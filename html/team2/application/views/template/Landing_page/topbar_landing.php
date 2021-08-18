@@ -3,11 +3,11 @@
 <body>
     <!-- Open topbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
-        <div class="container d-flex justify-content-between align-items-center">
 
+        <div class="container d-flex justify-content-between align-items-center">
             <!-- topbar left -->
-            <a class="navbar-brand text-success logo h1 align-self-center" href="<?php echo base_url() . 'Landing_page/Register/Landing_page' ?>">
-                Logo
+            <a href="#" class="navbar-brand">
+                <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:250px; height: 100px; margin-top: -20px; background: transparent;">
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

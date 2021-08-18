@@ -1,16 +1,16 @@
 <?php 
-//  if (!$this->session->has_userdata("username")) {
-//      $path = site_url() . "AdminLogin/Login_admin";
-//      header("Location: " . $path);
-//      exit();
-//  }
+ if (!$this->session->has_userdata("username")) {
+     $path = site_url() . "Entrepreneur/Auth/Login_entrepreneur";
+     header("Location: " . $path);
+     exit();
+ }
  ?>
- <!-- Navbar -->
+<!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <h2 style="color: #66CC33;">DCS </h2> &nbsp;   &nbsp;   <h2>DropCarbon</h2>
-          </div>
+        <a href="#" class="navbar-brand">
+          <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+        </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
