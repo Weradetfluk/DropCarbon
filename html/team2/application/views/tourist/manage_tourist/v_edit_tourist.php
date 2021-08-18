@@ -46,10 +46,14 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    #next_btn {
+        float: right;
+    }
 </style>
 <title>แก้ไขข้อมูลส่วนตัว</title>
 <!-- Form Register -->
-<div class="wrapper" style="height: 90.4%">
+<div class="wrapper" style="height: 100%">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="#" style="color: green;">หน้าหลัก</a></li>
@@ -110,10 +114,9 @@
             <!-- รูปโปรไฟล์ :
                 <input type="file" name="myfile" required> -->
             <!-- <br><br> -->
+            <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
 
-            <input type="submit" id="next_btn" class="btn btn-success" style="color: white;" value="บันทึก"></input>
-            <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
-            </a>
+            <input type="submit" id="next_btn" class="btn btn-success" style="color: white; margin-right: 1%;" value="บันทึก"></input>
 
         </form>
     </div>
