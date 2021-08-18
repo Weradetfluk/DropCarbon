@@ -50,12 +50,12 @@
 <div class="wrapper">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
-            <li><a href="#" style="color: green;">หน้าหลัก</a></li>
-            <li><a href="#" style="color: green;">สมัครสมาชิก</a></li>
+            <li><a href="<?php echo site_url().'DCS_controller/output_Landing_page';?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo site_url().'Landing_page/Register/Select_register';?>" style="color: green;">สมัครสมาชิก</a></li>
             <li>สมัครสมาชิกสำหรับผู้ประกอบการ</li>
         </ul>
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับผู้ประกอบการ</h1>
-        <form class="container py-3" method='POST' action='<?php echo site_url('Entrepreneur/Auth/Register_entrepreneur/insert_ent') ?>' enctype="multipart/form-data">
+        <form class="container py-3" method='POST' action="<?php echo site_url().'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
                 <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1>&nbsp;นาย

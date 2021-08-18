@@ -86,7 +86,7 @@ class Register_entrepreneur extends DCS_controller {
                 $this->mdoc->doc_path = $fileNewName[$i].'.'.$fileActaulExt[$i];
                 $this->mdoc->insert_document();
             }
-            redirect('Entrepreneur/Auth/Login_entrepreneur');
+            redirect('Landing_page/Register/Landing_page');
         }else{
             redirect("Entrepreneur/Auth/Register_entrepreneur/show_regis_ent");
         }
