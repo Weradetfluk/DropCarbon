@@ -14,7 +14,7 @@
                       </div>
                       <div class="table-responsive" id="data_entre">
                         <table class="table table-hover table-striped " style="text-align: center;">
-                          <thead  class="text-white" style="background-color: #d8b7a8; text-align: center;">
+                          <thead  class="text-white" style="background-color: #e4a487; text-align: center;">
                             <tr>
                               <th>ลำดับ</th>
                               <th>ชื่อสถานที่</th>

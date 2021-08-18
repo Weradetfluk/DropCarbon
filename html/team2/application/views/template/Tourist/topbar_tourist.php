@@ -1,7 +1,7 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 
 <!-- Open topbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow" >
     <div class="container-fluid">
 
         <!-- topbar left -->

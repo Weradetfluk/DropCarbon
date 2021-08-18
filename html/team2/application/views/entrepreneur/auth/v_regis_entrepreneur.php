@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
+<style crossorigin='anonymous'>
     .w3-btn {
         width: 150px;
     }
@@ -99,7 +96,8 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
-                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" placeholder="ชื่อผู้ใช้" required>
+                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
+                    <span id="usernameavailable"></span>
                 </div>
             </div>
             <div class="row">
@@ -152,7 +150,30 @@
             $('#next_btn').prop('disabled', false);
         }
     }
-</script>
-</body>
 
-</html>
+    function check_username() {
+        let ent_username = $('#ent_username').val();
+        $.ajax({
+            url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_username_entrepreneur_ajax'); ?>',
+            type: "POST",
+            data: {
+                ent_username: ent_username
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {
+                    $("#usernameavailable").css({
+                        "color": "red"
+                    });
+
+                    $('#usernameavailable').html("username not available");
+                    $('#next_btn').prop('disabled', true);
+                } else {
+                    $('#usernameavailable').html("");
+                    $('#next_btn').prop('disabled', false);
+                }
+
+            }
+        });
+    }
+</script>

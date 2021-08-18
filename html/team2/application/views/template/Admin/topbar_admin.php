@@ -54,7 +54,7 @@ if (!isset($_SESSION['tab_number'])) {
 <div class="wrapper ">
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
+  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: fixed;">
     <div class="container-fluid">
 
       <a href="#" class="navbar-brand">

@@ -6,7 +6,7 @@
  }
  ?>
 <!-- Navbar -->
- <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light">
+ <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: fixed;">
         <div class="container-fluid">
         <a href="#" class="navbar-brand">
           <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">

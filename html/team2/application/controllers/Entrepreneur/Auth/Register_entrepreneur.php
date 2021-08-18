@@ -91,4 +91,26 @@ class Register_entrepreneur extends DCS_controller {
             redirect("Entrepreneur/Auth/Register_entrepreneur/show_regis_ent");
         }
     }
+    /*
+    * check_username_entrepreneur_ajax
+    * check username entrepreneur
+    * @input 
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2021-08-18
+    * @Update Date -
+    */
+    public function check_username_entrepreneur_ajax(){
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+        $this->ment->ent_username = $this->input->post('ent_username');
+
+        $result = $this->ment->check_username()->row(); //function in model
+
+
+        if ($result) {
+            echo 1;
+        } else{
+            echo 2;
+        }
+    }
 }

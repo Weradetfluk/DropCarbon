@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_entrepreneur.php';
+    /*
+    * @author Suwapat Saowarod 62160340
+    */
 class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 {
     public function __construct()
@@ -16,8 +19,6 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
-
-    
     function get_all_data($limit, $start, $number_status)
     {
 
@@ -25,14 +26,13 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 
         $this->db->select('*');
         $this->db->from('dcs_entrepreneur');
-        $this->db->where("ent_status = '$number_status'"); 
+        $this->db->where("ent_status = '$number_status'");
 
         $query = $this->db->get();
-       
+
         //$query = $this->db->get('dcs_entrepreneur');
         return $query->result();
     }
-
 
     /*
     *get_search
@@ -42,18 +42,13 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
-
-    
     function get_search($search, $number_status)
-    {  
+    {
         $sql = "SELECT * FROM {$this->db_name}.dcs_entrepreneur where ent_firstname =  '$search'  And ent_status = '$number_status' ";
 
         $query = $this->db->query($sql);
         return $query;
-
     }
-
-    
 
     /*
     *get_count_all
@@ -63,8 +58,8 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
-
-    function get_count_all($num_status){
+    function get_count_all($num_status)
+    {
         $this->db->select('*');
         $this->db->from('dcs_entrepreneur ');
         $this->db->where("ent_status = '$num_status'");
@@ -72,8 +67,6 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $num_results;
     }
 
-
-    
     /*
     *get_entrepreneur_by_id
     *get data card entrepreneur by form database
@@ -82,17 +75,13 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
-
-    function get_entrepreneur_by_id(){
+    function get_entrepreneur_by_id()
+    {
         $sql = "SELECT * FROM {$this->db_name}.dcs_entrepreneur where ent_id = ? ";
         $query = $this->db->query($sql, array($this->ent_id));
-     
+
         return $query;
-
-
-
     }
-
 
     /*
     *get_data_card_entrepreneur
@@ -102,8 +91,8 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
-
-    function get_data_card_entrepreneur(){
+    function get_data_card_entrepreneur()
+    {
         $sql = "SELECT sum(case when ent_status = 1 then 1 else 0 end ) as consider, 
         sum(case when ent_status = 2 then 1 else 0 end) as approve , 
         sum(case when ent_status = 3 then 1 else 0 end ) as reject ,
@@ -114,8 +103,6 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql);
         return $query;
     }
-
-    
 
     /*
     *get_ent
@@ -132,9 +119,6 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $query;
     }
 
-
-
-    
     /*
     *get_by_username_password
     *get data entrepreneur form database
@@ -158,5 +142,21 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         } else {
             return false;
         }
+    }
+
+    /*
+    *check_username
+    *check username in database
+    *@input -
+    *@insert -
+    *@author Suwapat Saowarod 
+    *@Create Date 2564-08-18
+    */
+    public function check_username()
+    {
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_username = ?";
+        $query = $this->db->query($sql, array($this->ent_username));
+        return $query;
     }
 }

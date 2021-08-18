@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
+<style crossorigin='anonymous'>
     .w3-btn {
         width: 150px;
     }
@@ -189,14 +186,11 @@
                     $('#usernameavailable').html("username not available");
                     $('#next_btn').prop('disabled', true);
                 } else {
+                    $('#usernameavailable').html("");
                     $('#next_btn').prop('disabled', false);
                 }
-
             }
         });
 
     }
 </script>
-</body>
-
-</html>
