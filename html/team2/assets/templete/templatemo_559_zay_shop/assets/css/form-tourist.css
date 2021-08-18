@@ -104,7 +104,7 @@ button:hover {
 body {
     background     : linear-gradient(-45deg, #7fd759be, #25e9bb, #7fd759be, #25e9bb);
     background-size: 400% 400%;
-    animation      : gradient 15s ease infinite;
+    animation      : gradient 60s ease infinite;
 }
 
 @keyframes gradient {

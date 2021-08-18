@@ -2,10 +2,10 @@
 
 <!-- Open topbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="container-fluid">
 
         <!-- topbar left -->
-        <a class="navbar-brand text-success logo h2 align-self-center" href="<?php echo site_url() . 'Landing_page_tourist/Landing_page_tourist'; ?>">
+        <a class="navbar-brand text-success logo h2 align-self-center" href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>">
             DropCarbon for Tourist
         </a>
 
