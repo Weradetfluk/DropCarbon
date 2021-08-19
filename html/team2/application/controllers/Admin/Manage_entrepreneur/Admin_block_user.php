@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+/*
+* Admin_block_user
+* Manage block entrepreneur
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/
 class Admin_block_user extends DCS_controller
 {
     /*

@@ -16,40 +16,6 @@ if (!isset($_SESSION['tab_number'])) {
 
 
 
-<style>
-  .table-responsive::-webkit-scrollbar {
-    -webkit-appearance: none;
-  }
-
-  .table-responsive::-webkit-scrollbar:vertical {
-    width: 12px;
-  }
-
-  .table-responsive::-webkit-scrollbar:horizontal {
-    height: 12px;
-  }
-
-  .table-responsive::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-  }
-
-  .table-responsive::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #ffffff;
-  }
-
-  .navbar {
-    background-color: red;
-  }
-</style>
-
-<!--  side bar -->
-
-
-
-
 
 <div class="wrapper ">
 

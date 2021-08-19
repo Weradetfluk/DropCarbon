@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+/*
+* DCS_controller
+* Base controller system
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/
 class DCS_controller extends CI_Controller
 {
 

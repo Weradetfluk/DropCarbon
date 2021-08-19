@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+/*
+* Admin_approval_entrepreneur
+* Manage Approve reject entrepreneur
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/
 class Admin_approval_entrepreneur extends DCS_controller
 {
     /*
@@ -52,8 +58,11 @@ class Admin_approval_entrepreneur extends DCS_controller
             $all_count = $this->mdce->get_count_all($number_status); //get all count consider
 
             $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider');
+                
             $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+
             $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider');
+
             $data['arr_entrepreneur'] = $this->mdce->get_all_data($config["per_page"], $page, $number_status);
             $this->pagination->initialize($config);
         }

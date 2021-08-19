@@ -1,0 +1,105 @@
+
+/*         
+* css-admin
+* @author weradet nopsombun 62160110
+* @Create Date 2564-08-19
+*/
+
+
+/* tab page */
+.nav-link{
+    font-size: 16px !important;
+  }
+
+
+  .custom-header{
+      background-color: #60839f !important;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important; 
+      border-radius: 10px !important;
+  }
+
+
+
+  .custom-header-tab{
+      background-color: #5F9EA0 !important; 
+      border-radius: 10px !important;
+  }
+
+
+
+  .custom-card-tab{
+      border-radius: 25px !important;
+  }
+
+
+
+  .custom-card-head-search{
+      border-radius: 25px !important;
+  }
+
+
+  .custom-h4-card-table{
+      font-family: 'Prompt', sans-serif !important;
+  }
+
+
+  .custom-search{
+      background-color:white !important; 
+      border-radius: 10px !important; 
+      width: 200px !important;
+  }
+
+
+  /* thead customs */
+  thead {
+      background-color: #e4a487 !important; 
+      text-align: center !important;
+  }
+
+
+  .th-custom {
+    font-weight:500 !important;
+  }
+
+
+  .custom-form-search{
+      width: 250px !important; 
+      float:right !important;
+  }
+
+  .custom-tr-header-table{
+      font-weight:500 !important;
+  }
+
+  .custom-btn-table{
+      font-size:10px !important; 
+      padding:12px !important;
+  }
+
+
+
+  /*   
+     scroll bar
+  */
+  .table-responsive::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  .table-responsive::-webkit-scrollbar:vertical {
+    width: 12px;
+  }
+
+  .table-responsive::-webkit-scrollbar:horizontal {
+    height: 12px;
+  }
+
+  .table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+  }
+
+  .table-responsive::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+  }

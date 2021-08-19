@@ -1,25 +1,22 @@
- <!-- main content -->
-
-<style>
  
-</style>
 
- <div class="card card-nav-tabs" style="border-radius: 25px;">
-     <div class="card-header " style="background-color: #5F9EA0; border-radius: 10px;">
+ <!-- main content -->
+ <div class="card card-nav-tabs custom-card-tab">
+     <div class="card-header custom-header-tab">
          <div class="nav-tabs-navigation">
              <div class="nav-tabs-wrapper">
                  <ul class="nav nav-tabs" data-tabs="tabs">
                      <li class="nav-item">
-                         <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> "style="font-size: 16px;">ยังไม่ได้รับอนุมัติ</a>
+                         <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> "style="font-size: 16px;">อนุมัติแล้ว</a>
+                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>"style="font-size: 16px;">ผู้ใช้ที่ถูกปฏิเสธ</a>
+                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>"style="font-size: 16px;">ผู้ใช้ที่ถูกบล็อค</a>
+                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
                      </li>
                  </ul>
              </div>
@@ -34,19 +31,19 @@
              <div class="tab-pane active" id="consider">
                  <div class="row">
                      <div class="col-md-12">
-                         <div class="card" style="border-radius: 25px;">
-                             <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
+                         <div class="card custom-card-head-search">
+                             <div class="card-header custom-header">
                                  
                                <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white " style="font-family: 'Prompt', sans-serif;">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
+                                         <h4 class="card-title text-white custom-h4-card-table" >ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
                                      </div>
                                      <div class="col-sm">
-                                         <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 250px; float:right;">
+                                         <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" >
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px; width: 200px; ">
+                                                 <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
                                                  <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
@@ -63,13 +60,13 @@
 
                                      <!-- table consider ajax  -->
                                      <table class="table" style="text-align: center;" id="entre_tale">
-                                         <thead class="text-white" style="background-color: #e4a487; text-align: center;">
-                                             <tr>
-                                                 <th  style="font-weight:500;">ลำดับ</th>
-                                                 <th  style="font-weight:500;">ชื่อ-นามสกุล</th>
-                                                 <th  style="font-weight:500;">เบอร์โทร</th>
-                                                 <th  style="font-weight:500;">อีเมล</th>
-                                                 <th  style="font-weight:500;">ดำเนินการ</th>
+                                         <thead class="text-white custom-thead">
+                                             <tr class="custom-tr-header-table">
+                                                 <th class="th-custom ">ลำดับ</th>
+                                                 <th class="th-custom ">ชื่อ-นามสกุล</th>
+                                                 <th class="th-custom ">เบอร์โทร</th>
+                                                 <th class="th-custom ">อีเมล</th>
+                                                 <th class="th-custom ">ดำเนินการ</th>
                                              </tr>
                                          </thead>
                                          <tbody class="list">
@@ -110,19 +107,19 @@
                                                          <td style='text-align: center;'>
 
 
-                                                             <button class="btn btn-success" id="accept" style="font-size:10px; padding:12px;" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
+                                                             <button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
                                                                  <i class="material-icons">done</i>
                                                              </button>
 
 
-                                                             <button class="btn btn-danger" id="reject" style="font-size:10px; padding:12px;" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
+                                                             <button class="btn btn-danger custom-btn-table" id="reject"  onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
                                                                  <i class="material-icons">
                                                                      clear
                                                                  </i>
                                                              </button>
 
 
-                                                             <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick='view_data( <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
+                                                             <button class="btn btn-info custom-btn-table" onclick='view_data( <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
                                                                  <i class="material-icons">
                                                                      search
                                                                  </i>
