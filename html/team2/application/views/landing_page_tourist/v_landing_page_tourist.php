@@ -333,11 +333,11 @@ if (!$this->session->has_userdata("username")) {
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
-                        <a href="#">
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
                             <p class="card-text"> จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน
                                 ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
                             <div class="card-info">
@@ -352,11 +352,11 @@ if (!$this->session->has_userdata("username")) {
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
-                        <a href="#">
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
                             <p class="card-text">
                                 จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...
                             </p>
@@ -372,11 +372,11 @@ if (!$this->session->has_userdata("username")) {
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
-                        <a href="#">
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist_login'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
                             <p class="card-text">
                                 ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ
                                 สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...
@@ -397,7 +397,7 @@ if (!$this->session->has_userdata("username")) {
 
                 </div>
                 <div class="col-md-auto">
-                    <a type="button" class="myButtonSeeAll" href="#">ดูทั้งหมด >></a>
+                    <a type="button" class="myButtonSeeAll" href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_eventlist_login'; ?>">ดูทั้งหมด >></a>
                 </div>
             </div>
         </div>
