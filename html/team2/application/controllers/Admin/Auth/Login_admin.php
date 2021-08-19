@@ -260,10 +260,6 @@ class Login_admin extends DCS_controller
       }
   }
 
-
-
-
-
    /*
     * reset_password_page
     * check email in database
