@@ -14,17 +14,17 @@
         opacity: 0.7;
     }
 
-    .fa-facebook {
+    .fa-fa-facebook {
         background: #3B5998;
         color: white;
     }
 
-    .fa-twitter {
+    .fa-fa-twitter {
         background: #55ACEE;
         color: white;
     }
 
-    .fa-instagram {
+    .fa-fa-instagram {
         background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
         color: white;
     }
@@ -41,13 +41,13 @@
 
     .card-horizontal {
         display: flex;
-        flex: 1 1 auto; 
+        flex: 1 1 auto;
     }
 
     img {
         width: 100%;
         /* height: 70%; */
-    }
+    }    
 </style>
 
 <body class="bg-white">
@@ -64,9 +64,10 @@
                 </div>
                 <div>
                     แชร์
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-twitter"></a>
-                    <a href="#" class="fa fa-instagram"></a>
+
+                    <a href="#" class="fa fa-fa-facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="fa fa-fa-twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="fa fa-fa-instagram"><i class="fab fa-instagram"></i></a>
                     <hr>
                 </div>
             </div>

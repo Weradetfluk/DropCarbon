@@ -103,9 +103,6 @@
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
-                        <div align="center">
-                            <!-- <button class="buttonIN">Check in</button> -->
-                        </div>
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -117,9 +114,6 @@
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
-                        <div align="center">
-                            <!-- <button class="buttonOUT">Check out</button> -->
-                        </div>
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -130,9 +124,6 @@
                         </a>
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
-                        </div>
-                        <div align="center">
-                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
@@ -147,9 +138,6 @@
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
-                        <div align="center">
-                            <!-- <button class="buttonSUC" disabled>Success</button> -->
-                        </div>
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -161,9 +149,6 @@
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
-                        <div align="center">
-                            <!-- <button class="buttonSUC" disabled>Success</button> -->
-                        </div>
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -174,9 +159,6 @@
                         </a>
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
-                        </div>
-                        <div align="center">
-                            <!-- <button class="buttonSUC" disabled>Success</button> -->
                         </div>
                         <div class="card-body"></div>
                     </div>
