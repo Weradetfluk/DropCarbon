@@ -1,16 +1,12 @@
 <!-- navbar -->
-
-
-<!-- navbar -->
-
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
-        <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
-        </a>
+    <a href="" class="navbar-brand">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+    </a>
 </nav>
 
 
-<div class="page-header header-filter" >
+<div class="page-header header-filter">
 
     <div class="container" style="margin-top: 200px; ">
 
@@ -60,7 +56,7 @@
     $(document).ready(function() {
 
         $("#forgotpass").on('click', function() {
-            var existingHTML =  $("#forgotpass").html() //store exiting button HTML
+            var existingHTML = $("#forgotpass").html() //store exiting button HTML
             let user_email = $('#admin_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             $(this).prop("disabled", true);
             $(this).html(
@@ -72,9 +68,6 @@
 
     }); // Jqurey
 
-
-
-
     /*
      * check_email_user
      * check e-mail in database using ajax
@@ -84,13 +77,9 @@
      * @Create Date 2564-08-12
      * @Update -
      */
-
-
     function check_email_user(user_email, existingHTML) {
-
-
         $.ajax({
-            
+
             type: "POST",
             url: '<?php echo site_url() . 'Admin/Auth/Login_admin/check_email_admin'; ?>',
             data: {
@@ -98,7 +87,7 @@
             },
             success: function(json_res) { //respone to alert
                 if (json_res == 1) {
-               
+
                     swal({
                         title: "ระบบได้จัดส่งส่งอีเมลของท่านเรียบร้อยแล้ว",
                         text: 'โปรดตรวจสอบอีเมลของท่าน',
@@ -119,17 +108,11 @@
                         type: "warning",
 
                     })
-
                 }
-
-
             },
             error: function() {
                 alert('check email Not working');
             }
-
-
         });
     }
-
 </script>

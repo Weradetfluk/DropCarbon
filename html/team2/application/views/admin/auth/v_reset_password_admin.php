@@ -1,11 +1,9 @@
 <!-- navbar -->
 
-<!-- navbar -->
-
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
-        <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
-        </a>
+    <a href="" class="navbar-brand">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+    </a>
 </nav>
 
 
@@ -83,19 +81,16 @@
 
 
 
-    
+
     /*
-    * confirmpassword
-    * confirmpassword in value
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
-    * @Update -
-    */
-
-
-
+     * confirmpassword
+     * confirmpassword in value
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-08-12
+     * @Update -
+     */
     function confirmpassword() {
         if ($('#admin_password').val() != $('#admin_password_confirm').val()) {
             $('#err_text').text('รหัสผ่านไม่ตรงกัน');
@@ -108,17 +103,15 @@
 
 
 
-     /*
-    * reset_password
-    * reset password in database
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
-    * @Update -
-    */
-
-
+    /*
+     * reset_password
+     * reset password in database
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-08-12
+     * @Update -
+     */
     function reset_password(password, token) {
         $.ajax({
             type: "POST",
