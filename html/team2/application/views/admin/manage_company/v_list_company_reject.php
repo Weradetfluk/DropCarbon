@@ -32,15 +32,15 @@
                                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
                                      <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลสถานที่ที่ถูกปฏิเสธ</h4>
+                                         <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงข้อมูลสถานที่ที่ถูกปฏิเสธ</h4>
                                      </div>
                                      <div class="col">
-                                         <form class="form-inline" action="#" method="POST" style="width: 200px; float:right;">
+                                         <form class="form-inline custom-form-search" action="#" method="POST" style="width: 200px; float:right;">
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                 <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
 
@@ -98,7 +98,7 @@
 
                                                                 <!-- column ดำเนินการ -->
                                                                 <td style='text-align: center;'>
-                                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;">
+                                                                    <button class="btn btn-info custom-btn-table">
                                                                         <i class="material-icons">
                                                                             search
                                                                         </i>

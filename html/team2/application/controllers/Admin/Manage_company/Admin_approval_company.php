@@ -270,4 +270,25 @@ class Admin_approval_company extends DCS_controller
        $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
 
+      /*
+    * show_add_company
+    * show form add company
+    * @input 
+    * @output -
+    * @author Acharaporn pornpattanasap 62160344
+    * @Create Date 2021-08-05
+    * @Update Date -
+    */
+    public function show_detail_company($com_id)
+    {
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->mcom->com_id = $com_id;
+        $this->mimg->com_img_com_id = $com_id;
+        $data["arr_company"] = $this->mcom->get_by_detail()->row();
+        $data["arr_image"] = $this->mimg->get_by_com_id()->result();
+         
+        $this->output_admin('admin/manage_company/v_detail_company_admin',$data); 
+    }
+
 }

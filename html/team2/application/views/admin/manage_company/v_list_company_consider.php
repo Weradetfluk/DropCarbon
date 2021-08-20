@@ -19,13 +19,13 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> "  style="font-size: 16px;">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> " >ยังไม่ได้รับอนุมัติ</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> " style="font-size: 16px;">อนุมัติแล้ว</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>"  style="font-size: 16px;">สถานที่ที่ถูกปฏิเสธ</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>" >สถานที่ที่ถูกปฏิเสธ</a>
                              </li>
                          </ul>
                      </div>
@@ -43,15 +43,15 @@
                                      <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
                                          <div class="row">
                                              <div class="col py-2">
-                                                 <h4 class="card-title text-white " style="font-family: 'Prompt', sans-serif;">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
+                                                 <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงข้อมูลสถานที่ที่ยังไม่ได้รับอนุมัติ</h4>
                                              </div>
                                              <div class="col">
-                                                 <form class="form-inline" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
+                                                 <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
 
                                                      <div class="input-group ">
 
-                                                         <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                         <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                                         <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                                                         <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
                                                              <i class="material-icons">search</i>
                                                          </button>
 
@@ -115,23 +115,24 @@
                                                                  <td style='text-align: center;'>
 
 
-                                                                     <button class="btn btn-success" id="accept" style="font-size:10px; padding:12px;" onclick="confirm_approve(  <?php echo $arr_company[$i]->com_id; ?>)">
+                                                                     <button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(  <?php echo $arr_company[$i]->com_id; ?>)">
                                                                          <i class="material-icons">done</i>
                                                                      </button>
 
 
-                                                                     <button class="btn btn-danger" id="reject" style="font-size:10px; padding:12px;" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
+                                                                     <button class="btn btn-danger custom-btn-table" id="reject"  onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
                                                                          <i class="material-icons">
                                                                              clear
                                                                          </i>
                                                                      </button>
 
 
-                                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;">
+                                                                     <a class="btn btn-info custom-btn-table"  href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/'.$arr_company[$i]->com_id;?>">
+                                                                         
                                                                          <i class="material-icons">
                                                                              search
                                                                          </i>
-                                                                     </button>
+                                                            </a>
                                                                  </td>
 
 
