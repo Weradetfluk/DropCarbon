@@ -2,9 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
    
-   /*
-    * @author Thanchanok Thongjumroon 62160089
-    */
+/*
+* Entrepreneur_edit
+* edit data Entrepreneur
+* @author Thanchanok Thongjumroon 62160089
+* @Create Date 2564-07-24
+*/
 
 class Entrepreneur_edit extends DCS_controller
 {
