@@ -6,7 +6,7 @@ require dirname(__FILE__) . '/../../DCS_controller.php';
 * Login_entrepreneur
 * Login for entrepreneur
 * @author Suwapat Saowarod 62160340
-* @Create Date 2021-07-19
+* @Create Date 2564-07-19
 */
 class Login_entrepreneur extends DCS_controller
 {
@@ -16,7 +16,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function index($data = NULL)
@@ -30,8 +30,8 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
-    * @Update Date 2021-08-03
+    * @Create Date 2564-07-19
+    * @Update Date 2564-08-03
     */
     function input_login_form()
     {
@@ -72,7 +72,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function logout()
@@ -87,7 +87,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function set_session($username, $name, $id, $password, $tel, $card, $email, $pre_id)
@@ -108,7 +108,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function remove_session()

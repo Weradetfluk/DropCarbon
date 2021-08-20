@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_add_company
+* Display form add company by entrepreneur
+* @input com_name, com_description, com_tel, com_file[], com_lat, com_lon
+* @output form add company
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-07-18
+*/ 
+-->
+
 <style>
     #map {
         height: 100%;
@@ -41,7 +52,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label for="com_description">เบอร์ติดต่อสถานที่</label>
+                                        <label for="com_tel">เบอร์ติดต่อสถานที่</label>
                                         <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" required>
                                     </div>
                                 </div>
@@ -119,6 +130,15 @@
         },
     });
 
+    /*
+     * init
+     * show map and get location user
+     * @input lat, lon
+     * @output open street map
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-07
+     * @Update 2564-08-10
+     */
     function init(lat, lon) {
         var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
         // console.log(lat, lon);
@@ -163,6 +183,15 @@
         },
     });
 
+    /*
+     * show_maker
+     * show marker in open street map
+     * @input lat, lon
+     * @output marker in open street map
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-07
+     * @Update 2564-08-10
+     */
     function show_maker(lon, lat) {
         console.log(lon + " " + lat);
         markers.clearMarkers();
@@ -181,6 +210,15 @@
         map.setCenter(lonLat, zoom);
     }
 
+    /*
+     * set_lat_lon
+     * set lat and lon
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-10
+     * @Update -
+     */
     function set_lat_lon() {
         navigator.geolocation.getCurrentPosition((position) => {
             $('#com_lat').val(position.coords.latitude);

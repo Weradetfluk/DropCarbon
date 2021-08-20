@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 * Company_list
 * Manage list company by entrepreneur
 * @author Suwapat Saowarod 62160340
-* @Create Date 2021-07-18
+* @Create Date 2564-07-18
 */
 class Company_list extends DCS_controller
 {
@@ -17,7 +17,7 @@ class Company_list extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-18
+    * @Create Date 2564-07-18
     * @Update Date -
     */
     public function show_list_company()

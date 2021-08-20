@@ -10,7 +10,7 @@ class Tourist_edit extends DCS_controller
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-24
+    * @Create Date 2564-07-24
    */
    public function show_edit_tourist()
    {
@@ -26,7 +26,7 @@ class Tourist_edit extends DCS_controller
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-24
+    * @Create Date 2564-07-24
    */
    public function update_tourist()
    {
@@ -57,7 +57,7 @@ class Tourist_edit extends DCS_controller
     * @input -$username, $name, $password, $tel, $card, $email, $pre_id
     * @output -
     * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-24
+    * @Create Date 2564-07-24
    */
    public function set_session($name, $tel, $email,$birthdate, $pre_id)
    {

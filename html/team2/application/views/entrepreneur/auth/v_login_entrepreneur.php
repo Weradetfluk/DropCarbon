@@ -1,13 +1,17 @@
+<!-- 
+/*
+* v_login_entrepreneur
+* Display form login entrepreneur
+* @input username, password
+* @output form login entrepreneur
+* @author Suwapat Saowarod 62160340
+* @Create Date 2021-07-19
+*/ 
+-->
+
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
-
-
-<style>
-   
-
-</style>
-
 
 <!-- navbar -->
 
@@ -15,9 +19,6 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
     <h2 style="color: #66CC33; padding: 10px;">DCS Entrepreneur</h2>
     </div>
 </nav>
-
-
-
 
 <div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
     <div class="container" style="margin-top: 200px; ">

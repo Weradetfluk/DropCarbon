@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 * Company_edit
 * Manage edit company by entrepreneur
 * @author Suwapat Saowarod 62160340
-* @Create Date 2021-07-19
+* @Create Date 2564-07-19
 */
 class Company_edit extends DCS_controller
 {
@@ -16,7 +16,7 @@ class Company_edit extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
    public function delete_company()
@@ -32,8 +32,8 @@ class Company_edit extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
-    * @Update Date 2021-08-12
+    * @Create Date 2564-07-19
+    * @Update Date 2564-08-12
     */
    public function show_edit_company($com_id)
    {
@@ -54,7 +54,7 @@ class Company_edit extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
    public function edit_company()

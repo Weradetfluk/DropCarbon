@@ -10,6 +10,9 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 */
 
 class Register_entrepreneur extends DCS_controller {
+    /*
+    * @author Priyarat Bumrungkit 62160156
+    */
     public function __construct() {
         parent::__construct();
     }
@@ -20,8 +23,8 @@ class Register_entrepreneur extends DCS_controller {
     * @input 
     * @output -
     * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2021-07-18
-    * @Update Date 2021-08-05
+    * @Create Date 2564-07-18
+    * @Update Date 2564-08-05
     */
     public function show_regis_ent() {
         $this->output_regis('entrepreneur/auth/v_regis_entrepreneur');
@@ -33,8 +36,8 @@ class Register_entrepreneur extends DCS_controller {
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-18
-    * @Update Date 2021-08-05
+    * @Create Date 2564-07-18
+    * @Update Date 2564-08-05
     */
 	public function insert_ent() {
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
@@ -100,7 +103,7 @@ class Register_entrepreneur extends DCS_controller {
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-08-18
+    * @Create Date 2564-08-18
     * @Update Date -
     */
     public function check_username_entrepreneur_ajax(){

@@ -13,11 +13,11 @@ class Entrepreneur_edit extends DCS_controller
 {
    /*
     * show_edit_entrepreneur
-    * show edit entrepreneurlist page by id in database
+    * show edit entrepreneur list page by id in database
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-24
+    * @Create Date 2564-07-24
    */
   public function show_edit_entrepreneur()
   {
@@ -33,8 +33,8 @@ class Entrepreneur_edit extends DCS_controller
     * @input -
     * @output -
     * @author Thanchanok Thongjumroon 62160089
-    * @Create Date 2021-07-24
-    * @Update Date 2021-08-05
+    * @Create Date 2564-07-24
+    * @Update Date 2564-08-05
    */
   public function update_entrepreneur()
   {
@@ -62,7 +62,7 @@ class Entrepreneur_edit extends DCS_controller
     * @input -$username, $name, $password, $tel, $card, $email, $pre_id
     * @output -
     * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-24
+    * @Create Date 2564-07-24
    */
    public function set_session($name, $tel, $email, $pre_id)
    {

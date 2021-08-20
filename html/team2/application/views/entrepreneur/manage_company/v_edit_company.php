@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_edit_company
+* Display form edit company by entrepreneur
+* @input com_name, com_description, com_tel, com_file[], com_lat, com_lon
+* @output form edit company
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-07-19
+*/ 
+-->
+
 <style>
     #map {
         height: 100%;
@@ -121,6 +132,15 @@
         },
     });
 
+    /*
+     * init
+     * show map location company
+     * @input lat, lon
+     * @output open street map
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-07
+     * @Update 2564-08-10
+     */
     function init(lat, lon) {
         console.log(lat + ' ' + lon);
         $('#com_lat').val(lat);
@@ -165,6 +185,15 @@
         },
     });
 
+    /*
+     * show_maker
+     * show marker in open street map
+     * @input lat, lon
+     * @output marker in open street map
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-07
+     * @Update 2564-08-10
+     */
     function show_maker(lon, lat) {
         console.log(lon + " " + lat);
         markers.clearMarkers();

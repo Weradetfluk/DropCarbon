@@ -1,6 +1,14 @@
-<head>
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-</head>
+<!-- 
+/*
+* v_detail_company
+* Display detail company by entrepreneur
+* @input -
+* @output detail company
+* @author Acharaporn pornpattanasap 62160344
+* @Create Date 2564-08-05
+*/ 
+-->
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -72,6 +80,8 @@
         </div>
     </div>
 </div>
+
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
    var lat = '<?=$arr_company->com_lat?>';       //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript

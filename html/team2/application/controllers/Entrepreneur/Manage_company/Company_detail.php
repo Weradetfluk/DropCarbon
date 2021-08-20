@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 * Company_detail
 * Manage detail company by entrepreneur
 * @author Acharaporn pornpattanasap 62160344
-* @Create Date 2021-07-18
+* @Create Date 2564-07-18
 */
 class Company_detail extends DCS_controller
 {
@@ -17,7 +17,7 @@ class Company_detail extends DCS_controller
     * @input 
     * @output -
     * @author Acharaporn pornpattanasap 62160344
-    * @Create Date 2021-08-05
+    * @Create Date 2564-08-05
     * @Update Date -
     */
     public function show_detail_company($com_id)
