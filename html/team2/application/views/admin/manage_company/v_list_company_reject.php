@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_list_company_reject
+* Display reject company table
+* @input -
+* @output reject company list
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2561-08-10
+*/ 
+-->
+
 <!-- main content -->
 
 <div class="content">

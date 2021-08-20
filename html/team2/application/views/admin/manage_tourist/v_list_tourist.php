@@ -1,3 +1,13 @@
+ <!-- 
+/*
+* v_list_tourist_block
+* Display list tourist table
+* @input -
+* @output tourist list
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2561-08-01
+*/ 
+-->
  <!-- main content -->
 
  <div class="content">
@@ -121,7 +131,15 @@
          </div>
 
 
-
+         <!-- /*
+              * block modal
+              * open blockmodal 
+              * @input 
+              * @output modal to confirm block user 
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-02
+              * @Update -
+        */ -->
          <!-- warnning block Modal  -->
          <div class="modal" tabindex="-1" role="dialog" id="blockmodal">
              <div class="modal-dialog" role="document">

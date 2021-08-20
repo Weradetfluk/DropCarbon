@@ -2,15 +2,18 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
 
-    /*
-    * @author Acharaporn pornpattanasap 62160344
-    */
+/*
+* Company_detail
+* Manage detail company by entrepreneur
+* @author Acharaporn pornpattanasap 62160344
+* @Create Date 2021-07-18
+*/
 class Company_detail extends DCS_controller
 {
 
     /*
-    * show_add_company
-    * show form add company
+    * show_detail_company
+    * show detail company by entrepreneur
     * @input 
     * @output -
     * @author Acharaporn pornpattanasap 62160344

@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_list_tourist_block
+* Display list block tourist table
+* @input -
+* @output tourist block list
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2561-08-01
+*/ 
+-->
+
 <!-- main content -->
 
 <div class="content">
@@ -125,8 +136,18 @@
                  </div>
              </div>
          </div>
-<!-- warnning block Modal  -->
-<div class="modal" tabindex="-1" role="dialog" id="unblockmodal">
+
+         <!-- /*
+              * unblock modal
+              * open unblockmodal 
+              * @input 
+              * @output modal to confirm unblock user 
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-02
+              * @Update -
+        */ -->
+        <!-- warnning unblock Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="unblockmodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">

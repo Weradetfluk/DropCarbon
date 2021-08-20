@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
     /*
+    * Register_tourist
+    * register new tourist user
     * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-07-31
     */
 class Register_tourist extends DCS_controller {
     public function __construct() {
@@ -10,16 +13,22 @@ class Register_tourist extends DCS_controller {
     }
     /*
     * show_regis_tourist
+    * output register tourist page
+    * @input
+    * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
+    * @Update -
     */
-
     public function show_regis_tourist() {
         $this->output_regis('tourist/auth/v_regis_tourist');
     }
 
     /*
     * insert_tourist
+    * output register new tourist
+    * @input tourist data
+    * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
     * @Update Date 2564-08-11
@@ -73,8 +82,12 @@ class Register_tourist extends DCS_controller {
 
     /*
     * check_username_tourist_ajax
+    * output check username
+    * @input tourist username
+    * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-08-10
+    * @Update Date 2564-08-10
     */
     public function check_username_tourist_ajax(){
         $this->load->model('Tourist/M_dcs_tourist', 'tr');
