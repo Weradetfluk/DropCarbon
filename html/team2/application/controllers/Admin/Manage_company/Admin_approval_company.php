@@ -270,13 +270,13 @@ class Admin_approval_company extends DCS_controller
        $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
 
-      /*
-    * show_add_company
-    * show form add company
+    /*
+    * show_detail_company
+    * show detail
     * @input 
     * @output -
-    * @author Acharaporn pornpattanasap 62160344
-    * @Create Date 2021-08-05
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
     * @Update Date -
     */
     public function show_detail_company($com_id)
