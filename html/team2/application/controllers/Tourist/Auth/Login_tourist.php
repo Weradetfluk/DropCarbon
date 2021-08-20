@@ -67,12 +67,12 @@ class Login_tourist extends DCS_controller
 
         //$password = md5($password);
 
-        $this->load->model('Tourist/M_dcs_login_tourist', 'login');  //load database
+        $this->load->model('Tourist/M_dcs_login_tourist', 'mlog');  //load database
 
-        $this->login->tus_username =  $username;
-        $this->login->tus_password = $password;
+        $this->mlog->tus_username =  $username;
+        $this->mlog->tus_password = $password;
 
-        $result = $this->login->login(); //function in model
+        $result = $this->mlog->login(); //function in model
 
         if ($result) {
             $tus_username =  $result->tus_username;
@@ -81,7 +81,7 @@ class Login_tourist extends DCS_controller
 
             $this->set_session($tus_username, $tus_name, $tus_id);
             //echo $tus_name;
-            redirect("Landing_page_tourist/Landing_page_tourist");
+            redirect("Tourist/Auth/Landing_page_tourist");
         } else {
             $data_warning = array();
             $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
