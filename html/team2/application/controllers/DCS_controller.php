@@ -191,7 +191,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_Landing_page
     * show Landing page tourist for every one
-    * @input -
+    * @input $view
     * @output -
     * @author Jutamas Thaptong 62160079
     * @Create Date 2021-08-02
