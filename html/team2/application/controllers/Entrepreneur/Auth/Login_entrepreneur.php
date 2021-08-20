@@ -2,9 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require dirname(__FILE__) . '/../../DCS_controller.php';
 
-    /*
-    * @author Suwapat Saowarod 62160340
-    */
+/*
+* Login_entrepreneur
+* Login for entrepreneur
+* @author Suwapat Saowarod 62160340
+* @Create Date 2021-07-19
+*/
 class Login_entrepreneur extends DCS_controller
 {
     /*
@@ -40,13 +43,13 @@ class Login_entrepreneur extends DCS_controller
 
         $this->ment->ent_username = $username;
         $this->ment->ent_password = $password;
-        $this->ment->ent_status = 2; 
+        $this->ment->ent_status = 2;
         $result = $this->ment->get_by_username_password(); //function in model
-        
+
         if ($result) {
             $ent_username =  $result->ent_username;
-            $ent_name = $result->ent_firstname.' '.$result->ent_lastname;
-            $ent_id= $result->ent_id;
+            $ent_name = $result->ent_firstname . ' ' . $result->ent_lastname;
+            $ent_id = $result->ent_id;
             $ent_password = $result->ent_password;
             $ent_tel = $result->ent_tel;
             $ent_id_card = $result->ent_id_card;
@@ -55,14 +58,12 @@ class Login_entrepreneur extends DCS_controller
             $this->set_session($ent_username, $ent_name, $ent_id, $ent_password, $ent_tel, $ent_id_card, $ent_email, $ent_pre_id);
 
             redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
-
         } else {
             $data_warning = array();
             $data_warning['warning'] = "Username or password incorrect";
 
             $this->index($data_warning);
         }
-
     }
 
     /*
