@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+/*
+* Admin_block_tourist
+* Manage block tourist
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2564-08-01
+*/
 class Admin_block_tourist extends DCS_controller
 {
     /*

@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+/*
+* Admin_approval_company
+* Manage Approve reject company
+* @author Kasama Donwong 62160074
+* @Create Date 2564-08-08
+*/
 class Admin_approval_company extends DCS_controller
 {
   /*
@@ -67,7 +74,7 @@ class Admin_approval_company extends DCS_controller
 
 
   /*
-    * show_data_approve_ajax
+    * show_data_approve
     * get all data company approve  and show table by ajax
     * @input -
     * @output -
@@ -103,7 +110,7 @@ class Admin_approval_company extends DCS_controller
   }
 
    /*
-    * show_data_approve_ajax
+    * show_data_reject
     * get all data company reject  and show table by ajax
     * @input 
     * @output -
@@ -204,7 +211,7 @@ class Admin_approval_company extends DCS_controller
 
 
   /*
-    * Approval
+    * approval_company
     * change com_status 
     * @input 
     * @output -
