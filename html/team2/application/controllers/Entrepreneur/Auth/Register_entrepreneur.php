@@ -2,9 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
 
-    /*
-    * @author Priyarat Bumrungkit 62160156
-    */
+/*
+* Register_entrepreneur
+* Manage register for entrepreneur
+* @author Priyarat Bumrungkit 62160156
+* @Create Date 2564-07-18
+*/
 
 class Register_entrepreneur extends DCS_controller {
     public function __construct() {
