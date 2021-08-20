@@ -5,6 +5,12 @@
 * @Create Date 2564-08-19
 */
 
+body{
+  font-size: 18px; 
+  font-weight:600; 
+  font-family: 'Prompt', sans-serif;
+}
+
 
 /* tab page */
 .nav-link{
@@ -75,6 +81,8 @@
       font-size:10px !important; 
       padding:12px !important;
   }
+
+
 
 
 

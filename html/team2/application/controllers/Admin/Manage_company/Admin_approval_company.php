@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+/*
+* Admin_approval_company
+* Manage Approve reject company
+* @author Kasama Donwong 62160074
+* @Create Date 2564-08-08
+*/
 class Admin_approval_company extends DCS_controller
 {
   /*
@@ -67,7 +74,7 @@ class Admin_approval_company extends DCS_controller
 
 
   /*
-    * show_data_approve_ajax
+    * show_data_approve
     * get all data company approve  and show table by ajax
     * @input -
     * @output -
@@ -103,7 +110,7 @@ class Admin_approval_company extends DCS_controller
   }
 
    /*
-    * show_data_approve_ajax
+    * show_data_reject
     * get all data company reject  and show table by ajax
     * @input 
     * @output -
@@ -204,7 +211,7 @@ class Admin_approval_company extends DCS_controller
 
 
   /*
-    * Approval
+    * approval_company
     * change com_status 
     * @input 
     * @output -
@@ -269,5 +276,26 @@ class Admin_approval_company extends DCS_controller
 
        $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
+
+    /*
+    * show_detail_company
+    * show detail
+    * @input 
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+    public function show_detail_company($com_id)
+    {
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->mcom->com_id = $com_id;
+        $this->mimg->com_img_com_id = $com_id;
+        $data["arr_company"] = $this->mcom->get_by_detail()->row();
+        $data["arr_image"] = $this->mimg->get_by_com_id()->result();
+         
+        $this->output_admin('admin/manage_company/v_detail_company_admin',$data); 
+    }
 
 }

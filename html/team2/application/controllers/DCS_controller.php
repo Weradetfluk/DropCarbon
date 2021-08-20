@@ -88,8 +88,8 @@ class DCS_controller extends CI_Controller
     * output_login_entrepreneur
     * show form login entrepreneur
     * @input
-    * @output -
-    * @author Suwapat Saowarod
+    * @output - 
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
     * @Update Date -
     */
@@ -106,7 +106,7 @@ class DCS_controller extends CI_Controller
     * show list company
     * @input
     * @output -
-    * @author Suwapat Saowarod
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-18
     * @Update Date -
     */
@@ -119,6 +119,15 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Entrepreneur/footer');
     }
 
+    /*
+    * output_regis
+    * register
+    * @input
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2021-07-15
+    * @Update Date -
+    */
     public function output_regis($view, $data = null)
     {
         $this->load->view('template/Register/header_register');
@@ -191,10 +200,10 @@ class DCS_controller extends CI_Controller
     {
         $this->load->view('template/Landing_page/header_landing');
         $this->load->view('template/Landing_page/javascript_landing');
-        // $this->load->view('template/Landing_page/topbar_landing');
-        $this->load->view('landing_page_tourist/v_landing_page_tourist');
+        $this->load->view('tourist/auth/v_landing_page_tourist');
         $this->load->view('template/Landing_page/footer');
     }
+
 
     public function output_edit_tourist($data)
     {

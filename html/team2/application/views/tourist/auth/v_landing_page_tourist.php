@@ -15,7 +15,7 @@ if (!$this->session->has_userdata("username")) {
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
     <div class="container-fluid" style="margin-bottom: -2%;">
 
-        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page_tourist/Landing_page_tourist'; ?>">
+        <a class="navbar-brand" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
             <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -45px;">
         </a>
 
