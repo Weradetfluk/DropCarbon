@@ -103,8 +103,6 @@ class Admin_approval_entrepreneur extends DCS_controller
         $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data);
     }
 
-
-
     /*
       * show_data_reject
       * get all data entrepreneur approve  and show table
