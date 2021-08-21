@@ -2,8 +2,24 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once "Da_dcs_company.php";
+
+/*
+* M_dcs_company
+* get data company
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-07-19
+*/
 class M_dcs_company extends Da_dcs_company
 {
+    /*
+    * get_all
+    * get data company
+    * @input -
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-19
+    * @Update -
+    */
     public function get_all()
     {
         $sql = "SELECT * FROM dcs_company 
@@ -11,12 +27,22 @@ class M_dcs_company extends Da_dcs_company
         return $this->db->query($sql, array($this->com_ent_id));
     }
 
+    /*
+    * get_by_id
+    * get data company by id
+    * @input -
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-19
+    * @Update -
+    */
     public function get_by_id()
     {
         $sql = "SELECT * FROM dcs_company 
                 WHERE com_status != 4 AND com_id = ?";
         return $this->db->query($sql, array($this->com_id));
     }
+
     /*
     *get_count_all
     *get data count company by form database
@@ -33,6 +59,7 @@ class M_dcs_company extends Da_dcs_company
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+
     /*
     *get_all_data
     *get data entrepreneur&company form database
@@ -52,6 +79,7 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->get();
         return $query->result();
     }
+
     /*
     *get_search
     *get data with search
@@ -73,6 +101,7 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->query($sql, array($this->com_name));
         return $query;
     }
+    
     /*
     *get_by_detail
     *get data entrepreneur form database

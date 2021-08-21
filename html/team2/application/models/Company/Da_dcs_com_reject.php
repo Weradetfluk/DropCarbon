@@ -2,6 +2,12 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) ."/../DCS_model.php";
+/*
+* Da_dcs_com_reject
+* Manage reject company
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2564-08-02
+*/
 class Da_dcs_com_reject extends Dcs_model
 {
     public $com_id;
@@ -9,6 +15,9 @@ class Da_dcs_com_reject extends Dcs_model
     public $com_ent_id;
     public $com_adm_id;
 
+    /*
+    * @author Nantasiri Saiwaew 62160093
+    */
     public function __construct(){
        parent::__construct();
     }

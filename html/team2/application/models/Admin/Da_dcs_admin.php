@@ -2,12 +2,21 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) ."/../DCS_model.php";
+/*
+* Da_dcs_admin
+* Manage admin
+* @author Weradet Nopsombun 62160110
+* @Create Date 2564-08-12
+*/
 class Da_dcs_admin extends Dcs_model
 {
     public $adm_username;
     public $adm_password;
     public $adm_email;
 
+    /*
+    * @author Weradet Nopsombun 62160110
+    */
     public function __construct(){
        parent::__construct();
     }

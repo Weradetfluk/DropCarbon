@@ -34,8 +34,8 @@ class Company_add extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-18
-    * @Update Date 2021-08-05
+    * @Create Date 2564-07-18
+    * @Update Date 2564-08-05
     */
     public function add_company()
     {
@@ -76,7 +76,7 @@ class Company_add extends DCS_controller
         }
 
         if ($error_file != 'false') {
-            $this->mcom->add_company();
+            $this->mcom->insert_company();
             $result = $this->mcom->get_by_name()->row();
             $this->mimg->com_img_com_id = $result->com_id;
 

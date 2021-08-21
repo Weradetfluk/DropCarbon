@@ -97,7 +97,7 @@ class Company_edit extends DCS_controller
          }
 
          if ($error_file != 'false') {
-            $this->mcom->edit_company();
+            $this->mcom->update_company();
             $this->mimg->com_img_com_id = $this->input->post('com_id');
 
             // Loop to upload files
@@ -112,7 +112,7 @@ class Company_edit extends DCS_controller
             redirect("Entrepreneur/Manage_company/Company_add/show_edit_company");
          }
       } else {
-         $this->mcom->edit_company();
+         $this->mcom->update_company();
       }
       redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
    }

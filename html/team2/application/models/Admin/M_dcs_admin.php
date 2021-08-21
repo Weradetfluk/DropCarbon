@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_admin.php';
+/*
+* M_dcs_admin
+* get data admin
+* @author Weradet Nopsombun 62160110
+* @Create Date 2564-08-12
+*/
 class M_dcs_admin extends Da_dcs_admin
 {
     public function __construct(){

@@ -1,12 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_com_reject.php';
+
+/*
+* M_dcs_com_reject
+* get data company reject
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2564-08-02
+*/
 class M_dcs_com_reject extends Da_dcs_com_reject
 {
+    /*
+    * @author Nantasiri Saiwaew 62160093
+    */
     public function __construct()
     {
         parent::__construct();
     }
+
     /*
     * get_data_rejected_by_id_com
     * get data that rejected from company id
