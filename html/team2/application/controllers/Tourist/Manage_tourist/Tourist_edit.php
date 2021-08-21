@@ -30,22 +30,22 @@ class Tourist_edit extends DCS_controller
    */
    public function update_tourist()
    {
-      $this->load->model('Tourist/M_dcs_tourist', 'tus');
+      $this->load->model('Tourist/M_dcs_tourist', 'mtus');
 
-      $this->tus->tus_pre_id = intval($this->input->post('tus_pre_id'));
-      $this->tus->tus_firstname = $this->input->post('tus_firstname');
-      $this->tus->tus_lastname = $this->input->post('tus_lastname');
-      $this->tus->tus_tel = $this->input->post('tus_tel');
-      $this->tus->tus_birthdate = $this->input->post('tus_birthdate');
-      $this->tus->tus_email = $this->input->post('tus_email');
-      $this->tus->tus_id = $this->session->userdata('Tourist_id');
-      $this->tus->update_tourist();
+      $this->mtus->tus_pre_id = intval($this->input->post('tus_pre_id'));
+      $this->mtus->tus_firstname = $this->input->post('tus_firstname');
+      $this->mtus->tus_lastname = $this->input->post('tus_lastname');
+      $this->mtus->tus_tel = $this->input->post('tus_tel');
+      $this->mtus->tus_birthdate = $this->input->post('tus_birthdate');
+      $this->mtus->tus_email = $this->input->post('tus_email');
+      $this->mtus->tus_id = $this->session->userdata('Tourist_id');
+      $this->mtus->update_tourist();
 
-      $tus_pre_id = $this->tus->tus_pre_id;
-      $tus_name = $this->tus->tus_firstname . ' ' . $this->tus->tus_lastname;
-      $tus_tel = $this->tus->tus_tel;
-      $tus_birthdate = $this->tus->tus_birthdate;
-      $tus_email = $this->tus->tus_email;
+      $tus_pre_id = $this->mtus->tus_pre_id;
+      $tus_name = $this->mtus->tus_firstname . ' ' . $this->mtus->tus_lastname;
+      $tus_tel = $this->mtus->tus_tel;
+      $tus_birthdate = $this->mtus->tus_birthdate;
+      $tus_email = $this->mtus->tus_email;
       $this->set_session($tus_name, $tus_tel, $tus_email, $tus_birthdate, $tus_pre_id);
 
       redirect("Landing_page_tourist/Landing_page_tourist");
