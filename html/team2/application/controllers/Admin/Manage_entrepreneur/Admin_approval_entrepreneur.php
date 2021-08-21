@@ -72,7 +72,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
 
     /*
-      * show_data_approve_ajax
+      * show_data_approve
       * get all data entrepreneur approve  and show table by ajax
       * @input
       * @output -
@@ -106,7 +106,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
 
     /*
-      * show_data_block
+      * show_data_reject
       * get all data entrepreneur approve  and show table
       * @input
       * @output -
