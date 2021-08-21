@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_tourist.php';
+
+/*
+* M_dcs_tourist
+* get data tourist
+* @author Thanisron thumsawanit 62160088
+* @Create Date 2564-08-02
+*/
 class M_dcs_tourist extends Da_dcs_tourist
 {
     public function __construct()
@@ -9,12 +16,12 @@ class M_dcs_tourist extends Da_dcs_tourist
     }
 
     /*
-    *get_tourist
-    *get data entrepreneur form database
-    *@input -
-    *@insert -
-    *@author Thanisron thumsawanit 62160088
-    *@Create Date 2564-08-02
+    * get_tourist
+    * get data entrepreneur form database
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-08-02
     */
     function get_tourist()
     {
@@ -23,6 +30,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $query;
     }
 
+    /*
+    * get_all_list_tourist
+    * get all data tourist
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-08-02
+    */
     function get_all_list_tourist($limit, $start)
     {
 
@@ -36,6 +51,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $query->result();
     }
 
+    /*
+    * get_all_list_tourist
+    * get all count tourist status = 1
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-02
+    */
     function get_count_all_tourist()
     {
         $this->db->select('*');
@@ -45,6 +68,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $num_results;
     }
 
+    /*
+    * get_count_all_block
+    * get all count tourist status = 4
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-02
+    */
     function get_count_all_block()
     {
         $this->db->select('*');
@@ -54,6 +85,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $num_results;
     }
 
+    /*
+    * get_all_data_block
+    * get all data tourist status = 4
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-02
+    */
     function get_all_data_block($limit, $start)
     {
 
@@ -67,6 +106,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $query->result();
     }
 
+    /*
+    * check_username
+    * get data tourist by username
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-08-02
+    */
     public function check_username()
     {
         $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
@@ -75,6 +122,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $query;
     } 
 
+    /*
+    * check_username
+    * get data tourist by username and password
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-08-02
+    */
     function get_by_username_password()
     {
         $sql = "SELECT * 
@@ -93,12 +148,12 @@ class M_dcs_tourist extends Da_dcs_tourist
     }
 
     /*
-    *get_tourist_by_id
-    *get data tourist form database by ID
-    *@input -
-    *@insert -
-    *@author Naaka punparich 62160082
-    *@Create Date 2564-08-02
+    * get_tourist_by_id
+    * get data tourist form database by ID
+    * @input -
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-08-02
     */
     function get_tourist_by_id()
     {
