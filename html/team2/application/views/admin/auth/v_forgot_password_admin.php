@@ -1,3 +1,16 @@
+<!-- 
+/*
+* v_forgot_password_admin
+* Display form email for check email
+* @input -
+* @output form email for check in database
+* @author weradet nopsombun 62160110
+* @Create Date 2564-08-08
+*/ 
+-->
+
+
+
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
     <a href="" class="navbar-brand">

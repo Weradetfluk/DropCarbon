@@ -1,3 +1,15 @@
+ <!-- 
+/*
+* v_list_entrepreneur_reject
+* table show list entrepreneur rejected
+* @input -
+* @output table data entrepreneur rejected
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/ 
+-->
+
+
 <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
          <div class="nav-tabs-navigation">

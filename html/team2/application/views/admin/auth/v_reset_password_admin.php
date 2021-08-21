@@ -1,3 +1,16 @@
+<!-- 
+/*
+* v_reset_password_admin
+* Display form email for reset password
+* @input -
+* @output form email for reset password
+* @author weradet nopsombun 62160110
+* @Create Date 2564-08-08
+*/ 
+-->
+
+
+
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
