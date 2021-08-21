@@ -92,6 +92,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         }
     }
 
+    /*
+    *get_tourist_by_id
+    *get data tourist form database by ID
+    *@input -
+    *@insert -
+    *@author Naaka punparich 62160082
+    *@Create Date 2564-08-02
+    */
     function get_tourist_by_id()
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_tourist  where tus_id = ? ";
