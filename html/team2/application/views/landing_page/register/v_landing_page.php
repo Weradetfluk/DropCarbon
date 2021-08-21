@@ -1,12 +1,9 @@
 <!-- Make by : Naaka Punparich 62160082 -->
-<!DOCTYPE html>
-<html lang="en">
-
 <!-- เริ่ม CSS -->
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Chonburi&display=swap');
 
-    p{
+    p {
         padding-bottom: 1%;
     }
 
@@ -242,7 +239,7 @@
 
                     <!-- ตัวกล่องข้อความข่าวสารที่ 2 -->
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <p>อำเภอเมืองชลบุรีจึงได้มีการริเริ่มแนวคิดหนึ่งคือการท่องเที่ยวแบบ Low carbon Tourism ซึ่งเป็นกิจกรรมท่องเที่ยวที่เป็นทางเลือกในการช่วยลดคาร์บอนให้น้อยลง </p>
+                        <p>อำเภอเมืองชลบุรีจึงได้มีการริเริ่มแนวคิดหนึ่งคือการท่องเที่ยวแบบ Low carbon Tourism ซึ่งเป็นกิจกรรมท่องเที่ยวที่เป็นทางเลือกในการช่วยลดคาร์บอนให้น้อยลง </p>
                         <div class="col-md-auto" align="right" id="padding">
                             <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
                         </div>
@@ -449,8 +446,6 @@
     </section>
     <!-- สิ้นสุดสีพื้นหลัง bg-light -->
 </body>
-
-</html>
 
 <script>
     $(document).ready(function() {

@@ -1,6 +1,4 @@
 <!-- Make by : Naaka Punparich 62160082 -->
-<!DOCTYPE html>
-<html lang="en">
 
 <style>
     #card1 {
@@ -87,47 +85,63 @@
 
 <body class="bg-white">
     <section>
-        <!-- Start my event -->
         <div class="container py-5">
             <div class="row text-left py-3">
                 <div class="m-auto">
                     <h1 class="h1" style="padding-bottom: 2%">กิจกรรมทั้งหมด</h1>
                 </div>
             </div>
+            <!-- กิจกรรมทั้งหมด -->
+
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./gym.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 1 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 1 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 1 -->
+
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./manrun.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 2 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 2 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 2 -->
+
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./swimmer.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 3 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 3 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 3 -->
+
             </div>
             <div class="row" style="padding-top: 3%;">
                 <div class="col-12 col-md-4 mb-4">
@@ -135,36 +149,50 @@
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./gym.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 4 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ออกกำลังกาย</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 4 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 4 -->
+
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./manrun.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 5 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">วิ่งออกกำลังกาย</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 5 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 5 -->
+
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
                         <a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist' ?>">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./swimmer.jpg" class="card-img-top" alt="...">
                         </a>
+                        <!-- รูปที่ 6 -->
+
                         <div class="card-body" align="center">
                             <a href="#" class="h2 text-decoration-none text-dark">ว่ายน้ำ</a>
                         </div>
-                        <div class="card-body"></div>
+                        <!-- ชื่อของรูปที่ 6 -->
+
                     </div>
                 </div>
+                <!-- กิจกรรมที่ 6 -->
+
             </div>
         </div>
     </section>
 </body>
-

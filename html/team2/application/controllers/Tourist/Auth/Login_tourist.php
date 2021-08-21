@@ -1,12 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+/*
+* Login_tourist
+* login tourist controller system
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-08-05
+*/
 class Login_tourist extends DCS_controller
 {
     /*
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     */
-
 
     public function __construct()
     {
@@ -18,7 +23,7 @@ class Login_tourist extends DCS_controller
     * index 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -36,7 +41,7 @@ class Login_tourist extends DCS_controller
     * show warnning 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -53,7 +58,7 @@ class Login_tourist extends DCS_controller
     * Login admin and get data 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -95,7 +100,7 @@ class Login_tourist extends DCS_controller
     * Logout and remove session
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -111,7 +116,7 @@ class Login_tourist extends DCS_controller
     * set session data
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -129,7 +134,7 @@ class Login_tourist extends DCS_controller
     * remove session data
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
