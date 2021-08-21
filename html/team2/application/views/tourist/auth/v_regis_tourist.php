@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_regis_tourist
+* Display Form Register tourist page
+* @input - tus_pre_id,tus_firstname,tus_lastname,tus_tel,tus_email,tus_username,tus_password,myfile
+* @output form register tourist
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2561-07-31
+*/ 
+-->
 <style crossorigin='anonymous'>
     .w3-btn {
         width: 150px;
@@ -130,16 +140,10 @@
     </ul>
 </div>
 <script>
-    var tus_pre_id = " ";
-    var tus_firstname = " ";
-    var tus_lastname = " ";
-    var tus_tel = " ";
-    var tus_email = " ";
-    var tus_username = " ";
-    var tus_password = " ";
     /*
      * 
      * confirmpassword
+     * alert confirmpassword not match passwords
      *@input password
      *@parameter -
      *output  checkconfirmpassword
@@ -160,6 +164,7 @@
     /*
      * 
      * check_username
+     * check duplicate username in database
      *@input tus_username
      *@parameter -
      *output  username validation
