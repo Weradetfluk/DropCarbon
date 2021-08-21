@@ -34,18 +34,17 @@ class Register_tourist extends DCS_controller {
     * @Update Date 2564-08-11
     */
 	public function insert_tourist() {
-        $this->load->model('Tourist/M_dcs_tourist', 'tr');
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
-        $this->tr->tus_pre_id = intval($this->input->post('tus_pre_id'));
-        $this->tr->tus_firstname = $this->input->post('tus_firstname');
-        $this->tr->tus_lastname = $this->input->post('tus_lastname');
-        $this->tr->tus_tel = $this->input->post('tus_tel');
-        $this->tr->tus_birthdate = $this->input->post('tus_birthdate');
-        $this->tr->tus_email = $this->input->post('tus_email');
-        $this->tr->tus_username = $this->input->post('tus_username');
-        $this->tr->tus_password = $this->input->post('tus_password');
-        $this->tr->tus_status = 1;
-        //$this->tr->insert_tourist();
+        $this->mtou->tus_pre_id = intval($this->input->post('tus_pre_id'));
+        $this->mtou->tus_firstname = $this->input->post('tus_firstname');
+        $this->mtou->tus_lastname = $this->input->post('tus_lastname');
+        $this->mtou->tus_tel = $this->input->post('tus_tel');
+        $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
+        $this->mtou->tus_email = $this->input->post('tus_email');
+        $this->mtou->tus_username = $this->input->post('tus_username');
+        $this->mtou->tus_password = $this->input->post('tus_password');
+        $this->mtou->tus_status = 1;
         
         //สร้างตัวแปรเก็บข้อมูลไฟล์
         $error_file='';
@@ -64,8 +63,8 @@ class Register_tourist extends DCS_controller {
                 $error_file = 'false';
             }      
             if($error_file != 'false'){
-            $this->tr->insert_tourist();
-            $result = $this->tr->get_by_username_password();
+            $this->mtou->insert_tourist();
+            $result = $this->mtou->get_by_username_password();
             //print_r($result);
             $this->mpic->tus_img_tus_id = $result->tus_id;
                 $fileNewName = uniqid('', true);
@@ -90,10 +89,10 @@ class Register_tourist extends DCS_controller {
     * @Update Date 2564-08-10
     */
     public function check_username_tourist_ajax(){
-        $this->load->model('Tourist/M_dcs_tourist', 'tr');
-        $this->tr->tus_username = $this->input->post('tus_username');
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+        $this->mtou->tus_username = $this->input->post('tus_username');
 
-        $result = $this->tr->check_username()->row(); //function in model
+        $result = $this->mtou->check_username()->row(); //function in model
 
 
         if ($result) {
