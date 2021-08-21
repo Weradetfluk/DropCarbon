@@ -1,6 +1,13 @@
-<!DOCTYPE html>
-<html>
-
+<!-- 
+/*
+* v_regis
+* Display select register page
+* @input - 
+* @output form register tourist or entrepreneur
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2561-07-31
+*/ 
+-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     h2 {
@@ -81,7 +88,6 @@
     }
 </style>
 
-<body>
     <div class="bg">
         <div class="container py-5">
 
@@ -119,6 +125,3 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>

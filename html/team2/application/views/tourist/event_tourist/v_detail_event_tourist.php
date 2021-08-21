@@ -47,29 +47,33 @@
     img {
         width: 100%;
         /* height: 70%; */
-    }    
+    }
 </style>
 
 <body class="bg-white">
     <section>
-        <!-- Start my event -->
         <div class="container py-5">
             <div class="row text-left py-3">
                 <div class="m-auto">
                     <h1 class="h1" style="padding-bottom: 2%">ขื่อกิจกรรม</h1>
                 </div>
+                <!-- ชื่อกิจกรรม -->
+
                 <div style="padding-bottom: 2%;">
                     <i class='fas fa-map-marker-alt' style='font-size: 24px; '></i>
                     จังหวัด
                 </div>
+                <!-- จังหวัด -->
+
                 <div>
                     แชร์
-
                     <a href="#" class="fa fa-fa-facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="fa fa-fa-twitter"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="fa fa-fa-instagram"><i class="fab fa-instagram"></i></a>
                     <hr>
                 </div>
+                <!-- แชร์ -->
+
             </div>
             <div class="row">
                 <div class="col-12">
@@ -80,6 +84,8 @@
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen.jpg" class="card-img-left" alt="...">
                                 </a>
                             </div>
+                            <!-- รูป -->
+
                             <div class="col-3 ">
                                 <div class="card-body ">
                                     <a href="#" class="h2 text-decoration-none text-dark">บางแสน</a>
@@ -88,6 +94,8 @@
                                     </p>
                                 </div>
                             </div>
+                            <!-- คำอธิบายรูป -->
+
                         </div>
                     </div>
                 </div>
@@ -101,6 +109,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
+                    <!-- รายละเอียด -->
+
                 </div>
             </div>
             <div class="row" style="padding-top: 5%;">
@@ -112,6 +122,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
+                    <!-- จุดเด่น -->
+
                 </div>
             </div>
             <div class="row" style="padding-top: 5%;">
@@ -119,6 +131,8 @@
                     <h2>ตำแหน่งสถานที่</h2>
                     <div class="card" id="card" style="padding-left: 2%;">
                         <h3 style="padding-top: 2%; ">ชื่อสถานที่</h3>
+                        <!-- ชื่อสถานที่ -->
+
                         <hr>
                         <div class="row">
                             <div class="col">
@@ -140,7 +154,11 @@
                                 </a>
                             </div>
                         </div>
+                        <!-- ข้อมูลของสถานที่ -->
+
                     </div>
+                    <!-- ตำแหน่ง -->
+
                 </div>
             </div>
         </div>

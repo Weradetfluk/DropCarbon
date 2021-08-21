@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <style>
     .w3-btn {
         width: 150px;
@@ -51,15 +49,21 @@
         float: right;
     }
 </style>
+
 <title>แก้ไขข้อมูลส่วนตัว</title>
-<!-- Form Register -->
+<!-- title -->
+
 <div class="wrapper" style="height: 100%">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="#" style="color: green;">หน้าหลัก</a></li>
             <li>แก้ไขข้อมูลส่วนตัว</li>
         </ul>
+        <!-- path -->
+
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">แก้ไขข้อมูลส่วนตัว</h1>
+        <!-- แก้ไขข้อมูลส่วนตัว -->
+
         <form class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;">
             <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
             <div>
@@ -84,6 +88,8 @@
                 <input type="radio" name="tus_pre_id" value=3 <?php echo $checked_prefix_3 ?>>
                 <label style="color:black">นางสาว</label>
             </div><br>
+            <!-- เพศ -->
+
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="tus_firstname" style="color:black">ชื่อจริง</label>
@@ -94,6 +100,8 @@
                     <input type="text" class="form-control" placeholder="นามสกุลภาษาไทย" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
                 </div>
             </div>
+            <!-- ชื่อจริง-นามสกุล -->
+
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
@@ -105,20 +113,23 @@
                     <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required>
                 </div>
             </div>
+            <!-- เบอร์ วันเกิด -->
 
             <div class="form-group col-md-6 mb-3">
                 <label for="tus_email" style="color:black">อีเมล</label>
                 <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
-            </div>
-            <br>
-            <!-- รูปโปรไฟล์ :
-                <input type="file" name="myfile" required> -->
-            <!-- <br><br> -->
+            </div><br>
+            <!-- อีเมล -->
+
             <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+            <!-- ปุ่มยกเลิก -->
 
             <input type="submit" id="next_btn" class="btn btn-success" style="color: white; margin-right: 1%;" value="บันทึก"></input>
+            <!-- ปุ่มบันทึก -->
 
         </form>
+        <!-- form -->
+
     </div>
     <ul class="bg-bubbles">
         <li></li>
@@ -132,6 +143,7 @@
         <li></li>
         <li></li>
     </ul>
+    <!-- สร้างสีเหลี่ยม  -->
+    
 </div>
-
-</html>
+<!-- พื้นหลัง -->
