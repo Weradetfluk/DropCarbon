@@ -1,12 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
+/*
+* Tourist_edit
+* Tourist edit controller system
+* @author Naaka punparich 62160082
+* @Create Date 2564-07-24
+*/
 class Tourist_edit extends DCS_controller
 {
    /*
     * show_edit_tourist
-    * show edit tusrepreneurlist page by id in database
+    * show edit tourist page
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
@@ -54,7 +59,7 @@ class Tourist_edit extends DCS_controller
    /*
     * set_session
     * set session 
-    * @input -$username, $name, $password, $tel, $card, $email, $pre_id
+    * @input $username, $name, $password, $tel, $card, $email, $pre_id
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24

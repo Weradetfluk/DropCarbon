@@ -204,7 +204,14 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Landing_page/footer');
     }
 
-
+    /*
+    * output_edit_tourist
+    * show edit tourist page
+    * @input $data
+    * @output -
+    * @author Jutamas Thaptong 62160079
+    * @Create Date 2021-08-02
+    */
     public function output_edit_tourist($data)
     {
         $this->load->view('template/Register/header_register');
