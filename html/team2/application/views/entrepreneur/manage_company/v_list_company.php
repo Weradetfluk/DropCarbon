@@ -46,7 +46,14 @@
                       <tr>
                         <td><?php echo $i + 1; ?></td>
                         <td><?php echo $arr_company[$i]->com_name; ?></td>
-                        <td><?php echo $arr_company[$i]->com_description; ?></td>
+                        <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
+                          <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
+                        <?php } ?>
+                        <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
+                          <td><?php echo $arr_company[$i]->com_description; ?></td>
+                        <?php } ?>
+
+                        <!-- <td><?php echo $arr_company[$i]->com_description; ?></td> -->
 
                         <?php if ($arr_company[$i]->com_status == 1) { ?>
                           <td style="color: #CCCC00;">รออนุมัติ</td>
@@ -58,10 +65,16 @@
                           <td style="color: red;">ปฏิเสธ</td>
                         <?php } ?>
 
-                        <td>
-                          <a class="btn btn-warning" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>"><i class="material-icons">edit</i></a>
-                          <button class="btn btn-danger" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)"><i class="material-icons">clear</i></button>
-                          <a class="btn btn-info" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>"><i class="material-icons">search</i></a>
+                        <td style='text-align: center;'>
+                          <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                            <span class="material-icons">edit</span>
+                          </a>
+                          <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                            <span class="material-icons">clear</span>
+                          </button>
+                          <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                            <span class="material-icons">search</span>
+                          </a>
                         </td>
                       </tr>
                     <?php } ?>
@@ -98,6 +111,17 @@
 </div>
 
 <script>
+  /*
+   * @author Suwapat Saowarod 62160340
+   */
+  $(document).ready(function() {
+    let error = '<?php echo $this->session->userdata("error_add_company"); ?>';
+    if (error == "success") {
+      swal("สำเร็จ", "คุณทำการเพิ่มสถานที่สำเร็จ", "success");
+      <?php echo $this->session->set_userdata("error_add_company", ""); ?>
+    }
+  });
+
   /*
    * confirm_delete
    * confirm delete company
@@ -148,7 +172,5 @@
         alert('ajax error working');
       }
     });
-
-
   }
 </script>

@@ -88,10 +88,26 @@ class Company_add extends DCS_controller
                 $this->mimg->com_img_path = $fileNewName[$i] . '.' . $fileActaulExt[$i];
                 $this->mimg->insert_image_company();
             }
+            $this->set_session_add_company('success');  
             redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
         } else {
-            redirect("Entrepreneur/Manage_company/Company_add/show_add_company");
+            $this->set_session_add_company('fail');
+            redirect('Entrepreneur/Manage_company/Company_add/show_add_company');
         }
+        
+    }
+
+    /*
+    * set_session_add_company
+    * add session 
+    * @input $data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-23
+    * @Update Date -
+    */
+    public function set_session_add_company($data){
+        $this->session->set_userdata("error_add_company", $data);
     }
 }
 
