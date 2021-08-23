@@ -117,6 +117,7 @@
             <?php echo $this->session->unset_userdata("error_add_company"); ?>
         }
     });
+    
     var map, vectorLayer, selectedFeature;
     var zoom = 16;
     var curpos = new Array();

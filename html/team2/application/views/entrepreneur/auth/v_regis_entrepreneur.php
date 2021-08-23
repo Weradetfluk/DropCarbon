@@ -144,6 +144,17 @@
 <script>
     
     /*
+     * @author Suwapat Saowarod 62160340
+     */
+    $(document).ready(function() {
+        let error = "<?php echo $this->session->userdata("error_register_entrepreneur"); ?>";
+        if (error == 'fail') {
+            swal("ล้มเหลว", "คุณทำการลงทะเบียนล้มเหลวเนื่องจากขนาดไฟล์ภาพใหญ่เกินไป", "error");
+            <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
+        }
+    });
+
+    /*
      * confirmpassword
      * check password with confirm_password
      * @input pass, confirm 

@@ -91,8 +91,9 @@
 
                             <!-- id ของ company -->
                             <input type="hidden" name="com_id" value="<?php echo $arr_company[0]->com_id; ?>">
-                            <button type="submit" class="btn btn-success">Submit</button>
                             <a class="btn btn-secondary" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+                            <button type="submit" class="btn btn-success">ยืนยัน</button>
+                            
                         </form>
                     </div>
                 </div>

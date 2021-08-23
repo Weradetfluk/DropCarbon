@@ -455,5 +455,10 @@
             $(this).addClass("active");
         });
 
+        let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
+        if (error_regis_entrepreneur == "success") {
+            swal("สำเร็จ", "คุณทำการลงทำเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
+            <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
+        }
     });
 </script>

@@ -130,11 +130,11 @@ class DCS_controller extends CI_Controller
     */
     public function output_regis($view, $data = null)
     {
-        $this->load->view('template/Register/header_register');
-        $this->load->view('template/Register/javascript_register');
+        $this->load->view('template/Landing_page/header_landing');
+        $this->load->view('template/Landing_page/javascript_landing');
         $this->load->view('template/Landing_page/topbar_landing');
         $this->load->view($view, $data);
-        $this->load->view('template/Register/footer');
+        $this->load->view('template/Landing_page/footer');
     }
 
     /*
