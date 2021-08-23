@@ -1,5 +1,5 @@
 <?php 
- if (!$this->session->has_userdata("username")) {
+ if (!$this->session->has_userdata("Entrepreneur_name")) {
      $path = site_url() . "Entrepreneur/Auth/Login_entrepreneur";
      header("Location: " . $path);
      exit();
