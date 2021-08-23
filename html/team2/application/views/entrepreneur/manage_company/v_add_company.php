@@ -111,10 +111,10 @@
      */
     $(document).ready(function() {
         set_lat_lon();
-        let error = "<?php echo $this->session->userdata("error_add_company", ""); ?>";
+        let error = "<?php echo $this->session->userdata("error_add_company"); ?>";
         if (error == 'fail') {
             swal("ล้มเหลว", "คุณทำการเพิ่มสถานที่ล้มเหลวเนื่องจากขนาดรูปภาพใหญ่เกินไป", "error");
-            <?php echo $this->session->set_userdata("error_add_company", ""); ?>
+            <?php echo $this->session->unset_userdata("error_add_company"); ?>
         }
     });
     var map, vectorLayer, selectedFeature;

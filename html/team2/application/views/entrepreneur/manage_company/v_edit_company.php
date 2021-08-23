@@ -27,7 +27,7 @@
                         </center>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/edit_company/' ?>" method="POST">
+                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/edit_company/' ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -106,6 +106,11 @@
 <script>
     $(document).ready(function() {
         init($('#com_lat').val(), $('#com_lon').val());
+        let error = "<?php echo $this->session->userdata("error_edit_company"); ?>";
+        if (error == 'fail') {
+            swal("ล้มเหลว", "คุณทำการแก้ไขสถานที่ล้มเหลวเนื่องจากขนาดรูปภาพใหญ่เกินไป", "error");
+            <?php echo $this->session->unset_userdata("error_edit_company"); ?>
+        }
     });
     var map, vectorLayer, selectedFeature;
     var lat = <?= $arr_company[0]->com_lat ?>;

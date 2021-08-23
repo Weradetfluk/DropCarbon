@@ -61,6 +61,7 @@ class Company_edit extends DCS_controller
    public function edit_company()
    {
       $this->load->model('Company/M_dcs_company', 'mcom');
+      $this->load->model('Company/M_dcs_com_image', 'mimg');
       $this->mcom->com_name = $this->input->post('com_name');
       $this->mcom->com_description = $this->input->post('com_description');
       $this->mcom->com_id = $this->input->post('com_id');
@@ -68,7 +69,7 @@ class Company_edit extends DCS_controller
       $this->mcom->com_lon = $this->input->post('com_lon');
       $this->mcom->com_tel = $this->input->post('com_tel');
 
-      if (isset($_FILES['com_file'])) {
+      if (isset($_FILES["com_file"]) && !empty($_FILES["com_file"]["name"])) {
          // Create file storage variables
          $fileName = array();
          $fileTmpName = array();
@@ -108,12 +109,31 @@ class Company_edit extends DCS_controller
                $this->mimg->com_img_path = $fileNewName[$i] . '.' . $fileActaulExt[$i];
                $this->mimg->insert_image_company();
             }
+            $this->set_session_edit_company('success');  
+            redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
          } else {
-            redirect("Entrepreneur/Manage_company/Company_add/show_edit_company");
+            $this->set_session_edit_company('fail');  
+            $view = "Entrepreneur/Manage_company/Company_edit/show_edit_company/".$this->input->post('com_id');
+            redirect($view);
          }
       } else {
+         $this->set_session_edit_company('success');  
          $this->mcom->update_company();
+         redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
       }
-      redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
+      
    }
+
+   /*
+    * set_session_edit_company
+    * edit session 
+    * @input $data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-23
+    * @Update Date -
+    */
+    public function set_session_edit_company($data){
+      $this->session->set_userdata("error_edit_company", $data);
+  }
 }

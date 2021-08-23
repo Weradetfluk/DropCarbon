@@ -115,10 +115,15 @@
    * @author Suwapat Saowarod 62160340
    */
   $(document).ready(function() {
-    let error = '<?php echo $this->session->userdata("error_add_company"); ?>';
-    if (error == "success") {
+    let error_add = '<?php echo $this->session->userdata("error_add_company"); ?>';
+    if (error_add == "success") {
       swal("สำเร็จ", "คุณทำการเพิ่มสถานที่สำเร็จ", "success");
-      <?php echo $this->session->set_userdata("error_add_company", ""); ?>
+      <?php echo $this->session->unset_userdata("error_add_company"); ?>
+    }
+    let error_edit = '<?php echo $this->session->userdata("error_edit_company"); ?>';
+    if (error_edit == "success") {
+      swal("สำเร็จ", "คุณทำการแก้ไขสถานที่สำเร็จ", "success");
+      <?php echo $this->session->unset_userdata("error_edit_company"); ?>
     }
   });
 
