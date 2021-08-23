@@ -11,4 +11,5 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/templatemo_559_zay_shop'?>/assets/css/custom.css"> 
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bg.css">
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/templatemo_559_zay_shop'?>/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css">
 </head>

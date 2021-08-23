@@ -46,37 +46,47 @@ class Register_tourist extends DCS_controller {
         $this->mtou->tus_password = $this->input->post('tus_password');
         $this->mtou->tus_status = 1;
         
-        //สร้างตัวแปรเก็บข้อมูลไฟล์
-        $error_file='';
+        // Create file storage variables
+        $fileName = array();
+        $fileTmpName = array();
+        $fileSize = array();
+        $fileError = array();
+        $fileExt = array();
+        $fileActaulExt = array();
+        $error_file = '';
 
-        //กำหนดค่าเก็บข้อมูลไฟล์
-        $file = $_FILES['myfile'];
-        $fileName = $_FILES['myfile']['name'];
-        $fileTmpName = $_FILES['myfile']['tmp_name'];
-        $fileSize = $_FILES['myfile']['size']; 
-        $fileError = $_FILES['myfile']['error'];
+        // Configure file storage
+        $file = $_FILES['tourist_img'];
+        $fileName = $_FILES['tourist_img']['name'];
+        $fileTmpName = $_FILES['tourist_img']['tmp_name'];
+        $fileSize = $_FILES['tourist_img']['size'];
+        $fileError = $_FILES['tourist_img']['error'];
 
             $fileExt = explode('.', $fileName);
             $fileActaulExt = strtolower(end($fileExt));
 
-            if($fileError != 0 || $fileSize >= 1000000){
+            // Check if there is a problem with the image file. or the file size exceeds 1000000?
+            if ($fileError != 0 || $fileSize >= 1000000) {
                 $error_file = 'false';
-            }      
-            if($error_file != 'false'){
+            }   
+
+        if ($error_file != 'false') {
             $this->mtou->insert_tourist();
             $result = $this->mtou->get_by_username_password();
-            //print_r($result);
             $this->mpic->tus_img_tus_id = $result->tus_id;
+            // Loop to upload files
                 $fileNewName = uniqid('', true);
-                $fileDestination = './profilepicture_tourist/'.$fileNewName.'.'.$fileActaulExt;
+                $fileDestination = './profilepicture_tourist/' . $fileNewName . '.' . $fileActaulExt;
                 move_uploaded_file($fileTmpName, $fileDestination);
-                $this->mpic->tus_img_path = $fileNewName.'.'.$fileActaulExt;
+                $this->mpic->tus_img_path = $fileNewName . '.' . $fileActaulExt;
                 $this->mpic->insert_img();
-            
-        }else{
+            $this->set_session_regis_tourist('success');  
+            redirect('Landing_page/Register/Select_register');//redirect ไปที่หน้าหลัก
+        } else {
+            $this->set_session_regis_tourist('fail');
             redirect("Tourist/Auth/Register_tourist/show_regis_tourist");//redirect ไปที่หน้าฟอร์มกรอกข้อมูล
         }
-        redirect('Landing_page/Register/Select_register');//redirect ไปที่หน้าหลัก
+        
     }
 
     /*
@@ -100,5 +110,17 @@ class Register_tourist extends DCS_controller {
         } else{
             echo 2;
         }
+    }
+    /*
+    * set_session_add_tourist
+    * add session 
+    * @input $data
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-08-23
+    * @Update Date -
+    */
+    public function set_session_regis_tourist($data){
+        $this->session->set_userdata("error_register_tourist", $data);
     }
 }

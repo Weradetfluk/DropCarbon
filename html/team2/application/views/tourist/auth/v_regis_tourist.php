@@ -2,7 +2,7 @@
 /*
 * v_regis_tourist
 * Display Form Register tourist page
-* @input - tus_pre_id,tus_firstname,tus_lastname,tus_tel,tus_email,tus_username,tus_password,myfile
+* @input - tus_pre_id,tus_firstname,tus_lastname,tus_tel,tus_email,tus_username,tus_password,tourist_img
 * @output form register tourist
 * @author Thanisorn thumsawanit 62160088
 * @Create Date 2561-07-31
@@ -19,7 +19,6 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
 
     a {
         text-decoration: none;
@@ -99,7 +98,7 @@
             </div>
             <br>
             รูปโปรไฟล์ :
-            <input type="file" name="myfile" required>
+            <input type="file" id ="tourist_img" name="tourist_img" accept="image/*" required>
             <br><br>
 
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
@@ -122,7 +121,9 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="next_btn" class="btn btn-success" style="color: white; float: right;">ถัดไป</button>
+            <a id ="cancel"class="btn btn-secondary" style="color: white; background-color: #777777; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
+            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">ถัดไป</button>
+            
 
         </form>
     </div>
@@ -140,6 +141,16 @@
     </ul>
 </div>
 <script>
+    /*
+     * @author Thanisorn thumsawanit 62160088
+     */
+    $(document).ready(function() {
+        let error = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+        if (error == 'fail') {
+            swal("ล้มเหลว", "รูปภาพที่คุณอัพโหลดมีขนาดใหญ่เกินไป", "error");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+        }
+    });
     /*
      * 
      * confirmpassword
