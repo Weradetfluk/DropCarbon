@@ -1,8 +1,6 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 <!-- เริ่ม CSS -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Chonburi&display=swap');
-
     p {
         padding-bottom: 1%;
     }
