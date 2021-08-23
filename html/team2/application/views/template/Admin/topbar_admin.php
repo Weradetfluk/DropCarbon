@@ -8,9 +8,6 @@ if (!$this->session->has_userdata("username")) {
   exit();
 }
 
-if (!isset($_SESSION['tab_number'])) {
-  $_SESSION['tab_number'] = 1;
-}
 
 ?>
 
