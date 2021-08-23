@@ -2,7 +2,7 @@
 
 // check session
 
-if (!$this->session->has_userdata("username")) {
+if (!$this->session->has_userdata("Admin_name")) {
   $path = site_url() . "Admin/Auth/Login_admin";
   header("Location: " . $path);
   exit();
@@ -21,7 +21,7 @@ if (!$this->session->has_userdata("username")) {
     <div class="container-fluid">
 
       <a href="#" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
       </a>
 
       <!-- nav with responesive -->
@@ -57,8 +57,8 @@ if (!$this->session->has_userdata("username")) {
   <div class="sidebar" data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" onclick="change_tab_number(1);" id="home">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> " onclick="change_tab_number(1);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" id="home">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?>" onclick="change_tab_number(1);">
             <i class="material-icons">dashboard</i>
             <p>จัดการสถานที่</p>
           </a>
@@ -69,8 +69,8 @@ if (!$this->session->has_userdata("username")) {
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" onclick="change_tab_number(3);">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> "onclick="change_tab_number(3);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> " onclick="change_tab_number(3);">
             <i class="material-icons">content_paste</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
@@ -82,7 +82,7 @@ if (!$this->session->has_userdata("username")) {
             <p>จัดการนักท่องเที่ยว</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" onclick="change_tab_number(5);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>">
           <a class="nav-link" href="#">
             <i class="material-icons">bubble_chart</i>
             <p>จัดการโปรโมชัน</p>
@@ -110,6 +110,4 @@ if (!$this->session->has_userdata("username")) {
           }
         });
       }
-
-     
     </script>

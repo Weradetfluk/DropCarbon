@@ -49,6 +49,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     public function show_data_consider()
     {
+      $_SESSION['tab_number'] = 3;
         $number_status = 1;
 
         if (isset($_POST['search'])) {

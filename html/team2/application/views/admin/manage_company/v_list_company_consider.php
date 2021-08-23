@@ -19,13 +19,13 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> " >ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
                              </li>
                              <li class="nav-item">
                                  <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>" >สถานที่ที่ถูกปฏิเสธ</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
                              </li>
                          </ul>
                      </div>
@@ -120,19 +120,19 @@
                                                                      </button>
 
 
-                                                                     <button class="btn btn-danger custom-btn-table" id="reject"  onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
+                                                                     <button class="btn btn-danger custom-btn-table" id="reject" onclick='confirm_reject("<?php echo $arr_company[$i]->com_id; ?>" , "<?php echo $arr_company[$i]->ent_email; ?>")'>
                                                                          <i class="material-icons">
                                                                              clear
                                                                          </i>
                                                                      </button>
 
 
-                                                                     <a class="btn btn-info custom-btn-table"  href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/'.$arr_company[$i]->com_id;?>">
-                                                                         
+                                                                     <a class="btn btn-info custom-btn-table" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+
                                                                          <i class="material-icons">
                                                                              search
                                                                          </i>
-                                                            </a>
+                                                                    </a>
                                                                  </td>
 
 
@@ -357,4 +357,41 @@
                      }
                  });
              }
+
+                  /*
+              * approve_entrepreneur
+              * change status to approve 
+              * @input click button approve
+              * @output change status to 2
+              * @author Kasama Donwong 62160074
+              * @Create Date 2564-08-08
+              * @Update -
+              */
+              function approve_company(com_id) {
+                 $.ajax({
+                     type: "POST",
+                     data: {
+                         com_id: com_id
+                     },
+                     url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/approval_company'); ?>',
+                     success: function() {
+                         //sweet alert
+                         swal({
+                             title: "อนุมัติสำเร็จ",
+                             text: "อนุมัติสถานที่สำเร็จ",
+                             type: "success",
+                             showConfirmButton: false,
+                             timer: 3000,
+                         }, function() {
+                             location.reload();
+                         })
+                     },
+                     error: function() {
+                         alert('ajax error working');
+                     }
+                 });
+             }
+
+             
+             
          </script>

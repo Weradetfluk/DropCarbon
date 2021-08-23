@@ -29,7 +29,7 @@
 
 <div class="content">
     <ul class="breadcrumb">
-        <li><a href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>" style="color: green;">จัดการผู้ประกอบการ</a></li>
+        <li><a href="<?php echo site_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'; ?>" style="color: green;">ยังไม่ได้รับอนุมัติ</a></li>
         <li>ดูรายละเอียด</li>
     </ul>
     <div class="container-fluid">

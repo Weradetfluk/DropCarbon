@@ -291,6 +291,7 @@ class Admin_approval_company extends DCS_controller
     */
     public function show_detail_company($com_id)
     {
+      
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->mcom->com_id = $com_id;

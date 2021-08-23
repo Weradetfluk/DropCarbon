@@ -17,14 +17,14 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
     <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px;">
     </a>
 </nav>
 
 
 
 
-<div class="page-header header-filter bg-light">
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/login-img.png');   background-repeat: no-repeat;   background-size: cover;">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
