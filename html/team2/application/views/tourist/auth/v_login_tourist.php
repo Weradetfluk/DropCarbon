@@ -4,9 +4,9 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 
 <div class="container-1">
     <div class="brand-logo">
-        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./Logo-only.png">
+        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./Logo-only-new.png">
     </div>
-    <div class="brand-title">DropCarbonSystem</div>
+    <div class="brand-title"><b>DropCarbonSystem</b></div>
     <form method="post" action="<?php echo site_url() . 'Tourist/Auth/Login_tourist/input_login_form'; ?>">
         <div class="inputs">
             <label>USERNAME</label>

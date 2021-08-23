@@ -1,12 +1,11 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 
 <!-- Open topbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow" >
-    <div class="container-fluid">
-
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
+    <div class="container-fluid" style="margin-top: -2.5%; margin-bottom: -2.5%;">
         <!-- topbar left -->
-        <a class="navbar-brand text-success logo h2 align-self-center" href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>">
-            DropCarbon for Tourist
+        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>">
+            <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; align-items: center;">
         </a>
 
         <!-- topbar right -->
