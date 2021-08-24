@@ -30,7 +30,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">แก้ไขข้อมูลส่วนตัว</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur' ?>">ออกจากระบบ</a>
+                  <a class="dropdown-item" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">ออกจากระบบ</a>
                 </div>
               </li>
             </ul>

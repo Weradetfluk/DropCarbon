@@ -15,16 +15,18 @@
       <div class="col-md-12">
         <div class="card" style="border-radius: 25px;">
           <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
-            <center>
-              <h4 class="card-title text-white">ตารางจัดการสถานที่</h4>
-            </center>
+            <div class="row">
+              <div class="col">
+                <h4 class="card-title text-white" style="margin-top: 15px; ">ตารางจัดการสถานที่</h4>
+              </div>
+              <div class="col">
+                <a class="btn btn-success" style="float: right;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+              </div>
+            </div>
           </div>
           <br>
 
           <div class="card-body">
-            <div>
-              <a class="btn btn-success" style="float: right;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
-            </div>
             <div class="table-responsive" id="data_entre">
               <table class="table table-hover table-striped " style="text-align: center;">
                 <thead class="text-white" style="background-color: #e4a487; text-align: center;">

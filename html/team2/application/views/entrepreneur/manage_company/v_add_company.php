@@ -66,16 +66,21 @@
                             <!-- lat lon map -->
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col">
+                                        <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
                                         <label for="com_lat">Latitude</label>
                                         <input type="text" id="com_lat" name="com_lat" class="form-control" value="">
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <label for="com_lon">Longitude</label>
                                         <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
                                     </div>
-                                    <a class="btn btn-success text-white" style="border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons">done</i>
+                                    <a class="btn btn-success text-white" style="font-size:10px; padding:12px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                        <i class="material-icons" style="padding:12px; margin-top: -4px;">pin_drop</i>
                                     </a>
                                 </div>
                             </div>
