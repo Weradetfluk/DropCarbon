@@ -26,9 +26,7 @@ body {
 }
 
 .brand-logo img {
-
     height: 130px;
-    /* width : 155px; */
     width : 155px;
     margin: auto;
 }
@@ -88,7 +86,7 @@ body {
     font-weight  : 900;
     box-shadow   : 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition   : 0.5s;
-    color: #fff;
+    color        : #fff;
 }
 
 .button:hover {
@@ -128,6 +126,6 @@ body {
 @media screen and (max-width: 600px) {
 
     .container-1 {
-        width     : 90%;
+        width: 90%;
     }
 }

@@ -49,7 +49,7 @@
         /* height: 70%; */
     }
 </style>
-
+<title>Detail Event</title>
 <body class="bg-white">
     <section>
         <div class="container py-5">

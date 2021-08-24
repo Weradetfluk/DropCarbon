@@ -82,7 +82,7 @@
         border-radius: 15px;
     }
 </style>
-
+<title>List Event</title>
 <body class="bg-white">
     <section>
         <div class="container py-5">
