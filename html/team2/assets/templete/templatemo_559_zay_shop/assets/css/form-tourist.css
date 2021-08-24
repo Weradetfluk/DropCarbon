@@ -28,6 +28,7 @@ body {
 .brand-logo img {
 
     height: 130px;
+    /* width : 155px; */
     width : 155px;
     margin: auto;
 }
@@ -45,9 +46,9 @@ body {
     margin-top: 30px;
 }
 
-label,
-input,
-button {
+.label,
+.input,
+.button {
     display   : block;
     width     : 100%;
     padding   : 0;
@@ -56,19 +57,19 @@ button {
     box-sizing: border-box;
 }
 
-label {
+.label {
     margin-bottom: 4px;
 }
 
-label:nth-of-type(2) {
+.label:nth-of-type(2) {
     margin-top: 12px;
 }
 
-input::placeholder {
+.input::placeholder {
     color: gray;
 }
 
-input {
+.input {
     background   : #fff;
     padding      : 10px;
     padding-left : 20px;
@@ -78,7 +79,7 @@ input {
     box-shadow   : inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgba(226, 226, 226, 0.2);
 }
 
-button {
+.button {
     margin-top   : 10px;
     background   : #59ab6e;
     height       : 40px;
@@ -87,14 +88,11 @@ button {
     font-weight  : 900;
     box-shadow   : 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition   : 0.5s;
-}
-
-button:hover {
-    box-shadow: none;
-}
-
-#submit {
     color: #fff;
+}
+
+.button:hover {
+    box-shadow: none;
 }
 
 body {

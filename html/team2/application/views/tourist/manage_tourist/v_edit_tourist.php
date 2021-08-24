@@ -161,7 +161,8 @@
                 type: "success",
                 showCancelButton: false,
                 buttonsStyling: true,
-                confirmButtonText: "ok",
+                confirmButtonText: "OK",
+                // cancelButtonText: "cancel",
             }, function(isConfirm) {
                 if (isConfirm) {
                     jQuery("#verifyForm").submit();
