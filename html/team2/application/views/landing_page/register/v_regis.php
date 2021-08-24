@@ -44,7 +44,7 @@
         background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./BG.jpg");
 
         /* Full height */
-        height: 90.4%;
+        height: 100%;
 
         /* Center and scale the image nicely */
         background-position: center;
