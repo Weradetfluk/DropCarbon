@@ -1,190 +1,194 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 <!-- เริ่ม CSS -->
 
-   <!-- เริ่ม CSS -->
-   <style>
-       h1,
-       h2,
-       h3,
-       h4,
-       h5,
-       h6 {
-           font-family: 'Prompt', sans-serif !important;
-           text-transform: capitalize;
-           color: #6D152B;
-           font-weight: 700 !important;
-           padding-bottom: 2%;
-       }
+<!-- เริ่ม CSS -->
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Prompt', sans-serif !important;
+        text-transform: capitalize;
+        color: #000;
+        font-weight: 700 !important;
+        padding-bottom: 2%;
+    }
 
-       p {
-           font-family: 'Prompt', sans-serif !important;
-           text-transform: capitalize;
-           font-weight: 500 !important;
-           padding-bottom: 2%;
+    p {
+        font-family: 'Prompt', sans-serif !important;
+        text-transform: capitalize;
+        font-weight: 500 !important;
+        padding-bottom: 2%;
 
-       }
+    }
 
-       a {
-           font-family: 'Prompt', sans-serif !important;
-           text-transform: capitalize;
-           font-weight: 600 !important;
-           padding-bottom: 2%;
-       }
+    a {
+        font-family: 'Prompt', sans-serif !important;
+        text-transform: capitalize;
+        font-weight: 600 !important;
+        padding-bottom: 2%;
+    }
 
-       #card1 {
-           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-           transition: 0.3s;
-       }
+    #card1 {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
 
-       #card {
-           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-           transition: 0.3s;
-       }
+    #card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
 
-       #card:hover {
-           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-           transform: scale(1.05);
-       }
+    #card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
 
-       img {
-           width: 100%;
-       }
+    img {
+        width: 100%;
+    }
 
-       #padding {
-           padding-right: 2%;
-       }
+    #padding {
+        padding-right: 2%;
+    }
 
-       .myButton1 {
-           /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
-           /* background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); */
-           background-color: #ffffff;
-           /* border-radius: 6px; */
-           border: 1px solid #dcdcdc;
-           display: inline-block;
-           cursor: pointer;
-           color: #DC143C;
-           font-family: Arial;
-           font-size: 15px;
-           font-weight: bold;
-           padding: 6px 24px;
-           text-decoration: none;
-           text-shadow: 0px 1px 0px #ffffff;
-       }
+    .myButton1 {
+        /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+        /* background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); */
+        background-color: #ffffff;
+        /* border-radius: 6px; */
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+        cursor: pointer;
+        color: #DC143C;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffffff;
+    }
 
-       /* .myButton1:hover { 
+    /* .myButton1:hover { 
     background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
     background-color: #f6f6f6;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 } */
 
-       .myButton1:active {
-           position: relative;
-           top: 1px;
-       }
+    .myButton1:active {
+        position: relative;
+        top: 1px;
+    }
 
-       .myButton {
-           /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
-           /* background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); */
-           background-color: #ffffff;
-           /* border-radius: 6px; */
-           border: 0px solid #dcdcdc;
-           display: inline-block;
-           cursor: pointer;
-           color: #666666;
-           font-family: Arial;
-           font-size: 16px;
-           font-weight: bold;
-           padding: 6px 24px;
-           text-decoration: none;
-           /* text-shadow: 0px 1px 0px #ffffff; */
-       }
+    .myButton {
+        /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+        /* background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); */
+        background-color: #ffffff;
+        /* border-radius: 6px; */
+        border: 0px solid #dcdcdc;
+        display: inline-block;
+        cursor: pointer;
+        color: #666666;
+        font-family: Arial;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        /* text-shadow: 0px 1px 0px #ffffff; */
+    }
 
-       .myButton:hover {
-           /* background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%); */
-           /* background-color: #f6f6f6; */
-           /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
-           color: #0080c0;
-           /* transform: scale(1.2); */
-       }
+    .myButton:hover {
+        /* background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%); */
+        /* background-color: #f6f6f6; */
+        /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+        color: #0080c0;
+        /* transform: scale(1.2); */
+    }
 
-       .myButton:active {
-           position: relative;
-           top: 1px;
-           box-shadow: inset 0 -5px 0 #fed602;
-       }
+    a .myButton1 {
+        margin-bottom: 15px;
+    }
 
-       .nav-item>.active {
-           box-shadow: inset 0 -5px 0 #fed602;
-       }
+    .myButton:active {
+        position: relative;
+        top: 1px;
+        box-shadow: inset 0 -5px 0 #fed602;
+    }
 
-       .myButton:focus {
-           outline: -webkit-focus-ring-color auto 0px;
-       }
+    .nav-item>.active {
+        box-shadow: inset 0 -5px 0 #fed602;
+    }
 
-       .myButtonSeeAll {
-           /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
-           background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-           background-color: transparent;
-           border-radius: 2px;
-           border: 2px solid #004080;
-           display: inline-block;
-           cursor: pointer;
-           color: #004080;
-           font-family: Arial;
-           font-size: 15px;
-           font-weight: bold;
-           padding: 6px 24px;
-           text-decoration: none;
-           text-shadow: 0px 1px 0px #ffffff;
-       }
+    .myButton:focus {
+        outline: -webkit-focus-ring-color auto 0px;
+    }
 
-       .myButtonSeeAll:hover {
-           background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-           background-color: #f6f6f6;
-           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-           border: 2px solid #f6f6f6;
-           color: #004080;
-           transition: 0.5s;
-       }
+    .myButtonSeeAll {
+        /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+        background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        background-color: transparent;
+        border-radius: 2px;
+        border: 2px solid #004080;
+        display: inline-block;
+        cursor: pointer;
+        color: #004080;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffffff;
+    }
 
-       .card-info .card-date {
-           float: left;
-           font-size: 17px;
-       }
+    .myButtonSeeAll:hover {
+        background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        background-color: #f6f6f6;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        border: 2px solid #f6f6f6;
+        color: #004080;
+        transition: 0.5s;
+    }
 
-       .card-info .card-view {
-           float: right;
-           font-size: 14px;
-       }
+    .card-info .card-date {
+        float: left;
+        font-size: 17px;
+    }
 
-       .top-location {
-           position: relative;
-       }
+    .card-info .card-view {
+        float: right;
+        font-size: 14px;
+    }
 
-       .top-location:hover {
-           border: 5px solid #ffff00;
-           transition: all .2s ease-out;
-       }
+    .top-location {
+        position: relative;
+    }
 
-       .top-location-overley {
-           position: absolute;
-           bottom: 0;
-           left: 0;
-           width: 100%;
-           height: 50%;
-           background-image: linear-gradient(0deg, rgba(0, 0, 0, .75), transparent);
-       }
+    .top-location:hover {
+        border: 5px solid #ffff00;
+        transition: all .2s ease-out;
+    }
 
-       .top-location-name {
-           position: absolute;
-           bottom: 20px;
-           left: 30px;
-           z-index: 20;
-           color: #fff;
+    .top-location-overley {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .75), transparent);
+    }
 
-       }
-   </style>
+    .top-location-name {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        z-index: 20;
+        color: #fff;
+
+    }
+</style>
 <!-- สิ้นสุด CSS -->
 
 <body>
@@ -308,13 +312,13 @@
                             <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
                             <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
                             <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
-                               </span>
+                                <span class="card-date">
+                                    <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
+                                    <span class="material-icons">location_on</span>
+                                    <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
+                                </span>
 
-                           </div>
+                            </div>
                         </div>
 
                     </div>
@@ -335,13 +339,13 @@
                             <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
                             <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
                             <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
-                               </span>
+                                <span class="card-date">
+                                    <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
+                                    <span class="material-icons">location_on</span>
+                                    <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
+                                </span>
 
-                           </div>
+                            </div>
                         </div>
 
                     </div>
@@ -362,13 +366,13 @@
                             <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
                             <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...</p>
                             <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
-                               </span>
+                                <span class="card-date">
+                                    <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
+                                    <span class="material-icons">location_on</span>
+                                    <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
+                                </span>
 
-                           </div>
+                            </div>
                         </div>
 
                     </div>
