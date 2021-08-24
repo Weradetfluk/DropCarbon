@@ -23,7 +23,7 @@ a {
     font-family   : 'Prompt', sans-serif !important;
     text-transform: capitalize;
     font-weight   : 600 !important;
-    padding-bottom: 2%;
+    
 }
 
 #card1 {
@@ -39,10 +39,6 @@ a {
 #card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform : scale(1.05);
-}
-
-img {
-    width: 100%;
 }
 
 #padding {

@@ -121,7 +121,7 @@
             </div><br>
             <!-- อีเมล -->
 
-            <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+            <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
             <!-- ปุ่มยกเลิก -->
             <button type="button" id="verify" class="btn btn-success" style="color: white; margin-right: 1%; float:right; font-size: 18px;">ยืนยัน</button>
             <!-- ปุ่มบันทึก -->
