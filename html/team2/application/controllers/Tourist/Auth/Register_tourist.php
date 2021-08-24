@@ -81,7 +81,7 @@ class Register_tourist extends DCS_controller {
                 $this->mpic->tus_img_path = $fileNewName . '.' . $fileActaulExt;
                 $this->mpic->insert_img();
             $this->set_session_regis_tourist('success');  
-            redirect('Landing_page/Register/Select_register');//redirect ไปที่หน้าหลัก
+            redirect('Landing_page/Register/Landing_page');//redirect ไปที่หน้าหลัก
         } else {
             $this->set_session_regis_tourist('fail');
             redirect("Tourist/Auth/Register_tourist/show_regis_tourist");//redirect ไปที่หน้าฟอร์มกรอกข้อมูล

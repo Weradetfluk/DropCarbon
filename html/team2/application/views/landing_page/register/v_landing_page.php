@@ -508,9 +508,13 @@
         });
 
         let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
+        let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
         if (error_regis_entrepreneur == "success") {
-            swal("สำเร็จ", "คุณทำการลงทำเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
+            swal("สำเร็จ", "คุณทำการลงทะเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
             <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
+        } if(error_register_tourist == "success"){
+            swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }
     });
 </script>
