@@ -49,7 +49,8 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     public function show_data_consider()
     {
-      $_SESSION['tab_number'] = 3;
+      $_SESSION['tab_number'] = 3; //set tab number in topbar_admin.php
+
         $number_status = 1;
 
         if (isset($_POST['search'])) {
@@ -74,7 +75,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     /*
       * show_data_approve
-      * get all data entrepreneur approve  and show table by ajax
+      * get all data entrepreneur approve  and show table 
       * @input
       * @output -
       * @author Weradet Nopsombun 62160110

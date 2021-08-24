@@ -21,4 +21,4 @@
 
 </head>
 
-<body style=" font-family: 'Prompt', sans-serif; font-size: 18px; font-weight:700;">
+<body>

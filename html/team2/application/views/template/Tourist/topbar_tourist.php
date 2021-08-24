@@ -7,6 +7,8 @@
     }
 </style>
 
+
+
 <!-- Open topbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
     <div class="container-fluid" style="margin-top: 8px; margin-left: 20px;">

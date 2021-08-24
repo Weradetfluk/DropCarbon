@@ -12,8 +12,6 @@
      <!-- icon -->
     <link rel="icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
 
-    <!-- font-awesome css -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/fontawesome/css/all.min.css"> -->
 
     <!-- template css -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
