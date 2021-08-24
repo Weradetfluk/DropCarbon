@@ -38,22 +38,23 @@ class Entrepreneur_edit extends DCS_controller
    */
   public function update_entrepreneur()
   {
-     $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+      $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
 
-     $this->ment->ent_pre_id = intval($this->input->post('ent_pre_id'));
-     $this->ment->ent_firstname = $this->input->post('ent_firstname');
-     $this->ment->ent_lastname = $this->input->post('ent_lastname');
-     $this->ment->ent_tel = $this->input->post('ent_tel');
-     $this->ment->ent_email = $this->input->post('ent_email');
-     $this->ment->ent_id = $this->session->userdata('Entrepreneur_id');
-     $this->ment->update_entrepreneur();
-     $ent_pre_id = $this->ment->ent_pre_id;
-     $ent_name = $this->ment->ent_firstname.' '. $this->ment->ent_lastname;
-     $ent_tel = $this->ment->ent_tel;
-     $ent_email = $this->ment->ent_email;
-     $this->set_session($ent_name, $ent_tel, $ent_email, $ent_pre_id);
-
-     redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
+      $this->ment->ent_pre_id = intval($this->input->post('ent_pre_id'));
+      $this->ment->ent_firstname = $this->input->post('ent_firstname');
+      $this->ment->ent_lastname = $this->input->post('ent_lastname');
+      $this->ment->ent_tel = $this->input->post('ent_tel');
+      $this->ment->ent_email = $this->input->post('ent_email');
+      $this->ment->ent_id = $this->session->userdata('Entrepreneur_id');
+      $this->ment->update_entrepreneur();
+      $ent_pre_id = $this->ment->ent_pre_id;
+      $ent_name = $this->ment->ent_firstname.' '. $this->ment->ent_lastname;
+      $ent_tel = $this->ment->ent_tel;
+      $ent_email = $this->ment->ent_email;
+      $this->set_session($ent_name, $ent_tel, $ent_email, $ent_pre_id);
+      $this->session->set_userdata("error_edit_entrepreneur", 'success');
+      // redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
+      $this->show_edit_entrepreneur();
   }
 
    /*

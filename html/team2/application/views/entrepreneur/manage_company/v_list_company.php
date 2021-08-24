@@ -20,7 +20,7 @@
                 <h4 class="card-title text-white" style="margin-top: 15px; ">ตารางจัดการสถานที่</h4>
               </div>
               <div class="col">
-                <a class="btn btn-success" style="float: right;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+                <a class="btn" style="float: right; background-color: #003366; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
               </div>
             </div>
           </div>

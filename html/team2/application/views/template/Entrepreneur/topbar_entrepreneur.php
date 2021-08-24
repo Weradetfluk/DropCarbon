@@ -45,19 +45,19 @@
         <ul class="nav">
           <li class="nav-item  ">
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">store</i>
               <p>จัดการสถานที่</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
+              <i class="material-icons">calendar_today</i>
               <p>จัดการกิจกรรม</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">
-              <i class="material-icons">bubble_chart</i>
+              <i class="material-icons">point_of_sale</i>
               <p>จัดการโปรโมชัน</p>
             </a>
           </li>        

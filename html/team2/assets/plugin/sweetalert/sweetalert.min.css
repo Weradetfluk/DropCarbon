@@ -439,7 +439,7 @@ body.stop-scrolling {
     position  : absolute;
     width     : 60px;
     height    : 120px;
-    background: #fff
+    background: #fff;
 }
 
 .sweet-alert .sa-icon.sa-success::before {

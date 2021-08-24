@@ -107,3 +107,12 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        let error = "<?php echo $this->session->userdata("error_edit_entrepreneur"); ?>";
+        if (error == 'success') {
+            swal("สำเร็จ", "คุณทำแก้ไขข้อมูลสำเร็จ", "success");
+            <?php echo $this->session->unset_userdata("error_edit_entrepreneur"); ?>
+        }
+    });
+</script>
