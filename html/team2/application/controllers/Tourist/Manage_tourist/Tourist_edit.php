@@ -53,7 +53,7 @@ class Tourist_edit extends DCS_controller
       $tus_email = $this->mtus->tus_email;
       $this->set_session($tus_name, $tus_tel, $tus_email, $tus_birthdate, $tus_pre_id);
 
-      redirect("Landing_page_tourist/Landing_page_tourist");
+      redirect("Tourist/Auth/Landing_page_tourist");
    }
 
    /*

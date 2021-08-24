@@ -64,7 +64,7 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">แก้ไขข้อมูลส่วนตัว</h1>
         <!-- แก้ไขข้อมูลส่วนตัว -->
 
-        <form class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;">
+        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;">
             <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
             <div>
                 <?php
@@ -123,12 +123,11 @@
 
             <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
             <!-- ปุ่มยกเลิก -->
-
-            <input type="submit" id="next_btn" class="btn btn-success" style="color: white; margin-right: 1%;" value="บันทึก"></input>
+            <button type="button" id="verify" class="btn btn-success" style="color: white; margin-right: 1%; float:right; font-size: 18px;">ยืนยัน</button>
             <!-- ปุ่มบันทึก -->
-
         </form>
         <!-- form -->
+
 
     </div>
     <ul class="bg-bubbles">
@@ -144,6 +143,30 @@
         <li></li>
     </ul>
     <!-- สร้างสีเหลี่ยม  -->
-    
+
 </div>
 <!-- พื้นหลัง -->
+
+<script>
+    /*
+     * @author Naaka punparich 62160082
+     */
+
+    jQuery(document).ready(function() {
+        jQuery('button#verify').on('click', function(event) {
+            event.preventDefault();
+            swal({
+                title: "แก้ไขข้อมูลของคุณ",
+                text: "คุณได้ทำการแก้ไขข้อมูลส่วนตัวเสร็จสิ้น!",
+                type: "success",
+                showCancelButton: false,
+                buttonsStyling: true,
+                confirmButtonText: "ok",
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    jQuery("#verifyForm").submit();
+                }
+            });
+        });
+    });
+</script>
