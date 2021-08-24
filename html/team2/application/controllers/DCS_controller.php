@@ -294,16 +294,5 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/footer');
     }
 
-    /*
-    * change_tab_number_ajax
-    * Change tab number
-    * @input tab
-    * @output -
-    * @author weradet nopsombun 62160110
-    * @Create Date 2021-08-14
-    */
-    public function change_tab_number_ajax()
-    {
-        $_SESSION['tab_number'] = $this->input->post('tab');
-    }
+ 
 }

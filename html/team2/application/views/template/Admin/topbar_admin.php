@@ -58,26 +58,26 @@ if (!$this->session->has_userdata("Admin_name")) {
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" id="home">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?>" onclick="change_tab_number(1);">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?>">
             <i class="material-icons">dashboard</i>
             <p>จัดการสถานที่</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>" onclick="change_tab_number(2);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
           <a class="nav-link" href="#">
             <i class="material-icons">library_books</i>
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> " onclick="change_tab_number(3);">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?>">
             <i class="material-icons">content_paste</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?> " onclick="change_tab_number(4);">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> " onclick="change_tab_number(4);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">content_paste</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>
@@ -99,15 +99,3 @@ if (!$this->session->has_userdata("Admin_name")) {
   </div>
   <div class="main-panel">
 
-
-    <script>
-      function change_tab_number(tab_val) {
-        $.ajax({
-          url: '../../../DCS_controller/change_tab_number_ajax',
-          method: 'POST',
-          data: {
-            tab: tab_val
-          }
-        });
-      }
-    </script>
