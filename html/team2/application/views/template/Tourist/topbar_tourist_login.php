@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
     <div class="container-fluid" style="margin-top: 8px; margin-left: 20px;">
         <!-- topbar left -->
-        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>">
+        <a class="navbar-brand" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
             <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
         </a>
 
