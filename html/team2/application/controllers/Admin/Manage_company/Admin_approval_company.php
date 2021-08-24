@@ -35,7 +35,7 @@ class Admin_approval_company extends DCS_controller
 
   public function index($data = NULL)
   {
-    $this->output_admin('admin/manage_company/v_list_company_consider', $data);
+    $this->output_admin_company_card('admin/manage_company/v_list_company_consider', $data);
   }
 
 
@@ -74,7 +74,7 @@ class Admin_approval_company extends DCS_controller
       $this->pagination->initialize($config);
     }
     $data["links"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_consider', $data);
+    $this->output_admin_company_card('admin/manage_company/v_list_company_consider', $data);
   }
 
 
@@ -111,7 +111,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_approve'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_approve"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_approve', $data);
+    $this->output_admin_company_card('admin/manage_company/v_list_company_approve', $data);
   }
 
    /*
@@ -146,7 +146,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_reject'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_reject"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_reject', $data);
+    $this->output_admin_company_card('admin/manage_company/v_list_company_reject', $data);
   }
 
 
@@ -304,4 +304,19 @@ class Admin_approval_company extends DCS_controller
         $this->output_admin('admin/manage_company/v_detail_company_admin',$data); 
     }
 
+    /*
+      * get_data_card_company_ajax
+      * get data consider, approve, rejected <- number of people
+      * @input
+      * @output -
+      * @author Kasama Donwong 62160074
+      * @Create Date 2564-08-25
+      * @Update Date -
+      */
+      public function get_data_card_company_ajax()
+      {
+          $data['arr_data'] = $this->mdcc->get_data_card_company()->result();
+  
+          echo json_encode($data['arr_data']);
+      }
 }
