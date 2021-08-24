@@ -75,67 +75,53 @@
 
        <!-- เริ่มกิจกรรมล่าสุด -->
        <div class="container py-5">
-           <div class="row text-left py-3">
-               <div class="m-auto">
-                   <!-- หัวข้อ กิจกรรมล่าสุด -->
-                   <h1>กิจกรรมล่าสุด</h1>
-               </div>
-           </div>
-           <div class="container">
-               <!-- ตัวเปลี่ยนข่าวสารของ กิจกรรมล่าสุด -->
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                   <li class="nav-item" role="presentation">
-                       <button class="myButton active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">10 ก.ค. 64</button>|
-                   </li>
-                   <li class="nav-item" role="presentation">
-                       <button class="myButton" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">11 ก.ค. 64</button>|
-                   </li>
-                   <li class="nav-item" role="presentation">
-                       <button class="myButton" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">12 ก.ค. 64</button>|
-                   </li>
-               </ul>
 
-               <!-- กล่องข้อความข่าวสารของ กิจกรรมล่าสุด -->
-               <div class="card" id="card1" style="padding-top: 3%; padding-left: 2%">
+           <!-- หัวข้อ กิจกรรมล่าสุด -->
+           <h1>กิจกรรมล่าสุด</h1>
 
-                   <!-- ตัวกำหนดขนาดกล่องให้พอดีกับข้อความ -->
-                   <div class="tab-content" id="pills-tabContent">
-                       <!-- ตัวกล่องข้อความข่าวสารที่ 1 -->
-                       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                           <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System)
-                               เป็นระบบแนะนำการท่องเที่ยวแบบออนไลน์</p>
-                           <div class="row py-3">
-                               <div class="col">
-                               </div>
-                               <div class="col-md-auto" style="padding-right: 3%;">
-                                   <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                               </div>
-                           </div>
-                       </div>
-                       <!-- ตัวกล่องข้อความข่าวสารที่ 2 -->
-                       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                           <p>อำเภอเมืองชลบุรีจึงได้มีการริเริ่มแนวคิดหนึ่งคือการท่องเที่ยวแบบ Low carbon Tourism
-                               ซึ่งเป็นกิจกรรมท่องเที่ยวที่เป็นทางเลือกในการช่วยลดคาร์บอนให้น้อยลง </p>
-                           <div class="row py-3">
-                               <div class="col">
-                               </div>
-                               <div class="col-md-auto" style="padding-right: 3%;">
-                                   <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                               </div>
-                           </div>
-                       </div>
-                       <!-- ตัวกล่องข้อความข่าวสารที่ 3 -->
-                       <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                           <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System) </p>
-                           <div class="row py-3">
-                               <div class="col">
-                               </div>
-                               <div class="col-md-auto" style="padding-right: 3%;">
-                                   <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                               </div>
-                           </div>
+           <!-- ตัวเปลี่ยนข่าวสารของ กิจกรรมล่าสุด -->
+           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <li class="nav-item" role="presentation">
+                   <button class="myButton active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">10 ก.ค. 64</button>
+               </li>
+               <li class="nav-item" role="presentation">
+                   <button class="myButton" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">11 ก.ค. 64</button>
+               </li>
+               <li class="nav-item" role="presentation">
+                   <button class="myButton" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">12 ก.ค. 64</button>
+               </li>
+           </ul>
+
+           <!-- กล่องข้อความข่าวสารของ กิจกรรมล่าสุด -->
+           <div class="card" id="card1" style="padding-top: 3%; padding-left: 2%">
+
+               <!-- ตัวกำหนดขนาดกล่องให้พอดีกับข้อความ -->
+               <div class="tab-content" id="pills-tabContent">
+
+                   <!-- ตัวกล่องข้อความข่าวสารที่ 1 -->
+                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                       <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System) เป็นระบบแนะนำการท่องเที่ยวแบบออนไลน์</p>
+                       <div class="col-md-auto" align="right" id="padding">
+                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
                        </div>
                    </div>
+
+                   <!-- ตัวกล่องข้อความข่าวสารที่ 2 -->
+                   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                       <p>อำเภอเมืองชลบุรีจึงได้มีการริเริ่มแนวคิดหนึ่งคือการท่องเที่ยวแบบ Low carbon Tourism ซึ่งเป็นกิจกรรมท่องเที่ยวที่เป็นทางเลือกในการช่วยลดคาร์บอนให้น้อยลง </p>
+                       <div class="col-md-auto" align="right" id="padding">
+                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
+                       </div>
+                   </div>
+
+                   <!-- ตัวกล่องข้อความข่าวสารที่ 3 -->
+                   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                       <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System) </p>
+                       <div class="col-md-auto" align="right" id="padding">
+                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
+                       </div>
+                   </div>
+
                </div>
            </div>
        </div>
