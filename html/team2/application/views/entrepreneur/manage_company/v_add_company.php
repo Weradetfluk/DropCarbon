@@ -14,6 +14,29 @@
         height: 100%;
         width: 100%;
     }
+
+    .image_container {
+        height: 120px;
+        width: 200px;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .image_container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .image_container span {
+        top: -6px;
+        right: 8px;
+        color: red;
+        font-size: 28px;
+        font-weight: normal;
+        cursor: pointer;
+    }
 </style>
 
 <div class="content">
@@ -29,7 +52,7 @@
 
                     <div class="card-body">
                         <!-- form add company -->
-                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/add_company/' ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/add_company/' ?>" method="POST" enctype="multipart/form-data" id="form">
                             <br>
                             <div class="form-group">
                                 <div class="row">
@@ -58,10 +81,16 @@
                                 </div>
                             </div>
 
+                            <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
                                 <label for="com_file">รูปภาพประกอบสถานที่</label>
                             </div>
-                            <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple required><br><br>
+                            <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="image_select()" multiple required>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
+
+                            </div>
+                            <!-- ส้นสุดเลือกสถานที่ -->
 
                             <!-- lat lon map -->
                             <div class="form-group">
@@ -98,13 +127,12 @@
                             </div>
                             <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
                             <button type="submit" class="btn btn-success">ยืนยัน</button>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 
@@ -122,7 +150,8 @@
             <?php echo $this->session->unset_userdata("error_add_company"); ?>
         }
     });
-    
+
+    // openstreet map
     var map, vectorLayer, selectedFeature;
     var zoom = 16;
     var curpos = new Array();
@@ -130,6 +159,9 @@
     var position;
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
     var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+
+    // image
+    var images = [];
 
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
@@ -155,7 +187,7 @@
      */
     function init(lat, lon) {
         var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
-        // console.log(lat, lon);
+        console.log(lat, lon);
 
         map = new OpenLayers.Map("map");
         var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
@@ -207,7 +239,7 @@
      * @Update 2564-08-10
      */
     function show_maker(lon, lat) {
-        console.log(lon + " " + lat);
+        // console.log(lon + " " + lat);
         markers.clearMarkers();
         var lonLat = new OpenLayers.LonLat(lat, lon)
             .transform(
@@ -241,5 +273,87 @@
             var lon = position.coords.longitude;
             init(lat, lon);
         });
+    }
+
+    /*
+     * image_select
+     * select images by entrepreneur
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-24
+     * @Update -
+     */
+    function image_select() {
+        var image = document.getElementById('com_file').files;
+        for (i = 0; i < image.length; i++) {
+            console.log(i);
+            if (check_duplicate(image[i].name)) {
+                images.push({
+                    "name": image[i].name,
+                    "url": URL.createObjectURL(image[i]),
+                    "file": image[i],
+                })
+            }else{
+                swal('เพิ่มรูปไม่สำเร็จ', image[i].name + ' คุณได้เลือกไฟล์รูปไปนี้เเล้ว', 'error');
+            }
+        }
+        // document.getElementById('form').reset();
+        document.getElementById('card_image').innerHTML = image_show();
+        // set_lat_lon();
+    }
+
+    /*
+     * image_select
+     * show images for entrepreneur
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-24
+     * @Update -
+     */
+    function image_show(){
+        var image_html = "";
+        images.forEach((i) => {
+            image_html += '<div class="image_container d-flex justify-content-center position-relative"><img src="' 
+            image_html += i.url + '" alt="Image"><span class="position-absolute" onclick="delete_image('+ images.indexOf(i) +')">&times;</span></div>';
+   	  	  })
+        return image_html;
+    }
+
+    /*
+     * delete_image
+     * delete images by entrepreneur
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-24
+     * @Update -
+     */
+    function delete_image(index){
+        images.splice(index, 1);
+   	  	document.getElementById('card_image').innerHTML = image_show();
+    }
+
+     /*
+     * check_duplicate
+     * check duplicate images 
+     * @input image_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-24
+     * @Update -
+     */
+    function check_duplicate(image_name){
+        var image = true;
+   	  	if (images.length > 0) {
+   	  		for (y = 0; y < images.length; y++) {
+   	  			if (images[y].name == image_name) {
+   	  				image = false;
+   	  				break;
+   	  			}
+   	  		}
+   	  	}
+   	  	return image;
     }
 </script>

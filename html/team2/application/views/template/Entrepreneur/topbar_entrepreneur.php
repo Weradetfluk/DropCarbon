@@ -39,28 +39,34 @@
       </nav>
 
 <div class="wrapper ">
-    <div class="sidebar" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="green" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
    
       <div class="sidebar-wrapper" style="margin-top: 70px;">
         <ul class="nav">
-          <li class="nav-item  ">
+          <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "active"; ?>">
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
               <i class="material-icons">store</i>
               <p>จัดการสถานที่</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "active"; ?>">
             <a class="nav-link" href="#">
               <i class="material-icons">calendar_today</i>
               <p>จัดการกิจกรรม</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 3) echo "active"; ?>">
             <a class="nav-link" href="#">
               <i class="material-icons">point_of_sale</i>
               <p>จัดการโปรโมชัน</p>
             </a>
-          </li>        
+          </li>     
+          <li class="nav-item ">
+            <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">
+              <i class="material-icons">person</i>
+              <p>ออกจากระบบ</p>
+            </a>
+          </li>   
         </ul>
       </div>
     </div>

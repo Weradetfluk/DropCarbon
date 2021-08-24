@@ -121,5 +121,6 @@ class Login_entrepreneur extends DCS_controller
         $this->session->unset_userdata("card");
         $this->session->unset_userdata("email");
         $this->session->unset_userdata("pre_id");
+        $this->session->unset_userdata("tab_number_entrepreneur");
     }
 }
