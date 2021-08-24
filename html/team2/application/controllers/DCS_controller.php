@@ -200,6 +200,7 @@ class DCS_controller extends CI_Controller
     {
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');
+        $this->load->view('template/Tourist/topbar_tourist_login');
         $this->load->view('tourist/auth/v_landing_page_tourist');
         $this->load->view('template/Tourist/footer');
     }
