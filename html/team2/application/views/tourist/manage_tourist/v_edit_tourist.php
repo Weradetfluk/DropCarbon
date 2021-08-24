@@ -56,7 +56,7 @@
 <div class="wrapper" style="height: 100%">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
-            <li><a href="#" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
             <li>แก้ไขข้อมูลส่วนตัว</li>
         </ul>
         <!-- path -->
