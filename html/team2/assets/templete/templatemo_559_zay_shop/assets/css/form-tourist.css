@@ -126,3 +126,10 @@ body {
     text-align: right;
     width     : 100%;
 }
+
+@media screen and (max-width: 600px) {
+
+    .container-1 {
+        width     : 90%;
+    }
+}

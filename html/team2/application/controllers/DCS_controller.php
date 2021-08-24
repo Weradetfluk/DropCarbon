@@ -214,8 +214,8 @@ class DCS_controller extends CI_Controller
     */
     public function output_edit_tourist($data)
     {
-        $this->load->view('template/Register/header_register');
-        $this->load->view('template/Register/javascript_register');
+        $this->load->view('template/Landing_page/header_landing');
+        $this->load->view('template/Landing_page/javascript_landing');
         $this->load->view('template/Tourist/topbar_tourist_login');
         $this->load->view('tourist/manage_tourist/v_edit_tourist', $data);
         $this->load->view('template/Tourist/footer');

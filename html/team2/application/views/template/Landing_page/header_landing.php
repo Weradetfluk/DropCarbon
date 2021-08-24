@@ -2,12 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Open Header -->
-<head>
-    <title>Landing Page</title>
-    </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- icon -->
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
     <link rel="apple-touch-icon" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/img/apple-icon.png">
