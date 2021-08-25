@@ -73,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-h-100" id="card">
+                    <div class="card card-h-100" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                         <div class="card-horizontal">
                             <div class="col-9 ">
                                 <a href="#">
@@ -125,7 +125,7 @@
             <div class="row" style="padding-top: 5%;">
                 <div class="col">
                     <h2>ตำแหน่งสถานที่</h2>
-                    <div class="card" id="card" style="padding-left: 2%;">
+                    <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                         <h3 style="padding-top: 2%; ">ชื่อสถานที่</h3>
                         <!-- ชื่อสถานที่ -->
 
