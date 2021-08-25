@@ -199,7 +199,7 @@
                         "color": "red"
                     });
 
-                    $('#usernameavailable').html("username not available");
+                    $('#usernameavailable').html("ชื่อผู้ใช้นี้มีผู้ใช้อื่นแล้ว");
                     $('#next_btn').prop('disabled', true);
                 } else {
                     $('#usernameavailable').html("");
