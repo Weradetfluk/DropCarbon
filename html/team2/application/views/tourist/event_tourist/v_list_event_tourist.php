@@ -16,10 +16,6 @@
         transform: scale(1.05);
     }
 
-    img {
-        width: 100%;
-    }
-
     #padding {
         padding-right: 2%;
     }
@@ -83,7 +79,7 @@
     }
 </style>
 <title>List Event</title>
-<body class="bg-white">
+<div class="bg-white">
     <section>
         <div class="container py-5">
             <div class="row text-left py-3">
@@ -195,4 +191,4 @@
             </div>
         </div>
     </section>
-</body>
+</div>

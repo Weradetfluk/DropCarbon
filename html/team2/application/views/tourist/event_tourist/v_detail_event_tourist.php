@@ -44,13 +44,9 @@
         flex: 1 1 auto;
     }
 
-    img {
-        width: 100%;
-        /* height: 70%; */
-    }
 </style>
 <title>Detail Event</title>
-<body class="bg-white">
+<div class="bg-white">
     <section>
         <div class="container py-5">
             <div class="row text-left py-3">
@@ -163,4 +159,4 @@
             </div>
         </div>
     </section>
-</body>
+</div>
