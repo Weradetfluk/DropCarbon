@@ -120,4 +120,24 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->query($sql, array($this->com_id));
         return $query;
     }
+
+    /*
+    *get_data_card_company
+    *get data card company form database sum row
+    *@input -
+    *@insert -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-08-25
+    */
+    function get_data_card_company()
+    {
+        $sql = "SELECT sum(case when com_status = 1 then 1 else 0 end ) as consider, 
+        sum(case when com_status = 2 then 1 else 0 end) as approve , 
+        sum(case when com_status = 3 then 1 else 0 end ) as reject
+        
+        FROM dcs_company;";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

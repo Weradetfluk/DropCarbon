@@ -5,7 +5,7 @@
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <!-- ตัวหมุนรูปของ Banner -->
     <ol class="carousel-indicators">
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel"  data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
     </ol>
@@ -14,19 +14,19 @@
         <div class="carousel-item active">
             <div class="row">
                 <!-- รูปที่ 1 ของ Banner  -->
-                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner7.jpg" alt="">
+                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner7.png" alt="">
             </div>
         </div>
         <div class="carousel-item">
             <div class="row">
                 <!-- รูปที่ 2 ของ Banner -->
-                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner6.jpg" alt="">
+                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner6.png" alt="">
             </div>
         </div>
         <div class="carousel-item">
             <div class="row">
                 <!-- รูปที่ 3 ของ Banner -->
-                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner5.jpg" alt="">
+                <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner5.png" alt="">
             </div>
         </div>
     </div>

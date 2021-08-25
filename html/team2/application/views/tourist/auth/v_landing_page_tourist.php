@@ -42,19 +42,19 @@
            <div class="carousel-item active">
                <div class="row">
                    <!-- รูปที่ 1 ของ Banner  -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner7.jpg" alt="">
+                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner7.png" alt="">
                </div>
            </div>
            <div class="carousel-item">
                <div class="row">
                    <!-- รูปที่ 2 ของ Banner -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner6.jpg" alt="">
+                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner6.png" alt="">
                </div>
            </div>
            <div class="carousel-item">
                <div class="row">
                    <!-- รูปที่ 3 ของ Banner -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner5.jpg" alt="">
+                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner5.png" alt="">
                </div>
            </div>
        </div>

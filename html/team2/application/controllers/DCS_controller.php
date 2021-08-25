@@ -65,6 +65,26 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Admin/footer');
     }
 
+    /*
+    * output_admin_card
+    * output admin page card
+    * @input
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-25
+    * @Update -
+    */
+
+    public function output_admin_company_card($view, $data = null)
+    {
+        $this->load->view('template/Admin/header_admin'); // path
+        $this->load->view('template/Admin/topbar_admin');
+        $this->load->view('template/Admin/javascript_admin');
+        $this->load->view('admin/manage_company/v_data_card_company');
+        $this->load->view($view, $data);
+        $this->load->view('template/Admin/footer');
+    }
+
 
     /*
     * output_login_admin

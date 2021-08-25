@@ -75,6 +75,8 @@
     font-size    : 14px;
     border-radius: 50px;
     box-shadow   : inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgba(226, 226, 226, 0.2);
+    font-family   : 'Prompt', sans-serif !important;
+   
 }
 
 .button {
@@ -97,6 +99,7 @@ body {
     background     : linear-gradient(-45deg, #f8ffae, #43c67e);
     background-size: 400% 400%;
     animation      : gradient 30s ease infinite;
+    font-family   : 'Prompt', sans-serif !important;
 }
 
 @keyframes gradient {

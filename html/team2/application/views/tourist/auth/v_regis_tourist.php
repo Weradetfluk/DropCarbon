@@ -61,7 +61,7 @@
             <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
         </ul>
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
-        <form class="container py-3" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+        <form class="container py-3 form-regis" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
                 <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1>&nbsp;นาย
@@ -121,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <a id ="cancel"class="btn btn-secondary" style="color: white; background-color: #777777; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
+            <a id ="cancel"class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
             <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">ถัดไป</button>
             
 

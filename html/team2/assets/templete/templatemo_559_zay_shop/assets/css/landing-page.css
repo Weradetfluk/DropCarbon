@@ -6,7 +6,7 @@ h5,
 h6 {
     font-family   : 'Prompt', sans-serif !important;
     text-transform: capitalize;
-    color         : #000;
+    color         : #6D152B;
     font-weight   : 700 !important;
     padding-bottom: 2%;
 }
@@ -50,7 +50,7 @@ a {
     border          : 1px solid #dcdcdc;
     display         : inline-block;
     cursor          : pointer;
-    color           : #DC143C;
+    color           : #61714D;
     font-family     : Arial;
     font-size       : 15px;
     font-weight     : bold;
@@ -85,11 +85,11 @@ a {
 .myButton:active {
     position  : relative;
     top       : 1px;
-    box-shadow: inset 0 -5px 0 #fed602;
+    box-shadow: inset 0 -5px 0  #61714D;;
 }
 
 .nav-item>.active {
-    box-shadow: inset 0 -5px 0 #fed602;
+    box-shadow: inset 0 -5px 0  #61714D;;
 }
 
 .myButton:focus {
@@ -100,10 +100,10 @@ a {
     background      : linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
     background-color: transparent;
     border-radius   : 2px;
-    border          : 2px solid #004080;
+    border          : 2px solid #6D152B;
     display         : inline-block;
     cursor          : pointer;
-    color           : #004080;
+    color           : #6D152B;
     font-family     : Arial;
     font-size       : 15px;
     font-weight     : bold;
@@ -117,7 +117,7 @@ a {
     background-color: #f6f6f6;
     box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     border          : 2px solid #f6f6f6;
-    color           : #004080;
+    color           : #6D152B;
     transition      : 0.5s;
 }
 
@@ -156,3 +156,46 @@ a {
     z-index : 20;
     color   : #fff;
 }
+
+.form-regis{
+    font-family   : 'Prompt', sans-serif !important;
+    text-transform: capitalize;
+  
+    font-weight   : 300 !important;
+    padding-bottom: 2%;
+}
+
+.form-control{
+    font-family   : 'Prompt', sans-serif !important;
+    text-transform: capitalize;
+  
+    font-weight   : 300 !important;
+    padding-bottom: 2%;
+}
+
+.container{
+    font-family   : 'Prompt', sans-serif !important;
+    text-transform: capitalize;
+  
+    font-weight   : 300 !important;
+    padding-bottom: 2%;
+}
+
+
+.form-group{
+    font-family   : 'Prompt', sans-serif !important;
+    text-transform: capitalize;
+    font-weight   : 300 !important;
+}
+
+label{
+    font-family   : 'Prompt', sans-serif !important;
+}
+
+li{
+    font-family   : 'Prompt', sans-serif !important;
+}
+
+
+
+
