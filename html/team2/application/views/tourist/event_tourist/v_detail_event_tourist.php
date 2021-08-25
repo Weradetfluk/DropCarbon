@@ -51,7 +51,7 @@
         <div class="container py-5">
             <div class="row text-left py-3">
                 <div class="m-auto">
-                    <h1 class="h1" style="padding-bottom: 2%">ขื่อกิจกรรม</h1>
+                    <h1 class="h1" style="padding-bottom: 2%">ชื่อกิจกรรม</h1>
                 </div>
                 <!-- ชื่อกิจกรรม -->
 
