@@ -77,7 +77,7 @@
                         <div class="card-horizontal">
                             <div class="col-9 ">
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen.jpg" class="card-img-left" alt="...">
+                                    <img style="width: 100%;" src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen.jpg" class="card-img-left" alt="...">
                                 </a>
                             </div>
                             <!-- รูป -->
