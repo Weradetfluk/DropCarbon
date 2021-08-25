@@ -39,7 +39,9 @@ class Company_edit extends DCS_controller
    public function show_edit_company($com_id)
    {
       $this->load->model('Company/M_dcs_company', 'mcom');
+      // $this->load->model('Company/dcs_com_image', 'mimg');
       $this->mcom->com_id = $com_id;
+      // $this->mimg->dcs_com_image = $com_id;
       $data['arr_company'] = $this->mcom->get_by_id()->result();
       //   print_r($data['arr_company']);
       $this->load->view('template/Entrepreneur/header_entrepreneur');

@@ -90,7 +90,7 @@
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
 
                             </div>
-                            <!-- ส้นสุดเลือกสถานที่ -->
+                            <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
                             <div class="form-group">

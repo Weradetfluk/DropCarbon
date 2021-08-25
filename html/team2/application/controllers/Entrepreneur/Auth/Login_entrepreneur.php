@@ -60,8 +60,14 @@ class Login_entrepreneur extends DCS_controller
             redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
         } else {
             $data_warning = array();
-            $data_warning['warning'] = "Username or password incorrect";
-
+            $this->ment->ent_status = 1;
+            $result_con = $this->ment->get_by_username_password();
+            if($result_con){
+                $data_warning['warning'] = "";
+                $this->session->set_userdata("login_entrepreneur", 'warning');
+            }else{
+                $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
+            }
             $this->index($data_warning);
         }
     }

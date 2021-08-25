@@ -39,7 +39,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                             <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username">
+                                    <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username" required>
                                 </div>
                             </span>
                             <div class="input-group" style="padding: 10px;">
@@ -48,7 +48,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                         <i class="material-icons">lock_outline</i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password">
+                                <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" required>
                             </div></span>
                             <span style="color: red; margin-left: 30px;">
                                 <?php
@@ -80,3 +80,13 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        let warning_login = '<?php echo $this->session->userdata("login_entrepreneur");?>';
+        if(warning_login == 'warning'){
+            swal("ล็อกอินไม่สำเร็จ", "เนื่องจากคุณกำลังรอการอนุมัติจากผู้ดูเเลระบบ", "warning");
+            <?php echo $this->session->unset_userdata("login_entrepreneur"); ?>
+        }
+    });
+</script>

@@ -54,12 +54,13 @@
                                 </div>
                             </div>
 
-                            <!-- upload edit picture -->
+                            <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
                                 <label for="com_file">รูปภาพประกอบสถานที่</label>
                             </div>
-                            <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
-
+                            <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
                             <div class="form-group">
