@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
     <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+    <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>"  style="max-width:400px; height: 50px; margin-top: -10px;">
     </a>
 </nav>
 
@@ -61,7 +61,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" class="btn btn-success" id="resetpass" name="signin">เสร็จสิ้น</button>
+                                        <button type="button" class="btn btn-success" id="reset_pass" name="signin">เสร็จสิ้น</button>
                                     </div>
                                 </div>
                                 <span id="err_text"></span>
@@ -83,7 +83,7 @@
             confirmpassword();
         }); // Event Keyup
 
-        $("#resetpass").on('click', function() {
+        $("#reset_pass").on('click', function() {
             let password = $('#admin_password').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             let token = $('#token').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             reset_password(password, token);
@@ -107,10 +107,10 @@
     function confirmpassword() {
         if ($('#admin_password').val() != $('#admin_password_confirm').val()) {
             $('#err_text').text('รหัสผ่านไม่ตรงกัน');
-            $('#resetpass').prop('disabled', true);
+            $('#reset_pass').prop('disabled', true);
         } else {
             $('#err_text').text('');
-            $('#resetpass').prop('disabled', false);
+            $('#reset_pass').prop('disabled', false);
         }
     }
 

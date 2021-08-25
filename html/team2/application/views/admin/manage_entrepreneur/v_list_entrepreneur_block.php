@@ -141,7 +141,7 @@
 
 
  <!-- warnning aprove Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="unblockmodal">
+ <div class="modal" tabindex="-1" role="dialog" id="unblock_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -163,7 +163,7 @@
 
  <script>
      function confirm_unblock(ent_id) {
-         $('#unblockmodal').modal();
+         $('#unblock_modal').modal();
 
          $('#unblock').click(function() {
              unblock_user(ent_id);

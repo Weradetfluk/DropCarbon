@@ -141,7 +141,7 @@
 
 
  <!-- warnning block Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="blockmodal">
+ <div class="modal" tabindex="-1" role="dialog" id="block_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -175,7 +175,7 @@
       */
 
      function confirm_block(ent_id) {
-         $('#blockmodal').modal();
+         $('#block_modal').modal();
 
          $('#blocked').click(function() {
              console.log("check");

@@ -49,7 +49,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" class="btn btn-success" id="forgotpass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
+                                        <button type="button" class="btn btn-success" id="forgot_pass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
                                     </div>
                                 </div>
 
@@ -68,14 +68,14 @@
 <script>
     $(document).ready(function() {
 
-        $("#forgotpass").on('click', function() {
-            var existingHTML = $("#forgotpass").html() //store exiting button HTML
+        $("#forgot_pass").on('click', function() {
+            var existing_HTML = $("#forgot_pass").html() //store exiting button HTML
             let user_email = $('#admin_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             $(this).prop("disabled", true);
             $(this).html(
                 '<span class="material-icons">cached</span> Loading...'
             );
-            check_email_user(user_email, existingHTML);
+            check_email_user(user_email, existing_HTML);
 
         });
 
@@ -84,13 +84,13 @@
     /*
      * check_email_user
      * check e-mail in database using ajax
-     * @input 
+     * @input user_email
      * @output -
      * @author Weradet Nopsombun 62160110 
      * @Create Date 2564-08-12
      * @Update -
      */
-    function check_email_user(user_email, existingHTML) {
+    function check_email_user(user_email, existing_HTML) {
         $.ajax({
 
             type: "POST",
@@ -112,7 +112,7 @@
                     })
 
                 } else {
-                    $("#forgotpass").html(existingHTML).prop('disabled', false) //show original HTML and enable
+                    $("#forgot_pass").html(existing_HTML).prop('disabled', false) //show original HTML and enable
 
                     swal({
 

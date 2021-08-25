@@ -164,7 +164,7 @@
 
 
  <!-- warnning aprove Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
+ <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -187,7 +187,7 @@
 
 
 
- <div class="modal fade" role="dialog" id="datamodal">
+ <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -241,7 +241,7 @@
 
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
+ <div class="modal" tabindex="-1" role="dialog" id="reject_ent">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -281,7 +281,7 @@
       */
 
      function confirm_approve(ent_id) {
-         $('#Aprovemodal').modal();
+         $('#aprove_modal').modal();
 
          $('#approves').click(function() {
              approve_entrepreneur(ent_id) //function 
@@ -310,7 +310,7 @@
              },
              url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_by_id_ajax'); ?>',
              success: function(data_detail) {
-                 $('#datamodal').modal();
+                 $('#data_modal').modal();
                  $('#ent_name').val(data_detail['arr_data'][0]['ent_firstname'] + " " + data_detail['arr_data'][0]['ent_lastname']);
                  $('#ent_tel').val(data_detail['arr_data'][0]['ent_tel']);
                  $('#ent_id_card').val(data_detail['arr_data'][0]['ent_id_card']);
@@ -354,13 +354,13 @@
       */
 
      function confirm_reject(ent_id, ent_email) {
-         $('#Rejectent').modal();
+         $('#reject_ent').modal();
 
          $('#email').val(ent_email);
          $('#ent_id').val(ent_id);
 
          $('#rejected').click(function() {
-             $('#Rejectent').modal('toggle');
+             $('#reject_ent').modal('toggle');
              swal({
                  title: "ปฏิเสธสำเร็จ",
                  text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",

@@ -9,7 +9,7 @@
  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: fixed;">
         <div class="container-fluid">
         <a href="#" class="navbar-brand">
-          <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+          <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
         </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

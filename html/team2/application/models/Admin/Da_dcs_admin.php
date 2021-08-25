@@ -44,7 +44,7 @@ class Da_dcs_admin extends Dcs_model
     /*
     * update_pass
     * update password with email user
-    * @input 
+    * @input token
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-12

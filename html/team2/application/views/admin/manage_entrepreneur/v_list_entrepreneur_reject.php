@@ -138,7 +138,7 @@
  </div>
 
 
- <div class="modal fade" role="dialog"  id="datamodal">
+ <div class="modal fade" role="dialog"  id="data_modal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
@@ -196,7 +196,7 @@
              },
              url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_reject_by_id_ajax'); ?>',
              success: function(data_detail) {
-                 $('#datamodal').modal();
+                 $('#data_modal').modal();
                  console.log(data_detail);
                  $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
                  $('#adm_name').val(data_detail[0]['adm_name']);
