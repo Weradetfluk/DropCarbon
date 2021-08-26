@@ -87,7 +87,7 @@
         text-decoration: underline;
     }
 </style>
-
+<title>Select Register</title>
     <div class="bg">
         <div class="container py-5">
 

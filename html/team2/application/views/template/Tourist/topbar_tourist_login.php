@@ -24,13 +24,13 @@
             <div class="flex-fill">
                 <ul class="nav d-flex justify-content-end mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_eventlist' ?>">กิจกรรมของคุณ</a>
+                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_eventlist' ?>"><i class="fas fa-th-list"></i> กิจกรรมของคุณ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My reward</a>
+                        <a class="nav-link" href="#"><i class="fas fa-archive"></i> My reward</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Point</a>
+                        <a class="nav-link" href="#"><i class="fas fa-coins"></i> Point</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="far fa-user-circle"></i> <?php echo $this->session->userdata("Tourist_name"); ?></a>

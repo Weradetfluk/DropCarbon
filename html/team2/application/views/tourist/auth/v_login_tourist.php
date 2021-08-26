@@ -1,6 +1,7 @@
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
+<title>Login Tourist</title>
 <div class="body">
     <div class="container-1">
         <div class="brand-logo">
