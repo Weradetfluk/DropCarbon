@@ -58,8 +58,7 @@
                             <div class="form-group">
                                 <label for="com_file">รูปภาพประกอบสถานที่</label>
                             </div>
-                            <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
-                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
