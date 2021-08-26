@@ -14,7 +14,7 @@ class Company_detail extends DCS_controller
     /*
     * show_detail_company
     * show detail company by entrepreneur
-    * @input 
+    * @input com_id
     * @output -
     * @author Acharaporn pornpattanasap 62160344
     * @Create Date 2564-08-05
@@ -26,7 +26,7 @@ class Company_detail extends DCS_controller
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->mcom->com_id = $com_id;
         $this->mimg->com_img_com_id = $com_id;
-        $data["arr_company"] = $this->mcom->get_by_detail()->row();
+        $data["obj_company"] = $this->mcom->get_by_detail()->row();
         $data["arr_image"] = $this->mimg->get_by_com_id()->result();
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');

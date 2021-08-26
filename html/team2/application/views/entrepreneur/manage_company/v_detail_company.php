@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
-                        <center><h4 class="card-title text-white"><?php echo $arr_company->com_name;?></h4></center>
+                        <center><h4 class="card-title text-white"><?php echo $obj_company->com_name;?></h4></center>
                     </div>
                     <br>
                     <div class="card-body">
@@ -63,7 +63,7 @@
                     <img src="<?php echo base_url() . 'assets/templete/picture/detail.png' ?>" width="3%">
                     <h5 style="font-size: 20px; font-weight: bold">รายละเอียด</h5>
                     <hr width="100%" size="10" color="#cccccc">
-                    <?php echo '<h5 class="text"style="font-size: 15px;  line-height: 18pt; font-family:Pridi;"><b>' . '<b>' . $arr_company->com_description . '</b>' . '</b>' . '</h5>';?>
+                    <?php echo '<h5 class="text"style="font-size: 15px;  line-height: 18pt; font-family:Pridi;"><b>' . '<b>' . $obj_company->com_description . '</b>' . '</b>' . '</h5>';?>
 
                     <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">
                     <h5 style="font-size: 20px; font-weight: bold">ตำแหน่งสถานที่</h5>
@@ -84,8 +84,8 @@
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
-   var lat = '<?=$arr_company->com_lat?>';       //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-   var long = '<?=$arr_company->com_lon?>';    //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+   var lat = '<?=$obj_company->com_lat?>';       //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+   var long = '<?=$obj_company->com_lon?>';    //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
    var zoom = 16;          //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
     var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984

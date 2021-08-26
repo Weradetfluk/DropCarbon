@@ -27,7 +27,7 @@ class Login_entrepreneur extends DCS_controller
     /*
     * input_login_form
     * Login admin and get data  
-    * @input 
+    * @input username, password
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -89,8 +89,8 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * set_session
-    * set_session username and Entrepreneur_name
-    * @input 
+    * set_session username and entrepreneur_name
+    * @input username, name, id, password, tel, card, email, pre_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -99,8 +99,8 @@ class Login_entrepreneur extends DCS_controller
     public function set_session($username, $name, $id, $password, $tel, $card, $email, $pre_id)
     {
         $this->session->set_userdata("username", $username);
-        $this->session->set_userdata("Entrepreneur_name", $name);
-        $this->session->set_userdata("Entrepreneur_id", $id);
+        $this->session->set_userdata("entrepreneur_name", $name);
+        $this->session->set_userdata("entrepreneur_id", $id);
         $this->session->set_userdata("password", $password);
         $this->session->set_userdata("tel", $tel);
         $this->session->set_userdata("card", $card);
@@ -110,7 +110,7 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * remove_session
-    * unset session username and Entrepreneur_name
+    * unset session username and entrepreneur_name
     * @input 
     * @output -
     * @author Suwapat Saowarod
@@ -120,8 +120,8 @@ class Login_entrepreneur extends DCS_controller
     public function remove_session()
     {
         $this->session->unset_userdata("username");
-        $this->session->unset_userdata("Entrepreneur_name");
-        $this->session->unset_userdata("Entrepreneur_id");
+        $this->session->unset_userdata("entrepreneur_name");
+        $this->session->unset_userdata("entrepreneur_id");
         $this->session->unset_userdata("password");
         $this->session->unset_userdata("tel");
         $this->session->unset_userdata("card");

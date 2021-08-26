@@ -298,9 +298,7 @@
                 swal('เพิ่มรูปไม่สำเร็จ', image[i].name + ' คุณได้เลือกไฟล์รูปไปนี้เเล้ว', 'error');
             }
         }
-        // document.getElementById('form').reset();
         document.getElementById('card_image').innerHTML = image_show();
-        // set_lat_lon();
     }
 
     /*
@@ -315,8 +313,8 @@
     function image_show(){
         var image_html = "";
         images.forEach((i) => {
-            image_html += '<div class="image_container d-flex justify-content-center position-relative"><img src="' 
-            image_html += i.url + '" alt="Image"><span class="position-absolute" onclick="delete_image('+ images.indexOf(i) +')">&times;</span></div>';
+            image_html += '<div class="image_container d-flex justify-content-center position-relative">'; 
+            image_html += '<img src="' + i.url + '" alt="Image"><span class="position-absolute" onclick="delete_image('+ images.indexOf(i) +')">&times;</span></div>';
    	  	  })
         return image_html;
     }

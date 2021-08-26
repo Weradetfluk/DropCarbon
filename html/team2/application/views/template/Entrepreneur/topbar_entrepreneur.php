@@ -1,5 +1,5 @@
 <?php 
- if (!$this->session->has_userdata("Entrepreneur_name")) {
+ if (!$this->session->has_userdata("entrepreneur_name")) {
      $path = site_url() . "Entrepreneur/Auth/Login_entrepreneur";
      header("Location: " . $path);
      exit();
@@ -22,7 +22,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
-                  <?php echo $this->session->userdata("Entrepreneur_name"); ?>
+                  <?php echo $this->session->userdata("entrepreneur_name"); ?>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>

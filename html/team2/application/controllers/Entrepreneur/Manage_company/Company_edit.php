@@ -14,7 +14,7 @@ class Company_edit extends DCS_controller
    /*
     * delete_company
     * update com_status = 4 in database
-    * @input 
+    * @input com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -30,7 +30,7 @@ class Company_edit extends DCS_controller
    /*
     * show_edit_company
     * update show form edit company
-    * @input 
+    * @input com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -54,7 +54,7 @@ class Company_edit extends DCS_controller
    /*
     * edit_company
     * edit company to database
-    * @input 
+    * @input com_name, com_description, com_id, com_lat, com_lon, com_tel, com_file
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -73,27 +73,27 @@ class Company_edit extends DCS_controller
 
       if (isset($_FILES["com_file"]) && !empty($_FILES["com_file"]["name"])) {
          // Create file storage variables
-         $fileName = array();
-         $fileTmpName = array();
-         $fileSize = array();
-         $fileError = array();
-         $fileExt = array();
-         $fileActaulExt = array();
+         $file_name = array();
+         $file_tmp_name = array();
+         $file_size = array();
+         $file_error = array();
+         $file_ext = array();
+         $file_actaul_ext = array();
          $error_file = '';
 
          // Configure file storage
          $file = $_FILES['com_file'];
-         $fileName = $_FILES['com_file']['name'];
-         $fileTmpName = $_FILES['com_file']['tmp_name'];
-         $fileSize = $_FILES['com_file']['size'];
-         $fileError = $_FILES['com_file']['error'];
+         $file_name = $_FILES['com_file']['name'];
+         $file_tmp_name = $_FILES['com_file']['tmp_name'];
+         $file_size = $_FILES['com_file']['size'];
+         $file_error = $_FILES['com_file']['error'];
 
-         for ($i = 0; $i < count($fileName); $i++) {
-            $fileExt[$i] = explode('.', $fileName[$i]);
-            $fileActaulExt[$i] = strtolower(end($fileExt[$i]));
+         for ($i = 0; $i < count($file_name); $i++) {
+            $file_ext[$i] = explode('.', $file_name[$i]);
+            $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
 
             // Check if there is a problem with the image file. or the file size exceeds 1000000?
-            if ($fileError[$i] != 0 || $fileSize[$i] >= 1000000) {
+            if ($file_error[$i] != 0 || $file_size[$i] >= 1000000) {
                $error_file = 'false';
                break;
             }
@@ -104,11 +104,11 @@ class Company_edit extends DCS_controller
             $this->mimg->com_img_com_id = $this->input->post('com_id');
 
             // Loop to upload files
-            for ($i = 0; $i < count($fileName); $i++) {
-               $fileNewName[$i] = uniqid('', true);
-               $fileDestination[$i] = './image_company/' . $fileNewName[$i] . '.' . $fileActaulExt[$i];
-               move_uploaded_file($fileTmpName[$i], $fileDestination[$i]);
-               $this->mimg->com_img_path = $fileNewName[$i] . '.' . $fileActaulExt[$i];
+            for ($i = 0; $i < count($file_name); $i++) {
+               $file_new_name[$i] = uniqid('', true);
+               $file_destination[$i] = './image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+               move_uploaded_file($file_tmp_name[$i], $file_destination[$i]);
+               $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
                $this->mimg->insert_image_company();
             }
             $this->set_session_edit_company('success');  

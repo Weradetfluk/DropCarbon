@@ -99,7 +99,7 @@
             </div>
 
             เอกสารจดทะเบียนเชิงพาณิชย์ :
-            <input type="file" name="myfile[]" multiple required>
+            <input type="file" name="document_ent[]" multiple required>
             <br><br>
 
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
