@@ -19,10 +19,14 @@ class Tourist_edit extends DCS_controller
    */
    public function show_edit_tourist()
    {
-      $this->load->model('Tourist/M_dcs_tourist', 'mtus');
-      $this->mtus->tus_id = $this->session->userdata("Tourist_id");
-      $data['arr_tus'] = $this->mtus->get_tourist_by_id()->result();
+      $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+      $this->mtou->tus_id = $this->session->userdata("Tourist_id");
+      $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
       $this->output_edit_tourist($data);
+
+      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+      $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+      $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
    }
 
    /*
@@ -35,41 +39,57 @@ class Tourist_edit extends DCS_controller
    */
    public function update_tourist()
    {
-      $this->load->model('Tourist/M_dcs_tourist', 'mtus');
+      $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+      $this->mtou->tus_pre_id = intval($this->input->post('tus_pre_id'));
+      $this->mtou->tus_firstname = $this->input->post('tus_firstname');
+      $this->mtou->tus_lastname = $this->input->post('tus_lastname');
+      $this->mtou->tus_tel = $this->input->post('tus_tel');
+      $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
+      $this->mtou->tus_email = $this->input->post('tus_email');
+      $this->mtou->tus_id = $this->input->post('tus_id');
 
-      $this->mtus->tus_pre_id = intval($this->input->post('tus_pre_id'));
-      $this->mtus->tus_firstname = $this->input->post('tus_firstname');
-      $this->mtus->tus_lastname = $this->input->post('tus_lastname');
-      $this->mtus->tus_tel = $this->input->post('tus_tel');
-      $this->mtus->tus_birthdate = $this->input->post('tus_birthdate');
-      $this->mtus->tus_email = $this->input->post('tus_email');
-      $this->mtus->tus_id = $this->session->userdata('Tourist_id');
-      $this->mtus->update_tourist();
+      // set session variable
+      $tus_id = $this->mtou->tus_id;
+      $tus_pre_id = $this->mtou->tus_pre_id;
+      $this->session->set_userdata("pre_id", $tus_pre_id);
 
-      $tus_pre_id = $this->mtus->tus_pre_id;
-      $tus_name = $this->mtus->tus_firstname . ' ' . $this->mtus->tus_lastname;
-      $tus_tel = $this->mtus->tus_tel;
-      $tus_birthdate = $this->mtus->tus_birthdate;
-      $tus_email = $this->mtus->tus_email;
-      $this->set_session($tus_name, $tus_tel, $tus_email, $tus_birthdate, $tus_pre_id);
+      // Create file storage variables
+      $file_name = array();
+      $file_tmp_name = array();
+      $file_size = array();
+      $file_error = array();
+      $file_ext = array();
+      $file_actaul_ext = array();
+      $error_file = '';
 
-      redirect("Tourist/Auth/Landing_page_tourist");
-   }
+      // Configure file storage
+      $file = $_FILES['tourist_img'];
+      $file_name = $_FILES['tourist_img']['name'];
+      $file_tmp_name = $_FILES['tourist_img']['tmp_name'];
+      $file_size = $_FILES['tourist_img']['size'];
+      $file_error = $_FILES['tourist_img']['error'];
 
-   /*
-    * set_session
-    * set session 
-    * @input $username, $name, $password, $tel, $card, $email, $pre_id
-    * @output -
-    * @author Naaka Punparich 62160082
-    * @Create Date 2564-07-24
-   */
-   public function set_session($name, $tel, $email,$birthdate, $pre_id)
-   {
-      $this->session->set_userdata("Tourist_name", $name);
-      $this->session->set_userdata("pre_id", $pre_id);
-      $this->session->set_userdata("tel", $tel);
-      $this->session->set_userdata("birthdate", $birthdate);
-      $this->session->set_userdata("email", $email);
+      $file_ext = explode('.', $file_name);
+      $file_actaul_ext = strtolower(end($file_ext));
+
+      // Check if there is a problem with the image file. or the file size exceeds 1000000?
+      if ($file_error != 0 || $file_size >= 1000000) {
+         $error_file = 'false';
+      }
+
+      if ($error_file != 'false') {
+         $this->mtou->update_tourist();
+         $this->mpic->tus_img_tus_id = $tus_id;
+         $this->mpic->delete_img_by_id($tus_id);
+         // Loop to upload files
+         $file_new_name = uniqid('', true);
+         $file_destination = './profilepicture_tourist/' . $file_new_name . '.' . $file_actaul_ext;
+         move_uploaded_file($file_tmp_name, $file_destination);
+         $this->mpic->tus_img_path = $file_new_name . '.' . $file_actaul_ext;
+         $this->mpic->insert_img();
+
+         redirect("Tourist/Auth/Landing_page_tourist");
+      }
    }
 }

@@ -27,4 +27,18 @@ class Da_dcs_tourist_image extends DCS_model{
         $this->db->query($sql, array($this->tus_img_path, $this->tus_img_tus_id));
     }
     
+    /*
+    * delete_img_by_id
+    * delete image for tourist by id
+    * @input tus_img_path, tus_img_tus_id
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-08-05
+    * @Update Date -
+    */
+   public function delete_img_by_id($tus_id){
+    $sql = "DELETE FROM {$this->db_name}.dcs_tourist_image 
+            WHERE tus_img_tus_id = '$tus_id'";
+    $this->db->query($sql, array($this->tus_img_path, $this->tus_img_tus_id));
+}
 }

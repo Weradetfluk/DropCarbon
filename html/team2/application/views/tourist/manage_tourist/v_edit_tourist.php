@@ -125,13 +125,15 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">แก้ไขข้อมูลส่วนตัว</h1>
         <!-- แก้ไขข้อมูลส่วนตัว -->
 
-        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;">
+        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
             <div class="profile-pic-div">
                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
-                <input type="file" id="file">
+                <input type="file" id="file" name="tourist_img" accept="image/*" src>
                 <label for="file" id="uploadBtn">Choose Photo</label>
             </div><br>
             <!-- profile pictuce -->
+
+            <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
 
             <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
             <div>
