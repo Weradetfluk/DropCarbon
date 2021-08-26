@@ -48,9 +48,10 @@ class Da_dcs_entrepreneur extends DCS_model
     * update_status
     * update status entrepreneur
     * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
-    * @insert -
+    * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-15
+    * @Update Date -
     */
 
     public function update_status($status_number)
@@ -62,8 +63,10 @@ class Da_dcs_entrepreneur extends DCS_model
     }
 
     /*
-    * Function : update_entrepreneur
-    * @Update $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password 
+    * update_entrepreneur
+    * update data entrepreneur by ent_id
+    * @input $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password 
+    * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-15
     * @Update Date 2564-08-02

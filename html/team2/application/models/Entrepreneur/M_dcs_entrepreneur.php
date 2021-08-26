@@ -81,7 +81,7 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *get_entrepreneur_by_id
     *get data card entrepreneur by form database
-    *@input -
+    *@input ent_id
     *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
@@ -134,9 +134,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *get_by_username_password
     *get data entrepreneur form database
-    *@input -
+    *@input ent_username, ent_password, ent_status
     *@output -
-    *@author Suwapat Saowarod 62160344
+    *@author Suwapat Saowarod 62160340
     *@Create Date 2564-08-03
     */
     function get_by_username_password()
@@ -159,9 +159,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *check_username
     *check username in database
-    *@input -
-    *@insert -
-    *@author Suwapat Saowarod 
+    *@input ent_username
+    *@output -
+    *@author Suwapat Saowarod 62160340
     *@Create Date 2564-08-18
     */
     public function check_username()

@@ -14,7 +14,7 @@ class M_dcs_company extends Da_dcs_company
     /*
     * get_all
     * get data company
-    * @input -
+    * @input com_ent_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -30,7 +30,7 @@ class M_dcs_company extends Da_dcs_company
     /*
     * get_by_id
     * get data company by id
-    * @input -
+    * @input com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -46,8 +46,8 @@ class M_dcs_company extends Da_dcs_company
     /*
     *get_count_all
     *get data count company by form database
-    *@input -
-    *@insert -
+    *@input num_status
+    *@output -
     *@author Kasama Donwong 62160074
     *@Create Date 2564-07-31
     */
@@ -83,8 +83,8 @@ class M_dcs_company extends Da_dcs_company
     /*
     *get_search
     *get data with search
-    *@input -
-    *@insert -
+    *@input number_status, search
+    *@output -
     *@author Kasama Donwong 62160074
     *@Create Date 2564-08-08
     */
@@ -95,6 +95,15 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->query($sql);
         return $query;
     }
+
+    /*
+    *get_by_name
+    *get data company by com_name
+    *@input com_name
+    *@output -
+    *@author Suwapat Saowarod 62160340
+    *@Create Date 2564-08-07
+    */
     function get_by_name()
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_company where com_name =  ? AND com_status = 1";
@@ -105,9 +114,9 @@ class M_dcs_company extends Da_dcs_company
     /*
     *get_by_detail
     *get data entrepreneur form database
-    *@input -
-    *@insert -
-    *@author Acharaporn pornpattanasap
+    *@input com_id
+    *@output -
+    *@author Acharaporn pornpattanasap 62160344
     *@Create Date 2564-08-07
     */
     public function get_by_detail()
@@ -125,7 +134,7 @@ class M_dcs_company extends Da_dcs_company
     *get_data_card_company
     *get data card company form database sum row
     *@input -
-    *@insert -
+    *@output -
     *@author Kasama Donwong 62160074
     *@Create Date 2564-08-25
     */

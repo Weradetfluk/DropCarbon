@@ -22,7 +22,7 @@ class M_dcs_com_image extends Da_dcs_com_image{
     /*
     * get_by_com_id
     * get data company by id
-    * @input -
+    * @input com_img_com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-05

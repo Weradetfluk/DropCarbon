@@ -22,13 +22,13 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
-        $this->output_Landing_page(); //path
+        $this->output_landing_page(); //path
     }
 
     /*
     * output_admin
     * output admin page
-    * @input
+    * @input data, view
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -48,7 +48,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_admin_card
     * output admin page card
-    * @input
+    * @input data, view
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-02
@@ -68,7 +68,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_admin_card
     * output admin page card
-    * @input
+    * @input data, view
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2564-08-25
@@ -89,7 +89,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_login_admin
     * output admin login  page
-    * @input
+    * @input data, view
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -107,7 +107,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_login_entrepreneur
     * show form login entrepreneur
-    * @input
+    * @input data, view
     * @output - 
     * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-19
@@ -124,7 +124,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_company
     * show list company
-    * @input
+    * @input data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-18
@@ -141,8 +141,8 @@ class DCS_controller extends CI_Controller
 
     /*
     * output_regis
-    * register
-    * @input
+    * output register
+    * @input data, view
     * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2021-07-15
@@ -175,14 +175,14 @@ class DCS_controller extends CI_Controller
     }
 
     /*
-    * output_Landing_page
+    * output_landing_page
     * show Landing page for every one
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2021-07-31
     */
-    public function output_Landing_page()
+    public function output_landing_page()
     {
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');
@@ -194,7 +194,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_event
     * show every thing about
-    * @input $view
+    * @input $view, topbar
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2021-08-03
@@ -209,14 +209,14 @@ class DCS_controller extends CI_Controller
     }
 
     /*
-    * output_Landing_page
+    * output_landing_page
     * show Landing page tourist for every one
     * @input $view
     * @output -
     * @author Jutamas Thaptong 62160079
     * @Create Date 2021-08-02
     */
-    public function output_Landing_page_tourist()
+    public function output_landing_page_tourist()
     {
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');
@@ -246,7 +246,7 @@ class DCS_controller extends CI_Controller
     /*
       * email_send
       * send email to user
-      * @input
+      * @input reason, user_email, subject, mail_content_h1
       * @output -
       * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17

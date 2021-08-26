@@ -24,7 +24,7 @@ class Da_dcs_com_image extends DCS_model{
 	/*
     * update_pass_token
     * update password with number ramdom
-    * @input 
+    * @input com_img_path, com_img_com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-05

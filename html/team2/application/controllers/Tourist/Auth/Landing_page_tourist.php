@@ -13,7 +13,7 @@ class Landing_page_tourist extends DCS_controller
 {
 
      /*
-    * output_Landing_page
+    * output_landing_page
     * show Landing page tourist for every one
     * @input $view
     * @output -
@@ -23,7 +23,7 @@ class Landing_page_tourist extends DCS_controller
 
     public function index()
     {
-        $this->output_Landing_page_tourist();
+        $this->output_landing_page_tourist();
     }
 
     

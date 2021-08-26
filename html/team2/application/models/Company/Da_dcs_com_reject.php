@@ -25,7 +25,7 @@ class Da_dcs_com_reject extends Dcs_model
     /*
     * insert
     * insert email detail to database
-    * @input -
+    * @input com_admin_reason, com_ent_id, com_adm_id
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-02

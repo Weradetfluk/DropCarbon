@@ -30,7 +30,7 @@ class Da_dcs_company extends DCS_model{
 	/*
     * insert_company
     * insert company by entrepreneur
-    * @input -
+    * @input com_name, com_lat, com_lon, com_description, com_ent_id, com_tel
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18
@@ -45,7 +45,7 @@ class Da_dcs_company extends DCS_model{
 	/*
     * delete_company
     * update com_status == 4
-    * @input -
+    * @input com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -61,7 +61,7 @@ class Da_dcs_company extends DCS_model{
 	/*
     * update_company
     * update company by entrepreneur
-    * @input -
+    * @input com_name, com_lon, com_tel, com_description, com_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
