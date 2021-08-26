@@ -26,4 +26,5 @@ class Da_dcs_tourist_image extends DCS_model{
                 VALUES (?,?)";
         $this->db->query($sql, array($this->tus_img_path, $this->tus_img_tus_id));
     }
+    
 }
