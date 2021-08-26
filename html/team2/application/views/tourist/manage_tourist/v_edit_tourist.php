@@ -48,12 +48,73 @@
     #next_btn {
         float: right;
     }
+
+    .profile-pic-div {
+        height: 200px;
+        margin: auto;
+        width: 200px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid gray;
+    }
+
+    .profile-pic-div img {
+        height: 200px;
+    }
+
+    #photo {
+        height: 100%;
+        width: 100%;
+    }
+
+    #file {
+        display: none;
+    }
+
+    #uploadBtn {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        color: wheat;
+        line-height: 30px;
+        font-size: 15px;
+        font-family: sans-serif;
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 1000px) and (max-width: 1500px) {
+        .wrapper {
+            width: 100%;
+            padding: 15px 15px 940px;
+        }
+
+        .h1 {
+            font-size: 36px !important;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .wrapper {
+            width: 100%;
+            padding: 15px 15px 1100px;
+        }
+
+        .h1 {
+            font-size: 36px !important;
+        }
+    }
 </style>
 
 <title>แก้ไขข้อมูลส่วนตัว</title>
 <!-- title -->
 
-<div class="wrapper" style="height: 100%">
+<div class="wrapper" style="height: 110%">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
@@ -65,6 +126,13 @@
         <!-- แก้ไขข้อมูลส่วนตัว -->
 
         <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;">
+            <div class="profile-pic-div">
+                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                <input type="file" id="file">
+                <label for="file" id="uploadBtn">Choose Photo</label>
+            </div><br>
+            <!-- profile pictuce -->
+
             <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
             <div>
                 <?php
@@ -125,6 +193,8 @@
             <!-- ปุ่มยกเลิก -->
             <button type="button" id="verify" class="btn btn-success" style="color: white; margin-right: 1%; float:right; font-size: 18px;">ยืนยัน</button>
             <!-- ปุ่มบันทึก -->
+
+
         </form>
         <!-- form -->
 
@@ -170,4 +240,35 @@
             });
         });
     });
+    // sweet alert
+
+    const imgDiv = document.querySelector('.profile-pic-div');
+    const img = document.querySelector('#photo');
+    const file = document.querySelector('#file');
+    const uploadBtn = document.querySelector('#uploadBtn');
+
+    imgDiv.addEventListener('mouseenter', function() {
+        uploadBtn.style.display = "block";
+    });
+
+    imgDiv.addEventListener('mouseleave', function() {
+        uploadBtn.style.display = "none";
+    });
+
+    file.addEventListener('change', function() {
+
+        const choosedFile = this.files[0];
+
+        if (choosedFile) {
+
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+                img.setAttribute('src', reader.result);
+            });
+
+            reader.readAsDataURL(choosedFile);
+        }
+    });
+    // responsive change picture
 </script>
