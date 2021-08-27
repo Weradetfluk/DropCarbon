@@ -65,14 +65,13 @@ class Login_tourist extends DCS_controller
 
     function input_login_form()
     {
-
         $username = $this->input->post('username');
         $password = $this->input->post('password'); //รับค่า username & password
-
 
         //$password = md5($password);
 
         $this->load->model('Tourist/M_dcs_login_tourist', 'mlog');  //load database
+        $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
 
         $this->mlog->tus_username =  $username;
         $this->mlog->tus_password = $password;
@@ -80,12 +79,19 @@ class Login_tourist extends DCS_controller
         $result = $this->mlog->login(); //function in model
 
         if ($result) {
+            $this->mpic->tus_img_tus_id = $result->tus_id;
+            $result_img = $this->mpic->get_by_tourist_id()->row();
             $tus_username =  $result->tus_username;
             $tus_name = $result->tus_firstname . ' ' . $result->tus_lastname;
             $tus_id = $result->tus_id;
-
-            $this->set_session($tus_username, $tus_name, $tus_id);
-            //echo $tus_name;
+            if ($result_img != null) {
+                $tus_img_path = $result_img->tus_img_path;
+                $this->set_session($tus_username, $tus_name, $tus_id, $tus_img_path);
+            }else {
+                $this->set_session($tus_username, $tus_name, $tus_id, '');
+            }
+            //echo $tus_name; test name
+            // echo $tus_img_path; test path
             redirect("Tourist/Auth/Landing_page_tourist");
         } else {
             $data_warning = array();
@@ -121,11 +127,12 @@ class Login_tourist extends DCS_controller
     * @Update -
     */
 
-    public function set_session($username, $name, $id)
+    public function set_session($username, $name, $id, $tus_img_path)
     {
         $this->session->set_userdata("username", "$username");
         $this->session->set_userdata("Tourist_name", "$name");
         $this->session->set_userdata("Tourist_id", "$id");
+        $this->session->set_userdata("tus_img_path", $tus_img_path);
     }
 
 

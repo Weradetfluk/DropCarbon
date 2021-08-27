@@ -127,8 +127,12 @@
 
         <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
             <div class="profile-pic-div">
-                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
-                <input type="file" id="file" name="tourist_img" accept="image/*" src>
+                <?php if ($this->session->userdata("tus_img_path") == '') { ?>
+                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                <?php } else { ?>
+                    <img src= "<?php echo base_url().'profilepicture_tourist/'.$this->session->userdata('tus_img_path'); ?>" id="photo">
+                <?php } ?>
+                <input type="file" id="file" name="tourist_img" accept="image/*" >
                 <label for="file" id="uploadBtn">Choose Photo</label>
             </div><br>
             <!-- profile pictuce -->

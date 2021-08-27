@@ -74,9 +74,9 @@ class Tourist_edit extends DCS_controller
       $file_actaul_ext = strtolower(end($file_ext));
 
       // Check if there is a problem with the image file. or the file size exceeds 1000000?
-      if ($file_error != 0 || $file_size >= 1000000) {
+      if ($file_error != 0 || $file_size >= 3000000) {
          $error_file = 'false';
-      }
+      }// ต้องมาแก้ขนาดอีกที  ปรึกษาเรื่องขนาดกับ PO
 
       if ($error_file != 'false') {
          $this->mtou->update_tourist();
@@ -87,9 +87,13 @@ class Tourist_edit extends DCS_controller
          $file_destination = './profilepicture_tourist/' . $file_new_name . '.' . $file_actaul_ext;
          move_uploaded_file($file_tmp_name, $file_destination);
          $this->mpic->tus_img_path = $file_new_name . '.' . $file_actaul_ext;
+         $tus_img_path = $this->mpic->tus_img_path;
+         $this->session->set_userdata("tus_img_path", $tus_img_path);
          $this->mpic->insert_img();
-
+         
          redirect("Tourist/Auth/Landing_page_tourist");
+      }else {
+         $this->show_edit_tourist();
       }
    }
 }
