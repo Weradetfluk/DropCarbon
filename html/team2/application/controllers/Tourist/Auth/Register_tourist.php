@@ -47,26 +47,26 @@ class Register_tourist extends DCS_controller {
         $this->mtou->tus_status = 1;
         
         // Create file storage variables
-        $fileName = array();
-        $fileTmpName = array();
-        $fileSize = array();
-        $fileError = array();
-        $fileExt = array();
-        $fileActaulExt = array();
+        $file_name = array();
+        $file_tmp_name = array();
+        $file_size = array();
+        $file_error = array();
+        $file_ext = array();
+        $file_actaul_ext = array();
         $error_file = '';
 
         // Configure file storage
         $file = $_FILES['tourist_img'];
-        $fileName = $_FILES['tourist_img']['name'];
-        $fileTmpName = $_FILES['tourist_img']['tmp_name'];
-        $fileSize = $_FILES['tourist_img']['size'];
-        $fileError = $_FILES['tourist_img']['error'];
+        $file_name = $_FILES['tourist_img']['name'];
+        $file_tmp_name = $_FILES['tourist_img']['tmp_name'];
+        $file_size = $_FILES['tourist_img']['size'];
+        $file_error = $_FILES['tourist_img']['error'];
 
-            $fileExt = explode('.', $fileName);
-            $fileActaulExt = strtolower(end($fileExt));
+            $file_ext = explode('.', $file_name);
+            $file_actaul_ext = strtolower(end($file_ext));
 
             // Check if there is a problem with the image file. or the file size exceeds 1000000?
-            if ($fileError != 0 || $fileSize >= 1000000) {
+            if ($file_error != 0 || $file_size >= 5000000) {
                 $error_file = 'false';
             }   
 
@@ -75,10 +75,10 @@ class Register_tourist extends DCS_controller {
             $result = $this->mtou->get_by_username_password();
             $this->mpic->tus_img_tus_id = $result->tus_id;
             // Loop to upload files
-                $fileNewName = uniqid('', true);
-                $fileDestination = './profilepicture_tourist/' . $fileNewName . '.' . $fileActaulExt;
-                move_uploaded_file($fileTmpName, $fileDestination);
-                $this->mpic->tus_img_path = $fileNewName . '.' . $fileActaulExt;
+                $file_new_name = uniqid('', true);
+                $file_destination = './profilepicture_tourist/' . $file_new_name . '.' . $file_actaul_ext;
+                move_uploaded_file($file_tmp_name, $file_destination);
+                $this->mpic->tus_img_path = $file_new_name . '.' . $file_actaul_ext;
                 $this->mpic->insert_img();
             $this->set_session_regis_tourist('success');  
             redirect('Landing_page/Register/Landing_page');//redirect ไปที่หน้าหลัก
