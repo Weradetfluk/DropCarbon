@@ -58,7 +58,7 @@ if (!$this->session->has_userdata("Admin_name")) {
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" id="home">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
             <i class="material-icons">dashboard</i>
             <p>จัดการสถานที่</p>
           </a>

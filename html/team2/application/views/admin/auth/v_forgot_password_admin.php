@@ -19,7 +19,7 @@
 </nav>
 
 
-<div class="page-header header-filter " style="background-image: url('<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/login-img.png');   background-repeat: no-repeat;   background-size: cover;">
+<div class="page-header header-filter " style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
 
     <div class="container" style="margin-top: 200px; ">
 

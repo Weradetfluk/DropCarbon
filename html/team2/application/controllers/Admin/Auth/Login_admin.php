@@ -82,7 +82,7 @@ class Login_admin extends DCS_controller
 
        $this->set_session($adm_username, $adm_name, $adm_id);
 
-       redirect("Admin/Manage_company/Admin_approval_company/show_data_consider");
+       redirect("Admin/Manage_company/Admin_approval_company");
 
     } else {
       $data_warning = array();

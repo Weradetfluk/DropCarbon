@@ -35,7 +35,7 @@ class Admin_approval_company extends DCS_controller
 
   public function index($data = NULL)
   {
-    $this->output_admin_company_card('admin/manage_company/v_list_company_consider', $data);
+    redirect('Admin/Manage_company/Admin_approval_company/show_data_consider');
   }
 
 
@@ -74,7 +74,7 @@ class Admin_approval_company extends DCS_controller
       $this->pagination->initialize($config);
     }
     $data["links"] = $this->pagination->create_links();
-    $this->output_admin_company_card('admin/manage_company/v_list_company_consider', $data);
+    $this->output_admin('admin/manage_company/v_list_company_consider', $data, 'admin/manage_company/v_data_card_company');
   }
 
 
@@ -111,7 +111,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_approve'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_approve"] = $this->pagination->create_links();
-    $this->output_admin_company_card('admin/manage_company/v_list_company_approve', $data);
+    $this->output_admin('admin/manage_company/v_list_company_approve', $data, 'admin/manage_company/v_data_card_company');
   }
 
    /*
@@ -146,7 +146,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_reject'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_reject"] = $this->pagination->create_links();
-    $this->output_admin_company_card('admin/manage_company/v_list_company_reject', $data);
+    $this->output_admin('admin/manage_company/v_list_company_reject', $data, 'admin/manage_company/v_data_card_company');
   }
 
 

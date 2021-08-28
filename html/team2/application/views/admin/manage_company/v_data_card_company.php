@@ -18,7 +18,7 @@
                             <i class="material-icons">content_copy</i>
                         </div>
                         <p class="card-category">รออนุมัติ</p>
-                        <h3 class="card-title" id="consider">
+                        <h3 class="card-title" id="consider_com">
 
                         </h3>
                     </div>
@@ -32,7 +32,7 @@
                             <i class="material-icons">done</i>
                         </div>
                         <p class="card-category">อนุมัติ</p>
-                        <h3 class="card-title" id="approve">
+                        <h3 class="card-title" id="approve_com">
 
                         </h3>
                     </div>
@@ -46,7 +46,7 @@
                             <i class="material-icons">clear</i>
                         </div>
                         <p class="card-category">ปฏิเสธ</p>
-                        <h3 class="card-title" id="reject">
+                        <h3 class="card-title" id="reject_com">
 
                         </h3>
                     </div>
@@ -73,15 +73,15 @@
                     $.ajax({
                         type: 'post',
                         url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_data_card_company_ajax'); ?>',
-                        dataType: "JSON",
+                        dataType: 'JSON',
                         success: function(json_data) {
                             console.log(json_data);
 
-                            $("#consider").text(json_data[0].consider);
+                            $("#consider_com").text(json_data[0].consider);
 
-                            $("#approve").text(json_data[0].approve);
+                            $("#approve_com").text(json_data[0].approve);
 
-                            $("#reject").text(json_data[0].reject);
+                            $("#reject_com").text(json_data[0].reject);
 
                         },
                         error: function() {
