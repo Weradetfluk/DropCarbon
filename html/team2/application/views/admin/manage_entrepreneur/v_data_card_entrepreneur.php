@@ -70,11 +70,6 @@
         </div>
 
 
-
-
-
-
-
         <script>
             $(document).ready(function() {
                 get_data_card_entrepreneur()
@@ -94,7 +89,7 @@
                 $.ajax({
                     type: 'post',
                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_card_entrepreneur_ajax'); ?>',
-                    dataType: "JSON",
+                    dataType: 'JSON',
                     success: function(json_data) {
                         console.log(json_data);
 
@@ -108,10 +103,17 @@
 
                     },
                     error: function() {
-                        alert('ajax ass user error working');
+                        alert('ajax get data user error working');
                     }
                 });
 
 
             }
         </script>
+
+
+
+
+
+
+       

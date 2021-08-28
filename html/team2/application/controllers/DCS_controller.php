@@ -32,38 +32,24 @@ class DCS_controller extends CI_Controller
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
-    * @Update -
+    * @Update Date 2564-08-28
     */
 
-    public function output_admin($view, $data = null)
+    public function output_admin($view, $data = null, $view_card = null)
     {
 
         $this->load->view('template/Admin/header_admin'); // path
         $this->load->view('template/Admin/topbar_admin');
         $this->load->view('template/Admin/javascript_admin');
+
+        if($view_card != NULL){
+            $this->load->view($view_card);
+        }
         $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
 
-    /*
-    * output_admin_card
-    * output admin page card
-    * @input data, view
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-08-02
-    * @Update -
-    */
 
-    public function output_admin_card($view, $data = null)
-    {
-        $this->load->view('template/Admin/header_admin'); // path
-        $this->load->view('template/Admin/topbar_admin');
-        $this->load->view('template/Admin/javascript_admin');
-        $this->load->view('admin/manage_entrepreneur/v_data_card_entrepreneur');
-        $this->load->view($view, $data);
-        $this->load->view('template/Admin/footer');
-    }
 
     /*
     * output_admin_card

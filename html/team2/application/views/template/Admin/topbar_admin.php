@@ -69,7 +69,7 @@ if (!$this->session->has_userdata("Admin_name")) {
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>">
+        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="ent_menu">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?>">
             <i class="material-icons">content_paste</i>
             <p>จัดการผู้ประกอบการ</p>

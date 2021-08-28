@@ -23,21 +23,6 @@ class Admin_approval_entrepreneur extends DCS_controller
 
 
     /*
-      * index
-      * call function in Dcs_controller
-      * @input
-      * @output -
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update Date -
-      */
-
-    public function index($data = null)
-    {
-        $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_consider', $data);
-    }
-
-    /*
       * show_data_consider
       * get all data entrepreneur not approve and show table
       * @input
@@ -69,7 +54,7 @@ class Admin_approval_entrepreneur extends DCS_controller
             $this->pagination->initialize($config);
         }
         $data["links"] = $this->pagination->create_links();
-        $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_consider', $data);
+        $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_consider', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
     }
 
 
@@ -102,7 +87,7 @@ class Admin_approval_entrepreneur extends DCS_controller
             $data['arr_entrepreneur_approve'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
         }
         $data["link_approve"] = $this->pagination->create_links();
-        $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data);
+        $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
     }
 
     /*
@@ -134,7 +119,8 @@ class Admin_approval_entrepreneur extends DCS_controller
             $data['arr_entrepreneur_reject'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
         }
         $data["link_block"] = $this->pagination->create_links();
-        $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_reject', $data);
+        $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_reject', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
+        
     }
 
 
@@ -168,7 +154,8 @@ class Admin_approval_entrepreneur extends DCS_controller
             $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
         }
         $data["link_block"] = $this->pagination->create_links();
-        $this->output_admin_card('admin/manage_entrepreneur/v_list_entrepreneur_block', $data);
+        $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_block', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
+        
     }
 
     /*
