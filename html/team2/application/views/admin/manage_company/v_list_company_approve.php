@@ -105,11 +105,11 @@
 
                                                         <!-- column ดำเนินการ -->
                                                         <td style='text-align: center;'>
-                                                            <button class="btn btn-info" style="font-size:10px; padding:12px;">
+                                                            <a class="btn btn-info custom-btn-table" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $arr_company_approve[$i]->com_id; ?>">
                                                                 <i class="material-icons">
                                                                     search
                                                                 </i>
-                                                            </button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
