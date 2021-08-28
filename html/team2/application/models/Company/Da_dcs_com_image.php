@@ -22,8 +22,8 @@ class Da_dcs_com_image extends DCS_model{
 	}
 
 	/*
-    * update_pass_token
-    * update password with number ramdom
+    * insert_image_company
+    * insert image company
     * @input com_img_path, com_img_com_id
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -34,5 +34,19 @@ class Da_dcs_com_image extends DCS_model{
 		$sql = "INSERT INTO `dcs_com_image`(`com_img_path`, `com_img_com_id`) 
 				VALUES (?, ?)";
 		$this->db->query($sql, array($this->com_img_path, $this->com_img_com_id));
+	}
+
+	/*
+    * delete_image_company
+    * delete image company
+    * @input com_img_path
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-28
+    * @Update Date -
+    */
+	public function delete_image_company(){
+		$sql = "DELETE FROM `dcs_com_image` WHERE com_img_path = ?";
+		$this->db->query($sql, array($this->com_img_path));
 	}
 }

@@ -47,8 +47,58 @@ class Company_add extends DCS_controller
         $this->mcom->com_description = $this->input->post('com_description');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $this->mcom->com_tel = $this->input->post('com_tel');
+    
+        $this->mcom->insert_company();
+        $result = $this->mcom->get_by_name()->row();
+        
+        
+        // save data image to database
+        $arr_img_add = array();
+        $arr_img_add = $this->input->post('new_img');
+        $this->mimg->com_img_com_id = $result->com_id;
+        for ($i = 0; $i < count($arr_img_add); $i++) {
+            $this->mimg->com_img_path = $arr_img_add[$i];
+            $this->mimg->insert_image_company();
+        }
 
-        // Create file storage variables
+        // delete data image to database
+        $arr_img_delete = array();
+        $arr_img_delete= $this->input->post('del_new_img');
+        if($arr_img_delete != ''){
+            for ($i = 0; $i < count($arr_img_delete); $i++) {
+                $this->mimg->com_img_path = $arr_img_delete[$i];
+                unlink('./image_company/' . $arr_img_delete[$i]);
+                $this->mimg->delete_image_company();
+            }
+        }
+        
+        $this->set_session_add_company('success');  
+        redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
+    }
+
+    /*
+    * set_session_add_company
+    * add session 
+    * @input $data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-23
+    * @Update Date -
+    */
+    public function set_session_add_company($data){
+        $this->session->set_userdata("error_add_company", $data);
+    }
+
+    /*
+    * upload_image_ajax
+    * upload image
+    * @input com_file
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-26
+    * @Update Date 2564-08-28
+    */
+    public function upload_image_ajax(){
         $file_name = array();
         $file_tmp_name = array();
         $file_size = array();
@@ -79,40 +129,27 @@ class Company_add extends DCS_controller
         }else { 
             $error_file = 'false';
         }
-
+        $output_image = '';
         if ($error_file != 'false') {
-            $this->mcom->insert_company();
-            $result = $this->mcom->get_by_name()->row();
-            $this->mimg->com_img_com_id = $result->com_id;
-
             // Loop to upload files
             for ($i = 0; $i < count($file_name); $i++) {
                 $file_new_name[$i] = uniqid('', true);
                 $file_destination[$i] = './image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
                 move_uploaded_file($file_tmp_name[$i], $file_destination[$i]);
-                $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                $this->mimg->insert_image_company();
+                // $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+                $path = base_url() . 'image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+                $output_image .= '<div id="' . $file_new_name[$i] . '">
+                                        <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
+                                        <img src="' . $path . '" alt="Image"><span class="position-absolute" style="font-size: 25px;" 
+                                        onclick="unlink_new_image(\'' . $file_new_name[$i] . '.' . $file_actaul_ext[$i] . '\')">&times;
+                                        </span><input type="text" value="' . $file_new_name[$i] . '.' . $file_actaul_ext[$i] . '" name="new_img[]" 
+                                        id="' . $file_new_name[$i] . '_img" hidden></div>
+                                  </div>';
             }
-            $this->set_session_add_company('success');  
-            redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
         } else {
-            $this->set_session_add_company('fail');
-            redirect('Entrepreneur/Manage_company/Company_add/show_add_company');
+            $output_image .= 'error';
         }
-        
-    }
-
-    /*
-    * set_session_add_company
-    * add session 
-    * @input $data
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-08-23
-    * @Update Date -
-    */
-    public function set_session_add_company($data){
-        $this->session->set_userdata("error_add_company", $data);
+        echo json_encode($output_image);
     }
 }
 

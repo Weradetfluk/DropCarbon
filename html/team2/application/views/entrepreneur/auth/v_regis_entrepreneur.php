@@ -66,9 +66,9 @@
         <form class="container py-3" method='POST' action="<?php echo site_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
-                <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1>&nbsp;นาย
-                <input type="radio" id="ent_pre_id2" name="ent_pre_id" value=2>&nbsp;นาง
-                <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3>&nbsp;นางสาว
+                <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
+                <input type="radio" id="ent_pre_id2" name="ent_pre_id" value=2 required>&nbsp;นาง
+                <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3 required>&nbsp;นางสาว
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
