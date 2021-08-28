@@ -56,12 +56,13 @@ class Register_tourist extends DCS_controller {
         $error_file = '';
 
         // Configure file storage
-        $file = $_FILES['tourist_img'];
-        $file_name = $_FILES['tourist_img']['name'];
-        $file_tmp_name = $_FILES['tourist_img']['tmp_name'];
-        $file_size = $_FILES['tourist_img']['size'];
-        $file_error = $_FILES['tourist_img']['error'];
+        $file = $_FILES['tourist_img'] ?? '';
+        $file_name = $_FILES['tourist_img']['name'] ?? '';
+        $file_tmp_name = $_FILES['tourist_img']['tmp_name'] ?? '';
+        $file_size = $_FILES['tourist_img']['size'] ?? '';
+        $file_error = $_FILES['tourist_img']['error'] ?? '';
 
+        if($file != ''){
             $file_ext = explode('.', $file_name);
             $file_actaul_ext = strtolower(end($file_ext));
 
@@ -69,7 +70,9 @@ class Register_tourist extends DCS_controller {
             if ($file_error != 0 || $file_size >= 5000000) {
                 $error_file = 'false';
             }   
-
+        }else { 
+            $error_file = 'false';
+        }
         if ($error_file != 'false') {
             $this->mtou->insert_tourist();
             $result = $this->mtou->get_by_username_password();
