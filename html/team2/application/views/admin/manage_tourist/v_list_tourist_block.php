@@ -41,15 +41,15 @@
                                  
                                <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
+                                         <h4 class="card-title text-white ">ตารางแสดงบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
                                      </div>
                                      <div class="col">
-                                         <form class="form-inline" action="#" method="POST" style="width: 200px; float:right;">
+                                         <form class="form-inline custom-form-search" action="#">
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                             <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value=""  style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
 
