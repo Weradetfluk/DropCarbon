@@ -41,7 +41,7 @@
                                  
                                <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
+                                         <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
                                      </div>
                                      <div class="col">
                                          <form class="form-inline custom-form-search" action="#">
