@@ -331,6 +331,6 @@ class Admin_approval_entrepreneur extends DCS_controller
     {
         $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result();
 
-        echo json_encode($data['arr_data']);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
     }
 }

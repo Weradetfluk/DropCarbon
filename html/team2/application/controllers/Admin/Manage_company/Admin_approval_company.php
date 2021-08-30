@@ -317,6 +317,7 @@ class Admin_approval_company extends DCS_controller
       {
           $data['arr_data'] = $this->mdcc->get_data_card_company()->result();
   
-          echo json_encode($data['arr_data']);
+
+          $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
       }
 }

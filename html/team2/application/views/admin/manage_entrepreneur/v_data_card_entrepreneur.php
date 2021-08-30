@@ -91,16 +91,15 @@
                     type: 'post',
                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_card_entrepreneur_ajax'); ?>',
                     dataType: 'JSON',
-                    success: function(json_data) {
-                        console.log(json_data);
+                    success: function(json_data) {  
 
-                        $("#consider_ent").text(json_data[0].consider);
+                        $("#consider_ent").text(json_data[0].ent_consider);
 
-                        $("#approve_ent").text(json_data[0].approve);
+                        $("#approve_ent").text(json_data[0].ent_approve);
 
-                        $("#reject_ent").text(json_data[0].reject);
+                        $("#reject_ent").text(json_data[0].ent_reject);
 
-                        $("#block_ent").text(json_data[0].blocked);
+                        $("#block_ent").text(json_data[0].ent_blocked);
 
                     },
                     error: function() {

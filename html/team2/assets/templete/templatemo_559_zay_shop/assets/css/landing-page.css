@@ -7,7 +7,7 @@ h6 {
     font-family   : 'Prompt', sans-serif !important;
     text-transform: capitalize;
     color         : #6D152B;
-    font-weight   : 700 !important;
+    font-weight   : 700;
     padding-bottom: 2%;
 }
 
@@ -196,6 +196,10 @@ li{
     font-family   : 'Prompt', sans-serif !important;
 }
 
+.font-w-500{
+    color         : #6D152B;
+    font-weight   : 500 !important;
+}
 
 
 

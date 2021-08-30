@@ -27,7 +27,6 @@
     ul.breadcrumb {
         padding: 10px 16px;
         list-style: none;
-        background-color: #eee;
     }
 
     ul.breadcrumb li {
@@ -60,7 +59,7 @@
             <li><a href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
             <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
         </ul>
-        <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
+        <h1 class="h1 font-w-500" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
         <form class="container py-3 form-regis" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>

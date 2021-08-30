@@ -281,7 +281,7 @@
       */
 
      function confirm_approve(ent_id) {
-         $('#aprove_modal').modal();
+         $('#aprove_modal').modal({backdrop: 'static', keyboard: false}) ;
 
          $('#approves').click(function() {
              approve_entrepreneur(ent_id) //function 

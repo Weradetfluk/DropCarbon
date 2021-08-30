@@ -56,7 +56,7 @@
 
             <script>
                 $(document).ready(function() {
-                    get_data_card_company()
+                     get_data_card_company();
                 });
 
 
@@ -74,14 +74,14 @@
                         type: 'post',
                         url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_data_card_company_ajax'); ?>',
                         dataType: 'JSON',
-                        success: function(json_data) {
-                            console.log(json_data);
+                        success: function(json_data_com) {
+                          
 
-                            $("#consider_com").text(json_data[0].consider);
+                            $("#consider_com").text(json_data_com[0].consider);
 
-                            $("#approve_com").text(json_data[0].approve);
+                            $("#approve_com").text(json_data_com[0].approve);
 
-                            $("#reject_com").text(json_data[0].reject);
+                            $("#reject_com").text(json_data_com[0].reject);
 
                         },
                         error: function() {
