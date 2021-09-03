@@ -90,7 +90,7 @@ if (!$this->session->has_userdata("Admin_name")) {
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">
-            <i class="material-icons">person</i>
+            <i class="material-icons">logout</i>
             <p>ออกจากระบบ</p>
           </a>
         </li>

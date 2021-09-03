@@ -92,7 +92,7 @@
                                 <br>
 
 
-                                <div class="row" style="width:35%;float:right;">
+                                <div style="text-align: right;">
                                     <input type="submit" class="btn btn-success" value="บันทึก"></input>
                                     <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
                                     </a>

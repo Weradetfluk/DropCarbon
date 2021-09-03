@@ -63,13 +63,13 @@
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 4) echo "active"; ?>" >
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">
-              <i class="material-icons">person</i>
+              <i class="material-icons">manage_accounts</i>
               <p>แก้ไขข้อมูลส่วนตัว</p>
             </a>
           </li>     
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">
-              <i class="material-icons">person</i>
+              <i class="material-icons">logout</i>
               <p>ออกจากระบบ</p>
             </a>
           </li>   

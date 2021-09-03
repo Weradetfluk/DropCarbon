@@ -126,8 +126,10 @@
                                     </tr>
                                 </table>
                             </div>
-                            <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
-                            <button type="submit" id="btn_sub" class="btn btn-success">ยืนยัน</button>
+                            <div style="text-align: right;">
+                                <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
+                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+                            </div>
                         </form>
                     </div>
                 </div>
