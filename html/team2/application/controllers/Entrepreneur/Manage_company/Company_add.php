@@ -176,5 +176,26 @@ class Company_add extends DCS_controller
         }
         echo json_encode($data);
     }
+
+    /*
+     * check_name_company_ajax
+     * check name company by ajax
+     * @input com_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-03
+     * @Update -
+     */
+    function check_name_company_ajax(){
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->mcom->com_name = $this->input->post('com_name');
+        $company = $this->mcom->get_by_name()->row();
+        if($company){
+            // have name company
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
 }
 

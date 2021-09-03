@@ -149,4 +149,5 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->query($sql);
         return $query;
     }
+
 }

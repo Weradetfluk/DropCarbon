@@ -59,7 +59,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label for="com_name">ชื่อสถานที่</label>
-                                        <input type="text" id="com_name" name="com_name" class="form-control" placeholder="ใส่ชื่อสถานที่" required>
+                                        <input type="text" id="com_name" name="com_name" class="form-control" placeholder="ใส่ชื่อสถานที่" onkeyup="check_name_company_ajax()" required>
+                                        <span class="text-danger" id="error_com_name"></span>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="com_description">รายละเอียดสถานที่</label>
-                                        <input type="text" id="com_description" name="com_description" class="form-control" placeholder="ใส่รายละเอียดของสถานที่" required>
+                                        <textarea id="com_description" name="com_description" class="form-control" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +294,7 @@
         }
 
         $.ajax({
-            url: "<?php echo site_url('') . "Entrepreneur/Manage_company/Company_add/upload_image_ajax" ?>",
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/upload_image_ajax" ?>",
             method: "POST",
             dataType: "JSON",
             data: form_data,
@@ -375,9 +376,9 @@
         var arr_image = $("input[name='new_img[]']").map(function() {
             return $(this).val();
         }).get();
-        console.log(arr_image);
+        // console.log(arr_image);
         $.ajax({
-            url: "<?php echo site_url('') . "Entrepreneur/Manage_company/Company_add/uplink_image_ajax" ?>",
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/uplink_image_ajax" ?>",
             method: "POST",
             data: {
                 arr_image: arr_image
@@ -387,4 +388,38 @@
             }
         })
     }
+
+    /*
+     * check_name_company_ajax
+     * check name company by ajax
+     * @input com_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-03
+     * @Update -
+     */
+     function check_name_company_ajax(){
+        var com_name = $('#com_name').val();
+        // console.log(com_name);
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/check_name_company_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                com_name: com_name
+            },
+            success: function(data) {
+                // console.log(data);
+                if(data == 1){
+                    console.log(1);
+                    $('#error_com_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
+                    $('#btn_sub').prop('disabled', true); 
+                }else if(data == 2){
+                    console.log(2);
+                    $('#error_com_name').html('');
+                    $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
+     }
 </script>
