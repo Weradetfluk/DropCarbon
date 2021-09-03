@@ -43,8 +43,8 @@ CREATE TABLE `dcs_admin` (
 --
 
 INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_username`, `adm_password`, `adm_status`) VALUES
-(1, 'adminfluk', 'weradet', '1234', 1),
-(2, 'adminpip', 'suwapat', '1234', 1);
+(1, 'adminfluk', 'weradet', 'adm1_1234', 1),
+(2, 'adminpip', 'suwapat', 'adm2_1234', 1);
 
 -- --------------------------------------------------------
 
@@ -156,17 +156,18 @@ CREATE TABLE `dcs_company` (
 -- Dumping data for table `dcs_company`
 --
 
-INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_firstname`, ent_lastname, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
-(2, 'สุวพัฒน์', 'เสาวรส', 'Entrepreneur2', '1234', NULL, '0922563953', '777777777777', '62160340@go.buu.ac.th', 2, 1),
-(3, 'วีรเดช', 'นพสมบูรณ์', NULL, NULL, NULL, '0852812191', '1249900858895', 'fluk.weradet@gmail.com', 1, 1);
+INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_firstname`, `ent_lastname`, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
+(1, 'สุวพัฒน์', 'เสาวรส', 'Entrepreneur1', 'ent1_1234', NULL, '0922563953', '777777777777', '62160340@go.buu.ac.th', 2, 1),
+(2, 'วีรเดช', 'นพสมบูรณ์', 'Entrepreneur2', 'ent2_1234', NULL, '0852812191', '1249900858895', '62160110@gmail.com', 1, 1);
 
-INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`) VALUES
-(1, 'ศูนย์อนุรักษ์สิ่งแวดล้อม สาขา 2', 0, 0, 0, 1, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา และสามารถติดต่อได้ที่ เบอร์ 0914143234', 2),
-(2, 'สุวพัฒน์อนุรักษ์', 0, 0, 0, 4, 'รักษาสิ่งแวดง่ายๆแค่เข้ามาพักกับเรา', 2);
+INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`, `com_tel`) VALUES
+(1, 'โรงแรมพักร้อน', 0, 13.2622, 101.174, 1, 'หมู่เกาะสิมิลัน เป็นหมู่เกาะเล็ก ๆ ในทะเลอันดามัน มีทั้งหมด 9 เกาะ เรียงลำดับจากเหนือมาใต้ ได้แก่ เกาะหูยง เกาะปายัง เกาะปาหยัน เกาะเมี่ยง (มี 2 เกาะติดกัน) เกาะปายู เกาะหัวกะโหลก (เกาะบอน) เกาะสิมิลัน และเกาะบางู โดยหมู่เกาะเหล่านี้ได้รับการยกย่องว่าเป็นหมู่เกาะที่มีความงาม ทั้งบนบกและใต้น้ำที่ยังคงความสมบูรณ์ของท้องทะเล สามารถดำน้ำได้ทั้งน้ำตื้นและน้ำลึก มีปะการังที่มีสีสันสวยงามหลากชนิด ปลาหลากสีสันและหายาก', 1, '0905530622');
 
+INSERT INTO `dcs_tourist` (`tus_id`, `tus_firstname`, `tus_lastname`, `tus_username`, `tus_password`, `tus_birthdate`, `tus_tel`, `tus_score`, `tus_email`, `tus_cur_score`, `tus_status`, `tus_pre_id`) VALUES
+(1, 'สมชาย', 'ชาติทหาร', 'Tourist1', 'tou1_1234', '2021-09-05', '0901111111', NULL, '62160110@go.buu.ac.th', NULL, 1, 1);
 
-
-
+INSERT INTO `dcs_document` (`doc_path`, `doc_ent_id`) VALUES
+('613257f20bbb03.90906788.pdf', 1);
 
 --
 -- Indexes for dumped tables
@@ -198,6 +199,8 @@ CREATE TABLE dcs_tourist_image (
   FOREIGN KEY (tus_img_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+INSERT INTO `dcs_tourist_image` (`tus_img_path`, `tus_img_tus_id`) VALUES
+('613256a4219453.43551798.png', 1);
 
 CREATE TABLE dcs_reward (
   rew_id int(10) NOT NULL primary key AUTO_INCREMENT,
@@ -263,7 +266,9 @@ CREATE TABLE dcs_com_image (
   FOREIGN KEY (com_img_com_id) REFERENCES dcs_company(com_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
+INSERT INTO `dcs_com_image` (`com_img_path`, `com_img_com_id`) VALUES
+('613260b926e8e5.15861595.jpg', 1),
+('613260c19cc316.45611281.jpg', 1);
 
 CREATE TABLE dcs_pro_category (
   pro_cat_id int(10) NOT NULL primary key AUTO_INCREMENT,
