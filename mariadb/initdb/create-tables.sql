@@ -97,10 +97,10 @@ INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 
 CREATE TABLE `dcs_entrepreneur` (
   `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `ent_firstname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ent_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_firstname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_lastname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_username` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ent_password` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_birthdate` date DEFAULT NULL,
   `ent_tel` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ent_id_card` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `dcs_tourist` (
   `tus_username` varchar(30),
   `tus_password` varchar(30),
   `tus_birthdate` DATE,
-  `tus_tel` int(10),
+  `tus_tel` varchar(10),
   `tus_score` INT(10),
   `tus_email` varchar(30) NULL,
   `tus_cur_score` int(10),
@@ -146,7 +146,7 @@ CREATE TABLE `dcs_company` (
   `com_lat` float(20),
   `com_lon` float(20),
   `com_status` int(1) DEFAULT 1,
-  `com_description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `com_description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `com_ent_id` int(10),
   `com_tel` varchar(10),
    FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id)
@@ -184,7 +184,7 @@ INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `
 
 CREATE TABLE dcs_entrepreneur_reject (
   enr_id int(10) NOT NULL primary key AUTO_INCREMENT,
-  enr_admin_reason varchar(100) COLLATE utf8_unicode_ci,
+  enr_admin_reason varchar(255) COLLATE utf8_unicode_ci,
   enr_ent_id int(10),
   enr_adm_id int(10),
    FOREIGN KEY (enr_ent_id) REFERENCES dcs_entrepreneur(ent_id),
@@ -227,7 +227,7 @@ CREATE TABLE dcs_event (
   eve_name varchar(100),
   eve_point int(10),
   eve_num_visitor int(10),
-  eve_description varchar (255),
+  eve_description varchar (500),
   eve_com_id int(10),
   eve_cat_id int(10),
   eve_status int(10),
@@ -275,7 +275,7 @@ CREATE TABLE dcs_promotions (
   pro_id int(10) NOT NULL primary key AUTO_INCREMENT,
   pro_name varchar(100),
   pro_point int(10),
-  pro_description varchar (255),
+  pro_description varchar (500),
   pro_com_id int(10),
   pro_cat_id int(10),
   pro_status int(10),
@@ -299,7 +299,7 @@ CREATE TABLE dcs_tou_promotion (
 
 CREATE TABLE dcs_company_reject (
   com_id int(10) NOT NULL primary key AUTO_INCREMENT,
-  com_admin_reason varchar(100) COLLATE utf8_unicode_ci,
+  com_admin_reason varchar(255) COLLATE utf8_unicode_ci,
   com_ent_id int(10),
   com_adm_id int(10),
    FOREIGN KEY (com_ent_id) REFERENCES dcs_company(com_id),
