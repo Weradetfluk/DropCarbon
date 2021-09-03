@@ -21,6 +21,7 @@ class Entrepreneur_edit extends DCS_controller
    */
   public function show_edit_entrepreneur()
   {
+      $_SESSION['tab_number_entrepreneur'] = 4;
      $this->load->model('Entrepreneur/M_dcs_entrepreneur','ment');
      $this->ment->ent_id=$this->session->userdata("entrepreneur_id");
      $data['arr_ent']=$this->ment->get_entrepreneur_by_id()->result();

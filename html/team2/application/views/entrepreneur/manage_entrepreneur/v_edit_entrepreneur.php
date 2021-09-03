@@ -94,7 +94,7 @@
 
                                 <div class="row" style="width:35%;float:right;">
                                     <input type="submit" class="btn btn-success" value="บันทึก"></input>
-                                    <a class="btn btn-danger" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
+                                    <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
                                     </a>
                                 </div>
 

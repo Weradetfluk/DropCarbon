@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/templatemo.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/custom.css">
+    <!-- fonts css -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" type="text/css">
+    
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bg.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/form-tourist.css">

@@ -129,6 +129,7 @@ class Company_add extends DCS_controller
         }else { 
             $error_file = 'false';
         }
+
         $output_image = '';
         if ($error_file != 'false') {
             // Loop to upload files
@@ -150,6 +151,30 @@ class Company_add extends DCS_controller
             $output_image .= 'error';
         }
         echo json_encode($output_image);
+    }
+
+    /*
+    * uplink_image_ajax
+    * uplink image when cancel add company
+    * @input arr_img
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-08-28
+    * @Update Date -
+    */
+    public function uplink_image_ajax(){
+        // print_r($this->input->post('arr_image'));
+        $data = "";
+        if($this->input->post('arr_image') != NULL){
+            $arr_image = $this->input->post('arr_image');
+            for($i = 0; $i < count($arr_image); $i++){
+                unlink('./image_company/' . $arr_image[$i]);
+            }
+            $data = "success";
+        }else{
+            $data = "no image";
+        }
+        echo json_encode($data);
     }
 }
 

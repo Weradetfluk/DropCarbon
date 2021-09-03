@@ -10,6 +10,12 @@
     
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
 
+    <!-- custom css -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/custom-admin.css" type="text/css">
+
+    <!-- fonts css -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" type="text/css">
+
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css">
     
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">

@@ -17,7 +17,7 @@
           <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
             <div class="row">
               <div class="col">
-                <h4 class="card-title text-white" style="margin-top: 15px; ">ตารางจัดการสถานที่</h4>
+                <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
               </div>
               <div class="col">
                 <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
@@ -96,7 +96,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">คุณเเน่ใจหรือไม่ ?</h5>
+        <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -46,7 +46,7 @@
                 <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center>
-                            <h4 class="card-title text-white">เพิ่มสถานที่</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เพิ่มสถานที่</h4>
                         </center>
                     </div>
 
@@ -83,11 +83,11 @@
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
-                                <label for="com_file">รูปภาพประกอบสถานที่</label>
+                                <label for="com_file">รูปภาพประกอบสถานที่ <span style="color: red; font-size: 13px;">(กรุณาเลือกอย่างน้อย 1 รูป)</span></label>
                             </div>
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
-                            <div id="card_image"></div>
+                            <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
                             <div id="arr_del_img"></div>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
@@ -125,7 +125,7 @@
                                 </table>
                             </div>
                             <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
-                            <button type="submit" class="btn btn-success">ยืนยัน</button>
+                            <button type="submit" id="btn_sub" class="btn btn-success">ยืนยัน</button>
                         </form>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
     var position;
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
     var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-
+    var count_image = 0;
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
         initialize: function(name, options) {
@@ -281,10 +281,14 @@
     function upload_image_ajax() {
         var images = $('#com_file')[0].files;
         var form_data = new FormData();
+        var count_for_img = 0;
+        console.log(count_image);
         for (let i = 0; i < images.length; i++) {
             var name = images[i].name;
             var extension = name.split('.').pop().toLowerCase();
             form_data.append("com_file[]", images[i]);
+            count_image += 1;
+            count_for_img += 1;
         }
 
         $.ajax({
@@ -301,15 +305,20 @@
                     // $('#card_image').before(data);
                     document.getElementById('card_image').innerHTML += data;
                     $('#com_file').val('');
+                    check_count_image_btn()
                 } else {
                     swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                     $('#com_file').val('');
+                    count_image -= count_for_img;
+                    check_count_image_btn()
                 }
             },
             error: function() {
                 console.log('fail');
                 swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                 $('#com_file').val('');
+                count_image -= count_for_img;
+                check_count_image_btn()
             }
         });
     }
@@ -324,14 +333,57 @@
      * @Update -
      */
     function unlink_new_image(img_path) {
-        // console.log("#" + img_path);
-        // let name = $('#' + img_path + '_img').attr('name', 'del_new_img[]');
         let html = '';
-            html += '<input name="del_new_img[]" value="' + img_path + '"> hidden';
-            document.getElementById('arr_del_img').innerHTML += html;
+        html += '<input name="del_new_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img').innerHTML += html;
 
         let file_name = img_path.split('.');
         // console.log('#'+file_name[0]+'.'+file_name[1]);
-        document.getElementById(file_name[0]+'.'+file_name[1]).style="display:none";
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        check_count_image_btn()
+    }
+
+    /*
+     * check_count_image
+     * check count image to disable btn submit
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-28
+     * @Update -
+     */
+    function check_count_image_btn() {
+        if (count_image <= 0) {
+            $('#btn_sub').prop('disabled', true);
+        } else {
+            $('#btn_sub').prop('disabled', false);
+        }
+    }
+
+    /*
+     * unlink_image_go_back
+     * uplink image when cancel add company
+     * @input new_img
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-28
+     * @Update -
+     */
+    function unlink_image_go_back() {
+        var arr_image = $("input[name='new_img[]']").map(function() {
+            return $(this).val();
+        }).get();
+        console.log(arr_image);
+        $.ajax({
+            url: "<?php echo site_url('') . "Entrepreneur/Manage_company/Company_add/uplink_image_ajax" ?>",
+            method: "POST",
+            data: {
+                arr_image: arr_image
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        })
     }
 </script>

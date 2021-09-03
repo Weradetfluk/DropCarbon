@@ -60,6 +60,12 @@
               <i class="material-icons">point_of_sale</i>
               <p>จัดการโปรโมชัน</p>
             </a>
+          </li>
+          <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 4) echo "active"; ?>" >
+            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">
+              <i class="material-icons">person</i>
+              <p>แก้ไขข้อมูลส่วนตัว</p>
+            </a>
           </li>     
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">
