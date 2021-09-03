@@ -196,7 +196,7 @@
             </div><br>
             <!-- อีเมล -->
 
-            <a id="next_btn" class="btn btn-danger" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
+            <a id="next_btn" class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
             <!-- ปุ่มยกเลิก -->
             <button type="submit" id="verify" class="btn btn-success" style="color: white; margin-right: 1%; float:right; font-size: 18px;">บันทึก</button>
             <!-- ปุ่มบันทึก -->
