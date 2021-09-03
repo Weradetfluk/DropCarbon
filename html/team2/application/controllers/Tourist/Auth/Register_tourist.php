@@ -24,6 +24,7 @@ class Register_tourist extends DCS_controller
     */
     public function show_regis_tourist()
     {
+        $this->session->unset_userdata("tus_img_path");
         $this->output_regis('tourist/auth/v_regis_tourist');
     }
 
@@ -67,10 +68,8 @@ class Register_tourist extends DCS_controller
             $file_size = $_FILES['tourist_img']['size'] ?? '';
             $file_error = $_FILES['tourist_img']['error'] ?? '';
 
-
-
             // Check if there is a problem with the image file. or the file size exceeds 1000000?
-            if ($file_error != 0 || $file_size >= 5000000) {
+            if ($file_error != 0 || $file_size >= 3000000) {
                 $error_file = 'false';
             }
 
@@ -84,9 +83,9 @@ class Register_tourist extends DCS_controller
                 move_uploaded_file($file_tmp_name, $file_destination);
                 $this->mpic->tus_img_path = $file_new_name . '.' . $file_actaul_ext;
                 $this->mpic->insert_img();
-                
+
                 redirect('Landing_page/Register/Landing_page'); //redirect ไปที่หน้าหลัก
-            } 
+            }
         } else {
             $this->mtou->insert_tourist();
             redirect('Landing_page/Register/Landing_page');
@@ -108,7 +107,6 @@ class Register_tourist extends DCS_controller
         $this->mtou->tus_username = $this->input->post('tus_username');
 
         $result = $this->mtou->check_username()->row(); //function in model
-
 
         if ($result) {
             echo 1;
