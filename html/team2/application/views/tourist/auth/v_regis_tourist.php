@@ -142,7 +142,7 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="tell">เบอร์โทร</label>
-                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" placeholder="เบอร์โทร" required>
+                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" maxlength="10" minlength="10" placeholder="เบอร์โทร" maxlength="10" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
@@ -160,13 +160,13 @@
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
             <div class="form-group col-md-6 mb-3">
                 <label for="username">ชื่อผู้ใช้</label>
-                <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
+                <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
                 <span id="usernameavailable"></span>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="password">รหัสผ่าน</label>
-                    <input type="password" class="form-control mt-1" id="pass" name="tus_password" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
+                    <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
