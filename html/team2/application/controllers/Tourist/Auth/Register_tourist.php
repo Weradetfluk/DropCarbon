@@ -51,7 +51,6 @@ class Register_tourist extends DCS_controller
         $this->mtou->tus_password = $this->input->post('tus_password');
         $this->mtou->tus_status = 1;
 
-        // if (isset($_FILES["tourist_img"]) && !empty($_FILES["tourist_img"]["name"])) {
         // Create file storage variables
         $file_name = array();
         $file_tmp_name = array();
@@ -100,10 +99,7 @@ class Register_tourist extends DCS_controller
             $this->set_session_regis_tourist('fail');
             redirect('Tourist/Auth/Register_tourist/show_regis_tourist');
         }
-        // } else {
-        //     $this->mtou->insert_tourist();
-        //     redirect('Landing_page/Register/Landing_page');
-        // }
+       
     }
 
     /*
