@@ -20,6 +20,10 @@
         box-sizing: border-box;
     }
 
+    input:hover #next_btn {
+        background-color: #448855;
+    }
+
     a {
         text-decoration: none;
     }
@@ -49,6 +53,49 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    #next_btn {
+        float: right;
+    }
+
+    .profile-pic-div {
+        height: 200px;
+        margin: auto;
+        width: 200px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid gray;
+    }
+
+    .profile-pic-div img {
+        height: 200px;
+    }
+
+    #photo {
+        height: 100%;
+        width: 100%;
+    }
+
+    #file {
+        display: none;
+    }
+
+    #uploadBtn {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        color: wheat;
+        line-height: 30px;
+        font-size: 15px;
+        font-family: sans-serif;
+        cursor: pointer;
+    }
 </style>
 <title>ลงทะเบียนสำหรับนักท่องเที่ยว</title>
 <!-- Form Register -->
@@ -61,6 +108,19 @@
         </ul>
         <h1 class="h1 font-w-500" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
         <form class="container py-3 form-regis" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+            <div class="profile-pic-div">
+                <?php if ($this->session->userdata("tus_img_path") == '') { ?>
+                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                <?php } else { ?>
+                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" id="photo">
+                <?php } ?>
+                <input type="file" id="file" name="tourist_img" accept="image/*">
+                <label for="file" id="uploadBtn">Choose Photo</label>
+            </div><br>
+            <!-- profile pictuce -->
+
+            <!-- <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'> -->
+
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
                 <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1 required>&nbsp;นาย
@@ -96,9 +156,6 @@
                 <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
             </div>
             <br>
-            รูปโปรไฟล์ :
-            <input type="file" id ="tourist_img" name="tourist_img" accept="image/*" required>
-            <br><br>
 
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
             <div class="form-group col-md-6 mb-3">
@@ -120,9 +177,9 @@
                     </div>
                 </div>
             </div>
-            <a id ="cancel"class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
+            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
             <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">ถัดไป</button>
-            
+
 
         </form>
     </div>
@@ -208,4 +265,34 @@
         });
 
     }
+
+    const imgDiv = document.querySelector('.profile-pic-div');
+    const img = document.querySelector('#photo');
+    const file = document.querySelector('#file');
+    const uploadBtn = document.querySelector('#uploadBtn');
+
+    imgDiv.addEventListener('mouseenter', function() {
+        uploadBtn.style.display = "block";
+    });
+
+    imgDiv.addEventListener('mouseleave', function() {
+        uploadBtn.style.display = "none";
+    });
+
+    file.addEventListener('change', function() {
+
+        const choosedFile = this.files[0];
+
+        if (choosedFile) {
+
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+                img.setAttribute('src', reader.result);
+            });
+
+            reader.readAsDataURL(choosedFile);
+        }
+    });
+    // responsive change picture
 </script>
