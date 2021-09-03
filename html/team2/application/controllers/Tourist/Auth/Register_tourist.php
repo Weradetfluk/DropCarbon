@@ -1,14 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-    /*
+/*
     * Register_tourist
     * register new tourist user
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
     */
-class Register_tourist extends DCS_controller {
-    public function __construct() {
+class Register_tourist extends DCS_controller
+{
+    public function __construct()
+    {
         parent::__construct();
     }
     /*
@@ -20,7 +22,8 @@ class Register_tourist extends DCS_controller {
     * @Create Date 2564-07-31
     * @Update -
     */
-    public function show_regis_tourist() {
+    public function show_regis_tourist()
+    {
         $this->output_regis('tourist/auth/v_regis_tourist');
     }
 
@@ -33,7 +36,8 @@ class Register_tourist extends DCS_controller {
     * @Create Date 2564-07-31
     * @Update Date 2564-08-11
     */
-	public function insert_tourist() {
+    public function insert_tourist()
+    {
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
         $this->mtou->tus_pre_id = intval($this->input->post('tus_pre_id'));
@@ -45,51 +49,48 @@ class Register_tourist extends DCS_controller {
         $this->mtou->tus_username = $this->input->post('tus_username');
         $this->mtou->tus_password = $this->input->post('tus_password');
         $this->mtou->tus_status = 1;
-        
-        // Create file storage variables
-        $file_name = array();
-        $file_tmp_name = array();
-        $file_size = array();
-        $file_error = array();
-        $file_ext = array();
-        $file_actaul_ext = array();
-        $error_file = '';
 
-        // Configure file storage
-        $file = $_FILES['tourist_img'] ?? '';
-        $file_name = $_FILES['tourist_img']['name'] ?? '';
-        $file_tmp_name = $_FILES['tourist_img']['tmp_name'] ?? '';
-        $file_size = $_FILES['tourist_img']['size'] ?? '';
-        $file_error = $_FILES['tourist_img']['error'] ?? '';
+        if (isset($_FILES["tourist_img"]) && !empty($_FILES["tourist_img"]["name"])) {
+            // Create file storage variables
+            $file_name = array();
+            $file_tmp_name = array();
+            $file_size = array();
+            $file_error = array();
+            $file_ext = array();
+            $file_actaul_ext = array();
+            $error_file = '';
 
-        if($file != ''){
-            $file_ext = explode('.', $file_name);
-            $file_actaul_ext = strtolower(end($file_ext));
+            // Configure file storage
+            $file = $_FILES['tourist_img'] ?? '';
+            $file_name = $_FILES['tourist_img']['name'] ?? '';
+            $file_tmp_name = $_FILES['tourist_img']['tmp_name'] ?? '';
+            $file_size = $_FILES['tourist_img']['size'] ?? '';
+            $file_error = $_FILES['tourist_img']['error'] ?? '';
+
+
 
             // Check if there is a problem with the image file. or the file size exceeds 1000000?
             if ($file_error != 0 || $file_size >= 5000000) {
                 $error_file = 'false';
-            }   
-        }else { 
-            $error_file = 'false';
-        }
-        if ($error_file != 'false') {
-            $this->mtou->insert_tourist();
-            $result = $this->mtou->get_by_username_password();
-            $this->mpic->tus_img_tus_id = $result->tus_id;
-            // Loop to upload files
+            }
+
+            if ($error_file != 'false') {
+                $this->mtou->insert_tourist();
+                $result = $this->mtou->get_by_username_password();
+                $this->mpic->tus_img_tus_id = $result->tus_id;
+                // Loop to upload files
                 $file_new_name = uniqid('', true);
                 $file_destination = './profilepicture_tourist/' . $file_new_name . '.' . $file_actaul_ext;
                 move_uploaded_file($file_tmp_name, $file_destination);
                 $this->mpic->tus_img_path = $file_new_name . '.' . $file_actaul_ext;
                 $this->mpic->insert_img();
-            $this->set_session_regis_tourist('success');  
-            redirect('Landing_page/Register/Landing_page');//redirect ไปที่หน้าหลัก
+                
+                redirect('Landing_page/Register/Landing_page'); //redirect ไปที่หน้าหลัก
+            } 
         } else {
-            $this->set_session_regis_tourist('fail');
-            redirect("Tourist/Auth/Register_tourist/show_regis_tourist");//redirect ไปที่หน้าฟอร์มกรอกข้อมูล
+            $this->mtou->insert_tourist();
+            redirect('Landing_page/Register/Landing_page');
         }
-        
     }
 
     /*
@@ -101,7 +102,8 @@ class Register_tourist extends DCS_controller {
     * @Create Date 2564-08-10
     * @Update Date 2564-08-10
     */
-    public function check_username_tourist_ajax(){
+    public function check_username_tourist_ajax()
+    {
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->mtou->tus_username = $this->input->post('tus_username');
 
@@ -110,7 +112,7 @@ class Register_tourist extends DCS_controller {
 
         if ($result) {
             echo 1;
-        } else{
+        } else {
             echo 2;
         }
     }
@@ -123,7 +125,8 @@ class Register_tourist extends DCS_controller {
     * @Create Date 2564-08-23
     * @Update Date -
     */
-    public function set_session_regis_tourist($data){
+    public function set_session_regis_tourist($data)
+    {
         $this->session->set_userdata("error_register_tourist", $data);
     }
 }
