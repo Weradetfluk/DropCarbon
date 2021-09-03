@@ -344,3 +344,19 @@
        <!-- สิ้นสุดสถานที่ยอดนิยม -->
    </section>
    <!-- สิ้นสุดสีพื้นหลัง bg-light -->
+
+   <script>
+       $(document).ready(function() {
+
+           $(document).on('click', '.myButton', function() {
+               $('.myButton').removeClass("active");
+               $(this).addClass("active");
+           });
+
+           let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+           if (error_register_tourist == "success") {
+               swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
+               <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+           }
+       });
+   </script>

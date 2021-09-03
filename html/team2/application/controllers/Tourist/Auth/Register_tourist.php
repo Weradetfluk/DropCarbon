@@ -83,6 +83,7 @@ class Register_tourist extends DCS_controller
             $this->mtou->insert_tourist();
             $result = $this->mtou->get_by_username_password();
             $this->mpic->tus_img_tus_id = $result->tus_id;
+
             // Loop to upload files
             $file_new_name = uniqid('', true);
             $file_destination = './profilepicture_tourist/' . $file_new_name . '.' . $file_actaul_ext;
@@ -91,6 +92,7 @@ class Register_tourist extends DCS_controller
             $this->mpic->insert_img();
             $this->set_session_regis_tourist('success');
             redirect('Landing_page/Register/Landing_page'); //redirect ไปที่หน้าหลัก
+
         } else if (isset($_FILES["tourist_img"]) && empty($_FILES["tourist_img"]["name"])) {
             $this->set_session_regis_tourist('success');
             $this->mtou->insert_tourist();
@@ -99,7 +101,6 @@ class Register_tourist extends DCS_controller
             $this->set_session_regis_tourist('fail');
             redirect('Tourist/Auth/Register_tourist/show_regis_tourist');
         }
-       
     }
 
     /*

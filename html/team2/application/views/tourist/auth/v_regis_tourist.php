@@ -119,8 +119,6 @@
             </div><br>
             <!-- profile pictuce -->
 
-            <!-- <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'> -->
-
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
                 <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1 required>&nbsp;นาย
@@ -178,7 +176,7 @@
                 </div>
             </div>
             <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">ยกเลิก</a>
-            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">ถัดไป</button>
+            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
 
 
         </form>
