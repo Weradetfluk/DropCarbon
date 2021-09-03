@@ -166,7 +166,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการอนุมัติ ?</h5>
+                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">คุณต้องการอนุมัติ ?</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
@@ -189,7 +189,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">รายละเอียด</h5>
+                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">รายละเอียด</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>

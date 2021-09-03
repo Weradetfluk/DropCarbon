@@ -37,6 +37,7 @@
         font-weight: normal;
         cursor: pointer;
     }
+
 </style>
 
 <div class="content">
@@ -76,7 +77,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label for="com_tel">เบอร์ติดต่อสถานที่</label>
-                                        <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" required>
+                                        <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" maxlength="10" required>
                                     </div>
                                 </div>
                             </div>
