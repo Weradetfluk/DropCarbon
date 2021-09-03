@@ -82,11 +82,11 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_tel">เบอร์โทร</label>
-                    <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" placeholder="เบอร์โทร" required>
+                    <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10"placeholder="เบอร์โทร" required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_id_card">บัตรประชาชน</label>
-                    <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" placeholder="บัตรประชาชน" required>
+                    <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="บัตรประชาชน" required>
                 </div>
             </div>
 
@@ -106,14 +106,14 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_username">ชื่อผู้ใช้</label>
-                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
+                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
                     <span id="usernameavailable"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_password">รหัสผ่าน</label>
-                    <input type="password" class="form-control mt-1" id="pass" name="ent_password" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
+                    <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
