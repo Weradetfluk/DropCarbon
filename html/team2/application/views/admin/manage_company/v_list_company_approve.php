@@ -117,7 +117,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <p><?php echo $link_approve; ?></p>
+                                <div class="col-md-12" style="text-align:center;"><?php echo  $link_approve; ?></div>
                             </div>
                         </div>
                     </div>

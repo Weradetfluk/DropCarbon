@@ -77,14 +77,12 @@ class Admin_approval_entrepreneur extends DCS_controller
         } else {
             $all_count = $this->mdce->get_count_all($number_status); //get all count approve
 
-            $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_approve"');
-
-
-            $this->pagination->initialize($config);
 
             $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
 
+            $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve');
             $data['arr_entrepreneur_approve'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+            $this->pagination->initialize($config);
         }
         $data["link_approve"] = $this->pagination->create_links();
         $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
@@ -108,15 +106,10 @@ class Admin_approval_entrepreneur extends DCS_controller
             $data['arr_entrepreneur_reject'] = $this->mdce->get_search($value_search, $number_status)->result();
         } else {
             $all_count = $this->mdce->get_count_all($number_status); //get all count approve
-
-            $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
-
-
-            $this->pagination->initialize($config);
-
             $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-
+            $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject"');
             $data['arr_entrepreneur_reject'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+            $this->pagination->initialize($config);
         }
         $data["link_block"] = $this->pagination->create_links();
         $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_reject', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
@@ -144,14 +137,11 @@ class Admin_approval_entrepreneur extends DCS_controller
         } else {
             $all_count = $this->mdce->get_count_all($number_status); //get all count approve
 
+            $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
             $config =  $this->get_config_pagination($all_count, 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block"');
 
-
-            $this->pagination->initialize($config);
-
-            $page_aprove = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-
             $data['arr_entrepreneur_block'] = $this->mdce->get_all_data($config["per_page"], $page_aprove, $number_status);
+            $this->pagination->initialize($config);
         }
         $data["link_block"] = $this->pagination->create_links();
         $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_block', $data, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
@@ -225,20 +215,23 @@ class Admin_approval_entrepreneur extends DCS_controller
 
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
-        $config['first_tag_open'] = '<li class="page-item disabled"><span class="page-link">';
-        $config['first_tag_close'] = '</span></li>';
+        $config['attributes'] = ['class' => 'page-link'];
+        $config['first_link'] = true;
+        $config['last_link'] = true;
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
         $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
-        $config['prev_tag_close'] = '</span></li>';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
         $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
-        $config['next_tag_close'] = '</span></li>';
-        $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
-        $config['last_tag_close'] = '</span></li>';
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close'] = '</span></li>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+        $config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
 
         return $config;
     }
