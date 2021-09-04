@@ -40,7 +40,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="com_description">รายละเอียดสถานที่</label>
-                                        <input type="text" id="com_description" name="com_description" class="form-control" style="width: 900px" placeholder="ใส่รายละเอียดของสถานที่" value="<?php echo $arr_company[0]->com_description; ?>" required>
+                                        <textarea id="com_description" name="com_description" class="form-control" placeholder="ใส่รายละเอียดของสถานที่" rows="5" required><?php echo $arr_company[0]->com_description; ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -64,16 +64,21 @@
                             <!-- lat lon map -->
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col">
+                                        <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
                                         <label for="com_lat">Latitude</label>
                                         <input type="text" id="com_lat" name="com_lat" class="form-control" value="<?php echo $arr_company[0]->com_lat; ?>">
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <label for="com_lon">Longitude</label>
                                         <input type="text" id="com_lon" name="com_lon" class="form-control" value="<?php echo $arr_company[0]->com_lon; ?>">
                                     </div>
-                                    <a class="btn btn-success text-white" style="border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons">done</i>
+                                    <a class="btn btn-success text-white" style="font-size:10px; padding:20px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                        <i class="material-icons">pin_drop</i>
                                     </a>
                                 </div>
                             </div>

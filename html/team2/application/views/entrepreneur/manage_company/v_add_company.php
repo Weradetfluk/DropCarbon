@@ -69,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="com_description">รายละเอียดสถานที่</label>
-                                        <textarea id="com_description" name="com_description" class="form-control" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
+                                        <textarea id="com_description" name="com_description" class="form-control" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -109,8 +109,8 @@
                                         <label for="com_lon">Longitude</label>
                                         <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
                                     </div>
-                                    <a class="btn btn-success text-white" style="font-size:10px; padding:12px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons" style="padding:12px; margin-top: -4px;">pin_drop</i>
+                                    <a class="btn btn-success text-white" style="font-size:10px; padding:20px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                        <i class="material-icons">pin_drop</i>
                                     </a>
                                 </div>
                             </div>
