@@ -1,4 +1,13 @@
- 
+ <!-- 
+/*
+* v_list_entrepreneur_consider
+* table show list entrepreneur consider
+* @input -
+* @output table data entrepreneur consider
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/ 
+-->
 
  <!-- main content -->
  <div class="card card-nav-tabs custom-card-tab">
@@ -33,13 +42,13 @@
                      <div class="col-md-12">
                          <div class="card custom-card-head-search">
                              <div class="card-header custom-header">
-                                 
-                               <div class="row">
+
+                                 <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white custom-h4-card-table" >ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
+                                         <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
                                      </div>
                                      <div class="col-sm">
-                                         <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" >
+                                         <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
 
                                              <div class="input-group ">
 
@@ -112,7 +121,7 @@
                                                              </button>
 
 
-                                                             <button class="btn btn-danger custom-btn-table" id="reject"  onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
+                                                             <button class="btn btn-danger custom-btn-table" id="reject" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
                                                                  <i class="material-icons">
                                                                      clear
                                                                  </i>
@@ -155,7 +164,7 @@
 
 
  <!-- warnning aprove Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
+ <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -178,7 +187,7 @@
 
 
 
- <div class="modal fade" role="dialog" id="datamodal">
+ <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -232,7 +241,7 @@
 
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
+ <div class="modal" tabindex="-1" role="dialog" id="rejected_ent">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -243,10 +252,11 @@
              </div>
              <div class="modal-body">
                  <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>">
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
                      <input type="hidden" id="ent_id" name="ent_id">
-                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
+                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"  placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
+                     <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
              </div>
              <div class="modal-footer">
                  <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
@@ -266,13 +276,16 @@
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to confirm approve modal
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update -
       */
 
      function confirm_approve(ent_id) {
-         $('#Aprovemodal').modal();
+         $('#aprove_modal').modal({
+             backdrop: 'static',
+             keyboard: false
+         });
 
          $('#approves').click(function() {
              approve_entrepreneur(ent_id) //function 
@@ -283,12 +296,12 @@
 
 
 
-       /*
+     /*
       * confirm_approve
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to confirm approve modal
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-27
       * @Update -
       */
@@ -301,7 +314,7 @@
              },
              url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_by_id_ajax'); ?>',
              success: function(data_detail) {
-                 $('#datamodal').modal();
+                 $('#data_modal').modal();
                  $('#ent_name').val(data_detail['arr_data'][0]['ent_firstname'] + " " + data_detail['arr_data'][0]['ent_lastname']);
                  $('#ent_tel').val(data_detail['arr_data'][0]['ent_tel']);
                  $('#ent_id_card').val(data_detail['arr_data'][0]['ent_id_card']);
@@ -339,19 +352,43 @@
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to reject  modal 
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update -
       */
 
      function confirm_reject(ent_id, ent_email) {
-         $('#Rejectent').modal();
+
+         let form = document.querySelector('#reject_form');
+
+
+         $('#rejected_ent').modal();
+
+
 
          $('#email').val(ent_email);
          $('#ent_id').val(ent_id);
 
+         let admin_reson  = document.querySelectorAll('#admin_reason');
+         let err_message = document.querySelector('#err_message');
+
+         console.log(admin_reson);
          $('#rejected').click(function() {
-             $('#Rejectent').modal('toggle');
+
+
+             let tooshort = false;
+
+             admin_reson.forEach((reson) => {
+                 if (reson.value.length < 16) {
+                     tooshort = true;
+                 }
+             });
+
+             if (tooshort) {
+                 event.preventDefault();
+                 err_message.style.display = 'block';
+             }else{
+                $('#rejected_ent').modal('toggle');
              swal({
                  title: "ปฏิเสธสำเร็จ",
                  text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
@@ -361,6 +398,10 @@
              }, function() {
                  location.reload();
              });
+             }
+
+
+
          });
      }
 
@@ -370,7 +411,7 @@
       * change status to approve 
       * @input 
       * @output table approve and consider
-      * @author Weradet Nopsombun
+      * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
       * @Update -
       */

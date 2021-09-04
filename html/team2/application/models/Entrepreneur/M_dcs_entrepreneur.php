@@ -1,11 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_entrepreneur.php';
-    /*
-    * @author Suwapat Saowarod 62160340
-    */
+    
+/*
+* M_dcs_entrepreneur
+* get data entrepreneur
+* @author Weradet Nopsombun 62160110
+* @Create Date 2564-07-31
+*/
 class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 {
+    /*
+    * @author Weradet Nopsombun 62160110
+    */
     public function __construct()
     {
         parent::__construct();
@@ -14,10 +21,11 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *get_all_data
     *get all data  entrepreneur by form database
-    *@input -
-    *@insert -
+    *@input limit, start, number_status
+    *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
+    *@Update Date 2564-08-26
     */
     function get_all_data($limit, $start, $number_status)
     {
@@ -34,13 +42,15 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $query->result();
     }
 
+   
     /*
     *get_search
-    *get data with search
-    *@input -
-    *@insert -
+    *get serarch entrepreneur by form database
+    *@input limit, start, number_status
+    *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
+    *@Update Date 2564-08-26
     */
     function get_search($search, $number_status)
     {
@@ -54,9 +64,10 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *get_count_all
     *get data count entrepreneur by form database
     *@input -
-    *@insert -
+    *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
+    *@Update Date 2564-08-26
     */
     function get_count_all($num_status)
     {
@@ -70,10 +81,11 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *get_entrepreneur_by_id
     *get data card entrepreneur by form database
-    *@input -
-    *@insert -
+    *@input ent_id
+    *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
+    *@Update Date 2564-08-26
     */
     function get_entrepreneur_by_id()
     {
@@ -87,16 +99,16 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *get_data_card_entrepreneur
     *get data card entrepreneur form database sum row
     *@input -
-    *@insert -
+    *@output -
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-07-31
     */
     function get_data_card_entrepreneur()
     {
-        $sql = "SELECT sum(case when ent_status = 1 then 1 else 0 end ) as consider, 
-        sum(case when ent_status = 2 then 1 else 0 end) as approve , 
-        sum(case when ent_status = 3 then 1 else 0 end ) as reject ,
-        sum(case when ent_status = 4 then 1 else 0 end ) as blocked 
+        $sql = "SELECT sum(case when ent_status = 1 then 1 else 0 end ) as ent_consider, 
+        sum(case when ent_status = 2 then 1 else 0 end) as ent_approve , 
+        sum(case when ent_status = 3 then 1 else 0 end ) as ent_reject ,
+        sum(case when ent_status = 4 then 1 else 0 end ) as ent_blocked 
         
         FROM dcs_entrepreneur;";
 
@@ -108,7 +120,7 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     *get_ent
     *get data entrepreneur form database
     *@input -
-    *@insert -
+    *@output -
     *@author Thanisron thumsawanit 62160088
     *@Create Date 2564-07-15
     */
@@ -122,9 +134,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *get_by_username_password
     *get data entrepreneur form database
-    *@input -
-    *@insert -
-    *@author Suwapat Saowarod 
+    *@input ent_username, ent_password, ent_status
+    *@output -
+    *@author Suwapat Saowarod 62160340
     *@Create Date 2564-08-03
     */
     function get_by_username_password()
@@ -147,9 +159,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     /*
     *check_username
     *check username in database
-    *@input -
-    *@insert -
-    *@author Suwapat Saowarod 
+    *@input ent_username
+    *@output -
+    *@author Suwapat Saowarod 62160340
     *@Create Date 2564-08-18
     */
     public function check_username()

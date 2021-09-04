@@ -2,15 +2,12 @@
 
 // check session
 
-if (!$this->session->has_userdata("username")) {
+if (!$this->session->has_userdata("Admin_name")) {
   $path = site_url() . "Admin/Auth/Login_admin";
   header("Location: " . $path);
   exit();
 }
 
-if (!isset($_SESSION['tab_number'])) {
-  $_SESSION['tab_number'] = 1;
-}
 
 ?>
 
@@ -24,7 +21,7 @@ if (!isset($_SESSION['tab_number'])) {
     <div class="container-fluid">
 
       <a href="#" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>" style="max-width:300px; height: 150px; margin-top: -60px;">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
       </a>
 
       <!-- nav with responesive -->
@@ -60,40 +57,40 @@ if (!isset($_SESSION['tab_number'])) {
   <div class="sidebar" data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" onclick="change_tab_number(1);" id="home">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> " onclick="change_tab_number(1);">
-            <i class="material-icons">dashboard</i>
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" id="home">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+            <i class="material-icons">store</i>
             <p>จัดการสถานที่</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>" onclick="change_tab_number(2);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
           <a class="nav-link" href="#">
-            <i class="material-icons">library_books</i>
+            <i class="material-icons">calendar_today</i>
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" onclick="change_tab_number(3);">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> "onclick="change_tab_number(3);">
-            <i class="material-icons">content_paste</i>
+        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="ent_menu">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?>">
+            <i class="material-icons">assignment_ind</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?> " onclick="change_tab_number(4);">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> " onclick="change_tab_number(4);">
-            <i class="material-icons">content_paste</i>
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
+            <i class="material-icons">perm_identity</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" onclick="change_tab_number(5);">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>">
           <a class="nav-link" href="#">
-            <i class="material-icons">bubble_chart</i>
+            <i class="material-icons">point_of_sale</i>
             <p>จัดการโปรโมชัน</p>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">
-            <i class="material-icons">person</i>
+            <i class="material-icons">logout</i>
             <p>ออกจากระบบ</p>
           </a>
         </li>
@@ -102,17 +99,3 @@ if (!isset($_SESSION['tab_number'])) {
   </div>
   <div class="main-panel">
 
-
-    <script>
-      function change_tab_number(tab_val) {
-        $.ajax({
-          url: '../../../DCS_controller/change_tab_number_ajax',
-          method: 'POST',
-          data: {
-            tab: tab_val
-          }
-        });
-      }
-
-     
-    </script>

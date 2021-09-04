@@ -1,4 +1,16 @@
-<div class="card card-nav-tabs custom-card-tab">
+ <!-- 
+/*
+* v_list_entrepreneur_reject
+* table show list entrepreneur rejected
+* @input -
+* @output table data entrepreneur rejected
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/ 
+-->
+
+
+ <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
          <div class="nav-tabs-navigation">
              <div class="nav-tabs-wrapper">
@@ -7,7 +19,7 @@
                          <a class="nav-link " href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> " >อนุมัติแล้ว</a>
+                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
@@ -29,7 +41,7 @@
                      <div class="col-md-12">
                          <div class="card custom-card-head-search">
                              <div class="card-header custom-header">
-                             <div class="row">
+                                 <div class="row">
                                      <div class="col py-2">
                                          <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงข้อมูลผู้ประกอบการที่ถูกปฏิเสธ</h4>
                                      </div>
@@ -38,7 +50,7 @@
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่..." >
+                                                 <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
                                                  <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
@@ -97,7 +109,7 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
-                                                             <button class="btn btn-info" id="accept"style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
+                                                             <button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(  <?php echo $arr_entrepreneur_reject[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          search
                                                                      </span></i>
@@ -126,46 +138,51 @@
  </div>
 
 
- <div class="modal fade" role="dialog"  id="datamodal">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title">รายละเอียด</h5>
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                         </button>
-                     </div>
-                     <div class="modal-body">
-                         <form>
-                       
-                             <div class="form-group">
-                                 <label>เหตุผลที่ปฏิเสธ</label>
-                                 <input type="text" id="enr_admin_reason" class="form-control" disabled>
-                             </div>
-                                
-                        
-                             <div class="form-group">
-                                     <label>ผู้ปฏิเสธ</label>
-                                     <input type="text" class="form-control" id="adm_name" disabled>
-                                 </div>  
-
-                            
-                            
-
-                             </div>
-                            
-
-                         </form>
-
-
-                     </div>
-                 </div>
+ <div class="modal fade" role="dialog" id="data_modal">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">รายละเอียด</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
              </div>
+             <div class="modal-body">
+                 <form>
+
+                     <div class="form-group">
+                         <label>เหตุผลที่ปฏิเสธ</label>
+                         <input type="text" id="enr_admin_reason" class="form-control" disabled>
+                     </div>
+
+
+                     <div class="form-group">
+                         <label>ผู้ปฏิเสธ</label>
+                         <input type="text" class="form-control" id="adm_name" disabled>
+                     </div>
+
+
+
+
+             </div>
+
+
+             </form>
+
+
+         </div>
+     </div>
+ </div>
 
 
 
  <script>
-      /*
+     $(document).ready(function() {
+         get_data_card_entrepreneur()
+     });
+
+
+     /*
       * view_data_detail_reject
       * open modal id = Aprovemodal 
       * @input 
@@ -184,7 +201,7 @@
              },
              url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_entrepreneur_reject_by_id_ajax'); ?>',
              success: function(data_detail) {
-                 $('#datamodal').modal();
+                 $('#data_modal').modal();
                  console.log(data_detail);
                  $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
                  $('#adm_name').val(data_detail[0]['adm_name']);

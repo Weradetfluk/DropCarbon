@@ -1,3 +1,14 @@
+<!-- 
+/*
+* v_list_tourist_block
+* Display list block tourist table
+* @input -
+* @output tourist block list
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2561-08-01
+*/ 
+-->
+
 <!-- main content -->
 
 <div class="content">
@@ -30,15 +41,15 @@
                                  
                                <div class="row">
                                      <div class="col py-2">
-                                         <h4 class="card-title text-white ">ตารางแสดงข้อมูลบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
+                                         <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงบัญชีของนักท่องเที่ยวที่ถูกบล็อค</h4>
                                      </div>
                                      <div class="col">
-                                         <form class="form-inline" action="#" method="POST" style="width: 200px; float:right;">
+                                         <form class="form-inline custom-form-search" action="#">
 
                                              <div class="input-group ">
 
-                                                 <input type="text" value="" name="value_search" class="form-control" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="">
+                                             <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value=""  style="margin-left: 3px;">
                                                      <i class="material-icons">search</i>
                                                  </button>
 
@@ -125,8 +136,18 @@
                  </div>
              </div>
          </div>
-<!-- warnning block Modal  -->
-<div class="modal" tabindex="-1" role="dialog" id="unblockmodal">
+
+         <!-- /*
+              * unblock modal
+              * open unblockmodal 
+              * @input 
+              * @output modal to confirm unblock user 
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-08-02
+              * @Update -
+        */ -->
+        <!-- warnning unblock Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="unblockmodal">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">

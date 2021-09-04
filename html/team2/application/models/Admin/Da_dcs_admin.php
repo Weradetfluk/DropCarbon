@@ -1,20 +1,28 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) ."/../DCS_model.php";
+include_once dirname(__FILE__) . "/../DCS_model.php";
+/*
+* Da_dcs_admin
+* Manage admin
+* @author Weradet Nopsombun 62160110
+* @Create Date 2564-08-12
+*/
 class Da_dcs_admin extends Dcs_model
 {
     public $adm_username;
     public $adm_password;
     public $adm_email;
 
-    public function __construct(){
-       parent::__construct();
+    /*
+    * @author Weradet Nopsombun 62160110
+    */
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-
-
-  /*
+    /*
     * update_pass_token
     * update password with number ramdom
     * @input 
@@ -23,8 +31,8 @@ class Da_dcs_admin extends Dcs_model
     * @Create Date 2564-08-12
     * @Update Date -
     */
-
-    public function update_pass_token($token){
+    public function update_pass_token($token)
+    {
 
         $sql = "UPDATE dcs_admin
         SET   adm_password = '$token'
@@ -33,20 +41,17 @@ class Da_dcs_admin extends Dcs_model
         $query = $this->db->query($sql, array($this->adm_email));
     }
 
-
-
-
-    
     /*
     * update_pass
     * update password with email user
-    * @input 
+    * @input token
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-12
     * @Update Date -
     */
-    public function update_pass($token){
+    public function update_pass($token)
+    {
 
         $sql = "UPDATE dcs_admin
         SET   adm_password = ?
@@ -54,5 +59,4 @@ class Da_dcs_admin extends Dcs_model
 
         $query = $this->db->query($sql, array($this->adm_password));
     }
-
 }

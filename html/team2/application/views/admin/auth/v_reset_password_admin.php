@@ -1,16 +1,27 @@
-<!-- navbar -->
+<!-- 
+/*
+* v_reset_password_admin
+* Display form email for reset password
+* @input -
+* @output form email for reset password
+* @author weradet nopsombun 62160110
+* @Create Date 2564-08-08
+*/ 
+-->
+
+
 
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
-        <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
-        </a>
+    <a href="" class="navbar-brand">
+    <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>"  style="max-width:400px; height: 50px; margin-top: -10px;">
+    </a>
 </nav>
 
 
 
-<div class="page-header header-filter" style="background-image: url(<?php echo base_url() . 'assets/templete/picture/./banner7.jpg' ?>);">
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
@@ -50,7 +61,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" class="btn btn-success" id="resetpass" name="signin">เสร็จสิ้น</button>
+                                        <button type="button" class="btn btn-success" id="reset_pass" name="signin">เสร็จสิ้น</button>
                                     </div>
                                 </div>
                                 <span id="err_text"></span>
@@ -72,7 +83,7 @@
             confirmpassword();
         }); // Event Keyup
 
-        $("#resetpass").on('click', function() {
+        $("#reset_pass").on('click', function() {
             let password = $('#admin_password').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             let token = $('#token').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
             reset_password(password, token);
@@ -83,42 +94,37 @@
 
 
 
-    
+
     /*
-    * confirmpassword
-    * confirmpassword in value
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
-    * @Update -
-    */
-
-
-
+     * confirmpassword
+     * confirmpassword in value
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-08-12
+     * @Update -
+     */
     function confirmpassword() {
         if ($('#admin_password').val() != $('#admin_password_confirm').val()) {
             $('#err_text').text('รหัสผ่านไม่ตรงกัน');
-            $('#resetpass').prop('disabled', true);
+            $('#reset_pass').prop('disabled', true);
         } else {
             $('#err_text').text('');
-            $('#resetpass').prop('disabled', false);
+            $('#reset_pass').prop('disabled', false);
         }
     }
 
 
 
-     /*
-    * reset_password
-    * reset password in database
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
-    * @Update -
-    */
-
-
+    /*
+     * reset_password
+     * reset password in database
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-08-12
+     * @Update -
+     */
     function reset_password(password, token) {
         $.ajax({
             type: "POST",

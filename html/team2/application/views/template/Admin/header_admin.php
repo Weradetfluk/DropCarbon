@@ -12,8 +12,6 @@
      <!-- icon -->
     <link rel="icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
 
-    <!-- font-awesome css -->
-    <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/fontawesome/css/all.min.css">
 
     <!-- template css -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
@@ -21,6 +19,9 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/custom-admin.css" type="text/css">
+
+    <!-- fonts css -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" type="text/css">
 
      <!-- sweet alert plugin -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css">
@@ -32,4 +33,4 @@
 
 </head>
 
-<body style="font-size: 18px; font-weight:600; font-family: 'Prompt', sans-serif;">
+<body>

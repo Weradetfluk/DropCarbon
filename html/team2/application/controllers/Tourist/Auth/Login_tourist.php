@@ -1,12 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+/*
+* Login_tourist
+* login tourist controller system
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-08-05
+*/
 class Login_tourist extends DCS_controller
 {
     /*
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     */
-
 
     public function __construct()
     {
@@ -18,7 +23,7 @@ class Login_tourist extends DCS_controller
     * index 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -36,7 +41,7 @@ class Login_tourist extends DCS_controller
     * show warnning 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -53,35 +58,41 @@ class Login_tourist extends DCS_controller
     * Login admin and get data 
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
 
     function input_login_form()
     {
-
         $username = $this->input->post('username');
         $password = $this->input->post('password'); //รับค่า username & password
 
-
         //$password = md5($password);
 
-        $this->load->model('Tourist/M_dcs_login_tourist', 'login');  //load database
+        $this->load->model('Tourist/M_dcs_login_tourist', 'mlog');  //load database
+        $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
 
-        $this->login->tus_username =  $username;
-        $this->login->tus_password = $password;
+        $this->mlog->tus_username =  $username;
+        $this->mlog->tus_password = $password;
 
-        $result = $this->login->login(); //function in model
+        $result = $this->mlog->login(); //function in model
 
         if ($result) {
+            $this->mpic->tus_img_tus_id = $result->tus_id;
+            $result_img = $this->mpic->get_by_tourist_id()->row();
             $tus_username =  $result->tus_username;
             $tus_name = $result->tus_firstname . ' ' . $result->tus_lastname;
             $tus_id = $result->tus_id;
-
-            $this->set_session($tus_username, $tus_name, $tus_id);
-            //echo $tus_name;
-            redirect("Landing_page_tourist/Landing_page_tourist");
+            if ($result_img != null) {
+                $tus_img_path = $result_img->tus_img_path;
+                $this->set_session($tus_username, $tus_name, $tus_id, $tus_img_path);
+            }else {
+                $this->set_session($tus_username, $tus_name, $tus_id, '');
+            }
+            //echo $tus_name; test name
+            // echo $tus_img_path; test path
+            redirect("Tourist/Auth/Landing_page_tourist");
         } else {
             $data_warning = array();
             $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
@@ -95,7 +106,7 @@ class Login_tourist extends DCS_controller
     * Logout and remove session
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
@@ -111,16 +122,17 @@ class Login_tourist extends DCS_controller
     * set session data
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
 
-    public function set_session($username, $name, $id)
+    public function set_session($username, $name, $id, $tus_img_path)
     {
         $this->session->set_userdata("username", "$username");
         $this->session->set_userdata("Tourist_name", "$name");
         $this->session->set_userdata("Tourist_id", "$id");
+        $this->session->set_userdata("tus_img_path", $tus_img_path);
     }
 
 
@@ -129,7 +141,7 @@ class Login_tourist extends DCS_controller
     * remove session data
     * @input 
     * @output -
-    * @author Chutipon Thermsirisuksin
+    * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */

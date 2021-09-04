@@ -2,9 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require dirname(__FILE__) . '/../../DCS_controller.php';
 
-    /*
-    * @author Suwapat Saowarod 62160340
-    */
+/*
+* Login_entrepreneur
+* Login for entrepreneur
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-07-19
+*/
 class Login_entrepreneur extends DCS_controller
 {
     /*
@@ -13,7 +16,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function index($data = NULL)
@@ -24,11 +27,11 @@ class Login_entrepreneur extends DCS_controller
     /*
     * input_login_form
     * Login admin and get data  
-    * @input 
+    * @input username, password
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
-    * @Update Date 2021-08-03
+    * @Create Date 2564-07-19
+    * @Update Date 2564-08-03
     */
     function input_login_form()
     {
@@ -40,13 +43,13 @@ class Login_entrepreneur extends DCS_controller
 
         $this->ment->ent_username = $username;
         $this->ment->ent_password = $password;
-        $this->ment->ent_status = 2; 
+        $this->ment->ent_status = 2;
         $result = $this->ment->get_by_username_password(); //function in model
-        
+
         if ($result) {
             $ent_username =  $result->ent_username;
-            $ent_name = $result->ent_firstname.' '.$result->ent_lastname;
-            $ent_id= $result->ent_id;
+            $ent_name = $result->ent_firstname . ' ' . $result->ent_lastname;
+            $ent_id = $result->ent_id;
             $ent_password = $result->ent_password;
             $ent_tel = $result->ent_tel;
             $ent_id_card = $result->ent_id_card;
@@ -55,14 +58,18 @@ class Login_entrepreneur extends DCS_controller
             $this->set_session($ent_username, $ent_name, $ent_id, $ent_password, $ent_tel, $ent_id_card, $ent_email, $ent_pre_id);
 
             redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
-
         } else {
             $data_warning = array();
-            $data_warning['warning'] = "Username or password incorrect";
-
+            $this->ment->ent_status = 1;
+            $result_con = $this->ment->get_by_username_password();
+            if($result_con){
+                $data_warning['warning'] = "";
+                $this->session->set_userdata("login_entrepreneur", 'warning');
+            }else{
+                $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
+            }
             $this->index($data_warning);
         }
-
     }
 
     /*
@@ -71,7 +78,7 @@ class Login_entrepreneur extends DCS_controller
     * @input 
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function logout()
@@ -82,18 +89,18 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * set_session
-    * set_session username and Entrepreneur_name
-    * @input 
+    * set_session username and entrepreneur_name
+    * @input username, name, id, password, tel, card, email, pre_id
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function set_session($username, $name, $id, $password, $tel, $card, $email, $pre_id)
     {
         $this->session->set_userdata("username", $username);
-        $this->session->set_userdata("Entrepreneur_name", $name);
-        $this->session->set_userdata("Entrepreneur_id", $id);
+        $this->session->set_userdata("entrepreneur_name", $name);
+        $this->session->set_userdata("entrepreneur_id", $id);
         $this->session->set_userdata("password", $password);
         $this->session->set_userdata("tel", $tel);
         $this->session->set_userdata("card", $card);
@@ -103,17 +110,23 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * remove_session
-    * unset session username and Entrepreneur_name
+    * unset session username and entrepreneur_name
     * @input 
     * @output -
     * @author Suwapat Saowarod
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function remove_session()
     {
         $this->session->unset_userdata("username");
-        $this->session->unset_userdata("Entrepreneur_name");
-        $this->session->unset_userdata("Entrepreneur_id");
+        $this->session->unset_userdata("entrepreneur_name");
+        $this->session->unset_userdata("entrepreneur_id");
+        $this->session->unset_userdata("password");
+        $this->session->unset_userdata("tel");
+        $this->session->unset_userdata("card");
+        $this->session->unset_userdata("email");
+        $this->session->unset_userdata("pre_id");
+        $this->session->unset_userdata("tab_number_entrepreneur");
     }
 }

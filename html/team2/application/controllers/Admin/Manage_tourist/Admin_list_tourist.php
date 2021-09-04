@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+/*
+* Admin_list_tourist
+* Manage list tourist
+* @author Nantasiri Saiwaew 62160093
+* @Create Date 2564-08-01
+*/
 class Admin_list_tourist extends DCS_controller
 {
   /*
@@ -44,7 +51,8 @@ class Admin_list_tourist extends DCS_controller
   public function show_data_tourist()
   {
  
- 
+    $_SESSION['tab_number'] = 4;
+    
     $this->load->model('Tourist/M_dcs_tourist', 'mdct');
 
      $all_count = $this->mdct->get_count_all_tourist();
@@ -85,6 +93,15 @@ class Admin_list_tourist extends DCS_controller
   
   }
 
+   /*
+    * unblock_user_ajax
+    * chage status unblock to database
+    * @input 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-01
+    * @Update Date -
+    */
   public function unblock_user_ajax()
     {
         $this->load->model('Tourist/M_dcs_tourist', 'mdct');

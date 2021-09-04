@@ -1,13 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+/*
+* Login_admin
+* Class for login
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/
 class Login_admin extends DCS_controller
 {
-  /*
-    * @author Weradet Nopsombun 62160110
-    */
-
-
   public function __construct()
   {
     parent::__construct();
@@ -80,7 +82,7 @@ class Login_admin extends DCS_controller
 
        $this->set_session($adm_username, $adm_name, $adm_id);
 
-       redirect("Admin/Manage_company/Admin_approval_company/show_data_consider");
+       redirect("Admin/Manage_company/Admin_approval_company");
 
     } else {
       $data_warning = array();

@@ -1,6 +1,13 @@
-<!DOCTYPE html>
-<html>
-
+<!-- 
+/*
+* v_regis
+* Display select register page
+* @input - 
+* @output form register tourist or entrepreneur
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2561-07-31
+*/ 
+-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     h2 {
@@ -37,7 +44,7 @@
         background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./BG.jpg");
 
         /* Full height */
-        height: 90.4%;
+        height: 100%;
 
         /* Center and scale the image nicely */
         background-position: center;
@@ -56,7 +63,6 @@
     ul.breadcrumb {
         padding: 10px 16px;
         list-style: none;
-        background-color: #eee;
     }
 
     ul.breadcrumb li {
@@ -80,8 +86,7 @@
         text-decoration: underline;
     }
 </style>
-
-<body>
+<title>Select Register</title>
     <div class="bg">
         <div class="container py-5">
 
@@ -119,6 +124,3 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>

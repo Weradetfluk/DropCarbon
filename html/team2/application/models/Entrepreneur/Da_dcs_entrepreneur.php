@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . "/../DCS_model.php";
+
+/*
+* Da_dcs_entrepreneur
+* Manage entrepreneur
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2564-07-15
+*/
 class Da_dcs_entrepreneur extends DCS_model
 {
     public $ent_id;
@@ -14,16 +21,22 @@ class Da_dcs_entrepreneur extends DCS_model
     public $ent_password;
     public $ent_status;
 
+    /*
+    * @author Weradet Nopsombun 62160110
+    */
     public function __construct()
     {
         parent::__construct();
     }
 
     /*
-    * Function : insert_entrepreneur
-    *@input $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password
-     *@author Thanisorn thumsawanit 62160088
-    *@Create Date 2564-07-15
+    * insert_entrepreneur
+    * insert entrepreneur
+    * @input ent_pre_id, ent_name, ent_tel, ent_id_card, ent_email, ent_username, ent_password
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-07-15
+    * @Update Date -
     */
     public function insert_entrepreneur()
     {
@@ -32,12 +45,13 @@ class Da_dcs_entrepreneur extends DCS_model
     }
 
     /*
-    *update_status
+    * update_status
     * update status entrepreneur
-    *@input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
-    *@insert -
-    *@author Weradet Nopsombun 62160110
-    *@Create Date 2564-07-15
+    * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-15
+    * @Update Date -
     */
 
     public function update_status($status_number)
@@ -49,8 +63,10 @@ class Da_dcs_entrepreneur extends DCS_model
     }
 
     /*
-    * Function : update_entrepreneur
-    * @Update $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password 
+    * update_entrepreneur
+    * update data entrepreneur by ent_id
+    * @input $ent_pre_id, $ent_name, $ent_tel, $ent_id_card, $ent_email, $ent_username, $ent_password 
+    * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-15
     * @Update Date 2564-08-02

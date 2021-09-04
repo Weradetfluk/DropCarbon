@@ -2,28 +2,37 @@
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
 
-
+<!-- 
+/*
+* v_login_admin
+* Display form login
+* @input -
+* @output  form login
+* @author weradet nopsombun 62160110
+* @Create Date 2564-07-17
+*/ 
+-->
 
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
-        <a href="" class="navbar-brand">
-        <img src="<?php echo base_url() . 'assets/templete/picture/./2-3.png' ?>"  style="max-width:300px; height: 150px; margin-top: -60px;">
-        </a>
+    <a href="" class="navbar-brand">
+        <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px;">
+    </a>
 </nav>
 
 
 
 
-<div class="page-header header-filter bg-light" >
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
                     <form class="form" action="<?php echo site_url() . 'Admin/Auth/Login_admin/input_login_form'; ?>" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white">ลงชื่อเข้าใช้</h4>
-                          
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลงชื่อเข้าใช้</h4>
+
                         </div>
 
                         <div class="card-body">

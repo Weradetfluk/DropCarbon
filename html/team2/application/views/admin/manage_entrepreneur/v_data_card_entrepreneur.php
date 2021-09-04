@@ -1,4 +1,13 @@
-
+<!-- 
+/*
+* v_data_card_entrepreneur
+* Display data card of number
+* @input -
+* @output number of card in data entrepreneur
+* @author weradet nopsombun 62160110
+* @Create Date 2564-08-08
+*/ 
+-->
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -9,7 +18,7 @@
                             <i class="material-icons">content_copy</i>
                         </div>
                         <p class="card-category">รออนุมัติ</p>
-                        <h3 class="card-title" id="consider">
+                        <h3 class="card-title" id="consider_ent">
 
                         </h3>
                     </div>
@@ -23,7 +32,7 @@
                             <i class="material-icons">done</i>
                         </div>
                         <p class="card-category">อนุมัติ</p>
-                        <h3 class="card-title" id="approve">
+                        <h3 class="card-title" id="approve_ent">
 
                         </h3>
                     </div>
@@ -37,7 +46,7 @@
                             <i class="material-icons">clear</i>
                         </div>
                         <p class="card-category">ปฏิเสธ</p>
-                        <h3 class="card-title" id="reject">
+                        <h3 class="card-title" id="reject_ent">
 
                         </h3>
                     </div>
@@ -51,7 +60,7 @@
                             <i class="material-icons">info_outline</i>
                         </div>
                         <p class="card-category">ถูกบล็อค</p>
-                        <h3 class="card-title" id="block">
+                        <h3 class="card-title" id="block_ent">
 
                         </h3>
                     </div>
@@ -61,12 +70,8 @@
         </div>
 
 
-
-
-
-
-
-        <script>
+    
+<script>
             $(document).ready(function() {
                 get_data_card_entrepreneur()
             });
@@ -85,24 +90,30 @@
                 $.ajax({
                     type: 'post',
                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_card_entrepreneur_ajax'); ?>',
-                    dataType: "JSON",
-                    success: function(json_data) {
-                        console.log(json_data);
+                    dataType: 'JSON',
+                    success: function(json_data) {  
 
-                        $("#consider").text(json_data[0].consider);
+                        $("#consider_ent").text(json_data[0].ent_consider);
 
-                        $("#approve").text(json_data[0].approve);
+                        $("#approve_ent").text(json_data[0].ent_approve);
 
-                        $("#reject").text(json_data[0].reject);
+                        $("#reject_ent").text(json_data[0].ent_reject);
 
-                        $("#block").text(json_data[0].blocked);
+                        $("#block_ent").text(json_data[0].ent_blocked);
 
                     },
                     error: function() {
-                        alert('ajax ass user error working');
+                        alert('ajax get data user error working');
                     }
                 });
 
 
             }
         </script>
+
+
+
+
+
+
+       

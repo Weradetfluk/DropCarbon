@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_regis_tourist
+* Display Form Register tourist page
+* @input - tus_pre_id,tus_firstname,tus_lastname,tus_tel,tus_email,tus_username,tus_password,tourist_img
+* @output form register tourist
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2561-07-31
+*/ 
+-->
 <style crossorigin='anonymous'>
     .w3-btn {
         width: 150px;
@@ -10,6 +20,9 @@
         box-sizing: border-box;
     }
 
+    input:hover #next_btn {
+        background-color: #448855;
+    }
 
     a {
         text-decoration: none;
@@ -18,7 +31,6 @@
     ul.breadcrumb {
         padding: 10px 16px;
         list-style: none;
-        background-color: #eee;
     }
 
     ul.breadcrumb li {
@@ -41,6 +53,49 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    #next_btn {
+        float: right;
+    }
+
+    .profile-pic-div {
+        height: 200px;
+        margin: auto;
+        width: 200px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid gray;
+    }
+
+    .profile-pic-div img {
+        height: 200px;
+    }
+
+    #photo {
+        height: 100%;
+        width: 100%;
+    }
+
+    #file {
+        display: none;
+    }
+
+    #uploadBtn {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        color: wheat;
+        line-height: 30px;
+        font-size: 15px;
+        font-family: sans-serif;
+        cursor: pointer;
+    }
 </style>
 <title>ลงทะเบียนสำหรับนักท่องเที่ยว</title>
 <!-- Form Register -->
@@ -51,13 +106,24 @@
             <li><a href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
             <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
         </ul>
-        <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
-        <form class="container py-3" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+        <h1 class="h1 font-w-500" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
+        <form class="container py-3 form-regis" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+            <div class="profile-pic-div">
+                <?php if ($this->session->userdata("tus_img_path") == '') { ?>
+                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                <?php } else { ?>
+                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" id="photo">
+                <?php } ?>
+                <input type="file" id="file" name="tourist_img" accept="image/*">
+                <label for="file" id="uploadBtn">Choose Photo</label>
+            </div><br>
+            <!-- profile pictuce -->
+
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
-                <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1>&nbsp;นาย
-                <input type="radio" id="tus_pre_id2" name="tus_pre_id" value=2>&nbsp;นาง
-                <input type="radio" id="tus_pre_id3" name="tus_pre_id" value=3>&nbsp;นางสาว
+                <input type="radio" id="tus_pre_id1" name="tus_pre_id" value=1 required>&nbsp;นาย
+                <input type="radio" id="tus_pre_id2" name="tus_pre_id" value=2 required>&nbsp;นาง
+                <input type="radio" id="tus_pre_id3" name="tus_pre_id" value=3 required>&nbsp;นางสาว
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
@@ -74,7 +140,7 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="tell">เบอร์โทร</label>
-                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" placeholder="เบอร์โทร" required>
+                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" maxlength="10" minlength="10" placeholder="เบอร์โทร" maxlength="10" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
@@ -88,20 +154,17 @@
                 <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
             </div>
             <br>
-            รูปโปรไฟล์ :
-            <input type="file" name="myfile" required>
-            <br><br>
 
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
             <div class="form-group col-md-6 mb-3">
                 <label for="username">ชื่อผู้ใช้</label>
-                <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
+                <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
                 <span id="usernameavailable"></span>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="password">รหัสผ่าน</label>
-                    <input type="password" class="form-control mt-1" id="pass" name="tus_password" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
+                    <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
@@ -112,7 +175,9 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" id="next_btn" class="btn btn-success" style="color: white; float: right;">ถัดไป</button>
+            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
+            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
+
 
         </form>
     </div>
@@ -130,16 +195,20 @@
     </ul>
 </div>
 <script>
-    var tus_pre_id = " ";
-    var tus_firstname = " ";
-    var tus_lastname = " ";
-    var tus_tel = " ";
-    var tus_email = " ";
-    var tus_username = " ";
-    var tus_password = " ";
+    /*
+     * @author Thanisorn thumsawanit 62160088
+     */
+    $(document).ready(function() {
+        let error = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+        if (error == 'fail') {
+            swal("ล้มเหลว", "รูปภาพที่คุณอัพโหลดมีขนาดใหญ่เกินไป", "error");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+        }
+    });
     /*
      * 
      * confirmpassword
+     * alert confirmpassword not match passwords
      *@input password
      *@parameter -
      *output  checkconfirmpassword
@@ -160,6 +229,7 @@
     /*
      * 
      * check_username
+     * check duplicate username in database
      *@input tus_username
      *@parameter -
      *output  username validation
@@ -183,7 +253,7 @@
                         "color": "red"
                     });
 
-                    $('#usernameavailable').html("username not available");
+                    $('#usernameavailable').html("ชื่อผู้ใช้นี้มีผู้ใช้อื่นแล้ว");
                     $('#next_btn').prop('disabled', true);
                 } else {
                     $('#usernameavailable').html("");
@@ -193,4 +263,34 @@
         });
 
     }
+
+    const imgDiv = document.querySelector('.profile-pic-div');
+    const img = document.querySelector('#photo');
+    const file = document.querySelector('#file');
+    const uploadBtn = document.querySelector('#uploadBtn');
+
+    imgDiv.addEventListener('mouseenter', function() {
+        uploadBtn.style.display = "block";
+    });
+
+    imgDiv.addEventListener('mouseleave', function() {
+        uploadBtn.style.display = "none";
+    });
+
+    file.addEventListener('change', function() {
+
+        const choosedFile = this.files[0];
+
+        if (choosedFile) {
+
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+                img.setAttribute('src', reader.result);
+            });
+
+            reader.readAsDataURL(choosedFile);
+        }
+    });
+    // responsive change picture
 </script>

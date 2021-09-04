@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
+/*
+* Admin_approval_company
+* Manage Approve reject company
+* @author Kasama Donwong 62160074
+* @Create Date 2564-08-08
+*/
 class Admin_approval_company extends DCS_controller
 {
   /*
@@ -28,7 +35,7 @@ class Admin_approval_company extends DCS_controller
 
   public function index($data = NULL)
   {
-    $this->output_admin('admin/manage_company/v_list_company_consider', $data);
+    redirect('Admin/Manage_company/Admin_approval_company/show_data_consider');
   }
 
 
@@ -45,7 +52,12 @@ class Admin_approval_company extends DCS_controller
   public function show_data_consider()
   {
 
+    $_SESSION['tab_number'] = 1; 
 
+    if (!isset($_SESSION['tab_number'])) {
+      $_SESSION['tab_number'] = 1;
+    }
+    
     $number_status = 1;
 
     if (isset($_POST['search'])) {
@@ -62,12 +74,12 @@ class Admin_approval_company extends DCS_controller
       $this->pagination->initialize($config);
     }
     $data["links"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_consider', $data);
+    $this->output_admin('admin/manage_company/v_list_company_consider', $data, 'admin/manage_company/v_data_card_company');
   }
 
 
   /*
-    * show_data_approve_ajax
+    * show_data_approve
     * get all data company approve  and show table by ajax
     * @input -
     * @output -
@@ -99,11 +111,11 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_approve'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_approve"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_approve', $data);
+    $this->output_admin('admin/manage_company/v_list_company_approve', $data, 'admin/manage_company/v_data_card_company');
   }
 
    /*
-    * show_data_approve_ajax
+    * show_data_reject
     * get all data company reject  and show table by ajax
     * @input 
     * @output -
@@ -134,7 +146,7 @@ class Admin_approval_company extends DCS_controller
       $data['arr_company_reject'] = $this->mdcc->get_all_data($config["per_page"], $page_aprove, $number_status);
     }
     $data["link_reject"] = $this->pagination->create_links();
-    $this->output_admin('admin/manage_company/v_list_company_reject', $data);
+    $this->output_admin('admin/manage_company/v_list_company_reject', $data, 'admin/manage_company/v_data_card_company');
   }
 
 
@@ -204,7 +216,7 @@ class Admin_approval_company extends DCS_controller
 
 
   /*
-    * Approval
+    * approval_company
     * change com_status 
     * @input 
     * @output -
@@ -270,4 +282,42 @@ class Admin_approval_company extends DCS_controller
        $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
 
+    /*
+    * show_detail_company
+    * show detail
+    * @input 
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+    public function show_detail_company($com_id)
+    {
+      
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->mcom->com_id = $com_id;
+        $this->mimg->com_img_com_id = $com_id;
+        $data["arr_company"] = $this->mcom->get_by_detail()->row();
+        $data["arr_image"] = $this->mimg->get_by_com_id()->result();
+         
+        $this->output_admin('admin/manage_company/v_detail_company_admin',$data); 
+    }
+
+    /*
+      * get_data_card_company_ajax
+      * get data consider, approve, rejected <- number of people
+      * @input
+      * @output -
+      * @author Kasama Donwong 62160074
+      * @Create Date 2564-08-25
+      * @Update Date -
+      */
+      public function get_data_card_company_ajax()
+      {
+          $data['arr_data'] = $this->mdcc->get_data_card_company()->result();
+  
+
+          $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
+      }
 }

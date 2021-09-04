@@ -2,6 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once dirname(__FILE__) ."/../DCS_model.php";
+/*
+* Da_dcs_company
+* Manage company
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-07-19
+*/
 class Da_dcs_company extends DCS_model{
 	
 	public $com_id;
@@ -13,17 +19,38 @@ class Da_dcs_company extends DCS_model{
 	public $com_num_visitor;
 	public $com_ent_id;
 
+	/*
+    * @author Suwapat Saowarod 62160340
+    */
     public function __construct()
 	{
 		parent::__construct();
 	}
     
-	public function add_company(){
+	/*
+    * insert_company
+    * insert company by entrepreneur
+    * @input com_name, com_lat, com_lon, com_description, com_ent_id, com_tel
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-18
+    * @Update -
+    */
+	public function insert_company(){
 		$sql = "INSERT INTO `dcs_company`(`com_name`, `com_lat`, `com_lon`, `com_description`, `com_ent_id`, `com_tel`) 
 				VALUES (?,?,?,?,?,?)";
         $this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_description, $this->com_ent_id, $this->com_tel));
 	}
 
+	/*
+    * delete_company
+    * update com_status == 4
+    * @input com_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-19
+    * @Update -
+    */
 	public function delete_company(){
 		$sql = "UPDATE `dcs_company` 
 				SET `com_status`=4
@@ -31,7 +58,16 @@ class Da_dcs_company extends DCS_model{
 		$this->db->query($sql, array($this->com_id));
 	}
 
-	public function edit_company(){
+	/*
+    * update_company
+    * update company by entrepreneur
+    * @input com_name, com_lon, com_tel, com_description, com_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-19
+    * @Update -
+    */
+	public function update_company(){
 		$sql = "UPDATE `dcs_company` 
 				SET `com_name`=?,
 					`com_lat`=?,
@@ -41,13 +77,15 @@ class Da_dcs_company extends DCS_model{
 				WHERE com_id=?";
 		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_id));
 	}
+
 	/*
-    *update_status
+    * update_status
     * update status company
-    *@input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
-    *@insert -
-    *@author Kasama Donwong 62160074
-    *@Create Date 2564-08-08
+    * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-08-08
+	* @Update -
     */
 	public function update_status($status_number)
     {

@@ -57,7 +57,7 @@ class Admin_block_user extends DCS_controller
     }
 
     /*
-    * index
+    * unblock_user_ajax
     * chage status approve to database
     * @input 
     * @output -
