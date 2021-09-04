@@ -85,7 +85,7 @@
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
-                                <label for="com_file">รูปภาพประกอบสถานที่ <span style="color: red; font-size: 13px;">(กรุณาเลือกอย่างน้อย 1 รูป)</span></label>
+                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(กรุณาเลือกรูปอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>

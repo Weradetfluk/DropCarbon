@@ -138,4 +138,31 @@ class Company_edit extends DCS_controller
     public function set_session_edit_company($data){
       $this->session->set_userdata("error_edit_company", $data);
   }
+
+  /*
+     * check_name_company_ajax
+     * check name company by ajax
+     * @input com_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-03
+     * @Update -
+     */
+    function check_name_company_ajax(){
+      $this->load->model('Company/M_dcs_company', 'mcom');
+      $this->mcom->com_name = $this->input->post('com_name');
+      $company = $this->mcom->get_by_name()->row();
+      if($company){
+         if($company->com_id != $this->input->post('com_id')){
+            // have name company
+            echo 1;
+         }else{
+            // have name company but is old name           
+            echo 2;
+         }
+      }else{
+         // don't have name company
+          echo 2;
+      }
+  }
 }

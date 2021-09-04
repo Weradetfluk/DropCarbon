@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div style="text-align: right;">
-                <button type="submit" id="next_btn" class="btn btn-success" style="color: white; font-size: 18px;">ยืนยัน</button>
+                <button type="submit" id="next_btn" class="btn btn-success" style="color: white; font-size: 18px;">บันทึก</button>
                 <a class="btn btn-secondary" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: white; background-color: #777777;">ยกเลิก</a>
             </div>
             

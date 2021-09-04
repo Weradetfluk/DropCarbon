@@ -32,7 +32,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label for="com_name">ชื่อสถานที่</label>
-                                        <input type="text" id="com_name" name="com_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อสถานที่" value="<?php echo $arr_company[0]->com_name; ?>" required>
+                                        <input type="text" id="com_name" name="com_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อสถานที่" value="<?php echo $arr_company[0]->com_name; ?>" onkeyup="check_name_company_ajax()" required>
+                                        <span class="text-danger" id="error_com_name"></span>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +57,8 @@
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
-                                <label for="com_file">รูปภาพประกอบสถานที่</label>
+                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ขนาดรูปไม่เกิน 3000 KB)</span></label>
+                                <span></span>
                             </div>
                             <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
@@ -95,12 +97,12 @@
                             </div>
 
                             <!-- id ของ company -->
-                            <input type="hidden" name="com_id" value="<?php echo $arr_company[0]->com_id; ?>">
+                            <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_company[0]->com_id;?>">
                             <div style="text-align: right;">
                                 <button type="submit" class="btn btn-success">บันทึก</button>
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -223,5 +225,39 @@
         markers.addMarker(new OpenLayers.Marker(lonLat));
 
         map.setCenter(lonLat, zoom);
+    }
+
+    /*
+     * check_name_company_ajax
+     * check name company by ajax
+     * @input com_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-04
+     * @Update -
+     */
+    function check_name_company_ajax() {
+        var com_name = $('#com_name').val();
+        var com_id = $('#com_id').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_edit/check_name_company_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                com_name: com_name, com_id: com_id
+            },
+            success: function(data) {
+                // console.log(data);
+                if (data == 1) {
+                    console.log(1);
+                    $('#error_com_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
+                    $('#btn_sub').prop('disabled', true);
+                } else if (data == 2) {
+                    console.log(2);
+                    $('#error_com_name').html('');
+                    $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
     }
 </script>
