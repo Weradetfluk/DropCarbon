@@ -31,7 +31,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                 <div class="card card-login">
                     <form class="form" action="<?php echo site_url() . 'Admin/Auth/Login_admin/input_login_form'; ?>" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลงชื่อเข้าใช้</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลงชื่อเข้าใช้ของผู้ดูแลระบบ</h4>
 
                         </div>
 

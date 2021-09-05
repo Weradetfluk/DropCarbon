@@ -108,11 +108,20 @@
 
                                                          <!-- column ดำเนินการ -->
                                                          <td style='text-align: center;'>
+
                                                              <button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(  <?php echo $arr_entrepreneur_approve[$i]->ent_id; ?>)">
                                                                  <i class="material-icons"><span class="material-icons-outlined">
                                                                          highlight_off
                                                                      </span></i>
                                                              </button>
+
+
+                                                             <button class="btn btn-info custom-btn-table" id="accept"  onclick='view_data( <?php echo $arr_entrepreneur_approve[$i]->ent_id; ?>)'>
+                                                                 <i class="material-icons"><span class="material-icons-outlined">
+                                                                            search
+                                                                     </span></i>
+                                                             </button>
+
 
                                                          </td>
 
@@ -161,6 +170,59 @@
      </div>
  </div>
 
+
+
+ 
+
+ <div class="modal fade" role="dialog" id="data_modal">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">รายละเอียด</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 <form>
+                     <div class="form-row">
+                         <div class="form-group col-md-6">
+                             <label>ชื่อ-นามสกุล</label>
+                             <input type="text" id="ent_name" class="form-control" disabled>
+                         </div>
+                         <div class="form-group col-md-6">
+                             <label>เบอร์โทร</label>
+                             <input type="text" id="ent_tel" class="form-control" disabled>
+                         </div>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="inputAddress">รหัสประจำตัวประชาชน</label>
+                         <input type="text" id="ent_id_card" class="form-control" disabled>
+                     </div>
+
+                     <div class="form-row">
+                         <div class="form-group col-md-6">
+                             <label>อีเมล</label>
+                             <input type="text" class="form-control" id="ent_email" disabled>
+                         </div>
+
+                         <div class="form-group col-md-6">
+                             <label>วันเกิด</label>
+                             <input type="text" class="form-control" id="ent_birthdate" disabled>
+                         </div>
+                     </div>
+
+                     <label>เอกสารที่เกี่ยวข้อง</label>
+                     <div id="file_dowload">
+
+                     </div>
+                 </form>
+
+             </div>
+         </div>
+     </div>
+ </div>
  
 
  <script>

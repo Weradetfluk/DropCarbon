@@ -28,7 +28,7 @@
                 <div class="card card-login">
                     <form class="form" action="" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white">ลืมรหัสผ่าน</h4>
+                            <h4 class="card-title text-white">ลืมรหัสผ่านของผู้ดูแลระบบ</h4>
 
                         </div>
 
