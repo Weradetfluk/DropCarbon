@@ -29,7 +29,7 @@
                         <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur' ?>"><i class="fas fa-user-friends"></i> ผู้ประกอบการ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Auth/Login_tourist' ?>"><i class="fas fa-user"></i> เข้าสู่ระบบ</a>
+                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Auth/Login_tourist' ?>"><i class="fas fa-user"></i> นักท่องเที่ยว</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Register/Select_register' ?>"><i class="fas fa-user-plus"></i> สมัครสมาชิก</a>
