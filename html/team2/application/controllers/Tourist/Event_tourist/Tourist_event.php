@@ -17,7 +17,7 @@ class Tourist_event extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-    public function show_tourist_eventlist()
+    public function show_tourist_event_list()
     {
         $this->output_event('tourist/event_tourist/v_list_event_tourist', 'template/Tourist/topbar_tourist');
     }
@@ -30,7 +30,7 @@ class Tourist_event extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-    public function show_detailevent_tourist()
+    public function show_tourist_event_detail()
     {
         $this->output_event('tourist/event_tourist/v_detail_event_tourist', 'template/Tourist/topbar_tourist');
     }
@@ -43,7 +43,7 @@ class Tourist_event extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-    public function show_tourist_eventlist_login()
+    public function show_tourist_event_list_login()
     {
         $this->output_event('tourist/event_tourist/v_list_event_tourist', 'template/Tourist/topbar_tourist_login');
     }
@@ -56,7 +56,7 @@ class Tourist_event extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-    public function show_detailevent_tourist_login()
+    public function show_tourist_event_detail_login()
     {
         $this->output_event('tourist/event_tourist/v_detail_event_tourist', 'template/Tourist/topbar_tourist_login');
     }

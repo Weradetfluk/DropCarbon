@@ -113,12 +113,12 @@
                 <div class="card h-100" id="card">
 
                     <!-- รูปในการ์ดที่ 1 -->
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>">
+                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
                     </a>
                     <!-- ข้อความในการ์ดที่ 1 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
                         <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
                         <div class="card-info">
                             <span class="card-date">
@@ -140,12 +140,12 @@
                 <div class="card h-100" id="card">
 
                     <!-- รูปในการ์ดที่ 2 -->
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>">
+                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
                     </a>
                     <!-- ข้อความในการ์ดที่ 2 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
                         <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
                         <div class="card-info">
                             <span class="card-date">
@@ -167,12 +167,12 @@
                 <div class="card h-100" id="card">
 
                     <!-- รูปในการ์ดที่ 3 -->
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>">
+                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
                     </a>
                     <!-- ข้อความในการ์ดที่ 3 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_detailevent_tourist'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
                         <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...</p>
                         <div class="card-info">
                             <span class="card-date">
@@ -190,7 +190,7 @@
 
         <!-- ปุ่มดูทั้งหมด -->
         <div class="col-md-auto" align="right">
-            <a type="button" class="myButtonSeeAll" href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_eventlist'; ?>">ดูทั้งหมด >></a>
+            <a type="button" class="myButtonSeeAll" href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_list'; ?>">ดูทั้งหมด >></a>
         </div>
 
     </div>

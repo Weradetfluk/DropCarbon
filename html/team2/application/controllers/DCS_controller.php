@@ -146,7 +146,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_edit_entrepreneur
     * show edit profile page for entrepreneur
-    * @input -
+    * @input $data
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2021-07-24
@@ -162,7 +162,7 @@ class DCS_controller extends CI_Controller
 
     /*
     * output_landing_page
-    * show Landing page for every one
+    * show L    anding page for every one
     * @input -
     * @output -
     * @author Naaka Punparich 62160082

@@ -12,7 +12,7 @@ class Tourist_edit extends DCS_controller
    /*
     * show_edit_tourist
     * show edit tourist page
-    * @input -
+    * @input $data , $tus_img_tus_id
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
@@ -20,7 +20,7 @@ class Tourist_edit extends DCS_controller
    public function show_edit_tourist()
    {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-      $this->mtou->tus_id = $this->session->userdata("Tourist_id");
+      $this->mtou->tus_id = $this->session->userdata("tourist_id");
       $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
       $this->output_edit_tourist($data);
 
@@ -32,7 +32,7 @@ class Tourist_edit extends DCS_controller
    /*
     * update_tourist
     * Update information for tourist by id in database
-    * @input -
+    * @input $tus_pre_id , $tus_id , $tus_img_path , $file_tmp_name , $file_destination
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
