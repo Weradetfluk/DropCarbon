@@ -19,14 +19,15 @@ class Entrepreneur_edit extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-  public function show_edit_entrepreneur()
-  {
+   public function show_edit_entrepreneur()
+   {
       $_SESSION['tab_number_entrepreneur'] = 4;
-     $this->load->model('Entrepreneur/M_dcs_entrepreneur','ment');
-     $this->ment->ent_id=$this->session->userdata("entrepreneur_id");
-     $data['arr_ent']=$this->ment->get_entrepreneur_by_id()->result();
-     $this->output_edit_entrepreneur($data);
-  }
+      $this->load->model('Entrepreneur/M_dcs_entrepreneur','ment');
+      $this->ment->ent_id=$this->session->userdata("entrepreneur_id");
+      $data['arr_ent']=$this->ment->get_entrepreneur_by_id()->result();
+      $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
+      $this->output_edit_entrepreneur($data);
+   }
 
    /*
     * update_entrepreneur

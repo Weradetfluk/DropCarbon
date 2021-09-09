@@ -171,4 +171,19 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql, array($this->ent_username));
         return $query;
     }
+    /*
+    *get_entrepreneur_prefix
+    *get entrepreneur prefix in database
+    *@input ent_username
+    *@output -
+    *@author Thanisorn thumsawanit 62160088
+    *@Create Date 2564-09-09
+    */
+    function get_entrepreneur_prefix()
+    {
+        $sql = "SELECT * 
+                from dcs_prefix";
+        $query = $this->db->query($sql);       
+        return $query;
+    }
 }

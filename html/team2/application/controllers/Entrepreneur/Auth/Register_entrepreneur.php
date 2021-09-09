@@ -27,7 +27,10 @@ class Register_entrepreneur extends DCS_controller {
     * @Update Date 2564-08-05
     */
     public function show_regis_ent() {
-        $this->output_regis('entrepreneur/auth/v_regis_entrepreneur');
+        $this->session->unset_userdata("doc_path");
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+        $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
+        $this->output_regis('entrepreneur/auth/v_regis_entrepreneur',$data);
     }
 
     /*

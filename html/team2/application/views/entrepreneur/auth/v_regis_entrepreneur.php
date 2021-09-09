@@ -51,6 +51,16 @@
         color: #01447e;
         text-decoration: underline;
     }
+    .selected {
+        border: 1px solid #e8e8e8;
+        display: block;
+        width: 100%;
+        padding: .375rem .375rem;
+        border-radius: .25rem;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+    }
 </style>
 <title>ลงทะเบียนสำหรับผู้ประกอบการ</title>
 <!-- Form Register -->
@@ -64,21 +74,31 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับผู้ประกอบการ</h1>
         <form class="container py-3" method='POST' action="<?php echo site_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
-            <div>
-                <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
+        
+                <!-- <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
                 <input type="radio" id="ent_pre_id2" name="ent_pre_id" value=2 required>&nbsp;นาง
-                <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3 required>&nbsp;นางสาว
-            </div><br>
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_firstname">ชื่อ</label>
-                    <input type="text" class="form-control mt-1" id="ent_firstname" name="ent_firstname" placeholder="ชื่อ" required>
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_lastname">นามสกุล</label>
-                    <input type="text" class="form-control mt-1" id="ent_lastname" name="ent_lastname" placeholder="นามสกุล" required>
-                </div>
-            </div>
+                <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3 required>&nbsp;นางสาว -->
+            <div>
+                <div class="row">
+                    <div class="form-group col-md-2 mb-3">
+                        <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
+                        <select class="selected" name="ent_pre_id" id="prefix" required>
+                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
+
+                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+
+                        <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 mb-3">
+                        <label for="ent_firstname">ชื่อ</label>
+                        <input type="text" class="form-control mt-1" id="ent_firstname" name="ent_firstname" placeholder="ชื่อ" required>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_lastname">นามสกุล</label>
+                        <input type="text" class="form-control mt-1" id="ent_lastname" name="ent_lastname" placeholder="นามสกุล" required>
+                    </div>
+                </div>    
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_tel">เบอร์โทร</label>
@@ -93,7 +113,12 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_email">อีเมล</label>
-                    <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="อีเมล" required>
+                    <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="example@email.com" required>
+                </div>
+
+                <div class="form-group col-md-6 mb-3">
+                    <label for="idcard">วันเกิด</label>
+                    <input type="date" class="form-control mt-1" id="ent_birthdate" name="ent_birthdate" placeholder="วันเกิด" required>
                 </div>
             </div>
 
