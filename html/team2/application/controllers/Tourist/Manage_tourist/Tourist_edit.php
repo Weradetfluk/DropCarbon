@@ -22,6 +22,7 @@ class Tourist_edit extends DCS_controller
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
       $this->mtou->tus_id = $this->session->userdata("tourist_id");
       $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+      $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
       $this->output_edit_tourist($data);
 
       $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
@@ -85,6 +86,7 @@ class Tourist_edit extends DCS_controller
 
       if ($error_file != 'false') {
          $this->mtou->update_tourist();
+         $this->set_session($this->mtou->tus_firstname . " " . $this->mtou->tus_lastname);
          $this->mpic->tus_img_tus_id = $tus_id;
          $this->mpic->delete_img_by_id($tus_id);
 
@@ -102,6 +104,7 @@ class Tourist_edit extends DCS_controller
       } else if (isset($_FILES["tourist_img"]) && empty($_FILES["tourist_img"]["name"])) {
          $this->set_session_regis_tourist('success');
          $this->mtou->update_tourist();
+         $this->set_session($this->mtou->tus_firstname . " " . $this->mtou->tus_lastname);
          redirect('Tourist/Auth/Landing_page_tourist');
          // ไม่ได้เลือกรูป
       } else {
@@ -122,5 +125,20 @@ class Tourist_edit extends DCS_controller
    public function set_session_regis_tourist($data)
    {
       $this->session->set_userdata("error_register_tourist", $data);
+   }
+
+   /*
+    * set_session
+    * set session data
+    * @input 
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-09-09
+    * @Update -
+    */
+
+   public function set_session($name)
+   {
+      $this->session->set_userdata("Tourist_name", "$name");
    }
 }

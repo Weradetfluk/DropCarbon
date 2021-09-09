@@ -87,26 +87,15 @@
         cursor: pointer;
     }
 
-    @media screen and (min-width: 1000px) and (max-width: 1500px) {
-        .wrapper {
-
-            padding: 15px 15px;
-        }
-
-        .h1 {
-            font-size: 36px !important;
-        }
-    }
-
-    @media screen and (max-width: 600px) {
-        .wrapper {
-
-            padding: 15px 15px;
-        }
-
-        .h1 {
-            font-size: 36px !important;
-        }
+    .selected {
+        border: 1px solid #e8e8e8;
+        display: block;
+        width: 100%;
+        padding: .375rem .375rem;
+        border-radius: .25rem;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
     }
 </style>
 
@@ -141,38 +130,26 @@
             <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
 
             <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
-            <div>
-                <?php
-                $checked_prefix_1 = '';
-                $checked_prefix_2 = '';
-                $checked_prefix_3 = '';
-
-                if ($arr_tus[0]->tus_pre_id == "1") {
-                    $checked_prefix_1 = 'checked';
-                } else if ($arr_tus[0]->tus_pre_id == "2") {
-                    $checked_prefix_2 = 'checked';
-                } else if ($arr_tus[0]->tus_pre_id == "3") {
-                    $checked_prefix_3 = 'checked';
-                }
-                ?>
-
-                <input type="radio" name="tus_pre_id" value=1 <?php echo $checked_prefix_1 ?>>
-                <label style="color:black">นาย</label>
-                <input type="radio" name="tus_pre_id" value=2 <?php echo $checked_prefix_2 ?>>
-                <label style="color:black">นาง</label>
-                <input type="radio" name="tus_pre_id" value=3 <?php echo $checked_prefix_3 ?>>
-                <label style="color:black">นางสาว</label>
-            </div><br>
-            <!-- เพศ -->
-
             <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="tus_firstname" style="color:black">ชื่อจริง</label>
-                    <input type="text" class="form-control" placeholder="ชื่อภาษาไทย" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
+                <div class="form-group col-md-2 mb-3">
+                    <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
+                    <select class="selected" name="tus_pre_id" id="prefix" required>
+                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
+                            <?php if ($arr_tus[0]->tus_pre_id-1 == $i) { ?>
+                                <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name; ?></option>
+                            <?php } else { ?>
+                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name; ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 mb-3">
+                    <label for="tus_firstname">ชื่อ</label>
+                    <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
-                    <label for="tus_lastname" style="color:black">นามสกุล</label>
-                    <input type="text" class="form-control" placeholder="นามสกุลภาษาไทย" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
+                    <label for="tus_lastname">นามสกุล</label>
+                    <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
                 </div>
             </div>
             <!-- ชื่อจริง-นามสกุล -->
@@ -190,10 +167,12 @@
             </div>
             <!-- เบอร์ วันเกิด -->
 
-            <div class="form-group col-md-6 mb-3">
-                <label for="tus_email" style="color:black">อีเมล</label>
-                <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
-            </div><br>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="tus_email" style="color:black">อีเมล</label>
+                    <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
+                </div><br>
+            </div>
             <!-- อีเมล -->
 
             <a id="next_btn" class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
@@ -238,26 +217,6 @@
             <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }
     });
-
-    // jQuery(document).ready(function() {
-    //     jQuery('button#verify').on('click', function(event) {
-    //         event.preventDefault();
-    //         swal({
-    //             title: "แก้ไขข้อมูลของคุณ",
-    //             text: "คุณได้ทำการแก้ไขข้อมูลส่วนตัวเสร็จสิ้น!",
-    //             type: "success",
-    //             showCancelButton: false,
-    //             buttonsStyling: true,
-    //             confirmButtonText: "OK",
-    //             // cancelButtonText: "cancel",
-    //         }, function(isConfirm) {
-    //             if (isConfirm) {
-    //                 jQuery("#verifyForm").submit();
-    //             }
-    //         });
-    //     });
-    // });
-    // sweet alert
 
     const imgDiv = document.querySelector('.profile-pic-div');
     const img = document.querySelector('#photo');

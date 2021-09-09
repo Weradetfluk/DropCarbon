@@ -130,75 +130,73 @@
             <!-- profile pictuce -->
 
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
-            <div>
-                <div class="row">
-                    <div class="form-group col-md-2 mb-3">
-                        <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
-                        <select class="selected" name="tus_pre_id" id="prefix" required>
-                            <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
+            <div class="row">
+                <div class="form-group col-md-2 mb-3">
+                    <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
+                    <select class="selected" name="tus_pre_id" id="prefix" required>
+                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
-                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
 
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        <label for="inputname">ชื่อ</label>
-                        <input type="text" class="form-control mt-1" id="tus_firstname" name="tus_firstname" placeholder="ชื่อ" required>
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputlastname">นามสกุล</label>
-                        <input type="text" class="form-control mt-1" id="tus_lastname" name="tus_lastname" placeholder="นามสกุล" required>
-                    </div>
+                        <?php } ?>
+                    </select>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="tell">เบอร์โทร</label>
-                        <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" maxlength="10" minlength="10" placeholder="เบอร์โทร" maxlength="10" required>
-                    </div>
-
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="idcard">วันเกิด</label>
-                        <input type="date" class="form-control mt-1" id="tus_birthdate" name="tus_birthdate" placeholder="วันเกิด" required>
-                    </div>
+                <div class="form-group col-md-4 mb-3">
+                    <label for="inputname">ชื่อ</label>
+                    <input type="text" class="form-control mt-1" id="tus_firstname" name="tus_firstname" placeholder="ชื่อ" required>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputlastname">นามสกุล</label>
+                    <input type="text" class="form-control mt-1" id="tus_lastname" name="tus_lastname" placeholder="นามสกุล" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="tell">เบอร์โทร</label>
+                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" maxlength="10" minlength="10" placeholder="เบอร์โทร" maxlength="10" required>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">อีเมล</label>
-                        <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="example@email.com" required>
-                    </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="idcard">วันเกิด</label>
+                    <input type="date" class="form-control mt-1" id="tus_birthdate" name="tus_birthdate" placeholder="วันเกิด" required>
                 </div>
+            </div>
 
-                <br>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputemail">อีเมล</label>
+                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="example@email.com" required>
+                </div>
+            </div>
 
-                <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
-                <div class="row">
+            <br>
+
+            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
+            <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
                     <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
                     <span id="usernameavailable"></span>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="password">รหัสผ่าน</label>
+                    <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
                 </div>
-                
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="password">รหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
-                    </div>
 
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="password">ยืนยันรหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
-                        <div id="errorpassword" class="text-danger">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="password">ยืนยันรหัสผ่าน</label>
+                    <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
+                    <div id="errorpassword" class="text-danger">
 
-                        </div>
                     </div>
                 </div>
-                <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
-                <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
-
-
+            </div>
+            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
+            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
+            
         </form>
     </div>
     <ul class="bg-bubbles">

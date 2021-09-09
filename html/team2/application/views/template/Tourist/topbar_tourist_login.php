@@ -33,7 +33,7 @@
                         <a class="nav-link" href="#"><i class="fas fa-coins"></i> Point</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="far fa-user-circle"></i> <?php echo $this->session->userdata("tourist_name"); ?></a>
+                        <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="far fa-user-circle"></i> <?php echo $this->session->userdata("Tourist_name"); ?></a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="<?php echo base_url() . 'Tourist/Manage_tourist/tourist_edit/show_edit_tourist' ?>">แก้ไขข้อมูลส่วนตัว</a>
                             <div class="dropdown-divider"></div>

@@ -163,6 +163,14 @@ class M_dcs_tourist extends Da_dcs_tourist
         return $query;
     }
 
+    /*
+    * get_all_prefix
+    * get data tourist form database by ID
+    * @input -
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-08-02
+    */
     function get_all_prefix()
     {
         $sql = "SELECT * 
