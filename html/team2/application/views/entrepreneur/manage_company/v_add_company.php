@@ -85,12 +85,12 @@
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
-                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(กรุณาเลือกรูปอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
+                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
-                            <div id="arr_del_img"></div>
+                            <div id="arr_del_img_new"></div>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
@@ -128,7 +128,7 @@
                             </div>
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>
@@ -329,7 +329,7 @@
 
     /*
      * unlink_new_image
-     * Create attribute image
+     * unlink image
      * @input com_file, card_image, data
      * @output -
      * @author Suwapat Saowarod 62160340
@@ -339,7 +339,7 @@
     function unlink_new_image(img_path) {
         let html = '';
         html += '<input name="del_new_img[]" value="' + img_path + '" hidden>';
-        document.getElementById('arr_del_img').innerHTML += html;
+        document.getElementById('arr_del_img_new').innerHTML += html;
 
         let file_name = img_path.split('.');
         // console.log('#'+file_name[0]+'.'+file_name[1]);
@@ -358,7 +358,7 @@
      * @Update -
      */
     function check_count_image_btn() {
-        if (count_image <= 0) {
+        if (count_image == 0) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
@@ -372,9 +372,15 @@
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-08-28
-     * @Update -
+     * @Update 2564-09-09
      */
     function unlink_image_go_back() {
+
+        // for (var i = 0; i < $("input[name='del_new_img[]']").length; i++) {
+        //     $("input[name='del_new_img[]']").attr('name', 'new_img[]');
+        // } 
+
+        // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
         var arr_image = $("input[name='new_img[]']").map(function() {
             return $(this).val();
         }).get();
@@ -386,7 +392,8 @@
                 arr_image: arr_image
             },
             success: function(data) {
-                console.log(data);
+                // console.log(data);
+                location.replace("<?php echo site_url() . "Entrepreneur/Manage_company/Company_list/show_list_company" ?>")
             }
         })
     }

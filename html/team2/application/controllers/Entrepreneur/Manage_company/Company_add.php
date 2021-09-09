@@ -49,6 +49,7 @@ class Company_add extends DCS_controller
         $this->mcom->com_tel = $this->input->post('com_tel');
     
         $this->mcom->insert_company();
+        $this->set_session_add_company('success');
         $result = $this->mcom->get_by_name()->row();
         
         
@@ -71,8 +72,7 @@ class Company_add extends DCS_controller
                 $this->mimg->delete_image_company();
             }
         }
-        
-        $this->set_session_add_company('success');  
+          
         redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
     }
 
@@ -121,7 +121,7 @@ class Company_add extends DCS_controller
                 $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
 
                 // Check if there is a problem with the image file. or the file size exceeds 1000000?
-                if ($file_error[$i] != 0 || $file_size[$i] >= 5000000) {
+                if ($file_error[$i] != 0 || $file_size[$i] >= 3000000) {
                     $error_file = 'false';
                     break;
                 }

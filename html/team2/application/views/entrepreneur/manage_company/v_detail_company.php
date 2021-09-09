@@ -12,7 +12,7 @@
 <style>
     .image_banner {
         width: 100%;
-        max-height: 400px;
+        max-height: 500px;
         object-fit: cover;
     }
 </style>

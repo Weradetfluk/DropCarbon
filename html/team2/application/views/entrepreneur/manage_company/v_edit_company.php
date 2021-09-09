@@ -14,6 +14,29 @@
         height: 100%;
         width: 100%;
     }
+
+    .image_container {
+        height: 120px;
+        width: 200px;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .image_container img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .image_container span {
+        top: -6px;
+        right: 8px;
+        color: red;
+        font-size: 28px;
+        font-weight: normal;
+        cursor: pointer;
+    }
 </style>
 
 <div class="content">
@@ -57,10 +80,24 @@
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
-                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ขนาดรูปไม่เกิน 3000 KB)</span></label>
-                                <span></span>
+                                <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
-                            <input type="file" id="com_file" name="com_file[]" accept="image/*" multiple><br><br>
+                            <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
+                                <?php for($i = 0; $i < count($arr_image); $i++){?>
+                                    <?php $arr_path = explode('.', $arr_image[$i]->com_img_path)?>
+                                    <div id="<?php echo $arr_path[0].'.'.$arr_path[1]?>">
+                                        <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
+                                            <img src="<?php echo base_url() . 'image_company/' . $arr_image[$i]->com_img_path; ?>" alt="Image">
+                                            <span class="position-absolute" style="font-size: 25px;" onclick="unlink_old_image('<?php echo $arr_image[$i]->com_img_path?>')">&times;</span>
+                                            <input type="text" value="<?php echo $arr_image[$i]->com_img_path?>" name="old_img[]" hidden>
+                                        </div>
+                                    </div>
+                                <?php }?>
+                            </div>
+                            <div id="arr_del_img_new"></div>
+                            <div id="arr_del_img_old"></div>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
@@ -97,10 +134,10 @@
                             </div>
 
                             <!-- id ของ company -->
-                            <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_company[0]->com_id;?>">
+                            <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_company[0]->com_id; ?>">
                             <div style="text-align: right;">
-                                <button type="submit" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก</a>
+                                <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
+                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 
                         </form>
@@ -121,6 +158,8 @@
             swal("ล้มเหลว", "คุณทำการแก้ไขสถานที่ล้มเหลวเนื่องจากขนาดรูปภาพใหญ่เกินไป", "error");
             <?php echo $this->session->unset_userdata("error_edit_company"); ?>
         }
+        
+        console.log(count_image);
     });
     var map, vectorLayer, selectedFeature;
     var lat = <?= $arr_company[0]->com_lat ?>;
@@ -130,6 +169,7 @@
     var curpos = new Array();
     var markers = new OpenLayers.Layer.Markers("Markers");
     var position;
+    var count_image = <?= count($arr_image)?>;
 
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
     var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
@@ -244,7 +284,8 @@
             method: "POST",
             dataType: "JSON",
             data: {
-                com_name: com_name, com_id: com_id
+                com_name: com_name,
+                com_id: com_id
             },
             success: function(data) {
                 // console.log(data);
@@ -257,6 +298,155 @@
                     $('#error_com_name').html('');
                     $('#btn_sub').prop('disabled', false);
                 }
+            }
+        })
+    }
+
+    /*
+     * upload_image_ajax
+     * upload image
+     * @input com_file
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-09
+     * @Update -
+     */
+    function upload_image_ajax() {
+        var images = $('#com_file')[0].files;
+        var form_data = new FormData();
+        var count_for_img = 0;
+        // console.log(count_image);
+        for (let i = 0; i < images.length; i++) {
+            var name = images[i].name;
+            var extension = name.split('.').pop().toLowerCase();
+            form_data.append("com_file[]", images[i]);
+            count_image += 1;
+            count_for_img += 1;
+        }
+
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/upload_image_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                // console.log(data);
+                if (data.search("error") == -1) {
+                    // $('#card_image').before(data);
+                    document.getElementById('card_image').innerHTML += data;
+                    $('#com_file').val('');
+                    check_count_image_btn()
+                    console.log(count_image);
+                } else {
+                    swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
+                    $('#com_file').val('');
+                    count_image -= count_for_img;
+                    check_count_image_btn()
+                }
+            },
+            error: function() {
+                console.log('fail');
+                swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
+                $('#com_file').val('');
+                count_image -= count_for_img;
+                check_count_image_btn()
+            }
+        });
+    }
+
+    /*
+     * unlink_new_image
+     * unlink image
+     * @input com_file, card_image, data
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-09
+     * @Update -
+     */
+    function unlink_new_image(img_path) {
+        let html = '';
+        html += '<input name="del_new_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img_new').innerHTML += html;
+
+        let file_name = img_path.split('.');
+        // console.log('#'+file_name[0]+'.'+file_name[1]);
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        console.log(count_image);
+        check_count_image_btn()
+    }
+
+    /*
+     * unlink_old_image
+     * unlink image
+     * @input com_file, card_image, data
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-09
+     * @Update -
+     */
+    function unlink_old_image(img_path) {
+        let html = '';
+        html += '<input name="del_old_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img_old').innerHTML += html;
+
+        let file_name = img_path.split('.');
+        // console.log('#'+file_name[0]+'.'+file_name[1]);
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        console.log(count_image);
+        check_count_image_btn()
+    }
+
+    /*
+     * check_count_image
+     * check count image to disable btn submit
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-28
+     * @Update -
+     */
+    function check_count_image_btn() {
+        if (count_image == 0) {
+            $('#btn_sub').prop('disabled', true);
+        } else {
+            $('#btn_sub').prop('disabled', false);
+        }
+    }
+
+    /*
+     * unlink_image_go_back
+     * uplink image when cancel add company
+     * @input new_img
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-08-28
+     * @Update 2564-09-09
+     */
+    function unlink_image_go_back() {
+
+        // for (var i = 0; i < $("input[name='del_new_img[]']").length; i++) {
+        //     $("input[name='del_new_img[]']").attr('name', 'new_img[]');
+        // }
+        
+        // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
+        var arr_image = $("input[name='new_img[]']").map(function() {
+            return $(this).val();
+        }).get();
+        console.log(arr_image);
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/uplink_image_ajax" ?>",
+            method: "POST",
+            data: {
+                arr_image: arr_image
+            },
+            success: function(data) {
+                // console.log(data);
+                location.replace("<?php echo site_url() . "Entrepreneur/Manage_company/Company_list/show_list_company" ?>")
             }
         })
     }
