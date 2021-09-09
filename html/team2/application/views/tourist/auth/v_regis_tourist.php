@@ -133,9 +133,9 @@
             <div>
                 <div class="row">
                     <div class="form-group col-md-2 mb-3">
-                        <label for="prefix" style="margin-bottom: 4px;">เพศ</label><br>
+                        <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
                         <select class="selected" name="tus_pre_id" id="prefix" required>
-                            <?php for ($i = 0; $i < 4; $i++) { ?>
+                            <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
                                 <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
 
@@ -163,18 +163,24 @@
                     </div>
                 </div>
 
-                <div class="form-group col-md-6 mb-3">
-                    <label for="inputemail">อีเมล</label>
-                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="อีเมล" required>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputemail">อีเมล</label>
+                        <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="example@email.com" required>
+                    </div>
                 </div>
+
                 <br>
 
                 <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
+                <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
                     <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
                     <span id="usernameavailable"></span>
                 </div>
+                </div>
+                
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="password">รหัสผ่าน</label>
