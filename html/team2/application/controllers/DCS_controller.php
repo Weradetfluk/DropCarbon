@@ -134,7 +134,7 @@ class DCS_controller extends CI_Controller
     * @Create Date 2021-07-15
     * @Update Date -
     */
-    public function output_regis($view, $data = null)
+    public function output_regis($view, $data)
     {
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');

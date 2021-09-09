@@ -118,9 +118,9 @@ class M_dcs_tourist extends Da_dcs_tourist
     {
         $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
         WHERE tus_username = ?";
-        $query = $this->db->query($sql,array($this->tus_username)); 
+        $query = $this->db->query($sql, array($this->tus_username));
         return $query;
-    } 
+    }
 
     /*
     * check_username
@@ -159,7 +159,15 @@ class M_dcs_tourist extends Da_dcs_tourist
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_tourist  where tus_id = ? ";
         $query = $this->db->query($sql, array($this->tus_id));
-     
+
+        return $query;
+    }
+
+    function get_all_prefix()
+    {
+        $sql = "SELECT * 
+                from dcs_prefix";
+        $query = $this->db->query($sql);       
         return $query;
     }
 }
