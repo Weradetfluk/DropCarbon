@@ -254,7 +254,7 @@
                             </a>
                             <!-- ข้อความในการ์ดที่ 3 -->
                             <div class="card-body">
-                                <a href="#" class="h2 text-decoration-none text-dark">บางละมง</a>
+                                <a href="#" class="h2 text-decoration-none text-dark">บางละมุง</a>
                                 <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
                             </div>
 
