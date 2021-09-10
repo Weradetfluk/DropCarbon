@@ -148,7 +148,7 @@
                 </div>
             </div>
             <div style="text-align: right;">
-                <button type="submit" id="next_btn" class="btn btn-success" style="color: white; font-size: 18px;">บันทึก</button>
+                <button type="submit" id="btn_sub" class="btn btn-success" style="color: white; font-size: 18px;">บันทึก</button>
                 <a class="btn btn-secondary" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: white; background-color: #777777;">ยกเลิก</a>
             </div>
             
@@ -180,7 +180,11 @@
             swal("ล้มเหลว", "คุณทำการลงทะเบียนล้มเหลวเนื่องจากขนาดไฟล์ภาพใหญ่เกินไป", "error");
             <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
         }
+        check_btn_submit();
     });
+
+    var check_username = 0;
+    var check_password = 0;
 
     /*
      * confirmpassword
@@ -194,10 +198,14 @@
     function confirm_password() {
         if ($('#pass').val() != $('#confirm').val()) {
             $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
-            $('#next_btn').prop('disabled', true);
+            check_password = 1;
+            check_btn_submit();
+            // $('#next_btn').prop('disabled', true);
         } else {
             $('#errorpassword').text('');
-            $('#next_btn').prop('disabled', false);
+            check_password = 0;
+            check_btn_submit();
+            // $('#next_btn').prop('disabled', false);
         }
     }
 
@@ -224,15 +232,36 @@
                     $("#usernameavailable").css({
                         "color": "red"
                     });
-
-                    $('#usernameavailable').html("username not available");
-                    $('#next_btn').prop('disabled', true);
+                    $('#usernameavailable').html("ชื่อนี้ถูกใช้เเล้ว");
+                    check_name = 1;
+                    check_btn_submit();
+                    // $('#next_btn').prop('disabled', true);
                 } else {
                     $('#usernameavailable').html("");
-                    $('#next_btn').prop('disabled', false);
+                    check_name = 0;
+                    check_btn_submit();
+                    // $('#next_btn').prop('disabled', false);
                 }
 
             }
         });
     }
+
+    /*
+     * check_btn_submit
+     * check button submit
+     * @input 
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-10
+     * @Update -
+     */
+    function check_btn_submit(){
+        if (check_password == 1 || check_username == 1) {
+            $('#btn_sub').prop('disabled', true);
+        } else {
+            $('#btn_sub').prop('disabled', false);
+        }
+    }
+
 </script>

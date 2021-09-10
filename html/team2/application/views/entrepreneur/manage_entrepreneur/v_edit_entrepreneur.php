@@ -8,29 +8,29 @@
 * @Create Date 2564-07-24
 */ 
 -->
-<stlye>
-.s1 {
-    background: no-repeat bottom,50% calc(100% - 1px);
-    background-size: 0 100%,100% 100%;
-    border: 0;
-    height: 36px;
-    transition: background 0s ease-out;
-    padding-left: 0;
-    padding-right: 0;
-    border-radius: 0;
-    font-size: 14px;
-    display: block;
-    width: 100%;
-    padding: .4375rem 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: transparent;
-    background-clip: padding-box;
-    border: 1px solid #d2d2d2;
-    box-shadow: none; 
-}
-</stlye>
+<style>
+    .s1 {
+        background: no-repeat bottom,50% calc(100% - 1px);
+        background-size: 0 100%,100% 100%;
+        border: 0;
+        height: 36px;
+        transition: background 0s ease-out;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        padding: .4375rem 0;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: transparent;
+        background-clip: padding-box;
+        border: 1px solid #d2d2d2;
+        box-shadow: none; 
+    }
+</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -59,23 +59,29 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>                            
-                                            <div class="col-4">                                   
+                                            <div class="col-5">                                   
                                                 <label for="ent_firstname" style="color:black">ชื่อจริง</label>
                                                 <input type="text" class="form-control" placeholder="ชื่อภาษาไทย" name='ent_firstname' value='<?php echo $arr_ent[0]->ent_firstname; ?>' required>
                                             </div>
                                             <!-- กรอกนามสกุล -->
-                                            <div class="col-4">
+                                            <div class="col-5">
                                                 <label for="ent_lastname" style="color:black">นามสกุล</label>
                                                 <input type="text" class="form-control" placeholder="นามสกุลภาษาไทย" name='ent_lastname' value='<?php echo $arr_ent[0]->ent_lastname; ?>' required>
                                             </div>
                                         </div>
                                         <br>
 
-                                        <!-- กรอกเบอร์โทรศัพท์ -->
+                                        
                                         <div class="row">
+                                            <!-- กรอกเบอร์โทรศัพท์ -->
                                             <div class="col-6">
                                                 <label for="ent_tel" style="color:black">เบอร์โทรศัพท์</label>
                                                 <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='ent_tel' value="<?php echo $arr_ent[0]->ent_tel; ?>" required>
+                                            </div>
+                                            <!-- กรอกวันเกิด -->
+                                            <div class="col-5">
+                                                <label for="ent_bd" style="color:black">วันเกิด</label>                           
+                                                <input type="date" class="form-control" name="ent_birthdate" value="<?php echo $arr_ent[0]->ent_birthdate; ?>" required>
                                             </div>
                                         </div>
                                         <br>
@@ -93,14 +99,8 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <label for="ent_email" style="color:black">อีเมล</label>
-                                                <input type="text" class="form-control" placeholder="E-mail" name='ent_email' value="<?php echo $arr_ent[0]->ent_email; ?>" required>
+                                                <input type="text" class="form-control" placeholder="example@email.com" name='ent_email' value="<?php echo $arr_ent[0]->ent_email; ?>" required>
                                             </div>                                   
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <label for="ent_bd" style="color:black">วันเกิด</label>                           
-                                                <input type="date" class="form-control" name="ent_birthdate" value="<?php echo $arr_ent[0]->ent_birthdate; ?>" required>
-                                            </div>
                                         </div>
                                     </form>
                                 </div>

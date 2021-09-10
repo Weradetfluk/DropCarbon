@@ -40,6 +40,8 @@ class Entrepreneur_edit extends DCS_controller
    */
   public function update_entrepreneur()
   {
+
+      // print_r($this->input->post('ent_birthdate'));
       $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
 
       $this->ment->ent_pre_id = intval($this->input->post('ent_pre_id'));
@@ -47,6 +49,7 @@ class Entrepreneur_edit extends DCS_controller
       $this->ment->ent_lastname = $this->input->post('ent_lastname');
       $this->ment->ent_tel = $this->input->post('ent_tel');
       $this->ment->ent_email = $this->input->post('ent_email');
+      $this->ment->ent_birthdate = $this->input->post('ent_birthdate');
       $this->ment->ent_id = $this->session->userdata('entrepreneur_id');
       $this->ment->update_entrepreneur();
       $ent_pre_id = $this->ment->ent_pre_id;

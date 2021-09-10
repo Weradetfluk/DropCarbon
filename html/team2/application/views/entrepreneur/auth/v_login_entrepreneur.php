@@ -28,7 +28,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                 <div class="card card-login">
                     <form action="<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/input_login_form'; ?>" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลงชื่อเข้าใช้</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลงชื่อเข้าใช้ผู้ประกอบการ</h4>
                         </div>
 
                         <div class="card-body">
@@ -42,14 +42,15 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                     <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" name="username" required>
                                 </div>
                             </span>
-                            <div class="input-group" style="padding: 10px;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="material-icons">lock_outline</i>
-                                    </span>
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" required>
                                 </div>
-                                <input type="password" class="form-control" placeholder="รหัสผ่าน" name="password" required>
-                            </div>
                             </span>
                             <span style="color: red; margin-left: 30px;">
                                 <?php
