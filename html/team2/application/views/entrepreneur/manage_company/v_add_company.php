@@ -69,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="com_description">รายละเอียดสถานที่</label>
-                                        <textarea id="com_description" name="com_description" class="form-control" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
+                                        <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px;" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -152,6 +152,7 @@
             swal("ล้มเหลว", "คุณทำการเพิ่มสถานที่ล้มเหลวเนื่องจากขนาดรูปภาพใหญ่เกินไป", "error");
             <?php echo $this->session->unset_userdata("error_add_company"); ?>
         }
+        check_count_image_btn();
     });
 
     // openstreet map
@@ -163,6 +164,7 @@
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
     var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
     var count_image = 0;
+    var check_btn_name = 0;
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
         initialize: function(name, options) {
@@ -355,10 +357,10 @@
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-08-28
-     * @Update -
+     * @Update 2564-09-10
      */
     function check_count_image_btn() {
-        if (count_image == 0) {
+        if (count_image == 0 || check_btn_name == 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
@@ -422,11 +424,15 @@
                 if(data == 1){
                     console.log(1);
                     $('#error_com_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
-                    $('#btn_sub').prop('disabled', true); 
+                    check_btn_name = 1;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', true); 
                 }else if(data == 2){
                     console.log(2);
                     $('#error_com_name').html('');
-                    $('#btn_sub').prop('disabled', false);
+                    check_btn_name = 0;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', false);
                 }
             }
         })

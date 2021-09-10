@@ -17,6 +17,7 @@ class Da_dcs_entrepreneur extends DCS_model
     public $ent_tel;
     public $ent_id_card;
     public $ent_email;
+    public $ent_birthdate;
     public $ent_username;
     public $ent_password;
     public $ent_status;
@@ -40,8 +41,8 @@ class Da_dcs_entrepreneur extends DCS_model
     */
     public function insert_entrepreneur()
     {
-        $sql = "INSERT INTO dcs_entrepreneur(ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_username, ent_password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_username, $this->ent_password));
+        $sql = "INSERT INTO dcs_entrepreneur(ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_birthdate, ent_username, ent_password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_birthdate,$this->ent_username, $this->ent_password));
     }
 
     /*
@@ -74,8 +75,8 @@ class Da_dcs_entrepreneur extends DCS_model
     public function update_entrepreneur()
     {
         $sql = "UPDATE {$this->db_name}.dcs_entrepreneur 
-                SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?
+                SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?, ent_birthdate = ?
                 WHERE ent_id = ?";
-        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_id));
+        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_birthdate, $this->ent_id));
     }
 }
