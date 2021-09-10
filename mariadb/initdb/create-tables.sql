@@ -87,7 +87,8 @@ CREATE TABLE `dcs_prefix` (
 INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 (1, 'นาย'),
 (2, 'นาง'),
-(3, 'นางสาว');
+(3, 'นางสาว'),
+(4, 'อื่นๆ');
 
 
 
@@ -146,7 +147,7 @@ CREATE TABLE `dcs_company` (
   `com_lat` float(20),
   `com_lon` float(20),
   `com_status` int(1) DEFAULT 1,
-  `com_description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `com_description` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `com_ent_id` int(10),
   `com_tel` varchar(10),
    FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id)
@@ -230,7 +231,7 @@ CREATE TABLE dcs_event (
   eve_name varchar(100),
   eve_point int(10),
   eve_num_visitor int(10),
-  eve_description varchar (500),
+  eve_description varchar (1000),
   eve_com_id int(10),
   eve_cat_id int(10),
   eve_status int(10),
@@ -280,7 +281,7 @@ CREATE TABLE dcs_promotions (
   pro_id int(10) NOT NULL primary key AUTO_INCREMENT,
   pro_name varchar(100),
   pro_point int(10),
-  pro_description varchar (500),
+  pro_description varchar (1000),
   pro_com_id int(10),
   pro_cat_id int(10),
   pro_status int(10),
