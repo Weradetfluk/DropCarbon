@@ -87,7 +87,8 @@ CREATE TABLE `dcs_prefix` (
 INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 (1, 'นาย'),
 (2, 'นาง'),
-(3, 'นางสาว');
+(3, 'นางสาว'),
+(4, 'อื่นๆ');
 
 
 
