@@ -329,7 +329,7 @@
              let tooshort = false;
 
              admin_reson.forEach((reson) => {
-                 if (reson.value.length < 16) {
+                 if (reson.value.length < 6) {
                      tooshort = true;
                  }
              });
@@ -339,6 +339,7 @@
                  err_message.style.display = 'block';
              }else{
                 $('#rejected_ent').modal('toggle');
+                err_message.style.display = 'none';
              swal({
                  title: "ปฏิเสธสำเร็จ",
                  text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
