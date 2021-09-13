@@ -34,7 +34,7 @@ class Company_add extends DCS_controller
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18
-    * @Update Date 2564-08-05
+    * @Update Date 2564-09-13
     */
     public function add_company()
     {

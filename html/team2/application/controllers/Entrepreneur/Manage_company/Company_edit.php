@@ -34,7 +34,7 @@ class Company_edit extends DCS_controller
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
-    * @Update Date 2564-08-12
+    * @Update Date 2564-09-13
     */
    public function show_edit_company($com_id)
    {
@@ -59,7 +59,7 @@ class Company_edit extends DCS_controller
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
-    * @Update Date -
+    * @Update Date 2564-09-13
     */
    public function edit_company()
    {
@@ -74,14 +74,14 @@ class Company_edit extends DCS_controller
       $this->mcom->com_cat_id = $this->input->post('com_cat_id');
       // save data company to database
       $this->mcom->update_company();
-      $this->set_session_edit_company('success'); 
+      $this->set_session_edit_company('success');
       $this->mimg->com_img_com_id = $this->input->post('com_id');
 
       // save data image to database
       $arr_img_add = array();
       $arr_img_add = $this->input->post('new_img');
       $this->mimg->com_img_com_id = $this->input->post('com_id');
-      if($arr_img_add != ''){
+      if ($arr_img_add != '') {
          for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
             $this->mimg->insert_image_company();
@@ -91,28 +91,27 @@ class Company_edit extends DCS_controller
       // delete data image to database
       $arr_img_delete_old = array();
       $arr_img_delete_old = $this->input->post('del_old_img');
-      if($arr_img_delete_old != ''){
+      if ($arr_img_delete_old != '') {
          $arr_img_delete = $this->input->post('del_new_img');
-         if($arr_img_delete != ''){
-            for($i = 0; $i < count($arr_img_delete); $i++){
-               array_push ($arr_img_delete, $arr_img_delete[$i]);
+         if ($arr_img_delete != '') {
+            for ($i = 0; $i < count($arr_img_delete); $i++) {
+               array_push($arr_img_delete, $arr_img_delete[$i]);
             }
          }
-      }else{
+      } else {
          $arr_img_delete_old = $this->input->post('del_new_img');
       }
-     
+
       // print_r($arr_img_delete);
-      if($arr_img_delete_old != ''){
-          for ($i = 0; $i < count($arr_img_delete_old); $i++) {
-              $this->mimg->com_img_path = $arr_img_delete_old[$i];
-              unlink('./image_company/' . $arr_img_delete_old[$i]);
-              $this->mimg->delete_image_company();
-          }
+      if ($arr_img_delete_old != '') {
+         for ($i = 0; $i < count($arr_img_delete_old); $i++) {
+            $this->mimg->com_img_path = $arr_img_delete_old[$i];
+            unlink('./image_company/' . $arr_img_delete_old[$i]);
+            $this->mimg->delete_image_company();
+         }
       }
 
       redirect('Entrepreneur/Manage_company/Company_list/show_list_company');
-
    }
 
    /*
@@ -124,34 +123,36 @@ class Company_edit extends DCS_controller
     * @Create Date 2564-08-23
     * @Update Date -
     */
-    public function set_session_edit_company($data){
+   public function set_session_edit_company($data)
+   {
       $this->session->set_userdata("error_edit_company", $data);
-  }
+   }
 
-  /*
-     * check_name_company_ajax
-     * check name company by ajax
-     * @input com_name
-     * @output -
-     * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-09-03
-     * @Update -
-     */
-    function check_name_company_ajax(){
+   /*
+    * check_name_company_ajax
+    * check name company by ajax
+    * @input com_name
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-03
+    * @Update -
+   */
+   function check_name_company_ajax()
+   {
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->mcom->com_name = $this->input->post('com_name');
       $company = $this->mcom->get_by_name()->row();
-      if($company){
-         if($company->com_id != $this->input->post('com_id')){
+      if ($company) {
+         if ($company->com_id != $this->input->post('com_id')) {
             // have name company
             echo 1;
-         }else{
+         } else {
             // have name company but is old name           
             echo 2;
          }
-      }else{
+      } else {
          // don't have name company
-          echo 2;
+         echo 2;
       }
-  }
+   }
 }

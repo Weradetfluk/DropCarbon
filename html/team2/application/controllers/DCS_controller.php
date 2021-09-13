@@ -108,24 +108,6 @@ class DCS_controller extends CI_Controller
     }
 
     /*
-    * output_company
-    * show list company
-    * @input data
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-18
-    * @Update Date -
-    */
-    public function output_company($data = null)
-    {
-        $this->load->view('template/Entrepreneur/header_entrepreneur');
-        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/manage_company/v_list_company', $data);
-        $this->load->view('template/Entrepreneur/footer');
-    }
-
-    /*
     * output_regis
     * output register
     * @input data, view
@@ -148,7 +130,7 @@ class DCS_controller extends CI_Controller
     * output entrepreneur
     * @input $view, $data
     * @output -
-    * @author Naaka Punparich 62160082
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2021-07-24
     * @Update 2021-09-13
     */

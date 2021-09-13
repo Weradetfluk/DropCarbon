@@ -29,6 +29,7 @@ class Company_list extends DCS_controller
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_company'] = $this->mcom->get_all()->result();
-        $this->output_company($data);
+        $view = 'entrepreneur/manage_company/v_list_company';
+        $this->output_entrepreneur($view, $data);
     }
 }

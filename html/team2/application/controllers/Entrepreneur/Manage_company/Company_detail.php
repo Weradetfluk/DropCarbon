@@ -28,10 +28,7 @@ class Company_detail extends DCS_controller
         $this->mimg->com_img_com_id = $com_id;
         $data["obj_company"] = $this->mcom->get_by_detail()->row();
         $data["arr_image"] = $this->mimg->get_by_com_id()->result();
-        $this->load->view('template/Entrepreneur/header_entrepreneur');
-        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/manage_company/v_detail_company', $data);
-        $this->load->view('template/Entrepreneur/footer');
+        $view = 'entrepreneur/manage_company/v_detail_company';
+        $this->output_entrepreneur($view, $data);
     }
 }
