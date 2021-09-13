@@ -10,24 +10,42 @@
 -->
 
  <!-- main content -->
+ <h3 class="text-dark custom-h4-card-table text-center" style="padding-bottom: 15px; margin : 0 auto;">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
-         <div class="nav-tabs-navigation">
-             <div class="nav-tabs-wrapper">
-                 <ul class="nav nav-tabs" data-tabs="tabs">
-                     <li class="nav-item">
-                         <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
-                     </li>
-                 </ul>
+         <div class="row">
+             <div class="col-sm-6">
+                 <div class="nav-tabs-navigation">
+                     <div class="nav-tabs-wrapper">
+                         <ul class="nav nav-tabs" data-tabs="tabs">
+                             <li class="nav-item">
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- <div class="col">
+                 <h4 class="text-white custom-h4-card-table text-center">ข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
+                 </div>
+                 -->
+             <div class="col">
+                 <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
+
+                     <div class="input-group ">
+                         <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                     </div>
+                 </form>
              </div>
          </div>
      </div>
@@ -35,132 +53,15 @@
 
      <!-- Tab1 -->
      <div class="card-body">
-
-         <div class="tab-content">
-             <div class="tab-pane active" id="consider">
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="card custom-card-head-search">
-                             <div class="card-header custom-header">
-
-                                 <div class="row">
-                                     <div class="col py-2">
-                                         <h4 class="card-title text-white custom-h4-card-table">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
-                                     </div>
-                                     <div class="col-sm">
-                                         <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
-
-                                             <div class="input-group ">
-
-                                                 <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
-                                                 <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;">
-                                                     <i class="material-icons">search</i>
-                                                 </button>
-
-                                             </div>
-                                         </form>
-                                     </div>
-                                 </div>
-
-
-                             </div>
-                             <div class="card-body">
-                                 <div class="table-responsive" id="data_entre_consider">
-
-                                     <!-- table consider ajax  -->
-                                     <table class="table" style="text-align: center;" id="entre_tale">
-                                         <thead class="text-white custom-thead">
-                                             <tr class="custom-tr-header-table">
-                                                 <th class="th-custom ">ลำดับ</th>
-                                                 <th class="th-custom ">ชื่อ-นามสกุล</th>
-                                                 <th class="th-custom ">เบอร์โทร</th>
-                                                 <th class="th-custom ">อีเมล</th>
-                                                 <th class="th-custom ">ดำเนินการ</th>
-                                             </tr>
-                                         </thead>
-                                         <tbody class="list">
-
-                                             <?php
-
-                                                if (sizeof($arr_entrepreneur) == 0) {
-                                                    echo "<td colspan = '5'>";
-                                                    echo "ไม่มีข้อมูลในตารางนี้";
-                                                    echo "</td>";
-                                                } else {
-
-                                                    for ($i = 0; $i < count($arr_entrepreneur); $i++) { ?>
-                                                     <tr>
-                                                         <!-- column ลำดับ -->
-                                                         <td style='text-align: center;'>
-                                                             <?php echo ($i + 1); ?>
-                                                         </td>
-
-                                                         <!-- column ชื่อ-สกุล -->
-                                                         <td>
-                                                             <?php echo $arr_entrepreneur[$i]->ent_firstname . " " . $arr_entrepreneur[$i]->ent_lastname; ?>
-                                                         </td>
-
-
-                                                         <!-- column เบอร์โทร -->
-                                                         <td>
-                                                             <?php echo $arr_entrepreneur[$i]->ent_tel; ?>
-                                                         </td>
-
-                                                         <!-- column Email -->
-                                                         <td>
-                                                             <?php echo $arr_entrepreneur[$i]->ent_email; ?>
-                                                         </td>
-
-
-                                                         <!-- column ดำเนินการ -->
-                                                         <td style='text-align: center;'>
-
-
-                                                             <button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(  <?php echo $arr_entrepreneur[$i]->ent_id; ?>)">
-                                                                 <i class="material-icons">done</i>
-                                                             </button>
-
-
-                                                             <button class="btn btn-danger custom-btn-table" id="reject" onclick='confirm_reject("<?php echo $arr_entrepreneur[$i]->ent_id; ?>" , "<?php echo $arr_entrepreneur[$i]->ent_email;  ?>")'>
-                                                                 <i class="material-icons">
-                                                                     clear
-                                                                 </i>
-                                                             </button>
-
-
-                                                             <button class="btn btn-info custom-btn-table" onclick='view_data( <?php echo $arr_entrepreneur[$i]->ent_id; ?>)'>
-                                                                 <i class="material-icons">
-                                                                     search
-                                                                 </i>
-                                                             </button>
-                                                         </td>
-
-
-
-                                                     </tr>
-
-                                                 <?php } ?>
-                                             <?php } ?>
-
-
-                                         </tbody>
-                                     </table>
-                                 </div>
-
-                                 <div><?php echo $links; ?></div>
-
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-
+         <div class="table-responsive" id="data_entre_consider">
 
 
          </div>
+
+
+
      </div>
  </div>
-
 
 
  <!-- warnning aprove Modal  -->
@@ -255,7 +156,7 @@
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
                      <input type="hidden" id="ent_id" name="ent_id">
-                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"  placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
+                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
                      <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
              </div>
              <div class="modal-footer">
@@ -271,6 +172,45 @@
 
 
  <script>
+     $(document).ready(function() {
+
+         load_data(1);
+
+         function load_data(page, query = '') {
+             console.log(query);
+             $.ajax({
+                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider_ajax/'); ?>',
+                 method: "POST",
+                 data: {
+                     page:page,
+                     query: query
+                 },
+                 success: function(data) {
+                     $('#data_entre_consider').html(data);
+                 }
+             });
+         }
+
+         $('#search_box').keyup(function() {
+             var query = $('#search_box').val();
+             load_data(1,query);
+             // console.log(query);
+
+         });
+
+         $(document).on('click', '.page-link', function() {
+             var page = $(this).data('page_number');
+             var query = $('#search_box').val();
+             load_data(page, query);
+         });
+
+     });
+
+
+
+
+
+
      /*
       * confirm_approve
       * open modal id = Aprovemodal 
@@ -314,12 +254,11 @@
 
          $('#rejected_ent').modal();
 
-
-
          $('#email').val(ent_email);
          $('#ent_id').val(ent_id);
 
-         let admin_reson  = document.querySelectorAll('#admin_reason');
+         console.log(ent_email);
+         let admin_reson = document.querySelectorAll('#admin_reason');
          let err_message = document.querySelector('#err_message');
 
          console.log(admin_reson);
@@ -337,18 +276,18 @@
              if (tooshort) {
                  event.preventDefault();
                  err_message.style.display = 'block';
-             }else{
-                $('#rejected_ent').modal('toggle');
-                err_message.style.display = 'none';
-             swal({
-                 title: "ปฏิเสธสำเร็จ",
-                 text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
-                 type: "success",
-                 showConfirmButton: false,
-                 timer: 3000,
-             }, function() {
-                 location.reload();
-             });
+             } else {
+                 $('#rejected_ent').modal('toggle');
+                 err_message.style.display = 'none';
+                 swal({
+                     title: "ปฏิเสธสำเร็จ",
+                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                     location.reload();
+                 });
              }
 
 
@@ -390,5 +329,4 @@
              }
          });
      }
-
  </script>

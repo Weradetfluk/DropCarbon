@@ -45,12 +45,13 @@ body{
 
   .custom-h4-card-table{
       font-family: 'Prompt', sans-serif !important;
+      margin-bottom: 10px !important;
   }
 
   .custom-search{
-      background-color:white !important; 
-      border-radius: 10px !important; 
-      width: 200px !important;
+      background-color: white !important; 
+      border-radius: 15px !important; 
+      padding-left: 20px;
   }
 
 
@@ -67,7 +68,6 @@ body{
 
 
   .custom-form-search{
-      width: 250px !important; 
       float:right !important;
   }
 

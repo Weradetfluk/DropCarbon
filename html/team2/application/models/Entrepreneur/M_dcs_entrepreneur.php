@@ -54,9 +54,11 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     */
     function get_search($search, $number_status)
     {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_entrepreneur where ent_firstname =  '$search'  And ent_status = '$number_status' ";
-
-        $query = $this->db->query($sql);
+        $this->db->select('*');
+        $this->db->from('dcs_entrepreneur');
+        $this->db->like('ent_firstname', $search,); 
+        $this->db->where("ent_status = '$number_status'");
+        $query = $this->db->get();
         return $query;
     }
 

@@ -8,70 +8,138 @@
 * @Create Date 2564-08-08
 */ 
 -->
+
+<style>
+    .card {
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, .05);
+        background-color: #fff;
+        margin-bottom: 30px;
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
+    }
+
+    .border-left-yellow {
+        border-left: 4px solid #fba004;
+    }
+
+    .border-left-green {
+        border-left: 4px solid #4caf50;
+    }
+
+    .border-left-red {
+        border-left: 4px solid #f44336;
+    }
+
+    .border-left-purple {
+        border-left: 4px solid #8e24aa;
+    }
+
+    .text-title {
+        color: #8898aa;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .text-amount {
+        font-weight: 600;
+    }
+
+    .icon-shape {
+        border-radius: 50%;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;
+    }
+
+    .icon-area {
+        background: #fba004;
+    }
+    .icon-purple{
+        background: #8e24aa;
+    }
+</style>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body border-left-yellow">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">รออนุมัติ</p>
+                                <h2 class="card-text text-amount" id="consider_ent"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-area">
+                                    <i class="material-icons">hourglass_bottom</i>
+                                </div>
+                            </div>
                         </div>
-                        <p class="card-category">รออนุมัติ</p>
-                        <h3 class="card-title" id="consider_ent">
-
-                        </h3>
                     </div>
-
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon header-green">
-                        <div class="card-icon">
-                            <i class="material-icons">done</i>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body border-left-green">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">อนุมัติแล้ว</p>
+                                <h2 class="card-text text-amount" id="approve_ent"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape bg-success">
+                                <i class="material-icons">check</i>
+                                </div>
+                            </div>
                         </div>
-                        <p class="card-category">อนุมัติ</p>
-                        <h3 class="card-title" id="approve_ent">
-
-                        </h3>
                     </div>
-
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">clear</i>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body border-left-red">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">ถูกปฏิเสธ</p>
+                                <h2 class="card-text text-amount" id="reject_ent"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape bg-danger">
+                                <i class="material-icons">thumb_down_alt</i>
+                                </div>
+                            </div>
                         </div>
-                        <p class="card-category">ปฏิเสธ</p>
-                        <h3 class="card-title" id="reject_ent">
-
-                        </h3>
                     </div>
-
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card card-stats">
-                    <div class="card-header card-header-primary card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body border-left-purple">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">ถูกบล็อค</p>
+                                <h2 class="card-text text-amount" id="block_ent"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-purple">
+                                <i class="material-icons">block</i>
+                                </div>
+                            </div>
                         </div>
-                        <p class="card-category">ถูกบล็อค</p>
-                        <h3 class="card-title" id="block_ent">
-
-                        </h3>
                     </div>
-
                 </div>
             </div>
         </div>
 
 
-    
-<script>
+
+        <script>
             $(document).ready(function() {
                 get_data_card_entrepreneur()
             });
@@ -91,7 +159,7 @@
                     type: 'post',
                     url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/get_data_card_entrepreneur_ajax'); ?>',
                     dataType: 'JSON',
-                    success: function(json_data) {  
+                    success: function(json_data) {
 
                         $("#consider_ent").text(json_data[0].ent_consider);
 
@@ -110,10 +178,3 @@
 
             }
         </script>
-
-
-
-
-
-
-       
