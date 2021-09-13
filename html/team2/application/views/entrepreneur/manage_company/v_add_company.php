@@ -62,6 +62,14 @@
                                         <input type="text" id="com_name" name="com_name" class="form-control" placeholder="ใส่ชื่อสถานที่" onkeyup="check_name_company_ajax()" required>
                                         <span class="text-danger" id="error_com_name"></span>
                                     </div>
+                                    <div class="col-lg-3">
+                                        <label for="com_cat_id">หมวดหมู่</label>
+                                        <select name="com_cat_id" id="com_cat_id" class="form-control">
+                                            <?php for($i = 0; $i < count($arr_com_cat); $i++){?>
+                                                <option value="<?php echo $i+1?>"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -69,7 +77,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="com_description">รายละเอียดสถานที่</label>
-                                        <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px;" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
+                                        <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
                                     </div>
                                 </div>
                             </div>

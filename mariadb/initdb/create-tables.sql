@@ -48,14 +48,23 @@ INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_username`, `adm_password`, `
 
 -- --------------------------------------------------------
 
-CREATE TABLE dcs_com_category (
-  com_cat_id int(10) NOT NULL primary key AUTO_INCREMENT,
-  com_cat_name varchar(50)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `dcs_com_category` (
+  `com_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT,
+  `com_cat_name` varchar(50)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Table structure for table `dcs_company`
 --
 
+--
+-- Dumping data for table `dcs_admin`
+--
+
+INSERT INTO `dcs_com_category` (`com_cat_id`, `com_cat_name`) VALUES
+(1, 'สถานที่ท่องเที่ยว'),
+(2, 'สถานที่พักผ่อน'),
+(3, 'ร้านอาหาร'),
+(4, 'อื่น ๆ');
 
 -- --------------------------------------------------------
 
@@ -150,7 +159,9 @@ CREATE TABLE `dcs_company` (
   `com_description` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `com_ent_id` int(10),
   `com_tel` varchar(10),
-   FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id)
+  `com_cat_id` int(10),
+   FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id),
+   FOREIGN KEY (com_cat_id) REFERENCES dcs_com_category(com_cat_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -158,11 +169,11 @@ CREATE TABLE `dcs_company` (
 --
 
 INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_firstname`, `ent_lastname`, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
-(1, 'สุวพัฒน์', 'เสาวรส', 'Entrepreneur1', 'ent1_1234', NULL, '0922563953', '777777777777', '62160340@go.buu.ac.th', 2, 1),
-(2, 'วีรเดช', 'นพสมบูรณ์', 'Entrepreneur2', 'ent2_1234', NULL, '0852812191', '1249900858895', '62160110@gmail.com', 1, 1);
+(1, 'ณเอก', 'ปุณย์ปริชญ์', 'Entrepreneur1', 'ent1_1234', '2001-07-17', '0955572662', '777777777777', '62160082@go.buu.ac.th', 2, 1),
+(2, 'อัจฉราภรณ์', 'พรพัฒนทรัพย์', 'Entrepreneur2', 'ent2_1234', '2001-02-14', '0991584644', '1249900858895', '62160344@gmail.com', 1, 1);
 
-INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`, `com_tel`) VALUES
-(1, 'โรงแรมพักร้อน', 0, 13.2622, 101.174, 1, 'หมู่เกาะสิมิลัน เป็นหมู่เกาะเล็ก ๆ ในทะเลอันดามัน มีทั้งหมด 9 เกาะ เรียงลำดับจากเหนือมาใต้ ได้แก่ เกาะหูยง เกาะปายัง เกาะปาหยัน เกาะเมี่ยง (มี 2 เกาะติดกัน) เกาะปายู เกาะหัวกะโหลก (เกาะบอน) เกาะสิมิลัน และเกาะบางู โดยหมู่เกาะเหล่านี้ได้รับการยกย่องว่าเป็นหมู่เกาะที่มีความงาม ทั้งบนบกและใต้น้ำที่ยังคงความสมบูรณ์ของท้องทะเล สามารถดำน้ำได้ทั้งน้ำตื้นและน้ำลึก มีปะการังที่มีสีสันสวยงามหลากชนิด ปลาหลากสีสันและหายาก', 1, '0905530622');
+INSERT INTO `dcs_company` (`com_id`, `com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`, `com_tel`, `com_cat_id`) VALUES
+(1, 'โรงแรมพักร้อน', 0, 13.2622, 101.174, 1, 'หมู่เกาะสิมิลัน เป็นหมู่เกาะเล็ก ๆ ในทะเลอันดามัน มีทั้งหมด 9 เกาะ เรียงลำดับจากเหนือมาใต้ ได้แก่ เกาะหูยง เกาะปายัง เกาะปาหยัน เกาะเมี่ยง (มี 2 เกาะติดกัน) เกาะปายู เกาะหัวกะโหลก (เกาะบอน) เกาะสิมิลัน และเกาะบางู โดยหมู่เกาะเหล่านี้ได้รับการยกย่องว่าเป็นหมู่เกาะที่มีความงาม ทั้งบนบกและใต้น้ำที่ยังคงความสมบูรณ์ของท้องทะเล สามารถดำน้ำได้ทั้งน้ำตื้นและน้ำลึก มีปะการังที่มีสีสันสวยงามหลากชนิด ปลาหลากสีสันและหายาก', 1, '0905530622', 1);
 
 INSERT INTO `dcs_tourist` (`tus_id`, `tus_firstname`, `tus_lastname`, `tus_username`, `tus_password`, `tus_birthdate`, `tus_tel`, `tus_score`, `tus_email`, `tus_cur_score`, `tus_status`, `tus_pre_id`) VALUES
 (1, 'สมชาย', 'ชาติทหาร', 'Tourist1', 'tou1_1234', '2021-09-05', '0901111111', NULL, '62160110@go.buu.ac.th', NULL, 1, 1);

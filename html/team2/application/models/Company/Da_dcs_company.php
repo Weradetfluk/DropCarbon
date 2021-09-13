@@ -18,6 +18,7 @@ class Da_dcs_company extends DCS_model{
 	public $com_status;
 	public $com_num_visitor;
 	public $com_ent_id;
+    public $com_cat_id;
 
 	/*
     * @author Suwapat Saowarod 62160340
@@ -37,9 +38,9 @@ class Da_dcs_company extends DCS_model{
     * @Update -
     */
 	public function insert_company(){
-		$sql = "INSERT INTO `dcs_company`(`com_name`, `com_lat`, `com_lon`, `com_description`, `com_ent_id`, `com_tel`) 
-				VALUES (?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_description, $this->com_ent_id, $this->com_tel));
+		$sql = "INSERT INTO `dcs_company`(`com_name`, `com_lat`, `com_lon`, `com_description`, `com_ent_id`, `com_tel`, `com_cat_id`) 
+				VALUES (?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_description, $this->com_ent_id, $this->com_tel, $this->com_cat_id));
 	}
 
 	/*
@@ -73,9 +74,10 @@ class Da_dcs_company extends DCS_model{
 					`com_lat`=?,
 					`com_lon`=?,
 					`com_tel`=?,
-					`com_description`=?
+					`com_description`=?,
+                    `com_cat_id`=?
 				WHERE com_id=?";
-		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_id));
+		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_id));
 	}
 
 	/*

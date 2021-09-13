@@ -26,7 +26,8 @@ class Entrepreneur_edit extends DCS_controller
       $this->ment->ent_id=$this->session->userdata("entrepreneur_id");
       $data['arr_ent']=$this->ment->get_entrepreneur_by_id()->result();
       $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
-      $this->output_edit_entrepreneur($data);
+      $view = 'entrepreneur/manage_entrepreneur/v_edit_entrepreneur';
+      $this->output_entrepreneur($view, $data);
    }
 
    /*

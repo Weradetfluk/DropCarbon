@@ -144,19 +144,20 @@ class DCS_controller extends CI_Controller
     }
 
     /*
-    * output_edit_entrepreneur
-    * show edit profile page for entrepreneur
-    * @input $data
+    * output_entrepreneur
+    * output entrepreneur
+    * @input $view, $data
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2021-07-24
+    * @Update 2021-09-13
     */
-    public function output_edit_entrepreneur($data)
+    public function output_entrepreneur($view=null, $data = null)
     {
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/manage_entrepreneur/v_edit_entrepreneur', $data);
+        $this->load->view($view, $data);
         $this->load->view('template/Entrepreneur/footer');
     }
 

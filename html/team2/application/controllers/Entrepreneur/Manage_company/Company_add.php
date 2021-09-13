@@ -21,11 +21,10 @@ class Company_add extends DCS_controller
     */
     public function show_add_company()
     {
-        $this->load->view('template/Entrepreneur/header_entrepreneur');
-        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view('entrepreneur/manage_company/v_add_company');
-        $this->load->view('template/Entrepreneur/footer');
+        $this->load->model('Company/M_dcs_com_category', 'mcat');
+        $data['arr_com_cat'] = $this->mcat->get_all()->result();
+        $view = 'entrepreneur/manage_company/v_add_company';
+        $this->output_entrepreneur($view, $data);
     }
 
     /*
@@ -47,6 +46,7 @@ class Company_add extends DCS_controller
         $this->mcom->com_description = $this->input->post('com_description');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $this->mcom->com_tel = $this->input->post('com_tel');
+        $this->mcom->com_cat_id = $this->input->post('com_cat_id');
     
         $this->mcom->insert_company();
         $this->set_session_add_company('success');

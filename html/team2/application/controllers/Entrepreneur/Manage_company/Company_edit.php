@@ -40,18 +40,16 @@ class Company_edit extends DCS_controller
    {
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->load->model('Company/M_dcs_com_image', 'mimg');
+      $this->load->model('Company/M_dcs_com_category', 'mcat');
       // $this->load->model('Company/dcs_com_image', 'mimg');
       $this->mcom->com_id = $com_id;
       $this->mimg->com_img_com_id = $com_id;
       // $this->mimg->dcs_com_image = $com_id;
       $data['arr_company'] = $this->mcom->get_by_id()->result();
       $data['arr_image'] = $this->mimg->get_by_com_id()->result();
-      //   print_r($data['arr_company']);
-      $this->load->view('template/Entrepreneur/header_entrepreneur');
-      $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-      $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-      $this->load->view('entrepreneur/manage_company/v_edit_company', $data);
-      $this->load->view('template/Entrepreneur/footer');
+      $data['arr_com_cat'] = $this->mcat->get_all()->result();
+      $view = 'entrepreneur/manage_company/v_edit_company';
+      $this->output_entrepreneur($view, $data);
    }
 
    /*
@@ -65,7 +63,6 @@ class Company_edit extends DCS_controller
     */
    public function edit_company()
    {
-
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->load->model('Company/M_dcs_com_image', 'mimg');
       $this->mcom->com_name = $this->input->post('com_name');
@@ -74,6 +71,7 @@ class Company_edit extends DCS_controller
       $this->mcom->com_lat = $this->input->post('com_lat');
       $this->mcom->com_lon = $this->input->post('com_lon');
       $this->mcom->com_tel = $this->input->post('com_tel');
+      $this->mcom->com_cat_id = $this->input->post('com_cat_id');
       // save data company to database
       $this->mcom->update_company();
       $this->set_session_edit_company('success'); 

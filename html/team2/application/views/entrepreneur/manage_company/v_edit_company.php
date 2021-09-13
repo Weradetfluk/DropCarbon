@@ -58,6 +58,19 @@
                                         <input type="text" id="com_name" name="com_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อสถานที่" value="<?php echo $arr_company[0]->com_name; ?>" onkeyup="check_name_company_ajax()" required>
                                         <span class="text-danger" id="error_com_name"></span>
                                     </div>
+                                    <div class="col-lg-3">
+                                        <label for="com_cat_id">หมวดหมู่</label>
+                                        <select name="com_cat_id" id="com_cat_id" class="form-control">
+                                            <?php for($i = 0; $i < count($arr_com_cat); $i++){?>
+                                                <?php if($i+1 == $arr_company[0]->com_cat_id){?>
+                                                    <option value="<?php echo $i+1?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
+                                                <?php }?>
+                                                <?php if($i+1 != $arr_company[0]->com_cat_id){?>
+                                                    <option value="<?php echo $i+1?>"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
+                                                <?php }?>
+                                            <?php }?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
