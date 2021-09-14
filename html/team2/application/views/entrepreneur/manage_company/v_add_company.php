@@ -147,7 +147,7 @@
 </div>
 </div>
 
-<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
     /*

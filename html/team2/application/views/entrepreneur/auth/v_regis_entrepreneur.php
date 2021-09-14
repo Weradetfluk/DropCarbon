@@ -131,8 +131,8 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="ent_username">ชื่อผู้ใช้</label>
-                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
-                    <span id="usernameavailable"></span>
+                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
+                    <span id="usernameavailable" style="color: red;"></span>
                 </div>
             </div>
             <div class="row">
@@ -218,7 +218,7 @@
      * @Create Date 2564-08-18
      * @Update -
      */
-    function check_username() {
+    function check_username_ajax() {
         let ent_username = $('#ent_username').val();
         $.ajax({
             url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_username_entrepreneur_ajax'); ?>',
@@ -229,9 +229,6 @@
             success: function(data) {
                 console.log(data);
                 if (data == 1) {
-                    $("#usernameavailable").css({
-                        "color": "red"
-                    });
                     $('#usernameavailable').html("ชื่อนี้ถูกใช้เเล้ว");
                     check_name = 1;
                     check_btn_submit();

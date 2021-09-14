@@ -21,7 +21,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
     </a>
 </nav>
 
-<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.JPEG');   background-repeat: no-repeat;   background-size: cover;">
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">

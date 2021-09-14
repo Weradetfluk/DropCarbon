@@ -8,84 +8,375 @@
 * @Create Date 2564-07-18
 */ 
 -->
-
 <div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card" style="border-radius: 25px;">
-          <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
-            <div class="row">
-              <div class="col">
-                <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
+  <div class="card card-nav-tabs custom-card-tab">
+    <div class="card-header custom-header-tab">
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" href="#tab_all" data-toggle="tab" onclick="change_tab_number(1)">สถานที่ทั้งหมด</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" href="#tab_pending" data-toggle="tab" onclick="change_tab_number(2)">สถานที่ที่รอการอนุมัติ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" href="#tab_approved" data-toggle="tab" onclick="change_tab_number(3)">สถานที่ที่อนุมัติเเล้ว</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" href="#tab_reject" data-toggle="tab" onclick="change_tab_number(4)">สถานที่ที่โดนปฏิเสธ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+
+        <!-- tab show all company -->
+        <div class="tab-pane <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" id="tab_all">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="border-radius: 25px;">
+                <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
+                    </div>
+                    <div class="col">
+                      <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped " style="text-align: center;">
+                      <thead class="text-white" style="background-color: #e4a487; text-align: center;">
+                        <tr>
+                          <th>ลำดับ</th>
+                          <th>ชื่อสถานที่</th>
+                          <th>รายละเอียด</th>
+                          <th>สถานะ</th>
+                          <th>ดำเนินการ</th>
+                        </tr>
+                      </thead>
+                      <tbody class="list">
+                        <?php if (sizeof($arr_company) == 0) {
+                          echo "<td colspan = '5'>";
+                          echo "ไม่มีข้อมูลในตารางนี้";
+                          echo "</td>";
+                        } else {
+                          for ($i = 0; $i < count($arr_company); $i++) { ?>
+                            <tr>
+                              <td><?php echo $i + 1; ?></td>
+                              <td><?php echo $arr_company[$i]->com_name; ?></td>
+                              <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
+                                <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
+                              <?php } ?>
+                              <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
+                                <td><?php echo $arr_company[$i]->com_description; ?></td>
+                              <?php } ?>
+
+                              <?php if ($arr_company[$i]->com_status == 1) { ?>
+                                <td style="color: #CCCC00;">รออนุมัติ</td>
+                              <?php } ?>
+                              <?php if ($arr_company[$i]->com_status == 2) { ?>
+                                <td style="color: #669900;">อนุมัติ</td>
+                              <?php } ?>
+                              <?php if ($arr_company[$i]->com_status == 3) { ?>
+                                <td style="color: red;">ปฏิเสธ</td>
+                              <?php } ?>
+
+                              <td style='text-align: center;'>
+                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                  <span class="material-icons">edit</span>
+                                </a>
+                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                  <span class="material-icons">clear</span>
+                                </button>
+                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                  <span class="material-icons">search</span>
+                                </a>
+                              </td>
+                            </tr>
+                          <?php } ?>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
-              <div class="col">
-                <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
-              </div>
-            </div>
-          </div>
-          <br>
-
-          <div class="card-body">
-            <div class="table-responsive" id="data_entre">
-              <table class="table table-hover table-striped " style="text-align: center;">
-                <thead class="text-white" style="background-color: #e4a487; text-align: center;">
-                  <tr>
-                    <th>ลำดับ</th>
-                    <th>ชื่อสถานที่</th>
-                    <th>รายละเอียด</th>
-                    <th>สถานะ</th>
-                    <th>ดำเนินการ</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  <?php if (sizeof($arr_company) == 0) {
-                    echo "<td colspan = '5'>";
-                    echo "ไม่มีข้อมูลในตารางนี้";
-                    echo "</td>";
-                  } else {
-                    for ($i = 0; $i < count($arr_company); $i++) { ?>
-                      <tr>
-                        <td><?php echo $i + 1; ?></td>
-                        <td><?php echo $arr_company[$i]->com_name; ?></td>
-                        <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
-                          <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
-                        <?php } ?>
-                        <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
-                          <td><?php echo $arr_company[$i]->com_description; ?></td>
-                        <?php } ?>
-
-                        <!-- <td><?php echo $arr_company[$i]->com_description; ?></td> -->
-
-                        <?php if ($arr_company[$i]->com_status == 1) { ?>
-                          <td style="color: #CCCC00;">รออนุมัติ</td>
-                        <?php } ?>
-                        <?php if ($arr_company[$i]->com_status == 2) { ?>
-                          <td style="color: #669900;">อนุมัติ</td>
-                        <?php } ?>
-                        <?php if ($arr_company[$i]->com_status == 3) { ?>
-                          <td style="color: red;">ปฏิเสธ</td>
-                        <?php } ?>
-
-                        <td style='text-align: center;'>
-                          <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
-                            <span class="material-icons">edit</span>
-                          </a>
-                          <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
-                            <span class="material-icons">clear</span>
-                          </button>
-                          <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
-                            <span class="material-icons">search</span>
-                          </a>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                  <?php } ?>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
+
+        <!-- tab show pending company -->
+        <div class="tab-pane <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" id="tab_pending">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="border-radius: 25px;">
+                <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
+                    </div>
+                    <div class="col">
+                      <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped " style="text-align: center;">
+                      <thead class="text-white" style="background-color: #e4a487; text-align: center;">
+                        <tr>
+                          <th>ลำดับ</th>
+                          <th>ชื่อสถานที่</th>
+                          <th>รายละเอียด</th>
+                          <th>สถานะ</th>
+                          <th>ดำเนินการ</th>
+                        </tr>
+                      </thead>
+                      <tbody class="list">
+                        <?php 
+                        $count_pending = 0;
+                        for ($i = 0; $i < count($arr_company); $i++) {
+                          if($arr_company[$i]->com_status == 1){
+                            $count_pending++;
+                          }
+                        }
+                        
+                        if (sizeof($arr_company) == 0 || $count_pending == 0) {
+                          echo "<td colspan = '5'>";
+                          echo "ไม่มีข้อมูลในตารางนี้";
+                          echo "</td>";
+                        } else {
+                          for ($i = 0; $i < count($arr_company); $i++) { 
+                            if($arr_company[$i]->com_status == 1){ ?>                            
+                              <tr>
+                                <td><?php echo $i + 1; ?></td>
+                                <td><?php echo $arr_company[$i]->com_name; ?></td>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
+                                  <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
+                                <?php } ?>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
+                                  <td><?php echo $arr_company[$i]->com_description; ?></td>
+                                <?php } ?>
+
+                                <?php if ($arr_company[$i]->com_status == 1) { ?>
+                                  <td style="color: #CCCC00;">รออนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 2) { ?>
+                                  <td style="color: #669900;">อนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 3) { ?>
+                                  <td style="color: red;">ปฏิเสธ</td>
+                                <?php } ?>
+
+                                <td style='text-align: center;'>
+                                  <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                    <span class="material-icons">edit</span>
+                                  </a>
+                                  <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                    <span class="material-icons">clear</span>
+                                  </button>
+                                  <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                    <span class="material-icons">search</span>
+                                  </a>
+                                </td>
+                              </tr>
+                            <?php } ?>
+                          <?php } ?>
+                          <?php $count_pending = 0; ?>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab show approved company -->
+        <div class="tab-pane <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" id="tab_approved">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="border-radius: 25px;">
+                <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
+                    </div>
+                    <div class="col">
+                      <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped " style="text-align: center;">
+                      <thead class="text-white" style="background-color: #e4a487; text-align: center;">
+                        <tr>
+                          <th>ลำดับ</th>
+                          <th>ชื่อสถานที่</th>
+                          <th>รายละเอียด</th>
+                          <th>สถานะ</th>
+                          <th>ดำเนินการ</th>
+                        </tr>
+                      </thead>
+                      <tbody class="list">
+                        <?php 
+                        $count_approved = 0;
+                        for ($i = 0; $i < count($arr_company); $i++) {
+                          if($arr_company[$i]->com_status == 2){
+                            $count_approved++;
+                          }
+                        }
+                        
+                        if (sizeof($arr_company) == 0 || $count_approved == 0) {
+                          echo "<td colspan = '5'>";
+                          echo "ไม่มีข้อมูลในตารางนี้";
+                          echo "</td>";
+                        } else {
+                          for ($i = 0; $i < count($arr_company); $i++) { 
+                            if($arr_company[$i]->com_status == 2){ ?>                            
+                              <tr>
+                                <td><?php echo $i + 1; ?></td>
+                                <td><?php echo $arr_company[$i]->com_name; ?></td>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
+                                  <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
+                                <?php } ?>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
+                                  <td><?php echo $arr_company[$i]->com_description; ?></td>
+                                <?php } ?>
+
+                                <?php if ($arr_company[$i]->com_status == 1) { ?>
+                                  <td style="color: #CCCC00;">รออนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 2) { ?>
+                                  <td style="color: #669900;">อนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 3) { ?>
+                                  <td style="color: red;">ปฏิเสธ</td>
+                                <?php } ?>
+
+                                <td style='text-align: center;'>
+                                  <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                    <span class="material-icons">edit</span>
+                                  </a>
+                                  <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                    <span class="material-icons">clear</span>
+                                  </button>
+                                  <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                    <span class="material-icons">search</span>
+                                  </a>
+                                </td>
+                              </tr>
+                            <?php } ?>
+                          <?php } ?>
+                          <?php $count_approved = 0; ?>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab show reject company -->
+        <div class="tab-pane <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" id="tab_reject">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="border-radius: 25px;">
+                <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 15px;">
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-white" style="margin-top: 15px; font-family: 'Prompt', sans-serif !important;">ตารางจัดการสถานที่</h4>
+                    </div>
+                    <div class="col">
+                      <a class="btn btn-info" style="float: right; border-radius: 15px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+                    </div>
+                  </div>
+                </div>
+                <br>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped " style="text-align: center;">
+                      <thead class="text-white" style="background-color: #e4a487; text-align: center;">
+                        <tr>
+                          <th>ลำดับ</th>
+                          <th>ชื่อสถานที่</th>
+                          <th>รายละเอียด</th>
+                          <th>สถานะ</th>
+                          <th>ดำเนินการ</th>
+                        </tr>
+                      </thead>
+                      <tbody class="list">
+                        <?php 
+                        $count_reject = 0;
+                        for ($i = 0; $i < count($arr_company); $i++) {
+                          if($arr_company[$i]->com_status == 3){
+                            $count_reject++;
+                          }
+                        }
+                        
+                        if (sizeof($arr_company) == 0 || $count_reject == 0) {
+                          echo "<td colspan = '5'>";
+                          echo "ไม่มีข้อมูลในตารางนี้";
+                          echo "</td>";
+                        } else {
+                          for ($i = 0; $i < count($arr_company); $i++) { 
+                            if($arr_company[$i]->com_status == 3){ ?>                            
+                              <tr>
+                                <td><?php echo $i + 1; ?></td>
+                                <td><?php echo $arr_company[$i]->com_name; ?></td>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 40) { ?>
+                                  <td><?php echo iconv_substr($arr_company[$i]->com_description, 0, 40, "UTF-8") . "..."; ?></td>
+                                <?php } ?>
+                                <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 40) { ?>
+                                  <td><?php echo $arr_company[$i]->com_description; ?></td>
+                                <?php } ?>
+
+                                <?php if ($arr_company[$i]->com_status == 1) { ?>
+                                  <td style="color: #CCCC00;">รออนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 2) { ?>
+                                  <td style="color: #669900;">อนุมัติ</td>
+                                <?php } ?>
+                                <?php if ($arr_company[$i]->com_status == 3) { ?>
+                                  <td style="color: red;">ปฏิเสธ</td>
+                                <?php } ?>
+
+                                <td style='text-align: center;'>
+                                  <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                    <span class="material-icons">search</span>
+                                  </a>
+                                </td>
+                              </tr>
+                            <?php } ?>
+                          <?php } ?>
+                          <?php $count_reject = 0; ?>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -177,6 +468,26 @@
       },
       error: function() {
         alert('ajax error working');
+      }
+    });
+  }
+
+  /*
+   * change_tab_number
+   * change tab session tab_number_company
+   * @input tab_company
+   * @output -
+   * @author Suwapat Saowarod 62160340
+   * @Create Date 2564-09-14
+   * @Update -
+   */
+  function change_tab_number(tab_company) {
+    $.ajax({
+      url: '<?php echo site_url('Entrepreneur/Manage_company/Company_list/change_tab_company_ajax/') ?>',
+      method: 'POST',
+      dataType: 'JSON',
+      data: {
+        tab_company: tab_company
       }
     });
   }

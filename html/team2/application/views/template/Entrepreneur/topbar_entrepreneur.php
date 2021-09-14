@@ -5,6 +5,7 @@
      exit();
  }
  ?>
+<div class="wrapper "> 
 <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: fixed;">
         <div class="container-fluid">
@@ -38,7 +39,7 @@
         </div>
       </nav>
 
-<div class="wrapper ">
+
     <div class="sidebar" data-color="green" data-image="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/img/sidebar-1.jpg">
    
       <div class="sidebar-wrapper" style="margin-top: 70px;">
