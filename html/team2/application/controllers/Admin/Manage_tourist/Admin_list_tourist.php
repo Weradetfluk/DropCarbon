@@ -51,7 +51,7 @@ class Admin_list_tourist extends DCS_controller
   public function show_data_tourist()
   {
  
-    $_SESSION['tab_number'] = 4;
+    $_SESSION['tab_number'] = 6;
     
     $this->load->model('Tourist/M_dcs_tourist', 'mdct');
 

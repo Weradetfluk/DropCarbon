@@ -36,11 +36,21 @@ class Admin_approval_entrepreneur extends DCS_controller
 
   public function show_data_consider()
   {
-    $_SESSION['tab_number'] = 3; //set tab number in topbar_admin.php
+    $_SESSION['tab_number'] = 5; //set tab number in topbar_admin.php
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_consider', NULL, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
 
 
+
+  /*
+      * show_data_consider_ajax
+      * get all data entrepreneur not approve and show table
+      * @input
+      * @output -
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-09-14
+      * @Update Date -
+      */
 
 
   public function show_data_consider_ajax()

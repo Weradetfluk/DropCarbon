@@ -52,12 +52,8 @@ class Admin_approval_company extends DCS_controller
   public function show_data_consider()
   {
 
-    $_SESSION['tab_number'] = 1; 
+    $_SESSION['tab_number'] = 3; 
 
-    if (!isset($_SESSION['tab_number'])) {
-      $_SESSION['tab_number'] = 1;
-    }
-    
     $number_status = 1;
 
     if (isset($_POST['search'])) {

@@ -8,6 +8,9 @@ if (!$this->session->has_userdata("Admin_name")) {
   exit();
 }
 
+if (!isset($_SESSION['tab_number'])) {
+  $_SESSION['tab_number'] = 1;
+}
 
 ?>
 
@@ -57,32 +60,44 @@ if (!$this->session->has_userdata("Admin_name")) {
   <div class="sidebar" data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>" id="home">
+      <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+            <i class="material-icons">store</i>
+            <p>แผงควบคุมผู้ดูแลระบบ</p>
+          </a>
+        </li>
+        <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+            <i class="material-icons">store</i>
+            <p>จัดการแบรนเนอร์</p>
+          </a>
+        </li>
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="home">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
             <i class="material-icons">store</i>
             <p>จัดการสถานที่</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
           <a class="nav-link" href="#">
             <i class="material-icons">calendar_today</i>
             <p>จัดการกิจกรรม</p>
           </a>
         </li>
-        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="ent_menu">
+        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" id="ent_menu">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?>">
             <i class="material-icons">assignment_ind</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active"; ?>">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">perm_identity</i>
             <p>จัดการนักท่องเที่ยว</p>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active"; ?>">
           <a class="nav-link" href="#">
             <i class="material-icons">point_of_sale</i>
             <p>จัดการโปรโมชัน</p>
