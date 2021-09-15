@@ -9,7 +9,8 @@ include_once "Da_dcs_com_image.php";
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-08-05
 */
-class M_dcs_com_image extends Da_dcs_com_image{
+class M_dcs_com_image extends Da_dcs_com_image
+{
 
     /*
     * @author Suwapat Saowarod 62160340
@@ -28,9 +29,27 @@ class M_dcs_com_image extends Da_dcs_com_image{
     * @Create Date 2564-08-05
     * @Update -
     */
-    public function get_by_com_id(){
+    public function get_by_com_id()
+    {
         $sql = "SELECT * FROM dcs_com_image
                 WHERE com_img_com_id = ?";
         return $this->db->query($sql, array($this->com_img_com_id));
+    }
+
+
+    /*
+    * get_all
+    * get data form dcs company image
+    * @input -
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-09-14
+    */
+    function get_all()
+    {
+        $sql = "SELECT * 
+               from dcs_com_image";
+        $query = $this->db->query($sql);
+        return $query;
     }
 }

@@ -19,6 +19,6 @@ class Landing_page extends DCS_controller
     */
     public function index()
     {
-        $this->output_landing_page();
+        $this->output_landing_page('landing_page/register/v_landing_page');
     }
 }

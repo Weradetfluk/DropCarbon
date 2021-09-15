@@ -5,7 +5,7 @@
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <!-- ตัวหมุนรูปของ Banner -->
     <ol class="carousel-indicators">
-        <li data-bs-target="#template-mo-zay-hero-carousel"  data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
     </ol>
@@ -209,14 +209,22 @@
 
                     <!-- รูปในการ์ดที่ 1 -->
                     <a href="">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                        <?php if (count($arr_image) == 0) { ?>
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                        <?php } else { ?>
+                            <img src="<?php echo base_url() . 'image_company/' . $arr_image[0]->com_img_path; ?>" class="card-img-top" alt="...">
+                        <?php } ?>
                     </a>
                     <!-- ข้อความในการ์ดที่ 1 -->
                     <div class="card-body">
-                        <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
-                        <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                        <?php if (count($arr_com) == 0) { ?>
+                            <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
+                            <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                        <?php } else { ?>
+                            <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_com[0]->com_name ?></a>
+                            <p class="card-text"><?php echo $arr_com[0]->com_description ?></p>
+                        <?php } ?>
                     </div>
-
                 </div>
             </div>
 
@@ -231,14 +239,22 @@
 
                             <!-- รูปในการ์ดที่ 2 -->
                             <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./cejan.jpg" class="card-img-top" alt="...">
+                                <?php if (count($arr_image) <= 1) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./cejan.jpg" class="card-img-top" alt="...">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[1]->com_img_path; ?>" class="card-img-top" alt="...">
+                                <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 2 -->
                             <div class="card-body">
-                                <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
-                                <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
+                                <?php if (count($arr_com) <= 1) { ?>
+                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
+                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
+                                <?php } else { ?>
+                                    <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_com[1]->com_name ?></a>
+                                    <p class="card-text"><?php echo $arr_com[1]->com_description ?></p>
+                                <?php } ?>
                             </div>
-
                         </div>
                     </div>
 
@@ -250,14 +266,22 @@
 
                             <!-- รูปในการ์ดที่ 3 -->
                             <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
+                                <?php if (count($arr_image) <= 2) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[2]->com_img_path; ?>" class="card-img-top" alt="...">
+                                <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 3 -->
                             <div class="card-body">
-                                <a href="#" class="h2 text-decoration-none text-dark">บางละมุง</a>
-                                <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
+                                <?php if (count($arr_com) <= 2) { ?>
+                                    <a href="#" class="h2 text-decoration-none text-dark">บางละมุง</a>
+                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
+                                <?php } else { ?>
+                                    <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_com[2]->com_name ?></a>
+                                    <p class="card-text"><?php echo $arr_com[2]->com_description ?></p>
+                                <?php } ?>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -270,14 +294,22 @@
 
                             <!-- รูปในการ์ดที่ 4 -->
                             <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
+                                <?php if (count($arr_image) <= 3) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[3]->com_img_path; ?>" class="card-img-top" alt="...">
+                                <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 4 -->
                             <div class="card-body">
-                                <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
-                                <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
+                                <?php if (count($arr_com) <= 3) { ?>
+                                    <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
+                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
+                                <?php } else { ?>
+                                    <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_com[3]->com_name ?></a>
+                                    <p class="card-text"><?php echo $arr_com[3]->com_description ?></p>
+                                <?php } ?>
                             </div>
-
                         </div>
                     </div>
 
@@ -289,12 +321,21 @@
 
                             <!-- รูปในการ์ดที่ 5 -->
                             <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                                <?php if (count($arr_image) <= 4) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[4]->com_img_path; ?>" class="card-img-top" alt="...">
+                                <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 5 -->
                             <div class="card-body">
-                                <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
-                                <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
+                                <?php if (count($arr_com) <= 4) { ?>
+                                    <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
+                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
+                                <?php } else { ?>
+                                    <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_com[4]->com_name ?></a>
+                                    <p class="card-text"><?php echo $arr_com[4]->com_description ?></p>
+                                <?php } ?>
                             </div>
 
                         </div>
@@ -325,7 +366,8 @@
         if (error_regis_entrepreneur == "success") {
             swal("สำเร็จ", "คุณทำการลงทะเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
             <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
-        } if(error_register_tourist == "success"){
+        }
+        if (error_register_tourist == "success") {
             swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
             <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }

@@ -22,7 +22,7 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
-        $this->output_landing_page(); //path
+        $this->output_landing_page('landing_page/register/v_landing_page'); //path
     }
 
     /*
@@ -42,7 +42,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Admin/topbar_admin');
         $this->load->view('template/Admin/javascript_admin');
 
-        if($view_card != NULL){
+        if ($view_card != NULL) {
             $this->load->view($view_card);
         }
         $this->load->view($view, $data);
@@ -134,7 +134,7 @@ class DCS_controller extends CI_Controller
     * @Create Date 2021-07-24
     * @Update 2021-09-13
     */
-    public function output_entrepreneur($view=null, $data = null)
+    public function output_entrepreneur($view = null, $data = null)
     {
         $this->load->view('template/Entrepreneur/header_entrepreneur');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
@@ -145,18 +145,24 @@ class DCS_controller extends CI_Controller
 
     /*
     * output_landing_page
-    * show L    anding page for every one
+    * show Landing page for every one
     * @input -
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2021-07-31
     */
-    public function output_landing_page()
+    public function output_landing_page($view)
     {
+        $this->load->model('Company/M_dcs_com_image', 'mdci');
+        $this->load->model('Company/M_dcs_company', 'mdc');
+
+        $data['arr_image'] = $this->mdci->get_all()->result();
+        $data['arr_com'] = $this->mdc->get_all_varibles()->result();
+
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist');
-        $this->load->view('landing_page/register/v_landing_page');
+        $this->load->view($view, $data);
         $this->load->view('template/Tourist/footer');
     }
 
@@ -283,6 +289,4 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Tourist/footer');
     }
-
- 
 }

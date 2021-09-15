@@ -110,7 +110,7 @@ class M_dcs_company extends Da_dcs_company
         $query = $this->db->query($sql, array($this->com_name));
         return $query;
     }
-    
+
     /*
     *get_by_detail
     *get data entrepreneur form database
@@ -150,4 +150,19 @@ class M_dcs_company extends Da_dcs_company
         return $query;
     }
 
+    /*
+    * get_all_varibles
+    * get data form dcs company
+    * @input -
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-09-14
+    */
+    function get_all_varibles()
+    {
+        $sql = "SELECT * 
+              from dcs_company";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
