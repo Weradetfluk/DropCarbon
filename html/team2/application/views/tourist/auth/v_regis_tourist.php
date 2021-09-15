@@ -122,7 +122,7 @@
                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
                 <?php } else { ?>
-                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" id="photo">
+                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" >
                 <?php } ?>
                 <input type="file" id="file" name="tourist_img" accept="image/*">
                 <label for="file" id="uploadBtn">Choose Photo</label>
