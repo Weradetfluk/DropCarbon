@@ -140,4 +140,27 @@ class Register_tourist extends DCS_controller
     {
         $this->session->set_userdata("error_register_tourist", $data);
     }
+
+     /*
+    * check_email_tourist_ajax
+    * output check username
+    * @input tourist username
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-09-13
+    * @Update Date 2564-09-13
+    */
+    public function check_email_tourist_ajax()
+    {
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+        $this->mtou->tus_email = $this->input->post('tus_email');
+
+        $result = $this->mtou->check_email()->row(); //function in model
+
+        if ($result) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
 }

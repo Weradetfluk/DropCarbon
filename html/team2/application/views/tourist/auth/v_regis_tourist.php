@@ -165,7 +165,7 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="inputemail">อีเมล</label>
-                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" placeholder="example@email.com" required>
+                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" onblur="check_email()" placeholder="example@email.com" required>
                 </div>
             </div>
 
@@ -275,6 +275,43 @@
                     $('#next_btn').prop('disabled', true);
                 } else {
                     $('#usernameavailable').html("");
+                    $('#next_btn').prop('disabled', false);
+                }
+            }
+        });
+
+    }
+
+    /*
+     * 
+     * check_email
+     * check duplicate email in database
+     *@input tus_email
+     *@parameter -
+     *output  email validation
+     *@author Thanisorn thumsawanit 62160088
+     *@Create Date 2564-09-13
+     */
+    function check_email() {
+        let tus_email = $('#tus_email').val();
+        $.ajax({
+            url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_email_tourist_ajax'); ?>',
+            type: "POST",
+            data: {
+                tus_email: tus_email
+
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {
+                    $("#emailavailable").css({
+                        "color": "red"
+                    });
+
+                    $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    $('#next_btn').prop('disabled', true);
+                } else {
+                    $('#emailavailable').html("");
                     $('#next_btn').prop('disabled', false);
                 }
             }

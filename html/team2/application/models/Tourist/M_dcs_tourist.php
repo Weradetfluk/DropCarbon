@@ -178,4 +178,20 @@ class M_dcs_tourist extends Da_dcs_tourist
         $query = $this->db->query($sql);       
         return $query;
     }
+
+    /*
+    * check_email
+    * get data tourist by username
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-09-13
+    */
+    public function check_email()
+    {
+        $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
+        WHERE tus_email = ?";  
+        $query = $this->db->query($sql, array($this->tus_email));
+        return $query;
+    }
 }
