@@ -47,7 +47,6 @@ body{
 }
 .vr-line{
   border-left: 4px solid #4caf50 !important;
-  height: 40px !important;
   margin : 0 auto !important; 
   padding-left: 3px !important;
 }

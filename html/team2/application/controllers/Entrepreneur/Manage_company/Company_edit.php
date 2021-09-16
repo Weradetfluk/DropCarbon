@@ -72,6 +72,7 @@ class Company_edit extends DCS_controller
       $this->mcom->com_lon = $this->input->post('com_lon');
       $this->mcom->com_tel = $this->input->post('com_tel');
       $this->mcom->com_cat_id = $this->input->post('com_cat_id');
+      $this->mcom->com_status = 1;
       // save data company to database
       $this->mcom->update_company();
       $this->set_session_edit_company('success');

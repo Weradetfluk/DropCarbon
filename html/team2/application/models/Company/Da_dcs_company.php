@@ -75,9 +75,10 @@ class Da_dcs_company extends DCS_model{
 					`com_lon`=?,
 					`com_tel`=?,
 					`com_description`=?,
-                    `com_cat_id`=?
+                    `com_cat_id`=?,
+                    `com_status`=?
 				WHERE com_id=?";
-		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_id));
+		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_status, $this->com_id));
 	}
 
 	/*
