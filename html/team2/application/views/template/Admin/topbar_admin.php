@@ -62,13 +62,13 @@ if (!isset($_SESSION['tab_number'])) {
       <ul class="nav" id="active_menu">
       <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
-            <i class="material-icons">store</i>
-            <p>แผงควบคุมผู้ดูแลระบบ</p>
+            <i class="material-icons">dashboard</i>
+            <p>dashboard</p>
           </a>
         </li>
         <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
-            <i class="material-icons">store</i>
+            <i class="material-icons">view_list</i>
             <p>จัดการแบรนเนอร์</p>
           </a>
         </li>

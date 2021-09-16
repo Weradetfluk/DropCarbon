@@ -10,67 +10,41 @@ body{
   font-weight:600; 
   font-family: 'Prompt', sans-serif;
 }
-
+.vr-line{
+  border-left: 4px solid #4caf50 !important;
+  height: 40px !important;
+  margin : 0 auto !important; 
+  padding-left: 3px !important;
+}
 /* tab page */
 .nav-link{
     font-size: 16px !important;
   }
 
-
-  .custom-header{
-      background-color: #60839f !important;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important; 
-      border-radius: 10px !important;
-  }
-
-
-
   .custom-header-tab{
       background-color: #5F9EA0 !important; 
-      border-radius: 10px !important;
+      border-radius: 10px 10px 0px 0px !important;
   }
-
-
-
   .custom-card-tab{
-      border-radius: 25px !important;
+      border-radius: 10px 10px 0px 0px !important;
+      
   }
-
-
-
-  .custom-card-head-search{
-      border-radius: 25px !important;
-  }
-
-
-  .custom-h4-card-table{
-      font-family: 'Prompt', sans-serif !important;
-      margin-bottom: 10px !important;
-  }
-
   .custom-search{
       background-color: white !important; 
-      border-radius: 15px !important; 
+      border-radius: 7px !important; 
       padding-left: 20px;
   }
-
-
   /* thead customs */
   thead {
       background-color: #e4a487 !important; 
       text-align: center !important;
   }
-
-
   .th-custom {
     font-weight:500 !important;
   }
-
-
   .custom-form-search{
       float:right !important;
   }
-
   .custom-tr-header-table{
       font-weight:500 !important;
   }

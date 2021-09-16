@@ -8,9 +8,10 @@
 * @Create Date 2564-07-17
 */ 
 -->
-
  <!-- main content -->
- <h3 class="text-dark custom-h4-card-table text-center" style="padding-bottom: 15px; margin : 0 auto;">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
+ <div class="vr-line">
+ <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
+ </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
          <div class="row">
@@ -41,7 +42,6 @@
                  -->
              <div class="col">
                  <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
-
                      <div class="input-group ">
                          <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
                      </div>
@@ -179,7 +179,7 @@
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider_ajax/'); ?>',
+                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>'+1,
                  method: "POST",
                  data: {
                      page:page,

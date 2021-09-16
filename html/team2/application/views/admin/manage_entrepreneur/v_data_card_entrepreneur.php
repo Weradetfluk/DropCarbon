@@ -10,45 +10,24 @@
 -->
 
 <style>
-    .card {
+    .card-custom {
         border-radius: 10px;
         border: 1px solid rgba(0, 0, 0, .05);
         background-color: #fff;
         margin-bottom: 30px;
         box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
+        height: 120px;
     }
-
-    .border-left-yellow {
-        border-left: 4px solid #fba004;
-    }
-
-    .border-left-green {
-        border-left: 4px solid #4caf50;
-    }
-
-    .border-left-red {
-        border-left: 4px solid #f44336;
-    }
-
-    .border-left-purple {
-        border-left: 4px solid #8e24aa;
-    }
-
-    .text-title {
-        color: #8898aa;
-        font-weight: 500;
-        font-size: 14px;
-    }
-
-    .text-amount {
-        font-weight: 600;
-    }
-
+    .border-left-yellow {border-left: 4px solid #fba004;}
+    .border-left-green {border-left: 4px solid #4caf50;}
+    .border-left-red {border-left: 4px solid #f44336;}
+    .border-left-purple {border-left: 4px solid #8e24aa;}
+    .text-title {color: #8898aa;font-weight: 500;font-size: 14px;}
     .icon-shape {
         border-radius: 50%;
         color: #fff;
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 80px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,6 +40,10 @@
     }
     .icon-purple{
         background: #8e24aa;
+    }
+
+    .custom-icon{
+        font-size: 40px;
     }
 </style>
 
@@ -77,7 +60,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-area">
-                                    <i class="material-icons">hourglass_bottom</i>
+                                    <i class="material-icons custom-icon">hourglass_bottom</i>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +77,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-success">
-                                <i class="material-icons">check</i>
+                                <i class="material-icons custom-icon">check</i>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +94,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-danger">
-                                <i class="material-icons">thumb_down_alt</i>
+                                <i class="material-icons custom-icon">thumb_down_alt</i>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +111,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-purple">
-                                <i class="material-icons">block</i>
+                                <i class="material-icons custom-icon">block</i>
                                 </div>
                             </div>
                         </div>
@@ -143,8 +126,6 @@
             $(document).ready(function() {
                 get_data_card_entrepreneur()
             });
-
-
             /*
              * get_data_card_entrepreneur
              * get data consider, approve, rejected, block <- number of people
@@ -174,7 +155,5 @@
                         alert('ajax get data user error working');
                     }
                 });
-
-
             }
         </script>
