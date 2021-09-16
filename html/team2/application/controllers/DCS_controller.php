@@ -155,9 +155,13 @@ class DCS_controller extends CI_Controller
     {
         $this->load->model('Company/M_dcs_com_image', 'mdci');
         $this->load->model('Company/M_dcs_company', 'mdc');
+        $this->load->model('Event/M_dcs_eve_image', 'mdei');
+        $this->load->model('Event/M_dcs_event', 'mde');
 
-        $data['arr_image'] = $this->mdci->get_all()->result();
+        $data['arr_image_com'] = $this->mdci->get_all()->result();
         $data['arr_com'] = $this->mdc->get_all_varibles()->result();
+        $data['arr_image_eve'] = $this->mdei->get_all()->result();
+        $data['arr_eve'] = $this->mde->get_all()->result();
 
         $this->load->view('template/Tourist/header_tourist');
         $this->load->view('template/Tourist/javascript_tourist');
