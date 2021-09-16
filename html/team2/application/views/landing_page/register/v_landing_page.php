@@ -114,12 +114,21 @@
 
                     <!-- รูปในการ์ดที่ 1 -->
                     <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                        <?php if (count($arr_image_eve) == 0) { ?>
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                        <?php } else { ?>
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>" class="card-img-top" alt="...">
+                        <?php } ?>
                     </a>
                     <!-- ข้อความในการ์ดที่ 1 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
-                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
+                        <?php if (count($arr_eve) == 0) { ?>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
+                            <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
+                        <?php } else { ?>
+                            <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_eve[0]->eve_name ?></a>
+                            <p class="card-text"><?php echo $arr_eve[0]->eve_description ?></p>
+                        <?php } ?>
                         <div class="card-info">
                             <span class="card-date">
                                 <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
@@ -141,12 +150,21 @@
 
                     <!-- รูปในการ์ดที่ 2 -->
                     <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                        <?php if (count($arr_image_eve) <= 1) { ?>
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                        <?php } else { ?>
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>" class="card-img-top" alt="...">
+                        <?php } ?>
                     </a>
                     <!-- ข้อความในการ์ดที่ 2 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
-                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                        <?php if (count($arr_eve) <= 1) { ?>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                            <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                        <?php } else { ?>
+                            <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_eve[1]->eve_name ?></a>
+                            <p class="card-text"><?php echo $arr_eve[1]->eve_description ?></p>
+                        <?php } ?>
                         <div class="card-info">
                             <span class="card-date">
                                 <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
@@ -168,12 +186,21 @@
 
                     <!-- รูปในการ์ดที่ 3 -->
                     <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                        <?php if (count($arr_image_eve) <= 2) { ?>
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                        <?php } else { ?>
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[2]->eve_img_path; ?>" class="card-img-top" alt="...">
+                        <?php } ?>
                     </a>
                     <!-- ข้อความในการ์ดที่ 3 -->
                     <div class="card-body">
-                        <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
-                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...</p>
+                        <?php if (count($arr_eve) <= 2) { ?>
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                            <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...</p>
+                        <?php } else { ?>
+                            <a href="" class="h2 text-decoration-none text-dark"><?php echo $arr_eve[2]->eve_name ?></a>
+                            <p class="card-text"><?php echo $arr_eve[2]->eve_description ?></p>
+                        <?php } ?>
                         <div class="card-info">
                             <span class="card-date">
                                 <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
@@ -209,10 +236,10 @@
 
                     <!-- รูปในการ์ดที่ 1 -->
                     <a href="">
-                        <?php if (count($arr_image) == 0) { ?>
+                        <?php if (count($arr_image_com) == 0) { ?>
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
                         <?php } else { ?>
-                            <img src="<?php echo base_url() . 'image_company/' . $arr_image[0]->com_img_path; ?>" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[0]->com_img_path; ?>" class="card-img-top" alt="...">
                         <?php } ?>
                     </a>
                     <!-- ข้อความในการ์ดที่ 1 -->
@@ -239,10 +266,10 @@
 
                             <!-- รูปในการ์ดที่ 2 -->
                             <a href="#">
-                                <?php if (count($arr_image) <= 1) { ?>
+                                <?php if (count($arr_image_com) <= 1) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./cejan.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[1]->com_img_path; ?>" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[1]->com_img_path; ?>" class="card-img-top" alt="...">
                                 <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 2 -->
@@ -266,10 +293,10 @@
 
                             <!-- รูปในการ์ดที่ 3 -->
                             <a href="#">
-                                <?php if (count($arr_image) <= 2) { ?>
+                                <?php if (count($arr_image_com) <= 2) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[2]->com_img_path; ?>" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[2]->com_img_path; ?>" class="card-img-top" alt="...">
                                 <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 3 -->
@@ -294,10 +321,10 @@
 
                             <!-- รูปในการ์ดที่ 4 -->
                             <a href="#">
-                                <?php if (count($arr_image) <= 3) { ?>
+                                <?php if (count($arr_image_com) <= 3) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[3]->com_img_path; ?>" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[3]->com_img_path; ?>" class="card-img-top" alt="...">
                                 <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 4 -->
@@ -321,10 +348,10 @@
 
                             <!-- รูปในการ์ดที่ 5 -->
                             <a href="#">
-                                <?php if (count($arr_image) <= 4) { ?>
+                                <?php if (count($arr_image_com) <= 4) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image[4]->com_img_path; ?>" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[4]->com_img_path; ?>" class="card-img-top" alt="...">
                                 <?php } ?>
                             </a>
                             <!-- ข้อความในการ์ดที่ 5 -->
