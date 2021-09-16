@@ -10,7 +10,7 @@
 -->
  <!-- main content -->
  <div class="vr-line">
- <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ตารางแสดงข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
+ <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
@@ -26,10 +26,10 @@
                                  <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ผู้ใช้ที่ถูกปฏิเสธ</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">ถูกปฏิเสธ</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ผู้ใช้ที่ถูกบล็อค</a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">ถูกบล็อค</a>
                              </li>
                          </ul>
                      </div>
