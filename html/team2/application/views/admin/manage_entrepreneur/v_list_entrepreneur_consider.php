@@ -10,7 +10,7 @@
 -->
  <!-- main content -->
  <div class="vr-line">
- <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h3>
+ <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ผู้ประกอบการที่รออนุมัติ</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">

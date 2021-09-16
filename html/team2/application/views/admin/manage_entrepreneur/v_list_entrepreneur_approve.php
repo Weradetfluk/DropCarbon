@@ -10,8 +10,12 @@
 -->
 
  <!-- main content -->
- <div class="vr-line">
- <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ข้อมูลผู้ประกอบการที่ได้รับอนุมัติแล้ว</h3>
+ <div class="row">
+     <div class="col">
+         <div class="vr-line">
+             <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่อนุมัติแล้ว</h3>
+         </div>
+     </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
@@ -150,7 +154,7 @@
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>'+2,
+                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 2,
                  method: "POST",
                  data: {
                      page: page,
