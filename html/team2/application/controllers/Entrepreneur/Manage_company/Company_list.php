@@ -48,5 +48,6 @@ class Company_list extends DCS_controller
     public function change_tab_company_ajax()
     {
         $_SESSION['tab_number_company'] = $this->input->post('tab_company');
+        echo $this->input->post('tab_company');
     }
 }
