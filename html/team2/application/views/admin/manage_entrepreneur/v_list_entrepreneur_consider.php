@@ -72,7 +72,7 @@
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
      </div>
@@ -126,6 +126,7 @@
              <div class="modal-footer">
                  <button type="button" class="btn btn-success"  onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
                  <button type="button" class="btn btn-danger"  onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
      </div>
@@ -151,7 +152,7 @@
              </div>
              <div class="modal-footer">
                  <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
                  </form>
              </div>
          </div>
