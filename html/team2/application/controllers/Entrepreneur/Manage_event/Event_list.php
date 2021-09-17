@@ -20,10 +20,29 @@ class Event_list extends DCS_controller
     * @Update Date -
     */
     public function show_list_event(){
+        if (!isset($_SESSION['tab_number_event'])) {
+            $_SESSION['tab_number_event'] = 1;
+        }
         $this->load->model('Event/M_dcs_event', 'meve');
         $data['arr_event'] = $this->meve->get_event_by_ent_id($this->session->userdata("entrepreneur_id"))->result();
         $view = 'entrepreneur/manage_event/v_list_event';
         $_SESSION['tab_number_entrepreneur'] = 2;
         $this->output_entrepreneur($view, $data);
     }
+
+    /*
+    * change_tab_event_ajax
+    * change tab session tab_number_event
+    * @input tab_event
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-17
+    * @Update Date -
+    */
+    public function change_tab_event_ajax()
+    {
+        $_SESSION['tab_number_event'] = $this->input->post('tab_event');
+        echo $this->input->post('tab_event');
+    }
+
 }

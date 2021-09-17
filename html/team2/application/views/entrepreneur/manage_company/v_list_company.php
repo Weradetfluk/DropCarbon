@@ -24,16 +24,16 @@
         <div class="nav-tabs-wrapper">
           <ul class="nav nav-tabs" data-tabs="tabs">
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" href="#tab_all" data-toggle="tab" onclick="change_tab_number(1)">ทั้งหมด</a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)">ทั้งหมด</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" href="#tab_pending" data-toggle="tab" onclick="change_tab_number(2)">รออนุมัติ</a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)">รออนุมัติ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" href="#tab_approved" data-toggle="tab" onclick="change_tab_number(3)">อนุมัติเเล้ว</a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" href="#tab_approved" data-toggle="tab" onclick="change_tab_number_ajax(3)">อนุมัติเเล้ว</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" href="#tab_reject" data-toggle="tab" onclick="change_tab_number(4)">ถูกปฏิเสธ</a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(4)">ถูกปฏิเสธ</a>
             </li>
           </ul>
         </div>
@@ -356,9 +356,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <p>คุณต้องการที่จะลบ <span id="com_name_confirm"></span> ?</p>
@@ -442,7 +439,7 @@
   }
 
   /*
-   * change_tab_number
+   * change_tab_number_ajax
    * change tab session tab_number_company
    * @input tab_company
    * @output -
@@ -450,7 +447,7 @@
    * @Create Date 2564-09-14
    * @Update 2564-09-16
    */
-  function change_tab_number(tab_company) {
+  function change_tab_number_ajax(tab_company) {
     $.ajax({
       url: '<?php echo site_url('Entrepreneur/Manage_company/Company_list/change_tab_company_ajax/') ?>',
       method: 'POST',
