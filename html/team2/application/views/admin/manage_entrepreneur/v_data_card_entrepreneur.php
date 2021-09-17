@@ -34,7 +34,8 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">อนุมัติแล้ว</p>
-                                <h2 class="card-text text-amount" id="approve_ent"></h2>
+                                <h2 class="card-text" id="approve_ent"></h2>
+
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-success">
@@ -103,13 +104,13 @@
                     dataType: 'JSON',
                     success: function(json_data) {
 
-                        $("#consider_ent").text(json_data[0].ent_consider);
+                        $("#consider_ent").html(json_data[0].ent_consider + " <span style='font-size: 16px;'>คน</span>");
 
-                        $("#approve_ent").text(json_data[0].ent_approve);
+                        $("#approve_ent").html(json_data[0].ent_approve  + " <span style='font-size: 16px;'>คน</span>");
 
-                        $("#reject_ent").text(json_data[0].ent_reject);
+                        $("#reject_ent").html(json_data[0].ent_reject  + " <span style='font-size: 16px;'>คน</span>");
 
-                        $("#block_ent").text(json_data[0].ent_blocked);
+                        $("#block_ent").html(json_data[0].ent_blocked  + " <span style='font-size: 16px;'>คน</span>");
 
                     },
                     error: function() {

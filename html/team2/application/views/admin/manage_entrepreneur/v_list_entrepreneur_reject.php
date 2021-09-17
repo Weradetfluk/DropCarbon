@@ -20,7 +20,7 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">รออนุมัติ</a>
                              </li>
                              <li class="nav-item">
                                  <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
@@ -35,7 +35,6 @@
                      </div>
                  </div>
              </div>
-
              <div class="col">
                  <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
 
@@ -46,26 +45,16 @@
              </div>
          </div>
      </div>
-
-
      <!-- Tab1 -->
      <div class="card-body ">
 
          <div class="card-body">
-
-
              <div class="table-responsive" id="data_entre_reject">
-
                  <!-- data entrepreneur reject -->
-
              </div>
-
-
          </div>
      </div>
  </div>
-
-
  <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -81,29 +70,18 @@
                          <label>เหตุผลที่ปฏิเสธ</label>
                          <input type="text" id="enr_admin_reason" class="form-control" disabled>
                      </div>
-
-
                      <div class="form-group">
                          <label>ผู้ปฏิเสธ</label>
                          <input type="text" class="form-control" id="adm_name" disabled>
                      </div>
              </div>
-
-
              </form>
-
-
          </div>
      </div>
  </div>
-
-
-
  <script>
      $(document).ready(function() {
-
          load_data(1);
-
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
@@ -123,18 +101,13 @@
              var query = $('#search_box').val();
              load_data(1, query);
              // console.log(query);
-
          });
-
          $(document).on('click', '.page-link', function() {
              var page = $(this).data('page_number');
              var query = $('#search_box').val();
              load_data(page, query);
          });
-
      });
-
-
      /*
       * view_data_detail_reject
       * open modal id = Aprovemodal 

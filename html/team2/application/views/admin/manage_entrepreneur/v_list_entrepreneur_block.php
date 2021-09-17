@@ -20,7 +20,7 @@
                     <div class="nav-tabs-wrapper">
                         <ul class="nav nav-tabs" data-tabs="tabs">
                             <li class="nav-item">
-                                <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">รออนุมัติ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
@@ -66,22 +66,18 @@
         </div>
     </div>
 </div>
-
-
-
-
 <!-- warnning aprove Modal  -->
 <div class="modal" tabindex="-1" role="dialog" id="unblock_modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">คุณต้องการปลดบล็อค ?</h5>
+                <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>คุณต้องการปลดบล็อคผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
+                  <p>คุณต้องการปลดบล็อค <span id="ent_unblock_name_confirm"></span> ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" id="unblock" data-dismiss="modal">ยืนยัน</button>
@@ -126,7 +122,9 @@
 
     });
 
-    function confirm_unblock(ent_id) {
+    function confirm_unblock(ent_id, ent_name) {
+        console.log(ent_name);
+        $('#ent_unblock_name_confirm').text(ent_name);
         $('#unblock_modal').modal();
 
         $('#unblock').click(function() {

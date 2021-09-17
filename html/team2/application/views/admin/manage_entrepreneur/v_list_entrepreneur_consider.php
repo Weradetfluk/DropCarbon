@@ -10,7 +10,7 @@
 -->
  <!-- main content -->
  <div class="vr-line">
- <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ผู้ประกอบการที่รออนุมัติ</h3>
+     <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ผู้ประกอบการที่รออนุมัติ</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
@@ -20,7 +20,7 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">รออนุมัติ</a>
                              </li>
                              <li class="nav-item">
                                  <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
@@ -49,17 +49,10 @@
              </div>
          </div>
      </div>
-
-
      <!-- Tab1 -->
      <div class="card-body">
          <div class="table-responsive" id="data_entre_consider">
-
-
          </div>
-
-
-
      </div>
  </div>
 
@@ -69,13 +62,13 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการอนุมัติ ?</h5>
+                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
+                 <p>คุณต้องการอนุมัติ <span id="ent_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -84,10 +77,6 @@
          </div>
      </div>
  </div>
-
-
-
-
  <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -100,6 +89,7 @@
              <div class="modal-body">
                  <form>
                      <div class="form-row">
+                         <input type="hidden" id="ent_id">
                          <div class="form-group col-md-6">
                              <label>ชื่อ-นามสกุล</label>
                              <input type="text" id="ent_name" class="form-control" disabled>
@@ -132,21 +122,21 @@
 
                      </div>
                  </form>
-
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-success"  onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
+                 <button type="button" class="btn btn-danger"  onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
              </div>
          </div>
      </div>
  </div>
-
-
-
 
  <!-- warnning reject  -->
  <div class="modal" tabindex="-1" role="dialog" id="rejected_ent">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการปฏิเสธ ?</h5>
+                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
@@ -155,7 +145,7 @@
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
-                     <input type="hidden" id="ent_id" name="ent_id">
+                     <input type="hidden" id="ent_id_form" name="ent_id">
                      <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
                      <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
              </div>
@@ -167,22 +157,17 @@
          </div>
      </div>
  </div>
-
-
-
-
  <script>
      $(document).ready(function() {
-
          load_data(1);
 
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>'+1,
+                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 1,
                  method: "POST",
                  data: {
-                     page:page,
+                     page: page,
                      query: query
                  },
                  success: function(data) {
@@ -190,27 +175,17 @@
                  }
              });
          }
-
          $('#search_box').keyup(function() {
              var query = $('#search_box').val();
-             load_data(1,query);
+             load_data(1, query);
              // console.log(query);
-
          });
-
          $(document).on('click', '.page-link', function() {
              var page = $(this).data('page_number');
              var query = $('#search_box').val();
              load_data(page, query);
          });
-
      });
-
-
-
-
-
-
      /*
       * confirm_approve
       * open modal id = Aprovemodal 
@@ -218,25 +193,41 @@
       * @output modal to confirm approve modal
       * @author Weradet Nopsombun 62160110
       * @Create Date 2564-07-17
-      * @Update -
+      * @Update 2564-09-18
       */
-
-     function confirm_approve(ent_id) {
+     function confirm_approve(ent_id, ent_firstname) {
+         $('#ent_name_confirm').text(ent_firstname);
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
-
          $('#approves').click(function() {
              approve_entrepreneur(ent_id) //function 
-
          });
-
      }
+      /*
+      * confirm_approve
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to confirm approve modal
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update 2564-09-18
+      */
 
-
-
-
+     function confirm_approve_view_data_madal(){
+         let ent_id = $('#ent_id').val();
+         let ent_name = $('#ent_name').val();
+         $('#ent_name_confirm').text(ent_name);
+         console.log(ent_name);
+        $('#aprove_modal').modal({
+             backdrop: 'static',
+             keyboard: false
+         });
+         $('#approves').click(function() {
+             approve_entrepreneur(ent_id) //function 
+         });
+     }
      /*
       * confirm_reject
       * open modal id = Aprovemodal 
@@ -246,33 +237,25 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-
-     function confirm_reject(ent_id, ent_email) {
-
+     function confirm_reject(ent_id, ent_email, ent_name) {
          let form = document.querySelector('#reject_form');
-
-
+         $('#ent_reject_name_confirm').text(ent_name);
          $('#rejected_ent').modal();
-
          $('#email').val(ent_email);
-         $('#ent_id').val(ent_id);
-
+         $('#ent_id_form').val(ent_id);
          console.log(ent_email);
+         
          let admin_reson = document.querySelectorAll('#admin_reason');
          let err_message = document.querySelector('#err_message');
 
          console.log(admin_reson);
          $('#rejected').click(function() {
-
-
              let tooshort = false;
-
              admin_reson.forEach((reson) => {
                  if (reson.value.length < 6) {
                      tooshort = true;
                  }
              });
-
              if (tooshort) {
                  event.preventDefault();
                  err_message.style.display = 'block';
@@ -289,13 +272,56 @@
                      location.reload();
                  });
              }
-
-
-
          });
      }
+      /*
+      * confirm_reject
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to reject  modal 
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update -
+      */
+      function confirm_reject_view_data_madal() {
+         let ent_id = $('#ent_id').val();
+         let ent_name = $('#ent_name').val();
+         let ent_email = $('#ent_email').val();
+         let form = document.querySelector('#reject_form');
+         $('#ent_reject_name_confirm').text(ent_name);
+         $('#rejected_ent').modal();
+         $('#email').val(ent_email);
+         $('#ent_id_form').val(ent_id);
+         console.log(ent_id);
+         let admin_reson = document.querySelectorAll('#admin_reason');
+         let err_message = document.querySelector('#err_message');
 
-
+         console.log(admin_reson);
+         $('#rejected').click(function() {
+             let tooshort = false;
+             admin_reson.forEach((reson) => {
+                 if (reson.value.length < 6) {
+                     tooshort = true;
+                 }
+             });
+             if (tooshort) {
+                 event.preventDefault();
+                 err_message.style.display = 'block';
+             } else {
+                 $('#rejected_ent').modal('toggle');
+                 err_message.style.display = 'none';
+                 swal({
+                     title: "ปฏิเสธสำเร็จ",
+                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                     location.reload();
+                 });
+             }
+         });
+     }
      /*
       * approve_entrepreneur
       * change status to approve 

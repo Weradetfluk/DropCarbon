@@ -25,7 +25,7 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">รออนุมัติ</a>
                              </li>
                              <li class="nav-item">
                                  <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">อนุมัติแล้ว</a>
@@ -40,7 +40,6 @@
                      </div>
                  </div>
              </div>
-
              <!-- <div class="col">
                  <h4 class="text-white custom-h4-card-table text-center">ข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
                  </div>
@@ -67,21 +66,18 @@
          </div>
      </div>
  </div>
-
-
-
  <!-- warnning block Modal  -->
  <div class="modal" tabindex="-1" role="dialog" id="block_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการบล็อค ?</h5>
+                 <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการบล็อคผู้ประกอบการคนนี้ใช่หรือไม่ ?</p>
+                 <p>คุณต้องการบล็อค <span id="ent_block_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
@@ -90,10 +86,6 @@
          </div>
      </div>
  </div>
-
-
-
-
 
  <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
@@ -190,9 +182,9 @@
       * @Update -
       */
 
-     function confirm_block(ent_id) {
+     function confirm_block(ent_id, ent_name) {
          $('#block_modal').modal();
-
+         $('#ent_block_name_confirm').text(ent_name);
          $('#blocked').click(function() {
              console.log("check");
              block_user(ent_id);
@@ -200,8 +192,6 @@
          });
 
      }
-
-
      /*
       * block_user
       * send ajax into block_user controller
@@ -236,6 +226,5 @@
                  alert('ajax block user error working');
              }
          });
-
      }
  </script>

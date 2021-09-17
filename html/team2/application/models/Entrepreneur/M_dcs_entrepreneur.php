@@ -56,7 +56,12 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     {
         $this->db->select('*');
         $this->db->from('dcs_entrepreneur');
-        $this->db->like('ent_firstname', $search,); 
+        $this->db->group_start();
+        $this->db->like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('ent_email', $search);
+        $this->db->or_like('ent_tel', $search);
+        $this->db->group_end();
         $this->db->where("ent_status = '$number_status'");
         $query = $this->db->get();
         return $query;
