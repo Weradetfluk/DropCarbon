@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "active"; ?>">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_event/Event_list/show_list_event';?>">
               <i class="material-icons">calendar_today</i>
               <p>จัดการกิจกรรม</p>
             </a>

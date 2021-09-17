@@ -18,13 +18,14 @@ class M_dcs_company extends Da_dcs_company
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
-    * @Update -
+    * @Update 2564-09-16
     */
     public function get_all()
     {
-        $sql = "SELECT * FROM dcs_company 
-                WHERE  com_status != 4 AND com_ent_id = ?";
-        return $this->db->query($sql, array($this->com_ent_id));
+        $sql = "SELECT * 
+              from dcs_company";
+        $query = $this->db->query($sql);
+        return $query;
     }
 
     /*
@@ -151,18 +152,18 @@ class M_dcs_company extends Da_dcs_company
     }
 
     /*
-    * get_all_varibles
-    * get data form dcs company
-    * @input -
+    * get_by_ent_id
+    * get data company by entrepreneur id
+    * @input com_ent_id
     * @output -
-    * @author Naaka punparich 62160082
-    * @Create Date 2564-09-14
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-16
+    * @Update -
     */
-    function get_all_varibles()
+    public function get_by_ent_id()
     {
-        $sql = "SELECT * 
-              from dcs_company";
-        $query = $this->db->query($sql);
-        return $query;
+        $sql = "SELECT * FROM dcs_company 
+                WHERE  com_status != 4 AND com_ent_id = ?";
+        return $this->db->query($sql, array($this->com_ent_id));
     }
 }

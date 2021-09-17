@@ -159,7 +159,7 @@ class DCS_controller extends CI_Controller
         $this->load->model('Event/M_dcs_event', 'mde');
 
         $data['arr_image_com'] = $this->mdci->get_all()->result();
-        $data['arr_com'] = $this->mdc->get_all_varibles()->result();
+        $data['arr_com'] = $this->mdc->get_all()->result();
         $data['arr_image_eve'] = $this->mdei->get_all()->result();
         $data['arr_eve'] = $this->mde->get_all()->result();
 

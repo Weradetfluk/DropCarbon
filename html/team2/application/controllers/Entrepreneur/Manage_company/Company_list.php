@@ -31,7 +31,7 @@ class Company_list extends DCS_controller
         }
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
-        $data['arr_company'] = $this->mcom->get_all()->result();
+        $data['arr_company'] = $this->mcom->get_by_ent_id()->result();
         $view = 'entrepreneur/manage_company/v_list_company';
         $this->output_entrepreneur($view, $data);
     }
@@ -39,7 +39,7 @@ class Company_list extends DCS_controller
     /*
     * change_tab_company_ajax
     * change tab session tab_number_company
-    * @input 
+    * @input tab_company
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-09-14
