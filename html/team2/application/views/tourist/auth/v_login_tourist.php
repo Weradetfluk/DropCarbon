@@ -21,7 +21,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                     ?>
                 </span>
                 <button type="submit" class="button" name="signin">เข้าสู่ระบบ</button>
-                <a href="" id="forgetID">ลืมรหัสผ่าน?</a>
+                <a href="<?php echo site_url() . 'Tourist/Auth/Login_tourist/forgot_password_page'; ?>" id="forgetID">ลืมรหัสผ่านใช่หรือไม่</a>
             </div>
         </form>
     </div>

@@ -43,4 +43,30 @@ class M_dcs_login_tourist extends Da_dcs_login_tourist
             return false;
         }
     }
+
+    /*
+    * check_email
+    * check email user
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-15
+    * @Update Date -
+    */
+    function check_email()
+    {
+        $sql = "SELECT * 
+            from dcs_tourist 
+            where tus_email = ?";
+
+        $query = $this->db->query($sql, array($this->tus_email));
+
+        $query_row = $query->num_rows();
+
+        if ($query_row) {
+            return $query->row();
+        } else {
+            return false;
+        }
+    }
 }
