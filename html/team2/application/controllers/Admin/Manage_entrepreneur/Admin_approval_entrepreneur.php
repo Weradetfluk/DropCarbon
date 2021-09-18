@@ -302,16 +302,16 @@ class Admin_approval_entrepreneur extends DCS_controller
                         </button>';
                   }else if($number_status == 2){
                       $output .='<td style="text-align: center;">' .
+                      '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
+                      <i class="material-icons">
+                        search
+                      </i>
+                    </button>'.
                       '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
                             <i class="material-icons"><span class="material-icons-outlined">
                                   highlight_off
                             </span></i>
-                        </button>' .
-                      '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                            <i class="material-icons">
-                              search
-                            </i>
-                          </button>';
+                        </button>';
                   }else if($number_status == 3){
                     $output .='</td>' .
                     '<td style="text-align: center;">
@@ -391,16 +391,15 @@ class Admin_approval_entrepreneur extends DCS_controller
                       </button>';
                 }else if($number_status == 2){
                     $output .='<td style="text-align: center;">' .
-                    '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
-                          <i class="material-icons"><span class="material-icons-outlined">
-                                highlight_off
-                          </span></i>
-                      </button>' .
-      
-                    '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                          <i class="material-icons">
-                            search
-                          </i>
+                      '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
+                      <i class="material-icons">
+                        search
+                      </i>
+                    </button>'.
+                      '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                            <i class="material-icons"><span class="material-icons-outlined">
+                                  highlight_off
+                            </span></i>
                         </button>';
                 }else if($number_status == 3){
                   $output .='</td>' .
@@ -433,9 +432,10 @@ class Admin_approval_entrepreneur extends DCS_controller
         </div>';
             } else {
                 $output .= '
-            <td colspan = "5">
-              ไม่มีข้อมูลในตารางนี้
-            </td>';
+                <tr rowspan="6">
+                <td colspan = "5">
+                ไม่มีข้อมูลในตารางนี้
+              </td><tr>';
             }
         } // else  search 
         echo  $output; // to view

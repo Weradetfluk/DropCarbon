@@ -9,9 +9,11 @@
 */ 
 -->
 <!-- main content -->
-<div class="vr-line">
-<h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกบล็อค</h3>
-</div>
+<div class="row">
+     <div class="col">
+             <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกบล็อค</h3>
+     </div>
+ </div>
 <div class="card card-nav-tabs custom-card-tab">
     <div class="card-header custom-header-tab">
         <div class="row">
@@ -72,9 +74,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                   <p>คุณต้องการปลดบล็อค <span id="ent_unblock_name_confirm"></span> ?</p>

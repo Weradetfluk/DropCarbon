@@ -12,9 +12,7 @@
  <!-- main content -->
  <div class="row">
      <div class="col">
-         <div class="vr-line">
-             <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่อนุมัติแล้ว</h3>
-         </div>
+         <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่อนุมัติแล้ว</h3>
      </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
@@ -72,16 +70,13 @@
          <div class="modal-content">
              <div class="modal-header">
                  <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการบล็อค <span id="ent_block_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
      </div>
@@ -93,49 +88,56 @@
              <div class="modal-header">
                  <h5 class="modal-title">รายละเอียด</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
+                     <span aria-hidden="true" style="font-size: 30px;">&times;</span>
                  </button>
              </div>
              <div class="modal-body">
                  <form>
-                     <div class="form-row">
-                         <div class="form-group col-md-6">
-                             <label>ชื่อ-นามสกุล</label>
-                             <input type="text" id="ent_name" class="form-control" disabled>
-                         </div>
-                         <div class="form-group col-md-6">
-                             <label>เบอร์โทร</label>
-                             <input type="text" id="ent_tel" class="form-control" disabled>
-                         </div>
-                     </div>
-
                      <div class="form-group">
-                         <label for="inputAddress">รหัสประจำตัวประชาชน</label>
-                         <input type="text" id="ent_id_card" class="form-control" disabled>
-                     </div>
-
-                     <div class="form-row">
-                         <div class="form-group col-md-6">
-                             <label>อีเมล</label>
-                             <input type="text" class="form-control" id="ent_email" disabled>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <label> ชื่อ-นามสกุล</label>
+                                 <input type="text" id="ent_name" class="form-control" disabled>
+                                 <input type="hidden" id="ent_id" class="form-control" disabled>
+                             </div>
+                             <div class="col-md-6">
+                                 <label>เบอร์โทร</label>
+                                 <input type="text" id="ent_tel" class="form-control" disabled>
+                             </div>
                          </div>
-
-                         <div class="form-group col-md-6">
-                             <label>วันเกิด</label>
-                             <input type="text" class="form-control" id="ent_birthdate" disabled>
+                         <div class="row">
+                             <div class="col">
+                                 <label for="">รหัสประจำตัวประชาชน</label>
+                                 <input type="text" id="ent_id_card" class="form-control" disabled>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col">
+                                 <label>อีเมล</label>
+                                 <input type="text" class="form-control" id="ent_email" disabled>
+                             </div>
+                             <div class="col">
+                                 <label>วันเกิด</label>
+                                 <input type="text" class="form-control" id="ent_birthdate" disabled>
+                             </div>
                          </div>
                      </div>
-
-                     <label>เอกสารที่เกี่ยวข้อง</label>
-                     <div id="file_dowload">
-
+                     <div class="row">
+                         <div class="col">
+                             <label>เอกสารที่เกี่ยวข้อง</label>
+                             <div id="file_dowload">
+                             </div>
+                         </div>
                      </div>
                  </form>
-
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" onclick="confirm_block_view_data_madal()" data-dismiss="modal">บล็อค</button>
              </div>
          </div>
      </div>
  </div>
+
 
 
  <script>
@@ -192,6 +194,31 @@
          });
 
      }
+     /*
+      * confirm_block
+      * open modal id = blockmodal 
+      * @input 
+      * @output modal to confirm block user 
+      * @author Weradet Nopsombun
+      * @Create Date 2564-07-27
+      * @Update -
+      */
+
+     function confirm_block_view_data_madal() {
+         $('#block_modal').modal();
+         let ent_id = $('#ent_id').val();
+         console.log(ent_id)
+         let ent_name = $('#ent_name').val();
+         $('#ent_block_name_confirm').text(ent_name);
+         $('#blocked').click(function() {
+             console.log("check");
+             block_user(ent_id);
+
+         });
+
+     }
+
+
      /*
       * block_user
       * send ajax into block_user controller

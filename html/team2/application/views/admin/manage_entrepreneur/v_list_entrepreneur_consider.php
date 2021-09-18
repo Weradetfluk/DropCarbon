@@ -9,8 +9,10 @@
 */ 
 -->
  <!-- main content -->
- <div class="vr-line">
-     <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">ผู้ประกอบการที่รออนุมัติ</h3>
+ <div class="row">
+     <div class="col">
+         <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่รออนุมัติ</h3>
+     </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
@@ -63,70 +65,70 @@
          <div class="modal-content">
              <div class="modal-header">
                  <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการอนุมัติ <span id="ent_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
      </div>
  </div>
+
  <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
                  <h5 class="modal-title">รายละเอียด</h5>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
+                     <span aria-hidden="true" style="font-size: 35px;">&times;</span>
                  </button>
              </div>
              <div class="modal-body">
                  <form>
-                     <div class="form-row">
-                         <input type="hidden" id="ent_id">
-                         <div class="form-group col-md-6">
-                             <label>ชื่อ-นามสกุล</label>
-                             <input type="text" id="ent_name" class="form-control" disabled>
-                         </div>
-                         <div class="form-group col-md-6">
-                             <label>เบอร์โทร</label>
-                             <input type="text" id="ent_tel" class="form-control" disabled>
-                         </div>
-                     </div>
-
                      <div class="form-group">
-                         <label for="inputAddress">รหัสประจำตัวประชาชน</label>
-                         <input type="text" id="ent_id_card" class="form-control" disabled>
-                     </div>
-
-                     <div class="form-row">
-                         <div class="form-group col-md-6">
-                             <label>อีเมล</label>
-                             <input type="text" class="form-control" id="ent_email" disabled>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <label> ชื่อ-นามสกุล</label>
+                                 <input type="text" id="ent_name" class="form-control" disabled>
+                                 <input type="hidden" id="ent_id" class="form-control" disabled>
+                             </div>
+                             <div class="col-md-6">
+                                 <label>เบอร์โทร</label>
+                                 <input type="text" id="ent_tel" class="form-control" disabled>
+                             </div>
                          </div>
-
-                         <div class="form-group col-md-6">
-                             <label>วันเกิด</label>
-                             <input type="text" class="form-control" id="ent_birthdate" disabled>
+                         <div class="row">
+                             <div class="col">
+                                 <label for="">รหัสประจำตัวประชาชน</label>
+                                 <input type="text" id="ent_id_card" class="form-control" disabled>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col">
+                                 <label>อีเมล</label>
+                                 <input type="text" class="form-control" id="ent_email" disabled>
+                             </div>
+                             <div class="col">
+                                 <label>วันเกิด</label>
+                                 <input type="text" class="form-control" id="ent_birthdate" disabled>
+                             </div>
                          </div>
                      </div>
-
-                     <label>เอกสารที่เกี่ยวข้อง</label>
-                     <div id="file_dowload">
-
+                     <div class="row">
+                         <div class="col">
+                             <label>เอกสารที่เกี่ยวข้อง</label>
+                             <div id="file_dowload">
+                             </div>
+                         </div>
                      </div>
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-success"  onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
-                 <button type="button" class="btn btn-danger"  onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
+                 <button type="button" class="btn btn-success" onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
+                 <button type="button" class="btn btn-danger" onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
              </div>
          </div>
      </div>
@@ -138,9 +140,6 @@
          <div class="modal-content">
              <div class="modal-header">
                  <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
              </div>
              <div class="modal-body">
                  <p>กรุณาระบุเหตุผล</p>
@@ -152,7 +151,7 @@
              </div>
              <div class="modal-footer">
                  <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                  </form>
              </div>
          </div>
@@ -206,7 +205,7 @@
              approve_entrepreneur(ent_id) //function 
          });
      }
-      /*
+     /*
       * confirm_approve
       * open modal id = Aprovemodal 
       * @input 
@@ -216,12 +215,12 @@
       * @Update 2564-09-18
       */
 
-     function confirm_approve_view_data_madal(){
+     function confirm_approve_view_data_madal() {
          let ent_id = $('#ent_id').val();
          let ent_name = $('#ent_name').val();
          $('#ent_name_confirm').text(ent_name);
          console.log(ent_name);
-        $('#aprove_modal').modal({
+         $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
@@ -245,7 +244,7 @@
          $('#email').val(ent_email);
          $('#ent_id_form').val(ent_id);
          console.log(ent_email);
-         
+
          let admin_reson = document.querySelectorAll('#admin_reason');
          let err_message = document.querySelector('#err_message');
 
@@ -275,7 +274,7 @@
              }
          });
      }
-      /*
+     /*
       * confirm_reject
       * open modal id = Aprovemodal 
       * @input 
@@ -284,7 +283,7 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-      function confirm_reject_view_data_madal() {
+     function confirm_reject_view_data_madal() {
          let ent_id = $('#ent_id').val();
          let ent_name = $('#ent_name').val();
          let ent_email = $('#ent_email').val();
