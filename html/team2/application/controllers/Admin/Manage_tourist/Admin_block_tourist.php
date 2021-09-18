@@ -18,6 +18,7 @@ class Admin_block_tourist extends DCS_controller
         parent::__construct();
         $this->load->library('email');
         $this->load->library('pagination');
+        $this->load->model('Tourist/M_dcs_tourist', 'mdct');
     }
 
 
@@ -47,14 +48,16 @@ class Admin_block_tourist extends DCS_controller
     */
     public function block_user_ajax()
     {
-        $this->load->model('Tourist/M_dcs_tourist', 'mdct');
-
+        // set value from font end
         $this->mdct->tus_id = $this->input->post('tus_id');
-
+        // set data for send mail
+        $user_email = $this->input->post('email');
+        $mail_subject = 'Admin has blocked your account.';
+        $mail_content_header = "คุณถูกบล็อคบัญชีการใช้งาน";
+        $mail_content = "บัญชีนักท่องเที่ยวนี้ถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
+        $admin_id =  $this->session->userdata("Admin_id");
         $status_number = 4;
-
         $this->mdct->update_status($status_number);
-
-        // $this->email_send($user_email);
+        $this->email_send($mail_content, $user_email, $mail_subject, $mail_content_header);
     }
 }

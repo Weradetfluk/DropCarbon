@@ -77,7 +77,7 @@
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title">คุณต้องการบล็อค ?</h5>
+                         <h5 class="modal-title">คุณต้องการบล็อค <span id="tus_block_name_confirm"></span>?</h5>
                          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                              <span aria-hidden="true">&times;</span>
                          </button> -->
@@ -85,9 +85,13 @@
                      <div class="modal-body">
                          <p>คุณต้องการบล็อคนักท่องเที่ยวคนนี้ใช่หรือไม่ ?</p>
                      </div>
-                     <div class="modal-footer">
+                    <form method="POST"  id="block_form">
+                        <input type="hidden" id="email" name="email">
+                        <input type="hidden" id="tus_id_form" name="tus_id">
+                        <div class="modal-footer">
                          <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
                          <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                    </form>
                      </div>
                  </div>
              </div>
@@ -95,6 +99,15 @@
 
 
          <script>
+             /*
+              * load data
+              * load data in Admin controller
+              * @input 
+              * @output table list tourist
+              * @author Nantasiri Saiwaew 62160093
+              * @Create Date 2564-09-17
+              * @Update -
+              */
             $(document).ready(function() {
 
                 load_data(1);
@@ -138,52 +151,105 @@
               * @Update -
               */
 
-             function confirm_block(tus_id) {
-                 $('#blockmodal').modal();
+            //  function confirm_block(tus_id) {
+            //      $('#blockmodal').modal();
 
-                 $('#blocked').click(function() {
-                     console.log("check");
-                     block_user(tus_id);
+            //      $('#blocked').click(function() {
+            //          console.log("check");
+            //          block_user(tus_id);
 
-                 });
+            //      });
 
-             }
+            //  }
 
 
-             /*
-              * block_user
-              * send ajax into block_user controller
-              * @input tus_id
-              * @output sweet alert
-              * @author Nantasiri Saiwaew 62160093
-              * @Create Date 2564-08-02
-              * @Update -
-              */
-
-             function block_user(tus_id) {
+        /*
+        * show_loading
+        * show loading page for wait send email
+        * @input -
+        * @output -
+        * @author Nantasiri Saiwaew 62160093
+        * @Create Date 2564-09-18
+        * @Update -
+        */
+        function show_loding() {
+            $(document).on("click", "button", function(){
+            $.get(function(data){
+            $("body").html(data);
+            });       
+        });
+ 
+        // Add remove loading class on body element based on Ajax request status
+            $(document).on({
+            ajaxStart: function(){
+                $("body").addClass("loading"); 
+            },
+            ajaxStop: function(){ 
+                $("body").removeClass("loading"); 
+                }    
+            });
+        }
+            
+       /*      
+      * confirm_block
+      * open modal id = block 
+      * @input 
+      * @output modal to reject  modal 
+      * @author Nantasiri Saiwaew 62160093
+      * @Create Date 2564-09-18
+      * @Update -
+      */
+     function confirm_block(tus_id, tus_email, tus_name) {
+         let form = document.querySelector('#block_form');
+         $('#tus_block_name_confirm').text(tus_name);
+         $('#blockmodal').modal();
+         $('#email').val(tus_email);
+         $('#tus_id_form').val(tus_id);
+         console.log(tus_email);
+         $('#blocked').click(function() {
+                 $('#blockmodal').modal('toggle');
                  $.ajax({
-                     type: "POST",
-                     data: {
-                         tus_id: tus_id
-                     },
-                     url: '<?php echo base_url('Admin/Manage_tourist/Admin_block_tourist/block_user_ajax'); ?>',
+                      type: "POST",
+                      data: {
+                          tus_id: tus_id,
+                          email: tus_email,
+                      },
+                      url: ' <?php echo base_url() . 'Admin/Manage_tourist/Admin_block_tourist/block_user_ajax'; ?>',
                      success: function() {
-                         //sweet alert
-                         swal({
-                             title: "บล็อคบัญชีสำเร็จ",
-                             text: "บล็อคบัญชีนักท่องเที่ยวสำเร็จ กำลังจัดส่งอีเมล...",
-                             type: "success",
-                             showConfirmButton: false,
-                             timer: 3000,
-                         }, function() {
-                             location.reload();
-
-                         })
-                     },
-                     error: function() {
-                         alert('ajax block user error working');
-                     }
+                 swal({
+                     title: "บล็อคบัญชีสำเร็จ",
+                     text: "บล็อคบัญชีนักท่องเที่ยวสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                     location.reload();
                  });
-
-             }
-         </script>
+                     }
+             });
+         });
+     }     
+    </script>
+         <style>
+        .overlay{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.8) url("/examples/images/loader.gif") center no-repeat;
+        }
+        body{
+         text-align: center;
+        }
+        /* Turn off scrollbar when body element has the loading class */
+             body.loading{
+            overflow: hidden;   
+        }
+        /* Make spinner image visible when body element has the loading class */
+         body.loading .overlay{
+            display: block;
+        }
+    </style>
