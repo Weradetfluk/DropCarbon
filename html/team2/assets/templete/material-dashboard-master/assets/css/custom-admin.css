@@ -16,7 +16,7 @@ body{font-size: 18px; font-weight:600; font-family: 'Prompt', sans-serif;}
 .icon-area {background: #fba004;}
 .icon-purple{background: #8e24aa;}
 .custom-icon{font-size: 30px  !important;}
-.vr-line{border-left: 4px solid #4caf50 !important;margin : 0 auto !important; height: 40px;padding-left: 3px !important;padding-bottom: 10px;}
+.vr-line{border-left: 4px solid #4caf50 !important;margin : 0 auto !important; height: auto; padding-left: 3px !important;padding-bottom: 10px;}
 
 @media screen and (max-width: 400px) {
   .res-hide{
