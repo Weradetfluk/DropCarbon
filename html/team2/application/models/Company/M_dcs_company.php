@@ -88,12 +88,22 @@ class M_dcs_company extends Da_dcs_company
     *@output -
     *@author Kasama Donwong 62160074
     *@Create Date 2564-08-08
+    *@Update Date 2564-09-19
     */
     function get_search($search, $number_status)
     {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_company where com_name =  '$search'  And com_status = '$number_status' ";
-
-        $query = $this->db->query($sql);
+        
+        $this->db->select('*');
+        $this->db->from('dcs_company');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('ent_email', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("com_status = '$number_status'");
+        $query = $this->db->get();
         return $query;
     }
 

@@ -9,120 +9,75 @@
 */ 
 -->
 
-<!-- main content -->
 
-<div class="card card-nav-tabs custom-card-tab">
-    <div class="card-header custom-header-tab">
-        <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-                <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">ยังไม่ได้รับอนุมัติ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">สถานที่ที่ถูกปฏิเสธ</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+ <!-- main content -->
+ <div class="vr-line">
+     <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">สถานที่ที่อนุมัติแล้ว</h3>
+ </div>
 
+ <div class="card card-nav-tabs custom-card-tab">
+     <div class="card-header custom-header-tab">
+         <div class="row">
+             <div class="col-sm-6">
+                 <div class="nav-tabs-navigation">
+                     <div class="nav-tabs-wrapper">
+                         <ul class="nav nav-tabs" data-tabs="tabs">
+                             <li class="nav-item">
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider' ?> ">รออนุมัติ</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve' ?> ">อนุมัติแล้ว</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">ถูกปฏิเสธ</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <div class="col">
+                 <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_approve'; ?>" method="POST">
+                     <div class="input-group ">
+                         <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <!-- Tab1 -->
+     <div class="card-body ">
+         <div class="table-responsive" id="data_com_approve">
+         </div>
+     </div>
+ </div>
 
-    <!-- Tab1 -->
-    <div class="card-body ">
-        <div class="tab-content">
-            <div class="tab-pane active" id="consider">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header" style="background-color: #60839f; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 10px;">
-                                <div class="row">
-                                    <div class="col py-2">
-                                        <h4 class="card-title text-white " style="font-family: 'Prompt', sans-serif;">ตารางแสดงข้อมูลสถานที่ที่ได้รับอนุมัติแล้ว</h4>
-                                    </div>
-                                    <div class="col">
-                                        <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST" style="width: 200px; float:right;">
+<script>
+    $(document).ready(function() {
+         load_data(1);
 
-                                            <div class="input-group ">
-
-                                                <input type="text" value="" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่..." style="background-color:white; border-radius: 10px;">
-                                                <button type="submit" name="search" class="btn btn-white btn-round btn-just-icon" value="" style="margin-left: 3px;;">
-                                                    <i class="material-icons">search</i>
-                                                </button>
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive" id="data_entre_consider">
-                                    <!-- table approve ajax  -->
-                                    <table class="table" style="text-align: center;" id="entre_tale_approve">
-                                        <thead class="text-white" style="background-color: #e4a487; text-align: center;">
-                                            <tr>
-                                                <th style="font-weight:500;">ลำดับ</th>
-                                                <th style="font-weight:500;">ชื่อสถานที่</th>
-                                                <th style="font-weight:500;">ชื่อผู้ประกอบการ</th>
-                                                <th style="font-weight:500;">อีเมล</th>
-                                                <th style="font-weight:500;">ดำเนินการ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="list">
-                                            <?php
-                                            if (sizeof($arr_company_approve) == 0) {
-                                                echo "<td colspan = '5'>";
-                                                echo "ไม่มีข้อมูลในตารางนี้";
-                                                echo "</td>";
-                                            } else {
-
-                                                for ($i = 0; $i < count($arr_company_approve); $i++) { ?>
-                                                    <tr>
-                                                        <!-- column ลำดับ -->
-                                                        <td style='text-align: center;'>
-                                                            <?php echo ($i + 1); ?>
-                                                        </td>
-
-                                                        <!-- column ชื่อ-สกุล -->
-                                                        <td>
-                                                            <?php echo $arr_company_approve[$i]->com_name; ?>
-                                                        </td>
-
-
-                                                        <!-- column เบอร์โทร -->
-                                                        <td>
-                                                            <?php echo $arr_company_approve[$i]->ent_firstname . " " . $arr_company_approve[$i]->ent_lastname; ?>
-                                                        </td>
-
-                                                        <!-- column Email -->
-                                                        <td>
-                                                            <?php echo $arr_company_approve[$i]->ent_email; ?>
-                                                        </td>
-
-
-                                                        <!-- column ดำเนินการ -->
-                                                        <td style='text-align: center;'>
-                                                            <a class="btn btn-info custom-btn-table" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $arr_company_approve[$i]->com_id; ?>">
-                                                                <i class="material-icons">
-                                                                    search
-                                                                </i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-12" style="text-align:center;"><?php echo  $link_approve; ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+         function load_data(page, query = '') {
+             console.log(query);
+             $.ajax({
+                 url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/show_data_ajax/'); ?>' + 2,
+                 method: "POST",
+                 data: {
+                     page: page,
+                     query: query
+                 },
+                 success: function(data) {
+                     $('#data_com_approve').html(data);
+                 }
+             });
+         }
+         $('#search_box').keyup(function() {
+             var query = $('#search_box').val();
+             load_data(1, query);
+             // console.log(query);
+         });
+         $(document).on('click', '.page-link', function() {
+             var page = $(this).data('page_number');
+             var query = $('#search_box').val();
+             load_data(page, query);
+         });
+     });
+</script>
