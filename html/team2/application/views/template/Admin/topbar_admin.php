@@ -91,7 +91,7 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active"; ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active"; ?>" id="tus_menu">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">perm_identity</i>
             <p>จัดการนักท่องเที่ยว</p>

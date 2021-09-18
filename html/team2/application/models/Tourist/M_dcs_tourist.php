@@ -52,18 +52,40 @@ class M_dcs_tourist extends Da_dcs_tourist
     }
 
     /*
+    * get_all_data_tourist
+    * get all data tourist for query in manage tourist 
+    * @input -
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-09-18
+    */
+    function get_all_data_tourist($limit, $start,$number_status)
+    {
+
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_tourist');
+        $this->db->where("tus_status = '$number_status'");
+        $query = $this->db->get();
+
+        //$query = $this->db->get('dcs_entrepreneur');
+        return $query->result();
+    }
+
+    /*
     * get_all_list_tourist
     * get all count tourist status = 1
     * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-02
+    * @Update Date 2564-09-18
     */
-    function get_count_all_tourist()
+    function get_count_all_tourist($num_status)
     {
         $this->db->select('*');
         $this->db->from('dcs_tourist');
-        $this->db->where('tus_status = 1');
+        $this->db->where("tus_status = '$num_status'");
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
@@ -192,6 +214,25 @@ class M_dcs_tourist extends Da_dcs_tourist
         $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
         WHERE tus_email = ?";  
         $query = $this->db->query($sql, array($this->tus_email));
+        return $query;
+    }
+
+    /*
+    *get_search
+    *get serarch tourist by form database
+    *@input limit, start, number_status
+    *@output -
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-09-16
+    *@Update Date -
+    */
+    function get_search($search, $number_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_tourist');
+        $this->db->like('tus_firstname', $search,); 
+        $this->db->where("tus_status = '$number_status'");
+        $query = $this->db->get();
         return $query;
     }
 }
