@@ -264,7 +264,6 @@
 
     /*
      * check_id_card_number
-     * check button submit
      * @input 
      * @output -
      * @author Priyarat Bumrungkit 62160156
