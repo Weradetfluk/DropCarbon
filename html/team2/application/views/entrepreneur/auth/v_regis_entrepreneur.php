@@ -230,12 +230,12 @@
                 console.log(data);
                 if (data == 1) {
                     $('#usernameavailable').html("ชื่อนี้ถูกใช้เเล้ว");
-                    check_name = 1;
+                    check_username = 1;
                     check_btn_submit();
                     // $('#next_btn').prop('disabled', true);
                 } else {
                     $('#usernameavailable').html("");
-                    check_name = 0;
+                    check_username = 0;
                     check_btn_submit();
                     // $('#next_btn').prop('disabled', false);
                 }
@@ -254,7 +254,7 @@
      * @Update -
      */
     function check_btn_submit(){
-        if (check_password == 1 || check_name == 1) {
+        if (check_password == 1 || check_username == 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
