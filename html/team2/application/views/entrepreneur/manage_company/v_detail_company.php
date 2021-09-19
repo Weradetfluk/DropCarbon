@@ -80,8 +80,8 @@
 
                         <table class="table table-responsive">
                             <tr>
-                                <td>
-                                    <div id="Map" style="width: 1050px; height: 400px;"></div>
+                                <td style="border: 2px solid black;">
+                                    <div id="Map" style="width: 900px; height: 400px;"></div>
                                 </td>
                             </tr>
                         </table>

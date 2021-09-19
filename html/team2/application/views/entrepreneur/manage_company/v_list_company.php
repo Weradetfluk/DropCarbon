@@ -402,7 +402,6 @@
     $('#delete_btn').click(function() {
       delete_company(com_id_con)
     });
-
   }
 
   /*

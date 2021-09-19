@@ -84,7 +84,7 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <label for="com_tel">เบอร์ติดต่อสถานที่</label>
                                         <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" maxlength="10" required>
                                     </div>
@@ -117,8 +117,8 @@
                                         <label for="com_lon">Longitude</label>
                                         <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
                                     </div>
-                                    <a class="btn btn-success text-white" style="font-size:10px; padding:20px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons">pin_drop</i>
+                                    <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                        <i class="material-icons" style="font-size:30px;">add_location</i>
                                     </a>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
                                 <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
                                 <table class="table table-responsive">
                                     <tr>
-                                        <td>
-                                            <div id="map" style="width: 1050px; height: 400px;"></div>
+                                        <td style="border: 2px solid black;">
+                                            <div id="map" style="width: 900px; height: 400px;"></div>
                                         </td>
                                     </tr>
                                 </table>

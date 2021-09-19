@@ -10,11 +10,6 @@
 -->
 
 <style>
-    #map {
-        height: 100%;
-        width: 100%;
-    }
-
     .image_container {
         height: 120px;
         width: 200px;
@@ -50,7 +45,7 @@
                         </center>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/edit_company/' ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/edit_company/' ?>" id="form_edit_com" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -61,14 +56,14 @@
                                     <div class="col-lg-3">
                                         <label for="com_cat_id">หมวดหมู่</label>
                                         <select name="com_cat_id" id="com_cat_id" class="form-control">
-                                            <?php for($i = 0; $i < count($arr_com_cat); $i++){?>
-                                                <?php if($i+1 == $arr_company[0]->com_cat_id){?>
-                                                    <option value="<?php echo $i+1?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
-                                                <?php }?>
-                                                <?php if($i+1 != $arr_company[0]->com_cat_id){?>
-                                                    <option value="<?php echo $i+1?>"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
-                                                <?php }?>
-                                            <?php }?>
+                                            <?php for ($i = 0; $i < count($arr_com_cat); $i++) { ?>
+                                                <?php if ($i + 1 == $arr_company[0]->com_cat_id) { ?>
+                                                    <option value="<?php echo $i + 1 ?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                                <?php } ?>
+                                                <?php if ($i + 1 != $arr_company[0]->com_cat_id) { ?>
+                                                    <option value="<?php echo $i + 1 ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -84,7 +79,7 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <label for="com_description">เบอร์ติดต่อสถานที่</label>
                                         <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" value="<?php echo $arr_company[0]->com_tel; ?>" required>
                                     </div>
@@ -98,16 +93,16 @@
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
-                                <?php for($i = 0; $i < count($arr_image); $i++){?>
-                                    <?php $arr_path = explode('.', $arr_image[$i]->com_img_path)?>
-                                    <div id="<?php echo $arr_path[0].'.'.$arr_path[1]?>">
+                                <?php for ($i = 0; $i < count($arr_image); $i++) { ?>
+                                    <?php $arr_path = explode('.', $arr_image[$i]->com_img_path) ?>
+                                    <div id="<?php echo $arr_path[0] . '.' . $arr_path[1] ?>">
                                         <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
                                             <img src="<?php echo base_url() . 'image_company/' . $arr_image[$i]->com_img_path; ?>" alt="Image">
-                                            <span class="position-absolute" style="font-size: 25px;" onclick="unlink_old_image('<?php echo $arr_image[$i]->com_img_path?>')">&times;</span>
-                                            <input type="text" value="<?php echo $arr_image[$i]->com_img_path?>" name="old_img[]" hidden>
+                                            <span class="position-absolute" style="font-size: 25px;" onclick="unlink_old_image('<?php echo $arr_image[$i]->com_img_path ?>')">&times;</span>
+                                            <input type="text" value="<?php echo $arr_image[$i]->com_img_path ?>" name="old_img[]" hidden>
                                         </div>
                                     </div>
-                                <?php }?>
+                                <?php } ?>
                             </div>
                             <div id="arr_del_img_new"></div>
                             <div id="arr_del_img_old"></div>
@@ -129,30 +124,50 @@
                                         <label for="com_lon">Longitude</label>
                                         <input type="text" id="com_lon" name="com_lon" class="form-control" value="<?php echo $arr_company[0]->com_lon; ?>">
                                     </div>
-                                    <a class="btn btn-success text-white" style="font-size:10px; padding:20px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons">pin_drop</i>
+                                    <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                        <i class="material-icons" style="font-size:30px;">add_location</i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="container-fluid">
-                                <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
-                                <table class="table table-responsive">
-                                    <tr>
-                                        <td>
-                                            <div id="map" style="width: 1050px; height: 400px;"></div>
-                                        </td>
-                                    </tr>
-                                </table>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
+                                    <table class="table table-responsive"> 
+                                        <tr>
+                                            <td style="border: 2px solid black;">
+                                                <div id="map" style="width: 900px; height: 400px;"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
 
                             <!-- id ของ company -->
                             <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_company[0]->com_id; ?>">
                             <div style="text-align: right;">
-                                <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
+                                <button type="button" value="Submit" class="btn btn-success" id="btn_sub" onclick="confirm_edit('<?php echo $arr_company[0]->com_name; ?>')">บันทึก</button>
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 
+                            <!-- modal edit -->
+                            <div class="modal fade" tabindex="-1" role="dialog" id="modal_edit">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>คุณต้องการที่แก้ไขข้อมูลสถานที่ <span id="com_name_confirm"></span> ?</p><br>
+                                            <p style="color: red;">***หากทำการแก้ไขข้อมูล สถานที่ <span id="com_name_confirm"> จะกลับสู่สถานะรออนุมัติ</span>***</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
+                                            <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -160,17 +175,13 @@
         </div>
     </div>
 </div>
-</div>
+
+
 
 <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
     $(document).ready(function() {
         init($('#com_lat').val(), $('#com_lon').val());
-        let error = "<?php echo $this->session->userdata("error_edit_company"); ?>";
-        if (error == 'fail') {
-            swal("ล้มเหลว", "คุณทำการแก้ไขสถานที่ล้มเหลวเนื่องจากขนาดรูปภาพใหญ่เกินไป", "error");
-            <?php echo $this->session->unset_userdata("error_edit_company"); ?>
-        }
         check_count_image_btn();
         // console.log(count_image);
     });
@@ -182,7 +193,7 @@
     var curpos = new Array();
     var markers = new OpenLayers.Layer.Markers("Markers");
     var position;
-    var count_image = <?= count($arr_image)?>;
+    var count_image = <?= count($arr_image) ?>;
     var check_btn_name = 0;
 
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
@@ -450,7 +461,7 @@
         // for (var i = 0; i < $("input[name='del_new_img[]']").length; i++) {
         //     $("input[name='del_new_img[]']").attr('name', 'new_img[]');
         // }
-        
+
         // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
         var arr_image = $("input[name='new_img[]']").map(function() {
             return $(this).val();
@@ -463,9 +474,26 @@
                 arr_image: arr_image
             },
             success: function(data) {
-                // console.log(data);
                 location.replace("<?php echo site_url() . "Entrepreneur/Manage_company/Company_list/show_list_company" ?>")
             }
         })
+    }
+
+    /*
+     * confirm_edit
+     * confirm delete company
+     * @input com_name_con, com_id_con
+     * @output modal comfirm delete comepany
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-18
+     * @Update -
+     */
+    function confirm_edit(com_name_con) {
+        $('#com_name_confirm').text(com_name_con);
+        $('#modal_edit').modal();
+
+        $('#submit').click(function() {
+            $('#form_edit_com').submit();
+        });
     }
 </script>
