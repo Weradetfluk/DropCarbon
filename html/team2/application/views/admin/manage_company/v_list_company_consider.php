@@ -76,7 +76,7 @@
 
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
+ <!-- <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -87,7 +87,7 @@
              </div>
              <div class="modal-body">
                  <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>">
+                 <form method="POST" action=" echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>">
                      <input type="hidden" id="email" name="email">
                      <input type="hidden" id="com_id" name="com_id">
                      <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
@@ -99,8 +99,31 @@
              </div>
          </div>
      </div>
+ </div> -->
+<!-- warnning reject  -->
+<div class="modal" tabindex="-1" role="dialog" id="rejected_com">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="com_reject_name_confirm"></span> ?</h5>
+             </div>
+             <div class="modal-body">
+                 <p>กรุณาระบุเหตุผล</p>
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>" id="reject_form">
+                     <input type="hidden" id="email" name="email">
+                     <input type="hidden" id="com_id_form" name="com_id">
+                     <input type="hidden" id="com_ent_id" name="com_ent_id">
+                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
+                     <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
+             </div>
+             <div class="modal-footer">
+                 <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                 </form>
+             </div>
+         </div>
+     </div>
  </div>
-
 
 
 
@@ -163,23 +186,42 @@
       * @Update -
       */
 
-     function confirm_reject(com_id, ent_email) {
-         $('#Rejectent').modal();
-
+     function confirm_reject(com_id, ent_email,com_name,com_ent_id) {
+        let form = document.querySelector('#reject_form');
+         $('#com_reject_name_confirm').text(com_name);
+         $('#rejected_com').modal();
          $('#email').val(ent_email);
-         $('#com_id').val(com_id);
+         $('#com_id_form').val(com_id);
+         $('#com_ent_id').val(com_ent_id);
+         console.log(ent_email);
 
+         let admin_reson = document.querySelectorAll('#admin_reason');
+         let err_message = document.querySelector('#err_message');
+
+         console.log(admin_reson);
          $('#rejected').click(function() {
-             $('#Rejectent').modal('toggle');
-             swal({
-                 title: "ปฏิเสธสำเร็จ",
-                 text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
-                 type: "success",
-                 showConfirmButton: false,
-                 timer: 3000,
-             }, function() {
-                 location.reload();
+             let tooshort = false;
+             admin_reson.forEach((reson) => {
+                 if (reson.value.length < 6) {
+                     tooshort = true;
+                 }
              });
+             if (tooshort) {
+                 event.preventDefault();
+                 err_message.style.display = 'block';
+             } else {
+                 $('#rejected_com').modal('toggle');
+                 err_message.style.display = 'none';
+                 swal({
+                     title: "ปฏิเสธสำเร็จ",
+                     text: "ปฏิเสธสถานที่สำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                     location.reload();
+                 });
+             }
          });
      }
 

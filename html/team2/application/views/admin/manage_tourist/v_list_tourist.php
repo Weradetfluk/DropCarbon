@@ -230,7 +230,7 @@
          });
      }     
     </script>
-         <style>
+         <!-- <style>
         .overlay{
             display: none;
             position: fixed;
@@ -252,4 +252,4 @@
          body.loading .overlay{
             display: block;
         }
-    </style>
+    </style> -->
