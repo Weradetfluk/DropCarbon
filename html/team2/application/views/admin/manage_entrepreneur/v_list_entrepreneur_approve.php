@@ -121,6 +121,12 @@
                                  <input type="text" class="form-control" id="ent_birthdate" disabled>
                              </div>
                          </div>
+                         <div class="row">
+                             <div class="col">
+                                 <label>วันที่่สมัคร</label>
+                                 <input type="text" class="form-control" id="ent_regis_date" disabled>
+                             </div>
+                         </div>
                      </div>
                      <div class="row">
                          <div class="col">
@@ -144,22 +150,6 @@
      $(document).ready(function() {
 
          load_data(1);
-
-         function load_data(page, query = '') {
-             console.log(query);
-             $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 2,
-                 method: "POST",
-                 data: {
-                     page: page,
-                     query: query
-                 },
-                 success: function(data) {
-                     $('#data_entre_approve').html(data);
-                 }
-             });
-         }
-
          $('#search_box').keyup(function() {
              var query = $('#search_box').val();
              load_data(1, query);
@@ -174,6 +164,22 @@
          });
 
      });
+
+     
+     function load_data(page, query = '') {
+             console.log(query);
+             $.ajax({
+                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 2,
+                 method: "POST",
+                 data: {
+                     page: page,
+                     query: query
+                 },
+                 success: function(data) {
+                     $('#data_entre_approve').html(data);
+                 }
+             });
+         }
      /*
       * confirm_block
       * open modal id = blockmodal 
@@ -184,15 +190,13 @@
       * @Update -
       */
 
-     function confirm_block(ent_id, ent_name) {
+     function confirm_block(ent_id, ent_name, ent_email) {
          $('#block_modal').modal();
          $('#ent_block_name_confirm').text(ent_name);
          $('#blocked').click(function() {
              console.log("check");
-             block_user(ent_id);
-
+             block_user(ent_id, ent_email);
          });
-
      }
      /*
       * confirm_block
@@ -203,7 +207,6 @@
       * @Create Date 2564-07-27
       * @Update -
       */
-
      function confirm_block_view_data_madal() {
          $('#block_modal').modal();
          let ent_id = $('#ent_id').val();
@@ -212,12 +215,9 @@
          $('#ent_block_name_confirm').text(ent_name);
          $('#blocked').click(function() {
              console.log("check");
-             block_user(ent_id);
-
+             block_user(ent_id, ent_email);
          });
-
      }
-
 
      /*
       * block_user
@@ -229,7 +229,7 @@
       * @Update -
       */
 
-     function block_user(ent_id) {
+     function block_user(ent_id, ent_email) {
          $.ajax({
              type: "POST",
              data: {
@@ -243,11 +243,14 @@
                      text: "บล็อคผู้ประกอบการสำเร็จ",
                      type: "success",
                      showConfirmButton: false,
-                     timer: 3000,
+                     timer: 2000
                  }, function() {
-                     location.reload();
-
+                    location.reload();
                  })
+                 var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
+                 var content_h1 = "คุณถูกบล็อคบัญชีการใช้งาน";
+                 var subject = "Admin has blocked your account.";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
              },
              error: function() {
                  alert('ajax block user error working');

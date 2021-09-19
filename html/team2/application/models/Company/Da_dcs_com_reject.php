@@ -10,10 +10,10 @@ include_once dirname(__FILE__) ."/../DCS_model.php";
 */
 class Da_dcs_com_reject extends Dcs_model
 {
-    public $com_id;
-    public $com_admin_reason;
-    public $com_ent_id;
-    public $com_adm_id;
+    public $cor_id;
+    public $cor_admin_reason;
+    public $cor_ent_id;
+    public $cor_adm_id;
 
     /*
     * @author Nantasiri Saiwaew 62160093
@@ -32,8 +32,8 @@ class Da_dcs_com_reject extends Dcs_model
     * @Update -
     */
     public function insert(){
-        $sql = "INSERT INTO dcs_company_reject(com_admin_reason, com_ent_id, com_adm_id) VALUES(?, ?, ?)";
-        $this->db->query($sql, array( $this->com_admin_reason, $this->com_ent_id, $this->com_adm_id));
+        $sql = "INSERT INTO dcs_company_reject(cor_admin_reason, cor_ent_id, cor_adm_id) VALUES(?, ?, ?)";
+        $this->db->query($sql, array( $this->cor_admin_reason, $this->cor_ent_id, $this->cor_adm_id));
     }
  
 }

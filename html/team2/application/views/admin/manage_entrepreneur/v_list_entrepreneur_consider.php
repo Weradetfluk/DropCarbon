@@ -116,6 +116,12 @@
                                  <input type="text" class="form-control" id="ent_birthdate" disabled>
                              </div>
                          </div>
+                         <div class="row">
+                             <div class="col">
+                                 <label>วันที่่สมัคร</label>
+                                 <input type="text" class="form-control" id="ent_regis_date" disabled>
+                             </div>
+                         </div>
                      </div>
                      <div class="row">
                          <div class="col">
@@ -161,7 +167,19 @@
      $(document).ready(function() {
          load_data(1);
 
-         function load_data(page, query = '') {
+         $('#search_box').keyup(function() {
+             var query = $('#search_box').val();
+             load_data(1, query);
+             // console.log(query);
+         });
+         $(document).on('click', '.page-link', function() {
+             var page = $(this).data('page_number');
+             var query = $('#search_box').val();
+             load_data(page, query);
+         });
+     });
+
+     function load_data(page, query = '') {
              console.log(query);
              $.ajax({
                  url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 1,
@@ -175,17 +193,6 @@
                  }
              });
          }
-         $('#search_box').keyup(function() {
-             var query = $('#search_box').val();
-             load_data(1, query);
-             // console.log(query);
-         });
-         $(document).on('click', '.page-link', function() {
-             var page = $(this).data('page_number');
-             var query = $('#search_box').val();
-             load_data(page, query);
-         });
-     });
      /*
       * confirm_approve
       * open modal id = Aprovemodal 
@@ -195,18 +202,19 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(ent_id, ent_firstname) {
+     function confirm_approve(ent_id, ent_firstname, ent_email) {
          $('#ent_name_confirm').text(ent_firstname);
+         console.log(ent_email)
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_entrepreneur(ent_id) //function 
+             approve_entrepreneur(ent_id, ent_email) //function 
          });
      }
      /*
-      * confirm_approve
+      * confirm_approve_view_data_madal
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to confirm approve modal
@@ -218,6 +226,7 @@
      function confirm_approve_view_data_madal() {
          let ent_id = $('#ent_id').val();
          let ent_name = $('#ent_name').val();
+         let ent_email = $('#ent_email').val();
          $('#ent_name_confirm').text(ent_name);
          console.log(ent_name);
          $('#aprove_modal').modal({
@@ -225,7 +234,7 @@
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_entrepreneur(ent_id) //function 
+             approve_entrepreneur(ent_id, ent_email) //function 
          });
      }
      /*
@@ -288,6 +297,7 @@
          let ent_name = $('#ent_name').val();
          let ent_email = $('#ent_email').val();
          let form = document.querySelector('#reject_form');
+
          $('#ent_reject_name_confirm').text(ent_name);
          $('#rejected_ent').modal();
          $('#email').val(ent_email);
@@ -331,7 +341,7 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function approve_entrepreneur(ent_id) {
+     function approve_entrepreneur(ent_id, ent_email) {
          $.ajax({
              type: "POST",
              data: {
@@ -345,10 +355,14 @@
                      text: "อนุมัติผู้ประกอบการสำเร็จ",
                      type: "success",
                      showConfirmButton: false,
-                     timer: 3000,
+                     timer: 3000
                  }, function() {
-                     location.reload();
+                    location.reload();
                  })
+                 var content = "ผู้ใช้สามารถเข้าสู่ระบบโดยใช้ Account ของตนเองเท่าน้ัน หากไม่สามารถเข้าใช้านได้กรุณาติดต่อผู้ดูแลระบบเพื่อสอบถามข้อมูลเพิ่มเติม";
+                 var content_h1 = "คุณได้รับการอนุมัติการลงทะเบียนผู้ประกอบการ";
+                 var subject = "Approval";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
              },
              error: function() {
                  alert('ajax error working');

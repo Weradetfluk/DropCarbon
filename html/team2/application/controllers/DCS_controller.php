@@ -8,8 +8,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 class DCS_controller extends CI_Controller
 {
-
-
     /*
     * index main
     * index Main Drop carbon Systems
@@ -48,9 +46,6 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
-
-
-
     /*
     * output_admin_card
     * output admin page card
@@ -236,10 +231,8 @@ class DCS_controller extends CI_Controller
     {
         // Load PHPMailer library
         $this->load->library('phpmailer_lib');
-
         // PHPMailer object
         $mail = $this->phpmailer_lib->load();
-
         // SMTP configuration
         $mail->isSMTP();
         $mail->Host     = 'smtp.gmail.com';
@@ -249,10 +242,7 @@ class DCS_controller extends CI_Controller
         $mail->SMTPSecure = 'tls';
         $mail->Port     = 587;
         $mail->charSet = "UTF-8";
-
         $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
-
-
         // Add a recipient
         $mail->addAddress($user_email);
 
@@ -265,15 +255,28 @@ class DCS_controller extends CI_Controller
         // Email body content
         $mail_content = "<h1>" . $mail_content_h1 . "</h1>" . "<p>.$reason.</p>";
         $mail->Body = $mail_content;
-
-        // Send email
         if (!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
-        } else {
-            redirect("Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider");
-        }
+          }
     }
+
+      /*
+      * send_email_admin_ajax
+      * send email to user
+      * @input reason, user_email, subject, mail_content_h1
+      * @output -
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-09-20
+      * @Update Date -
+      */
+    public function send_email_admin_ajax(){
+        $content = $this->input->post('content');
+        $user_email = $this->input->post('user_email');
+        $subject = $this->input->post('subject');
+        $content_h1 = $this->input->post('content_h1');
+        $this->email_send($content, $user_email, $subject, $content_h1);     
+      }
 
     /*
     * output_login_tourist

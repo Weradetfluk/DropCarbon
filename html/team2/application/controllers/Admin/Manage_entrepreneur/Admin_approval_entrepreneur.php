@@ -31,7 +31,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
     public function config_pagination($page, $all_count, $limit)
     {
-        $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
+    $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
     $previous_link = ''; // ตัวแปร
     $next_link = ''; //ตัวแปร
     $page_link = ''; // ตัวแปร
@@ -290,7 +290,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                             search
                           </i>
                        </button>'.
-                      '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                      '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
                             <i class="material-icons">
                               done
                             </i>
@@ -307,7 +307,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                         search
                       </i>
                     </button>'.
-                      '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                      '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
                             <i class="material-icons"><span class="material-icons-outlined">
                                   highlight_off
                             </span></i>
@@ -322,7 +322,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                     </button>';
                   }else if($number_status == 4){
                     $output .='<td style="text-align: center;">
-                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
                         <i class="material-icons"><span class="material-icons-outlined">
                                 cached
                             </span></i>
@@ -378,7 +378,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                             search
                           </i>
                         </button>'.
-                    '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                    '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email .'\')">
                           <i class="material-icons">
                             done
                           </i>
@@ -396,7 +396,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                         search
                       </i>
                     </button>'.
-                      '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                      '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email. '\')">
                             <i class="material-icons"><span class="material-icons-outlined">
                                   highlight_off
                             </span></i>
@@ -411,7 +411,7 @@ class Admin_approval_entrepreneur extends DCS_controller
                   </button>';
                 }else if($number_status == 4){
                   $output .='<td style="text-align: center;">
-                  <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+                  <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
                       <i class="material-icons"><span class="material-icons-outlined">
                               cached
                           </span></i>

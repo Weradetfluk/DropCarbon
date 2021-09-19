@@ -10,10 +10,10 @@
 -->
 <!-- main content -->
 <div class="row">
-     <div class="col">
-             <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกบล็อค</h3>
-     </div>
- </div>
+    <div class="col">
+        <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกบล็อค</h3>
+    </div>
+</div>
 <div class="card card-nav-tabs custom-card-tab">
     <div class="card-header custom-header-tab">
         <div class="row">
@@ -52,8 +52,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- Tab1 -->
 
     <!-- Tab1 -->
@@ -76,11 +74,11 @@
                 <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
             </div>
             <div class="modal-body">
-                  <p>คุณต้องการปลดบล็อค <span id="ent_unblock_name_confirm"></span> ?</p>
+                <p>คุณต้องการปลดบล็อค <span id="ent_unblock_name_confirm"></span> ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" id="unblock" data-dismiss="modal">ยืนยัน</button>
-                <button class="btn btn-secondary" style="color: white; background-color: #777777;"  data-dismiss="modal">ยกเลิก</button>
+                <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
     </div>
@@ -88,13 +86,11 @@
 
 <script>
     $(document).ready(function() {
-
         load_data(1);
-
         function load_data(page, query = '') {
             console.log(query);
             $.ajax({
-                url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>'+4,
+                url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 4,
                 method: "POST",
                 data: {
                     page: page,
@@ -105,35 +101,28 @@
                 }
             });
         }
-
         $('#search_box').keyup(function() {
             var query = $('#search_box').val();
             load_data(1, query);
             // console.log(query);
-
         });
-
         $(document).on('click', '.page-link', function() {
             var page = $(this).data('page_number');
             var query = $('#search_box').val();
             load_data(page, query);
         });
-
     });
 
-    function confirm_unblock(ent_id, ent_name) {
+
+    function confirm_unblock(ent_id, ent_name, ent_email) {
         console.log(ent_name);
         $('#ent_unblock_name_confirm').text(ent_name);
         $('#unblock_modal').modal();
 
         $('#unblock').click(function() {
-            unblock_user(ent_id);
-
+            unblock_user(ent_id, ent_email);
         });
-
     }
-
-
     /*
      * unblock_user
      * send ajax to unblock file Admin_block_user
@@ -143,7 +132,7 @@
      * @Create Date 2564-07-27
      * @Update -
      */
-    function unblock_user(ent_id) {
+    function unblock_user(ent_id, ent_email) {
         $.ajax({
             type: "POST",
             data: {
@@ -160,8 +149,11 @@
                     timer: 2000,
                 }, function() {
                     location.reload();
-
                 })
+                 var content = "บัญชีของคุณถูกปลดบล็อคแล้ว สามารถเข้าใช้งานระบบได้ในทันที";
+                 var content_h1 = "คุณถูกปลดบล็อคบัญชีการใช้งาน";
+                 var subject = "Admin has unblocked your account.";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
             },
             error: function() {
                 alert('ajax block user error working');

@@ -29,8 +29,8 @@ class M_dcs_com_reject extends Da_dcs_com_reject
     */
     function get_data_rejected_by_id_com($com_id){
 
-        $sql = "SELECT dcs_company_reject.com_admin_reason, dcs_admin.adm_name FROM  dcs_company_reject LEFT JOIN dcs_admin 
-        ON dcs_company_reject.com_adm_id = dcs_admin.adm_id  WHERE dcs_company_reject.com_ent_id = '$com_id'";
+        $sql = "SELECT dcs_company_reject.cor_admin_reason, dcs_admin.adm_name FROM  dcs_company_reject LEFT JOIN dcs_admin 
+        ON dcs_company_reject.cor_adm_id = dcs_admin.adm_id  WHERE dcs_company_reject.cor_ent_id = '$com_id'";
 
         $query = $this->db->query($sql);
 
