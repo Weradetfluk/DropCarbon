@@ -254,7 +254,7 @@
      * @Update -
      */
     function check_btn_submit(){
-        if (check_password == 1 || check_username == 1) {
+        if (check_password == 1 || check_name == 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
