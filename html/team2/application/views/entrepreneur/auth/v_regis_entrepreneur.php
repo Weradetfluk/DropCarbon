@@ -101,12 +101,13 @@
                 </div>    
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
-                    <label for="ent_tel">เบอร์โทร</label>
-                    <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10"placeholder="เบอร์โทร" required>
+                    <label for="ent_tel">เบอร์โทรศัพท์</label>
+                    <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10"placeholder="088-XXX-XXXX" required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
-                    <label for="ent_id_card">บัตรประชาชน</label>
-                    <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="บัตรประชาชน" required>
+                    <label for="ent_id_card">หมายเลขบัตรประชาชน</label>
+                    <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="หมายเลขบัตรประชาชน" required>
+                    <span class="error text-danger"></span>
                 </div>
             </div>
 
@@ -122,7 +123,7 @@
                 </div>
             </div>
 
-            เอกสารจดทะเบียนเชิงพาณิชย์ :
+            เอกสารยืนยันตัวตน :
             <input type="file" name="document_ent[]" multiple required>
             <br><br>
 
@@ -261,4 +262,45 @@
         }
     }
 
+    /*
+     * check_id_card_number
+     * @input 
+     * @output -
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-09-20
+     * @Update -
+     */
+    $(document).ready(function(){
+        $('#ent_id_card').on('keyup',function(){
+            if($.trim($(this).val()) != '' && $(this).val().length == 13){
+                id = $(this).val().replace(/-/g,"");
+                var result = check_id_card_number(id);
+                if(result === false){  
+                    var id_alert = "เลขบัตรผิด";
+                    
+                    /*document.getElementByClassName("error").innerHTML = id_alert;*/
+                    $('span.error').removeClass('true').text(id_alert);
+                    
+                }else{
+                    $('span.error').addClass('true').text('');
+                }
+            }else{
+            $('span.error').removeClass('true').text('');
+            }
+        })
+    });
+
+    function check_id_card_number(id){
+            if(! IsNumeric(id)) return false;
+            if(id.substring(0,1)== 0) return false;
+            if(id.length != 13) return false;
+            for(i=0, sum=0; i < 12; i++)
+                sum += parseFloat(id.charAt(i))*(13-i);
+            if((11-sum%11)%10!=parseFloat(id.charAt(12))) return false;
+            return true;
+    }
+    function IsNumeric(input){
+            var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
+            return (RE.test(input));
+    }
 </script>

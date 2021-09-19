@@ -36,12 +36,12 @@ class Da_dcs_entrepreneur extends DCS_model
     * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-15
-    * @Update Date -
     */
     public function insert_entrepreneur()
     {
         $sql = "INSERT INTO dcs_entrepreneur(ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_birthdate, ent_username, ent_password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_birthdate,$this->ent_username, $this->ent_password));
+        
     }
 
     /*
@@ -70,12 +70,14 @@ class Da_dcs_entrepreneur extends DCS_model
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-15
     * @Update Date 2564-08-02
+    * @author Thanchanok Thongjumroon 62160089
+    * @Update Date 2564-09-19
     */
     public function update_entrepreneur()
     {
         $sql = "UPDATE {$this->db_name}.dcs_entrepreneur 
-                SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?, ent_birthdate = ?
+                SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?, ent_birthdate = ? , ent_password = ?
                 WHERE ent_id = ?";
-        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_birthdate, $this->ent_id));
+        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_birthdate, $this->ent_password, $this->ent_id));
     }
 }
