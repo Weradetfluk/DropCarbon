@@ -37,7 +37,6 @@
         font-weight: normal;
         cursor: pointer;
     }
-
 </style>
 
 <div class="content">
@@ -55,41 +54,40 @@
                         <!-- form add company -->
                         <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/add_company/' ?>" method="POST">
                             <br>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="com_name">ชื่อสถานที่</label>
-                                        <input type="text" id="com_name" name="com_name" class="form-control" placeholder="ใส่ชื่อสถานที่" onkeyup="check_name_company_ajax()" required>
-                                        <span class="text-danger" id="error_com_name"></span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label for="com_cat_id">หมวดหมู่</label>
-                                        <select name="com_cat_id" id="com_cat_id" class="form-control">
-                                            <?php for($i = 0; $i < count($arr_com_cat); $i++){?>
-                                                <option value="<?php echo $i+1?>"><?php echo $arr_com_cat[$i]->com_cat_name;?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="com_name">ชื่อสถานที่</label>
+                                    <input type="text" id="com_name" name="com_name" class="form-control" placeholder="ใส่ชื่อสถานที่" onkeyup="check_name_company_ajax()" required>
+                                    <span class="text-danger" id="error_com_name"></span>
                                 </div>
-                            </div>
+                                <div class="col-lg-3">
+                                    <label for="com_cat_id">หมวดหมู่</label>
+                                    <select name="com_cat_id" id="com_cat_id" class="form-control">
+                                        <?php for ($i = 0; $i < count($arr_com_cat); $i++) { ?>
+                                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div><br>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <label for="com_description">รายละเอียดสถานที่</label>
-                                        <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="com_description">รายละเอียดสถานที่</label>
+                                    <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="ใส่รายละเอียดของสถานที่" required></textarea>
                                 </div>
-                            </div>
+                            </div><br>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <label for="com_tel">เบอร์ติดต่อสถานที่</label>
-                                        <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" maxlength="10" required>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
+                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" maxlength="10" required>
                                 </div>
-                            </div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-6">
+                                    <label for="com_start_date">วันที่เริ่มกิจกรรม</label>
+                                    <input type="date" id="com_start_date" name="com_start_date" class="form-control" required>
+                                </div>
+                            </div><br>
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
@@ -98,32 +96,29 @@
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
-                            <div id="arr_del_img_new"></div>
+                            <div id="arr_del_img_new"></div><br>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col">
-                                        <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <label for="com_lat">Latitude</label>
-                                        <input type="text" id="com_lat" name="com_lat" class="form-control" value="">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label for="com_lon">Longitude</label>
-                                        <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
-                                    </div>
-                                    <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons" style="font-size:30px;">add_location</i>
-                                    </a>
+                            <div class="row">
+                                <div class="col">
+                                    <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="com_lat">Latitude</label>
+                                    <input type="text" id="com_lat" name="com_lat" class="form-control" value="">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="com_lon">Longitude</label>
+                                    <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
+                                </div>
+                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                    <i class="material-icons" style="font-size:30px;">add_location</i>
+                                </a>
+                            </div><br><br>
 
-                            <br>
                             <div class="container-fluid">
                                 <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
                                 <table class="table table-responsive">
@@ -417,7 +412,7 @@
      * @Create Date 2564-09-03
      * @Update -
      */
-     function check_name_company_ajax(){
+    function check_name_company_ajax() {
         var com_name = $('#com_name').val();
         // console.log(com_name);
         $.ajax({
@@ -429,13 +424,13 @@
             },
             success: function(data) {
                 // console.log(data);
-                if(data == 1){
+                if (data == 1) {
                     console.log(1);
                     $('#error_com_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
                     check_btn_name = 1;
                     check_count_image_btn()
                     // $('#btn_sub').prop('disabled', true); 
-                }else if(data == 2){
+                } else if (data == 2) {
                     console.log(2);
                     $('#error_com_name').html('');
                     check_btn_name = 0;
@@ -444,5 +439,5 @@
                 }
             }
         })
-     }
+    }
 </script>
