@@ -117,7 +117,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist');
         $this->load->view($view, $data);
-        $this->load->view('template/Tourist/footer');
+        
     }
 
     /*
@@ -162,7 +162,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist');
         $this->load->view($view, $data);
-        $this->load->view('template/Tourist/footer');
+        
     }
 
     /*
@@ -179,7 +179,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view($topbar);
         $this->load->view($view);
-        $this->load->view('template/Tourist/footer');
+        
     }
 
     /*
@@ -196,7 +196,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist_login');
         $this->load->view('tourist/auth/v_landing_page_tourist');
-        $this->load->view('template/Tourist/footer');
+        
     }
 
     /*
@@ -213,7 +213,7 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist_login');
         $this->load->view('tourist/manage_tourist/v_edit_tourist', $data);
-        $this->load->view('template/Tourist/footer');
+        
     }
 
 
@@ -294,6 +294,6 @@ class DCS_controller extends CI_Controller
         $this->load->view('template/Tourist/javascript_tourist');
         $this->load->view('template/Tourist/topbar_tourist');
         $this->load->view($view, $data);
-        $this->load->view('template/Tourist/footer');
+        
     }
 }
