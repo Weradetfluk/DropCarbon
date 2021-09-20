@@ -1,28 +1,55 @@
 <?php
-$warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
+//check world warnning == username หรือ password incorrect
+$warning = $warning ?? '';
 ?>
-<title>Login Tourist</title>
-<div class="body">
-    <div class="container-1">
-        <div class="" style="">
-            <h4 class="card-title" style="color: black;">ลืมรหัสผ่านของนักท่องเที่ยว</h4>
-        </div>
-        <form method="post" action="">
-            <div class="inputs">
-                <input class="input" type="email" placeholder="อีเมลของคุณ" name="tourist_email" id="tourist_email" required>
-                <span style="color: red; margin-left: 10px;">
-                    <?php
-                    if ($warning != NULL) {
-                        echo $warning;
-                    }
-                    ?>
-                </span>
-                <button type="submit" class="button" id="forgot_pass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
+
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
+    <div class="container" style="margin-top: 200px; ">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <form action="<?php echo site_url() . 'Tourist/Auth/Login_tourist/input_login_form'; ?>" method="POST">
+                        <div class="card-header text-center" style="background-color: #5F9EA0;">
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลืมรหัสผ่านนักท่องเที่ยว</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                    </div>
+                                    <input type="email" class="form-control" placeholder="อีเมลของคุณ" name="tourist_email" id="tourist_email" required>
+                                </div>
+                            </span>
+                            <span style="color: red; margin-left: 30px;">
+                                <?php
+                                if ($warning != NULL) {
+                                    echo $warning;
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        <div class="header" style="text-align: center;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success" id="forgot_pass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>
+
 
 <script>
 $(document).ready(function() {

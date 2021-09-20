@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Open Header -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,15 +14,17 @@
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/templatemo.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/custom.css">
     <!-- fonts css -->
-    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" type="text/css">
-    
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" type="text/css">
+
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bg.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/form-tourist.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/form-tourist.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/landing-page.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
 
+
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
 </head>
 
 <body>

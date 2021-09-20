@@ -10,86 +10,86 @@
 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-    h2 {
-        padding-top: 2%;
-        padding-bottom: 5%;
-        font-size: 70px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.685);
-        font-weight: bold;
-    }
+h2 {
+    padding-top: 2%;
+    padding-bottom: 5%;
+    font-size: 70px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.685);
+    font-weight: bold;
+}
 
-    #card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        border-radius: 2.25rem;
-    }
+#card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 2.25rem;
+}
 
-    #card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        transform: scale(1.05);
-    }
+#card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
 
-    .services-icon-wap {
-        border-radius: 2.25rem;
-    }
+.services-icon-wap {
+    border-radius: 2.25rem;
+}
 
-    a {
-        text-decoration: none;
-    }
+a {
+    text-decoration: none;
+}
 
 
-    body,
-    html {
-        height: 100%;
-        margin: 0;
-    }
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
 
-    .bg {
-        /* The image used */
-        background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./BG.jpg");
+.bg {
+    /* The image used */
+    background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./BG.jpg");
 
-        /* Full height */
-        height: 100%;
+    /* Full height */
+    height: 100%;
 
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-    img {
-        height: 250px;
-    }
+img {
+    height: 250px;
+}
 
-    #card:hover h1 {
-        color: white;
-    }
+#card:hover h1 {
+    color: white;
+}
 
-    ul.breadcrumb {
-        padding: 10px 16px;
-        list-style: none;
-    }
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+}
 
-    ul.breadcrumb li {
-        display: inline;
-        font-size: 18px;
-    }
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
 
-    ul.breadcrumb li+li:before {
-        padding: 8px;
-        color: black;
-        content: ">";
-    }
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: ">";
+}
 
-    ul.breadcrumb li a {
-        color: #0275d8;
-        text-decoration: none;
-    }
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
 
-    ul.breadcrumb li a:hover {
-        color: #01447e;
-        text-decoration: underline;
-    }
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <title>Select Login</title>
 <div class="bg">
