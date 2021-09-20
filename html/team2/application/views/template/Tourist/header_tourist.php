@@ -1,6 +1,6 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 <!DOCTYPE html>
-<html lang="en">
+<html class="wide wow-animation" lang="en">
 <!-- Open Header -->
 
 <head>
