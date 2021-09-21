@@ -330,7 +330,7 @@ class Admin_approval_company extends DCS_controller
                                   done
                                 </i>
                             </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->com_id . '\',\'' . $row->ent_email . '\',\'' . $row->com_name .'\',\'' . $row->com_ent_id .'\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->com_id . '\',\'' . $row->ent_email . '\',\'' . $row->com_name . '\',\'' . $row->com_ent_id . '\')">
                                 <i class="material-icons">
                                   clear
                                 </i>
@@ -396,29 +396,25 @@ class Admin_approval_company extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->com_id . '\')">
-                              <i class="material-icons">
-                                search
-                              </i>
-                            </button>' .
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+                 <span class="material-icons">search</span>
+               </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
                               <i class="material-icons">
                                 done
                               </i>
                             </button>' .
 
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->com_id . '\',\'' . $row->ent_email . '\',\'' . $row->com_name . '\',\'' . $row->com_ent_id .'\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->com_id . '\',\'' . $row->ent_email . '\',\'' . $row->com_name . '\',\'' . $row->com_ent_id . '\')">
                               <i class="material-icons">
                                 clear
                               </i>
                           </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-            '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->com_id . '\')">
-                            <i class="material-icons">
-                              search
-                            </i>
-                          </button>';
+            '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+            <span class="material-icons">search</span>
+          </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
