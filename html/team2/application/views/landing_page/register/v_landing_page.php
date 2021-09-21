@@ -4,7 +4,7 @@
         bottom: 65px;
     }
 
-    @media screen and (max-width: 1000px)  {
+    @media screen and (max-width: 1000px) {
         .carousel-indicators {
             bottom: 25px;
         }
@@ -70,14 +70,14 @@
                         </div>
                     </div>
                 </div>
-            </div><a class="link-classic wow fadeInUp" href="#">ดูเพิ่มเติม<span></span></a>
+            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_company/show_company_list' ?>">ดูเพิ่มเติม<span></span></a>
             <!-- Owl Carousel-->
         </div>
     </section>
     <!--	Our Services-->
     <section class="section section-sm">
         <div class="container">
-            <h3>บริการของเรา</h3>
+            <h3>เที่ยว Low Carbon แบบ Drop Carbon</h3>
             <div class="row row-30">
                 <div class="col-sm-6 col-lg-4">
                     <article class="box-icon-classic">
@@ -86,8 +86,11 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Personalized Matching</a></h5>
-                                <p class="box-icon-classic-text">Our unique matching system lets you find just the tour you want for your next holiday.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">ท่องเที่ยวอย่างไม่เร่งรีบ</a></h5>
+                                <p class="box-icon-classic-text">
+                                     ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อม
+                                     เช่นปั่นจักรยาน
+                                     ลดการปล่อยคาร์บอน</p>
                             </div>
                         </div>
                     </article>
@@ -99,8 +102,9 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-circular220"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Wide Variety of Tours</a></h5>
-                                <p class="box-icon-classic-text">We offer a wide variety of personally picked tours with destinations all over the globe.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">Drop Carbon Hero</a></h5>
+                                <p class="box-icon-classic-text">เพื่อเชิดชูเกียรติในการเป็นนักท่องเที่ยวที่มี
+                                    คุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ</p>
                             </div>
                         </div>
                     </article>
@@ -112,8 +116,8 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-favourites5"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Highly Qualified Service</a></h5>
-                                <p class="box-icon-classic-text">Our tour managers are qualified, skilled, and friendly to bring you the best service.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">พักโรงแรมสีเขียว</a></h5>
+                                <p class="box-icon-classic-text">นอนหลับสบาย แถมยังได้ช่วยกระจายรายได้ให้กับคนในท้องถิ่นได้อีกด้วย</p>
                             </div>
                         </div>
                     </article>
@@ -125,8 +129,11 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-headphones32"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">24/7 Support</a></h5>
-                                <p class="box-icon-classic-text">You can always get professional support from our staff 24/7 and ask any question you have.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">ทำตัวเป็นนักเดินทาง</a></h5>
+                                <p class="box-icon-classic-text">ดื่มด่ำกับศิลปวัฒนธรรม
+                                    หาโอกาสเรียนรู้ทักษะงานฝีมือ
+                                    ที่ทรงคุณค่า สร้างมิตรภาพ
+                                    กับชุมชน</p>
                             </div>
                         </div>
                     </article>
@@ -138,8 +145,9 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-hot67"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Handpicked Hotels</a></h5>
-                                <p class="box-icon-classic-text">Our team offers only the best selection of affordable and luxury hotels to our clients.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">กิจกรรมที่หลากหลาย</a></h5>
+                                <p class="box-icon-classic-text">ความสนุกที่จะเติมเต็มให้ทริปนี้
+                                เป็นหนึ่งในทริปที่แสนประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว</p>
                             </div>
                         </div>
                     </article>
@@ -151,8 +159,8 @@
                                 <div class="box-icon-classic-icon fl-bigmug-line-wallet26"></div>
                             </div>
                             <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Best Price Guarantee</a></h5>
-                                <p class="box-icon-classic-text">If you find tours that are cheaper than ours, we will compensate the difference.</p>
+                                <h5 class="box-icon-classic-title"><a href="#">สำหรับผู้ประกอบการ</a></h5>
+                                <p class="box-icon-classic-text">สามารถประชาสัมพันธ์การท่องเที่ยวของท่าน ในแบบ Low Carbon</p>
                             </div>
                         </div>
                     </article>
@@ -200,12 +208,15 @@
                     </article>
                 </div>
             </div>
+            <a class="button button-black-outline button-ujarak" style="float: right;" href="#">ดูทั้งหมด</a>
         </div>
     </section>
     <!-- Different People-->
     <section class="section section-sm">
         <div class="container">
             <h3 class="title-block find-car oh"><span class="d-inline-block wow slideInUp">Drop Carbon HERO</span></h3>
+            <p> นักท่องเที่ยวที่มีคุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ</p><br>
+
             <div class="row row-30 justify-content-center box-ordered">
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <!-- Team Modern-->
@@ -292,52 +303,32 @@
             <!-- Owl Carousel-->
             <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
                 <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-1-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-1-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-1-270x195.jpg" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-2-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-2-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-2-270x195.jpg" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-3-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-3-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-3-270x195.jpg" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
                 <!-- Thumbnail Classic-->
                 <article class="thumbnail thumbnail-mary">
                     <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-4-270x195.jpg" alt="" width="270" height="195" />
                     </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-4-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-4-270x195.jpg" alt="" width="270" height="195" /></a>
+                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_company/show_company_list' ?>" alt="" width="270" height="195" /></a>
                     </div>
                 </article>
                 <!-- Thumbnail Classic-->
                 <article class="thumbnail thumbnail-mary">
                     <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-5-270x195.jpg" alt="" width="270" height="195" />
                     </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-5-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-5-270x195.jpg" alt="" width="270" height="195" /></a>
+                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
                     </div>
                 </article>
                 <!-- Thumbnail Classic-->
                 <article class="thumbnail thumbnail-mary">
                     <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-6-270x195.jpg" alt="" width="270" height="195" />
                     </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-6-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-6-270x195.jpg" alt="" width="270" height="195" /></a>
+                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
                     </div>
                 </article>
                 <!-- Thumbnail Classic-->
                 <article class="thumbnail thumbnail-mary">
                     <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-7-270x195.jpg" alt="" width="270" height="195" />
                     </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-7-1200x800-original.jpg" data-lightgallery="item"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-7-270x195.jpg" alt="" width="270" height="195" /></a>
+                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
                     </div>
                 </article>
             </div>
