@@ -1,50 +1,46 @@
 <!-- Make by : Naaka Punparich 62160082 -->
+<style>
+    .carousel-indicators {
+        bottom: 65px;
+    }
+
+    @media screen and (max-width: 1000px)  {
+        .carousel-indicators {
+            bottom: 25px;
+        }
+    }
+</style>
+
 <title>Landing Page</title>
 
 <div class="page">
-    <!-- Swiper-->
-    <section class="section swiper-container swiper-slider swiper-slider-corporate swiper-pagination-style-2" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="false" data-direction="vertical">
-        <div class="swiper-wrapper text-left">
-            <div class="swiper-slide context-dark" data-slide-bg="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-1-1920x678.jpg">
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0"></h6>
-                                <h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span></span><span class="font-weight-bold"> </span></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- carousel slide-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-1-1920x678.jpg" alt="First slide">
             </div>
-            <div class="swiper-slide context-dark" data-slide-bg="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-2-1920x678.jpg">
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0"></h6>
-                                <h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span></span><span class="font-weight-bold"></span></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-2-1920x678.jpg" alt="Second slide">
             </div>
-            <div class="swiper-slide context-dark" data-slide-bg="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-3-1920x678.jpg">
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h6 class="text-uppercase" data-caption-animate="fadeInRight" data-caption-delay="0"></h6>
-                                <h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100"><span></span><span class="font-weight-bold"></span></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-3-1920x678.jpg" alt="Third slide">
             </div>
         </div>
-        <!-- Swiper Pagination-->
-        <div class="swiper-pagination"></div>
-    </section>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
     <!-- Section Box Categories-->
     <section class="section section-lg section-top-1 bg-gray-4">
         <div class="container offset-negative-1">
