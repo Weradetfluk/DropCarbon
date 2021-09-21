@@ -184,7 +184,7 @@ class Admin_list_tourist extends DCS_controller
                   if($number_status == 1){
                     // ต่อสตริง
                     $output .= '<td style=text-align: center;>' .
-                      '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block( \'' . $row->tus_id . '\',\'' . $row->tus_email . '\',\'' . $row->tus_firstname . " " . $row->tus_lastname . '\' )">
+                      '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block( \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' . $row->tus_email . '\' )">
                       <i class="material-icons"><span class="material-icons-outlined">
                               block
                           </span></i>
@@ -250,7 +250,7 @@ class Admin_list_tourist extends DCS_controller
                   if($number_status == 1){
                     // ต่อสตริง
                     $output .= '<td style=text-align: center;>' .
-                      '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block(  \'' . $row->tus_id . '\',\'' . $row->tus_email . '\',\'' . $row->tus_firstname . " " . $row->tus_lastname . '\')">
+                      '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block(  \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' .  $row->tus_email . '\')">
                       <i class="material-icons"><span class="material-icons-outlined">
                               block
                           </span></i>

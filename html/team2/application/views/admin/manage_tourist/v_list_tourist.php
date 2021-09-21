@@ -47,17 +47,11 @@
              </div>
          </div>
      </div>
-
-
      <!-- Tab1 -->
      <div class="card-body">
          <div class="table-responsive" id="data_entre_consider">
-
-
+             <!-- table list tourist ajax  -->
          </div>
-
-
-
      </div>
  </div>
  </div>
@@ -70,34 +64,25 @@
               * @output modal to confirm block user 
               * @author Nantasiri Saiwaew 62160093
               * @Create Date 2564-08-02
-              * @Update -
+              * @Update Date 2564-09-21
         */ -->
          <!-- warnning block Modal  -->
-         <div class="modal" tabindex="-1" role="dialog" id="blockmodal">
-             <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title">คุณต้องการบล็อค <span id="tus_block_name_confirm"></span>?</h5>
-                         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                         </button> -->
-                     </div>
-                     <div class="modal-body">
-                         <p>คุณต้องการบล็อคนักท่องเที่ยวคนนี้ใช่หรือไม่ ?</p>
-                     </div>
-                    <form method="POST"  id="block_form">
-                        <input type="hidden" id="email" name="email">
-                        <input type="hidden" id="tus_id_form" name="tus_id">
-                        <div class="modal-footer">
-                         <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
-                         <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-                    </form>
-                     </div>
-                 </div>
+         <div class="modal" tabindex="-1" role="dialog" id="block_modal">
+         <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
+             </div>
+             <div class="modal-body">
+                 <p>คุณต้องการบล็อค <span id="tus_block_name_confirm"></span> ?</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
-
-
+     </div>
+ </div>
          <script>
              /*
               * load data
@@ -151,105 +136,51 @@
               * @Update -
               */
 
-            //  function confirm_block(tus_id) {
-            //      $('#blockmodal').modal();
+             function confirm_block(tus_id,tus_name,tus_email) {
+                 $('#block_modal').modal();
+                 $('#tus_block_name_confirm').text(tus_name);
+                 $('#blocked').click(function() {
+                     console.log("check");
+                     block_user(tus_id,tus_email);
+                 });
 
-            //      $('#blocked').click(function() {
-            //          console.log("check");
-            //          block_user(tus_id);
-
-            //      });
-
-            //  }
-
-
-        /*
-        * show_loading
-        * show loading page for wait send email
-        * @input -
-        * @output -
-        * @author Nantasiri Saiwaew 62160093
-        * @Create Date 2564-09-18
-        * @Update -
-        */
-        function show_loding() {
-            $(document).on("click", "button", function(){
-            $.get(function(data){
-            $("body").html(data);
-            });       
-        });
- 
-        // Add remove loading class on body element based on Ajax request status
-            $(document).on({
-            ajaxStart: function(){
-                $("body").addClass("loading"); 
-            },
-            ajaxStop: function(){ 
-                $("body").removeClass("loading"); 
-                }    
-            });
-        }
-            
-       /*      
-      * confirm_block
-      * open modal id = block 
-      * @input 
-      * @output modal to reject  modal 
+             }
+      /*
+      * block_user
+      * send ajax into block_user controller
+      * @input tus_id
+      * @output sweet alert
       * @author Nantasiri Saiwaew 62160093
-      * @Create Date 2564-09-18
+      * @Create Date 2564-09-21
       * @Update -
       */
-     function confirm_block(tus_id, tus_email, tus_name) {
-         let form = document.querySelector('#block_form');
-         $('#tus_block_name_confirm').text(tus_name);
-         $('#blockmodal').modal();
-         $('#email').val(tus_email);
-         $('#tus_id_form').val(tus_id);
-         console.log(tus_email);
-         $('#blocked').click(function() {
-                 $('#blockmodal').modal('toggle');
-                 $.ajax({
-                      type: "POST",
-                      data: {
-                          tus_id: tus_id,
-                          email: tus_email,
-                      },
-                      url: ' <?php echo base_url() . 'Admin/Manage_tourist/Admin_block_tourist/block_user_ajax'; ?>',
-                     success: function() {
+
+     function block_user(tus_id, tus_email) {
+         $.ajax({
+             type: "POST",
+             data: {
+                 tus_id: tus_id
+             },
+             url: '<?php echo base_url('Admin/Manage_tourist/Admin_block_tourist/block_user_ajax'); ?>',
+             success: function() {
+                 //sweet alert
                  swal({
-                     title: "บล็อคบัญชีสำเร็จ",
-                     text: "บล็อคบัญชีนักท่องเที่ยวสำเร็จ กำลังจัดส่งอีเมล...",
+                     title: "บล็อคผู้ใช้งานสำเร็จ",
+                     text: "บล็อคนักท่องเที่ยวสำเร็จ",
                      type: "success",
                      showConfirmButton: false,
-                     timer: 3000,
+                     timer: 2000
                  }, function() {
-                     location.reload();
-                 });
-                     }
-             });
+                    location.reload();
+                 })
+                 var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
+                 var content_h1 = "คุณถูกบล็อคบัญชีการใช้งาน";
+                 var subject = "Admin has blocked your account.";
+                 send_mail_ajax(content, tus_email, subject, content_h1);
+             },
+             error: function() {
+                 alert('ajax block user error working');
+             }
          });
-     }     
+     }
     </script>
-         <!-- <style>
-        .overlay{
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            background: rgba(255,255,255,0.8) url("/examples/images/loader.gif") center no-repeat;
-        }
-        body{
-         text-align: center;
-        }
-        /* Turn off scrollbar when body element has the loading class */
-             body.loading{
-            overflow: hidden;   
-        }
-        /* Make spinner image visible when body element has the loading class */
-         body.loading .overlay{
-            display: block;
-        }
-    </style> -->
