@@ -41,10 +41,8 @@ class Company_edit extends DCS_controller
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->load->model('Company/M_dcs_com_image', 'mimg');
       $this->load->model('Company/M_dcs_com_category', 'mcat');
-      // $this->load->model('Company/dcs_com_image', 'mimg');
       $this->mcom->com_id = $com_id;
       $this->mimg->com_img_com_id = $com_id;
-      // $this->mimg->dcs_com_image = $com_id;
       $data['arr_company'] = $this->mcom->get_by_id()->result();
       $data['arr_image'] = $this->mimg->get_by_com_id()->result();
       $data['arr_com_cat'] = $this->mcat->get_all()->result();

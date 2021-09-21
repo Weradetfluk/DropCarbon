@@ -82,11 +82,6 @@
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
                                     <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" maxlength="10" required>
                                 </div>
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-6">
-                                    <label for="com_start_date">วันที่เริ่มกิจกรรม</label>
-                                    <input type="date" id="com_start_date" name="com_start_date" class="form-control" required>
-                                </div>
                             </div><br>
 
                             <!-- เลือกรูปภาพสถานที่ -->

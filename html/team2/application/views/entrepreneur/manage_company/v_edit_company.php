@@ -79,11 +79,6 @@
                                     <label for="com_description">เบอร์โทรศัพท์ติดต่อสถานที่</label>
                                     <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" value="<?php echo $arr_company[0]->com_tel; ?>" required>
                                 </div>
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-6">
-                                    <label for="com_start_date">วันที่เริ่มกิจกรรม</label>
-                                    <input id="com_start_date" name="com_start_date" class="form-control" value="<?php echo $arr_company[0]->com_start_date; ?>" required disabled>
-                                </div>
                             </div><br>
 
                             <!-- เลือกรูปภาพสถานที่ -->
