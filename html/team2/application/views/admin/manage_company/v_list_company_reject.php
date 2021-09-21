@@ -46,38 +46,36 @@
      <!-- Tab1 -->
      <div class="card-body ">
          <div class="table-responsive" id="data_com_reject">
+             <!-- data company reject -->
          </div>
      </div>
  </div>
 
 
-<div class="modal fade" role="dialog" id="datamodal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">รายละเอียด</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-
-                    <div class="form-group">
-                        <label>เหตุผลที่ปฏิเสธ</label>
-                        <input type="text" id="enr_admin_reason" class="form-control" disabled>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>ผู้ปฏิเสธ</label>
-                        <input type="text" class="form-control" id="adm_name" disabled>
-                    </div>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
+<<div class="modal fade" role="dialog" id="data_modal">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">รายละเอียด</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true" style="font-size: 35px;">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 <form>
+                     <div class="form-group">
+                         <label>เหตุผลที่ปฏิเสธ</label>
+                         <input type="text" id="cor_admin_reason" class="form-control" disabled>
+                     </div>
+                     <div class="form-group">
+                         <label>ผู้ปฏิเสธ</label>
+                         <input type="text" class="form-control" id="adm_name" disabled>
+                     </div>
+             </div>
+             </form>
+         </div>
+     </div>
+ </div>
 
 
 
@@ -136,11 +134,11 @@
             data: {
                 com_id: com_id
             },
-            url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_company_by_id_ajax'); ?>',
+            url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_com_reject_by_id_ajax'); ?>',
             success: function(data_detail) {
-                $('#datamodal').modal();
+                $('#data_modal').modal();
                 console.log(data_detail);
-                $('#enr_admin_reason').val(data_detail[0]['enr_admin_reason']);
+                $('#cor_admin_reason').val(data_detail[0]['cor_admin_reason']);
                 $('#adm_name').val(data_detail[0]['adm_name']);
             },
             error: function() {

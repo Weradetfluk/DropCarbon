@@ -104,6 +104,23 @@ class Admin_approval_company extends DCS_controller
     echo json_encode($data);
   }
 
+  /*
+        * get_com_reject_by_id_ajax
+        * get all data reject company by id
+        * @input
+        * @output -
+        * @author Nantasiri Saiwaew 62160110
+        * @Create Date 2564-09-21
+        * @Update Date
+        */
+    public function get_com_reject_by_id_ajax()
+    {
+        $this->load->model('Company/M_dcs_com_reject', 'mdrc');
+        $com_id = $this->input->post('com_id');
+        $data['arr_data'] = $this->mdrc->get_data_rejected_by_id_com($com_id)->result();
+
+        echo json_encode($data['arr_data']);
+    }
 
   /*
     * config_pagination
@@ -214,9 +231,9 @@ class Admin_approval_company extends DCS_controller
 
 
     //save data reject to data base
-    $this->mdcre->com_admin_reason = $reson_admin;
-    $this->mdcre->com_ent_id =  $com_ent_id;
-    $this->mdcre->com_adm_id = $admin_id;
+    $this->mdcre->cor_admin_reason = $reson_admin;
+    $this->mdcre->cor_ent_id =  $com_ent_id;
+    $this->mdcre->cor_adm_id = $admin_id;
 
     $this->mdcre->insert();
 
