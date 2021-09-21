@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#"><i class="fas fa-archive"></i> My reward</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-coins"></i> Point</a>
+                        <a class="nav-link" href="#"><i class="fa-money"></i> Point</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="far fa-user-circle"></i> <?php echo $this->session->userdata("Tourist_name"); ?></a>

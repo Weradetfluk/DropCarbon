@@ -13,10 +13,15 @@
         width: 150px;
     }
 
-    input {
+    input,
+    select {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+    }
+
+    input {
+        border: 0px !important;
     }
 
     input:hover #next_btn {
@@ -97,19 +102,33 @@
     }
 
     .selected {
-        border: 1px solid #e8e8e8;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
         display: block;
         width: 100%;
         padding: .375rem .375rem;
-        border-radius: .25rem;
-        color: #212529;
+        color: #495057;
         background-color: #fff;
         background-clip: padding-box;
+    }
+
+    .bg {
+        /* The image used */
+        background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./cool-background.png");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 <title>ลงทะเบียนสำหรับนักท่องเที่ยว</title>
 <!-- Form Register -->
-<div class="wrapper">
+<div class="bg">
     <div class="container py-5" style="background-color: white; border-radius: 25px;  padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url() . 'DCS_controller/output_Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
@@ -122,14 +141,14 @@
                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
                 <?php } else { ?>
-                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" >
+                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                 <?php } ?>
                 <input type="file" id="file" name="tourist_img" accept="image/*">
                 <label for="file" id="uploadBtn">Choose Photo</label>
             </div><br>
             <!-- profile pictuce -->
 
-            <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
+            <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b>
             <div class="row">
                 <div class="form-group col-md-2 mb-3">
                     <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
@@ -173,7 +192,7 @@
 
             <br>
 
-            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
+            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
@@ -198,21 +217,9 @@
             </div>
             <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
             <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
-            
+
         </form>
     </div>
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
 </div>
 <script>
     /*
@@ -221,7 +228,7 @@
      *@Create Date 2564-09-20
      *@update -
      */
-    
+
     /*
      * @author Thanisorn thumsawanit 62160088
      */
@@ -271,7 +278,7 @@
      * @Create Date 2564-09-20
      * @Update -
      */
-    function check_btn_submit(){
+    function check_btn_submit() {
         if (check_phone_number == 1 || check_email == 1 || check_password == 1 || check_username == 1) {
             $('#next_btn').prop('disabled', true);
         } else {
@@ -327,7 +334,7 @@
      *output  email validation
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-09-13
-    * @Update Date 2564-09-20
+     * @Update Date 2564-09-20
      */
     function check_email_ajax() {
         let tus_email = $('#tus_email').val();
@@ -340,7 +347,7 @@
             },
             success: function(data) {
                 console.log(data);
-                if (data == 1) {              
+                if (data == 1) {
                     $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
                     //$('#next_btn').prop('disabled', true);
                     check_email = 1;
@@ -366,7 +373,7 @@
      *output  phone number validation
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-09-20
-    * @Update Date 2564-09-20
+     * @Update Date 2564-09-20
      */
     function check_phone_number_ajax() {
         let tus_tel = $('#tus_tel').val();
@@ -379,7 +386,7 @@
             },
             success: function(data) {
                 console.log(data);
-                if (data == 1) {              
+                if (data == 1) {
                     $('#phonenumberavailable').html("เบอร์โทรศัพท์นี้ได้ใช้ทำการลงทะเบียนแล้ว");
                     //$('#next_btn').prop('disabled', true);
                     check_phone_number = 1;
@@ -423,5 +430,4 @@
             reader.readAsDataURL(choosedFile);
         }
     });
-
 </script>

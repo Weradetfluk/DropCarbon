@@ -21,6 +21,13 @@
         box-sizing: border-box;
     }
 
+    input {
+        border: 0px !important;
+    }
+
+    input:hover #next_btn {
+        background-color: #448855;
+    }
 
     a {
         text-decoration: none;
@@ -51,20 +58,78 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    #next_btn {
+        float: right;
+    }
+
+    .profile-pic-div {
+        height: 200px;
+        margin: auto;
+        width: 200px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid gray;
+    }
+
+    .profile-pic-div img {
+        height: 200px;
+    }
+
+    #photo {
+        height: 100%;
+        width: 100%;
+    }
+
+    #file {
+        display: none;
+    }
+
+    #uploadBtn {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.7);
+        color: wheat;
+        line-height: 30px;
+        font-size: 15px;
+        font-family: sans-serif;
+        cursor: pointer;
+    }
+
     .selected {
-        border: 1px solid #e8e8e8;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
         display: block;
         width: 100%;
         padding: .375rem .375rem;
-        border-radius: .25rem;
-        color: #212529;
+        color: #495057;
         background-color: #fff;
         background-clip: padding-box;
+    }
+
+    .bg {
+        /* The image used */
+        background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./cool-background.png");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 <title>ลงทะเบียนสำหรับผู้ประกอบการ</title>
 <!-- Form Register -->
-<div class="wrapper">
+<div class="bg">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url() . 'DCS_controller/output_Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
@@ -156,18 +221,6 @@
 
         </form>
     </div>
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
 </div>
 <br><br><br>
 <script>

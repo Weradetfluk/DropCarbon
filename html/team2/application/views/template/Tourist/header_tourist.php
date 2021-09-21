@@ -7,23 +7,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- icon -->
+    <!-- icon website -->
     <link rel="shortcut icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
-    <link rel="apple-touch-icon" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/img/apple-icon.png">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/templatemo.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/custom.css">
+
     <!-- fonts css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" type="text/css">
 
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/bg.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/templatemo_559_zay_shop' ?>/assets/css/landing-page.css">
+    <!-- sweet alert plugin -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css">
+
+    <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
 
+    <!-- material-dashboard-master css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
 
+    <!-- template_site css -->
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fontawesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fonts.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/style.css">
     <style>

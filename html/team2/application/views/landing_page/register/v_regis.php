@@ -37,6 +37,10 @@
         text-decoration: none;
     }
 
+    .services-icon-wap:hover {
+        transition: all 0.3s ease-in-out;
+        background: #69bb7e;
+    }
 
     body,
     html {

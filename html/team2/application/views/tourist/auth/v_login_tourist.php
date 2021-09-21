@@ -3,6 +3,12 @@
 $warning = $warning ?? '';
 ?>
 
+<style>
+    input {
+        border: 0px !important;
+    }
+</style>
+
 <div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
     <div class="container" style="margin-top: 200px; ">
         <div class="row">
@@ -46,16 +52,11 @@ $warning = $warning ?? '';
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col">
+                                        <button type="submit" class="btn btn-success" id="signin" name="signin">เข้าสู่ระบบ</button><br><br>
                                         <a href="<?php echo site_url() . 'Tourist/Auth/Login_tourist/forgot_password_page'; ?>" style="color: #5F9EA0;">ลืมรหัสผ่าน</a>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -66,11 +67,11 @@ $warning = $warning ?? '';
 </div>
 
 <script>
-$(document).ready(function() {
-    let reset_pass = '<?php echo $this->session->userdata("reset_pass_tourist"); ?>';
-    if (reset_pass == "success") {
-        swal("สำเร็จ", "คุณทำการเปลี่ยนรหัสผ่านสำเร็จ", "success");
-        <?php echo $this->session->unset_userdata("reset_pass_tourist"); ?>
-    }
-});
+    $(document).ready(function() {
+        let reset_pass = '<?php echo $this->session->userdata("reset_pass_tourist"); ?>';
+        if (reset_pass == "success") {
+            swal("สำเร็จ", "คุณทำการเปลี่ยนรหัสผ่านสำเร็จ", "success");
+            <?php echo $this->session->unset_userdata("reset_pass_tourist"); ?>
+        }
+    });
 </script>

@@ -10,6 +10,10 @@
         box-sizing: border-box;
     }
 
+    input {
+        border: 0px !important;
+    }
+
     input:hover #next_btn {
         background-color: #448855;
     }
@@ -88,23 +92,35 @@
     }
 
     .selected {
-        border: 1px solid #e8e8e8;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
         display: block;
         width: 100%;
         padding: .375rem .375rem;
-        border-radius: .25rem;
-        color: #212529;
+        color: #495057;
         background-color: #fff;
         background-clip: padding-box;
+    }
+
+    .bg {
+        /* The image used */
+        background-image: url("<?php echo base_url() . 'assets/templete/picture' ?>/./cool-background.png");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 
 <title>แก้ไขข้อมูลส่วนตัว</title>
 <!-- title -->
 
-
-
-<div class="wrapper">
+<div class="bg">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
@@ -120,7 +136,7 @@
                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
                 <?php } else { ?>
-                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>" >
+                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                 <?php } ?>
                 <input type="file" id="file" name="tourist_img" accept="image/*">
                 <label for="file" id="uploadBtn">Choose Photo</label>
@@ -129,13 +145,13 @@
 
             <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
 
-            <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b><br><br>
+            <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b>
             <div class="row">
                 <div class="form-group col-md-2 mb-3">
                     <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
                     <select class="selected" name="tus_pre_id" id="prefix" required>
                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
-                            <?php if ($arr_tus[0]->tus_pre_id-1 == $i) { ?>
+                            <?php if ($arr_tus[0]->tus_pre_id - 1 == $i) { ?>
                                 <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name; ?></option>
                             <?php } else { ?>
                                 <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name; ?></option>
@@ -183,68 +199,51 @@
 
         </form>
         <!-- form -->
-
-
     </div>
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <!-- สร้างสีเหลี่ยม  -->
-
-</div>
-<!-- พื้นหลัง -->
+    <!-- พื้นหลัง -->
 
 
 
-<script>
-    /*
-     * @author Naaka punparich 62160082
-     */
+    <script>
+        /*
+         * @author Naaka punparich 62160082
+         */
 
-    $(document).ready(function() {
-        let error = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
-        if (error == 'fail') {
-            swal("ล้มเหลว", "รูปภาพที่คุณอัพโหลดมีขนาดใหญ่เกินไป", "error");
-            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-        }
-    });
+        $(document).ready(function() {
+            let error = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+            if (error == 'fail') {
+                swal("ล้มเหลว", "รูปภาพที่คุณอัพโหลดมีขนาดใหญ่เกินไป", "error");
+                <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+            }
+        });
 
-    const imgDiv = document.querySelector('.profile-pic-div');
-    const img = document.querySelector('#photo');
-    const file = document.querySelector('#file');
-    const uploadBtn = document.querySelector('#uploadBtn');
+        const imgDiv = document.querySelector('.profile-pic-div');
+        const img = document.querySelector('#photo');
+        const file = document.querySelector('#file');
+        const uploadBtn = document.querySelector('#uploadBtn');
 
-    imgDiv.addEventListener('mouseenter', function() {
-        uploadBtn.style.display = "block";
-    });
+        imgDiv.addEventListener('mouseenter', function() {
+            uploadBtn.style.display = "block";
+        });
 
-    imgDiv.addEventListener('mouseleave', function() {
-        uploadBtn.style.display = "none";
-    });
+        imgDiv.addEventListener('mouseleave', function() {
+            uploadBtn.style.display = "none";
+        });
 
-    file.addEventListener('change', function() {
+        file.addEventListener('change', function() {
 
-        const choosedFile = this.files[0];
+            const choosedFile = this.files[0];
 
-        if (choosedFile) {
+            if (choosedFile) {
 
-            const reader = new FileReader();
+                const reader = new FileReader();
 
-            reader.addEventListener('load', function() {
-                img.setAttribute('src', reader.result);
-            });
+                reader.addEventListener('load', function() {
+                    img.setAttribute('src', reader.result);
+                });
 
-            reader.readAsDataURL(choosedFile);
-        }
-    });
-    // responsive change picture
-</script>
+                reader.readAsDataURL(choosedFile);
+            }
+        });
+        // responsive change picture
+    </script>
