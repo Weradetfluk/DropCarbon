@@ -46,45 +46,45 @@
                     </div>
                     <div class="card-body">
                         <form action="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/edit_company/' ?>" id="form_edit_com" method="POST" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="com_name">ชื่อสถานที่</label>
-                                        <input type="text" id="com_name" name="com_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อสถานที่" value="<?php echo $arr_company[0]->com_name; ?>" onkeyup="check_name_company_ajax()" required>
-                                        <span class="text-danger" id="error_com_name"></span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label for="com_cat_id">หมวดหมู่</label>
-                                        <select name="com_cat_id" id="com_cat_id" class="form-control">
-                                            <?php for ($i = 0; $i < count($arr_com_cat); $i++) { ?>
-                                                <?php if ($i + 1 == $arr_company[0]->com_cat_id) { ?>
-                                                    <option value="<?php echo $i + 1 ?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
-                                                <?php } ?>
-                                                <?php if ($i + 1 != $arr_company[0]->com_cat_id) { ?>
-                                                    <option value="<?php echo $i + 1 ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
-                                                <?php } ?>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="com_name">ชื่อสถานที่</label>
+                                    <input type="text" id="com_name" name="com_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อสถานที่" value="<?php echo $arr_company[0]->com_name; ?>" onkeyup="check_name_company_ajax()" required>
+                                    <span class="text-danger" id="error_com_name"></span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="com_cat_id">หมวดหมู่</label>
+                                    <select name="com_cat_id" id="com_cat_id" class="form-control">
+                                        <?php for ($i = 0; $i < count($arr_com_cat); $i++) { ?>
+                                            <?php if ($i + 1 == $arr_company[0]->com_cat_id) { ?>
+                                                <option value="<?php echo $i + 1 ?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
                                             <?php } ?>
-                                        </select>
-                                    </div>
+                                            <?php if ($i + 1 != $arr_company[0]->com_cat_id) { ?>
+                                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <label for="com_description">รายละเอียดสถานที่</label>
-                                        <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" placeholder="ใส่รายละเอียดของสถานที่" rows="5" required><?php echo $arr_company[0]->com_description; ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                            </div><br>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <label for="com_description">เบอร์ติดต่อสถานที่</label>
-                                        <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="ใส่เบอร์ติดต่อสถานที่" value="<?php echo $arr_company[0]->com_tel; ?>" required>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="com_description">รายละเอียดสถานที่</label>
+                                    <textarea id="com_description" name="com_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" placeholder="ใส่รายละเอียดของสถานที่" rows="5" required><?php echo $arr_company[0]->com_description; ?></textarea>
                                 </div>
-                            </div>
+                            </div><br>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="com_description">เบอร์โทรศัพท์ติดต่อสถานที่</label>
+                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" value="<?php echo $arr_company[0]->com_tel; ?>" required>
+                                </div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-6">
+                                    <label for="com_start_date">วันที่เริ่มกิจกรรม</label>
+                                    <input id="com_start_date" name="com_start_date" class="form-control" value="<?php echo $arr_company[0]->com_start_date; ?>" required disabled>
+                                </div>
+                            </div><br>
 
                             <!-- เลือกรูปภาพสถานที่ -->
                             <div class="form-group">
@@ -105,35 +105,33 @@
                                 <?php } ?>
                             </div>
                             <div id="arr_del_img_new"></div>
-                            <div id="arr_del_img_old"></div>
+                            <div id="arr_del_img_old"></div><br>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
 
                             <!-- lat lon map -->
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col">
-                                        <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <label for="com_lat">Latitude</label>
-                                        <input type="text" id="com_lat" name="com_lat" class="form-control" value="<?php echo $arr_company[0]->com_lat; ?>">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label for="com_lon">Longitude</label>
-                                        <input type="text" id="com_lon" name="com_lon" class="form-control" value="<?php echo $arr_company[0]->com_lon; ?>">
-                                    </div>
-                                    <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
-                                        <i class="material-icons" style="font-size:30px;">add_location</i>
-                                    </a>
+                            <div class="row">
+                                <div class="col">
+                                    <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="com_lat">Latitude</label>
+                                    <input type="text" id="com_lat" name="com_lat" class="form-control" value="<?php echo $arr_company[0]->com_lat; ?>">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="com_lon">Longitude</label>
+                                    <input type="text" id="com_lon" name="com_lon" class="form-control" value="<?php echo $arr_company[0]->com_lon; ?>">
+                                </div>
+                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
+                                    <i class="material-icons" style="font-size:30px;">add_location</i>
+                                </a>
+                            </div><br><br>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
-                                    <table class="table table-responsive"> 
+                                    <table class="table table-responsive">
                                         <tr>
                                             <td style="border: 2px solid black;">
                                                 <div id="map" style="width: 900px; height: 400px;"></div>

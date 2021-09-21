@@ -9,10 +9,6 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
-SET GLOBAL time_zone = 'Asia/Bangkok';
-
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -119,7 +115,7 @@ CREATE TABLE `dcs_entrepreneur` (
   `ent_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `ent_status` int(1) DEFAULT 1,
   `ent_pre_id` int(1) NOT NULL,
-  `ent_regis_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `ent_regis_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
    FOREIGN KEY (ent_pre_id) REFERENCES dcs_prefix(pre_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -163,7 +159,7 @@ CREATE TABLE `dcs_company` (
   `com_ent_id` int(10) NOT NULL,
   `com_tel` varchar(10) NOT NULL,
   `com_cat_id` int(10) NOT NULL,
-  `com_add_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `com_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `com_start_date` DATE NOT NULL,
   `com_end_date` DATE NULL,
    FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id),
@@ -206,7 +202,7 @@ CREATE TABLE `dcs_entrepreneur_reject` (
   `enr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
   `enr_ent_id` int(10),
   `enr_adm_id` int(10),
-  `enr_rej_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `enr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
    FOREIGN KEY (enr_ent_id) REFERENCES dcs_entrepreneur(ent_id),
    FOREIGN KEY (enr_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -253,7 +249,7 @@ CREATE TABLE `dcs_event` (
   `eve_com_id` int(10),
   `eve_cat_id` int(10),
   `eve_status` int(10),
-  `eve_add_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `eve_start_date` DATE NOT NULL,
   `eve_end_date` DATE NULL,
   FOREIGN KEY (eve_com_id) REFERENCES dcs_company(com_id),
@@ -307,7 +303,7 @@ CREATE TABLE `dcs_promotions` (
   `pro_cat_id` int(10) NOT NULL,
   `pro_status` int(10) NOT NULL,
   `pro_img_path` varchar(100) NOT NULL,
-  `pro_add_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `pro_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `pro_start_date` DATE NOT NULL,
   `pro_end_date` DATE NULL,
   FOREIGN KEY (pro_com_id) REFERENCES dcs_company(com_id),
@@ -332,7 +328,7 @@ CREATE TABLE `dcs_company_reject` (
   `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
   `cor_ent_id` int(10),
   `cor_adm_id` int(10),
-  `cor_rej_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
    FOREIGN KEY (cor_ent_id) REFERENCES dcs_company(com_id),
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

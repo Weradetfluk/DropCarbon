@@ -143,7 +143,21 @@ class M_dcs_tourist extends Da_dcs_tourist
         $query = $this->db->query($sql, array($this->tus_username));
         return $query;
     }
-
+    /*
+    * check_phone_number
+    * get data tourist by phone number
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-09-20
+    */
+    public function check_phone_number()
+    {
+        $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
+        WHERE tus_tel = ?";
+        $query = $this->db->query($sql, array($this->tus_tel));
+        return $query;
+    }
     /*
     * check_username
     * get data tourist by username and password

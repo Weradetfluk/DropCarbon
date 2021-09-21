@@ -153,7 +153,8 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="tell">เบอร์โทร</label>
-                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" maxlength="10" minlength="10" placeholder="เบอร์โทร" maxlength="10" required>
+                    <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" onblur="check_phone_number_ajax()" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" maxlength="10" required>
+                    <span id="phonenumberavailable" style="color: red;"></span>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
@@ -165,7 +166,8 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="inputemail">อีเมล</label>
-                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" onblur="check_email()" placeholder="example@email.com" required>
+                    <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" onblur="check_email_ajax()" placeholder="example@email.com" required>
+                    <span id="emailavailable" style="color: red;"></span>
                 </div>
             </div>
 
@@ -175,8 +177,8 @@
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
-                    <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username()" placeholder="ชื่อผู้ใช้" required>
-                    <span id="usernameavailable"></span>
+                    <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
+                    <span id="usernameavailable" style="color: red;"></span>
                 </div>
             </div>
 
@@ -214,6 +216,13 @@
 </div>
 <script>
     /*
+     * datepicker
+     * @author Thanisorn thumsawanit 62160088
+     *@Create Date 2564-09-20
+     *@update -
+     */
+    
+    /*
      * @author Thanisorn thumsawanit 62160088
      */
     $(document).ready(function() {
@@ -222,7 +231,13 @@
             swal("ล้มเหลว", "รูปภาพที่คุณอัพโหลดมีขนาดใหญ่เกินไป", "error");
             <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }
+        check_btn_submit();
     });
+    var check_phone_number = 0;
+    var check_email = 0;
+    var check_username = 0;
+    var check_password = 0;
+
     /*
      * 
      * confirmpassword
@@ -232,30 +247,51 @@
      *output  checkconfirmpassword
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-07-31
-     *@update Date 2564-07-31
+     *@update Date 2564-09-20
      */
     function confirmpassword() {
         if ($('#pass').val() != $('#confirm').val()) {
             $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
-            $('#next_btn').prop('disabled', true);
+            //$('#next_btn').prop('disabled', true);
+            check_password = 1;
+            check_btn_submit();
         } else {
             $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', false);
+            check_password = 0;
+            check_btn_submit();
+        }
+    }
+    /*
+     * check_btn_submit
+     * check button submit
+     * @input 
+     * @output -
+     * @author Thanisorn thumsawanit 62160088
+     * @Create Date 2564-09-20
+     * @Update -
+     */
+    function check_btn_submit(){
+        if (check_phone_number == 1 || check_email == 1 || check_password == 1 || check_username == 1) {
+            $('#next_btn').prop('disabled', true);
+        } else {
             $('#next_btn').prop('disabled', false);
         }
     }
 
     /*
      * 
-     * check_username
+     * check_username_ajax
      * check duplicate username in database
      *@input tus_username
      *@parameter -
      *output  username validation
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-08-10
+     * @Update Date 2564-09-20
      */
 
-    function check_username() {
+    function check_username_ajax() {
         let tus_username = $('#tus_username').val();
         $.ajax({
             url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_username_tourist_ajax'); ?>',
@@ -267,15 +303,15 @@
             success: function(data) {
                 console.log(data);
                 if (data == 1) {
-                    $("#usernameavailable").css({
-                        "color": "red"
-                    });
-
                     $('#usernameavailable').html("ชื่อผู้ใช้นี้มีผู้ใช้อื่นแล้ว");
-                    $('#next_btn').prop('disabled', true);
+                    //$('#next_btn').prop('disabled', true);
+                    check_username = 1;
+                    check_btn_submit();
                 } else {
                     $('#usernameavailable').html("");
-                    $('#next_btn').prop('disabled', false);
+                    //$('#next_btn').prop('disabled', false);
+                    check_username = 0;
+                    check_btn_submit();
                 }
             }
         });
@@ -284,15 +320,16 @@
 
     /*
      * 
-     * check_email
+     * check_email_ajax
      * check duplicate email in database
      *@input tus_email
      *@parameter -
      *output  email validation
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-09-13
+    * @Update Date 2564-09-20
      */
-    function check_email() {
+    function check_email_ajax() {
         let tus_email = $('#tus_email').val();
         $.ajax({
             url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_email_tourist_ajax'); ?>',
@@ -303,22 +340,61 @@
             },
             success: function(data) {
                 console.log(data);
-                if (data == 1) {
-                    $("#emailavailable").css({
-                        "color": "red"
-                    });
-
+                if (data == 1) {              
                     $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
-                    $('#next_btn').prop('disabled', true);
+                    //$('#next_btn').prop('disabled', true);
+                    check_email = 1;
+                    check_btn_submit();
+
                 } else {
                     $('#emailavailable').html("");
-                    $('#next_btn').prop('disabled', false);
+                    //$('#next_btn').prop('disabled', false);
+                    check_email = 0;
+                    check_btn_submit();
                 }
             }
         });
 
     }
 
+    /*
+     * 
+     * check_phone_number_ajax
+     * check duplicate phone number in database
+     *@input tus_tel
+     *@parameter -
+     *output  phone number validation
+     *@author Thanisorn thumsawanit 62160088
+     *@Create Date 2564-09-20
+    * @Update Date 2564-09-20
+     */
+    function check_phone_number_ajax() {
+        let tus_tel = $('#tus_tel').val();
+        $.ajax({
+            url: '<?php echo base_url('Tourist/Auth/Register_tourist/check_phone_number_tourist_ajax'); ?>',
+            type: "POST",
+            data: {
+                tus_tel: tus_tel
+
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {              
+                    $('#phonenumberavailable').html("เบอร์โทรศัพท์นี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    //$('#next_btn').prop('disabled', true);
+                    check_phone_number = 1;
+                    check_btn_submit();
+
+                } else {
+                    $('#phonenumberavailable').html("");
+                    //$('#next_btn').prop('disabled', false);
+                    check_phone_number = 0;
+                    check_btn_submit();
+                }
+            }
+        });
+
+    }
     const imgDiv = document.querySelector('.profile-pic-div');
     const img = document.querySelector('#photo');
     const file = document.querySelector('#file');
@@ -347,5 +423,5 @@
             reader.readAsDataURL(choosedFile);
         }
     });
-    // responsive change picture
+
 </script>

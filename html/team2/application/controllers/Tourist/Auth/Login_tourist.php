@@ -174,8 +174,8 @@ class Login_tourist extends DCS_controller
     * check email in database
     * @input 
     * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
     * @Update -
     */
     public function check_email_tourist()
@@ -204,8 +204,8 @@ class Login_tourist extends DCS_controller
     * check email in database
     * @input 
     * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
     * @Update -
     */
 
@@ -266,8 +266,8 @@ class Login_tourist extends DCS_controller
     * check email in database
     * @input 
     * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
     * @Update -
     */
     public function update_password_ajax()
@@ -281,6 +281,7 @@ class Login_tourist extends DCS_controller
         $this->login->tus_password = $password;
 
         $this->login->update_pass($token);
+        $this->session->set_userdata("reset_pass_tourist", "success");
     }
 
     /*
@@ -288,8 +289,8 @@ class Login_tourist extends DCS_controller
     * check email in database
     * @input 
     * @output -
-    * @author Weradet Nopsombun 62160110 
-    * @Create Date 2564-08-12
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
     * @Update -
     */
     public function reset_password_page()

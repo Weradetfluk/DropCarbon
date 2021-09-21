@@ -163,4 +163,26 @@ class Register_tourist extends DCS_controller
             echo 2;
         }
     }
+    /*
+    * check_phone_number_tourist_ajax
+    * output check phone number
+    * @input tourist phone number
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-09-20
+    * @Update Date 2564-09-20
+    */
+    public function check_phone_number_tourist_ajax()
+    {
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+        $this->mtou->tus_tel = $this->input->post('tus_tel');
+
+        $result = $this->mtou->check_phone_number()->row(); //function in model
+
+        if ($result) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
 }

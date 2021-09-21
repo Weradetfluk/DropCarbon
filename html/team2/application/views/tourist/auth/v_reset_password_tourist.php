@@ -1,34 +1,68 @@
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
-<title>Login Tourist</title>
-<div class="body">
-    <div class="container-1">
-        <div class="" style="">
-            <h4 class="card-title" style="color: black;">เปลี่ยนรหัสผ่านของนักท่องเที่ยว</h4>
-        </div>
-        <form method="post" action="">
-            <div class="inputs">
-                <input type="password" class="input" placeholder="รหัสผ่าน" name="tourist_password" id="tourist_password" required><br>
-                <input type="password" class="input" placeholder="ยืนยันรหัสผ่าน" name="tourist_password" id="tourist_password_confirm">
-                <span style="color: red; margin-left: 10px;">
-                    <?php
-                    if ($warning != NULL) {
-                        echo $warning;
-                    }
-                    ?>
-                </span>
-                <input type="hidden" class="form-control" placeholder="ยืนยันรหัสผ่าน" id="token" value="<?php echo $token ?>">
-                <button type="submit" class="button" id="reset_pass" data-loading-text="Processing" name="signin">เสร็จสิ้น</button>
+<title>Reset Password</title>
+<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
+    <div class="container" style="margin-top: 200px; ">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <form method="POST" action="">
+                        <div class="card-header text-center" style="background-color: #5F9EA0;">
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เปลี่ยนรหัสผ่านของนักท่องเที่ยว</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="tourist_password" id="tourist_password" required>
+                                </div>
+                            </span>
+                            <span class="bmd-form-group">
+                                <div class="input-group" style="padding: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="ยืนยันรหัสผ่าน" name="tourist_password" id="tourist_password_confirm" required>
+                                </div>
+                            </span>
+                            <span style="color: red; margin-left: 30px;">
+                                <?php
+                                if ($warning != NULL) {
+                                    echo $warning;
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        <div class="footer" style="text-align: center;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="hidden" class="form-control" placeholder="ยืนยันรหัสผ่าน" id="token" value="<?php echo $token ?>">
+                                        <button type="submit" class="btn btn-success" data-loading-text="Processing" id="reset_pass" name="signin">เสร็จสิ้น</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>
 
 <script>
 $(document).ready(function() {
-
+    confirmpassword();
     $("#tourist_password_confirm").on('keyup', function() {
         confirmpassword();
     }); // Event Keyup
@@ -58,10 +92,13 @@ function confirmpassword() {
     if ($('#tourist_password').val() != $('#tourist_password_confirm').val()) {
         $('#err_text').text('รหัสผ่านไม่ตรงกัน');
         $('#reset_pass').prop('disabled', true);
+    } else if ($('#tourist_password').val() == '' || $('#tourist_password_confirm').val() == '') {
+        $('#reset_pass').prop('disabled', true);
     } else {
         $('#err_text').text('');
         $('#reset_pass').prop('disabled', false);
     }
+
 }
 
 
@@ -84,20 +121,10 @@ function reset_password(password, token) {
             token: token
         },
         success: function() {
-
-            swal({
-                title: "เปลี่ยนรหัสผ่านสำเร็จ",
-                text: 'เปลี่ยนรหัสผ่านเสร็จสิ้น',
-                type: "success",
-                timer: 3000
-            }, function() {
-                window.location = "<?php echo site_url() . 'Tourist/Auth/Login_tourist/'; ?>";
-            })
-
-
+            window.location = "<?php echo site_url() . 'Tourist/Auth/Login_tourist/'; ?>";
         },
         error: function() {
-            alert('reset Not working');
+            alert('เปลี่ยนรหัสผ่านไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
         }
 
 
