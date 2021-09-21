@@ -17,13 +17,11 @@ class Tourist_company extends DCS_controller
     * @author Jutamas Thaptong 62160079
     * @Create Date 2564-09-14
    */
-    public function show_tourist_company_list()
+    public function show_company_list()
     {
-        $id=1;
-        $this->load->model('Tourist/M_dcs_company_tourist', 'mcom');
-        $this->load->model('Company/M_dcs_com_image', 'mimg');
-        $data["company"] = $this->mcom->get_by_detail($id)->result();
-        $data["image"] = $this->mimg->get_by_com_id($id)->result();
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $nunber_status = 2;
+        $data["company"] = $this->mcom->get_company_and_img($nunber_status)->result();
         $this->output_company('tourist/company_tourist/v_list_company_tourist', 'template/Tourist/topbar_tourist',$data);
     }
 
@@ -35,41 +33,18 @@ class Tourist_company extends DCS_controller
     * @author Jutamas Thaptong 62160079
     * @Create Date 2564-09-14
    */
-    public function show_tourist_company_detail()
+    public function show_tourist_company_detail($com_id)
     {
-        $id=1;
-        $this->load->model('Tourist/M_dcs_company_tourist', 'mcom');
+        $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_image', 'mimg');
-        $data["company"] = $this->mcom->get_by_detail($id)->result();
-        $data["image"] = $this->mimg->get_by_com_id()->result();
+        $this->mimg->com_img_com_id = $com_id;
+        $this->mcom->com_id = $com_id;
+        $data["image"] = $this->mimg->get_by_com_id()->row();
+        $data["company"] = $this->mcom->get_by_detail()->row();
         $this->output_company('tourist/company_tourist/v_detail_company_tourist', 'template/Tourist/topbar_tourist',$data);
 
     }
 
-    /*
-    * show_tourist_eventlist_login
-    * show list event tourist page and change topbar
-    * @input -
-    * @output -
-    * @author Jutamas Thaptong 62160079
-    * @Create Date 2564-09-14
-   */
-  public function show_tourist_company_list_login()
-  {
-      $this->output_company('tourist/company_tourist/v_list_company_tourist', 'template/Tourist/topbar_tourist_login');
-  }
-  
-  /*
-  * show_detailevent_tourist_login
-  * show detail event tourist page and change topbar
-  * @input -
-  * @output -
-  * @author Jutamas Thaptong 62160079
-  * @Create Date 2564-09-14
- */
-  public function show_tourist_company_detail_login()
-  {
-      $this->output_company('tourist/company_tourist/v_detail_company_tourist', 'template/Tourist/topbar_tourist_login');
-  }
+ 
  
 }

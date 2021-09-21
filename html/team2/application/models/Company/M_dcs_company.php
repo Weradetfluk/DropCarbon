@@ -28,6 +28,23 @@ class M_dcs_company extends Da_dcs_company
         return $query;
     }
 
+
+
+
+    public function get_company_and_img($number_status)
+    {
+        $sql = "SELECT dcs_company.com_id, dcs_company.com_name,dcs_company.com_description,dcs_com_image.com_img_path 
+        from dcs_company 
+        RIGHT JOIN dcs_com_image
+        ON  dcs_company.com_id = dcs_com_image.com_img_com_id
+        WHERE com_status = '$number_status'
+        GROUP BY dcs_company.com_id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
+
     /*
     * get_by_id
     * get data company by id
@@ -92,7 +109,7 @@ class M_dcs_company extends Da_dcs_company
     */
     function get_search($search, $number_status)
     {
-        
+
         $this->db->select('*');
         $this->db->from('dcs_company');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');

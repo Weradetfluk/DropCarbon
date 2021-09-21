@@ -22,7 +22,6 @@ class DCS_controller extends CI_Controller
     {
         $this->output_landing_page('landing_page/register/v_landing_page'); //path
     }
-
     /*
     * output_admin
     * output admin page

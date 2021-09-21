@@ -100,7 +100,7 @@
     .pagination {
         margin: 30px auto;
     }
-    
+
     .link-custom {
         font-size: 22px !important;
         color: #212529;
@@ -112,14 +112,41 @@
         color: #4169E1;
         text-decoration: none;
     }
+    ul.breadcrumb {
+        padding: 10px 16px;
+        list-style: none;
+    }
 
-    
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: ">";
+    }
+
+    ul.breadcrumb li a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    ul.breadcrumb li a:hover {
+        color: #01447e;
+        text-decoration: underline;
+    }
 </style>
 <title>List Company</title>
 <div class="bg-white">
     <section>
         <div class="container py-5">
-            <div class="row text-left py-3">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
+            <li>ดูรายการสถานที่</li>
+        </ul> 
+           <div class="row text-left py-3">
                 <div class="m-auto">
                     <h1 class="h1" style="padding-bottom: 2%">สถานที่ทั้งหมด</h1>
                 </div>
@@ -139,258 +166,35 @@
                             <option value="3">หมวดหมู่ 3</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-sm-3">
                         <button type="submit" class="btn btn-custom">ค้นหา</button>
                     </div>
                 </div>
             </form>
-                    
+
 
             <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                            <?php if (count($image) == 0) { ?>
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
-                        <?php } else { ?>
-                            <img src="<?php echo base_url() . 'image_company/' . $image[0]->com_img_path; ?>" class="card-img-top" alt="...">
-                        <?php } ?>
-                    
-                        </a>
-                        <!-- รูปที่ 1 -->
-
-                        <div class="card-body" align="center">
-                        <?php if (count($company) == 0) { ?>
-
-                    <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
-                    <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
-                    <?php } else { ?>
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[0]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[0]->com_name ?></a>
-                    <p class="card-text"><?php echo $company[0]->com_description ?></p>
-                    <?php } ?>
+                <?php for ($i = 0; $i < count($company); $i++) { ?>
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100" id="card">
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/' . $company[$i]->com_id; ?>">
+                                <img src="<?php echo base_url() . 'image_company/' . $company[$i]->com_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                                <!-- รูปที่ 1 -->
+                                <div class="card-body" align="center">
+                                    <h3 class="text-decoration-none text-dark"><?php echo $company[$i]->com_name ?></h3>
+                                    <p class="card-text"><?php echo iconv_substr($company[$i]->com_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                </div>
+                                <!-- ชื่อของรูปที่ 1 -->
+                            </a>
                         </div>
-                        <!-- ชื่อของรูปที่ 1 -->
-
                     </div>
-                </div>
-                <!-- กิจกรรมที่ 1 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                                <?php if (count($image) <= 1) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./mun.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[1]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 1) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
-                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[1]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[1]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[1]->com_description ?></p>
-                                <?php } ?>
-                            </div>                    
-                        <!-- ชื่อของรูปที่ 2 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 2 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 2) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[2]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 2) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
-                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[2]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[2]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[2]->com_description ?></p>
-                                <?php } ?>
-                            </div>           
-                        <!-- ชื่อของรูปที่ 3 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 3 -->
-
+                    <!-- กิจกรรมที่ 1 -->
+                <?php } ?>
             </div>
-            <div class="row" style="padding-top: 3%;">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 3) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[3]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
 
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 3) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">บางละมุง</a>
-                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[3]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[3]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[3]->com_description ?></p>
-                                <?php } ?>
-                            </div>           
-                        <!-- ชื่อของรูปที่ 4 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 4 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 4) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[4]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 4) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
-                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[4]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[4]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[4]->com_description ?></p>
-                                <?php } ?>
-                            </div>    
-                        <!-- ชื่อของรูปที่ 5 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 5 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 5) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[5]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 5) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
-                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[5]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[5]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[5]->com_description ?></p>
-                                <?php } ?>
-                            </div>    
-                        <!-- ชื่อของรูปที่ 6 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 6 -->
-
-            </div>
-            <div class="row" style="padding-top: 3%;">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 6) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./ang.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[6]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 6) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">ศาลเจ้านาจา</a>
-                                    <p class="card-text">ศาลเจ้านาจา หรือศาลเจ้าหน่าจาซาไท่จื้อ ตั้งอยู่ที่อ่างศิลา...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[6]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[6]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[6]->com_description ?></p>
-                                <?php } ?>
-                            </div>    
-                        <!-- ชื่อของรูปที่ 4 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 4 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 7) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kere.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[7]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 7) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">แกรนด์แคนยอนคีรี</a>
-                                    <p class="card-text">แกรนด์แคนยอนคีรี ตั้งอยู่ที่อำเภอเมืองชลบุรี แถวแยกคีรี...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[7]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[7]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[7]->com_description ?></p>
-                                <?php } ?>
-                            </div>    
-                        <!-- ชื่อของรูปที่ 5 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 5 -->
-
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100" id="card">
-                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
-                    <?php if (count($image) <= 8) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./mook.jpg" class="card-img-top" alt="...">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'image_company/' . $image[8]->com_img_path; ?>" class="card-img-top" alt="...">
-                                <?php } ?>
-                        </a>
-                        <!-- รูปที่ 2 -->
-
-                        <div class="card-body" align="center">
-                                <?php if (count($company) <= 8) { ?>
-                                    <a href="#" class="h2 text-decoration-none text-dark">เขาสามมุข</a>
-                                    <p class="card-text"> เป็นจุดท่องเที่ยวที่มีชื่อเสียงควบคู่กับหาดบางแสน เป็นทั้งที่ตั้งของศาลเจ้าแม่สามมุขอันศักดิ์สิทธิ์...</p>
-                                <?php } else { ?>
-                                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $company[8]->com_id; ?>" class="h2 text-decoration-none text-dark"><?php echo $company[8]->com_name ?></a>
-                                    <p class="card-text"><?php echo $company[8]->com_description ?></p>
-                                <?php } ?>
-                            </div> 
-                        <!-- ชื่อของรูปที่ 6 -->
-
-                    </div>
-                </div>
-                <!-- กิจกรรมที่ 6 -->
-               
-            </div>
 
             <div class="row justify-content-md-center">
-                <div class="col-md-6"> 
+                <div class="col-md-6">
                     <ul class="pagination justify-content-center">
 
                         <!-- Previous -->
@@ -415,9 +219,9 @@
 
                     </ul>
                 </div>
-                
+
             </div>
-                
+
 
         </div>
     </section>
