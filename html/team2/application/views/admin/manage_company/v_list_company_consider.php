@@ -53,7 +53,7 @@
 
 
  <!-- warnning aprove Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="Aprovemodal">
+ <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -63,7 +63,7 @@
                  </button>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติสถานที่นี้ใช่หรือไม่?</p>
+                 <p>คุณต้องการอนุมัติ <span id="com_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -158,7 +158,7 @@
      });
      /*
       * confirm_approve
-      * open modal id = Aprovemodal 
+      * open modal id = aprove_modal 
       * @input click button approve
       * @output modal to confirm approve modal
       * @author Kasama Donwong 62160074
@@ -166,14 +166,16 @@
       * @Update -
       */
 
-     function confirm_approve(com_id) {
-         $('#Aprovemodal').modal();
-
-         $('#approves').click(function() {
-             approve_company(com_id) //function 
-
+      function confirm_approve(com_id, com_name, ent_email) {
+         $('#com_name_confirm').text(com_name);
+         console.log(ent_email)
+         $('#aprove_modal').modal({
+             backdrop: 'static',
+             keyboard: false
          });
-
+         $('#approves').click(function() {
+             approve_company(com_id, ent_email) //function 
+         });
      }
 
      /*
@@ -235,7 +237,7 @@
       * @Create Date 2564-08-08
       * @Update -
       */
-     function approve_company(com_id) {
+      function approve_company(com_id, ent_email) {
          $.ajax({
              type: "POST",
              data: {
@@ -246,13 +248,17 @@
                  //sweet alert
                  swal({
                      title: "อนุมัติสำเร็จ",
-                     text: "อนุมัติสถานที่สำเร็จ",
+                     text: "อนุมัติสถานที่สำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000,
                  }, function() {
                      location.reload();
                  })
+                 var content = "สถานที่ของคุณได้รับการอนุมัติจากผู้ดูแลระบบแล้ว";
+                 var content_h1 = "ผู้ดูแลระบบอนุมัติการเพิ่มสถานที่แล้ว";
+                 var subject = "Approval";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
              },
              error: function() {
                  alert('ajax error working');

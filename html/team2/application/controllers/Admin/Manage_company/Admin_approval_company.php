@@ -342,7 +342,7 @@ class Admin_approval_company extends DCS_controller
                                 search
                               </i>
                            </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
                                 <i class="material-icons">
                                   done
                                 </i>
@@ -416,7 +416,7 @@ class Admin_approval_company extends DCS_controller
               '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
                  <span class="material-icons">search</span>
                </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
                               <i class="material-icons">
                                 done
                               </i>
