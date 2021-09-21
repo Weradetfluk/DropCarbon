@@ -235,7 +235,7 @@
                 <div class="card card-h-100" id="card">
 
                     <!-- รูปในการ์ดที่ 1 -->
-                    <a href="">
+                    <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/'. $arr_com[0]->com_id; ?>">
                         <?php if (count($arr_image_com) == 0) { ?>
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
                         <?php } else { ?>
@@ -265,7 +265,7 @@
                         <div class="card widget-flat" id="card">
 
                             <!-- รูปในการ์ดที่ 2 -->
-                            <a href="#">
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
                                 <?php if (count($arr_image_com) <= 1) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./cejan.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
@@ -292,7 +292,7 @@
                         <div class="card widget-flat" id="card">
 
                             <!-- รูปในการ์ดที่ 3 -->
-                            <a href="#">
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
                                 <?php if (count($arr_image_com) <= 2) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
@@ -320,7 +320,7 @@
                         <div class="card widget-flat" id="card">
 
                             <!-- รูปในการ์ดที่ 4 -->
-                            <a href="#">
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
                                 <?php if (count($arr_image_com) <= 3) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
@@ -347,7 +347,7 @@
                         <div class="card widget-flat" id="card">
 
                             <!-- รูปในการ์ดที่ 5 -->
-                            <a href="#">
+                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail'; ?>">
                                 <?php if (count($arr_image_com) <= 4) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
                                 <?php } else { ?>
@@ -373,7 +373,7 @@
 
         <!-- ปุ่มดูทั้งหมด -->
         <div class="col-md-auto py-4" align="right">
-            <a type="button" class="myButtonSeeAll" href="#">ดูทั้งหมด >></a>
+        <a type="button" class="myButtonSeeAll" href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_list'; ?>">ดูทั้งหมด >></a>
         </div>
     </div>
     <!-- สิ้นสุดสถานที่ยอดนิยม -->

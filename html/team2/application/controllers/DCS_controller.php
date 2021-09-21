@@ -296,4 +296,22 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Tourist/footer');
     }
+
+    
+    /*
+    * output_event
+    * show every thing about
+    * @input $view, topbar
+    * @output -
+    * @author Jutamas Thaptong 62160079
+    * @Create Date 2564-09-14
+    */
+    public function output_company($view, $topbar,$data)
+    {
+        $this->load->view('template/Tourist/header_tourist');
+        $this->load->view('template/Tourist/javascript_tourist');
+        $this->load->view($topbar);
+        $this->load->view($view,$data);
+        $this->load->view('template/Tourist/footer');
+    }
 }
