@@ -252,15 +252,15 @@
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?></td>
                                                             <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
                                                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="#">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
                                                                     <span class="material-icons">clear</span>
                                                                 </button>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

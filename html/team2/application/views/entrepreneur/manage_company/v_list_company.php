@@ -92,15 +92,15 @@
                             <?php if ($arr_company[$i]->com_status == 2) { ?>
                               <td style="color: #669900;">อนุมัติ</td>
                               <td style='text-align: center;'>
+                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                  <span class="material-icons">search</span>
+                                </a>
                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
                                   <span class="material-icons">edit</span>
                                 </a>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
                                   <span class="material-icons">clear</span>
                                 </button>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
-                                  <span class="material-icons">search</span>
-                                </a>
                               </td>
                             <?php } ?>
                             <?php if ($arr_company[$i]->com_status == 3) { ?>
