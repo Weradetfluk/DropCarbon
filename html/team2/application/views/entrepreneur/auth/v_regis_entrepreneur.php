@@ -21,8 +21,28 @@
         box-sizing: border-box;
     }
 
+    label {
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #aaa;
+        font-weight: 400;
+    }
+
+    .form-control {
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
+        border-radius: 0px;
+    }
+
+    .unset {
+        border-bottom: unset !important;
+    }
+
     input {
-        border: 0px !important;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
     }
 
     input:hover #next_btn {
@@ -126,6 +146,10 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .breadcrumb {
+        background-color: #e9ecef;
+    }
 </style>
 <title>ลงทะเบียนสำหรับผู้ประกอบการ</title>
 <!-- Form Register -->
@@ -139,8 +163,8 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับผู้ประกอบการ</h1>
         <form class="container py-3" method='POST' action="<?php echo site_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
-        
-                <!-- <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
+
+            <!-- <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
                 <input type="radio" id="ent_pre_id2" name="ent_pre_id" value=2 required>&nbsp;นาง
                 <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3 required>&nbsp;นางสาว -->
             <div>
@@ -148,11 +172,11 @@
                     <div class="form-group col-md-2 mb-3">
                         <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
                         <select class="selected" name="ent_pre_id" id="prefix" required>
-                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
+                            <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
-                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
 
-                        <?php } ?>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group col-md-4 mb-3">
@@ -163,68 +187,67 @@
                         <label for="ent_lastname">นามสกุล</label>
                         <input type="text" class="form-control mt-1" id="ent_lastname" name="ent_lastname" placeholder="นามสกุล" required>
                     </div>
-                </div>    
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_tel">เบอร์โทรศัพท์</label>
-                    <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10"placeholder="088-XXX-XXXX" required>
                 </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_id_card">หมายเลขบัตรประชาชน</label>
-                    <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="หมายเลขบัตรประชาชน" required>
-                    <span class="error text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_email">อีเมล</label>
-                    <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="example@email.com" required>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_tel">เบอร์โทรศัพท์</label>
+                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" required>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_id_card">หมายเลขบัตรประชาชน</label>
+                        <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="หมายเลขบัตรประชาชน" required>
+                        <span class="error text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group col-md-6 mb-3">
-                    <label for="idcard">วันเกิด</label>
-                    <input type="date" class="form-control mt-1" id="ent_birthdate" name="ent_birthdate" placeholder="วันเกิด" required>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_email">อีเมล</label>
+                        <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="example@email.com" required>
+                    </div>
 
-            เอกสารยืนยันตัวตน :
-            <input type="file" name="document_ent[]" multiple required>
-            <br><br>
-
-            <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
-
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_username">ชื่อผู้ใช้</label>
-                    <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
-                    <span id="usernameavailable" style="color: red;"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="ent_password">รหัสผ่าน</label>
-                    <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="idcard">วันเกิด</label>
+                        <input type="date" class="form-control mt-1" id="ent_birthdate" name="ent_birthdate" placeholder="วันเกิด" required>
+                    </div>
                 </div>
 
-                <div class="form-group col-md-6 mb-3">
-                    <label for="confirm">ยืนยันรหัสผ่าน</label>
-                    <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
-                    <div id="errorpassword" class="text-danger"></div>
+                เอกสารยืนยันตัวตน :
+                <input type="file" class="unset" name="document_ent[]" multiple required>
+                <br><br>
+
+                <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
+
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_username">ชื่อผู้ใช้</label>
+                        <input type="text" class="form-control mt-1" id="ent_username" name="ent_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
+                        <span id="usernameavailable" style="color: red;"></span>
+                    </div>
                 </div>
-            </div>
-            <div style="text-align: right;">
-                <button type="submit" id="btn_sub" class="btn btn-success" style="color: white; font-size: 18px;">บันทึก</button>
-                <a class="btn btn-secondary" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: white; background-color: #777777;">ยกเลิก</a>
-            </div>
-            
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="ent_password">รหัสผ่าน</label>
+                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
+                    </div>
+
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="confirm">ยืนยันรหัสผ่าน</label>
+                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
+                        <div id="errorpassword" class="text-danger"></div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <button type="submit" id="btn_sub" class="btn btn-success" style="color: white; font-size: 18px;">บันทึก</button>
+                    <a class="btn btn-secondary" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: white; background-color: #777777;">ยกเลิก</a>
+                </div>
+
 
         </form>
     </div>
 </div>
 <br><br><br>
 <script>
-    
     /*
      * @author Suwapat Saowarod 62160340
      */
@@ -307,7 +330,7 @@
      * @Create Date 2564-09-10
      * @Update -
      */
-    function check_btn_submit(){
+    function check_btn_submit() {
         if (check_password == 1 || check_username == 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
@@ -323,37 +346,38 @@
      * @Create Date 2564-09-20
      * @Update -
      */
-    $(document).ready(function(){
-        $('#ent_id_card').on('keyup',function(){
-            if($.trim($(this).val()) != '' && $(this).val().length == 13){
-                id = $(this).val().replace(/-/g,"");
+    $(document).ready(function() {
+        $('#ent_id_card').on('keyup', function() {
+            if ($.trim($(this).val()) != '' && $(this).val().length == 13) {
+                id = $(this).val().replace(/-/g, "");
                 var result = check_id_card_number(id);
-                if(result === false){  
+                if (result === false) {
                     var id_alert = "เลขบัตรผิด";
-                    
+
                     /*document.getElementByClassName("error").innerHTML = id_alert;*/
                     $('span.error').removeClass('true').text(id_alert);
-                    
-                }else{
+
+                } else {
                     $('span.error').addClass('true').text('');
                 }
-            }else{
-            $('span.error').removeClass('true').text('');
+            } else {
+                $('span.error').removeClass('true').text('');
             }
         })
     });
 
-    function check_id_card_number(id){
-            if(! IsNumeric(id)) return false;
-            if(id.substring(0,1)== 0) return false;
-            if(id.length != 13) return false;
-            for(i=0, sum=0; i < 12; i++)
-                sum += parseFloat(id.charAt(i))*(13-i);
-            if((11-sum%11)%10!=parseFloat(id.charAt(12))) return false;
-            return true;
+    function check_id_card_number(id) {
+        if (!IsNumeric(id)) return false;
+        if (id.substring(0, 1) == 0) return false;
+        if (id.length != 13) return false;
+        for (i = 0, sum = 0; i < 12; i++)
+            sum += parseFloat(id.charAt(i)) * (13 - i);
+        if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+        return true;
     }
-    function IsNumeric(input){
-            var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
-            return (RE.test(input));
+
+    function IsNumeric(input) {
+        var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
+        return (RE.test(input));
     }
 </script>

@@ -29,9 +29,9 @@ class Login_tourist extends DCS_controller
     */
 
 
-    public function index()
+    public function index($data = null)
     {
-        $this->output_login_tourist('tourist/auth/v_login_tourist');
+        $this->output_login_entrepreneur('tourist/auth/v_login_tourist', $data);
     }
 
 
@@ -48,7 +48,7 @@ class Login_tourist extends DCS_controller
 
     public function warnning($data)
     {
-        $this->output_login_tourist('tourist/auth/v_login_tourist', $data);
+        $this->output_login_entrepreneur('tourist/auth/v_login_tourist', $data);
         //echo $data['warning'];
     }
 
@@ -164,9 +164,9 @@ class Login_tourist extends DCS_controller
     */
 
 
-    public function forgot_password_page()
+    public function forgot_password_page($data=null)
     {
-        $this->output_login_tourist('tourist/auth/v_forgot_password_tourist');
+        $this->output_login_entrepreneur('tourist/auth/v_forgot_password_tourist',$data);
     }
 
     /*
@@ -296,6 +296,6 @@ class Login_tourist extends DCS_controller
     public function reset_password_page()
     {
         $data['token'] = $this->input->get('token');
-        $this->output_login_tourist('tourist/auth/v_reset_password_tourist', $data);
+        $this->output_login_entrepreneur('tourist/auth/v_reset_password_tourist', $data);
     }
 }

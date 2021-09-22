@@ -20,8 +20,24 @@
         box-sizing: border-box;
     }
 
+    label {
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #aaa;
+        font-weight: 400;
+    }
+
+    .form-control {
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
+        border-radius: 0px;
+    }
+
     input {
-        border: 0px !important;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
     }
 
     input:hover #next_btn {
@@ -124,6 +140,10 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    .breadcrumb {
+        background-color: #e9ecef;
     }
 </style>
 <title>ลงทะเบียนสำหรับนักท่องเที่ยว</title>

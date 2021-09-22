@@ -19,10 +19,6 @@
     <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
 
-    <!-- material-dashboard-master css -->
-    <!-- ตืดตรงนี้ -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css">
-
     <!-- template_site css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fontawesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/bootstrap.min.css">

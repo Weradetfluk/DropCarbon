@@ -95,6 +95,10 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    .breadcrumb {
+        background-color: #e9ecef;
+    }
 </style>
 <title>Select Login</title>
 <div class="bg">
