@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
+include_once dirname(__FILE__) . '/../DCS_controller.php';
 /*
 * Select_register
 * show register page
@@ -18,6 +18,6 @@ class Select_register extends DCS_controller {
     * @Update -
     */
     public function index() {
-        $this->output_regis('landing_page/register/v_regis');
+        $this->output_tourist('landing_page/v_regis', null, 'template/Tourist/topbar_tourist');
     }
 }

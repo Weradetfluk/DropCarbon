@@ -143,7 +143,12 @@
     <section>
         <div class="container py-5">
         <ul class="breadcrumb">
-            <li><a href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
+            <?php if($this->session->userdata("tourist_id")){?>
+                <li><a href="<?php echo base_url().'Tourist/Auth/Landing_page_tourist'?>" style="color: green;">หน้าหลัก</a></li>
+            <?php }?>
+            <?php if(!$this->session->userdata("tourist_id")){?>
+                <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
+            <?php }?>
             <li>ดูรายการสถานที่</li>
         </ul> 
            <div class="row text-left py-3">
@@ -177,7 +182,7 @@
                 <?php for ($i = 0; $i < count($company); $i++) { ?>
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100" id="card">
-                            <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_company/show_tourist_company_detail/' . $company[$i]->com_id; ?>">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $company[$i]->com_id; ?>">
                                 <img src="<?php echo base_url() . 'image_company/' . $company[$i]->com_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
                                 <!-- รูปที่ 1 -->
                                 <div class="card-body" align="center">

@@ -337,7 +337,7 @@
                </div>
                <!-- ปุ่มดูทั้งหมด -->
                <div class="col-md-auto">
-                   <a type="button" class="myButtonSeeAll" href="#">ดูทั้งหมด >></a>
+                   <a type="button" class="myButtonSeeAll" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด >></a>
                </div>
            </div>
        </div>

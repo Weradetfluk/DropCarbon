@@ -20,8 +20,19 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
-        $this->output_landing_page('landing_page/register/v_landing_page'); //path
+        $this->load->model('Company/M_dcs_com_image', 'mdci');
+        $this->load->model('Company/M_dcs_company', 'mdc');
+        $this->load->model('Event/M_dcs_eve_image', 'mdei');
+        $this->load->model('Event/M_dcs_event', 'mde');
+
+        $data['arr_image_com'] = $this->mdci->get_all()->result();
+        $data['arr_com'] = $this->mdc->get_all()->result();
+        $data['arr_image_eve'] = $this->mdei->get_all()->result();
+        $data['arr_eve'] = $this->mde->get_all()->result();
+
+        $this->output_tourist('landing_page/v_landing_page', $data, 'template/Tourist/topbar_tourist', 'footer');
     }
+
     /*
     * output_admin
     * output admin page
@@ -45,6 +56,47 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Admin/footer');
     }
+
+    /*
+    * output_Tourist
+    * output Tourist
+    * @input $view, $data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-22
+    */
+    public function output_tourist($view, $data = null, $topbar = null, $footer = null)
+    {
+        $this->load->view('template/Tourist/header_tourist');
+        $this->load->view('template/Tourist/javascript_tourist');
+        // $this->load->view('template/Tourist/topbar_tourist');
+        if ($topbar) {
+            $this->load->view($topbar);
+        }
+        $this->load->view($view, $data);
+        if ($footer) {
+            $this->load->view('template/Tourist/footer');
+        }
+    }
+
+    /*
+    * output_entrepreneur
+    * output entrepreneur
+    * @input $view, $data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-24
+    * @Update 2564-09-13
+    */
+    public function output_entrepreneur($view = null, $data = null)
+    {
+        $this->load->view('template/Entrepreneur/header_entrepreneur');
+        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
+        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
+        $this->load->view($view, $data);
+        $this->load->view('template/Entrepreneur/footer');
+    }
+
     /*
     * output_admin_card
     * output admin page card
@@ -90,7 +142,7 @@ class DCS_controller extends CI_Controller
     * @input data, view
     * @output - 
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-19
+    * @Create Date 2564-07-19
     * @Update Date -
     */
     public function output_login_entrepreneur($view, $data = null)
@@ -100,121 +152,6 @@ class DCS_controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/Entrepreneur/footer');
     }
-
-    /*
-    * output_regis
-    * output register
-    * @input data, view
-    * @output -
-    * @author Thanisorn thumsawanit 62160088
-    * @Create Date 2021-07-15
-    * @Update Date -
-    */
-    public function output_regis($view, $data = null)
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist');
-        $this->load->view($view, $data);
-        
-    }
-
-    /*
-    * output_entrepreneur
-    * output entrepreneur
-    * @input $view, $data
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2021-07-24
-    * @Update 2021-09-13
-    */
-    public function output_entrepreneur($view = null, $data = null)
-    {
-        $this->load->view('template/Entrepreneur/header_entrepreneur');
-        $this->load->view('template/Entrepreneur/javascript_entrepreneur');
-        $this->load->view('template/Entrepreneur/topbar_entrepreneur');
-        $this->load->view($view, $data);
-        $this->load->view('template/Entrepreneur/footer');
-    }
-
-    /*
-    * output_landing_page
-    * show Landing page for every one
-    * @input -
-    * @output -
-    * @author Naaka Punparich 62160082
-    * @Create Date 2021-07-31
-    */
-    public function output_landing_page($view)
-    {
-        $this->load->model('Company/M_dcs_com_image', 'mdci');
-        $this->load->model('Company/M_dcs_company', 'mdc');
-        $this->load->model('Event/M_dcs_eve_image', 'mdei');
-        $this->load->model('Event/M_dcs_event', 'mde');
-
-        $data['arr_image_com'] = $this->mdci->get_all()->result();
-        $data['arr_com'] = $this->mdc->get_all()->result();
-        $data['arr_image_eve'] = $this->mdei->get_all()->result();
-        $data['arr_eve'] = $this->mde->get_all()->result();
-
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist');
-        $this->load->view($view, $data);
-        $this->load->view('template/Tourist/footer');
-    }
-
-    /*
-    * output_event
-    * show every thing about
-    * @input $view, topbar
-    * @output -
-    * @author Naaka Punparich 62160082
-    * @Create Date 2021-08-03
-    */
-    public function output_event($view, $topbar)
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view($topbar);
-        $this->load->view($view);
-        
-    }
-
-    /*
-    * output_landing_page
-    * show Landing page tourist for every one
-    * @input $view
-    * @output -
-    * @author Jutamas Thaptong 62160079
-    * @Create Date 2021-08-02
-    */
-    public function output_landing_page_tourist()
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist_login');
-        $this->load->view('tourist/auth/v_landing_page_tourist');
-        
-    }
-
-    /*
-    * output_edit_tourist
-    * show edit tourist page
-    * @input $data
-    * @output -
-    * @author Jutamas Thaptong 62160079
-    * @Create Date 2021-08-02
-    */
-    public function output_edit_tourist($data)
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist_login');
-        $this->load->view('tourist/manage_tourist/v_edit_tourist', $data);
-        
-    }
-
 
     /*
       * email_send
@@ -257,10 +194,10 @@ class DCS_controller extends CI_Controller
         if (!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
-          }
+        }
     }
 
-      /*
+    /*
       * send_email_admin_ajax
       * send email to user
       * @input reason, user_email, subject, mail_content_h1
@@ -269,48 +206,12 @@ class DCS_controller extends CI_Controller
       * @Create Date 2564-09-20
       * @Update Date -
       */
-    public function send_email_admin_ajax(){
+    public function send_email_admin_ajax()
+    {
         $content = $this->input->post('content');
         $user_email = $this->input->post('user_email');
         $subject = $this->input->post('subject');
         $content_h1 = $this->input->post('content_h1');
-        $this->email_send($content, $user_email, $subject, $content_h1);     
-      }
-
-    /*
-    * output_login_tourist
-    * output tourist login  page
-    * @input
-    * @output -
-    * @author Naaka Punparich 62160082
-    * @Create Date 2564-07-17
-    * @Update -
-    */
-
-    public function output_login_tourist($view, $data = null)
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view('template/Tourist/topbar_tourist');
-        $this->load->view($view, $data);
-        
-    }
-
-    
-    /*
-    * output_event
-    * show every thing about
-    * @input $view, topbar
-    * @output -
-    * @author Jutamas Thaptong 62160079
-    * @Create Date 2564-09-14
-    */
-    public function output_company($view, $topbar,$data)
-    {
-        $this->load->view('template/Tourist/header_tourist');
-        $this->load->view('template/Tourist/javascript_tourist');
-        $this->load->view($topbar);
-        $this->load->view($view,$data);
-        $this->load->view('template/Tourist/footer');
+        $this->email_send($content, $user_email, $subject, $content_h1);
     }
 }

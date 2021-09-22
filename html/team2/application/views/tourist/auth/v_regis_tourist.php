@@ -151,12 +151,12 @@
 <div class="bg">
     <div class="container py-5" style="background-color: white; border-radius: 25px;  padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
-            <li><a href="<?php echo site_url() . 'DCS_controller/output_Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
-            <li><a href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
+            <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo base_url() . 'Landing_page/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
             <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
         </ul>
         <h1 class="h1 font-w-500" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับนักท่องเที่ยว</h1>
-        <form class="container py-3 form-regis" method='POST' action='<?php echo site_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
+        <form class="container py-3 form-regis" method='POST' action='<?php echo base_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
             <div class="profile-pic-div">
                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
@@ -235,7 +235,7 @@
                     </div>
                 </div>
             </div>
-            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
+            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Landing_page/Register/Select_register'; ?>">ยกเลิก</a>
             <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
 
         </form>

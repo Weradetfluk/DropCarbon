@@ -30,7 +30,7 @@ class Register_entrepreneur extends DCS_controller {
         $this->session->unset_userdata("doc_path");
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
         $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
-        $this->output_regis('entrepreneur/auth/v_regis_entrepreneur',$data);
+        $this->output_tourist('entrepreneur/auth/v_regis_entrepreneur', $data, 'template/Tourist/topbar_tourist');
     }
 
     /*

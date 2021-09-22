@@ -12,7 +12,7 @@ $warning = $warning ?? '';
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
-    <a href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>" class="navbar-brand">
+    <a href="<?php echo site_url(); ?>" class="navbar-brand">
         <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px;">
     </a>
 </nav>

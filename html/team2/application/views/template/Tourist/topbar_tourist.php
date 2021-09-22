@@ -24,7 +24,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
     <div class="container-fluid">
         <!-- topbar left -->
-        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>">
+        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
             <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
         </a>
 
@@ -37,10 +37,10 @@
             <div class="flex-fill">
                 <ul class="nav d-flex justify-content-end mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Register/Select_login' ?>"><i class="fas fa-user"></i> เข้าสู่ระบบ</a>
+                        <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_login' ?>"><i class="fas fa-user"></i> เข้าสู่ระบบ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Register/Select_register' ?>"><i class="fas fa-user-plus"></i> สมัครสมาชิก</a>
+                        <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_register' ?>"><i class="fas fa-user-plus"></i> สมัครสมาชิก</a>
                     </li>
                 </ul>
             </div>

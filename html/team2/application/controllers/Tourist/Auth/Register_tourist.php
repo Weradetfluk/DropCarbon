@@ -27,7 +27,7 @@ class Register_tourist extends DCS_controller
         $this->session->unset_userdata("tus_img_path");
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-        $this->output_regis('tourist/auth/v_regis_tourist', $data);
+        $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist');
     }
 
     /*

@@ -23,11 +23,10 @@ class Tourist_edit extends DCS_controller
       $this->mtou->tus_id = $this->session->userdata("tourist_id");
       $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
       $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-      $this->output_edit_tourist($data);
-
       $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+      $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
 
    /*

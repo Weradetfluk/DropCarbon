@@ -19,7 +19,7 @@ class Tourist_event extends DCS_controller
    */
     public function show_tourist_event_list()
     {
-        $this->output_event('tourist/event_tourist/v_list_event_tourist', 'template/Tourist/topbar_tourist');
+        $this->output_tourist('tourist/event_tourist/v_list_event_tourist', null, 'template/Tourist/topbar_tourist');
     }
 
     /*
@@ -32,7 +32,7 @@ class Tourist_event extends DCS_controller
    */
     public function show_tourist_event_detail()
     {
-        $this->output_event('tourist/event_tourist/v_detail_event_tourist', 'template/Tourist/topbar_tourist');
+        $this->output_tourist('tourist/event_tourist/v_detail_event_tourist', null, 'template/Tourist/topbar_tourist');
     }
 
     /*
@@ -45,7 +45,7 @@ class Tourist_event extends DCS_controller
    */
     public function show_tourist_event_list_login()
     {
-        $this->output_event('tourist/event_tourist/v_list_event_tourist', 'template/Tourist/topbar_tourist_login');
+        $this->output_tourist('tourist/event_tourist/v_list_event_tourist', null, 'template/Tourist/topbar_tourist_login');
     }
 
     /*
@@ -58,6 +58,6 @@ class Tourist_event extends DCS_controller
    */
     public function show_tourist_event_detail_login()
     {
-        $this->output_event('tourist/event_tourist/v_detail_event_tourist', 'template/Tourist/topbar_tourist_login');
+        $this->output_tourist('tourist/event_tourist/v_detail_event_tourist', null, 'template/Tourist/topbar_tourist_login');
     }
 }

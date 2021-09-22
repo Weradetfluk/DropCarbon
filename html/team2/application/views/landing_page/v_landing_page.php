@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_company/show_company_list' ?>">ดูเพิ่มเติม<span></span></a>
+            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูเพิ่มเติม<span></span></a>
             <!-- Owl Carousel-->
         </div>
     </section>
@@ -307,7 +307,7 @@
                 <article class="thumbnail thumbnail-mary">
                     <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-4-270x195.jpg" alt="" width="270" height="195" />
                     </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_company/show_company_list' ?>" alt="" width="270" height="195" /></a>
+                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>" alt="" width="270" height="195" /></a>
                     </div>
                 </article>
                 <!-- Thumbnail Classic-->

@@ -84,6 +84,8 @@ class Login_entrepreneur extends DCS_controller
     public function logout()
     {
         $this->remove_session();
+        unset($_SESSION['tab_number_entrepreneur']);
+        unset($_SESSION['tab_number_company']);
         $this->index(); //back to login
     }
 

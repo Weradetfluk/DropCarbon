@@ -94,17 +94,13 @@
         color: #01447e;
         text-decoration: underline;
     }
-
-    .breadcrumb {
-        background-color: #e9ecef;
-    }
 </style>
 <title>Select Register</title>
 <div class="bg">
     <div class="container py-5">
 
         <ul class="breadcrumb">
-            <li><a href="<?php echo site_url() . 'Landing_page/Register/Landing_page'; ?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo site_url(); ?>" style="color: green;">หน้าหลัก</a></li>
             <li>สมัครสมาชิก</li>
         </ul>
 
