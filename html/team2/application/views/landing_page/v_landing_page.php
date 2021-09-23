@@ -43,40 +43,182 @@
     </div>
     <!-- Section Box Categories-->
     <section class="section section-lg section-top-1 bg-gray-4">
-        <div class="container offset-negative-1">
-            <div class="box-categories cta-box-wrap">
-                <div class="box-categories-content">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
-                            <ul class="list-marked-2 box-categories-list">
-                                <li><a href="#"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/cta-1-368x420.jpg" alt="" width="368" height="420" /></a>
-                                    <h5 class="box-categories-title">ชื่อสถานที่</h5>
-                                </li>
-                            </ul>
+        <div class="container">
+            <!-- หัวข้อ กิจกรรมทั้งหมด -->
+            <h3 class="oh-desktop" style="padding-top : 40px"><span class="d-inline-block wow slideInDown">กิจกรรมยอดนิยม</span></h3>
+            <div class="row">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+
+                    <!-- การ์ดที่ 1 -->
+                    <div class="card" id="card">
+
+                        <!-- รูปในการ์ดที่ 1 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 1 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
+                            <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
                         </div>
-                        <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
-                            <ul class="list-marked-2 box-categories-list">
-                                <li><a href="#"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/cta-2-368x420.jpg" alt="" width="368" height="420" /></a>
-                                    <h5 class="box-categories-title">ชื่อสถานที่</h5>
-                                </li>
-                            </ul>
+
+                    </div>
+                </div>
+
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+
+                    <!-- การ์ดที่ 2 -->
+                    <div class="card" id="card">
+
+                        <!-- รูปในการ์ดที่ 2 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 2 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                            <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
                         </div>
-                        <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
-                            <ul class="list-marked-2 box-categories-list">
-                                <li><a href="#"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/cta-3-368x420.jpg" alt="" width="368" height="420" /></a>
-                                    <h5 class="box-categories-title">ชื่อสถานที่</h5>
-                                </li>
-                            </ul>
+
+                    </div>
+                </div>
+
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+
+                    <!-- การ์ดที่ 3 -->
+                    <div class="card" id="card">
+
+                        <!-- รูปในการ์ดที่ 3 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 3 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                            <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม<span></span></a>
+            <!-- Owl Carousel-->
+        </div>
+    </section>
+    <!-- Hot tours-->
+    <section class="section section-sm bg-default">
+        <div class="container">
+            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">สถานที่ยอดนิยม</span></h3>
+            <div class="row">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+                <div class="col-xl-7 col-lg-6 wow fadeInLeft">
+
+                    <!-- การ์ดที่ 1 -->
+                    <div class="card card-h-100" id="card">
+
+                        <!-- รูปในการ์ดที่ 1 -->
+                        <a href="">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 1 -->
+                        <div class="card-body">
+                            <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
+                            <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ตัวแบ่ง Row -->
+                <div class="col-xl-5 col-mg-4 mg-4 wow fadeInRight">
+                    <div class="row">
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
+                        <div class="col-lg-6">
+
+                            <!-- การ์ดที่ 2 -->
+                            <div class="card widget-flat" id="card">
+
+                                <!-- รูปในการ์ดที่ 2 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 2 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
+                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
+                        <div class="col-lg-6">
+
+                            <!-- การ์ดที่ 3 -->
+                            <div class="card widget-flat" id="card">
+
+                                <!-- รูปในการ์ดที่ 3 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 3 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">บางละมง</a>
+                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 39px;">
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 4 -->
+                        <div class="col-lg-6">
+
+                            <!-- การ์ดที่ 4 -->
+                            <div class="card widget-flat" id="card">
+
+                                <!-- รูปในการ์ดที่ 4 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 4 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
+                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 5 -->
+                        <div class="col-lg-6">
+
+                            <!-- การ์ดที่ 5 -->
+                            <div class="card widget-flat" id="card">
+
+                                <!-- รูปในการ์ดที่ 5 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 5 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
+                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูเพิ่มเติม<span></span></a>
-            <!-- Owl Carousel-->
+            </div>
+            <a class="button button-black-outline button-ujarak" style="float: right;" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
         </div>
     </section>
     <!--	Our Services-->
     <section class="section section-sm">
-        <div class="container">
+        <div class="container" style="margin-top: 40px;">
             <h3>เที่ยว Low Carbon แบบ Drop Carbon</h3>
             <div class="row row-30">
                 <div class="col-sm-6 col-lg-4">
@@ -88,9 +230,9 @@
                             <div class="unit-body">
                                 <h5 class="box-icon-classic-title"><a href="#">ท่องเที่ยวอย่างไม่เร่งรีบ</a></h5>
                                 <p class="box-icon-classic-text">
-                                     ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อม
-                                     เช่นปั่นจักรยาน
-                                     ลดการปล่อยคาร์บอน</p>
+                                    ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อม
+                                    เช่นปั่นจักรยาน
+                                    ลดการปล่อยคาร์บอน</p>
                             </div>
                         </div>
                     </article>
@@ -147,7 +289,7 @@
                             <div class="unit-body">
                                 <h5 class="box-icon-classic-title"><a href="#">กิจกรรมที่หลากหลาย</a></h5>
                                 <p class="box-icon-classic-text">ความสนุกที่จะเติมเต็มให้ทริปนี้
-                                เป็นหนึ่งในทริปที่แสนประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว</p>
+                                    เป็นหนึ่งในทริปที่แสนประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว</p>
                             </div>
                         </div>
                     </article>
@@ -165,172 +307,6 @@
                         </div>
                     </article>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hot tours-->
-    <section class="section section-sm bg-default">
-        <div class="container">
-            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">กิจกรรมยอดนิยม</span></h3>
-            <div class="row row-sm row-40 row-md-50">
-                <div class="col-sm-6 col-md-12 wow fadeInRight">
-                    <!-- Product Big-->
-                    <article class="product-big">
-                        <div class="unit flex-column flex-md-row align-items-md-stretch">
-                            <div class="unit-left"><a class="product-big-figure" href="#"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/product-big-1-600x366.jpg" alt="" width="600" height="366" /></a></div>
-                            <div class="unit-body">
-                                <div class="product-big-body" style="padding-left: 75px">
-                                    <h5 class="product-big-title"><a href="#">ชื่อกิจกรรม</a></h5>
-                                    <div class="group-sm group-middle justify-content-start">
-                                        <a class="product-big-reviews" href="#">4 เช็คอิน</a>
-                                    </div>
-                                    <p class="product-big-text">รายละเอียดของกิจกรรม...</p><a class="button button-black-outline button-ujarak" href="#">ดูเพิ่มเติม</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-12 wow fadeInLeft">
-                    <!-- Product Big-->
-                    <article class="product-big">
-                        <div class="unit flex-column flex-md-row align-items-md-stretch">
-                            <div class="unit-left"><a class="product-big-figure" href="#"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/product-big-2-600x366.jpg" alt="" width="600" height="366" /></a></div>
-                            <div class="unit-body">
-                                <div class="product-big-body" style="padding-left: 75px">
-                                    <h5 class="product-big-title"><a href="#">ชื่อกิจกรรม</a></h5>
-                                    <div class="group-sm group-middle justify-content-start">
-                                        <a class="product-big-reviews" href="#">5 เช็คอิน</a>
-                                    </div>
-                                    <p class="product-big-text">รายละเอียดของกิจกรรม...</p><a class="button button-black-outline button-ujarak" href="#">ดูเพิ่มเติม</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <a class="button button-black-outline button-ujarak" style="float: right;" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูทั้งหมด</a>
-        </div>
-    </section>
-    <!-- Different People-->
-    <section class="section section-sm">
-        <div class="container">
-            <h3 class="title-block find-car oh"><span class="d-inline-block wow slideInUp">Drop Carbon HERO</span></h3>
-            <p> นักท่องเที่ยวที่มีคุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ</p><br>
-
-            <div class="row row-30 justify-content-center box-ordered">
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <!-- Team Modern-->
-                    <article class="team-modern">
-                        <div class="team-modern-header"><a class="team-modern-figure" href="#"><img class="img-circles" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/user-1-118x118.jpg" alt="" width="118" height="118" /></a>
-                            <svg x="0px" y="0px" width="270px" height="70px" viewbox="0 0 270 70" enable-background="new 0 0 270 70" xml:space="preserve">
-                                <g>
-                                    <path fill="#161616" d="M202.085,0C193.477,28.912,166.708,50,135,50S76.523,28.912,67.915,0H0v70h270V0H202.085z"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="team-modern-caption">
-                            <h6 class="team-modern-name"><a href="#">Diana Robinson</a></h6>
-                            <p class="team-modern-status">อันดับที่ 1</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <!-- Team Modern-->
-                    <article class="team-modern">
-                        <div class="team-modern-header"><a class="team-modern-figure" href="#"><img class="img-circles" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/user-2-118x118.jpg" alt="" width="118" height="118" /></a>
-                            <svg x="0px" y="0px" width="270px" height="70px" viewbox="0 0 270 70" enable-background="new 0 0 270 70" xml:space="preserve">
-                                <g>
-                                    <path fill="#161616" d="M202.085,0C193.477,28.912,166.708,50,135,50S76.523,28.912,67.915,0H0v70h270V0H202.085z"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="team-modern-caption">
-                            <h6 class="team-modern-name"><a href="#">Peter McMillan</a></h6>
-                            <p class="team-modern-status">อันดับที่ 2</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <!-- Team Modern-->
-                    <article class="team-modern">
-                        <div class="team-modern-header"><a class="team-modern-figure" href="#"><img class="img-circles" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/user-3-118x118.jpg" alt="" width="118" height="118" /></a>
-                            <svg x="0px" y="0px" width="270px" height="70px" viewbox="0 0 270 70" enable-background="new 0 0 270 70" xml:space="preserve">
-                                <g>
-                                    <path fill="#161616" d="M202.085,0C193.477,28.912,166.708,50,135,50S76.523,28.912,67.915,0H0v70h270V0H202.085z"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="team-modern-caption">
-                            <h6 class="team-modern-name"><a href="#">Jill Peterson</a></h6>
-                            <p class="team-modern-status">อันดับที่ 3</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <!-- Team Modern-->
-                    <article class="team-modern">
-                        <div class="team-modern-header"><a class="team-modern-figure" href="#"><img class="img-circles" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/user-4-118x118.jpg" alt="" width="118" height="118" /></a>
-                            <svg x="0px" y="0px" width="270px" height="70px" viewbox="0 0 270 70" enable-background="new 0 0 270 70" xml:space="preserve">
-                                <g>
-                                    <path fill="#161616" d="M202.085,0C193.477,28.912,166.708,50,135,50S76.523,28.912,67.915,0H0v70h270V0H202.085z"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="team-modern-caption">
-                            <h6 class="team-modern-name"><a href="#">James Smith</a></h6>
-                            <p class="team-modern-status">อันดับที่ 4</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section Subscribe-->
-    <section class="section bg-default text-center offset-top-50">
-        <div class="parallax-container" data-parallax-img="<?php echo base_url() . 'assets/templete/template_site' ?>/images/parallax-1-1920x850.jpg">
-            <div class="parallax-content section-xl section-inset-custom-1 context-dark bg-overlay-2-21">
-                <div class="container" style=" padding: 100px 0px">
-                    <h2 class="heading-2 oh font-weight-normal wow slideInDown"><span class="d-block font-weight-semi-bold"></span><span class="d-block font-weight-light"></span></h2>
-                    <p class="text-width-medium text-spacing-75 wow fadeInLeft" data-wow-delay=".1s"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--	Instagrram wondertour-->
-    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4">
-        <div class="container-fluid">
-            <h6 class="gallery-title">คลังรูปภาพ</h6>
-            <!-- Owl Carousel-->
-            <div class="owl-carousel owl-classic owl-dots-secondary" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="4" data-xl-items="5" data-xxl-items="6" data-stage-padding="15" data-xxl-stage-padding="0" data-margin="30" data-autoplay="true" data-nav="true" data-dots="true">
-                <!-- Thumbnail Classic-->
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-4-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-5-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-6-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
-                <!-- Thumbnail Classic-->
-                <article class="thumbnail thumbnail-mary">
-                    <div class="thumbnail-mary-figure"><img src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/gallery-image-7-270x195.jpg" alt="" width="270" height="195" />
-                    </div>
-                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="#" alt="" width="270" height="195" /></a>
-                    </div>
-                </article>
             </div>
         </div>
     </section>
