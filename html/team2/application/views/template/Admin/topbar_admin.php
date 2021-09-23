@@ -79,7 +79,7 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
             <i class="material-icons">calendar_today</i>
             <p>จัดการกิจกรรม</p>
           </a>
