@@ -101,7 +101,7 @@ class Register_entrepreneur extends DCS_controller {
                 $this->mdoc->insert_document();
             }
             $this->session->set_userdata("error_register_entrepreneur", "success");
-            redirect('Landing_page/Register/Landing_page');
+            redirect('DCS_controller');
         }else{
             $this->session->set_userdata("error_register_entrepreneur", "fail");
             redirect("Entrepreneur/Auth/Register_entrepreneur/show_regis_ent");

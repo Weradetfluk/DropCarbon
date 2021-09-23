@@ -20,6 +20,11 @@ class Admin_approval_entrepreneur extends DCS_controller
         $this->load->library('pagination');
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
     }
+
+    public function index()
+    {
+      $this->show_data_consider();
+    }
     /*
     * show_data_consider_ajax
     * get all data entrepreneur not approve and show table

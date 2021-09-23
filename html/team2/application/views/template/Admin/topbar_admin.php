@@ -60,16 +60,16 @@ if (!isset($_SESSION['tab_number'])) {
   <div class="sidebar" data-color="green" data-image="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
-      <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+      <li class="nav-item <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">dashboard</i>
             <p>dashboard</p>
           </a>
         </li>
         <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">view_list</i>
-            <p>จัดการแบรนเนอร์</p>
+            <p>จัดการแบนเนอร์</p>
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="home">
@@ -85,7 +85,7 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
         <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" id="ent_menu">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur' ?>">
             <i class="material-icons">assignment_ind</i>
             <p>จัดการผู้ประกอบการ</p>
           </a>
