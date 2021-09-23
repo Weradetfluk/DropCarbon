@@ -35,4 +35,20 @@ class M_dcs_eve_image extends Da_dcs_eve_image
         $query = $this->db->query($sql);
         return $query;
     }
+
+    /*
+    * get_by_eve_id
+    * get data event by id
+    * @input eve_img_eve_id
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-09-23
+    * @Update -
+    */
+    public function get_by_eve_id()
+    {
+        $sql = "SELECT * FROM dcs_eve_image
+               WHERE eve_img_eve_id = ?";
+        return $this->db->query($sql, array($this->eve_img_eve_id));
+    }
 }

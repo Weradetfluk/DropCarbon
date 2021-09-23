@@ -208,7 +208,7 @@
                     </article>
                 </div>
             </div>
-            <a class="button button-black-outline button-ujarak" style="float: right;" href="#">ดูทั้งหมด</a>
+            <a class="button button-black-outline button-ujarak" style="float: right;" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูทั้งหมด</a>
         </div>
     </section>
     <!-- Different People-->
