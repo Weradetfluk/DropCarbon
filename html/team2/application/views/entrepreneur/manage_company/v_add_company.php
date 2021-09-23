@@ -80,7 +80,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
-                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" maxlength="10" required>
+                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="10" required>
                                 </div>
                             </div><br>
 
@@ -89,7 +89,7 @@
                                 <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
-                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">เพิ่มรูปภาพ</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
                             <div id="arr_del_img_new"></div><br>
                             <!-- ส้นสุดเลือกรูปภาพสถานที่ -->
@@ -97,17 +97,17 @@
                             <!-- lat lon map -->
                             <div class="row">
                                 <div class="col">
-                                    <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
+                                    <span>ถ้าหากท่านรู้ ละติจูด ลองจิจูด สามารถใส่ข้อมูลด้านล่างได้เลย</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <label for="com_lat">Latitude</label>
-                                    <input type="text" id="com_lat" name="com_lat" class="form-control" value="">
+                                    <label for="com_lat">ละติจูด</label>
+                                    <input type="text" id="com_lat" name="com_lat" class="form-control" value="" placeholder="ใส่ละติจูด">
                                 </div>
                                 <div class="col-lg-3">
-                                    <label for="com_lon">Longitude</label>
-                                    <input type="text" id="com_lon" name="com_lon" class="form-control" value="">
+                                    <label for="com_lon">ลองจิจูด</label>
+                                    <input type="text" id="com_lon" name="com_lon" class="form-control" value="" placeholder="ใส่ลองจิจูด">
                                 </div>
                                 <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>

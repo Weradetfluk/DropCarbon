@@ -67,18 +67,6 @@ INSERT INTO `dcs_com_category` (`com_cat_id`, `com_cat_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dcs_document`
---
-
-CREATE TABLE `dcs_document` (
-  `doc_path` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `doc_ent_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
-
---
 -- Table structure for table `dcs_prefix`
 --
 
@@ -125,7 +113,18 @@ CREATE TABLE `dcs_entrepreneur` (
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `dcs_document`
+--
 
+CREATE TABLE `dcs_document` (
+  `doc_path` varchar(100) NOT NULL primary key,
+  `doc_name` varchar(100) NOT NULL,
+  `doc_ent_id` int(10) NOT NULL,
+  FOREIGN KEY (doc_ent_id) REFERENCES dcs_entrepreneur(ent_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `dcs_tourist`
@@ -208,6 +207,7 @@ CREATE TABLE `dcs_entrepreneur_reject` (
 
 CREATE TABLE `dcs_tourist_image` (
   `tus_img_path` varchar(100) NOT NULL,
+  `tus_img_name` varchar(100),
   `tus_img_tus_id` int(10),
   FOREIGN KEY (tus_img_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -258,10 +258,10 @@ CREATE TABLE `dcs_event` (
 
 CREATE TABLE `dcs_checkin` (
   `che_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `che_tus_id` int(10),
-  `che_eve_id` int(10),
-  `che_status` int(1),
-  `che_date_time_in` TIMESTAMP,
+  `che_tus_id` int(10) NOT NULL,
+  `che_eve_id` int(10) NOT NULL,
+  `che_status` int(1) NOT NULL,
+  `che_date_time_in` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `che_date_time_out` TIMESTAMP,
   FOREIGN KEY (che_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (che_eve_id) REFERENCES dcs_event(eve_id)
@@ -270,21 +270,20 @@ CREATE TABLE `dcs_checkin` (
 
 
 CREATE TABLE `dcs_eve_image` (
-  `eve_img_path` varchar(100),
+  `eve_img_path` varchar(100) NOT NULL primary key,
+  `eve_img_name` varchar(100),
   `eve_img_eve_id` int(10),
   FOREIGN KEY (eve_img_eve_id) REFERENCES dcs_event(eve_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_com_image` (
-  `com_img_path` varchar(100),
+  `com_img_path` varchar(100) primary key,
+  `com_img_name` varchar(100),
   `com_img_com_id` int(10),
   FOREIGN KEY (com_img_com_id) REFERENCES dcs_company(com_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `dcs_com_image` (`com_img_path`, `com_img_com_id`) VALUES
-('613260b926e8e5.15861595.jpg', 1),
-('613260c19cc316.45611281.jpg', 1);
 
 CREATE TABLE `dcs_pro_category` (
   `pro_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT,
@@ -300,7 +299,6 @@ CREATE TABLE `dcs_promotions` (
   `pro_com_id` int(10) NOT NULL,
   `pro_cat_id` int(10) NOT NULL,
   `pro_status` int(10) NOT NULL,
-  `pro_img_path` varchar(100) NOT NULL,
   `pro_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `pro_start_date` DATE NOT NULL,
   `pro_end_date` DATE NULL,
@@ -309,6 +307,12 @@ CREATE TABLE `dcs_promotions` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+CREATE TABLE `dcs_pro_image` (
+  `pro_img_path` varchar(100) NOT NULL primary key,
+  `pro_img_name` varchar(100) NOT NULL,
+  `pro_img_adm_id` int(10) NOT NULL,
+  FOREIGN KEY (pro_img_adm_id) REFERENCES dcs_promotions(pro_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_tou_promotion` (
@@ -331,6 +335,13 @@ CREATE TABLE `dcs_company_reject` (
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+CREATE TABLE `dcs_banner` (
+  `ban_path` varchar(100) NOT NULL primary key,
+  `ban_name` varchar(100) NOT NULL,
+  `ban_adm_id` int(10),
+  FOREIGN KEY (ban_adm_id) REFERENCES dcs_admin(adm_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- AUTO_INCREMENT for table `dcs_admin`
 --

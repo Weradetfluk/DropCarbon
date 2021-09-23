@@ -11,7 +11,7 @@
 <div class="content">
   <div class="row">
     <div class="col">
-      <h3 id="name_table" class="vr-line" style="border-left: 4px solid #4caf50 !important;margin : 0 auto !important;padding-left: 3px !important;padding-bottom: 10px; float:left; font-family: 'Prompt', sans-serif !important;"></h3>
+      <h3 id="name_table" style="margin : 0 auto !important;padding-left: 3px !important;padding-bottom: 10px; float:left; font-family: 'Prompt', sans-serif !important;"></h3>
     </div>
     <div class="col">
       <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
