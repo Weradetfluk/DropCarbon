@@ -95,7 +95,8 @@
                                         <div class="col-7">
                                             <label for="ent_tel" style="color:black">เบอร์โทรศัพท์</label>
 
-                                            <input type="tel" id="phone" class="form-control" placeholder="000-000-0000" name='ent_tel' onblur="checkTel()" value="<?php echo $arr_ent[0]->ent_tel; ?>" pattern="[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}" required>
+                                            <input type="tel" id="ent_tel" class="form-control" placeholder="000-000-0000" name='ent_tel' onblur="check_tel()" value="<?php echo $arr_ent[0]->ent_tel; ?>" pattern="[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}" required>
+                                            <p id="error"></p>
                                         </div>
 
                                         <!-- กรอกวันเกิด -->
@@ -171,23 +172,12 @@
         }
     });
 
-    function checkTel() {
-        var tel = document.getElementById("telephone").value;
-        var patt = [0] {
-            1
-        } [0 - 9] {
-            2
-        } - [0 - 9] {
-            3
-        } - [0 - 9] {
-            4
-        }
-
-        if (tel.match(patt))
-
-            document.getElementById("error").innerHTML = "True";
-
-        else
+    // comment ด้วย
+    function check_tel() {
+        var tel = document.getElementById("ent_tel").value;
+        var patt = '[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}';
+        if (!tel.match(patt)){
             document.getElementById("error").innerHTML = "False";
+        }
     }
 </script>
