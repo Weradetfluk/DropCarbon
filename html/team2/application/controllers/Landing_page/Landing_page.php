@@ -21,8 +21,11 @@ class Landing_page extends DCS_controller
     public function show_company_list()
     {
         $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_category', 'mcat');
         $nunber_status = 2;
         $data["company"] = $this->mcom->get_company_and_img($nunber_status)->result();
+        $data['com_cat'] = $this->mcat->get_all()->result();
+        $data['arr_com_cat'] = $this->mcom->get_com_cat()->result();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
         } else {

@@ -1,362 +1,373 @@
-   <!--
-    /*
-    * v_landing_page_tourist
-    * Display Landing page of tourist 
-    * @input $view
-    * @output -
-    * @author Jutamas Thaptong 62160079
-    * @Create Date 2021-08-02 
-    */
-   -->
-   <title>Tourist Landing Page</title>
-   <?php error_reporting(0); ?>
+<!-- Make by : Naaka Punparich 62160082 -->
+<style>
+.carousel-indicators {
+    bottom: 65px;
+}
 
-   <?php
-    if (!$this->session->has_userdata("username")) {
-        $path = site_url() . "Tourist/Auth/Login_tourist";
-        header("Location: " . $path);
-        exit();
+@media screen and (max-width: 1000px) {
+    .carousel-indicators {
+        bottom: 25px;
     }
-    ?>
+}
+</style>
 
-   <script>
-       $(document).ready(function() {
+<title>Landing Page</title>
 
-           $(document).on('click', '.myButton', function() {
-               $('.myButton').removeClass("active");
-               $(this).addClass("active");
-           });
+<div class="page">
+    <!-- carousel slide-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100"
+                    src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-1-1920x678.jpg"
+                    alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100"
+                    src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-2-1920x678.jpg"
+                    alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100"
+                    src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-3-1920x678.jpg"
+                    alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Section Box Categories-->
+    <section class="section section-lg section-top-1 bg-gray-4">
+        <div class="container">
+            <!-- หัวข้อ กิจกรรมทั้งหมด -->
+            <h3 class="oh-desktop" style="padding-top : 40px"><span
+                    class="d-inline-block wow slideInDown">กิจกรรมยอดนิยม</span></h3>
+            <div class="row">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
 
-       });
-   </script>
+                    <!-- การ์ดที่ 1 -->
+                    <div class="card" id="card">
 
-   <!-- เริ่ม Banner -->
-   <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-       <!-- ตัวหมุนรูปของ Banner -->
-       <ol class="carousel-indicators">
-           <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-           <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-           <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-       </ol>
-       <div class="carousel-inner">
-           <div class="carousel-item active">
-               <div class="row">
-                   <!-- รูปที่ 1 ของ Banner  -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner7.png" alt="">
-               </div>
-           </div>
-           <div class="carousel-item">
-               <div class="row">
-                   <!-- รูปที่ 2 ของ Banner -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner6.png" alt="">
-               </div>
-           </div>
-           <div class="carousel-item">
-               <div class="row">
-                   <!-- รูปที่ 3 ของ Banner -->
-                   <img class="img-fluid" src="<?php echo base_url() . 'assets/templete/picture' ?>/./banner5.png" alt="">
-               </div>
-           </div>
-       </div>
+                        <!-- รูปในการ์ดที่ 1 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg"
+                                class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 1 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
+                            <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน
+                                ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
+                        </div>
 
-       <!-- ปุ่มเลื่อนซ้ายของ Banner -->
-       <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-           <i class="fas fa-chevron-left"></i>
-       </a>
-       <!-- ปุ่มเลื่อนขวาของ Banner -->
-       <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-           <i class="fas fa-chevron-right"></i>
-       </a>
-   </div>
-   <!-- สิ้นสุด Banner -->
+                    </div>
+                </div>
 
-   <!-- เริ่มสีพื้นหลัง bg-white -->
-   <section class="bg-white">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
 
-       <!-- เริ่มกิจกรรมล่าสุด -->
-       <div class="container py-5">
+                    <!-- การ์ดที่ 2 -->
+                    <div class="card" id="card">
 
-           <!-- หัวข้อ กิจกรรมล่าสุด -->
-           <h1>กิจกรรมล่าสุด</h1>
+                        <!-- รูปในการ์ดที่ 2 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg"
+                                class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 2 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                            <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย
+                                โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                        </div>
 
-           <!-- ตัวเปลี่ยนข่าวสารของ กิจกรรมล่าสุด -->
-           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-               <li class="nav-item" role="presentation">
-                   <button class="myButton active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">10 ก.ค. 64</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                   <button class="myButton" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">11 ก.ค. 64</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                   <button class="myButton" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">12 ก.ค. 64</button>
-               </li>
-           </ul>
+                    </div>
+                </div>
 
-           <!-- กล่องข้อความข่าวสารของ กิจกรรมล่าสุด -->
-           <div class="card" id="card1" style="padding-top: 3%; padding-left: 2%">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
+                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
 
-               <!-- ตัวกำหนดขนาดกล่องให้พอดีกับข้อความ -->
-               <div class="tab-content" id="pills-tabContent">
+                    <!-- การ์ดที่ 3 -->
+                    <div class="card" id="card">
 
-                   <!-- ตัวกล่องข้อความข่าวสารที่ 1 -->
-                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                       <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System) เป็นระบบแนะนำการท่องเที่ยวแบบออนไลน์</p>
-                       <div class="col-md-auto" align="right" id="padding">
-                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                       </div>
-                   </div>
+                        <!-- รูปในการ์ดที่ 3 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg"
+                                class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 3 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                            <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ
+                                สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                        </div>
 
-                   <!-- ตัวกล่องข้อความข่าวสารที่ 2 -->
-                   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                       <p>อำเภอเมืองชลบุรีจึงได้มีการริเริ่มแนวคิดหนึ่งคือการท่องเที่ยวแบบ Low carbon Tourism ซึ่งเป็นกิจกรรมท่องเที่ยวที่เป็นทางเลือกในการช่วยลดคาร์บอนให้น้อยลง </p>
-                       <div class="col-md-auto" align="right" id="padding">
-                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                       </div>
-                   </div>
+                    </div>
+                </div>
+            </div><a class="link-classic wow fadeInUp"
+                href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม<span></span></a>
+            <!-- Owl Carousel-->
+        </div>
+    </section>
+    <!-- Hot tours-->
+    <section class="section section-sm bg-default">
+        <div class="container">
+            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">สถานที่ยอดนิยม</span></h3>
+            <div class="row">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+                <div class="col-xl-7 col-lg-6 wow fadeInLeft">
 
-                   <!-- ตัวกล่องข้อความข่าวสารที่ 3 -->
-                   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                       <p>ระบบแนะนำการท่องเที่ยวเชิงอนุรักษ์สิ่งแวดล้อม (Drop Carbon System) </p>
-                       <div class="col-md-auto" align="right" id="padding">
-                           <a type="button" class="myButton1" href="#">อ่านต่อ >></a>
-                       </div>
-                   </div>
+                    <!-- การ์ดที่ 1 -->
+                    <div class="card card-h-100" id="card">
 
-               </div>
-           </div>
-       </div>
-       <!-- สิ้นสุดกิจกรรมล่าสุด -->
+                        <!-- รูปในการ์ดที่ 1 -->
+                        <a href="">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg"
+                                class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 1 -->
+                        <div class="card-body">
+                            <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
+                            <p class="card-text">
+                                หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว
+                                ด้วยความที่อยู่ใกล้กรุงเทพมหานคร
+                                ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                        </div>
 
-       <!-- เริ่มกิจกรรมทั้งหมด -->
-       <div class="container py-3">
-           <div class="row text-left py-3">
-               <div class="m-auto">
-                   <!-- หัวข้อ กิจกรรมทั้งหมด -->
-                   <h1>กิจกรรมทั้งหมด</h1>
-               </div>
-           </div>
-           <div class="row">
-               <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
-               <div class="col-12 col-md-4 mb-4">
-                   <!-- การ์ดที่ 1 -->
-                   <div class="card h-100" id="card">
-                       <!-- รูปในการ์ดที่ 1 -->
-                       <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>">
-                           <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
-                       </a>
-                       <!-- ข้อความในการ์ดที่ 1 -->
-                       <div class="card-body">
-                           <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
-                           <p class="card-text"> จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน
-                               ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผลกระทบต่อ...</p>
-                           <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "ชายหาดบางแสน " ?></span>
-                               </span>
+                    </div>
+                </div>
 
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
-               <div class="col-12 col-md-4 mb-4">
-                   <!-- การ์ดที่ 2 -->
-                   <div class="card h-100" id="card">
-                       <!-- รูปในการ์ดที่ 2 -->
-                       <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>">
-                           <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
-                       </a>
-                       <!-- ข้อความในการ์ดที่ 2 -->
-                       <div class="card-body">
-                           <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
-                           <p class="card-text">
-                               จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...
-                           </p>
-                           <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "ศูนย์อนุรักษ์ป่าชายเลน" ?></span>
-                               </span>
+                <!-- ตัวแบ่ง Row -->
+                <div class="col-xl-5 col-mg-4 mg-4 wow fadeInRight">
+                    <div class="row">
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
+                        <div class="col-lg-6">
 
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
-               <div class="col-12 col-md-4 mb-4">
-                   <!-- การ์ดที่ 3 -->
-                   <div class="card h-100" id="card">
-                       <!-- รูปในการ์ดที่ 3 -->
-                       <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>">
-                           <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
-                       </a>
-                       <div class="card-body">
-                           <!-- ข้อความในการ์ดที่ 3 -->
-                           <a href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_detail_login'; ?>" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
-                           <p class="card-text">
-                               ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ
-                               สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของเทือกเขา...
-                           </p>
-                           <div class="card-info">
-                               <span class="card-date">
-                                   <!-- <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./loca.png" style="width:15px;"> | -->
-                                   <span class="material-icons">location_on</span>
-                                   <span class="text-secondary"><?= $location = "เขาสามมุข" ?></span>
-                               </span>
+                            <!-- การ์ดที่ 2 -->
+                            <div class="card widget-flat" id="card">
 
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="row py-3">
-               <div class="col">
+                                <!-- รูปในการ์ดที่ 2 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 2 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
+                                    <p class="card-text">
+                                        เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...
+                                    </p>
+                                </div>
 
-               </div>
-               <div class="col-md-auto">
-                   <!-- ปุ่มดูทั้งหมด -->
-                   <a type="button" class="myButtonSeeAll" href="<?php echo site_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_event_list_login'; ?>">ดูทั้งหมด >></a>
-               </div>
-           </div>
-       </div>
-       <!-- สิ้นสุดกิจกรรมทั้งหมด -->
+                            </div>
+                        </div>
 
-       <!-- เริ่มสถานที่ยอดนิยม -->
-       <div class="container py-2">
-           <div class="row text-left py-3">
-               <div class="m-auto">
-                   <!-- หัวข้อ สถานที่ยอดนิยม -->
-                   <h1>สถานที่ยอดนิยม</h1>
-               </div>
-           </div>
-           <div class="row">
-               <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
-               <div class="col-xl-7 col-lg-6">
-                   <!-- การ์ดที่ 1 -->
-                   <div class="card card-h-100" id="card">
-                       <a href="#">
-                           <!-- รูปในการ์ดที่ 1 -->
-                           <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
-                       </a>
-                       <!-- ข้อความในการ์ดที่ 1 -->
-                       <div class="card-body">
-                           <a href="#" class="h2 text-decoration-none text-dark">บางแสน</a>
-                           <p class="card-text">
-                               หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว
-                               ด้วยความที่อยู่ใกล้กรุงเทพมหานคร
-                               ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...
-                           </p>
-                       </div>
-                   </div>
-               </div>
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
+                        <div class="col-lg-6">
 
-               <!-- ตัวแบ่ง Row -->
-               <div class="col-xl-5 col-mg-4 mg-4">
-                   <div class="row">
-                       <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
-                       <div class="col-lg-6">
-                           <!-- การ์ดที่ 2 -->
-                           <div class="card widget-flat" id="card">
-                               <!-- รูปในการ์ดที่ 2 -->
-                               <a href="#">
-                                   <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./cejan.jpg" class="card-img-top" alt="...">
-                               </a>
-                               <!-- ข้อความในการ์ดที่ 2 -->
-                               <div class="card-body">
-                                   <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
-                                   <p class="card-text">
-                                       เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...
-                                   </p>
-                               </div>
-                           </div>
-                       </div>
+                            <!-- การ์ดที่ 3 -->
+                            <div class="card widget-flat" id="card">
 
-                       <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
-                       <div class="col-lg-6">
-                           <!-- การ์ดที่ 3 -->
-                           <div class="card widget-flat" id="card">
-                               <!-- รูปในการ์ดที่ 3 -->
-                               <a href="#">
-                                   <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
-                               </a>
-                               <!-- ข้อความในการ์ดที่ 3 -->
-                               <div class="card-body">
-                                   <a href="#" class="h2 text-decoration-none text-dark">บางละมุง</a>
-                                   <p class="card-text">
-                                       อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี
-                                       ซึ่งรู้จักกันใน...
-                                   </p>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="row" style="padding-top: 6%;">
-                       <!-- ตัวกำหนดขนาดของการ์ดที่ 4 -->
-                       <div class="col-lg-6">
-                           <!-- การ์ดที่ 4 -->
-                           <div class="card widget-flat" id="card">
-                               <a href="#">
-                                   <!-- รูปในการ์ดที่ 4 -->
-                                   <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
-                               </a>
-                               <!-- ข้อความในการ์ดที่ 4 -->
-                               <div class="card-body">
-                                   <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
-                                   <p class="card-text">
-                                       เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...
-                                   </p>
-                               </div>
-                           </div>
-                       </div>
+                                <!-- รูปในการ์ดที่ 3 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 3 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">บางละมง</a>
+                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี
+                                        ซึ่งรู้จักกันใน...</p>
+                                </div>
 
-                       <!-- ตัวกำหนดขนาดของการ์ดที่ 5 -->
-                       <div class="col-lg-6">
-                           <!-- การ์ดที่ 5 -->
-                           <div class="card widget-flat" id="card">
-                               <!-- รูปในการ์ดที่ 5 -->
-                               <a href="#">
-                                   <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
-                               </a>
-                               <!-- ข้อความในการ์ดที่ 5 -->
-                               <div class="card-body">
-                                   <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
-                                   <p class="card-text">
-                                       พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...
-                                   </p>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="row py-3">
-               <div class="col">
-               </div>
-               <!-- ปุ่มดูทั้งหมด -->
-               <div class="col-md-auto">
-                   <a type="button" class="myButtonSeeAll" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด >></a>
-               </div>
-           </div>
-       </div>
-       <!-- สิ้นสุดสถานที่ยอดนิยม -->
-   </section>
-   <!-- สิ้นสุดสีพื้นหลัง bg-light -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 39px;">
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 4 -->
+                        <div class="col-lg-6">
 
-   <script>
-       $(document).ready(function() {
+                            <!-- การ์ดที่ 4 -->
+                            <div class="card widget-flat" id="card">
 
-           $(document).on('click', '.myButton', function() {
-               $('.myButton').removeClass("active");
-               $(this).addClass("active");
-           });
+                                <!-- รูปในการ์ดที่ 4 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 4 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
+                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
+                                </div>
 
-           let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
-           if (error_register_tourist == "success") {
-               swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
-               <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-           }
-       });
-   </script>
+                            </div>
+                        </div>
+
+                        <!-- ตัวกำหนดขนาดของการ์ดที่ 5 -->
+                        <div class="col-lg-6">
+
+                            <!-- การ์ดที่ 5 -->
+                            <div class="card widget-flat" id="card">
+
+                                <!-- รูปในการ์ดที่ 5 -->
+                                <a href="#">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg"
+                                        class="card-img-top" alt="...">
+                                </a>
+                                <!-- ข้อความในการ์ดที่ 5 -->
+                                <div class="card-body">
+                                    <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
+                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="button button-black-outline button-ujarak" style="float: right;"
+                href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
+        </div>
+    </section>
+    <!--	Our Services-->
+    <section class="section section-sm">
+        <div class="container" style="margin-top: 40px;">
+            <h3>เที่ยว Low Carbon แบบ Drop Carbon</h3>
+            <div class="row row-30">
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">ท่องเที่ยวอย่างไม่เร่งรีบ</a></h5>
+                                <p class="box-icon-classic-text">
+                                    ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อม
+                                    เช่นปั่นจักรยาน
+                                    ลดการปล่อยคาร์บอน</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-circular220"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">Drop Carbon Hero</a></h5>
+                                <p class="box-icon-classic-text">เพื่อเชิดชูเกียรติในการเป็นนักท่องเที่ยวที่มี
+                                    คุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-favourites5"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">พักโรงแรมสีเขียว</a></h5>
+                                <p class="box-icon-classic-text">นอนหลับสบาย
+                                    แถมยังได้ช่วยกระจายรายได้ให้กับคนในท้องถิ่นได้อีกด้วย</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-headphones32"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">ทำตัวเป็นนักเดินทาง</a></h5>
+                                <p class="box-icon-classic-text">ดื่มด่ำกับศิลปวัฒนธรรม
+                                    หาโอกาสเรียนรู้ทักษะงานฝีมือ
+                                    ที่ทรงคุณค่า สร้างมิตรภาพ
+                                    กับชุมชน</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-hot67"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">กิจกรรมที่หลากหลาย</a></h5>
+                                <p class="box-icon-classic-text">ความสนุกที่จะเติมเต็มให้ทริปนี้
+                                    เป็นหนึ่งในทริปที่แสนประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <article class="box-icon-classic">
+                        <div
+                            class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+                            <div class="unit-left">
+                                <div class="box-icon-classic-icon fl-bigmug-line-wallet26"></div>
+                            </div>
+                            <div class="unit-body">
+                                <h5 class="box-icon-classic-title"><a href="#">สำหรับผู้ประกอบการ</a></h5>
+                                <p class="box-icon-classic-text">สามารถประชาสัมพันธ์การท่องเที่ยวของท่าน ในแบบ Low
+                                    Carbon</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- Javascript-->
+<script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/core.min.js"></script>
+<script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/script.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    $(document).on('click', '.myButton', function() {
+        $('.myButton').removeClass("active");
+        $(this).addClass("active");
+    });
+
+    let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
+    let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+    if (error_regis_entrepreneur == "success") {
+        swal("สำเร็จ", "คุณทำการลงทะเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
+        <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
+    }
+    if (error_register_tourist == "success") {
+        swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+    }
+});
+</script>

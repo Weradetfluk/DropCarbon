@@ -193,4 +193,23 @@ class M_dcs_company extends Da_dcs_company
                 WHERE  com_status != 4 AND com_ent_id = ?";
         return $this->db->query($sql, array($this->com_ent_id));
     }
+
+    
+    /*
+    * get_by_ent_id
+    * get data company by entrepreneur id
+    * @input com_ent_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-16
+    * @Update -
+    */
+    public function get_com_cat()
+    {
+        $sql = "SELECT * FROM dcs_company AS com
+        LEFT JOIN {$this->db_name}.dcs_com_category AS cat 
+        ON com.com_cat_id = cat.com_cat_id";
+
+        return $this->db->query($sql);
+    }
 }
