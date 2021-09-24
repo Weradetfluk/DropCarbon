@@ -22,10 +22,16 @@ class Landing_page extends DCS_controller
     {
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_category', 'mcat');
-        $nunber_status = 2;
-        $data["company"] = $this->mcom->get_company_and_img($nunber_status)->result();
-        $data['com_cat'] = $this->mcat->get_all()->result();
+        $number_status = 2;
         $data['arr_com_cat'] = $this->mcom->get_com_cat()->result();
+        $data['com_cat'] = $this->mcat->get_all()->result();
+
+        if (isset($_POST)) {
+            $data["company"] = $this->mcom->get_company_and_img($number_status, $_POST)->result();
+        } else {
+            $data["company"] = $this->mcom->get_company_and_img($number_status)->result();
+        }
+
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
         } else {

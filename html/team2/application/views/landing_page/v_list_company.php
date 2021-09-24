@@ -159,19 +159,24 @@ ul.breadcrumb li a:hover {
                 </div>
             </div>
             <!-- กิจกรรมทั้งหมด -->
-
-            <form class="form-inline custom-form-search ">
+            <?php
+            $value_search = isset($_POST["value_search"]) ? $_POST["value_search"] : "";
+            ?>
+            <form action="<?= site_url() ?>Landing_page/Landing_page/show_company_list"
+                class="form-inline custom-form-search" method="post">
                 <div class="row justify-content-md-center" style="margin: 0px 0px 30px 0px;">
                     <div class="col-md-4">
-                        <input type="text" value="" id="search_box" name="value_search"
-                            class="form-control custom-search" placeholder="ค้นหาสถานที่">
+                        <input type="text" value="<?= $value_search ?>" id="search_box" name="value_search"
+                            class="form-control form-control-custom custom-search" placeholder="ค้นหาสถานที่">
                     </div>
                     <div class="col-md-2">
                         <!-- <select class="form-control form-control-custom" name="txt_category"> -->
-
-                        <select name="com_cat_id" id="com_cat_id" class="form-control">
+                        <select name="com_cat_id" id="com_cat_id" class="form-control form-control-custom">
+                            <option value="">เลือกทั้งหมด</option>
                             <?php for ($i = 0; $i < count($com_cat); $i++) { ?>
-                            <option value="<?php echo $i + 1 ?>"><?php echo $com_cat[$i]->com_cat_name; ?></option>
+                            <?php $selected = $_POST["com_cat_id"] == $com_cat[$i]->com_cat_id ? "selected" : ""; ?>
+                            <option value="<?php echo $com_cat[$i]->com_cat_id ?>" <?= $selected ?>>
+                                <?php echo $com_cat[$i]->com_cat_name; ?></option>
                             <?php } ?>
                         </select>
                         <!-- </select> -->

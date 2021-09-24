@@ -22,22 +22,34 @@ class M_dcs_company extends Da_dcs_company
     */
     public function get_all()
     {
-        $sql = "SELECT * 
-              from dcs_company";
+        $sql = "
+            SELECT * 
+            FROM dcs_company
+            WHERE 1
+        ";
+
         $query = $this->db->query($sql);
         return $query;
     }
 
-
-
-
-    public function get_company_and_img($number_status)
+    public function get_company_and_img($number_status, $post)
     {
+
+        $and = "";
+        if (isset($post["value_search"]) && $post["value_search"] !== "") {
+            $and .= " AND dcs_company.com_name LIKE '%" . $post["value_search"] . "%'";
+        }
+
+        if (isset($post["com_cat_id"]) && $post["com_cat_id"] !== "") {
+            $and .= " AND dcs_company.com_cat_id = " . $post["com_cat_id"] . "";
+        }
+
         $sql = "SELECT dcs_company.com_id, dcs_company.com_name,dcs_company.com_description,dcs_com_image.com_img_path 
         from dcs_company 
         RIGHT JOIN dcs_com_image
         ON  dcs_company.com_id = dcs_com_image.com_img_com_id
-        WHERE com_status = '$number_status'
+        WHERE com_status = '" . $number_status . "'
+        $and
         GROUP BY dcs_company.com_id";
         $query = $this->db->query($sql);
         return $query;
@@ -194,7 +206,7 @@ class M_dcs_company extends Da_dcs_company
         return $this->db->query($sql, array($this->com_ent_id));
     }
 
-    
+
     /*
     * get_by_ent_id
     * get data company by entrepreneur id
