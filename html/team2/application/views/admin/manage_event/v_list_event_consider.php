@@ -50,7 +50,7 @@
      </div>
      <!-- Tab1 -->
      <div class="card-body">
-         <div class="table-responsive" id="data_entre_consider">
+         <div class="table-responsive" id="data_event_consider">
          </div>
      </div>
  </div>
@@ -179,14 +179,14 @@
      function load_data(page, query = '') {
              console.log(query);
              $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 1,
+                 url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_ajax/'); ?>' + 1,
                  method: "POST",
                  data: {
                      page: page,
                      query: query
                  },
                  success: function(data) {
-                     $('#data_entre_consider').html(data);
+                     $('#data_event_consider').html(data);
                  }
              });
          }

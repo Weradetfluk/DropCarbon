@@ -142,13 +142,10 @@ class Admin_approval_event extends DCS_controller
         * @Create Date 2564-08-03
         * @Update Date
         */
-    public function get_entrepreneur_by_id_ajax()
+    public function get_event_by_id_ajax()
     {
-        $this->load->model('Document/M_dcs_document', 'mdoc');
-        $this->mdoc->doc_ent_id = $this->input->post('ent_id');
-        $data['arr_file'] = $this->mdoc->get_by_ent_id()->result();
-        $this->mdce->ent_id = $this->input->post('ent_id');
-        $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
+        $this->mdce->eve_id = $this->input->post('eve_id');
+        $data['arr_data'] = $this->mdce->get_event_by_id()->result();
         echo json_encode($data);
     }
     /*
@@ -366,7 +363,7 @@ class Admin_approval_event extends DCS_controller
                   if($number_status == 1){
                   // ต่อสตริง
                   $output .= '<td style="text-align: center;">' .
-                  '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
+                  '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->eve_id . '\')">
                           <i class="material-icons">
                             search
                           </i>

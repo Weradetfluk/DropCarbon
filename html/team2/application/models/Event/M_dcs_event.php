@@ -90,4 +90,43 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql);
         return $query;
     }
+    /*
+    *get_count_all
+    *get data count event by form database
+    *@input num_status
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
+    function get_count_all($num_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_event ');
+        $this->db->where("eve_status = '$num_status'");
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
+    /*
+    *get_all_data
+    *get data event&entrepreneur&company form database
+    *@input $limit, $start, $number_status
+    *@output entrepreneur data & company data & event data
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
+    function get_all_data($limit, $start, $number_status)
+    {
+
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->where("eve_status = '$number_status'");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
 }
