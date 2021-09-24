@@ -53,7 +53,7 @@
                      <div class="card-body">
                          <div class="banner-pic-div" onclick="document.getElementById('file').click();">
                              <form method="post" action="" id="banner_form">
-                                 <img src="https://via.placeholder.com/1920x678" id="photo" width="100%" height="378px">
+                                 <img src="https://via.placeholder.com/1920x480" id="photo" width="100%" height="378px">
                                  <input type="file" class="d-none" id="file" name="banner_img" accept="image/*">
                                  <!-- <label for="file" id="uploadBtn">Choose Photo</label> -->
                          </div>
@@ -120,13 +120,13 @@
                                  type: "success",
                              });
                              $('#add_banner_modal').modal('toggle');
-                             img.setAttribute('src', "https://via.placeholder.com/1920x678");
+                             img.setAttribute('src', "https://via.placeholder.com/1920x480");
                              document.getElementById("file").value = '';
                              get_data_banner();
                          } else {
                              $('#add_banner_modal').modal('toggle');
                              swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
-                             img.setAttribute('src', "https://via.placeholder.com/1920x678");
+                             img.setAttribute('src', "https://via.placeholder.com/1920x480");
                              document.getElementById("file").value = '';
                          }
                      },
@@ -140,7 +140,7 @@
                  swal('ไม่สามารถเพิ่มภาพได้', 'ไม่สามารถเพิ่มภาพได้เนื่องจากภาพมีจำนวนเกิน', 'error');
                  $('#add_banner_modal').modal('toggle');
                  document.getElementById("file").value = '';
-                 img.setAttribute('src', "https://via.placeholder.com/1920x678");
+                 img.setAttribute('src', "https://via.placeholder.com/1920x480");
              }
          });
      });
@@ -155,8 +155,7 @@
                  img.style.objectFit = "contain";
              });
              $('#cancle_banner_add').click(function() {
-                 console.log("OK")
-                 img.setAttribute('src', "https://via.placeholder.com/1920x678");
+                 img.setAttribute('src', "https://via.placeholder.com/1920x480");
                  document.getElementById("file").value = '';
              });
              reader.readAsDataURL(choosedFile);
@@ -195,27 +194,31 @@
          html_code += ' <tbody class="list">';
 
 
-         let i = 1;
-         arr_banner.forEach((row_ban, index_ban) => {
 
+         if (arr_banner.length != 0) {
+             let i = 1;
+             arr_banner.forEach((row_ban, index_ban) => {
+
+                 html_code += '<tr>';
+                 html_code += '<td>' + i + '</td>';
+                 html_code += '<td>' + ' <img src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '" style="object-fit: cover;"  alt="Image" width="200px" height="100px">' + '</td>';
+                 html_code += '<td>' + (row_ban['adm_name']) + '</td>';
+                 html_code += '<td>' + '<button class="btn btn-danger custom-btn-table" id="delete_banner" onclick="confirm_delete_banner(\'' + row_ban['ban_path'] + '\')">' + '<i class="material-icons">clear</i>' + '</td>';
+                 html_code += '</tr>';
+
+                 i++;
+             });
+
+         } else {
              html_code += '<tr>';
-             html_code += '<td>' + i + '</td>';
-             html_code += '<td>' + ' <img src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '" style="object-fit: cover;"  alt="Image" width="200px" height="100px">' + '</td>';
-             html_code += '<td>' + (row_ban['adm_name']) + '</td>';
-             html_code += '<td>' + '<button class="btn btn-danger custom-btn-table" id="delete_banner" onclick="confirm_delete_banner(\'' + row_ban['ban_path'] + '\')">' + '<i class="material-icons">clear</i>' + '</td>';
+             html_code += '<td colspan="4">' + 'ไม่มีข้อมูลในตารางนี้' + '</td>';
              html_code += '</tr>';
-
-             i++;
-         });
-
-
+         }
          html_code += '</tbody>';
          html_code += ' </table>';
 
          $('#data_banner').html(html_code);
-
      }
-
 
      function confirm_delete_banner(img_path) {
          $('#delete_banner_modal').modal();
@@ -228,11 +231,11 @@
                      img_path: img_path
                  },
                  success: function() {
-                           swal({
-                                 title: "ลบแบนเนอร์สำเร็จ",
-                                 type: "success",
-                             });
-                             get_data_banner()
+                     swal({
+                         title: "ลบแบนเนอร์สำเร็จ",
+                         type: "success",
+                     });
+                     get_data_banner()
 
                  },
                  error: function() {
