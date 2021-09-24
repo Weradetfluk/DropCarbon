@@ -9,31 +9,6 @@
 */ 
 -->
 
-<style>
-    .image_container {
-        height: 120px;
-        width: 200px;
-        border-radius: 6px;
-        overflow: hidden;
-        margin: 10px;
-    }
-
-    .image_container img {
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-    }
-
-    .image_container span {
-        top: -6px;
-        right: 8px;
-        color: red;
-        font-size: 28px;
-        font-weight: normal;
-        cursor: pointer;
-    }
-</style>
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -86,7 +61,7 @@
                                 <label for="com_file">รูปภาพประกอบสถานที่ <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
                             <input class="d-none" type="file" id="com_file" name="com_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
-                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">Add image</button>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('com_file').click();">เพิ่มรูปภาพ</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
                                 <?php for ($i = 0; $i < count($arr_image); $i++) { ?>
                                     <?php $arr_path = explode('.', $arr_image[$i]->com_img_path) ?>
@@ -106,16 +81,16 @@
                             <!-- lat lon map -->
                             <div class="row">
                                 <div class="col">
-                                    <span>ถ้าหากท่านรู้ latitude longitude สามารถกรอกด้านล่างได้เลยครับ</span>
+                                    <span>ถ้าหากท่านรู้ ละติจูด ลองจิจูด สามารถใส่ข้อมูลด้านล่างได้เลย</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <label for="com_lat">Latitude</label>
+                                    <label for="com_lat">ละติจูด</label>
                                     <input type="text" id="com_lat" name="com_lat" class="form-control" value="<?php echo $arr_company[0]->com_lat; ?>">
                                 </div>
                                 <div class="col-lg-3">
-                                    <label for="com_lon">Longitude</label>
+                                    <label for="com_lon">ลองจิจูด</label>
                                     <input type="text" id="com_lon" name="com_lon" class="form-control" value="<?php echo $arr_company[0]->com_lon; ?>">
                                 </div>
                                 <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('com_lat').value, document.getElementById('com_lon').value)">
@@ -355,9 +330,7 @@
             cache: false,
             processData: false,
             success: function(data) {
-                // console.log(data);
                 if (data.search("error") == -1) {
-                    // $('#card_image').before(data);
                     document.getElementById('card_image').innerHTML += data;
                     $('#com_file').val('');
                     check_count_image_btn()

@@ -78,11 +78,14 @@ class Company_edit extends DCS_controller
 
       // save data image to database
       $arr_img_add = array();
+      $arr_name_name = array();
       $arr_img_add = $this->input->post('new_img');
+      $arr_name_name = $this->input->post('name_new_image');
       $this->mimg->com_img_com_id = $this->input->post('com_id');
       if ($arr_img_add != '') {
          for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
+            $this->mimg->com_img_name = $arr_name_name[$i];
             $this->mimg->insert_image_company();
          }
       }

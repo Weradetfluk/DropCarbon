@@ -14,29 +14,6 @@
         height: 100%;
         width: auto;
     }
-
-    .image_container {
-        height: 120px;
-        width: 200px;
-        border-radius: 6px;
-        overflow: hidden;
-        margin: 10px;
-    }
-
-    .image_container img {
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-    }
-
-    .image_container span {
-        top: -6px;
-        right: 8px;
-        color: red;
-        font-size: 28px;
-        font-weight: normal;
-        cursor: pointer;
-    }
 </style>
 
 <div class="content">
@@ -330,7 +307,7 @@
     /*
      * unlink_new_image
      * unlink image
-     * @input com_file, card_image, data
+     * @input img_path
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-08-26
@@ -375,11 +352,6 @@
      * @Update 2564-09-09
      */
     function unlink_image_go_back() {
-
-        // for (var i = 0; i < $("input[name='del_new_img[]']").length; i++) {
-        //     $("input[name='del_new_img[]']").attr('name', 'new_img[]');
-        // } 
-
         // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
         var arr_image = $("input[name='new_img[]']").map(function() {
             return $(this).val();

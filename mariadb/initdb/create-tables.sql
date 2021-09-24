@@ -206,14 +206,11 @@ CREATE TABLE `dcs_entrepreneur_reject` (
 
 
 CREATE TABLE `dcs_tourist_image` (
-  `tus_img_path` varchar(100) NOT NULL,
+  `tus_img_path` varchar(100) NOT NULL primary key,
   `tus_img_name` varchar(100),
   `tus_img_tus_id` int(10),
   FOREIGN KEY (tus_img_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-INSERT INTO `dcs_tourist_image` (`tus_img_path`, `tus_img_tus_id`) VALUES
-('613256a4219453.43551798.png', 1);
 
 CREATE TABLE `dcs_reward` (
   `rew_id` int(10) NOT NULL primary key AUTO_INCREMENT,
@@ -244,12 +241,12 @@ CREATE TABLE `dcs_event` (
   `eve_point` int(10),
   `eve_num_visitor` int(10),
   `eve_description` varchar (2000),
-  `eve_com_id` int(10),
-  `eve_cat_id` int(10),
   `eve_status` int(10),
   `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `eve_start_date` DATE NOT NULL,
   `eve_end_date` DATE NULL,
+  `eve_com_id` int(10),
+  `eve_cat_id` int(10),
   FOREIGN KEY (eve_com_id) REFERENCES dcs_company(com_id),
   FOREIGN KEY (eve_cat_id) REFERENCES dcs_eve_category(eve_cat_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -258,11 +255,11 @@ CREATE TABLE `dcs_event` (
 
 CREATE TABLE `dcs_checkin` (
   `che_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `che_tus_id` int(10) NOT NULL,
-  `che_eve_id` int(10) NOT NULL,
   `che_status` int(1) NOT NULL,
   `che_date_time_in` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `che_date_time_out` TIMESTAMP,
+  `che_tus_id` int(10) NOT NULL,
+  `che_eve_id` int(10) NOT NULL,
   FOREIGN KEY (che_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (che_eve_id) REFERENCES dcs_event(eve_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -278,7 +275,7 @@ CREATE TABLE `dcs_eve_image` (
 
 
 CREATE TABLE `dcs_com_image` (
-  `com_img_path` varchar(100) primary key,
+  `com_img_path` varchar(100) NOT NULL primary key,
   `com_img_name` varchar(100),
   `com_img_com_id` int(10),
   FOREIGN KEY (com_img_com_id) REFERENCES dcs_company(com_id)
@@ -296,12 +293,12 @@ CREATE TABLE `dcs_promotions` (
   `pro_name` varchar(100) NOT NULL,
   `pro_point` int(10) NOT NULL,
   `pro_description` varchar (2000) NOT NULL,
-  `pro_com_id` int(10) NOT NULL,
-  `pro_cat_id` int(10) NOT NULL,
   `pro_status` int(10) NOT NULL,
   `pro_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `pro_start_date` DATE NOT NULL,
   `pro_end_date` DATE NULL,
+  `pro_com_id` int(10) NOT NULL,
+  `pro_cat_id` int(10) NOT NULL,
   FOREIGN KEY (pro_com_id) REFERENCES dcs_company(com_id),
   FOREIGN KEY (pro_cat_id) REFERENCES dcs_pro_category(pro_cat_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -317,9 +314,9 @@ CREATE TABLE `dcs_pro_image` (
 
 CREATE TABLE `dcs_tou_promotion` (
   `tou_id` int(10) NOT NULL primary key AUTO_INCREMENT,
+  `tou_pro_status` int(10),
   `tou_pro_id` int(10),
   `tou_tus_id` int(10),
-  `tou_pro_status` int(10),
   FOREIGN KEY (tou_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (tou_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -328,11 +325,33 @@ CREATE TABLE `dcs_tou_promotion` (
 CREATE TABLE `dcs_company_reject` (
   `cor_id` int(10) NOT NULL primary key AUTO_INCREMENT,
   `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
+  `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `cor_ent_id` int(10),
   `cor_adm_id` int(10),
-  `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
    FOREIGN KEY (cor_ent_id) REFERENCES dcs_company(com_id),
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `dcs_event_reject` (
+  `evr_id` int(10) NOT NULL primary key AUTO_INCREMENT,
+  `evr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
+  `evr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
+  `evr_eve_id` int(10),
+  `evr_adm_id` int(10),
+   FOREIGN KEY (evr_eve_id) REFERENCES dcs_event(eve_id),
+   FOREIGN KEY (evr_adm_id) REFERENCES dcs_admin(adm_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `dcs_promotion_reject` (
+  `prr_id` int(10) NOT NULL primary key AUTO_INCREMENT,
+  `prr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
+  `prr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
+  `prr_pro_id` int(10),
+  `prr_adm_id` int(10),
+   FOREIGN KEY (prr_pro_id) REFERENCES dcs_promotions(pro_id),
+   FOREIGN KEY (prr_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 

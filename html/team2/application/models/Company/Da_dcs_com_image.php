@@ -24,16 +24,16 @@ class Da_dcs_com_image extends DCS_model{
 	/*
     * insert_image_company
     * insert image company
-    * @input com_img_path, com_img_com_id
+    * @input com_img_path, com_img_com_id, com_img_name
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-05
     * @Update Date -
     */
 	public function insert_image_company(){
-		$sql = "INSERT INTO `dcs_com_image`(`com_img_path`, `com_img_com_id`) 
-				VALUES (?, ?)";
-		$this->db->query($sql, array($this->com_img_path, $this->com_img_com_id));
+		$sql = "INSERT INTO `dcs_com_image`(`com_img_path`, `com_img_name`, `com_img_com_id`) 
+				VALUES (?, ?, ?)";
+		$this->db->query($sql, array($this->com_img_path, $this->com_img_name, $this->com_img_com_id));
 	}
 
 	/*
