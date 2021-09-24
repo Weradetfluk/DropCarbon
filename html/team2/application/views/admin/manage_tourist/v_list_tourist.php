@@ -13,7 +13,7 @@
  <!-- main content -->
  <div class="content">
  <div class="container-fluid">
- <div class="vr-line">
+ <div>
  <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">บัญชีนักท่องเที่ยว</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">

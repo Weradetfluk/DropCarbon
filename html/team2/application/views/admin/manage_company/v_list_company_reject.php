@@ -10,7 +10,7 @@
 -->
 
 <!-- main content -->
-<div class="vr-line">
+<div>
      <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">สถานที่ที่ถูกปฏิเสธ</h3>
  </div>
 

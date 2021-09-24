@@ -12,7 +12,7 @@
 <!-- main content -->
 <div class="content">
  <div class="container-fluid">
- <div class="vr-line">
+ <div>
  <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">บัญชีที่ถูกบล็อค</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
@@ -51,12 +51,7 @@
      <!-- Tab1 -->
      <div class="card-body">
          <div class="table-responsive" id="data_entre_block">
-
-
          </div>
-
-
-
      </div>
  </div>
  </div>

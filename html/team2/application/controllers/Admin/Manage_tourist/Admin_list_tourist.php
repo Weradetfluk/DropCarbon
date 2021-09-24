@@ -145,6 +145,8 @@ class Admin_list_tourist extends DCS_controller
             <tr>
                 <th style="text-align: center;font-size: 16px;">ลำดับ</th>
                 <th style="text-align: center;font-size: 16px;">ชื่อ-นามสกุล</th>
+                <th style="text-align: center;font-size: 16px;">เบอร์โทรศัพท์</th>
+                <th style="text-align: center;font-size: 16px;">อีเมล</th>
                 <th style="text-align: center;font-size: 16px;">ดำเนินการ</th>
             </tr>
         </thead>
@@ -167,20 +169,13 @@ class Admin_list_tourist extends DCS_controller
                 '<td>' . $i . '</td>' .
                 '<td>'
                 . $row->tus_firstname . " " . $row->tus_lastname .
-                '</td>';
-    
-    
-                // '<td>'
-                // . $row->ent_tel .
-                // '</td>' .
-    
-    
-                // '<td>' .
-                // $row->ent_email .
-                // '</td>'; 
-
-
-
+                '</td>' .
+                '<td>'
+                . $row->tus_tel .
+                '</td>' .
+                '<td>' .
+                $row->tus_email .
+                '</td>'; 
                   if($number_status == 1){
                     // ต่อสตริง
                     $output .= '<td style=text-align: center;>' .
@@ -240,13 +235,13 @@ class Admin_list_tourist extends DCS_controller
                   '<td>' . $i . '</td>' .
                   '<td>'
                   . $row->tus_firstname . " " . $row->tus_lastname .
+                  '</td>' .
+                  '<td>'
+                  . $row->tus_tel .
+                  '</td>' .
+                  '<td>' .
+                  $row->tus_email .
                   '</td>';
-                  // '<td>'
-                  // . $row->ent_tel .
-                  // '</td>' .
-                  // '<td>' .
-                  // $row->ent_email .
-                  // '</td>';
                   if($number_status == 1){
                     // ต่อสตริง
                     $output .= '<td style=text-align: center;>' .
