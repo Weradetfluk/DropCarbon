@@ -62,10 +62,10 @@ class Login_entrepreneur extends DCS_controller
             $data_warning = array();
             $this->ment->ent_status = 1;
             $result_con = $this->ment->get_by_username_password();
-            if($result_con){
+            if ($result_con) {
                 $data_warning['warning'] = "";
                 $this->session->set_userdata("login_entrepreneur", 'warning');
-            }else{
+            } else {
                 $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
             }
             $this->index($data_warning);
@@ -130,5 +130,151 @@ class Login_entrepreneur extends DCS_controller
         $this->session->unset_userdata("email");
         $this->session->unset_userdata("pre_id");
         $this->session->unset_userdata("tab_number_entrepreneur");
+    }
+
+    /*
+    * forgot_password_page
+    * load view forgot pass
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-15
+    * @Update -
+    */
+
+
+    public function forgot_password_page($data = null)
+    {
+        $this->output_login_entrepreneur('entrepreneur/auth/v_forgot_password_entrepreneur', $data);
+    }
+
+    /*
+    * check_email_admin
+    * check email in database
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
+    * @Update -
+    */
+    public function check_email_entrepreneur()
+    {
+
+        $email = $this->input->post('user_email');
+
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'login');  //load database
+
+        $this->login->ent_email = $email;
+
+        $result =  $this->login->check_email();
+
+
+        if ($result) {
+            echo 1;
+
+            $this->send_mail_reset($email);
+        } else {
+            echo 2;
+        }
+    }
+
+    /*
+    * send_mail_reset
+    * check email in database
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
+    * @Update -
+    */
+
+    public function send_mail_reset($email)
+    {
+
+
+
+        // set userpassword in token 
+        $token = rand(1000, 9999);
+
+
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'login');  //load database
+
+        $this->login->ent_email = $email;
+
+        $this->login->update_pass_token($token);
+
+        // Load PHPMailer library
+        $this->load->library('phpmailer_lib');
+
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
+
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host     = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'weradet2543@gmail.com';
+        $mail->Password = 'sykildxigujdlfnz';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port     = 587;
+        $mail->charSet = "UTF-8";
+
+        $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
+
+
+        // Add a recipient
+        $mail->addAddress($email);
+
+        // Email subject
+        $mail->Subject = "Reset Password";
+
+        // Set email format to HTML
+        $mail->isHTML(true);
+
+        // Email body content
+        $mail_content = "<h1>" . "กรุณาคลิกที่ลิ้งด้านล่างเพื่อเปลี่ยนรหัสผ่าน" . "</h1><br>" . "<a href='" . base_url('Entrepreneur/Auth/Login_entrepreneur/reset_password_page?token=') . $token . "'>Reset Password</a>";
+        $mail->Body = $mail_content;
+        if (!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }
+    }
+
+    /*
+    * update_password_ajax
+    * check email in database
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
+    * @Update -
+    */
+    public function update_password_ajax()
+    {
+        $password = $this->input->post('password');
+
+        $token = $this->input->post('token');
+
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'login');  //load database
+
+        $this->login->ent_password = $password;
+
+        $this->login->update_pass($token);
+        $this->session->set_userdata("reset_pass_entrepreneur", "success");
+    }
+
+    /*
+    * reset_password_page
+    * check email in database
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-17
+    * @Update -
+    */
+    public function reset_password_page()
+    {
+        $data['token'] = $this->input->get('token');
+        $this->output_login_entrepreneur('entrepreneur/auth/v_reset_password_entrepreneur', $data);
     }
 }

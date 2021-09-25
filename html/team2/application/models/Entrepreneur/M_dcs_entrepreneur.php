@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_entrepreneur.php';
-    
+
 /*
 * M_dcs_entrepreneur
 * get data entrepreneur
@@ -42,7 +42,7 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         return $query->result();
     }
 
-   
+
     /*
     *get_search
     *get serarch entrepreneur by form database
@@ -190,7 +190,33 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     {
         $sql = "SELECT * 
                 from dcs_prefix";
-        $query = $this->db->query($sql);       
+        $query = $this->db->query($sql);
         return $query;
+    }
+
+    /*
+    * check_email
+    * check email user
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-23
+    * @Update Date -
+    */
+    function check_email()
+    {
+        $sql = "SELECT * 
+            from dcs_entrepreneur
+            where ent_email = ?";
+
+        $query = $this->db->query($sql, array($this->ent_email));
+
+        $query_row = $query->num_rows();
+
+        if ($query_row) {
+            return $query->row();
+        } else {
+            return false;
+        }
     }
 }

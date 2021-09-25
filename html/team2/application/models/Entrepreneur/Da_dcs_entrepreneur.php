@@ -40,8 +40,7 @@ class Da_dcs_entrepreneur extends DCS_model
     public function insert_entrepreneur()
     {
         $sql = "INSERT INTO dcs_entrepreneur(ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_birthdate, ent_username, ent_password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_birthdate,$this->ent_username, $this->ent_password));
-        
+        $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_id_card, $this->ent_email, $this->ent_birthdate, $this->ent_username, $this->ent_password));
     }
 
     /*
@@ -79,5 +78,43 @@ class Da_dcs_entrepreneur extends DCS_model
                 SET ent_pre_id = ?, ent_firstname = ?, ent_lastname = ?, ent_tel = ?,  ent_email = ?, ent_birthdate = ? , ent_password = ?
                 WHERE ent_id = ?";
         $this->db->query($sql, array($this->ent_pre_id, $this->ent_firstname, $this->ent_lastname, $this->ent_tel, $this->ent_email, $this->ent_birthdate, $this->ent_password, $this->ent_id));
+    }
+
+    /*
+    * update_pass_token
+    * update password with number ramdom
+    * @input 
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-15
+    * @Update Date -
+    */
+    public function update_pass_token($token)
+    {
+
+        $sql = "UPDATE dcs_entrepreneur
+        SET   ent_password = '$token'
+        WHERE ent_email = ?";
+
+        $query = $this->db->query($sql, array($this->ent_email));
+    }
+
+    /*
+    * update_pass
+    * update password with email user
+    * @input token
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-15
+    * @Update Date -
+    */
+    public function update_pass($token)
+    {
+
+        $sql = "UPDATE dcs_entrepreneur
+        SET   ent_password = ?
+        WHERE ent_password = '$token'";
+
+        $query = $this->db->query($sql, array($this->ent_password));
     }
 }

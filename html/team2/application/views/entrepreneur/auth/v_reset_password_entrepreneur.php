@@ -3,6 +3,8 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 ?>
 <title>Reset Password</title>
 
+<!-- navbar -->
+
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
     <a href="" class="navbar-brand">
         <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px;">
@@ -15,7 +17,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                 <div class="card card-login">
                     <form method="POST" action="">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เปลี่ยนรหัสผ่านของนักท่องเที่ยว</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เปลี่ยนรหัสผ่านของผู้ประกอบการ</h4>
                         </div>
 
                         <div class="card-body">
@@ -26,7 +28,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                             <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="tourist_password" id="tourist_password" required>
+                                    <input type="password" class="form-control" placeholder="รหัสผ่าน" name="ent_password" id="ent_password" required>
                                 </div>
                             </span>
                             <span class="bmd-form-group">
@@ -36,7 +38,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" class="form-control" placeholder="ยืนยันรหัสผ่าน" name="tourist_password" id="tourist_password_confirm" required>
+                                    <input type="password" class="form-control" placeholder="ยืนยันรหัสผ่าน" name="ent_password" id="ent_password_confirm" required>
                                 </div>
                             </span>
                             <span style="color: red; margin-left: 30px;">
@@ -69,12 +71,12 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 <script>
 $(document).ready(function() {
     confirmpassword();
-    $("#tourist_password_confirm").on('keyup', function() {
+    $("#ent_password_confirm").on('keyup', function() {
         confirmpassword();
     }); // Event Keyup
 
     $("#reset_pass").on('click', function() {
-        let password = $('#tourist_password').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
+        let password = $('#ent_password').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
         let token = $('#token').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
         reset_password(password, token);
     }); // Event Keyup
@@ -90,15 +92,15 @@ $(document).ready(function() {
  * confirmpassword in value
  * @input 
  * @output -
- * @author Weradet Nopsombun 62160110 
- * @Create Date 2564-08-12
+ * @author Chutipon Thermsirisuksin 62160081
+ * @Create Date 2564-09-23
  * @Update -
  */
 function confirmpassword() {
-    if ($('#tourist_password').val() != $('#tourist_password_confirm').val()) {
+    if ($('#ent_password').val() != $('#ent_password_confirm').val()) {
         $('#err_text').text('รหัสผ่านไม่ตรงกัน');
         $('#reset_pass').prop('disabled', true);
-    } else if ($('#tourist_password').val() == '' || $('#tourist_password_confirm').val() == '') {
+    } else if ($('#ent_password').val() == '' || $('#ent_password_confirm').val() == '') {
         $('#reset_pass').prop('disabled', true);
     } else {
         $('#err_text').text('');
@@ -114,20 +116,20 @@ function confirmpassword() {
  * reset password in database
  * @input 
  * @output -
- * @author Weradet Nopsombun 62160110 
- * @Create Date 2564-08-12
+ * @author Chutipon Thermsirisuksin 62160081
+ * @Create Date 2564-09-23
  * @Update -
  */
 function reset_password(password, token) {
     $.ajax({
         type: "POST",
-        url: '<?php echo site_url() . 'Tourist/Auth/Login_tourist/update_password_ajax'; ?>',
+        url: '<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/update_password_ajax'; ?>',
         data: {
             password: password,
             token: token
         },
         success: function() {
-            window.location = "<?php echo site_url() . 'Tourist/Auth/Login_tourist/'; ?>";
+            window.location = "<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/'; ?>";
         },
         error: function() {
             alert('เปลี่ยนรหัสผ่านไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');

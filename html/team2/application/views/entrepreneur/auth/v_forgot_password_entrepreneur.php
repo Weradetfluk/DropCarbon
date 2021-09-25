@@ -1,20 +1,35 @@
-<?php
-//check world warnning == username หรือ password incorrect
-$warning = $warning ?? '';
-?>
+<!-- 
+/*
+* v_forgot_password_entrepreneur
+* Display form email for check email
+* @input -
+* @output form email for check in database
+* @author Chutipon Thermsirisuksin
+* @Create Date 2564-08-08
+*/ 
+-->
+
+
+
+<!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
     <a href="" class="navbar-brand">
         <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px;">
     </a>
 </nav>
-<div class="page-header header-filter" style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
+
+
+<div class="page-header header-filter " style="background-image: url('<?php echo base_url() . 'assets/templete' ?>/picture/login-img.jpeg');   background-repeat: no-repeat;   background-size: cover;">
+
     <div class="container" style="margin-top: 200px; ">
+
         <div class="row">
             <div class="col-lg-5 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
-                    <form action="<?php echo site_url() . 'Tourist/Auth/Login_tourist/input_login_form'; ?>" method="POST">
+                    <form class="form" action="" method="POST">
                         <div class="card-header text-center" style="background-color: #5F9EA0;">
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">ลืมรหัสผ่านนักท่องเที่ยว</h4>
+                            <h4 class="card-title text-white">ลืมรหัสผ่านของผู้ประกอบการ</h4>
+
                         </div>
 
                         <div class="card-body">
@@ -25,24 +40,19 @@ $warning = $warning ?? '';
                                             <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="email" class="form-control" placeholder="อีเมลของคุณ" name="tourist_email" id="tourist_email" required>
+                                    <input type="email" class="form-control" placeholder="อีเมลของคุณ" name="ent_email" id="ent_email">
                                 </div>
                             </span>
-                            <span style="color: red; margin-left: 30px;">
-                                <?php
-                                if ($warning != NULL) {
-                                    echo $warning;
-                                }
-                                ?>
-                            </span>
+
                         </div>
-                        <div class="header" style="text-align: center;">
+                        <div class="footer" style="text-align: center;">
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success" id="forgot_pass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
+                                        <button type="button" class="btn btn-success" id="forgot_pass" data-loading-text="Processing" name="signin">ส่งอีเมล</button>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -60,7 +70,7 @@ $(document).ready(function() {
 
     $("#forgot_pass").on('click', function() {
         var existing_HTML = $("#forgot_pass").html() //store exiting button HTML
-        let user_email = $('#tourist_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
+        let user_email = $('#ent_email').val(); // ค่าที่ป้อนเข้าไปใน ช่อง input
         $(this).prop("disabled", true);
         $(this).html(
             '<span class="material-icons">cached</span> Loading...'
@@ -84,7 +94,7 @@ function check_email_user(user_email, existing_HTML) {
     $.ajax({
 
         type: "POST",
-        url: '<?php echo site_url() . 'Tourist/Auth/Login_tourist/check_email_tourist'; ?>',
+        url: '<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/check_email_entrepreneur'; ?>',
         data: {
             user_email: user_email
         },
@@ -98,7 +108,7 @@ function check_email_user(user_email, existing_HTML) {
                 }, function() {
 
                     //go to login page
-                    window.location = "<?php echo site_url() . 'Tourist/Auth/Login_tourist/'; ?>";
+                    window.location = "<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/'; ?>";
                 })
 
             } else {

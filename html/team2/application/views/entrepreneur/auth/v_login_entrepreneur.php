@@ -69,7 +69,7 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
                                 </div>
                                 <div class="row py-2">
                                     <div class="col">
-                                        <a href="" style="color: #5F9EA0;">ลืมรหัสผ่านใช่หรือไม่</a>
+                                        <a href="<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur/forgot_password_page'; ?>" style="color: #5F9EA0;">ลืมรหัสผ่าน</a>
                                     </div>
                                 </div>
                             </div>
@@ -84,11 +84,16 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 </div>
 
 <script>
-    $(document).ready(function() {
-        let warning_login = '<?php echo $this->session->userdata("login_entrepreneur"); ?>';
-        if (warning_login == 'warning') {
-            swal("ล็อกอินไม่สำเร็จ", "เนื่องจากคุณกำลังรอการอนุมัติจากผู้ดูเเลระบบ", "warning");
-            <?php echo $this->session->unset_userdata("login_entrepreneur"); ?>
-        }
-    });
+$(document).ready(function() {
+    let warning_login = '<?php echo $this->session->userdata("login_entrepreneur"); ?>';
+    if (warning_login == 'warning') {
+        swal("ล็อกอินไม่สำเร็จ", "เนื่องจากคุณกำลังรอการอนุมัติจากผู้ดูเเลระบบ", "warning");
+        <?php echo $this->session->unset_userdata("login_entrepreneur"); ?>
+    }
+    let reset_pass = '<?php echo $this->session->userdata("reset_pass_entrepreneur"); ?>';
+    if (reset_pass == "success") {
+        swal("สำเร็จ", "คุณทำการเปลี่ยนรหัสผ่านสำเร็จ", "success");
+        <?php echo $this->session->unset_userdata("reset_pass_entrepreneur"); ?>
+    }
+});
 </script>
