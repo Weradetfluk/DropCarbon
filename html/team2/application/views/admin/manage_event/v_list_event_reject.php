@@ -95,7 +95,7 @@
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/show_data_ajax/'); ?>' + 3,
+                 url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_ajax/'); ?>' + 3,
                  method: "POST",
                  data: {
                      page: page,
