@@ -196,7 +196,8 @@ class M_dcs_event extends Da_dcs_event
         $this->db->group_start();
         $this->db->like('eve_name', $search);
         $this->db->or_like('eve_description', $search);
-        $this->db->or_like('ent_name', $search);
+        $this->db->or_like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
         $this->db->or_like('com_name', $search);
         $this->db->group_end();
         $this->db->where("eve_status = '$number_status'");
