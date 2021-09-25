@@ -348,7 +348,7 @@
 <!-- Global Mailform Output-->
 <div class="snackbars" id="form-output-global"></div>
 <!-- Javascript-->
-<script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/core.min.js"></script>
+
 <script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/script.js"></script>
 
 <script>

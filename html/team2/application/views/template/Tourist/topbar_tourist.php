@@ -24,7 +24,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
     <div class="container-fluid">
         <!-- topbar left -->
-        <a class="navbar-brand" href="<?php echo base_url() . 'Landing_page/Landing_page'; ?>">
+        <a class="navbar-brand" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
             <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
