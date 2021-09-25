@@ -10,8 +10,8 @@
 -->
 
 <!-- main content -->
-<div class="vr-line">
-     <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">สถานที่ที่ถูกปฏิเสธ</h3>
+<div >
+     <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">กิจกรรมที่ถูกปฏิเสธ</h3>
  </div>
 
  <div class="card card-nav-tabs custom-card-tab">
@@ -45,7 +45,7 @@
      </div>
      <!-- Tab1 -->
      <div class="card-body ">
-         <div class="table-responsive" id="data_com_reject">
+         <div class="table-responsive" id="data_eve_reject">
              <!-- data company reject -->
          </div>
      </div>
@@ -65,7 +65,7 @@
                  <form>
                      <div class="form-group">
                          <label>เหตุผลที่ปฏิเสธ</label>
-                         <input type="text" id="cor_admin_reason" class="form-control" disabled>
+                         <input type="text" id="evr_admin_reason" class="form-control" disabled>
                      </div>
                      <div class="form-group">
                          <label>ผู้ปฏิเสธ</label>
@@ -102,7 +102,7 @@
                      query: query
                  },
                  success: function(data) {
-                     $('#data_com_reject').html(data);
+                     $('#data_eve_reject').html(data);
                  }
              });
          }
@@ -126,19 +126,19 @@
       * @Create Date 2564-09-19
       * @Update -
       */
-    function view_data_detail_reject(com_id) {
+    function view_data_detail_reject(eve_id) {
 
         $.ajax({
             type: "POST",
             dataType: 'JSON',
             data: {
-                com_id: com_id
+                eve_id: eve_id
             },
-            url: '<?php echo base_url('Admin/Manage_company/Admin_approval_company/get_com_reject_by_id_ajax'); ?>',
+            url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_eve_reject_by_id_ajax'); ?>',
             success: function(data_detail) {
                 $('#data_modal').modal();
                 console.log(data_detail);
-                $('#cor_admin_reason').val(data_detail[0]['cor_admin_reason']);
+                $('#evr_admin_reason').val(data_detail[0]['evr_admin_reason']);
                 $('#adm_name').val(data_detail[0]['adm_name']);
             },
             error: function() {

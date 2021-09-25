@@ -157,11 +157,11 @@ class Admin_approval_event extends DCS_controller
         * @Create Date 2564-08-01
         * @Update Date
         */
-  public function get_entrepreneur_reject_by_id_ajax()
+  public function get_eve_reject_by_id_ajax()
   {
-    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
-    $ent_id = $this->input->post('ent_id');
-    $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result();
+    $this->load->model('Event/M_dcs_eve_reject', 'mdere');
+    $eve_id = $this->input->post('eve_id');
+    $data['arr_data'] = $this->mdere->get_data_eve_rejected_by_id($eve_id)->result();
 
     echo json_encode($data['arr_data']);
   }
@@ -191,23 +191,24 @@ class Admin_approval_event extends DCS_controller
         * @Create Date 2564-07-17
         * @Update Date -
         */
-  public function reject_entrepreneur()
+  public function reject_event()
   {
     // set value from font end
-    $this->mdce->ent_id = $this->input->post('ent_id');
+    $this->mdce->eve_id = $this->input->post('eve_id');
     // set data for send mail
     $reson_admin = $this->input->post('admin_reason');
     $user_email = $this->input->post('email');
-    $mail_subject = 'Admin has been rejected';
-    $mail_content_header = "คุณถูกปฎิเสธการลงทะเบียนของผู้ประกอบการ";
+    $mail_subject = 'Admin has rejected your event';
+    $evr_eve_id = $this->input->post('eve_id');
+    $mail_content_header = "คุณถูกปฎิเสธการเพิ่มกิจกรรม";
     $admin_id =  $this->session->userdata("Admin_id");
     //load model for save rejected data
-    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
+    $this->load->model('Event/M_dcs_eve_reject', 'mdere');
     //save data reject to data base
-    $this->mdre->enr_admin_reason = $reson_admin;
-    $this->mdre->enr_ent_id =  $this->mdce->ent_id;
-    $this->mdre->enr_adm_id = $admin_id;
-    $this->mdre->insert();
+    $this->mdere->evr_admin_reason = $reson_admin;
+    $this->mdere->evr_eve_id =  $evr_eve_id;
+    $this->mdere->evr_adm_id = $admin_id;
+    $this->mdere->insert();
     //update status entrepreneur
     $status_number = 3;
     $this->mdce->update_status($status_number);
@@ -296,7 +297,7 @@ class Admin_approval_event extends DCS_controller
                               done
                             </i>
                         </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->eve_name .  '\')">
                             <i class="material-icons">
                               clear
                             </i>
@@ -381,7 +382,7 @@ class Admin_approval_event extends DCS_controller
                           </i>
                         </button>' .
 
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->eve_name .  '\')">
                           <i class="material-icons">
                             clear
                           </i>

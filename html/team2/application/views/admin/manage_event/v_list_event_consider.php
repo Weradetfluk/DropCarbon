@@ -138,17 +138,18 @@
  </div>
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="rejected_ent">
+ <div class="modal" tabindex="-1" role="dialog" id="rejected_eve">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</h5>
+                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="eve_reject_name_confirm"></span> ?</h5>
              </div>
              <div class="modal-body">
                  <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/reject_event'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
-                     <input type="hidden" id="ent_id_form" name="ent_id">
+                     <input type="hidden" id="eve_id_form" name="eve_id">
+                     <input type="hidden" id="evr_eve_id" name="eve_id">
                      <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
                      <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
              </div>
@@ -243,12 +244,13 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function confirm_reject(ent_id, ent_email, ent_name) {
+     function confirm_reject(eve_id, ent_email, eve_name) {
          let form = document.querySelector('#reject_form');
-         $('#ent_reject_name_confirm').text(ent_name);
-         $('#rejected_ent').modal();
+         $('#eve_reject_name_confirm').text(eve_name);
+         $('#rejected_eve').modal();
          $('#email').val(ent_email);
-         $('#ent_id_form').val(ent_id);
+         $('#eve_id_form').val(eve_id);
+         $('#evr_eve_id').val(eve_id);
          console.log(ent_email);
 
          let admin_reson = document.querySelectorAll('#admin_reason');
@@ -266,11 +268,11 @@
                  event.preventDefault();
                  err_message.style.display = 'block';
              } else {
-                 $('#rejected_ent').modal('toggle');
+                 $('#rejected_eve').modal('toggle');
                  err_message.style.display = 'none';
                  swal({
                      title: "ปฏิเสธสำเร็จ",
-                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
+                     text: "ปฏิเสธการเพิ่มกิจกรรมสำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000,

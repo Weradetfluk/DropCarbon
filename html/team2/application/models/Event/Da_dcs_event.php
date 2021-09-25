@@ -27,4 +27,20 @@ class Da_dcs_event extends DCS_model
     {
         parent::__construct();
     }
+    /*
+    * update_status
+    * update status event
+    * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-08-08
+	* @Update -
+    */
+	public function update_status($status_number)
+    {
+        $sql = "UPDATE {$this->db_name}.dcs_event SET eve_status = ?
+        Where eve_id = ?";
+
+        $this->db->query($sql, array($status_number, $this->eve_id));
+    }
 }
