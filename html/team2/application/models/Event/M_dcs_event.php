@@ -65,6 +65,7 @@ class M_dcs_event extends Da_dcs_event
         $sql = "SELECT * 
        FROM {$this->db_name}.dcs_event AS detail
        LEFT JOIN {$this->db_name}.dcs_eve_image AS eve ON eve.eve_img_eve_id 
+       LEFT JOIN {$this->db_name}.dcs_company AS com ON com.com_id
        WHERE detail.eve_id=?";
 
         $query = $this->db->query($sql, array($this->eve_id));

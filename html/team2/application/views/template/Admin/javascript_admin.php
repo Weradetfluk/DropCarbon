@@ -66,10 +66,9 @@
                 var html_code = '';
                 let i = 1;
                 data_detail['arr_file'].forEach((row_file, index_file) => {
-                    let fileName = row_file['doc_path'];
                     html_code += '<button type="button" id="download' + i + '" class="btn btn-primary"'
                     html_code += 'onclick="doc_download(\'' + row_file['doc_path'] + '\')"' + 'value ="';
-                    html_code += row_file['doc_path'] + '">download ' + i + '</button>';
+                    html_code += row_file['doc_path'] + '">'+ row_file['doc_name'] +'</button>';
                     i += 1;
                 });
 

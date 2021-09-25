@@ -9,13 +9,6 @@
 */ 
 -->
 
-<style>
-    .image_banner {
-        width: 100%;
-        max-height: 500px;
-        object-fit: cover;
-    }
-</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -23,7 +16,7 @@
                 <div class="card">
                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center>
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;"><?php echo $obj_company->com_name; ?></h4>
+                            <h2 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;"><?php echo $obj_company->com_name; ?></h2>
                         </center>
                     </div>
                     <br>
@@ -99,15 +92,15 @@
         var long = '<?= $obj_company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
         var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-        var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+        var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+        var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position = new OpenLayers.LonLat(long, lat).transform(from_projection, to_projection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
         map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-        var mapnik = new OpenLayers.Layer.OSM();
-        map.addLayer(mapnik);
+        var map_link = new OpenLayers.Layer.OSM();
+        map.addLayer(map_link);
 
         var markers = new OpenLayers.Layer.Markers("Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 

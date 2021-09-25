@@ -11,7 +11,7 @@
 <div class="content">
     <div class="row">
         <div class="col">
-            <h3 id="name_table" class="vr-line" style="float:left; font-family: 'Prompt', sans-serif !important;"></h3>
+            <h3 id="name_table" style="margin : 0 auto !important;padding-left: 3px !important;padding-bottom: 10px; float:left; font-family: 'Prompt', sans-serif !important;"></h3>
         </div>
         <div class="col">
             <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="#">เพิ่มกิจกรรม</a>
@@ -67,18 +67,23 @@
                                                     <tr>
                                                         <td><?php echo $i + 1; ?></td>
                                                         <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?></td>
-                                                        <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                        <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                            <td style="text-align: left;"><?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?></td>
+                                                        <?php } ?>
+                                                        <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                        <?php } ?>
                                                         <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?></td>
                                                         <td>
+                                                            <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                                <span class="material-icons">search</span>
+                                                            </a>
                                                             <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="#">
                                                                 <span class="material-icons">edit</span>
                                                             </a>
                                                             <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
                                                                 <span class="material-icons">clear</span>
                                                             </button>
-                                                            <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
-                                                                <span class="material-icons">search</span>
-                                                            </a>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -121,24 +126,29 @@
                                                 echo "</td>";
                                             } else {
                                                 $count_i = 0;
-                                                for ($i = 0; $i < count($arr_event); $i++) { 
-                                                    if ($arr_event[$i]->eve_status == 1) { 
-                                                        $count_i++?>
+                                                for ($i = 0; $i < count($arr_event); $i++) {
+                                                    if ($arr_event[$i]->eve_status == 1) {
+                                                        $count_i++ ?>
                                                         <tr>
                                                             <td><?php echo $count_i; ?></td>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                                <td style="text-align: left;"><?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?></td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php } ?>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?></td>
                                                             <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
                                                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="#">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
                                                                     <span class="material-icons">clear</span>
                                                                 </button>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -182,24 +192,29 @@
                                                 echo "</td>";
                                             } else {
                                                 $count_i = 0;
-                                                for ($i = 0; $i < count($arr_event); $i++) { 
-                                                    if ($arr_event[$i]->eve_status == 2) { 
-                                                        $count_i++;?>
+                                                for ($i = 0; $i < count($arr_event); $i++) {
+                                                    if ($arr_event[$i]->eve_status == 2) {
+                                                        $count_i++; ?>
                                                         <tr>
                                                             <td><?php echo $count_i; ?></td>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                                <td style="text-align: left;"><?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?></td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php } ?>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?></td>
                                                             <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
                                                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="#">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
                                                                     <span class="material-icons">clear</span>
                                                                 </button>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -243,24 +258,23 @@
                                                 echo "</td>";
                                             } else {
                                                 $count_i = 0;
-                                                for ($i = 0; $i < count($arr_event); $i++) { 
-                                                    if ($arr_event[$i]->eve_status == 3) { 
-                                                        $count_i++;?>
+                                                for ($i = 0; $i < count($arr_event); $i++) {
+                                                    if ($arr_event[$i]->eve_status == 3) {
+                                                        $count_i++; ?>
                                                         <tr>
                                                             <td><?php echo $count_i; ?></td>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                                <td style="text-align: left;"><?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?></td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_description; ?></td>
+                                                            <?php } ?>
                                                             <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?></td>
                                                             <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="#">
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="#">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
