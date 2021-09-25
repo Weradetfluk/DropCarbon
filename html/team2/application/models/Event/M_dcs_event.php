@@ -177,4 +177,30 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql);
         return $query;
     }
+    /*
+    *get_search
+    *get data with search
+    *@input number_status, search
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-26
+    *@Update Date -
+    */
+    function get_search($search, $number_status)
+    {
+
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('eve_name', $search);
+        $this->db->or_like('eve_description', $search);
+        $this->db->or_like('ent_name', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("eve_status = '$number_status'");
+        $query = $this->db->get();
+        return $query;
+    }
 }

@@ -11,7 +11,7 @@
  <!-- main content -->
  <div class="row">
      <div class="col">
-         <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">กิจกรรมที่รออนุมัติ</h3>
+         <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">กิจกรรมที่รออนุมัติ</h3>
      </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
@@ -64,7 +64,7 @@
                  <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติ <span id="ent_name_confirm"></span> ?</p>
+                 <p>คุณต้องการอนุมัติ <span id="eve_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -200,15 +200,15 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(ent_id, ent_firstname, ent_email) {
-         $('#ent_name_confirm').text(ent_firstname);
+     function confirm_approve(eve_id, eve_name, ent_email) {
+         $('#eve_name_confirm').text(eve_name);
          console.log(ent_email)
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_entrepreneur(ent_id, ent_email) //function 
+             approve_event(eve_id, eve_name, ent_email) //function 
          });
      }
      /*
@@ -225,14 +225,14 @@
          let ent_id = $('#ent_id').val();
          let ent_name = $('#ent_name').val();
          let ent_email = $('#ent_email').val();
-         $('#ent_name_confirm').text(ent_name);
+         $('#eve_name_confirm').text(ent_name);
          console.log(ent_name);
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_entrepreneur(ent_id, ent_email) //function 
+             approve_event(eve_id, eve_name, ent_email) //function 
          });
      }
      /*
@@ -244,7 +244,7 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function confirm_reject(eve_id, ent_email, eve_name) {
+     function confirm_reject(eve_id, eve_name, ent_email, eve_name) {
          let form = document.querySelector('#reject_form');
          $('#eve_reject_name_confirm').text(eve_name);
          $('#rejected_eve').modal();
@@ -332,34 +332,34 @@
          });
      }
      /*
-      * approve_entrepreneur
+      * approve_event
       * change status to approve 
       * @input 
       * @output table approve and consider
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
+      * @author Kasama Donwong 62160074
+      * @Create Date 2564-09-26
       * @Update -
       */
-     function approve_entrepreneur(ent_id, ent_email) {
+     function approve_event(eve_id, eve_name, ent_email) {
          $.ajax({
              type: "POST",
              data: {
-                 ent_id: ent_id
+                 eve_id: eve_id
              },
-             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/approval_entrepreneur'); ?>',
+             url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
              success: function() {
                  //sweet alert
                  swal({
                      title: "อนุมัติสำเร็จ",
-                     text: "อนุมัติผู้ประกอบการสำเร็จ",
+                     text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000
                  }, function() {
                     location.reload();
                  })
-                 var content = "ผู้ใช้สามารถเข้าสู่ระบบโดยใช้ Account ของตนเองเท่าน้ัน หากไม่สามารถเข้าใช้านได้กรุณาติดต่อผู้ดูแลระบบเพื่อสอบถามข้อมูลเพิ่มเติม";
-                 var content_h1 = "คุณได้รับการอนุมัติการลงทะเบียนผู้ประกอบการ";
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
                  var subject = "Approval";
                  send_mail_ajax(content, ent_email, subject, content_h1);
              },

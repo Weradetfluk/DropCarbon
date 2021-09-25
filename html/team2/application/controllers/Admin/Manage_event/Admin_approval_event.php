@@ -170,16 +170,14 @@ class Admin_approval_event extends DCS_controller
         * change ent_status
         * @input
         * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
+        * @author Kasama Donwong 62160074
+        * @Create Date 2564-09-26
         * @Update Date -
         */
-  public function approval_entrepreneur()
+  public function approval_event()
   {
-    $this->mdce->ent_id = $this->input->post('ent_id');
-
+    $this->mdce->eve_id = $this->input->post('eve_id');
     $status_number = 2;
-
     $this->mdce->update_status($status_number);
   }
   /*
@@ -263,8 +261,8 @@ class Admin_approval_event extends DCS_controller
       //กรณีค้นหา
       $data['arr_event'] = $this->mdce->get_search($value_search, $number_status)->result();
 
-      // var_dump($val);
-      // var_dump( $data['arr_entrepreneur']);
+      // var_dump($value_search);
+      // var_dump( $data['arr_event']);
       // มีข้อมูลไหม
       if ($data['arr_event']) {
         $i = 1;
@@ -292,7 +290,7 @@ class Admin_approval_event extends DCS_controller
                             search
                           </i>
                        </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->ent_name .  '\',\'' . $row->ent_email . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
                             <i class="material-icons">
                               done
                             </i>
@@ -376,7 +374,7 @@ class Admin_approval_event extends DCS_controller
                             search
                           </i>
                         </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
                           <i class="material-icons">
                             done
                           </i>
@@ -394,7 +392,7 @@ class Admin_approval_event extends DCS_controller
                         search
                       </i>
                     </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->eve_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
+              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
                             <i class="material-icons"><span class="material-icons-outlined">
                                   highlight_off
                             </span></i>
