@@ -157,6 +157,7 @@ CREATE TABLE `dcs_company` (
   `com_description` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
   `com_ent_id` int(10) NOT NULL,
   `com_tel` varchar(12) NOT NULL,
+  `com_location` varchar(200) NOT NULL,
   `com_cat_id` int(10) NOT NULL,
   `com_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
    FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id),

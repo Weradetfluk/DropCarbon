@@ -59,26 +59,34 @@
                         </div>
 
                         <div class="container">
-                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/detail.png' ?>" width="3%">  รายละเอียดกิจกรรม</h3>
+                            <h3><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียดกิจกรรม</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->eve_description;?></p>
                         </div>
                         <div class="container">
-                            <h3><span class="material-icons" style="font-size: 30px;">credit_score</span>  คะแนนกิจกรรม</h3>
-                            <hr width="100%" size="10" color="#cccccc">
-                            <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม: <?php echo $arr_event[0]->eve_point;?> คะเเนน</p>
+                            <div class="row">
+                                <div class="col-5">
+                                    <h3><span class="material-icons" style="font-size: 30px;">credit_score</span>  คะแนนกิจกรรม</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม: <?php echo $arr_event[0]->eve_point;?> คะเเนน</p>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-5">
+                                    <h3><span class="material-icons" style="font-size: 30px;">category</span>  ประเภท</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_event[0]->eve_cat_name;?></p>
+                                </div>
+                            </div>
                         </div><br><br>
                         <div class="container">
-                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="4%">  ตำแหน่งสถานที่</h3>
+                            <h3><span class="material-icons" style="font-size: 30px;">location_city</span>  <?php echo $arr_event[0]->com_name;?></h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <ul>
-                                <li><h4>ชื่อสถานที่: </h4></li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_name;?></p>
                                 <li><h4>สถานที่ตั้ง: </h4></li>
                                 <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_location;?></p>
                                 <li><h4>เบอร์โทรศัพท์: </h4></li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel;?></p>
-                                <li><h4>แผนที่ตั้ง: </h4></li>
+                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel;?></p><br>
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  ตำแหน่งสถานที่</h4>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
