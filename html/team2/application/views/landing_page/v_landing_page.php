@@ -4,10 +4,17 @@
         bottom: 65px;
     }
 
+    #carouselExampleIndicators {
+        height: auto;
+        width: auto;
+        overflow: hidden;
+    }
+
     @media screen and (max-width: 1000px) {
         .carousel-indicators {
             bottom: 25px;
         }
+     
     }
 </style>
 
@@ -15,31 +22,8 @@
 
 <div class="page">
     <!-- carousel slide-->
-    <div id="carouselExampleIndicators" class="carousel slide"  data-ride="carousel">
-     <!-- <ol class="carousel-indicators">
-             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-         </ol>
-         <div class="carousel-inner" id="banner">
-             <div class="carousel-item active">
-                 <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-1-1920x678.jpg" alt="First slide">
-            </div>
-           <div class="carousel-item">
-                 <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-2-1920x678.jpg" alt="Second slide">
-             </div>
-             <div class="carousel-item">
-                <img class="d-block w-100" src="<?php echo base_url() . 'assets/templete/template_site' ?>/images/slider-4-slide-3-1920x678.jpg" alt="Third slide">
-            </div>
-         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="sr-only">Previous</span>
-         </a>
-         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-             <span class="sr-only">Next</span>
-         </a> -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
     </div>
     <!-- Section Box Categories-->
     <section class="section section-lg section-top-1 bg-gray-4">
@@ -314,7 +298,6 @@
 <!-- Global Mailform Output-->
 <div class="snackbars" id="form-output-global"></div>
 <!-- Javascript-->
-<script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/core.min.js"></script>
 <script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/script.js"></script>
 
 <script>
@@ -355,16 +338,16 @@
         }
     });
 
-    function   create_banner(arr_banner) {
+    function create_banner(arr_banner) {
         let html_code = '';
-      
+
         html_code += '<ol class="carousel-indicators">';
         html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
         html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';
         html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';
         html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';
         html_code += '</ol>';
-        html_code += '<div class="carousel-inner">'
+        html_code += '<div class="carousel-inner" style="max-height: 480px; !important">'
 
 
 
@@ -375,11 +358,11 @@
 
                 if (index_ban == 0) {
                     html_code += '<div class="carousel-item active" >';
-                    html_code += ' <img class="d-block w-100"  style=" width:100%; height: 480px;  !important;" object-fit: cover;" src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image" height="678px"  alt="First slide">';
+                    html_code += ' <img class="d-block w-100 h-100"  style="object-fit: cover;   " src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image" height="678px"  alt="First slide">';
                     html_code += '</div>';
                 } else {
                     html_code += '<div class="carousel-item">';
-                    html_code += ' <img class="d-block w-100"  style=" width:100%; height: 480px;  !important; object-fit: cover;"" src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image"  height="678px"  alt="First slide">';
+                    html_code += ' <img class="d-block w-100 h-100"  style=" object-fit: cover;  " src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image"  height="678px"  alt="First slide">';
                     html_code += '</div>';
                 }
             });
