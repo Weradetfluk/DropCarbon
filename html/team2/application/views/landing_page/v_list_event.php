@@ -112,6 +112,7 @@
         color: #4169E1;
         text-decoration: none;
     }
+
     ul.breadcrumb {
         padding: 10px 16px;
         list-style: none;
@@ -142,16 +143,16 @@
 <div class="bg-white">
     <section>
         <div class="container py-5">
-        <ul class="breadcrumb">
-            <?php if($this->session->userdata("tourist_id")){?>
-                <li><a href="<?php echo base_url().'Tourist/Auth/Landing_page_tourist'?>" style="color: green;">หน้าหลัก</a></li>
-            <?php }?>
-            <?php if(!$this->session->userdata("tourist_id")){?>
-                <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-            <?php }?>
-            <li>ดูรายการกิจกรรม</li>
-        </ul> 
-           <div class="row text-left py-3">
+            <ul class="breadcrumb">
+                <?php if ($this->session->userdata("tourist_id")) { ?>
+                    <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
+                <?php } ?>
+                <?php if (!$this->session->userdata("tourist_id")) { ?>
+                    <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
+                <?php } ?>
+                <li>ดูรายการกิจกรรม</li>
+            </ul>
+            <div class="row text-left py-3">
                 <div class="m-auto">
                     <h1 class="h1" style="padding-bottom: 2%">กิจกรรมทั้งหมด</h1>
                 </div>
@@ -164,11 +165,13 @@
                         <input type="text" class="form-control form-control-custom" name="txt_event" placeholder="ค้นหาสถานที่">
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control form-control-custom" name="txt_category">
-                            <option value="" selected>หมวดหมู่</option>
-                            <option value="1">หมวดหมู่ 1</option>
-                            <option value="2">หมวดหมู่ 2</option>
-                            <option value="3">หมวดหมู่ 3</option>
+                        <select class="form-control form-control-custom" name="eve_cat_id" id="eve_cat_id" >
+                            <option value="">เลือกทั้งหมด</option>
+                            <?php for ($i = 0; $i < count($eve_cat); $i++) { ?>
+                                <?php $selected = $_POST["eve_cat_id"] == $eve_cat[$i]->eve_cat_id ? "selected" : ""; ?>
+                                <option value="<?php echo $eve_cat[$i]->eve_cat_id ?>" <?= $selected ?>>
+                                    <?php echo $eve_cat[$i]->eve_cat_name; ?></option>
+                            <?php } ?>  
                         </select>
                     </div>
                     <div class="col-sm-3">
@@ -176,8 +179,7 @@
                     </div>
                 </div>
             </form>
-
-
+            
             <div class="row">
                 <?php for ($i = 0; $i < count($event); $i++) { ?>
                     <div class="col-12 col-md-4 mb-4">
@@ -187,7 +189,9 @@
                                 <!-- รูปที่ 1 -->
                                 <div class="card-body" align="center">
                                     <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
-                                    <p class="card-text"><?php echo iconv_substr($event[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                    <p class="card-text">
+                                        <?php echo iconv_substr($event[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?>
+                                    </p>
                                 </div>
                                 <!-- ชื่อของรูปที่ 1 -->
                             </a>

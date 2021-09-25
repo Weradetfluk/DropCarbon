@@ -79,13 +79,23 @@ class M_dcs_event extends Da_dcs_event
     *@author Naaka punparich 62160082
     *@Create Date 2564-09-23
     */
-    public function get_event_and_img($number_status)
+    public function get_event_and_img($number_status, $post)
     {
+        $and = "";
+        if (isset($post["value_search"]) && $post["value_search"] !== "") {
+            $and .= " AND dcs_event.eve_name LIKE '%" . $post["value_search"] . "%'";
+        }
+
+        if (isset($post["eve_cat_id"]) && $post["eve_cat_id"] !== "") {
+            $and .= " AND dcs_event.eve_cat_id = " . $post["eve_cat_id"] . "";
+        }
+
         $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
-        from dcs_event 
+        from dcs_event
         RIGHT JOIN dcs_eve_image
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
-        WHERE eve_status = '$number_status'
+        WHERE eve_status = '" . $number_status . "'
+        $and
         GROUP BY dcs_event.eve_id";
         $query = $this->db->query($sql);
         return $query;
@@ -128,5 +138,21 @@ class M_dcs_event extends Da_dcs_event
         return $query->result();
     }
 
+    /*
+    * get_eve_cat
+    * get data event 
+    * @input -
+    * @output -
+    * @author Naaka punparich 62160082
+    * @Create Date 2564-09-25
+    * @Update -
+    */
+    public function get_eve_cat()
+    {
+        $sql = "SELECT * FROM dcs_event AS eve
+        LEFT JOIN {$this->db_name}.dcs_eve_category AS cat 
+        ON eve.eve_cat_id = cat.eve_cat_id";
 
+        return $this->db->query($sql);
+    }
 }
