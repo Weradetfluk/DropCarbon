@@ -16,14 +16,13 @@
     <!-- sweet alert plugin -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css">
 
-    <!-- material icon css -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
-
     <!-- template_site css -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fontawesome.min.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fonts.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/style.css">
+
+    <!-- material icon css -->
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
     <style>
         .ie-panel {
             display: none;
