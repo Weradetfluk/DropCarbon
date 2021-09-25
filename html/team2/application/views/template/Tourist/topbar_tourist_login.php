@@ -35,13 +35,13 @@
             <div class="flex-fill">
                 <ul class="nav d-flex justify-content-end mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_tourist_eventlist_login' ?>"><i class="fas fa-th-list"></i> กิจกรรมของคุณ</a>
+                        <a class="nav-link" href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_event_list_tourist' ?>"><i class="fas fa-th-list"></i> กิจกรรมของคุณ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-archive"></i> My reward</a>
+                        <a class="nav-link" href="#"><i class="fas fa-archive"></i> รางวัลของฉัน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-money"></i> Point</a>
+                        <a class="nav-link" href="#"><i class="fa-money"></i> คะแนน</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link " data-bs-toggle="dropdown" aria-expanded="false" href="#"><i class="far fa-user-circle"></i> <?php echo $this->session->userdata("Tourist_name"); ?></a>
@@ -54,7 +54,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </nav>
 <!-- Close topbar -->
