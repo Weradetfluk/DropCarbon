@@ -137,25 +137,6 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query->result();
     }
-    /*
-    *get_data_card_event
-    *get data card event form database sum row
-    *@input -
-    *@output -
-    *@author Kasama Donwong 62160074
-    *@Create Date 2564-08-25
-    */
-    function get_data_card_event()
-    {
-        $sql = "SELECT sum(case when eve_status = 1 then 1 else 0 end ) as eve_consider, 
-        sum(case when eve_status = 2 then 1 else 0 end) as eve_approve , 
-        sum(case when eve_status = 3 then 1 else 0 end ) as eve_reject 
-        
-        FROM dcs_event;";
-
-        $query = $this->db->query($sql);
-        return $query;
-    }
 
     /*
     * get_eve_cat
