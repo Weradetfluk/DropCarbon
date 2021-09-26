@@ -303,10 +303,7 @@
 <script>
     $(document).ready(function() {
 
-        // $(document).on('click', '.myButton', function() {
-        //     $('.myButton').removeClass("active");
-        //     $(this).addClass("active");
-        // });
+    
         get_data_banner();
 
         function get_data_banner() {
@@ -325,7 +322,6 @@
             });
         }
 
-
         let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
         let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
         if (error_regis_entrepreneur == "success") {
@@ -342,10 +338,14 @@
         let html_code = '';
 
         html_code += '<ol class="carousel-indicators">';
-        html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
-        html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';
-        html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';
-        html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';
+
+        for(let i=0 ; i<arr_banner.length ; i++){
+            if(i===0){
+                html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="' + i + '" class="active"></li>';
+            }else{
+                html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="data-slide-to="' + i + '"></li>';
+            }
+        }
         html_code += '</ol>';
         html_code += '<div class="carousel-inner" style="max-height: 480px; !important">'
 
@@ -371,20 +371,14 @@
             html_code += '<div class="carousel-item active">';
             html_code += '<img class="d-block w-100 h-100" src="https://via.placeholder.com/1920x678"  alt="First slide"';
             html_code += '</div>';
-            // html_code += '<div class="carousel-item">';
-            // html_code += '     <img class="d-block w-100" src="https://via.placeholder.com/1920x678" alt="Third slide"';
-            // html_code += '</div>';
-            // html_code += '<div class="carousel-item">';
-            // html_code += '     <img class="d-block w-100" src="https://via.placeholder.com/1920x678"';
-            // html_code += '</div>';
         }
         html_code += '</div>';
         html_code += '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">';
-        html_code += '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+        html_code += '<span class="material-icons" style="color: black;">arrow_back</span>';
         html_code += '<span class="sr-only">Previous</span>';
         html_code += '</a>';
         html_code += '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">';
-        html_code += '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+        html_code += '<span class="material-icons" style="color: black;">arrow_forward</span>';
         html_code += ' <span class="sr-only">Next</span>';
         html_code += '</a>';
 

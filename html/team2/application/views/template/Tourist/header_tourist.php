@@ -16,6 +16,10 @@
     <!-- sweet alert plugin -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css">
 
+  
+  
+
+
     <!-- template_site css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fonts.css">

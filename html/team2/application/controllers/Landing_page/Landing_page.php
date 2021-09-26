@@ -54,7 +54,7 @@ class Landing_page extends DCS_controller
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->mimg->com_img_com_id = $com_id;
         $this->mcom->com_id = $com_id;
-        $data["image"] = $this->mimg->get_by_com_id()->row();
+        $data["image"] = $this->mimg->get_by_com_id()->result();
         $data["company"] = $this->mcom->get_by_detail()->row();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
