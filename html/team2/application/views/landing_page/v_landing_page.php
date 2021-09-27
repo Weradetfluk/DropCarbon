@@ -32,7 +32,7 @@
             <h3 class="oh-desktop" style="padding-top : 40px"><span class="d-inline-block wow slideInDown">กิจกรรมยอดนิยม</span></h3>
             <div class="row">
                 <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
-                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+                <div class="col-md-4 wow fadeInDown" data-wow-delay=".2s">
 
                     <!-- การ์ดที่ 1 -->
                     <div class="card" id="card">
@@ -51,7 +51,7 @@
                 </div>
 
                 <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
-                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+                <div class="col-md-4 wow fadeInDown " data-wow-delay=".2s">
 
                     <!-- การ์ดที่ 2 -->
                     <div class="card" id="card">
@@ -70,7 +70,7 @@
                 </div>
 
                 <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
-                <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+                <div class="col-md-4 wow fadeInDown " data-wow-delay=".2s">
 
                     <!-- การ์ดที่ 3 -->
                     <div class="card" id="card">
@@ -347,7 +347,7 @@
             }
         }
         html_code += '</ol>';
-        html_code += '<div class="carousel-inner" style="max-height: 480px; !important">'
+        html_code += '<div class="carousel-inner" style="max-height: 678px; !important">'
 
 
 

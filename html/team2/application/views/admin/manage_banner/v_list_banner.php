@@ -53,7 +53,7 @@
                      <div class="card-body">
                          <div class="banner-pic-div" onclick="document.getElementById('file').click();">
                              <form method="post" action="" id="banner_form">
-                                 <img src="https://via.placeholder.com/1920x480" id="photo" width="100%" height="378px">
+                                 <img src="https://via.placeholder.com/1920x678" id="photo" width="100%"  style="object-fit: cover;" height="100%">
                                  <input type="file" class="d-none" id="file" name="banner_img" accept="image/*">
                                  <!-- <label for="file" id="uploadBtn">Choose Photo</label> -->
                          </div>
@@ -120,13 +120,13 @@
                                  type: "success",
                              });
                              $('#add_banner_modal').modal('toggle');
-                             img.setAttribute('src', "https://via.placeholder.com/1920x480");
+                             img.setAttribute('src', "https://via.placeholder.com/1920x678");
                              document.getElementById("file").value = '';
                              get_data_banner();
                          } else {
                              $('#add_banner_modal').modal('toggle');
                              swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
-                             img.setAttribute('src', "https://via.placeholder.com/1920x480");
+                             img.setAttribute('src', "https://via.placeholder.com/1920x678");
                              document.getElementById("file").value = '';
                          }
                      },
@@ -140,7 +140,7 @@
                  swal('ไม่สามารถเพิ่มภาพได้', 'ไม่สามารถเพิ่มภาพได้เนื่องจากภาพมีจำนวนเกิน', 'error');
                  $('#add_banner_modal').modal('toggle');
                  document.getElementById("file").value = '';
-                 img.setAttribute('src', "https://via.placeholder.com/1920x480");
+                 img.setAttribute('src', "https://via.placeholder.com/1920x678");
              }
          });
      });
@@ -155,7 +155,7 @@
                  img.style.objectFit = "contain";
              });
              $('#cancle_banner_add').click(function() {
-                 img.setAttribute('src', "https://via.placeholder.com/1920x480");
+                 img.setAttribute('src', "https://via.placeholder.com/1920x678");
                  document.getElementById("file").value = '';
              });
              reader.readAsDataURL(choosedFile);

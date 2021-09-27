@@ -42,25 +42,21 @@
                 $('#ent_tel').val(data_detail['arr_data'][0]['ent_tel']);
                 $('#ent_id_card').val(data_detail['arr_data'][0]['ent_id_card']);
                 $('#ent_email').val(data_detail['arr_data'][0]['ent_email']);
-                $('#ent_birthdate').val(data_detail['arr_data'][0]['ent_birthdate']);
+                // $('#ent_birthdate').val(data_detail['arr_data'][0]['ent_birthdate']);
 
-                let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-                ];
                 let regis_date = data_detail['arr_data'][0]['ent_regis_date'];
+                let ent_birthdate = data_detail['arr_data'][0]['ent_birthdate'];
 
-                let regis_date_sub =  regis_date.substr(0,regis_date.indexOf(" "));
-                let year = regis_date_sub.substr(0, regis_date_sub.indexOf("-"));
+                console.log(ent_birthdate)      
 
-                let year_thai = parseInt(year) + 543;
+                let regis_date_time = regis_date.substr(regis_date.indexOf(" "));
 
-                let month = regis_date_sub.substr(regis_date_sub.indexOf("-")+1,2);
-                let day =  regis_date_sub.substr(regis_date_sub.indexOf("-")+4,2);
-                let regis_date_time =  regis_date.substr(regis_date.indexOf(" "));
+                let regis_format =  format_date_time(regis_date);
+                let ent_birthdate_format = format_date(ent_birthdate);
 
-                $('#ent_regis_date').val(day  + " " + month_name[month-1] + " " + year_thai + " " + regis_date_time);
+                $('#ent_birthdate').val(ent_birthdate_format);
+                $('#ent_regis_date').val(regis_format + " " + regis_date_time);
                 $('#ent_id').val(ent_id);
-
 
                 console.log(data_detail['arr_file']);
                 var html_code = '';
@@ -68,11 +64,9 @@
                 data_detail['arr_file'].forEach((row_file, index_file) => {
                     html_code += '<button type="button" id="download' + i + '" class="btn btn-primary"'
                     html_code += 'onclick="doc_download(\'' + row_file['doc_path'] + '\')"' + 'value ="';
-                    html_code += row_file['doc_path'] + '">'+ row_file['doc_name'] +'</button>';
+                    html_code += row_file['doc_path'] + '">' + row_file['doc_name'] + '</button>';
                     i += 1;
                 });
-
-
 
                 // $(document).on("click", ".btn", function() {
                 //     doc_download($(this).attr("value"));
@@ -83,6 +77,63 @@
                 alert('ajax error working');
             }
         });
+    }
+
+       /*
+     * format_date_time
+     * format 27 กันยายน 2564
+     * @input  old_date
+     * @output modal to confirm approve modal
+     * @author Weradet Nopsombun 62160110
+     * @Create Date 2564-09-27
+     * @Update -
+     */
+
+    function format_date_time(old_date) {
+        let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                ];
+                let old_date_sub = old_date.substr(0, old_date.indexOf(" "));
+                let year = old_date_sub.substr(0, old_date_sub.indexOf("-"));
+
+                let year_thai = parseInt(year) + 543;
+                let month = old_date_sub.substr(old_date_sub.indexOf("-") + 1, 2);
+                let day   = old_date_sub.substr(old_date_sub.indexOf("-") + 4, 2);
+
+               // console.log(old_date_sub);
+
+                let format =  day + " " + month_name[month - 1] + " " + year_thai;
+                console.log(format);
+
+                return  format;
+    }
+
+
+     /*
+     * format_date
+     * open modal 
+     * @input 
+     * @output modal to confirm approve modal
+     * @author Weradet Nopsombun 62160110
+     * @Create Date 2564-09-27
+     * @Update old_date
+     */
+    function format_date(old_date) {
+        let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                ];
+                let year = old_date.substr(0, old_date.indexOf("-"));
+
+                let year_thai = parseInt(year) + 543;
+                let month = old_date.substr(old_date.indexOf("-") + 1, 2);
+                let day   = old_date.substr(old_date.indexOf("-") + 4, 2);
+
+               // console.log(old_date_sub);
+
+                let format =  day + " " + month_name[month - 1] + " " + year_thai;
+                console.log(format);
+
+                return  format;
     }
 
     /*
