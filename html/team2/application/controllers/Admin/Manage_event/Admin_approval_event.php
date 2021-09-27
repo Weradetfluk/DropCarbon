@@ -388,11 +388,11 @@ class Admin_approval_event extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->eve_id . '\')">
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
                           <i class="material-icons">
                             search
                           </i>
-                        </button>' .
+                        </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
                           <i class="material-icons">
                             done
@@ -406,11 +406,11 @@ class Admin_approval_event extends DCS_controller
                       </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->eve_id . '\')">
-                      <i class="material-icons">
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
+                    <i class="material-icons">
                         search
                       </i>
-                    </button>' .
+                    </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
                     <i class="material-icons">
                       add
@@ -448,4 +448,21 @@ class Admin_approval_event extends DCS_controller
     } // else  search 
     echo  $output; // to view
   }
+  /*
+    * show_detail_company
+    * show detail
+    * @input 
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+    public function show_detail_event($eve_id)
+    {
+  
+      $this->load->model('Event/M_dcs_event', 'meve');
+        $this->meve->eve_id = $eve_id;
+        $data["arr_event"] = $this->meve->get_by_detail()->result();
+      $this->output_admin('admin/manage_event/v_detail_event_admin', $data , null);
+    }
 }
