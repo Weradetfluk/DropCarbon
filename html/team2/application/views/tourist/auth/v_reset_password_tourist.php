@@ -90,7 +90,7 @@ $(document).ready(function() {
  * confirmpassword in value
  * @input 
  * @output -
- * @author Weradet Nopsombun 62160110 
+ * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-08-12
  * @Update -
  */
@@ -114,7 +114,7 @@ function confirmpassword() {
  * reset password in database
  * @input 
  * @output -
- * @author Weradet Nopsombun 62160110 
+ * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-08-12
  * @Update -
  */

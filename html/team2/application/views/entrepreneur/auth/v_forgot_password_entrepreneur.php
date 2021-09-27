@@ -86,7 +86,7 @@ $(document).ready(function() {
  * check e-mail in database using ajax
  * @input user_email
  * @output -
- * @author Weradet Nopsombun 62160110 
+ * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-08-12
  * @Update -
  */
