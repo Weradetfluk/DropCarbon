@@ -228,6 +228,25 @@ class Admin_approval_event extends DCS_controller
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
   /*
+    * Approval
+    * change ent_status
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
+    public function add_point_event()
+    {
+        $this->mdce->eve_id = $this->input->post('eve_id');
+      
+        $eve_point = $this->input->post('eve_point');
+        $this->mdce->eve_point =  $eve_point;
+      
+        $this->mdce->insert_point();
+         redirect('Admin/Manage_event/Admin_approval_event/show_data_approve');
+    }
+  /*
          * show_data_consider_ajax
          * get all data entrepreneur not approve and show table
          * @input
@@ -307,11 +326,11 @@ class Admin_approval_event extends DCS_controller
                         search
                       </i>
                     </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons"><span class="material-icons-outlined">
-                                  highlight_off
-                            </span></i>
-                        </button>';
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
+                            <i class="material-icons">
+                              add
+                            </i>
+                        </button>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -392,11 +411,11 @@ class Admin_approval_event extends DCS_controller
                         search
                       </i>
                     </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons"><span class="material-icons-outlined">
-                                  highlight_off
-                            </span></i>
-                        </button>';
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
+                    <i class="material-icons">
+                      add
+                    </i>
+                </button>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">

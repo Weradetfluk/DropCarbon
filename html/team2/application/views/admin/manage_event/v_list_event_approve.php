@@ -137,23 +137,24 @@
      </div>
  </div>
 
- <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="rejected_ent">
+ <!-- warnning add score  -->
+ <div class="modal" tabindex="-1" role="dialog" id="add_score_eve">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</h5>
+                 <h5 class="modal-title">คุณต้องการเพิ่มคะแนนให้กิจกรรม <span id="eve_name_confirm"></span> ?</h5>
              </div>
              <div class="modal-body">
-                 <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
-                     <input type="hidden" id="email" name="email">
-                     <input type="hidden" id="ent_id_form" name="ent_id">
-                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
-                     <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
+                 <p>กรุณาระบุคะแนน</p>
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/add_point_event'; ?>" id="add_point_form">
+                     <input type="hidden" id="email" name="ent_email">
+                     <input type="hidden" id="eve_id_form" name="eve_id">
+                     <input type="number" id="eve_point" name="eve_point">
+                     <!-- <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea> -->
+                     <!-- <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span> -->
              </div>
              <div class="modal-footer">
-                 <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
+                 <button type="submit" class="btn btn-success" id="add_score">ยืนยัน</button>
                  <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                  </form>
              </div>
@@ -191,7 +192,7 @@
              });
          }
      /*
-      * confirm_approve
+      * confirm_add_score_eve
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to confirm approve modal
@@ -199,17 +200,28 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(ent_id, ent_firstname, ent_email) {
-         $('#ent_name_confirm').text(ent_firstname);
+     function confirm_add_score_eve(eve_id, eve_name, ent_email){
+        let form = document.querySelector('#add_point_form');
+         $('#eve_name_confirm').text(eve_name);
+         $('#add_score_eve').modal();
+         $('#email').val(ent_email);
+         $('#eve_id_form').val(eve_id);
+         $('#eve_point').val(eve_point);
          console.log(ent_email)
-         $('#aprove_modal').modal({
-             backdrop: 'static',
-             keyboard: false
-         });
-         $('#approves').click(function() {
-             approve_entrepreneur(ent_id, ent_email) //function 
+         $('#add_score').click(function() {
+            $('#add_score_event').modal('toggle');
+                 swal({
+                     title: "ปฏิเสธสำเร็จ",
+                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                     location.reload();
+                 });
          });
      }
+        
      /*
       * confirm_approve_view_data_madal
       * open modal id = Aprovemodal 
@@ -231,7 +243,7 @@
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_entrepreneur(ent_id, ent_email) //function 
+            
          });
      }
      /*
@@ -338,32 +350,33 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function approve_entrepreneur(ent_id, ent_email) {
-         $.ajax({
-             type: "POST",
-             data: {
-                 ent_id: ent_id
-             },
-             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/approval_entrepreneur'); ?>',
-             success: function() {
-                 //sweet alert
-                 swal({
-                     title: "อนุมัติสำเร็จ",
-                     text: "อนุมัติผู้ประกอบการสำเร็จ",
-                     type: "success",
-                     showConfirmButton: false,
-                     timer: 3000
-                 }, function() {
-                    location.reload();
-                 })
-                 var content = "ผู้ใช้สามารถเข้าสู่ระบบโดยใช้ Account ของตนเองเท่าน้ัน หากไม่สามารถเข้าใช้านได้กรุณาติดต่อผู้ดูแลระบบเพื่อสอบถามข้อมูลเพิ่มเติม";
-                 var content_h1 = "คุณได้รับการอนุมัติการลงทะเบียนผู้ประกอบการ";
-                 var subject = "Approval";
-                 send_mail_ajax(content, ent_email, subject, content_h1);
-             },
-             error: function() {
-                 alert('ajax error working');
-             }
-         });
-     }
+    //  function add_point(eve_id, ent_email,eve_point) {
+    //      $.ajax({
+    //          type: "POST",
+    //          data: {
+    //              eve_id: eve_id,
+    //              eve_point: eve_point
+    //          },
+    //          url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/add_point_event'); ?>',
+    //          success: function() {
+    //              //sweet alert
+    //              swal({
+    //                  title: "เพิ่มคะแนนสำเร็จ",
+    //                  text: "เพิ่มคะแนนกิจกรรมสำเร็จ",
+    //                  type: "success",
+    //                  showConfirmButton: false,
+    //                  timer: 3000
+    //              }, function() {
+    //                 location.reload();
+    //              })
+    //             //  var content = "ผู้ใช้สามารถเข้าสู่ระบบโดยใช้ Account ของตนเองเท่าน้ัน หากไม่สามารถเข้าใช้านได้กรุณาติดต่อผู้ดูแลระบบเพื่อสอบถามข้อมูลเพิ่มเติม";
+    //             //  var content_h1 = "คุณได้รับการอนุมัติการลงทะเบียนผู้ประกอบการ";
+    //             //  var subject = "Approval";
+    //             //  send_mail_ajax(content, ent_email, subject, content_h1);
+    //          },
+    //          error: function() {
+    //              alert('ajax error working');
+    //          }
+    //      });
+    //  }
  </script>
