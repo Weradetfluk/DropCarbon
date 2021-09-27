@@ -8,7 +8,6 @@
 * @Create Date 2564-09-25
 */ 
 -->
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -22,7 +21,7 @@
                     <br>
                     <div class="card-body">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
+                            <ol class="carousel-indicators" style="bottom: 30px !important;">
                                 <?php for ($i = 0; $i < count($arr_event); $i++) { ?>
                                     <?php if ($i == 0) { ?>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="active"></li>
@@ -36,12 +35,12 @@
                                 <hr width="100%" size="5" color="#cccccc">
                                 <?php for ($i = 0; $i < count($arr_event); $i++) { ?>
                                     <?php if ($i == 0) { ?>
-                                        <div class="carousel-item active">
+                                        <div class="carousel-item image-detail active">
                                             <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_event/' . $arr_event[$i]->eve_img_path; ?>">
                                         </div>
                                     <?php } ?>
                                     <?php if ($i != 0) { ?>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item image-detail">
                                             <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_event/' . $arr_event[$i]->eve_img_path; ?>">
                                         </div>
                                     <?php } ?>

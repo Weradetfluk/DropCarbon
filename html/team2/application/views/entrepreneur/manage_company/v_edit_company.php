@@ -29,13 +29,13 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label for="com_cat_id">หมวดหมู่</label>
-                                    <select name="com_cat_id" id="com_cat_id" class="form-control">
+                                    <select name="com_cat_id" id="com_cat_id" class="form-control" required>
                                         <?php for ($i = 0; $i < count($arr_com_cat); $i++) { ?>
-                                            <?php if ($i + 1 == $arr_company[0]->com_cat_id) { ?>
-                                                <option value="<?php echo $i + 1 ?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                            <?php if ($arr_com_cat[$i]->com_cat_id == $arr_company[0]->com_cat_id) { ?>
+                                                <option value="<?php echo $arr_com_cat[$i]->com_cat_id ?>" selected="selected"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
                                             <?php } ?>
-                                            <?php if ($i + 1 != $arr_company[0]->com_cat_id) { ?>
-                                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
+                                            <?php if ($arr_com_cat[$i]->com_cat_id != $arr_company[0]->com_cat_id) { ?>
+                                                <option value="<?php echo $arr_com_cat[$i]->com_cat_id ?>"><?php echo $arr_com_cat[$i]->com_cat_name; ?></option>
                                             <?php } ?>
                                         <?php } ?>
                                     </select>

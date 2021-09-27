@@ -37,12 +37,12 @@
                                 <hr width="100%" size="5" color="#cccccc">
                                 <?php for ($i = 0; $i < count($arr_image); $i++) { ?>
                                     <?php if ($i == 0) { ?>
-                                        <div class="carousel-item active">
+                                        <div class="carousel-item image-detail active">
                                             <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_company/' . $arr_image[$i]->com_img_path; ?>">
                                         </div>
                                     <?php } ?>
                                     <?php if ($i != 0) { ?>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item image-detail">
                                             <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_company/' . $arr_image[$i]->com_img_path; ?>">
                                         </div>
                                     <?php } ?>
@@ -61,24 +61,40 @@
 
 
                         <br>
+                        <div class="container">
+                            <h3 style="font-family: 'Prompt', sans-serif !important;"><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียด</h3>
+                            <hr width="100%" size="10" color="#cccccc">
+                            <p style="font-size: 18px; text-indent: 50px;"><?php echo $obj_company->com_description; ?></p>
+                        </div><br>
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h3><span class="material-icons" style="font-size: 30px;">category</span>  ประเภท</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $obj_company->com_name;?></p>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-5">
+                                    <h3><span class="material-icons" style="font-size: 30px;">phone</span>  ข้อมูลติดต่อ</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <p style="font-size: 18px; text-indent: 50px;">เบอร์โทรศัพท์: <?php echo $obj_company->com_tel;?></p>
+                                </div>
+                            </div>
+                        </div><br><br>
 
-                        <img src="<?php echo base_url() . 'assets/templete/picture/detail.png' ?>" width="3%">
-                        <h5 style="font-family: 'Prompt', sans-serif !important;">รายละเอียด</h5>
-                        <hr width="100%" size="10" color="#cccccc">
-                        <h5 class="text" style="font-family: 'Prompt', sans-serif !important; font-size: 15px; text-indent: 50px;"><?php echo $obj_company->com_description; ?></h5>
+                        <div class="container">
+                            <h4 style="font-family: 'Prompt', sans-serif !important;"><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  สถานที่ตั้ง</h4>
+                            <hr width="100%" size="5" color="#cccccc">
 
-                        <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">
-                        <h5 style="font-family: 'Prompt', sans-serif !important;">ตำแหน่งสถานที่</h5>
-                        <hr width="100%" size="5" color="#cccccc">
-
-                        <table class="table table-responsive">
-                            <tr>
-                                <td style="border: 2px solid black;">
-                                    <div id="Map" style="width: 900px; height: 400px;"></div>
-                                </td>
-                            </tr>
-                        </table>
-
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td style="border: 2px solid black;">
+                                        <div id="Map" style="width: 900px; height: 400px;"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

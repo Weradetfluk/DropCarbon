@@ -1,14 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_event.php";
-
 /*
 * M_dcs_event
 * get data event
 * @author Naaka punparich 62160082
 * @Create Date 2564-09-16
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_event.php";
+
 class M_dcs_event extends Da_dcs_event
 {
     /*
@@ -63,11 +62,14 @@ class M_dcs_event extends Da_dcs_event
     public function get_by_detail()
     {
         $sql = "SELECT * 
-       FROM {$this->db_name}.dcs_event AS detail
-       LEFT JOIN {$this->db_name}.dcs_eve_image AS eve ON eve.eve_img_eve_id 
-       LEFT JOIN {$this->db_name}.dcs_company AS com ON com.com_id
-       LEFT JOIN {$this->db_name}.dcs_eve_category AS cat ON cat.eve_cat_id
-       WHERE detail.eve_id=?";
+        FROM {$this->db_name}.dcs_event AS eve
+        LEFT JOIN {$this->db_name}.dcs_eve_image AS img 
+        ON eve.eve_id = img.eve_img_eve_id 
+        LEFT JOIN {$this->db_name}.dcs_company AS com 
+        ON eve.eve_com_id = com.com_id
+        LEFT JOIN {$this->db_name}.dcs_eve_category AS cat 
+        ON eve.eve_cat_id = cat.eve_cat_id
+        WHERE eve.eve_id=?";
 
         $query = $this->db->query($sql, array($this->eve_id));
         return $query;
@@ -158,7 +160,7 @@ class M_dcs_event extends Da_dcs_event
         return $this->db->query($sql);
     }
 
-     /*
+    /*
     *get_data_card_event
     *get data card event form database sum row
     *@input -
