@@ -80,6 +80,7 @@
 
 .form-control-custom {
     min-height: 43px;
+    appearance: menulist;
 }
 
 .btn-custom {
@@ -216,36 +217,11 @@ ul.breadcrumb li a:hover {
 
 
 
-            <div class="row justify-content-md-center">
-                <div class="col-md-6">
-                    <ul class="pagination justify-content-center">
-
-                        <!-- Previous -->
-                        <li class="page-item">
-                            <a class="link-custom" href="#"> <i class="fas fa-angle-double-left"></i> </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="link-custom" href="#"> <i class="fas fa-angle-left"></i> </a>
-                        </li>
-                        <!-- เลขหน้าที่มี -->
-                        <li class="page-item"><a class="link-custom" href="#">1</a></li>
-                        <li class="page-item"><a class="link-custom" href="#">2</a></li>
-                        <li class="page-item"><a class="link-custom" href="#">3</a></li>
-
-                        <!-- Next -->
-                        <li class="page-item">
-                            <a class="link-custom" href="#"> <i class="fas fa-angle-right"></i> </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="link-custom" href="#"> <i class="fas fa-angle-double-right"></i> </a>
-                        </li>
-
-                    </ul>
-                </div>
-
-            </div>
 
 
         </div>
-    </section>
+
+
+</div>
+</section>
 </div>
