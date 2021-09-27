@@ -44,5 +44,19 @@ class Event_list extends DCS_controller
         $_SESSION['tab_number_event'] = $this->input->post('tab_event');
         echo $this->input->post('tab_event');
     }
+     /*
+    * delete_event
+    * update com_status = 4 in database
+    * @input com_id
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-09-25
+    */
+   public function delete_event()
+   {
+      $this->load->model('Event/M_dcs_event', 'meve');
+      $this->meve->eve_id = $this->input->post('eve_id');
+      $this->meve->delete_event();
+   }
 
 }

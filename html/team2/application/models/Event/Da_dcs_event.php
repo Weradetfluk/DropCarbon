@@ -43,4 +43,19 @@ class Da_dcs_event extends DCS_model
 
         $this->db->query($sql, array($status_number, $this->eve_id));
     }
+
+    /*
+    * delete_event
+    * update eve_status == 4
+    * @input eve_id
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-09-25
+    */
+	public function delete_event(){
+		$sql = "UPDATE `dcs_event` 
+				SET `eve_status`=4
+				WHERE eve_id=?";
+		$this->db->query($sql, array($this->eve_id));
+	}
 }
