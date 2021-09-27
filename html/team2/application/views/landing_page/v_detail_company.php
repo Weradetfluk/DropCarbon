@@ -97,120 +97,138 @@
             <div class="row text-left py-3">
                 <div class="col-m-auto">
                     <h1 class="h1" style="padding-bottom: 2%"><?php echo $company->com_name ?></h1>
-                    <span class="material-icons">hiking</span> สถานที่ท่องเที่ยว
+                    <span class="material-icons">hiking</span> <?php echo $company->com_cat_name ?></h1>
                 </div>
             </div>
             <!-- ชื่อกิจกรรม -->
             <div class="row">
                 แชร์
-                        <div data-href="<?php echo site_url() . 'Landing_page/Landing_page/show_company_detail/3' ?>" data-layout="button" data-size="large">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?" class="fb-xfbml-parse-ignore" class="fa fa-fa-facebook">
+                <div data-href="<?php echo site_url() . 'Landing_page/Landing_page/show_company_detail/3' ?>" data-layout="button" data-size="large">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?" class="fb-xfbml-parse-ignore" class="fa fa-fa-facebook">
                         <i class="fab fa-facebook-f"></i>
-                    </a></div> 
+                    </a>
+                </div>
                 <hr>
             </div>
             <!-- แชร์ -->
             <div class="row">
                 <div class="col-12">
                     <div class="container">
-                        
-                    </div>
-                    <!-- รูป -->
-
-
-                </div>
-                <div class="row" style="padding-top: 5%;">
-                    <div class="col">
-                        <h4>&#9679; รายละเอียด</h4>
-                        <hr>
-                        <div class="col" style="padding-left: 2%">
-                            <div class="container">
-                                <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
-                                    <p style="text-indent: 50px;"><?php echo $company->com_description ?>
-                                    </p>
+                        <div class="auto_play">
+                            <?php if (count($image) == 1) { ?>
+                                <img src="<?php echo base_url() . 'image_company/' . $image[0]->com_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
+                            <?php } elseif (count($image) == 2) { ?>
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="<?php echo base_url() . 'image_company/' . $image[0]->com_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id="img_01">
+                                    </div>
+                                    <div class="col">
+                                        <img src="<?php echo base_url() . 'image_company/' . $image[1]->com_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id="img_02">
+                                    </div>
                                 </div>
+                            <?php } else { ?>
+                                <?php for ($i = 0; $i < count($image); $i++) { ?>
+                                    <div class="">
+                                        <img src="<?php echo base_url() . 'image_company/' . $image[$i]->com_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 5%;">
+                <div class="col">
+                    <h4>&#9679; รายละเอียด</h4>
+                    <hr>
+                    <div class="col" style="padding-left: 2%">
+                        <div class="container">
+                            <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
+                                <p style="text-indent: 50px;"><?php echo $company->com_description ?>
+                                </p>
                             </div>
                         </div>
-                        <!-- รายละเอียด -->
                     </div>
+                    <!-- รายละเอียด -->
                 </div>
-                <div class="row" style="padding-top: 5%;">
-                    <div class="col">
-                        <h3>ตำแหน่งสถานที่</h3>
-                        <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                            <h3 style="padding-top: 2%; "> <?php echo $company->com_name ?></h3>
-                            <!-- ชื่อสถานที่ -->
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <h5>&#9679; ที่อยู่</h5>
-                                    <hr>
-                                    <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
-                                        การท่องเที่ยวแห่งประเทศไทย 1600 ถ.เพชรบุรีตัดใหม่ แขวงมักกะสัน เขตราชเทวี กรุงเทพฯ 10400
-                                    </div>
-                                    <div class="row" style="padding-left: 2%; padding-bottom: 3%;">
-                                        <div class="col">
-                                            <i class="fa fa-phone"></i><span><?php echo $company->com_tel ?></span>
-                                        </div>
+            </div>
+            <div class="row" style="padding-top: 5%;">
+                <div class="col">
+                    <h3>ตำแหน่งสถานที่</h3>
+                    <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                        <h3 style="padding-top: 2%; "> <?php echo $company->com_name ?></h3>
+                        <!-- ชื่อสถานที่ -->
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <h5>&#9679; ที่อยู่</h5>
+                                <hr>
+                                <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
+                                    การท่องเที่ยวแห่งประเทศไทย 1600 ถ.เพชรบุรีตัดใหม่ แขวงมักกะสัน เขตราชเทวี กรุงเทพฯ 10400
+                                </div>
+                                <div class="row" style="padding-left: 2%; padding-bottom: 3%;">
+                                    <div class="col">
+                                        <i class="fa fa-phone"></i><span><?php echo $company->com_tel ?></span>
                                     </div>
                                 </div>
-                                <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
-                                    <table class="table table-responsive">
+                            </div>
+                            <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
+                                <div class="table-responsive">
+                                    <table class="table ">
                                         <tr>
                                             <td style="border: 2px solid black;">
                                                 <div id="Map" style="width: 500px; height: 400px;"></div>
                                             </td>
                                         </tr>
                                     </table>
+
                                 </div>
                             </div>
-                            <!-- ข้อมูลของสถานที่ -->
-
                         </div>
-                        <!-- ตำแหน่ง -->
+                        <!-- ข้อมูลของสถานที่ -->
 
                     </div>
+                    <!-- ตำแหน่ง -->
+
                 </div>
             </div>
         </div>
-        <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+</div>
+<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
-        <script>
-            var lat = '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-            var long = '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
-            var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
+<script>
+    var lat = '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+    var long = '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+    var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-            var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-            var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
-            map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
+    map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-            var mapnik = new OpenLayers.Layer.OSM();
-            map.addLayer(mapnik);
+    var mapnik = new OpenLayers.Layer.OSM();
+    map.addLayer(mapnik);
 
-            var markers = new OpenLayers.Layer.Markers("Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+    var markers = new OpenLayers.Layer.Markers("Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
-            map.addLayer(markers);
-            markers.addMarker(new OpenLayers.Marker(position));
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(position));
 
-            map.setCenter(position, zoom);
+    map.setCenter(position, zoom);
 
-            $(document).ready(function() {
-                $('.img-com-for').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    fade: true,
-                    asNavFor: '.img-com-nav'
-                });
-                $('.img-com-nav').slick({
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    asNavFor: '.img-com-for',
-                    dots: true,
-                    focusOnSelect: true
-                });
-            });
-        </script>
+    $(document).ready(function() {
+
+
+        $('.auto_play').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+
+
+
+    });
+</script>

@@ -11,7 +11,7 @@
  <!-- main content -->
  <div class="row">
      <div class="col">
-         <h3 class="vr-line text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกปฏิเสธ</h3>
+         <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่ถูกปฏิเสธ</h3>
      </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
