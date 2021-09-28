@@ -7,26 +7,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- icon website -->
-    <link rel="shortcut icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
-
-    <!-- fonts css -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" type="text/css">
-
-    <!-- sweet alert plugin -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css">
-
-  
-  
+    
+     <!-- icon -->
+     <link rel="icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
 
 
-    <!-- template_site css -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/fonts.css">
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/template_site' ?>/css/style.css">
+<!-- template css -->
+<!-- <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/material-dashboard.min.css?v=2.1.2" type="text/css"> -->
 
-    <!-- material icon css -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
+<link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/material-dashboard.min.css?v=2.1.2" as="style" type="text/css">
+<!-- custom css -->
+<!-- <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/custom-admin.css" type="text/css"> -->
+
+<link rel="preload" onload="this.rel = 'stylesheet'"href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/custom-admin.css" as="style" type="text/css">
+<!-- fonts css -->
+<!-- <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" type="text/css"> -->
+<link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>/assets/css/fonts.css" as="style" type="text/css">
+ <!-- sweet alert plugin -->
+<!-- <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css"> -->
+<link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" as="style" type="text/css">
+<!-- material icon css -->
+<link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">
     <style>
         .ie-panel {
             display: none;

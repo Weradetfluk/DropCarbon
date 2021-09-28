@@ -23,8 +23,9 @@
 <div class="page">
     <!-- carousel slide-->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
+        
     </div>
+    <p style="text-align: center; padding-top: 5%;">Banner</p>
     <!-- Section Box Categories-->
     <section class="section section-lg section-top-1 bg-gray-4">
         <div class="container">
