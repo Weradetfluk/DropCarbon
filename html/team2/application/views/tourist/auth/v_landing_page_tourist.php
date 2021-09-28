@@ -29,7 +29,7 @@
     }
 
     .card-two {
-        border: 8px solid #f4f4f4 ;
+        border: 8px solid #f4f4f4;
         border-radius: unset;
         margin-bottom: 30px;
         margin-top: 30px;
@@ -43,7 +43,7 @@
         min-width: 0;
         word-wrap: break-word;
         font-size: .875rem;
-        transition: 500ms all ease-in-out;
+        transition: 300ms all ease-in-out;
     }
 
     .card-two:hover {
@@ -59,10 +59,19 @@
         min-width: 0;
         word-wrap: break-word;
         font-size: .875rem;
-        border: 8px solid #fff ;
+        border: 8px solid #fff;
         border-radius: unset;
-        transition: 400ms all ease-in-out;
-        zoom: 1;
+        transition: 350ms all ease-in-out;
+        transform: scale(1.02);
+    }
+
+    .card {
+        transition: 300ms all ease-in-out;
+    }
+
+    .card:hover {
+        transition: 350ms all ease-in-out;
+        transform: scale(1.05);
     }
 </style>
 

@@ -43,7 +43,7 @@
         min-width: 0;
         word-wrap: break-word;
         font-size: .875rem;
-        transition: 500ms all ease-in-out;
+        transition: 300ms all ease-in-out;
     }
 
     .card-two:hover {
@@ -61,8 +61,17 @@
         font-size: .875rem;
         border: 8px solid #fff ;
         border-radius: unset;
-        transition: 400ms all ease-in-out;
-        zoom: 1;
+        transition: 350ms all ease-in-out;
+        transform: scale(1.02);
+    }
+
+    .card {
+        transition: 300ms all ease-in-out;
+    }
+
+    .card:hover {
+        transition: 350ms all ease-in-out;
+        transform: scale(1.05);
     }
 </style>
 
