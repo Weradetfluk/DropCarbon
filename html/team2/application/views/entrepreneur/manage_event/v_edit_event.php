@@ -8,33 +8,6 @@
 * @Create Date 2564-09-24
 */ 
 -->
-
-
-<style>
-.image_container {
-    height: 120px;
-    width: 200px;
-    border-radius: 6px;
-    overflow: hidden;
-    margin: 10px;
-}
-
-.image_container img {
-    height: 100%;
-    width: auto;
-    object-fit: cover;
-}
-
-.image_container span {
-    top: -6px;
-    right: 8px;
-    color: red;
-    font-size: 28px;
-    font-weight: normal;
-    cursor: pointer;
-}
-</style>
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -107,19 +80,15 @@
                                 </div>
                             </div><br>
 
-
                             <div class="row">
-                                <div class="col-lg-3">
-                                    <label for="eve_start" style="color:black">วันที่เริ่มกิจกรรม</label>
-                                    <input type="date" name="eve_start_date"
-                                        value="<?php echo $arr_event[0]->eve_start_date; ?>" required>
+                                <div class="col-lg-6">
+                                    <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
+                                    <input type="date" id="eve_start_date" name="eve_start_date" value="<?php echo $arr_event[0]->eve_start_date; ?>" required>
                                 </div>
-                            </div><br>
-
-                            <div class="form-group">
-                                <label for="eve_end" style="color:black">วันที่เสร็จสิ้นกิจกรรม</label>
-                                <input type="date" name="eve_end_date"
-                                    value="<?php echo $arr_event[0]->eve_end_date; ?>" required>
+                                <div class="col-lg-6">
+                                    <label for="eve_end_date">วันที่เสร็จสิ้นกิจกรรม</label>
+                                    <input type="date" id="eve_end_date" name="eve_end_date" value="<?php echo $arr_event[0]->eve_end_date; ?>" required>
+                                </div>
                             </div><br>
 
                             <!-- เลือกรูปภาพประกอบกิจกรรม -->
@@ -228,7 +197,7 @@ function upload_image_ajax() {
     }
     // console.log(form_data);
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/upload_image_ajax" ?>",
+        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_add/upload_image_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: form_data,
@@ -318,7 +287,7 @@ function unlink_image_go_back() {
     }).get();
     console.log(arr_image);
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/uplink_image_ajax" ?>",
+        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
         method: "POST",
         data: {
             arr_image: arr_image

@@ -49,7 +49,6 @@ class Event_add extends DCS_controller
         $this->meve->eve_add_date = $this->input->post('eve_add_date');
         $this->meve->eve_start_date = $this->input->post('eve_start_date');
         $this->meve->eve_end_date = $this->input->post('eve_end_date');
-
     
         $this->meve->insert_event();
         $this->set_session_add_event('success');
@@ -93,16 +92,18 @@ class Event_add extends DCS_controller
     public function set_session_add_event($data){
         $this->session->set_userdata("error_add_event", $data);
     }
+
     /*
     * upload_image_ajax
     * upload image
     * @input eve_file
     * @output -
-    * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-08-26
-    * @Update Date 2564-08-28
+    * @author Acaharaporn pornpattanasap 62160344
+    * @Create Date 2564-09-25
+    * @Update Date 2564-09-26
     */
-    public function upload_image_ajax(){
+    public function upload_image_ajax()
+    {
         $file_name = array();
         $file_tmp_name = array();
         $file_size = array();
@@ -118,8 +119,8 @@ class Event_add extends DCS_controller
         $file_tmp_name = $_FILES['eve_file']['tmp_name'] ?? '';
         $file_size = $_FILES['eve_file']['size'] ?? '';
         $file_error = $_FILES['eve_file']['error'] ?? '';
-    
-        if($file != ''){
+
+        if ($file != '') {
             for ($i = 0; $i < count($file_name); $i++) {
                 $file_ext[$i] = explode('.', $file_name[$i]);
                 $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
@@ -130,7 +131,7 @@ class Event_add extends DCS_controller
                     break;
                 }
             }
-        }else { 
+        } else {
             $error_file = 'false';
         }
 
@@ -159,23 +160,24 @@ class Event_add extends DCS_controller
 
     /*
     * uplink_image_ajax
-    * uplink image when cancel add event
+    * uplink image when cancel edit and add event
     * @input arr_img
     * @output -
-    * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-08-28
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-29
     * @Update Date -
     */
-    public function uplink_image_ajax(){
+    public function uplink_image_ajax()
+    {
         // print_r($this->input->post('arr_image'));
         $data = "";
-        if($this->input->post('arr_image') != NULL){
+        if ($this->input->post('arr_image') != NULL) {
             $arr_image = $this->input->post('arr_image');
-            for($i = 0; $i < count($arr_image); $i++){
+            for ($i = 0; $i < count($arr_image); $i++) {
                 unlink('./image_event/' . $arr_image[$i]);
             }
             $data = "success";
-        }else{
+        } else {
             $data = "no image";
         }
         echo json_encode($data);

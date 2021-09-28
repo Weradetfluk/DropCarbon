@@ -16,7 +16,7 @@
             </h3>
         </div>
         <div class="col">
-            <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="#">เพิ่มกิจกรรม</a>
+            <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="<?php echo base_url().'Entrepreneur/Manage_event/Event_add/show_add_event'?>">เพิ่มกิจกรรม</a>
         </div>
     </div>
     <div class="card card-nav-tabs custom-card-tab">
@@ -366,6 +366,16 @@
  * @author Suwapat Saowarod 62160340
  */
 $(document).ready(function() {
+    var error = '<?php echo $this->session->userdata("error_add_event");?>';
+    if(error == 'success'){
+        swal("สำเร็จ", "คุณทำการเพิ่มกิจกรรมสำเร็จ", "success");
+        <?php echo $this->session->unset_userdata("error_add_event");?>;
+    }
+    var error = '<?php echo $this->session->userdata("error_edit_event");?>';
+    if(error == 'success'){
+        swal("สำเร็จ", "คุณทำการแก้ไขกิจกรรมสำเร็จ", "success");
+        <?php echo $this->session->unset_userdata("error_edit_event");?>;
+    }
     check_name_table(<?php echo $_SESSION['tab_number_event'] ?>);
 });
 
@@ -422,7 +432,6 @@ function check_name_table(tab_event) {
  * @Create Date 2564-09-25
  */
 function confirm_delete(eve_name_con, eve_id_con) {
-    console.log(1);
     $('#eve_name_confirm').text(eve_name_con);
     $('#modal_delete').modal();
 

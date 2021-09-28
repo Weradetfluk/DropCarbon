@@ -54,8 +54,11 @@ class Event_edit extends DCS_controller
         $this->deve->eve_name = $this->input->post('eve_name');
         $this->deve->eve_description = $this->input->post('eve_description');
         $this->deve->eve_com_id = $this->input->post('eve_com_id');
-        $this->deve->eve_status = 1;
+        $this->deve->eve_cat_id = $this->input->post('eve_cat_id');
+        $this->deve->eve_start_date = $this->input->post('eve_start_date');
+        $this->deve->eve_end_date = $this->input->post('eve_end_date');
         $this->deve->eve_id = $this->input->post('eve_id');
+        $this->deve->eve_status = 1;
 
         // save data company to database
         $this->deve->update_event();
@@ -97,96 +100,6 @@ class Event_edit extends DCS_controller
         }
 
         redirect('Entrepreneur/Manage_event/Event_list/show_list_event');
-    }
-
-    /*
-    * upload_image_ajax
-    * upload image
-    * @input eve_file
-    * @output -
-    * @author Acaharaporn pornpattanasap 62160344
-    * @Create Date 2564-09-25
-    * @Update Date 2564-09-26
-    */
-    public function upload_image_ajax()
-    {
-        $file_name = array();
-        $file_tmp_name = array();
-        $file_size = array();
-        $file_error = array();
-        $file_ext = array();
-        $file_actaul_ext = array();
-        $error_file = '';
-
-        // Configure file storage
-
-        $file = $_FILES['eve_file'] ?? '';
-        $file_name = $_FILES['eve_file']['name'] ?? '';
-        $file_tmp_name = $_FILES['eve_file']['tmp_name'] ?? '';
-        $file_size = $_FILES['eve_file']['size'] ?? '';
-        $file_error = $_FILES['eve_file']['error'] ?? '';
-
-        if ($file != '') {
-            for ($i = 0; $i < count($file_name); $i++) {
-                $file_ext[$i] = explode('.', $file_name[$i]);
-                $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
-
-                // Check if there is a problem with the image file. or the file size exceeds 1000000?
-                if ($file_error[$i] != 0 || $file_size[$i] >= 3000000) {
-                    $error_file = 'false';
-                    break;
-                }
-            }
-        } else {
-            $error_file = 'false';
-        }
-
-        $output_image = '';
-        if ($error_file != 'false') {
-            // Loop to upload files
-            for ($i = 0; $i < count($file_name); $i++) {
-                $file_new_name[$i] = uniqid('', true);
-                $file_destination[$i] = './image_event/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                move_uploaded_file($file_tmp_name[$i], $file_destination[$i]);
-                // $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                $path = base_url() . 'image_event/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                $output_image .= '<div id="' . $file_new_name[$i] . '">
-                                        <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
-                                        <img src="' . $path . '" alt="Image"><span class="position-absolute" style="font-size: 25px;" 
-                                        onclick="unlink_new_image(\'' . $file_new_name[$i] . '.' . $file_actaul_ext[$i] . '\')">&times;
-                                        </span><input type="text" value="' . $file_new_name[$i] . '.' . $file_actaul_ext[$i] . '" name="new_img[]" 
-                                        id="' . $file_new_name[$i] . '_img" hidden><input type="text" value="' . $file_name[$i] . '" name="name_new_image[]" hidden></div>
-                                  </div>';
-            }
-        } else {
-            $output_image .= 'error';
-        }
-        echo json_encode($output_image);
-    }
-
-    /*
-    * uplink_image_ajax
-    * uplink image when cancel edit and add event
-    * @input arr_img
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-09-29
-    * @Update Date -
-    */
-    public function uplink_image_ajax()
-    {
-        // print_r($this->input->post('arr_image'));
-        $data = "";
-        if ($this->input->post('arr_image') != NULL) {
-            $arr_image = $this->input->post('arr_image');
-            for ($i = 0; $i < count($arr_image); $i++) {
-                unlink('./image_event/' . $arr_image[$i]);
-            }
-            $data = "success";
-        } else {
-            $data = "no image";
-        }
-        echo json_encode($data);
     }
 
     /*

@@ -108,8 +108,10 @@ class Da_dcs_event extends DCS_model
 					`eve_description`=?,
                     `eve_com_id`=?,
                     `eve_cat_id`=?,
-                    `eve_status`=?
+                    `eve_status`=?,
+                    `eve_start_date`=?,
+                    `eve_end_date`=?
 				WHERE eve_id=?";
-        $this->db->query($sql, array($this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status, $this->eve_id));
+        $this->db->query($sql, array($this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status, $this->eve_start_date, $this->eve_end_date, $this->eve_id));
     }
 }
