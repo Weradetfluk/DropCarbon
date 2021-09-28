@@ -19,6 +19,8 @@ class Da_dcs_event extends DCS_model
     public $eve_com_id;
     public $eve_cat_id;
     public $eve_status;
+    public $eve_start_date;
+    public $eve_end_date;
 
     /*
     * @author  Naaka Punparich 62160082
@@ -27,6 +29,20 @@ class Da_dcs_event extends DCS_model
     {
         parent::__construct();
     }
+    /*
+    * insert_event
+    * insert event by entrepreneur
+    * @input eve_name
+    * @output -
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-09-26
+    * @Update -
+    */
+	public function insert_event(){
+		$sql = "INSERT INTO `dcs_event`(`eve_name`, `eve_description`, `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`) 
+				VALUES (?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date));
+	}
     /*
     * update_status
     * update status event
