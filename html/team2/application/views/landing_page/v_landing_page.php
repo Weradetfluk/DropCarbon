@@ -1,310 +1,310 @@
-<!-- Make by : Naaka Punparich 62160082 -->
 <style>
-    .carousel-indicators {
-        bottom: 65px;
+    a {
+        color: #000;
     }
 
-    #carouselExampleIndicators {
-        height: auto;
-        width: auto;
+    .button {
+        position: relative;
         overflow: hidden;
+        display: inline-block;
+        min-width: 200px;
+        padding: 17px 33px 15px;
+        font-size: 16px;
+        line-height: 1.34;
+        border: 2px solid;
+        font-weight: 500;
+        letter-spacing: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: center;
+        cursor: pointer;
+        vertical-align: middle;
+        user-select: none;
+        transition: 250ms all ease-in-out;
     }
 
-    @media screen and (max-width: 1000px) {
-        .carousel-indicators {
-            bottom: 25px;
-        }
-     
+    .button:hover {
+        background-color: #01b3a7;
+        color: #000;
+    }
+
+    .card-two {
+        border: 8px solid #f4f4f4 ;
+        border-radius: unset;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        color: #333;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        font-size: .875rem;
+        transition: 500ms all ease-in-out;
+    }
+
+    .card-two:hover {
+        margin-bottom: 30px;
+        margin-top: 30px;
+        color: #333;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        font-size: .875rem;
+        border: 8px solid #fff ;
+        border-radius: unset;
+        transition: 400ms all ease-in-out;
+        zoom: 1;
     }
 </style>
 
+<!-- Make by : Naaka Punparich 62160082 -->
 <title>Landing Page</title>
 
-<div class="page">
-    <!-- carousel slide-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        
-    </div>
-    <p style="text-align: center; padding-top: 5%;">Banner</p>
-    <!-- Section Box Categories-->
-    <section class="section section-lg section-top-1 bg-gray-4">
-        <div class="container">
-            <!-- หัวข้อ กิจกรรมทั้งหมด -->
-            <h3 class="oh-desktop" style="padding-top : 40px"><span class="d-inline-block wow slideInDown">กิจกรรมยอดนิยม</span></h3>
-            <div class="row">
-                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
-                <div class="col-md-4 wow fadeInDown" data-wow-delay=".2s">
-
-                    <!-- การ์ดที่ 1 -->
-                    <div class="card" id="card">
-
-                        <!-- รูปในการ์ดที่ 1 -->
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <!-- ข้อความในการ์ดที่ 1 -->
-                        <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">เก็บขยะริมหาด</a>
-                            <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
-                        </div>
-
+<!-- carousel slide-->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
+<div style="background-color: #f7f7f7; padding-bottom: 30px;">
+    <div class="container">
+        <!-- หัวข้อ กิจกรรมทั้งหมด -->
+        <h2 style="padding-top : 40px; text-align: center;">กิจกรรมยอดนิยม</h2>
+        <div class="row">
+            <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+            <div class="col-md-4">
+                <!-- การ์ดที่ 1 -->
+                <div class="card" id="card">
+                    <!-- รูปในการ์ดที่ 1 -->
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <!-- ข้อความในการ์ดที่ 1 -->
+                    <div class="card-body">
+                        <a href="#" class="h2">เก็บขยะริมหาด</a>
+                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
                     </div>
                 </div>
+            </div>
+            <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
+            <div class="col-md-4">
+                <!-- การ์ดที่ 2 -->
+                <div class="card" id="card">
+                    <!-- รูปในการ์ดที่ 2 -->
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <!-- ข้อความในการ์ดที่ 2 -->
+                    <div class="card-body">
+                        <a href="#" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
+                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
+            <div class="col-md-4 ">
+                <!-- การ์ดที่ 3 -->
+                <div class="card" id="card">
+                    <!-- รูปในการ์ดที่ 3 -->
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <!-- ข้อความในการ์ดที่ 3 -->
+                    <div class="card-body">
+                        <a href="#" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
+                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center;"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+        <!-- Owl Carousel-->
+    </div>
+</div>
 
+
+<!-- Hot tours-->
+<div class="container">
+    <h2 style="padding-top : 40px;">สถานที่ยอดนิยม</h2>
+    <div class="row">
+        <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
+        <div class="col-xl-7 col-lg-6">
+            <!-- การ์ดที่ 1 -->
+            <div class="card card-h-100" id="card">
+                <!-- รูปในการ์ดที่ 1 -->
+                <a href="">
+                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                </a>
+                <!-- ข้อความในการ์ดที่ 1 -->
+                <div class="card-body">
+                    <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
+                    <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                </div>
+            </div>
+        </div>
+        <!-- ตัวแบ่ง Row -->
+        <div class="col-xl-5 col-mg-4 mg-4">
+            <div class="row">
                 <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
-                <div class="col-md-4 wow fadeInDown " data-wow-delay=".2s">
-
+                <div class="col-lg-6">
                     <!-- การ์ดที่ 2 -->
-                    <div class="card" id="card">
-
+                    <div class="card widget-flat" id="card">
                         <!-- รูปในการ์ดที่ 2 -->
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
                         </a>
                         <!-- ข้อความในการ์ดที่ 2 -->
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">ปลูกป่าชายเลน</a>
-                            <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                            <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
+                            <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียน...</p>
                         </div>
-
                     </div>
                 </div>
-
                 <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
-                <div class="col-md-4 wow fadeInDown " data-wow-delay=".2s">
-
+                <div class="col-lg-6">
                     <!-- การ์ดที่ 3 -->
-                    <div class="card" id="card">
-
+                    <div class="card widget-flat" id="card">
                         <!-- รูปในการ์ดที่ 3 -->
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
                         </a>
                         <!-- ข้อความในการ์ดที่ 3 -->
                         <div class="card-body">
-                            <a href="#" class="h2 text-decoration-none text-dark">วิ่งชมธรรมชาติ</a>
-                            <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                            <a href="#" class="h2 text-decoration-none text-dark">บางละมง</a>
+                            <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความ...</p>
                         </div>
-
                     </div>
                 </div>
-            </div><a class="link-classic wow fadeInUp" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม<span></span></a>
-            <!-- Owl Carousel-->
-        </div>
-    </section>
-    <!-- Hot tours-->
-    <section class="section section-sm bg-default">
-        <div class="container">
-            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">สถานที่ยอดนิยม</span></h3>
-            <div class="row">
-                <!-- ตัวกำหนดขนาดของการ์ดที่ 1 -->
-                <div class="col-xl-7 col-lg-6 wow fadeInLeft">
-
-                    <!-- การ์ดที่ 1 -->
-                    <div class="card card-h-100" id="card">
-
-                        <!-- รูปในการ์ดที่ 1 -->
-                        <a href="">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="row" style="margin-top: -32.5px;">
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 4 -->
+                <div class="col-lg-6">
+                    <!-- การ์ดที่ 4 -->
+                    <div class="card widget-flat" id="card">
+                        <!-- รูปในการ์ดที่ 4 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
                         </a>
-                        <!-- ข้อความในการ์ดที่ 1 -->
+                        <!-- ข้อความในการ์ดที่ 4 -->
                         <div class="card-body">
-                            <a href="" class="h2 text-decoration-none text-dark">บางแสน</a>
-                            <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                            <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
+                            <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
                         </div>
-
                     </div>
                 </div>
-
-                <!-- ตัวแบ่ง Row -->
-                <div class="col-xl-5 col-mg-4 mg-4 wow fadeInRight">
-                    <div class="row">
-                        <!-- ตัวกำหนดขนาดของการ์ดที่ 2 -->
-                        <div class="col-lg-6">
-
-                            <!-- การ์ดที่ 2 -->
-                            <div class="card widget-flat" id="card">
-
-                                <!-- รูปในการ์ดที่ 2 -->
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
-                                </a>
-                                <!-- ข้อความในการ์ดที่ 2 -->
-                                <div class="card-body">
-                                    <a href="#" class="h2 text-decoration-none text-dark">เขาชีจรรย์</a>
-                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่กลายเป็นสถานที่สำคัญของพัทยาเนื่องจากมี...</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- ตัวกำหนดขนาดของการ์ดที่ 3 -->
-                        <div class="col-lg-6">
-
-                            <!-- การ์ดที่ 3 -->
-                            <div class="card widget-flat" id="card">
-
-                                <!-- รูปในการ์ดที่ 3 -->
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
-                                </a>
-                                <!-- ข้อความในการ์ดที่ 3 -->
-                                <div class="card-body">
-                                    <a href="#" class="h2 text-decoration-none text-dark">บางละมง</a>
-                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความสำคัญของจังหวัดชลบุรี ซึ่งรู้จักกันใน...</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 39px;">
-                        <!-- ตัวกำหนดขนาดของการ์ดที่ 4 -->
-                        <div class="col-lg-6">
-
-                            <!-- การ์ดที่ 4 -->
-                            <div class="card widget-flat" id="card">
-
-                                <!-- รูปในการ์ดที่ 4 -->
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
-                                </a>
-                                <!-- ข้อความในการ์ดที่ 4 -->
-                                <div class="card-body">
-                                    <a href="#" class="h2 text-decoration-none text-dark">เกาะล้าน</a>
-                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- ตัวกำหนดขนาดของการ์ดที่ 5 -->
-                        <div class="col-lg-6">
-
-                            <!-- การ์ดที่ 5 -->
-                            <div class="card widget-flat" id="card">
-
-                                <!-- รูปในการ์ดที่ 5 -->
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
-                                </a>
-                                <!-- ข้อความในการ์ดที่ 5 -->
-                                <div class="card-body">
-                                    <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
-                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
-                                </div>
-
-                            </div>
+                <!-- ตัวกำหนดขนาดของการ์ดที่ 5 -->
+                <div class="col-lg-6">
+                    <!-- การ์ดที่ 5 -->
+                    <div class="card widget-flat" id="card">
+                        <!-- รูปในการ์ดที่ 5 -->
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <!-- ข้อความในการ์ดที่ 5 -->
+                        <div class="card-body">
+                            <a href="#" class="h2 text-decoration-none text-dark">พัทยา</a>
+                            <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <a class="button button-black-outline button-ujarak" style="float: right;" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
         </div>
-    </section>
-    <!--	Our Services-->
-    <section class="section section-sm">
-        <div class="container" style="margin-top: 40px;">
-            <h3>เที่ยว Low Carbon แบบ Drop Carbon</h3>
-            <div class="row row-30">
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">ท่องเที่ยวอย่างไม่เร่งรีบ</a></h5>
-                                <p class="box-icon-classic-text">
-                                    ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อม
-                                    เช่นปั่นจักรยาน
-                                    ลดการปล่อยคาร์บอน</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-circular220"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">Drop Carbon Hero</a></h5>
-                                <p class="box-icon-classic-text">เพื่อเชิดชูเกียรติในการเป็นนักท่องเที่ยวที่มี
-                                    คุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-favourites5"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">พักโรงแรมสีเขียว</a></h5>
-                                <p class="box-icon-classic-text">นอนหลับสบาย แถมยังได้ช่วยกระจายรายได้ให้กับคนในท้องถิ่นได้อีกด้วย</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-headphones32"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">ทำตัวเป็นนักเดินทาง</a></h5>
-                                <p class="box-icon-classic-text">ดื่มด่ำกับศิลปวัฒนธรรม
-                                    หาโอกาสเรียนรู้ทักษะงานฝีมือ
-                                    ที่ทรงคุณค่า สร้างมิตรภาพ
-                                    กับชุมชน</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-hot67"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">กิจกรรมที่หลากหลาย</a></h5>
-                                <p class="box-icon-classic-text">ความสนุกที่จะเติมเต็มให้ทริปนี้
-                                    เป็นหนึ่งในทริปที่แสนประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <article class="box-icon-classic">
-                        <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
-                            <div class="unit-left">
-                                <div class="box-icon-classic-icon fl-bigmug-line-wallet26"></div>
-                            </div>
-                            <div class="unit-body">
-                                <h5 class="box-icon-classic-title"><a href="#">สำหรับผู้ประกอบการ</a></h5>
-                                <p class="box-icon-classic-text">สามารถประชาสัมพันธ์การท่องเที่ยวของท่าน ในแบบ Low Carbon</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+    <a class="button" style="float: right;" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
 </div>
+
+<!--	Our Services-->
+<div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+    <h2 style="padding-top : 80px; text-align: center;">เที่ยว Low Carbon แบบ Drop Carbon</h2>
+    <div class="row row-30">
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="box-icon-classic-body">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">ท่องเที่ยวอย่างไม่เร่งรีบ</a></h3>
+                        <p class="box-icon-classic-text">
+                            ด้วยพาหนะที่เป็นมิตรกับสิ่งแวดล้อมเช่นปั่นจักรยานลดการปล่อยคาร์บอน
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="text-xl-left">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">Drop Carbon Hero</a></h3>
+                        <p class="box-icon-classic-text">
+                            เพื่อเชิดชูเกียรติในการเป็นนักท่องเที่ยวที่มีคุณภาพและเป็นตัวอย่างที่ดีให้กับนักท่องเที่ยวท่านอื่นๆ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="box-icon-classic-body">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">พักโรงแรมสีเขียว</a></h3>
+                        <p class="box-icon-classic-text">
+                            นอนหลับสบาย แถมยังได้ช่วยกระจายรายได้ให้กับคนในท้องถิ่นได้อีกด้วย
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="box-icon-classic-body">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">ทำตัวเป็นนักเดินทาง</a></h3>
+                        <p class="box-icon-classic-text">
+                            ดื่มด่ำกับศิลปวัฒนธรรมหาโอกาสเรียนรู้ทักษะงานฝีมือที่ทรงคุณค่า สร้างมิตรภาพกับชุมชน
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="box-icon-classic-body">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">กิจกรรมที่หลากหลาย</a></h3>
+                        <p class="box-icon-classic-text">ความสนุกที่จะเติมเต็มให้ทริปนี้
+                            เป็นหนึ่งในทริปที่น่าประทับใจๆ และได้แชร์ประสบการณ์การท่องเที่ยว
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card-two">
+                <div class="box-icon-classic-body">
+                    <div class="card-body">
+                        <h3 class="box-icon-classic-title"><a href="#">สำหรับผู้ประกอบการ</a></h3>
+                        <p class="box-icon-classic-text">สามารถประชาสัมพันธ์การท่องเที่ยวของท่าน ในแบบ Low Carbon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Global Mailform Output-->
 <div class="snackbars" id="form-output-global"></div>
+
 <!-- Javascript-->
 <script src="<?php echo base_url() . 'assets/templete/template_site' ?>/js/script.js"></script>
 
 <script>
     $(document).ready(function() {
 
-    
+
         get_data_banner();
 
         function get_data_banner() {
@@ -340,10 +340,10 @@
 
         html_code += '<ol class="carousel-indicators">';
 
-        for(let i=0 ; i<arr_banner.length ; i++){
-            if(i===0){
+        for (let i = 0; i < arr_banner.length; i++) {
+            if (i === 0) {
                 html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="' + i + '" class="active"></li>';
-            }else{
+            } else {
                 html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="data-slide-to="' + i + '"></li>';
             }
         }
