@@ -93,7 +93,7 @@
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                     <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                        href="#">
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
                                                         <span class="material-icons">edit</span>
                                                     </a>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -167,7 +167,7 @@
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                     <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                        href="<?php echo base_url().'/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id;?>">
+                                                        href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
                                                         <span class="material-icons">edit</span>
                                                     </a>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -238,11 +238,11 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id;?>">
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                     <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                        href="<?php echo base_url().'/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id;?>">
+                                                        href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
                                                         <span class="material-icons">edit</span>
                                                     </a>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"

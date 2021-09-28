@@ -29,7 +29,7 @@ class Event_edit extends DCS_controller
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
-        $data['arr_company']=$this->mcom->get_by_ent_id()->result();
+        $data['arr_company'] = $this->mcom->get_by_ent_id()->result();
         $view = 'entrepreneur/manage_event/v_edit_event';
         $this->output_entrepreneur($view, $data);
     }
@@ -45,8 +45,11 @@ class Event_edit extends DCS_controller
     */
     public function edit_event()
     {
+
+        // $this->load->model('Event/M_dcs_eve_image', 'mimg');
         $this->load->model('Event/M_dcs_event', 'deve');
-        $this->load->model('Event/M_dcs_eve_image', 'mimg');
+        $this->load->model('Event/Da_dcs_eve_image', 'mimg');
+
 
         $this->deve->eve_name = $this->input->post('eve_name');
         $this->deve->eve_description = $this->input->post('eve_description');
@@ -62,7 +65,7 @@ class Event_edit extends DCS_controller
         // save data image to database
         $arr_img_add = array();
         $arr_img_add = $this->input->post('new_img');
-        $this->mimg->eve_img_eve_id = $this->input->post('com_id');
+        $this->mimg->eve_img_eve_id = $this->input->post('eve_id');
         if ($arr_img_add != '') {
             for ($i = 0; $i < count($arr_img_add); $i++) {
                 $this->mimg->eve_img_path = $arr_img_add[$i];
@@ -87,7 +90,7 @@ class Event_edit extends DCS_controller
         // print_r($arr_img_delete);
         if ($arr_img_delete_old != '') {
             for ($i = 0; $i < count($arr_img_delete_old); $i++) {
-                $this->mimg->com_img_path = $arr_img_delete_old[$i];
+                $this->mimg->eve_img_path = $arr_img_delete_old[$i];
                 unlink('./image_event/' . $arr_img_delete_old[$i]);
                 $this->mimg->delete_image_event();
             }
@@ -122,8 +125,8 @@ class Event_edit extends DCS_controller
         $file_tmp_name = $_FILES['eve_file']['tmp_name'] ?? '';
         $file_size = $_FILES['eve_file']['size'] ?? '';
         $file_error = $_FILES['eve_file']['error'] ?? '';
-    
-        if($file != ''){
+
+        if ($file != '') {
             for ($i = 0; $i < count($file_name); $i++) {
                 $file_ext[$i] = explode('.', $file_name[$i]);
                 $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
@@ -134,7 +137,7 @@ class Event_edit extends DCS_controller
                     break;
                 }
             }
-        }else { 
+        } else {
             $error_file = 'false';
         }
 
@@ -161,7 +164,7 @@ class Event_edit extends DCS_controller
         echo json_encode($output_image);
     }
 
-     /*
+    /*
     * uplink_image_ajax
     * uplink image when cancel edit and add event
     * @input arr_img
@@ -170,16 +173,17 @@ class Event_edit extends DCS_controller
     * @Create Date 2564-09-29
     * @Update Date -
     */
-    public function uplink_image_ajax(){
+    public function uplink_image_ajax()
+    {
         // print_r($this->input->post('arr_image'));
         $data = "";
-        if($this->input->post('arr_image') != NULL){
+        if ($this->input->post('arr_image') != NULL) {
             $arr_image = $this->input->post('arr_image');
-            for($i = 0; $i < count($arr_image); $i++){
+            for ($i = 0; $i < count($arr_image); $i++) {
                 unlink('./image_event/' . $arr_image[$i]);
             }
             $data = "success";
-        }else{
+        } else {
             $data = "no image";
         }
         echo json_encode($data);
@@ -197,7 +201,7 @@ class Event_edit extends DCS_controller
     public function delete_event()
     {
         $this->load->model('Company/M_dcs_event', 'mdeve');
-        $this->mdeve->com_id = $this->input->post('eve_id');
+        $this->mdeve->eve_id = $this->input->post('eve_id');
         $this->mdeve->delete_event();
     }
 
