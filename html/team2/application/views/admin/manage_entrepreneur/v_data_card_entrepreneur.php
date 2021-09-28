@@ -104,6 +104,8 @@
                     dataType: 'JSON',
                     success: function(json_data) {
 
+                        console.log(json_data);
+
                         $("#consider_ent").html(json_data[0].ent_consider + " <span style='font-size: 16px;'>คน</span>");
 
                         $("#approve_ent").html(json_data[0].ent_approve  + " <span style='font-size: 16px;'>คน</span>");

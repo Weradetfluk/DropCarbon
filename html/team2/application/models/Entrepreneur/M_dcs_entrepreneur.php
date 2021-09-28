@@ -112,10 +112,10 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     */
     function get_data_card_entrepreneur()
     {
-        $sql = "SELECT sum(case when ent_status = 1 then 1 else 0 end ) as ent_consider, 
-        sum(case when ent_status = 2 then 1 else 0 end) as ent_approve , 
-        sum(case when ent_status = 3 then 1 else 0 end ) as ent_reject ,
-        sum(case when ent_status = 4 then 1 else 0 end ) as ent_blocked 
+        $sql = "SELECT count(case when ent_status = 1 then 1  end ) as ent_consider, 
+        count(case when ent_status = 2 then 1  end) as ent_approve , 
+        count(case when ent_status = 3 then 1  end ) as ent_reject ,
+        count(case when ent_status = 4 then 1  end ) as ent_blocked 
         
         FROM dcs_entrepreneur;";
 

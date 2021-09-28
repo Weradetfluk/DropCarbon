@@ -28,6 +28,7 @@
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" as="style" type="text/css">
     <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/slick/slick.css' ?>">
     <style>
         body {
             font-size: 18px;
