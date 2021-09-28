@@ -113,10 +113,10 @@
                             <h3><span class="material-icons" style="font-size: 30px;">location_city</span> <?php echo $arr_event[0]->com_name; ?></h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <ul>
-                                <li>
+                                <!-- <li>
                                     <h4>สถานที่ตั้ง: </h4>
                                 </li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_location; ?></p>
+                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_location; ?></p> -->
                                 <li>
                                     <h4>เบอร์โทรศัพท์: </h4>
                                 </li>
@@ -131,22 +131,69 @@
                                 </table>
                             </ul>
                         </div>
-                        <div class="container">
+                        <?php if ($arr_event[0]->eve_status == 1) { ?>
+                            <div class="container">
                             <!-- Submit button -->
                             <form>
                                 <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_event[0]->eve_id; ?>">
                                 <div style="text-align: right;">
-                                    <button type="button" class="btn btn-success" onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
-                                    <button type="button" class="btn btn-danger" onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
+                                    <button type="button" class="btn btn-success" id="accept" onclick='confirm_approve("<?php echo $arr_event[0]->eve_id?>" ,"<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>")' data-dismiss="modal">อนุมัติ</button>
+                                    <button type="button" class="btn btn-danger" id="reject" onclick='confirm_reject("<?php echo $arr_event[0]->eve_id ?>", "<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>")' data-dismiss="modal">ปฏิเสธ</button>
                                 </div>
                             </form>
                         </div>
+                        <?php } ?>
+                        <?php var_dump($arr_event) ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+ <!-- warnning aprove Modal  -->
+ <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
+             </div>
+             <div class="modal-body">
+                 <p>คุณต้องการอนุมัติ <span id="eve_name_confirm"></span> ?</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <!-- warnning reject  -->
+ <div class="modal" tabindex="-1" role="dialog" id="rejected_eve">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="eve_reject_name_confirm"></span> ?</h5>
+             </div>
+             <div class="modal-body">
+                 <p>กรุณาระบุเหตุผล</p>
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/reject_event'; ?>" id="reject_form">
+                     <input type="hidden" id="email" name="email">
+                     <input type="hidden" id="eve_id_form" name="eve_id">
+                     <input type="hidden" id="evr_eve_id" name="eve_id">
+                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
+                     <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
+             </div>
+             <div class="modal-footer">
+                 <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+
 
 <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
@@ -172,3 +219,109 @@
 
     map.setCenter(position, zoom);
 </script>
+<script>
+/*
+      * confirm_approve
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to confirm approve modal
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update 2564-09-18
+      */
+     function confirm_approve(eve_id, eve_name, ent_email) {
+         $('#eve_name_confirm').text(eve_name);
+         console.log(ent_email)
+         $('#aprove_modal').modal({
+             backdrop: 'static',
+             keyboard: false
+         });
+         $('#approves').click(function() {
+             approve_event(eve_id, eve_name, ent_email) //function 
+         });
+     }
+     /*
+      * confirm_reject
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to reject  modal 
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update -
+      */
+     function confirm_reject(eve_id, eve_name, ent_email) {
+         let form = document.querySelector('#reject_form');
+         $('#eve_reject_name_confirm').text(eve_name);
+         $('#rejected_eve').modal();
+         $('#email').val(ent_email);
+         $('#eve_id_form').val(eve_id);
+         $('#evr_eve_id').val(eve_id);
+         console.log(ent_email);
+
+         let admin_reson = document.querySelectorAll('#admin_reason');
+         let err_message = document.querySelector('#err_message');
+
+         console.log(admin_reson);
+         $('#rejected').click(function() {
+             let tooshort = false;
+             admin_reson.forEach((reson) => {
+                 if (reson.value.length < 6) {
+                     tooshort = true;
+                 }
+             });
+             if (tooshort) {
+                 event.preventDefault();
+                 err_message.style.display = 'block';
+             } else {
+                 $('#rejected_eve').modal('toggle');
+                 err_message.style.display = 'none';
+                 swal({
+                     title: "ปฏิเสธสำเร็จ",
+                     text: "ปฏิเสธการเพิ่มกิจกรรมสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000,
+                 }, function() {
+                    window.location.href = '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_consider'); ?>'
+                 });
+             }
+         });
+     }
+     /*
+      * approve_event
+      * change status to approve 
+      * @input 
+      * @output table approve and consider
+      * @author Kasama Donwong 62160074
+      * @Create Date 2564-09-26
+      * @Update -
+      */
+     function approve_event(eve_id, eve_name, ent_email) {
+         $.ajax({
+             type: "POST",
+             data: {
+                 eve_id: eve_id
+             },
+             url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
+             success: function() {
+                 //sweet alert
+                 swal({
+                     title: "อนุมัติสำเร็จ",
+                     text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000
+                 }, function() {
+                    window.location.href = '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_consider'); ?>'
+                 })
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
+                 var subject = "Approval";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
+             },
+             error: function() {
+                 alert('ajax error working');
+             }
+         });
+     }
+ </script>

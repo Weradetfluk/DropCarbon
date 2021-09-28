@@ -69,8 +69,11 @@ class M_dcs_event extends Da_dcs_event
         ON eve.eve_com_id = com.com_id
         LEFT JOIN {$this->db_name}.dcs_eve_category AS cat 
         ON eve.eve_cat_id = cat.eve_cat_id
+        LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent 
+        ON com.com_ent_id = ent.ent_id
+        LEFT JOIN {$this->db_name}.dcs_event_reject AS rej 
+        ON eve.eve_id = rej.evr_eve_id
         WHERE eve.eve_id=?";
-
         $query = $this->db->query($sql, array($this->eve_id));
         return $query;
     }
