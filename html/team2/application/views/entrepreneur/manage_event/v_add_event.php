@@ -100,12 +100,12 @@
 <script>
 
     var count_image = 0;
-
+    // var check_btn_name = 0;
     /*
      * @author Suwapat Saowarod 62160340
      */
     $(document).ready(function() {
-        // check_count_image_btn();
+        check_count_image_btn();
     });
 
 
@@ -143,13 +143,13 @@
                 if (data.search("error") == -1) {
                     document.getElementById('card_image').innerHTML += data;
                     $('#eve_file').val('');
-                    // check_count_image_btn()
-                    console.log(count_image);
+                    check_count_image_btn()
+                    // console.log(count_image);
                 } else {
                     swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                     $('#eve_file').val('');
                     count_image -= count_for_img;
-                    // check_count_image_btn()
+                    check_count_image_btn()
                 }
             },
             error: function() {
@@ -157,7 +157,7 @@
                 swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                 $('#eve_file').val('');
                 count_image -= count_for_img;
-                // check_count_image_btn()
+                check_count_image_btn()
             }
         });
     }
@@ -180,7 +180,7 @@
         // console.log('#'+file_name[0]+'.'+file_name[1]);
         document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
         count_image -= 1;
-        // check_count_image_btn()
+        check_count_image_btn()
     }
 
     /*
@@ -193,7 +193,8 @@
      * @Update 
      */
     function check_count_image_btn() {
-        if (count_image == 0 || check_btn_name == 1) {
+        // if (count_image == 0 || check_btn_name == 1) {
+        if (count_image == 0){
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);

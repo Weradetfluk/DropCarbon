@@ -38,9 +38,9 @@ class Da_dcs_company extends DCS_model{
     * @Update -
     */
 	public function insert_company(){
-		$sql = "INSERT INTO `dcs_company`(`com_name`, `com_lat`, `com_lon`, `com_description`, `com_ent_id`, `com_tel`, `com_cat_id`) 
-				VALUES (?,?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_description, $this->com_ent_id, $this->com_tel, $this->com_cat_id));
+		$sql = "INSERT INTO `dcs_company`(`com_name`, `com_lat`, `com_lon`, `com_description`, `com_ent_id`, `com_tel`, `com_cat_id`, `com_location`) 
+				VALUES (?,?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_description, $this->com_ent_id, $this->com_tel, $this->com_cat_id, $this->com_location));
 	}
 
 	/*
@@ -76,9 +76,10 @@ class Da_dcs_company extends DCS_model{
 					`com_tel`=?,
 					`com_description`=?,
                     `com_cat_id`=?,
-                    `com_status`=?
+                    `com_status`=?,
+                    `com_location`=?
 				WHERE com_id=?";
-		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_status, $this->com_id));
+		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_status, $this->com_location, $this->com_id));
 	}
 
 	/*

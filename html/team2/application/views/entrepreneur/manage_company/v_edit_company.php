@@ -50,9 +50,14 @@
                             </div><br>
 
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <label for="com_description">เบอร์โทรศัพท์ติดต่อสถานที่</label>
                                     <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="08x-xxx-xxxx" value="<?php echo $arr_company[0]->com_tel; ?>" required>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-6">
+                                    <label for="com_tel">รายละเอียดที่อยู่สถานที่</label>
+                                    <input type="text" id="com_location" name="com_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน ซอย หมู่ ถนน ตำบล อำเภอ จังหวัด ไปรษณีย์ ตามลำดับ" value="<?php echo $arr_company[0]->com_location; ?>" required>
                                 </div>
                             </div><br>
 
@@ -333,13 +338,13 @@
                 if (data.search("error") == -1) {
                     document.getElementById('card_image').innerHTML += data;
                     $('#com_file').val('');
-                    check_count_image_btn()
+                    check_count_image_btn();
                     console.log(count_image);
                 } else {
                     swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                     $('#com_file').val('');
                     count_image -= count_for_img;
-                    check_count_image_btn()
+                    check_count_image_btn();
                 }
             },
             error: function() {
@@ -347,7 +352,7 @@
                 swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                 $('#com_file').val('');
                 count_image -= count_for_img;
-                check_count_image_btn()
+                check_count_image_btn();
             }
         });
     }
@@ -371,7 +376,7 @@
         document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
         count_image -= 1;
         console.log(count_image);
-        check_count_image_btn()
+        check_count_image_btn();
     }
 
     /*
@@ -393,7 +398,7 @@
         document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
         count_image -= 1;
         console.log(count_image);
-        check_count_image_btn()
+        check_count_image_btn();
     }
 
     /*

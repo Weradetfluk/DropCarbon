@@ -172,7 +172,11 @@
 
 <script>
 var count_image = <?= count($arr_event) ?>;
-var check_btn_name = 0;
+// var check_btn_name = 0;
+
+$(document).ready(function(){
+    check_count_image_btn();
+})
 
 /*
  * upload_image_ajax
@@ -208,13 +212,13 @@ function upload_image_ajax() {
             if (data.search("error") == -1) {
                 document.getElementById('card_image').innerHTML += data;
                 $('#eve_file').val('');
-                // check_count_image_btn()
-                console.log(count_image);
+                check_count_image_btn();
+                // console.log(count_image);
             } else {
                 swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                 $('#eve_file').val('');
                 count_image -= count_for_img;
-                // check_count_image_btn()
+                check_count_image_btn();
             }
         },
         error: function() {
@@ -222,7 +226,7 @@ function upload_image_ajax() {
             swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
             $('#eve_file').val('');
             count_image -= count_for_img;
-            // check_count_image_btn()
+            check_count_image_btn();
         }
     });
 }
@@ -246,7 +250,7 @@ function unlink_new_image(img_path) {
     document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
     count_image -= 1;
     console.log(count_image);
-    // check_count_image_btn()
+    check_count_image_btn();
 }
 
 /*
@@ -268,7 +272,7 @@ function unlink_old_image(img_path) {
     document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
     count_image -= 1;
     console.log(count_image);
-    // check_count_image_btn()
+    check_count_image_btn();
 }
 
 /*
@@ -294,8 +298,7 @@ function unlink_image_go_back() {
         },
         success: function(data) {
             console.log(data);
-            location.replace(
-                "<?php echo site_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
+            location.replace("<?php echo site_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
         }
     })
 }
@@ -317,4 +320,22 @@ function confirm_edit(eve_name_con) {
         $('#form_edit_eve').submit();
     });
 }
+
+/*
+     * check_count_image
+     * check count image to disable btn submit
+     * @input -
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-09-28
+     * @Update 
+     */
+    function check_count_image_btn() {
+        // if (count_image == 0 || check_btn_name == 1) {
+        if (count_image == 0){
+            $('#btn_sub').prop('disabled', true);
+        } else {
+            $('#btn_sub').prop('disabled', false);
+        }
+    }
 </script>

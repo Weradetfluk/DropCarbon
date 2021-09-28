@@ -55,9 +55,14 @@
                             </div><br>
 
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
                                     <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="10" required>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-6">
+                                    <label for="com_tel">รายละเอียดที่อยู่สถานที่</label>
+                                    <input type="text" id="com_location" name="com_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน ซอย หมู่ ถนน ตำบล อำเภอ จังหวัด ไปรษณีย์ ตามลำดับ" required>
                                 </div>
                             </div><br>
 

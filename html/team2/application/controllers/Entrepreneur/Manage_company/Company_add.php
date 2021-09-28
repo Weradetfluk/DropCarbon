@@ -47,7 +47,7 @@ class Company_add extends DCS_controller
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $this->mcom->com_tel = $this->input->post('com_tel');
         $this->mcom->com_cat_id = $this->input->post('com_cat_id');
-        $this->mcom->com_start_date = $this->input->post('com_start_date');
+        $this->mcom->com_location = $this->input->post('com_location');
     
         $this->mcom->insert_company();
         $this->set_session_add_company('success');

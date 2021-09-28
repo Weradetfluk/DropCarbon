@@ -47,7 +47,7 @@ class M_dcs_event extends Da_dcs_event
         $sql = "SELECT eve_id, eve_name, eve_point, eve_description, eve_cat_id, eve_status, com_name FROM `dcs_event` 
                 LEFT JOIN dcs_company
                 ON dcs_event.eve_com_id = dcs_company.com_id
-                WHERE dcs_company.com_ent_id = $ent_id";
+                WHERE dcs_company.com_ent_id = $ent_id AND dcs_event.eve_status != 4";
         return $this->db->query($sql);
     }
 
