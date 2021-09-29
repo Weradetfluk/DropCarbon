@@ -100,8 +100,8 @@
              console.log(images);
 
              var row_count = document.getElementById('banner_table').rows.length; // นับแถว ตาราง
-
-             if (images.length > 0 && row_count < 4) {
+             console.log(row_count);
+             if (images.length > 0 && row_count < 5) {
                  var name = images[0].name;
                  form_data.append('file', images[0]);
                  $.ajax({
@@ -136,11 +136,14 @@
                          //  $('#com_file').val('');
                      }
                  });
-             } else {
+             } else if( row_count >= 5) {
                  swal('ไม่สามารถเพิ่มภาพได้', 'ไม่สามารถเพิ่มภาพได้เนื่องจากภาพมีจำนวนเกิน', 'error');
                  $('#add_banner_modal').modal('toggle');
                  document.getElementById("file").value = '';
                  img.setAttribute('src', "https://via.placeholder.com/1920x678");
+             }else if(images.length == 0){
+                swal('คุณไม่ได้เพิ่มภาพ', 'กรุณาเพิ่มภาพ', 'error');
+                $('#add_banner_modal').modal('toggle');
              }
          });
      });

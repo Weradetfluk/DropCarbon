@@ -293,7 +293,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td>'
-            . $row->eve_description .
+            .    iconv_substr($row->eve_description, 0, 60, "UTF-8") . "..." .
             '</td>' .
             '<td>'
             . $row->com_name .
@@ -377,7 +377,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td>'
-            . $row->eve_description .
+            .   iconv_substr($row->eve_description, 0, 60, "UTF-8") . "..." .
             '</td>' .
             '<td>'
             . $row->com_name .
