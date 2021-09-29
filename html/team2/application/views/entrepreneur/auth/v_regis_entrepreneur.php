@@ -26,12 +26,15 @@
         line-height: 1.42857;
         color: #aaa;
         font-weight: 400;
+        padding-left: 15px;
+    }
+
+    .label {
+        padding-left: unset;
     }
 
     .form-control {
         border: 0px;
-        border-bottom: 1px solid;
-        border-bottom-color: #ced2d7;
         border-radius: 0px;
     }
 
@@ -106,8 +109,8 @@
         height: 40px;
         width: 100%;
         position: absolute;
-        bottom: 0;
-        left: 50%;
+        bottom: -4%;
+        left: 45%;
         transform: translate(-50%);
         text-align: center;
         background: rgba(0, 0, 0, 0.7);
@@ -116,18 +119,7 @@
         font-size: 15px;
         font-family: sans-serif;
         cursor: pointer;
-    }
-
-    .selected {
-        border: 0px;
-        border-bottom: 1px solid;
-        border-bottom-color: #ced2d7;
-        display: block;
-        width: 100%;
-        padding: .375rem .375rem;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
+        padding-top: 10px;
     }
 
     .bg {
@@ -182,15 +174,11 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;">ลงทะเบียนสำหรับผู้ประกอบการ</h1>
         <form class="container py-3" method='POST' id="form_regis_ent" action="<?php echo base_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
-
-            <!-- <input type="radio" id="ent_pre_id1" name="ent_pre_id" value=1 required>&nbsp;นาย
-                <input type="radio" id="ent_pre_id2" name="ent_pre_id" value=2 required>&nbsp;นาง
-                <input type="radio" id="ent_pre_id3" name="ent_pre_id" value=3 required>&nbsp;นางสาว -->
             <div>
                 <div class="row">
-                    <div class="form-group col-md-2 mb-3">
-                        <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
-                        <select class="selected" name="ent_pre_id" id="prefix" required>
+                    <div class="form-group col-md-2 mb-3"  style="margin-top: -10px;">
+                        <label for="prefix" class="label">คำนำหน้า</label><br>
+                        <select class="form-control mt-1" name="ent_pre_id" id="prefix" style="margin-top: -12px !important; " required>
                             <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
                                 <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
@@ -274,21 +262,21 @@
                                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
                             </div>
                             <div class="modal-body">
-                                <p> 
+                                <p>
                                     ข้อกำหนดและเงื่อนไขการใช้บริการ<br>
 
                                     1. การบันทึกและการเปิดเผยข้อมูล<br>
-                                    1.1 ผู้ขอใช้บริการรับรองว่ารูปภาพ ชื่อ สัญลักษณ์ เครื่องหมายและ/หรือข้อมูลใด ๆ ของผู้ขอใช้บริการที่นำมาตั้งค่าเพื่อแสดงหรือดำเนินการใด ๆ 
-                                    ในการใช้บริการ เป็นทรัพย์สินทางปัญญาของผู้ขอใช้บริการ และ/หรือผู้ขอใช้บริการมีสิทธิโดยชอบในการนำมาใช้เพื่อการดังกล่าว และหากเกิดความเสียหายใด ๆ 
+                                    1.1 ผู้ขอใช้บริการรับรองว่ารูปภาพ ชื่อ สัญลักษณ์ เครื่องหมายและ/หรือข้อมูลใด ๆ ของผู้ขอใช้บริการที่นำมาตั้งค่าเพื่อแสดงหรือดำเนินการใด ๆ
+                                    ในการใช้บริการ เป็นทรัพย์สินทางปัญญาของผู้ขอใช้บริการ และ/หรือผู้ขอใช้บริการมีสิทธิโดยชอบในการนำมาใช้เพื่อการดังกล่าว และหากเกิดความเสียหายใด ๆ
                                     แก่ระบบ อันเนื่องมาจากการนำรูปภาพ ชื่อ สัญลักษณ์ เครื่องหมายและ/หรือข้อมูลใด ๆ ดังกล่าวมาใช้กับการใช้บริการ ผู้ขอใช้บริการตกลงชดใช้ค่าเสียหายที่เกิดขึ้นแก่ Drop Carbon ทั้งสิ้น<br>
-                                    1.2 ข้อมูลส่วนบุคคลที่ท่านได้ให้หรือใช้ผ่านการประมวลผล ของเครื่องคอมพิวเตอร์ ที่ควบคุมการทำงานเว็บไซต์ของ Drop Carbon ทั้งหมดนั้น 
+                                    1.2 ข้อมูลส่วนบุคคลที่ท่านได้ให้หรือใช้ผ่านการประมวลผล ของเครื่องคอมพิวเตอร์ ที่ควบคุมการทำงานเว็บไซต์ของ Drop Carbon ทั้งหมดนั้น
                                     ท่านยอมรับและตกลงว่าเป็นสิทธิและกรรมสิทธิ์ของ Drop Carbon ซึ่งจะให้ความคุ้มครองความลับ ดังกล่าวอย่างดีที่สุด <br>
 
                                     2. ข้อตกลงทั่วไป<br>
                                     2.1 ผู้ขอใช้บริการรับรองและรับประกันว่าตนได้อ่าน และรับทราบถึงเนื้อหาของนโยบายคุ้มครองข้อมูลส่วนบุคคลของ Drop Carbon
                                 </p>
                                 <br>
-                                <input type="checkbox" id="agree" onchange="check_box_agree()">  ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
+                                <input type="checkbox" id="agree" onchange="check_box_agree()"> ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
                             </div>
                             <div class="modal-footer">
                                 <button id="submit" class="btn btn-success success">ยืนยัน</button>
@@ -559,12 +547,12 @@
      * @Create Date 2564-09-24
      * @Update -
      */
-    function check_box_agree(){
-        let check_box =  document.getElementById('agree').checked;
+    function check_box_agree() {
+        let check_box = document.getElementById('agree').checked;
         console.log(check_box);
-        if(!check_box){
+        if (!check_box) {
             $('#submit').prop('disabled', true);
-        }else{
+        } else {
             $('#submit').prop('disabled', false);
         }
     }
