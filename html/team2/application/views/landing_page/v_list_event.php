@@ -55,6 +55,14 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    .colorchange {
+        color: #343a40 !important;
+    }
+
+    .colorchange :hover {
+        color: #343a40 !important;
+    }
 </style>
 <title>List Event</title>
 
@@ -66,7 +74,7 @@
         <?php if (!$this->session->userdata("tourist_id")) { ?>
             <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
-        <li>ดูรายการกิจกรรม</li>
+        <li class="colorchange">ดูรายการกิจกรรม</li>
     </ul>
     <div class="row text-left py-3">
         <div class="m-auto">
@@ -98,23 +106,22 @@
 
     <div class="row">
         <?php for ($i = 0; $i < count($event); $i++) { ?>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100" id="card">
-                    <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
-                        <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
+                    <div class="card" id="card" style="max-height: 30rem;">
+                        <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="max-height: 300px;" alt="...">
                         <!-- รูปที่ 1 -->
                         <div class="card-body" align="center">
                             <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
-                            <p class="card-text">
-                                <?php echo iconv_substr($event[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?>
+                            <p class="card-tex text-dark">
+                                <?php echo iconv_substr($event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
                         </div>
                         <!-- ชื่อของรูปที่ 1 -->
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <!-- กิจกรรมที่ 1 -->
         <?php } ?>
     </div>
-
 </div>

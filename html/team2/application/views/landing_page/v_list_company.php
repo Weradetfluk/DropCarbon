@@ -139,6 +139,14 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    .colorchange {
+        color: #343a40 !important;
+    }
+
+    .colorchange :hover {
+        color: #343a40 !important;
+    }
 </style>
 <title>List Company</title>
 <div class="container py-5" style="margin-top: 5%;">
@@ -149,7 +157,7 @@
         <?php if (!$this->session->userdata("tourist_id")) { ?>
             <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
-        <li>ดูรายการสถานที่</li>
+        <li class="colorchange">ดูรายการสถานที่</li>
     </ul>
     <div class="row text-left py-3">
         <div class="m-auto">
@@ -187,7 +195,7 @@
     <div class="row py-3">
         <?php for ($i = 0; $i < count($company); $i++) { ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                    <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $company[$i]->com_id; ?>">
+                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $company[$i]->com_id; ?>">
                     <div class="card" id="card" style="max-height: 30rem;">
                         <img src="<?php echo base_url() . 'image_company/' . $company[$i]->com_img_path; ?>" class="card-img-top" style="max-height: 300px;" alt="...">
                         <!-- รูปที่ 1 -->
@@ -198,11 +206,10 @@
                             </p>
                         </div>
                         <!-- ชื่อของรูปที่ 1 -->
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
-            <!-- กิจกรรมที่ 1 -->
         <?php } ?>
-
-    </div>    
+    </div>
+    <!-- กิจกรรมที่ 1 -->
 </div>
