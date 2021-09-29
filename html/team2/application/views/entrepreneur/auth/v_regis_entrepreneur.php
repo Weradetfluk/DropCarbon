@@ -164,7 +164,7 @@
 </style>
 <title>ลงทะเบียนสำหรับผู้ประกอบการ</title>
 <!-- Form Register -->
-<div class="bg">
+<div class="bg" style="padding-top: 3%;">
     <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
             <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
