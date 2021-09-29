@@ -79,6 +79,14 @@
         color: #01447e;
         text-decoration: underline;
     }
+
+    .colorchange {
+        color: #343a40 !important;
+    }
+
+    .colorchange :hover {
+        color: #343a40 !important;
+    }
 </style>
 <title>Detail Company</title>
 <div class="container py-5" style="margin-top: 5%;">
@@ -90,7 +98,7 @@
             <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_company_list' ?>" style="color: green;">รายการสถานที่</a></li>
-        <li><?php echo $company->com_name ?></li>
+        <li class="colorchange"><?php echo $company->com_name ?></li>
     </ul>
     <div class="row text-left py-3">
         <div class="col-m-auto">

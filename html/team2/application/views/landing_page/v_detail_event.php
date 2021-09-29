@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
 <style>
     .fa {
         text-align: center;
         text-decoration: none;
         margin: 5px 2px;
+        position: relative;
         width: 36px;
         height: 36px;
         border-radius: 50%;
@@ -55,6 +55,7 @@
     }
 
     ul.breadcrumb {
+        padding: 10px 16px;
         list-style: none;
     }
 
@@ -79,27 +80,16 @@
         text-decoration: underline;
     }
 
-    .ui-to-top {
-        position: fixed;
-        right: 15px;
-        bottom: 15px;
-        z-index: 100;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        line-height: 38px;
-        color: #ffffff;
-        background: #01b3a7;
-        overflow: hidden;
-        text-align: center;
-        text-decoration: none;
-        transition: .45s all ease-in-out;
-        border-radius: unset;
+    .colorchange {
+        color: #343a40 !important;
+    }
+
+    .colorchange :hover {
+        color: #343a40 !important;
     }
 </style>
-<title>Detail Event</title>
-
-<div class="container py-5">
+<title>Detail event</title>
+<div class="container py-5" style="margin-top: 5%;">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
             <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
@@ -108,80 +98,119 @@
             <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_event_list' ?>" style="color: green;">รายการกิจกรรม</a></li>
-        <li><?php echo $event->eve_name ?></li>
+        <li class="colorchange"><?php echo $event->eve_name ?></li>
     </ul>
     <div class="row text-left py-3">
-        <div class="m-auto">
-            <h1 class="h1"><?php echo $event->eve_name ?></h1>
+        <div class="col-m-auto">
+            <h1 class="h1" style="padding-bottom: 2%"><?php echo $event->eve_name ?></h1>
         </div>
     </div>
     <!-- ชื่อกิจกรรม -->
     <div class="row">
-        <div class="m-auto">
-            แชร์
-            <a href="#" class="fa fa-fa-facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="fa fa-fa-twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="fa fa-fa-instagram"><i class="fab fa-instagram"></i></a>
-            <hr>
+        <div class="fb-share-button" data-href="" data-layout="button" data-size="large">
+            <a target="_blank" href="" class="fb-xfbml-parse-ignore">แชร์</a>
         </div>
     </div>
+    <br>
     <!-- แชร์ -->
-
     <div class="row">
         <div class="col-12">
-            <div class="col-6" style="margin: 20px auto;">
-
-                <img src="<?php echo base_url() . 'image_event/' . $image_event->eve_img_path; ?>" class="card-img-top" alt="...">
-
+            <div class="container">
+                <?php if (count($image_event) == 1) { ?>
+                    <img src="<?php echo base_url() . 'image_event/' . $image_event[0]->eve_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
+                <?php } elseif (count($image_event) == 2) { ?>
+                    <div class="row">
+                        <div class="col">
+                            <img src="<?php echo base_url() . 'image_event/' . $image_event[0]->eve_img_path; ?>" style="object-fit: cover;  height: 300px;" id="img_01">
+                        </div>
+                        <div class="col">
+                            <img src="<?php echo base_url() . 'image_event/' . $image_event[1]->eve_img_path; ?>" style="object-fit: cover; height: 300px;" id="img_02">
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="responsive">
+                        <?php for ($i = 0; $i < count($image_event); $i++) { ?>
+                            <div class="">
+                                <img src="<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
             </div>
-            <!-- รูป -->
         </div>
     </div>
+
     <div class="row" style="padding-top: 5%;">
         <div class="col">
-            <h4>&#9679; รายละเอียด</h4>
-            <hr>
+            <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียด</h3>
+            <hr width="100%" size="10" color="#cccccc">
             <div class="col" style="padding-left: 2%">
-                <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%"><?php echo $event->eve_description ?>
+                <div class="container">
+                    <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
+                        <p style="text-indent: 50px;"><?php echo $event->eve_description ?>
+                        </p>
+                    </div>
                 </div>
             </div>
             <!-- รายละเอียด -->
-
         </div>
-
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
+                <hr width="100%" size="10" color="#cccccc">
+                <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $event->eve_cat_name; ?></p>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
     <div class="row" style="padding-top: 5%;">
         <div class="col">
-            <h2>ตำแหน่งสถานที่</h2>
+            <h3>ตำแหน่งสถานที่</h3>
             <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                 <h3 style="padding-top: 2%; "> <?php echo $event->eve_name ?></h3>
                 <!-- ชื่อสถานที่ -->
-
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <h5>&#9679; ที่อยู่</h5>
+                        <h4>ที่อยู่</h4>
                         <hr>
                         <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
-                            การท่องเที่ยวแห่งประเทศไทย 1600 ถ.เพชรบุรีตัดใหม่ แขวงมักกะสัน เขตราชเทวี กรุงเทพฯ 10400
+                            <span class="material-icons">
+                                location_on
+                            </span> 
+                            ปั่นขึ้นเขา  10  km ที่ชลบุรี มี point ให้ 1000 แต้ม
                         </div>
-                        <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
-                            <p><i class="fa fa-calendar"></i>เวลาทำการ เปิดแล้ว</p>
+                        <div class="row">
+                            <div class="col">
+
+                                <span class="material-icons">contact_phone</span>
+                                0905530622
+                            </div>
                         </div>
                     </div>
                     <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
-                        <table class="table table-responsive">
-                            <tr>
-                                <td style="border: 2px solid black;">
-                                    <div id="Map" style="width: 500px; height: 400px;"></div>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table ">
+                                <tr>
+                                    <td style="border: 2px solid black;">
+                                        <div id="Map" style="width: 500px; height: 400px;"></div>
+                                        <? $company->com_lat ?>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
                 <!-- ข้อมูลของสถานที่ -->
+
             </div>
             <!-- ตำแหน่ง -->
+
         </div>
     </div>
 </div>
@@ -210,19 +239,53 @@
     map.setCenter(position, zoom);
 
     $(document).ready(function() {
-        $('.img-com-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: '.img-com-nav'
+
+
+        $('.responsive').slick({
+
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
         });
-        $('.img-com-nav').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            asNavFor: '.img-com-for',
-            dots: true,
-            focusOnSelect: true
-        });
+
+
+
     });
+</script>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>

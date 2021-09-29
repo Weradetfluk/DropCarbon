@@ -104,11 +104,19 @@ class Landing_page extends DCS_controller
     */
     public function show_event_detail($eve_id)
     {
+
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->mimg->com_img_com_id = $eve_id;
+        $this->mcom->com_id = $eve_id;
+        $data["image"] = $this->mimg->get_by_com_id()->result();
+        $data["company"] = $this->mcom->get_by_detail()->row();
+
         $this->load->model('Event/M_dcs_event', 'mde');
         $this->load->model('Event/M_dcs_eve_image', 'mdei');
         $this->mdei->eve_img_eve_id = $eve_id;
         $this->mde->eve_id = $eve_id;
-        $data["image_event"] = $this->mdei->get_by_eve_id()->row();
+        $data["image_event"] = $this->mdei->get_by_eve_id()->result();
         $data["event"] = $this->mde->get_by_detail()->row();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
