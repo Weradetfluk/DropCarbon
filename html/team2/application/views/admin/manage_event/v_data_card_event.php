@@ -86,11 +86,11 @@
                     dataType: 'JSON',
                     success: function(json_data) {
 
-                        $("#consider_eve").html(json_data[0].eve_consider + " <span style='font-size: 16px;'>คน</span>");
+                        $("#consider_eve").html(json_data[0].eve_consider + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
-                        $("#approve_eve").html(json_data[0].eve_approve  + " <span style='font-size: 16px;'>คน</span>");
+                        $("#approve_eve").html(json_data[0].eve_approve  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
-                        $("#reject_eve").html(json_data[0].eve_reject  + " <span style='font-size: 16px;'>คน</span>");
+                        $("#reject_eve").html(json_data[0].eve_reject  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
                     },
                     error: function() {

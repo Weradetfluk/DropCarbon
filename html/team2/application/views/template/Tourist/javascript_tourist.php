@@ -12,3 +12,4 @@
  <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
  <!-- Sweet alert -->
  <script src="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.js' ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url() . 'assets/plugin/slick/slick.js' ?>"></script>
