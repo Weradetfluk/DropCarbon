@@ -4,7 +4,6 @@
         background-color: #162e44;
         color: #fff;
         padding-top: 50px;
-        position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;

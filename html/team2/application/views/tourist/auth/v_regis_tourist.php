@@ -444,4 +444,4 @@
             reader.readAsDataURL(choosedFile);
         }
     });
-</script>
+</script>   
