@@ -143,7 +143,7 @@
                             </form>
                         </div>
                         <?php } ?>
-                        <?php var_dump($arr_event) ?>
+                        <!-- <?php var_dump($arr_event) ?> -->
                     </div>
                 </div>
             </div>
