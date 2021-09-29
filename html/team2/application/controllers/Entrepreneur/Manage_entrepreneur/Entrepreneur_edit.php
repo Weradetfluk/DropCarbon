@@ -63,7 +63,7 @@ class Entrepreneur_edit extends DCS_controller
      $ent_password = $this->ment->ent_password;
      $this->set_session($ent_name, $ent_tel, $ent_email, $ent_pre_id);
      $this->session->set_userdata("error_edit_entrepreneur", 'success');
-     redirect("Entrepreneur/Manage_company/Company_list/show_list_company");
+     redirect("Entrepreneur/Manage_Entrepreneur/Entrepreneur_edit/show_edit_entrepreneur");
      //$this->show_edit_entrepreneur();
  }
 
