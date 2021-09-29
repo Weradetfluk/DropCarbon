@@ -25,12 +25,15 @@
         line-height: 1.42857;
         color: #aaa;
         font-weight: 400;
+        padding-left: 15px;
+    }
+
+    .label {
+        padding-left: unset;
     }
 
     .form-control {
         border: 0px;
-        border-bottom: 1px solid;
-        border-bottom-color: #ced2d7;
         border-radius: 0px;
     }
 
@@ -105,8 +108,8 @@
         height: 40px;
         width: 100%;
         position: absolute;
-        bottom: 0;
-        left: 50%;
+        bottom: -4%;
+        left: 45%;
         transform: translate(-50%);
         text-align: center;
         background: rgba(0, 0, 0, 0.7);
@@ -115,18 +118,7 @@
         font-size: 15px;
         font-family: sans-serif;
         cursor: pointer;
-    }
-
-    .selected {
-        border: 0px;
-        border-bottom: 1px solid;
-        border-bottom-color: #ced2d7;
-        display: block;
-        width: 100%;
-        padding: .375rem .375rem;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
+        padding-top: 10px;
     }
 
     .bg {
@@ -148,10 +140,10 @@
 </style>
 <title>ลงทะเบียนสำหรับนักท่องเที่ยว</title>
 <!-- Form Register -->
-<div class="bg">
+<div class="bg" style="padding-top: 3%; padding-bottom: 3%;">
     <div class="container py-5" style="background-color: white; border-radius: 25px;  padding-right: 1.5%; padding-left: 1.5%;">
         <ul class="breadcrumb">
-            <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
             <li><a href="<?php echo base_url() . 'Landing_page/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
             <li>สมัครสมาชิกสำหรับนักท่องเที่ยว</li>
         </ul>
@@ -164,15 +156,16 @@
                     <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                 <?php } ?>
                 <input type="file" id="file" name="tourist_img" accept="image/*">
-                <label for="file" id="uploadBtn">Choose Photo</label>
+                <label for="file" id="uploadBtn">เลือกรูปภาพ</label>
             </div><br>
             <!-- profile pictuce -->
 
-            <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b>
+            <b style="font-size: 30px; text-align: center; padding-bottom: 5%; ">โปรดกรอกข้อมูลของคุณ</b>
+            <br><br>
             <div class="row">
-                <div class="form-group col-md-2 mb-3">
-                    <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
-                    <select class="selected" name="tus_pre_id" id="prefix" required>
+                <div class="form-group col-md-2 mb-3" style="margin-top: -10px;">
+                    <label for="prefix" class="label">คำนำหน้า</label><br>
+                    <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
                             <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
@@ -213,6 +206,7 @@
             <br>
 
             <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b>
+            <br><br>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="username">ชื่อผู้ใช้</label>
