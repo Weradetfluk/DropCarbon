@@ -25,7 +25,7 @@ class Event_add extends DCS_controller
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_category'] = $this->mcat->get_all()->result();
-        $data['arr_company']=$this->mcom->get_by_ent_id()->result();
+        $data['arr_company']=$this->mcom->get_by_ent_id_approve()->result();
         $view = 'entrepreneur/manage_event/v_add_event';
         $this->output_entrepreneur($view, $data);
     }
