@@ -4,6 +4,10 @@
         background-color: #162e44;
         color: #fff;
         padding-top: 50px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
     }
 
     .background-footer {
@@ -66,7 +70,7 @@
                 <h4>Drop Carbon System</h4>
             </div>
             <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
-                <h4>Quick links</h4>
+                <h4>ทางลัด</h4>
                 <ul>
                     <li class="li"><a class="color-white" href="#">เข้าสู่ระบบ</a></li>
                     <li class="li"><a class="color-white" href="#">สถานที่ท่องเที่ยว</a></li>

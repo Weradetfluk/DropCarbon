@@ -35,6 +35,7 @@
             font-weight: 600px;
             font-family: 'Prompt', sans-serif !important;
             background-color: #fff;
+            margin-top: 3% !important;
         }
     </style>
 </head>
