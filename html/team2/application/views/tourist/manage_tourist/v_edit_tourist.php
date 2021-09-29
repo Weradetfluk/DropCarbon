@@ -10,8 +10,28 @@
         box-sizing: border-box;
     }
 
+    label {
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #aaa;
+        font-weight: 400;
+        padding-left: 15px;
+    }
+
+    .label {
+        padding-left: unset;
+        padding-top: 16%;
+    }
+
+    .form-control {
+        border: 0px;
+        border-radius: 0px;
+    }
+
     input {
-        border: 0px !important;
+        border: 0px;
+        border-bottom: 1px solid;
+        border-bottom-color: #ced2d7;
     }
 
     input:hover #next_btn {
@@ -79,8 +99,8 @@
         height: 40px;
         width: 100%;
         position: absolute;
-        bottom: 0;
-        left: 50%;
+        bottom: -4%;
+        left: 45%;
         transform: translate(-50%);
         text-align: center;
         background: rgba(0, 0, 0, 0.7);
@@ -89,18 +109,7 @@
         font-size: 15px;
         font-family: sans-serif;
         cursor: pointer;
-    }
-
-    .selected {
-        border: 0px;
-        border-bottom: 1px solid;
-        border-bottom-color: #ced2d7;
-        display: block;
-        width: 100%;
-        padding: .375rem .375rem;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
+        padding-top: 10px;
     }
 
     .bg {
@@ -115,13 +124,17 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .breadcrumb {
+        background-color: #e9ecef;
+    }
 </style>
 
 <title>แก้ไขข้อมูลส่วนตัว</title>
 <!-- title -->
 
-<div class="bg">
-    <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;">
+<div class="bg" style="padding-top: 3%; padding-bottom: 3%;">
+    <div class="container py-5" style="background-color: white; border-radius: 25px; padding-right: 1.5%; padding-left: 1.5%;  padding-bottom: 4% !important">
         <ul class="breadcrumb">
             <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
             <li>แก้ไขข้อมูลส่วนตัว</li>
@@ -139,23 +152,22 @@
                     <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                 <?php } ?>
                 <input type="file" id="file" name="tourist_img" accept="image/*">
-                <label for="file" id="uploadBtn">Choose Photo</label>
+                <label for="file" id="uploadBtn">เลือกรูปภาพ</label>
             </div><br>
             <!-- profile pictuce -->
 
             <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
 
-            <b style="font-size: 30px; text-align: center;">ข้อมูลของคุณ</b>
+            <b style="font-size: 30px; text-align: center; padding-bottom: 5%; ">โปรดกรอกข้อมูลของคุณ</b>
+            <br><br>
             <div class="row">
-                <div class="form-group col-md-2 mb-3">
-                    <label for="prefix" style="margin-bottom: 4px;">คำนำหน้า</label><br>
-                    <select class="selected" name="tus_pre_id" id="prefix" required>
+                <div class="form-group col-md-2 mb-3" style="margin-top: -30px;">
+                    <label for="prefix" class="label">คำนำหน้า</label><br>
+                    <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
-                            <?php if ($arr_tus[0]->tus_pre_id - 1 == $i) { ?>
-                                <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name; ?></option>
-                            <?php } else { ?>
-                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name; ?></option>
-                            <?php } ?>
+
+                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+
                         <?php } ?>
                     </select>
                 </div>
@@ -191,12 +203,10 @@
             </div>
             <!-- อีเมล -->
 
-            <a id="next_btn" class="btn btn-secondary" style="color: white; background-color: #777777;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
+            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
             <!-- ปุ่มยกเลิก -->
-            <button type="submit" id="verify" class="btn btn-success" style="color: white; margin-right: 1%; float:right; font-size: 18px;">บันทึก</button>
+            <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
             <!-- ปุ่มบันทึก -->
-
-
         </form>
         <!-- form -->
     </div>
