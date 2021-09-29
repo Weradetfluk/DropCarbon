@@ -88,11 +88,11 @@
                     success: function(json_data_com) {
 
 
-                        $("#consider_com").text(json_data_com[0].consider);
+                        $("#consider_com").html(json_data_com[0].consider + " <span style='font-size: 16px;'>สถานที่</span>");
 
-                        $("#approve_com").text(json_data_com[0].approve);
+                        $("#approve_com").html(json_data_com[0].approve + " <span style='font-size: 16px;'>สถานที่</span>");
 
-                        $("#reject_com").text(json_data_com[0].reject);
+                        $("#reject_com").html(json_data_com[0].reject + " <span style='font-size: 16px;'>สถานที่</span>");
 
                     },
                     error: function() {
