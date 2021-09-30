@@ -125,7 +125,7 @@
 <section class="bg-white">
     <div class="container">
         <div class="header-break">
-            About
+            จุดเด่น
         </div>
         <div class="row" style="margin:1.5% 0">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -172,127 +172,63 @@
 <section class="bg-gray">
     <div class="container">
         <div class="header-break">
-            Promotion
+            โปรโมชัน
         </div>
-        <div class="row" style="margin:1.5% 0">
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h3>เก็บขยะริมหาด</h3>
+                        </a>
+                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h3>ปลูกป่าชายเลน</h3>
+                        </a>
+                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
+            <div class="col-md-3 ">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h3>วิ่งชมธรรมชาติ</h3>
+                        </a>
+                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
+            <div class="col-md-3 ">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h3>วิ่งชมธรรมชาติ</h3>
+                        </a>
+                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin:1.5% 0">
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="image">
-                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
-                    <div class="image__overlay image__overlay--primary">
-                        <div class="image__title">Bricks</div>
-                        <p class="image__description">
-                            Here we have a brick wall.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin:1.5% 0">
-            <div class="col" style="text-align: end;">
-                <a href="#">ดูเพิ่มเติม</a>
-            </div>
-        </div>
+        <a class="float-right" href="#">ดูทั้งหมด</a>
     </div>
 </section>
 
