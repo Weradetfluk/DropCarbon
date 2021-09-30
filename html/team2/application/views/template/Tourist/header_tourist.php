@@ -11,11 +11,10 @@
     <!-- icon -->
     <link rel="icon" href="<?php echo base_url() . 'assets/templete/picture/./title.png' ?>" style="width: 100%;" type="image/png">
 
-
     <!-- template css -->
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/material-dashboard.min.css?v=2.1.2" as="style" type="text/css">
     <!-- custom css -->
-    <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/custom.css" as="style" type="text/css">
+    <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/custom-tourist.css" as="style" type="text/css">
     <!-- fonts css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
 
@@ -24,16 +23,9 @@
     <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/slick/slick.css' ?>">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
-
-    <style>
-        body {
-            font-size: 18px;
-            font-family: 'Prompt', sans-serif !important;
-            background-color: #fff;
-            margin-top: 3% !important;
-        }
-    </style>
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
+    
+    <title>Drop Carbon</title>
 </head>
 
-<body>
+<body class="body">

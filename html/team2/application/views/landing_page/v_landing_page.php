@@ -1,5 +1,300 @@
+<!-- carousel slide banner-->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
 
-<title>Drop Carbon</title>
+<section class="bg-white">
+    <div class="container">
+        <div class="header-break">
+            กิจกรรมยอดนิยม
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h2>เก็บขยะริมหาด</h2>
+                        </a>
+                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h2>ปลูกป่าชายเลน</h2>
+                        </a>
+                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="card">
+                    <a href="#">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="#">
+                            <h2>วิ่งชมธรรมชาติ</h2>
+                        </a>
+                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="align-center"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+    </div>
+</section>
+
+<section class="bg-gray">
+    <div class="container">
+        <div class="header-break">
+            สถานที่ยอดนิยม
+        </div>
+        <div class="row">
+            <div class="col-xl-7 col-lg-6">
+                <div class="card">
+                    <a href="">
+                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="" class="h2">บางแสน</a>
+                        <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-mg-4 mg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <a href="#">
+                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#" class="h2">เขาชีจรรย์</a>
+                                <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียน...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <a href="#">
+                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#" class="h2">บางละมง</a>
+                                <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความ...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -32.5px;">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <a href="#">
+                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#" class="h2">เกาะล้าน</a>
+                                <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <a href="#">
+                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#" class="h2">พัทยา</a>
+                                <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
+    </div>
+</section>
+<section class="bg-white">
+    <div class="container">
+        <div class="header-break">
+            About
+        </div>
+        <div class="row" style="margin:1.5% 0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <div class="row" style="margin:1.5% 0">
+            <div class="row row-50 justify-content-center">
+                <div class="col-sm-6 col-md-5 col-lg-3">
+                    <div class="counter-classic">
+                        <div class="counter-classic-number"><span class="counter">12</span>
+                        </div>
+                        <div class="counter-classic-title">Members</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-3">
+                    <div class="counter-classic">
+                        <div class="counter-classic-number"><span class="counter">194</span>
+                        </div>
+                        <div class="counter-classic-title">Partners</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-3">
+                    <div class="counter-classic">
+                        <div class="counter-classic-number"><span class="counter">2</span><span class="symbol">k</span>
+                        </div>
+                        <div class="counter-classic-title">Travelers</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-3">
+                    <div class="counter-classic">
+                        <div class="counter-classic-number"><span class="counter">25</span>
+                        </div>
+                        <div class="counter-classic-title">Team members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-gray">
+    <div class="container">
+        <div class="header-break">
+            Promotion
+        </div>
+        <div class="row" style="margin:1.5% 0">
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:1.5% 0">
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="image">
+                    <img class="image__img" src="https://cms.dmpcdn.com/travel/2021/06/10/b0f5c650-c9db-11eb-a03f-9958b85c7222_original.jpg" alt="Bricks">
+                    <div class="image__overlay image__overlay--primary">
+                        <div class="image__title">Bricks</div>
+                        <p class="image__description">
+                            Here we have a brick wall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:1.5% 0">
+            <div class="col" style="text-align: end;">
+                <a href="#">ดูเพิ่มเติม</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script>
     $(document).ready(function() {

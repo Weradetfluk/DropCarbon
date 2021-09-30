@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav nav-moblie-menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_login' ?>"><i class="material-icons">person</i> เข้าสู่ระบบ</a>
+                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_login' ?>"><h4><i class="material-icons">person</i> เข้าสู่ระบบ</h4></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_register' ?>"><i class="material-icons">person_add_alt_1</i> สมัครสมาชิก</a>
+                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_register' ?>"><h4><i class="material-icons">person_add_alt_1</i> สมัครสมาชิก</h4></a>
                 </li>
             </ul>
         </div>
