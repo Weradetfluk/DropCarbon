@@ -26,20 +26,20 @@
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 1) echo "active"; ?>"
-                                href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)">ทั้งหมด</a>
+                                href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)"><h5 class="h5-card-header">ทั้งหมด</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 2) echo "active"; ?>"
-                                href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)">รออนุมัติ</a>
+                                href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)"><h5 class="h5-card-header">รออนุมัติ</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 3) echo "active"; ?>"
                                 href="#tab_approved" data-toggle="tab"
-                                onclick="change_tab_number_ajax(3)">อนุมัติเเล้ว</a>
+                                onclick="change_tab_number_ajax(3)"><h5 class="h5-card-header">อนุมัติเเล้ว</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 4) echo "active"; ?>"
-                                href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(4)">ถูกปฏิเสธ</a>
+                                href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(4)"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
                         </li>
                     </ul>
                 </div>

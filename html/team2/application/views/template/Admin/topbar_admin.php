@@ -63,50 +63,50 @@ if (!isset($_SESSION['tab_number'])) {
       <li class="nav-item <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">dashboard</i>
-            <p>dashboard</p>
+            <h5 class="h5-topbar">dashboard</h5>
           </a>
         </li>
         <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">view_list</i>
-            <p>จัดการแบนเนอร์</p>
+            <h5 class="h5-topbar">จัดการแบนเนอร์</h5>
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="home">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
             <i class="material-icons">store</i>
-            <p>จัดการสถานที่</p>
+            <h5 class="h5-topbar">จัดการสถานที่</h5>
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
             <i class="material-icons">calendar_today</i>
-            <p>จัดการกิจกรรม</p>
+            <h5 class="h5-topbar">จัดการกิจกรรม</h5>
           </a>
         </li>
         <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" id="ent_menu">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur' ?>">
             <i class="material-icons">assignment_ind</i>
-            <p>จัดการผู้ประกอบการ</p>
+            <h5 class="h5-topbar">จัดการผู้ประกอบการ</h5>
           </a>
         </li>
 
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active"; ?>" id="tus_menu">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">perm_identity</i>
-            <p>จัดการนักท่องเที่ยว</p>
+            <h5 class="h5-topbar">จัดการนักท่องเที่ยว</h5>
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active"; ?>">
           <a class="nav-link" href="#">
             <i class="material-icons">point_of_sale</i>
-            <p>จัดการโปรโมชัน</p>
+            <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">
             <i class="material-icons">logout</i>
-            <p>ออกจากระบบ</p>
+            <h5 class="h5-topbar">ออกจากระบบ</h5>
           </a>
         </li>
       </ul>

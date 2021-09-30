@@ -97,7 +97,7 @@
                             </div><br><br>
 
                             <div class="container-fluid">
-                                <p style="font-size: 26px;">เลือกสถานที่ตั้ง</p>
+                                <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  เลือกสถานที่ตั้ง</h3>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">

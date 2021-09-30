@@ -47,31 +47,31 @@
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "active"; ?>">
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
               <i class="material-icons">store</i>
-              <p>จัดการสถานที่</p>
+              <h5 class="h5-topbar">จัดการสถานที่</h5>
             </a>
           </li>
           <li class="nav-item <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "active"; ?>">
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_event/Event_list/show_list_event';?>">
               <i class="material-icons">calendar_today</i>
-              <p>จัดการกิจกรรม</p>
+              <h5 class="h5-topbar">จัดการกิจกรรม</h5>
             </a>
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 3) echo "active"; ?>">
             <a class="nav-link" href="#">
               <i class="material-icons">point_of_sale</i>
-              <p>จัดการโปรโมชัน</p>
+              <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
             </a>
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 4) echo "active"; ?>" >
             <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">
               <i class="material-icons">manage_accounts</i>
-              <p>แก้ไขข้อมูลส่วนตัว</p>
+              <h5 class="h5-topbar">แก้ไขข้อมูลส่วนตัว</h5>
             </a>
           </li>     
           <li class="nav-item ">
             <a class="nav-link" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">
               <i class="material-icons">logout</i>
-              <p>ออกจากระบบ</p>
+              <h5 class="h5-topbar">ออกจากระบบ</h5>
             </a>
           </li>   
         </ul>

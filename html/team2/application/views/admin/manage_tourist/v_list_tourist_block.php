@@ -23,10 +23,10 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">บัญชีนักท่องเที่ยว</a>
+                                 <a class="nav-link" href=" <?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> "><h5 class="h5-card-header">บัญชีนักท่องเที่ยว</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link active" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  ">บัญชีที่ถูกบล็อค</a>
+                                 <a class="nav-link active" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  "><h5 class="h5-card-header">บัญชีที่ถูกบล็อค</h5></a>
                              </li>
                          </ul>
                      </div>
