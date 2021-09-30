@@ -118,7 +118,7 @@ body {
     margin: 0;
     font-family: 'Prompt', sans-serif;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
     color: #212529;
     text-align: left;
@@ -8341,7 +8341,7 @@ a.text-dark:hover {
     padding: 12px 30px;
     margin: .3125rem 1px;
     font-size: .75rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.428571;
     text-decoration: none;
     text-transform: uppercase;
@@ -12882,7 +12882,7 @@ h4,
 h5,
 h6 {
     font-family: 'Prompt', sans-serif;
-    font-weight: 300;
+    font-weight: 600;
     line-height: 1.5em
 }
 
@@ -12913,7 +12913,7 @@ h4 {
 .h4,
 h4 {
     font-size: 1.125rem;
-    font-weight: 300
+    font-weight: 600
 }
 
 .h5,
@@ -12927,7 +12927,7 @@ h5 {
 h6 {
     font-size: .75rem;
     text-transform: uppercase;
-    font-weight: 500
+    font-weight: 600
 }
 
 .card-title,
@@ -12949,7 +12949,7 @@ h6 {
 }
 
 .card-blog .card-title {
-    font-weight: 700
+    font-weight: 600
 }
 
 h2.title {
@@ -15147,7 +15147,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .table>thead>tr>th {
     border-bottom-width: 1px;
     font-size: 1.0625rem;
-    font-weight: 300
+    font-weight: 500
 }
 
 .table .form-check {
@@ -15312,12 +15312,6 @@ thead.thead-inverse th {
 .dataTable>thead>tr>td,
 .dataTable>thead>tr>th {
     padding: 5px!important
-}
-
-body {
-    background-color: #eee;
-    color: #3c4858;
-    font-weight: 300
 }
 
 legend {

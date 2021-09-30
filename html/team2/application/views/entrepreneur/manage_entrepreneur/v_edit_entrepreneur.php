@@ -109,7 +109,7 @@
                                                 placeholder="000-000-0000" name='ent_tel' onblur="check_tel()"
                                                 value="<?php echo $arr_ent[0]->ent_tel; ?>"
                                                 pattern="[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}" required>
-                                            <p id="error"></p>
+                                            <p id="error" style="color: red;"></p>
                                         </div>
 
                                         <!-- กรอกวันเกิด -->

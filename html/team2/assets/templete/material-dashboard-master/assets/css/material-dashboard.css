@@ -776,7 +776,7 @@ h6,
 .h6 {
     margin-bottom: 0.5rem;
     font-family: inherit;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.2;
     color: inherit;
 }
@@ -13676,7 +13676,7 @@ h6,
 .h3,
 .h4 {
     font-family: 'Prompt', sans-serif;
-    font-weight: 300;
+    font-weight: 600;
     line-height: 1.5em;
 }
 
@@ -13702,7 +13702,7 @@ h4,
 .h4 {
     font-size: 1.125rem;
     line-height: 1.4em;
-    font-weight: 300;
+    font-weight: 600;
 }
 
 h5,
