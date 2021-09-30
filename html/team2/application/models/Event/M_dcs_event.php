@@ -173,9 +173,9 @@ class M_dcs_event extends Da_dcs_event
     */
     function get_data_card_event()
     {
-        $sql = "SELECT sum(case when eve_status = 1 then 1 else 0 end ) as eve_consider, 
-        sum(case when eve_status = 2 then 1 else 0 end) as eve_approve , 
-        sum(case when eve_status = 3 then 1 else 0 end ) as eve_reject 
+        $sql = "SELECT count(case when eve_status = 1 then 1 end ) as eve_consider, 
+        count(case when eve_status = 2 then 1  end) as eve_approve , 
+        count(case when eve_status = 3 then 1  end ) as eve_reject 
         
         FROM dcs_event;";
 
