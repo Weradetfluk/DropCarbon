@@ -26,12 +26,9 @@
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/slick/slick.css' ?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <style>
         body {
             font-size: 18px;
-            font-weight: 600px;
             font-family: 'Prompt', sans-serif !important;
             background-color: #fff;
             margin-top: 3% !important;
