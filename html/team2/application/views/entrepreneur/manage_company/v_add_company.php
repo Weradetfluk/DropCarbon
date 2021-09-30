@@ -57,7 +57,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
-                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="10" required>
+                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="12" required>
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-6">

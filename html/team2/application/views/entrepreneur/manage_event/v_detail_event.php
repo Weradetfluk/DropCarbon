@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="container">
-                            <h3><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียดกิจกรรม</h3>
+                            <h3 style="font-family: 'Prompt', sans-serif;"><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียดกิจกรรม</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->eve_description;?></p>
                         </div>

@@ -251,7 +251,7 @@
                 </div>
                 <div style="text-align: right;">
                     <button type="button" value="submit" id="btn_sub" class="btn btn-success" style="color: white; font-size: 18px;" onclick="confirm_register()">บันทึก</button>
-                    <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                    <a class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px !important;" onclick="unlink_image_go_back()">ยกเลิก</a>
                 </div>
 
                 <!-- modal comfirm register -->

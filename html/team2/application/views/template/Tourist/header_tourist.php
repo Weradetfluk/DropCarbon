@@ -22,7 +22,9 @@
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/custom-admin.css" as="style" type="text/css">
     <!-- fonts css -->
     <!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" type="text/css"> -->
-    <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" as="style" type="text/css">
+    <!-- <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/fonts.css" as="style" type="text/css"> -->
+    <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
+
     <!-- sweet alert plugin -->
     <!-- <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" type="text/css"> -->
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" as="style" type="text/css">
