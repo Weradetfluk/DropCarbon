@@ -13810,7 +13810,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     padding-right: 10px;
     text-transform: capitalize;
     font-size: 13px;
-    padding: 10px 15px
+    padding: 10px 15px 1px 20px
 }
 
 .sidebar .sidebar-background {
