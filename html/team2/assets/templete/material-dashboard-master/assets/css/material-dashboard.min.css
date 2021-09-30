@@ -12522,7 +12522,7 @@ fieldset[disabled] .form-group .form-control {
 
 .navbar .collapse .navbar-nav .nav-item .nav-link {
     position: relative;
-    padding: 10px 15px;
+    padding: 10px 15px 1px 20px;
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
