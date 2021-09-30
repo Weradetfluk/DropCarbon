@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูทั้งหมด</a>
+        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูเพิ่มเติม</a>
     </div>
 </section>
 <section class="bg-white">
@@ -228,7 +228,7 @@
                 </div>
             </div>
         </div>
-        <a class="float-right" href="#">ดูทั้งหมด</a>
+        <a class="float-right" href="#">ดูเพิ่มเติม</a>
     </div>
 </section>
 
