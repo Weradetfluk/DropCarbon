@@ -3,12 +3,6 @@
 $warning = $warning ?? '';
 ?>
 
-<style>
-    input {
-        border: 0px !important;
-    }
-</style>
-
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">
