@@ -35,6 +35,7 @@ class Admin_approval_event extends DCS_controller
     $previous_link = ''; // ตัวแปร
     $next_link = ''; //ตัวแปร
     $page_link = ''; // ตัวแปร
+
     for ($count = 1; $count <= $total_links; $count++) {
       $page_array[] = $count;
     }
@@ -103,9 +104,9 @@ class Admin_approval_event extends DCS_controller
         * @Create Date 2564-07-17
         * @Update Date -
         */
-  public function show_data_approve()
+  public function show_data_approve_no_score()
   {
-    $this->output_admin('admin/manage_event/v_list_event_approve', null, 'admin/manage_event/v_data_card_event');
+    $this->output_admin('admin/manage_event/v_list_event_no_score', null, 'admin/manage_event/v_data_card_event');
   }
   /*
         * show_data_reject
@@ -129,10 +130,24 @@ class Admin_approval_event extends DCS_controller
         * @Create Date 2564-08-1
         * @Update Date -
         */
-  public function show_data_block()
+  public function show_data_event_not_over()
   {
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_block', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
+    $this->output_admin('admin/manage_event/v_list_event_not_over', null, 'admin/manage_event/v_data_card_event');
   }
+  /*
+        * show_data_block
+        * get all data entrepreneur approve  and show table
+        * @input
+        * @output -
+        * @author Weradet Nopsombun 62160110
+        * @Create Date 2564-08-1
+        * @Update Date -
+        */
+  public function show_data_event_over()
+  {
+    $this->output_admin('admin/manage_event/v_list_event_over', null, 'admin/manage_event/v_data_card_event');
+  }
+
   /*
         * get_entrepreneur_by_id_ajax
         * get all data entrepreneur by id
@@ -236,16 +251,16 @@ class Admin_approval_event extends DCS_controller
     * @Create Date 2564-07-17
     * @Update Date -
     */
-    public function add_point_event()
-    {
-        $this->mdce->eve_id = $this->input->post('eve_id');
-      
-        $eve_point = $this->input->post('eve_point');
-        $this->mdce->eve_point =  $eve_point;
-      
-        $this->mdce->insert_point();
-         redirect('Admin/Manage_event/Admin_approval_event/show_data_approve');
-    }
+  public function add_point_event()
+  {
+    $this->mdce->eve_id = $this->input->post('eve_id');
+
+    $eve_point = $this->input->post('eve_point');
+    $this->mdce->eve_point =  $eve_point;
+
+    $this->mdce->insert_point();
+    redirect('Admin/Manage_event/Admin_approval_event/show_data_approve_no_score');
+  }
   /*
          * show_data_consider_ajax
          * get all data entrepreneur not approve and show table
@@ -267,7 +282,6 @@ class Admin_approval_event extends DCS_controller
                   <tr class="custom-tr-header-table">
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อกิจกรรม</th>
-                      <th class="th-custom ">รายละเอียด</th>
                       <th class="th-custom ">ชื่อสถานที่</th>
                       <th class="th-custom ">ชื่อผู้ประกอบการ</th>
                       <th class="th-custom ">ดำเนินการ</th>
@@ -291,9 +305,6 @@ class Admin_approval_event extends DCS_controller
             '<td class="res-hide">' . $i . '</td>' .
             '<td>'
             . $row->eve_name .
-            '</td>' .
-            '<td>'
-            .    iconv_substr($row->eve_description, 0, 60, "UTF-8") . "..." .
             '</td>' .
             '<td>'
             . $row->com_name .
@@ -330,7 +341,7 @@ class Admin_approval_event extends DCS_controller
                             <i class="material-icons">
                               add
                             </i>
-                        </button>' ;
+                        </button>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -377,9 +388,6 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td>'
-            .   iconv_substr($row->eve_description, 0, 60, "UTF-8") . "..." .
-            '</td>' .
-            '<td>'
             . $row->com_name .
             '</td>' .
             '<td class="res-hide">' .
@@ -415,7 +423,7 @@ class Admin_approval_event extends DCS_controller
                     <i class="material-icons">
                       add
                     </i>
-                </button>' ;
+                </button>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -449,7 +457,7 @@ class Admin_approval_event extends DCS_controller
     echo  $output; // to view
   }
   /*
-    * show_detail_company
+    * show_detail_event
     * show detail
     * @input 
     * @output -
@@ -457,12 +465,135 @@ class Admin_approval_event extends DCS_controller
     * @Create Date 2021-08-20
     * @Update Date -
     */
-    public function show_detail_event($eve_id)
-    {
-  
-      $this->load->model('Event/M_dcs_event', 'meve');
-        $this->meve->eve_id = $eve_id;
-        $data["arr_event"] = $this->meve->get_by_detail()->result();
-      $this->output_admin('admin/manage_event/v_detail_event_admin', $data , null);
+  public function show_detail_event($eve_id)
+  {
+
+    $this->load->model('Event/M_dcs_event', 'meve');
+    $this->meve->eve_id = $eve_id;
+    $data["arr_event"] = $this->meve->get_by_detail()->result();
+    $this->output_admin('admin/manage_event/v_detail_event_admin', $data, null);
+  }
+
+
+
+  /*
+    * get_event_data_no_score_ajax
+    * show detail
+    * @input number_status
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+  public function get_event_data_no_score_ajax($number_status)
+  {
+    $value_search = $this->input->post('query');
+    //กรณีไม่ได้ค้นหา
+    //define pagation
+    if ($value_search != '') {
+      $data['arr_event'] = $this->mdce->get_search_no_score($value_search, $number_status)->result();
+      echo json_encode($data);
+    } else {
+      $limit = '6';
+      $page = 1; // หน้า
+      $post_page = $this->input->post("page");
+      if ($post_page > 1) {
+        $start = (($post_page - 1) * $limit);
+        $page = $post_page;
+      } else {
+        $start = 0;
+      }
+      $all_count = $this->mdce->get_count_all_no_score($number_status);                               //get all count consider
+      $data['arr_event'] = $this->mdce->get_all_data_nosocre($limit, $start, $number_status); // query แบบแบ่งหน้า
+      $i = 1;
+
+      if ($data['arr_event']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
+      }
+      echo json_encode($data);
     }
+  }
+
+
+  /*
+    * get_evenr_data_no_score_ajax
+    * show detail
+    * @input number_status
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+  public function get_event_data_not_over_ajax($number_status)
+  {
+    $value_search = $this->input->post('query');
+    //กรณีค้นหา
+    if ($value_search != '') {
+
+      $data['arr_event'] = $this->mdce->get_search_not_over($value_search, $number_status)->result();
+      echo json_encode($data);
+    } else {
+      //ไม่ได้ค้นหา
+      $limit = '6';
+      $page = 1; // หน้า
+      $post_page = $this->input->post("page");
+
+      // page 
+      if ($post_page > 1) {
+        $start = (($post_page - 1) * $limit);
+        $page = $post_page;
+      } else {
+        $start = 0;
+      }
+      $all_count = $this->mdce->get_count_all_not_over($number_status);                               //get all count consider
+      $data['arr_event'] = $this->mdce->get_all_data_not_over($limit, $start, $number_status); // query แบบแบ่งหน้า
+      $i = 1;
+
+      if ($data['arr_event']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
+      }
+      echo json_encode($data);
+    }
+  }
+
+  /*
+    * get_evenr_data_no_score_ajax
+    * show detail
+    * @input number_status
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+  public function get_event_data_over_ajax($number_status)
+  {
+    $value_search = $this->input->post('query');
+    //กรณีค้นหา
+    if ($value_search != '') {
+
+      $data['arr_event'] = $this->mdce->get_search_over($value_search, $number_status)->result();
+      echo json_encode($data);
+    } else {
+      //ไม่ได้ค้นหา
+      $limit = '6';
+      $page = 1; // หน้า
+      $post_page = $this->input->post("page");
+
+      // page 
+      if ($post_page > 1) {
+        $start = (($post_page - 1) * $limit);
+        $page = $post_page;
+      } else {
+        $start = 0;
+      }
+      $all_count = $this->mdce->get_count_all_over($number_status);                               //get all count consider
+      $data['arr_event'] = $this->mdce->get_all_data_over($limit, $start, $number_status); // query แบบแบ่งหน้า
+      $i = 1;
+
+      if ($data['arr_event']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
+      }
+      echo json_encode($data);
+    }
+  }
 }

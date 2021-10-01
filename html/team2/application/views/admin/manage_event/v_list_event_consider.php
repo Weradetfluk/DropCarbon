@@ -17,7 +17,7 @@
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
          <div class="row">
-             <div class="col-sm-6">
+             <div class="col-sm-8">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
@@ -25,7 +25,13 @@
                                  <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?> "><h5 class="h5-card-header">รออนุมัติ</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_approve' ?> "><h5 class="h5-card-header">อนุมัติแล้ว</h5></a>
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_approve_no_score' ?> "><h5 class="h5-card-header">รอกำหนดคะแนน</h5></a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_not_over'; ?>"><h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5></a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_over'; ?>"><h5 class="h5-card-header">สิ้นสุดกิจกรรม</h5></a>
                              </li>
                              <li class="nav-item">
                                  <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_reject'; ?>"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
@@ -35,11 +41,7 @@
                  </div>
              </div>
 
-             <!-- <div class="col">
-                 <h4 class="text-white custom-h4-card-table text-center">ข้อมูลผู้ประกอบการที่ยังไม่ได้รับอนุมัติ</h4>
-                 </div>
-                 -->
-             <div class="col">
+             <div class="col-sm-4">
                  <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider'; ?>" method="POST">
                      <div class="input-group ">
                          <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
@@ -69,69 +71,6 @@
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
                  <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-             </div>
-         </div>
-     </div>
- </div>
-
- <div class="modal fade" role="dialog" id="data_modal">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">รายละเอียด</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true" style="font-size: 35px;">&times;</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <form>
-                     <div class="form-group">
-                         <div class="row">
-                             <div class="col-md-6">
-                                 <label> ชื่อ-นามสกุล</label>
-                                 <input type="text" id="ent_name" class="form-control" disabled>
-                                 <input type="hidden" id="ent_id" class="form-control" disabled>
-                             </div>
-                             <div class="col-md-6">
-                                 <label>เบอร์โทร</label>
-                                 <input type="text" id="ent_tel" class="form-control" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label for="">รหัสประจำตัวประชาชน</label>
-                                 <input type="text" id="ent_id_card" class="form-control" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label>อีเมล</label>
-                                 <input type="text" class="form-control" id="ent_email" disabled>
-                             </div>
-                             <div class="col">
-                                 <label>วันเกิด</label>
-                                 <input type="text" class="form-control" id="ent_birthdate" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label>วันที่่สมัคร</label>
-                                 <input type="text" class="form-control" id="ent_regis_date" disabled>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="row">
-                         <div class="col">
-                             <label>เอกสารที่เกี่ยวข้อง</label>
-                             <div id="file_dowload">
-                             </div>
-                         </div>
-                     </div>
-                 </form>
-             </div>
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-success" onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
-                 <button type="button" class="btn btn-danger" onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
              </div>
          </div>
      </div>
@@ -282,55 +221,7 @@
              }
          });
      }
-     /*
-      * confirm_reject
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to reject  modal 
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update -
-      */
-     function confirm_reject_view_data_madal() {
-         let ent_id = $('#ent_id').val();
-         let ent_name = $('#ent_name').val();
-         let ent_email = $('#ent_email').val();
-         let form = document.querySelector('#reject_form');
-
-         $('#ent_reject_name_confirm').text(ent_name);
-         $('#rejected_ent').modal();
-         $('#email').val(ent_email);
-         $('#ent_id_form').val(ent_id);
-         console.log(ent_id);
-         let admin_reson = document.querySelectorAll('#admin_reason');
-         let err_message = document.querySelector('#err_message');
-
-         console.log(admin_reson);
-         $('#rejected').click(function() {
-             let tooshort = false;
-             admin_reson.forEach((reson) => {
-                 if (reson.value.length < 6) {
-                     tooshort = true;
-                 }
-             });
-             if (tooshort) {
-                 event.preventDefault();
-                 err_message.style.display = 'block';
-             } else {
-                 $('#rejected_ent').modal('toggle');
-                 err_message.style.display = 'none';
-                 swal({
-                     title: "ปฏิเสธสำเร็จ",
-                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
-                     type: "success",
-                     showConfirmButton: false,
-                     timer: 3000,
-                 }, function() {
-                     location.reload();
-                 });
-             }
-         });
-     }
+  
      /*
       * approve_event
       * change status to approve 

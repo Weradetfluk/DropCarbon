@@ -16,25 +16,40 @@
 
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
-         <div class="row">
-             <div class="col-sm-6">
+     <div class="row">
+             <div class="col-sm-8">
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
-                            <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?> "><h5 class="h5-card-header">รออนุมัติ</h5></a>
+                             <li class="nav-item">
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?> ">
+                                     <h5 class="h5-card-header">รออนุมัติ</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_approve' ?> "><h5 class="h5-card-header">อนุมัติแล้ว</h5></a>
+                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_approve_no_score' ?> ">
+                                     <h5 class="h5-card-header">รอกำหนดคะแนน</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_reject'; ?>"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_not_over'; ?>"><h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5></a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_over'; ?>">
+                                     <h5 class="h5-card-header">กิจกรรมที่สิ้นสุด</h5>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_reject'; ?>">
+                                     <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
+                                 </a>
                              </li>
                          </ul>
                      </div>
                  </div>
              </div>
-             <div class="col">
+
+             <div class="col-sm-4">
                  <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider'; ?>" method="POST">
                      <div class="input-group ">
                          <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
