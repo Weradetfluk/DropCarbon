@@ -246,6 +246,8 @@ CREATE TABLE `dcs_event` (
   `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
   `eve_start_date` DATE NOT NULL,
   `eve_end_date` DATE NULL,
+  `eve_lat` float(20) NOT NULL,
+  `eve_lon` float(20) NOT NULL,
   `eve_com_id` int(10),
   `eve_cat_id` int(10),
   FOREIGN KEY (eve_com_id) REFERENCES dcs_company(com_id),
