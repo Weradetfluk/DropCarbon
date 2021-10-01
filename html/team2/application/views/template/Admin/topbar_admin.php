@@ -98,7 +98,7 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active"; ?>">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> ">
             <i class="material-icons">point_of_sale</i>
             <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
           </a>
