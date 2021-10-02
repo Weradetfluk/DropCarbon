@@ -2,22 +2,22 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
-* Tourist_edit
+* Tourist_manage
 * Tourist edit controller system
 * @author Naaka punparich 62160082
 * @Create Date 2564-07-24
 */
-class Tourist_edit extends DCS_controller
+class Tourist_manage extends DCS_controller
 {
    /*
-    * show_edit_tourist
+    * show_information_tourist
     * show edit tourist page
     * @input $data , $tus_img_tus_id
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-   public function show_edit_tourist()
+   public function show_information_tourist()
    {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
       $this->mtou->tus_id = $this->session->userdata("tourist_id");
@@ -26,8 +26,28 @@ class Tourist_edit extends DCS_controller
       $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-      $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
+      $this->output_tourist('tourist/manage_tourist/v_information_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
+
+   /*
+    * show_edit_tourist
+    * show edit tourist page
+    * @input $data , $tus_img_tus_id
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-07-24
+   */
+  public function show_edit_tourist()
+  {
+     $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+     $this->mtou->tus_id = $this->session->userdata("tourist_id");
+     $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+     $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+     $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+     $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+     $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+     $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
+  }
 
    /*
     * update_tourist
