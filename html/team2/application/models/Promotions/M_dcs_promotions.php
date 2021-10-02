@@ -218,4 +218,20 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->query($sql);
         return $query;
     }
+
+    /*
+    *get_promotion_by_ent_id
+    *get data promotion by ent_id
+    *@input ent_id
+    *@output -
+    *@author Suwapat Saowarod 62160340
+    *@Create Date 2564-10-02
+    */
+    function get_promotion_by_ent_id($ent_id){
+        $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
+                LEFT JOIN dcs_company
+                ON dcs_promotions.pro_com_id = dcs_company.com_id
+                WHERE pro_status != 4 AND com_ent_id = $ent_id";
+        return $this->db->query($sql);
+    }
 }

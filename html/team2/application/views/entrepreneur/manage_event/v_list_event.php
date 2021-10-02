@@ -3,7 +3,7 @@
 * v_list_event
 * Display data event by entrepreneur
 * @input arr_event
-* @output form add company
+* @output data event
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-09-16
 */ 

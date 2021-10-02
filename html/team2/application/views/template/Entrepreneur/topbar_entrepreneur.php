@@ -57,7 +57,7 @@
             </a>
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 3) echo "active"; ?>">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion';?>">
               <i class="material-icons">point_of_sale</i>
               <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
             </a>
