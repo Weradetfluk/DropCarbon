@@ -64,7 +64,7 @@
                  <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติ <span id="eve_name_confirm"></span> ?</p>
+                 <p>คุณต้องการอนุมัติ <span id="pro_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -88,44 +88,34 @@
                      <div class="form-group">
                          <div class="row">
                              <div class="col-md-6">
-                                 <label> ชื่อ-นามสกุล</label>
-                                 <input type="text" id="ent_name" class="form-control" disabled>
-                                 <input type="hidden" id="ent_id" class="form-control" disabled>
+                                 <label> โปรโมชัน</label>
+                                 <input type="text" id="pro_name" class="form-control" disabled>
+                                 <input type="hidden" id="pro_id" class="form-control" disabled>
                              </div>
-                             <div class="col-md-6">
-                                 <label>เบอร์โทร</label>
-                                 <input type="text" id="ent_tel" class="form-control" disabled>
+                             </div>
+                             <div class="row">
+                             <div class="col">
+                                 <label>รายละเอียดโปรโมชัน</label>
+                                 <input type="text" id="pro_description" class="form-control" disabled>
                              </div>
                          </div>
                          <div class="row">
                              <div class="col">
-                                 <label for="">รหัสประจำตัวประชาชน</label>
-                                 <input type="text" id="ent_id_card" class="form-control" disabled>
+                                 <label>วันเริ่มต้นโปรโมชัน</label>
+                                 <input type="text" class="form-control" id="pro_start_date" disabled>
+                             </div>
+                             <div class="col">
+                                 <label>วันสิ้นสุดโปรโมชัน</label>
+                                 <input type="text" class="form-control" id="pro_end_date" disabled>
                              </div>
                          </div>
                          <div class="row">
                              <div class="col">
-                                 <label>อีเมล</label>
-                                 <input type="text" class="form-control" id="ent_email" disabled>
-                             </div>
-                             <div class="col">
-                                 <label>วันเกิด</label>
-                                 <input type="text" class="form-control" id="ent_birthdate" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label>วันที่่สมัคร</label>
-                                 <input type="text" class="form-control" id="ent_regis_date" disabled>
+                                 <label>เจ้าของโปรโมชัน</label>
+                                 <input type="text" class="form-control" id="ent_name" disabled>
                              </div>
                          </div>
                      </div>
-                     <div class="row">
-                         <div class="col">
-                             <label>เอกสารที่เกี่ยวข้อง</label>
-                             <div id="file_dowload">
-                             </div>
-                         </div>
                      </div>
                  </form>
              </div>
@@ -136,20 +126,21 @@
          </div>
      </div>
  </div>
+ 
 
  <!-- warnning reject  -->
- <div class="modal" tabindex="-1" role="dialog" id="rejected_eve">
+ <div class="modal" tabindex="-1" role="dialog" id="rejected_pro">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="eve_reject_name_confirm"></span> ?</h5>
+                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="pro_reject_name_confirm"></span> ?</h5>
              </div>
              <div class="modal-body">
                  <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/reject_event'; ?>" id="reject_form">
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/reject_pro'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
-                     <input type="hidden" id="eve_id_form" name="eve_id">
-                     <input type="hidden" id="evr_eve_id" name="eve_id">
+                     <input type="hidden" id="pro_id_form" name="pro_id">
+                     <input type="hidden" id="prr_pro_id" name="pro_id">
                      <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea>
                      <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span>
              </div>
@@ -200,15 +191,15 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(eve_id, eve_name, ent_email) {
-         $('#eve_name_confirm').text(eve_name);
+     function confirm_approve(pro_id, pro_name, ent_email) {
+         $('#pro_name_confirm').text(pro_name);
          console.log(ent_email)
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_event(eve_id, eve_name, ent_email) //function 
+             approve_promotions(pro_id, pro_name, ent_email) //function 
          });
      }
      /*
@@ -222,17 +213,17 @@
       */
 
      function confirm_approve_view_data_madal() {
-         let ent_id = $('#ent_id').val();
-         let ent_name = $('#ent_name').val();
+         let pro_id = $('#pro_id').val();
+         let pro_name = $('#pro_name').val();
          let ent_email = $('#ent_email').val();
-         $('#eve_name_confirm').text(ent_name);
-         console.log(ent_name);
+         $('#pro_name_confirm').text(pro_name);
+         console.log(pro_name);
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#approves').click(function() {
-             approve_event(eve_id, eve_name, ent_email) //function 
+             approve_promotions(pro_id, pro_name, ent_email) //function 
          });
      }
      /*
@@ -244,13 +235,13 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function confirm_reject(eve_id, eve_name, ent_email, eve_name) {
+     function confirm_reject(pro_id, pro_name, ent_email, eve_name) {
          let form = document.querySelector('#reject_form');
-         $('#eve_reject_name_confirm').text(eve_name);
-         $('#rejected_eve').modal();
+         $('#pro_reject_name_confirm').text(pro_name);
+         $('#rejected_pro').modal();
          $('#email').val(ent_email);
-         $('#eve_id_form').val(eve_id);
-         $('#evr_eve_id').val(eve_id);
+         $('#pro_id_form').val(pro_id);
+         $('#prr_pro_id').val(pro_id);
          console.log(ent_email);
 
          let admin_reson = document.querySelectorAll('#admin_reason');
@@ -268,11 +259,11 @@
                  event.preventDefault();
                  err_message.style.display = 'block';
              } else {
-                 $('#rejected_eve').modal('toggle');
+                 $('#rejected_pro').modal('toggle');
                  err_message.style.display = 'none';
                  swal({
                      title: "ปฏิเสธสำเร็จ",
-                     text: "ปฏิเสธการเพิ่มกิจกรรมสำเร็จ กำลังจัดส่งอีเมล...",
+                     text: "ปฏิเสธการเพิ่มกิจโปรโมชันสำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000,
@@ -292,8 +283,8 @@
       * @Update -
       */
      function confirm_reject_view_data_madal() {
-         let ent_id = $('#ent_id').val();
-         let ent_name = $('#ent_name').val();
+         let pro_id = $('#pro_id').val();
+         let pro_name = $('#pro_name').val();
          let ent_email = $('#ent_email').val();
          let form = document.querySelector('#reject_form');
 
@@ -340,26 +331,26 @@
       * @Create Date 2564-09-26
       * @Update -
       */
-     function approve_event(eve_id, eve_name, ent_email) {
+     function approve_promotions(pro_id, pro_name, ent_email) {
          $.ajax({
              type: "POST",
              data: {
-                 eve_id: eve_id
+                 pro_id: pro_id
              },
-             url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
+             url: '<?php echo base_url('Admin/Manage_promotions/Admin_approval_promotions/approval_promotions'); ?>',
              success: function() {
                  //sweet alert
                  swal({
                      title: "อนุมัติสำเร็จ",
-                     text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
+                     text: "อนุมัติโปรโมชันสำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000
                  }, function() {
                     location.reload();
                  })
-                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
-                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติโปรโมชัน "+pro_name+" ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติโปรโมชัน "+pro_name;
                  var subject = "Approval";
                  send_mail_ajax(content, ent_email, subject, content_h1);
              },

@@ -144,11 +144,11 @@ class Admin_approval_promotions extends DCS_controller
         * @Create Date 2564-08-01
         * @Update Date
         */
-  public function get_eve_reject_by_id_ajax()
+  public function get_pro_reject_by_id_ajax()
   {
-    $this->load->model('Event/M_dcs_eve_reject', 'mdere');
-    $eve_id = $this->input->post('eve_id');
-    $data['arr_data'] = $this->mdere->get_data_eve_rejected_by_id($eve_id)->result();
+    $this->load->model('Promotions/M_dcs_pro_reject', 'mdpre');
+    $pro_id = $this->input->post('pro_id');
+    $data['arr_data'] = $this->mdpre->get_data_pro_rejected_by_id($pro_id)->result();
 
     echo json_encode($data['arr_data']);
   }
@@ -161,11 +161,11 @@ class Admin_approval_promotions extends DCS_controller
         * @Create Date 2564-09-26
         * @Update Date -
         */
-  public function approval_event()
+  public function approval_promotions()
   {
-    $this->mdce->eve_id = $this->input->post('eve_id');
+    $this->mdcp->pro_id = $this->input->post('pro_id');
     $status_number = 2;
-    $this->mdce->update_status($status_number);
+    $this->mdcp->update_status($status_number);
   }
   /*
         * reject_entrepreneur
@@ -176,27 +176,27 @@ class Admin_approval_promotions extends DCS_controller
         * @Create Date 2564-07-17
         * @Update Date -
         */
-  public function reject_event()
+  public function reject_pro()
   {
     // set value from font end
-    $this->mdce->eve_id = $this->input->post('eve_id');
+    $this->mdcp->pro_id = $this->input->post('pro_id');
     // set data for send mail
     $reson_admin = $this->input->post('admin_reason');
     $user_email = $this->input->post('email');
-    $mail_subject = 'Admin has rejected your event';
-    $evr_eve_id = $this->input->post('eve_id');
-    $mail_content_header = "คุณถูกปฎิเสธการเพิ่มกิจกรรม";
+    $mail_subject = 'Admin has rejected your promotion';
+    $prr_pro_id = $this->input->post('pro_id');
+    $mail_content_header = "คุณถูกปฎิเสธการเพิ่มโปรโมชัน";
     $admin_id =  $this->session->userdata("Admin_id");
     //load model for save rejected data
-    $this->load->model('Event/M_dcs_eve_reject', 'mdere');
+    $this->load->model('Promotions/M_dcs_pro_reject', 'mdpre');
     //save data reject to data base
-    $this->mdere->evr_admin_reason = $reson_admin;
-    $this->mdere->evr_eve_id =  $evr_eve_id;
-    $this->mdere->evr_adm_id = $admin_id;
-    $this->mdere->insert();
+    $this->mdpre->prr_admin_reason = $reson_admin;
+    $this->mdpre->prr_pro_id =  $prr_pro_id;
+    $this->mdpre->prr_adm_id = $admin_id;
+    $this->mdpre->insert();
     //update status entrepreneur
     $status_number = 3;
-    $this->mdce->update_status($status_number);
+    $this->mdcp->update_status($status_number);
     $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
   /*
@@ -282,7 +282,7 @@ class Admin_approval_promotions extends DCS_controller
                               done
                             </i>
                         </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->pro_id . '\',\'' . $row->ent_email . '\',\'' . $row->pro_name .  '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->pro_id . '\',\'' . $row->pro_name . '\',\'' . $row->ent_email .  '\')">
                             <i class="material-icons">
                               clear
                             </i>
@@ -351,29 +351,29 @@ class Admin_approval_promotions extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_event/' . $row->pro_id . '">
-                          <i class="material-icons">
-                            search
-                          </i>
-                        </a>' .
+            '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+            <i class="material-icons">
+              search
+            </i>
+          </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
                           <i class="material-icons">
                             done
                           </i>
                         </button>' .
 
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->pro_id . '\',\'' . $row->ent_email . '\',\'' . $row->pro_name .  '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->pro_id . '\',\'' . $row->pro_name . '\',\'' . $row->ent_email .  '\')">
                           <i class="material-icons">
                             clear
                           </i>
                       </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->pro_id . '">
-                    <i class="material-icons">
-                        search
-                      </i>
-                    </a>' .
+            '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+            <i class="material-icons">
+              search
+            </i>
+          </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
                     <i class="material-icons">
                       add
@@ -420,12 +420,12 @@ class Admin_approval_promotions extends DCS_controller
     * @Create Date 2021-08-20
     * @Update Date -
     */
-    // public function show_detail_event($eve_id)
-    // {
+    public function show_detail_pro($pro_id)
+    {
   
-    //   $this->load->model('Event/M_dcs_event', 'meve');
-    //     $this->meve->eve_id = $eve_id;
-    //     $data["arr_event"] = $this->meve->get_by_detail()->result();
-    //   $this->output_admin('admin/manage_event/v_detail_event_admin', $data , null);
-    // }
+      $this->load->model('Promotions/M_dcs_promotions', 'mdpe');
+        $this->mdpe->pro_id = $pro_id;
+        $data["arr_pro"] = $this->mdpe->get_by_detail()->result();
+      $this->output_admin('admin/manage_promotions/v_detail_promotions_admin', $data , null);
+    }
 }

@@ -97,9 +97,9 @@
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/add_point_event'; ?>" id="add_point_form">
                      <input type="hidden" id="email" name="ent_email">
                      <input type="hidden" id="eve_id_form" name="eve_id">
-                     <input type="number" id="eve_point" name="eve_point">
+                     <input type="number" id="eve_point" name="eve_point" >
                      <!-- <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea> -->
-                     <!-- <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span> -->
+                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
              </div>
              <div class="modal-footer">
                  <button type="submit" class="btn btn-success" id="add_score">ยืนยัน</button>
@@ -142,8 +142,21 @@
              }
          });
      }
-     /*
-      * confirm_add_score_eve
+
+    // function check_eve_point() {
+    // if ($('#eve_point').val() < 0) {
+    //     $('#err_message_point').val();
+    //     $('#add_score').prop('disabled', true);
+    //     return false;
+    // } else {
+    //     $('#err_message_point').text('');
+    //     $('#add_score').prop('disabled', false);
+    //     return true;
+    // }
+
+//}
+
+/* confirm_add_score_eve
       * open modal id = Aprovemodal 
       * @input 
       * @output modal to confirm approve modal
@@ -151,98 +164,34 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_add_score_eve(eve_id, eve_name, ent_email) {
-         let form = document.querySelector('#add_point_form');
+function confirm_add_score_eve(eve_id, eve_name, ent_email) {
+    let form = document.querySelector('#add_point_form');
          $('#eve_name_confirm').text(eve_name);
          $('#add_score_eve').modal();
          $('#email').val(ent_email);
          $('#eve_id_form').val(eve_id);
          $('#eve_point').val(eve_point);
-         console.log(ent_email)
+         console.log(eve_point)
          $('#add_score').click(function() {
-             $('#add_score_event').modal('toggle');
-             swal({
-                 title: "ปฏิเสธสำเร็จ",
-                 text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
-                 type: "success",
-                 showConfirmButton: false,
-                 timer: 3000,
-             }, function() {
-                 location.reload();
-             });
-         });
-     }
-
-     /*
-      * confirm_approve_view_data_madal
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to confirm approve modal
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update 2564-09-18
-      */
-
-     function confirm_approve_view_data_madal() {
-         let ent_id = $('#ent_id').val();
-         let ent_name = $('#ent_name').val();
-         let ent_email = $('#ent_email').val();
-         $('#ent_name_confirm').text(ent_name);
-         console.log(ent_name);
-         $('#aprove_modal').modal({
-             backdrop: 'static',
-             keyboard: false
-         });
-         $('#approves').click(function() {
-
-         });
-     }
-     /*
-      * confirm_reject
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to reject  modal 
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update -
-      */
-     function confirm_reject(ent_id, ent_email, ent_name) {
-         let form = document.querySelector('#reject_form');
-         $('#ent_reject_name_confirm').text(ent_name);
-         $('#rejected_ent').modal();
-         $('#email').val(ent_email);
-         $('#ent_id_form').val(ent_id);
-         console.log(ent_email);
-
-         let admin_reson = document.querySelectorAll('#admin_reason');
-         let err_message = document.querySelector('#err_message');
-
-         console.log(admin_reson);
-         $('#rejected').click(function() {
-             let tooshort = false;
-             admin_reson.forEach((reson) => {
-                 if (reson.value.length < 6) {
-                     tooshort = true;
-                 }
-             });
-             if (tooshort) {
+             let point = document.getElementById('eve_point').value;
+             if(point < 1){
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
                  event.preventDefault();
-                 err_message.style.display = 'block';
-             } else {
-                 $('#rejected_ent').modal('toggle');
-                 err_message.style.display = 'none';
-                 swal({
-                     title: "ปฏิเสธสำเร็จ",
-                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
+             } else{
+                $('#add_score_event').modal('toggle');
+                swal({
+                    title: "เพิ่มคะแนนสำเร็จ",
+                    text: "เพิ่มคะแนนกิจกรรม"+eve_name+"สำเร็จ",
                      type: "success",
-                     showConfirmButton: false,
-                     timer: 3000,
-                 }, function() {
-                     location.reload();
-                 });
+                    showConfirmButton: false,
+                    timer: 5000,
+                });
              }
          });
-     }
+}
+
+    
+
 
      function create_table(data, pagation) 
      {

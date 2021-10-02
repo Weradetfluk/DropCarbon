@@ -69,4 +69,21 @@ class Da_dcs_promotions extends DCS_model
                 WHERE pro_id=?";
         $this->db->query($sql, array($this->pro_name, $this->pro_point, $this->pro_description, $this->pro_status, $this->pro_start_date, $this->pro_end_date, $this->pro_com_id, $this->pro_cat_id, $this->pro_id));
     }
+
+        /*
+    * update_status
+    * update status promotions
+    * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-10-01
+	* @Update -
+    */
+    public function update_status($status_number)
+    {
+        $sql = "UPDATE {$this->db_name}.dcs_promotions SET pro_status = ?
+        Where pro_id = ?";
+
+        $this->db->query($sql, array($status_number, $this->pro_id));
+    }
 }
