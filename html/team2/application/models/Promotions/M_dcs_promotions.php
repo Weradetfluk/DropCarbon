@@ -120,7 +120,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->get();
         return $query;
     }
-     /*
+    /*
     *get_by_name
     *get data event by com_name
     *@input com_name
@@ -132,6 +132,90 @@ class M_dcs_promotions extends Da_dcs_promotions
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 1";
         $query = $this->db->query($sql, array($this->eve_name));
+        return $query;
+    }
+
+    /*
+    * get_pro_cat
+    * get data promotion 
+    * @input -
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-02
+    * @Update -
+    */
+    public function get_pro_cat()
+    {
+        $sql = "SELECT * FROM dcs_promotions AS pro
+        LEFT JOIN {$this->db_name}.dcs_pro_category AS cat 
+        ON pro.pro_cat_id = cat.pro_cat_id";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_promotion_and_img
+    *get data form database
+    *@input number_status
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2564-10-02
+    */
+    public function get_promotions_and_img($number_status, $post)
+    {
+        $and = "";
+        if (isset($post["value_search"]) && $post["value_search"] !== "") {
+            $and .= " AND dcs_promotions.pro_name LIKE '%" . $post["value_search"] . "%'";
+        }
+
+        if (isset($post["pro_cat_id"]) && $post["pro_cat_id"] !== "") {
+            $and .= " AND dcs_promotions.pro_cat_id = " . $post["pro_cat_id"] . "";
+        }
+
+        $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
+        from dcs_promotions
+        RIGHT JOIN dcs_pro_image
+        ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_adm_id
+        WHERE pro_status = '" . $number_status . "'
+        $and
+        GROUP BY dcs_promotions.pro_id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    /*
+    *get_by_detail
+    *get data form database
+    *@input pro_id
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2564-10-02
+    */
+    public function get_by_detail()
+    {
+        $sql = "SELECT * 
+        FROM {$this->db_name}.dcs_promotions AS pro
+        LEFT JOIN {$this->db_name}.dcs_pro_image AS img ON pro.pro_id = img.pro_img_adm_id 
+        LEFT JOIN {$this->db_name}.dcs_company AS com ON pro.pro_com_id = com.com_id
+        LEFT JOIN {$this->db_name}.dcs_pro_category AS cat ON pro.pro_cat_id = cat.pro_cat_id
+        LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent ON com.com_ent_id = ent.ent_id
+        LEFT JOIN {$this->db_name}.dcs_promotion_reject AS rej ON pro.pro_id = rej.prr_pro_id
+        WHERE pro.pro_id=?";
+        $query = $this->db->query($sql, array($this->pro_id));
+        return $query;
+    }
+    /*
+    *get_all
+    *get data form database
+    *@input pro_id
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2564-10-02
+    */
+    public function get_all()
+    {
+        $sql = "SELECT * 
+                FROM dcs_promotions";
+        $query = $this->db->query($sql);
         return $query;
     }
 }

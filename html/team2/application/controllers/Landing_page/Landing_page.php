@@ -125,4 +125,66 @@ class Landing_page extends DCS_controller
         }
         $this->output_tourist('landing_page/v_detail_event', $data, $topbar, 'footer');
     }
+
+    /*
+    * show_promotion_list
+    * show list promotion page 
+    * @input -
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-02
+    */
+    public function show_promotions_list()
+    {
+        $this->load->model('Promotions/M_dcs_promotions', 'mpt');
+        $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
+        $number_status = 2;
+        $data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
+        $data['pro_cat'] = $this->mcat->get_all()->result();
+
+        if (isset($_POST)) {
+            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
+        } else {
+            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status)->result();
+        }
+
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        }
+        $this->output_tourist('landing_page/v_list_promotion', $data, $topbar, 'footer');
+    }
+
+    /*
+    * show_promotion_detail
+    * show detail promotion page 
+    * @input -
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-02
+    */
+    public function show_promotions_detail($pro_id)
+    {
+        $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->mimg->com_img_com_id = $pro_id;
+        $this->mcom->com_id = $pro_id;
+        $data["image"] = $this->mimg->get_by_com_id()->result();
+        $data["company"] = $this->mcom->get_by_detail()->row();
+
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->load->model('Promotions/M_dcs_pro_image', 'mima');
+        $this->mima->pro_img_adm_id = $pro_id;
+        $this->mpro->pro_id = $pro_id;
+        $data["image_promotions"] = $this->mima->get_by_pro_id()->result();
+        $data["promotions"] = $this->mpro->get_by_detail()->row();
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        }
+
+        $this->output_tourist('landing_page/v_detail_promotions', $data, $topbar, 'footer');
+    }
 }
