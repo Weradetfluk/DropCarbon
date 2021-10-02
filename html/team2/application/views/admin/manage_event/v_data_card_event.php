@@ -10,8 +10,8 @@
 -->
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
+        <div class="row row-cols-5">
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -28,13 +28,47 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body border-left-yellow">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">รอกำหนดคะแนน</p>
+                                <h2 class="card-text text-amount" id="no_score_eve"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-area">
+                                    <i class="material-icons custom-icon">hourglass_bottom</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body border-left-yellow">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">กิจกรรมที่ยังไม่สิ้นสุด</p>
+                                <h2 class="card-text text-amount" id="not_over_eve"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-area">
+                                    <i class="material-icons custom-icon">hourglass_bottom</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-green">
                         <div class="row">
                             <div class="col">
-                                <p class="card-title text-title">อนุมัติแล้ว</p>
-                                <h2 class="card-text" id="approve_eve"></h2>
+                                <p class="card-title text-title">กิจกรรมที่สิ้นสุด</p>
+                                <h2 class="card-text" id="over_eve"></h2>
 
                             </div>
                             <div class="col-auto">
@@ -46,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-red">
                         <div class="row">
@@ -88,7 +122,11 @@
 
                         $("#consider_eve").html(json_data[0].eve_consider + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
-                        $("#approve_eve").html(json_data[0].eve_approve  + " <span style='font-size: 16px;'>กิจกรรม</span>");
+                        $("#no_score_eve").html(json_data[0].eve_no_score  + " <span style='font-size: 16px;'>กิจกรรม</span>");
+
+                        $("#not_over_eve").html(json_data[0].eve_not_over  + " <span style='font-size: 16px;'>กิจกรรม</span>");
+
+                        $("#over_eve").html(json_data[0].eve_over  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
                         $("#reject_eve").html(json_data[0].eve_reject  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
