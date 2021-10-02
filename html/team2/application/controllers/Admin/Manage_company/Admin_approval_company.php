@@ -221,7 +221,7 @@ class Admin_approval_company extends DCS_controller
     $user_email = $this->input->post('email');
     $mail_subject = 'Admin has rejected your company';
     $mail_content_header = "คุณถูกปฎิเสธการเพิ่มสถานที่";
-    $com_ent_id = $this->input->post('com_ent_id');
+    $cor_com_id = $this->input->post('com_id');
     $admin_id =  $this->session->userdata("Admin_id");
 
 
@@ -232,7 +232,7 @@ class Admin_approval_company extends DCS_controller
 
     //save data reject to data base
     $this->mdcre->cor_admin_reason = $reson_admin;
-    $this->mdcre->cor_ent_id =  $com_ent_id;
+    $this->mdcre->cor_com_id =  $cor_com_id;
     $this->mdcre->cor_adm_id = $admin_id;
 
     $this->mdcre->insert();

@@ -12,7 +12,7 @@ class Da_dcs_com_reject extends Dcs_model
 {
     public $cor_id;
     public $cor_admin_reason;
-    public $cor_ent_id;
+    public $cor_com_id;
     public $cor_adm_id;
 
     /*
@@ -32,8 +32,8 @@ class Da_dcs_com_reject extends Dcs_model
     * @Update -
     */
     public function insert(){
-        $sql = "INSERT INTO dcs_company_reject(cor_admin_reason, cor_ent_id, cor_adm_id) VALUES(?, ?, ?)";
-        $this->db->query($sql, array( $this->cor_admin_reason, $this->cor_ent_id, $this->cor_adm_id));
+        $sql = "INSERT INTO dcs_company_reject(cor_admin_reason, cor_com_id, cor_adm_id) VALUES(?, ?, ?)";
+        $this->db->query($sql, array( $this->cor_admin_reason, $this->cor_com_id, $this->cor_adm_id));
     }
  
 }

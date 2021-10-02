@@ -165,6 +165,10 @@ class M_dcs_company extends Da_dcs_company
         FROM {$this->db_name}.dcs_company AS detail
         LEFT JOIN {$this->db_name}.dcs_com_image AS com ON com.com_img_com_id 
         LEFT JOIN {$this->db_name}.dcs_com_category ON detail.com_cat_id = dcs_com_category.com_cat_id
+        LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent 
+        ON detail.com_ent_id = ent.ent_id
+        LEFT JOIN {$this->db_name}.dcs_company_reject AS rej 
+        ON detail.com_id = rej.cor_com_id
         WHERE detail.com_id=?";
 
         $query = $this->db->query($sql, array($this->com_id));
