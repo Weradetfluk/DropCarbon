@@ -1,7 +1,4 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-   
 /*
 * Entrepreneur_edit
 * edit data Entrepreneur
@@ -9,6 +6,8 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 * @Create Date 2564-07-24
 * @Update Date 2564-09-19
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 
 class Entrepreneur_edit extends DCS_controller
 {

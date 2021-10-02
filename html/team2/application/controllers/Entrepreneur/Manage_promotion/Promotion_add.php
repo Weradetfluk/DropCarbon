@@ -1,107 +1,106 @@
 <?php
 /*
-* Event_add
-* Manage add event by entrepreneur
-* @author Priyarat Bumrungkit 62160156
-* @Create Date 2564-09-25
+* Promotion_add
+* Manage add promotion by entrepreneur
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-10-02
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
-class Event_add extends DCS_controller
+class Promotion_add extends DCS_controller
 {
     /*
-    * show_add_event
-    * show form add event
-    * @input 
+    * show_add_promotion
+    * show form add promotion
+    * @input entrepreneur_id
     * @output -
     * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-09-25
+    * @Create Date 2564-10-02
     * @Update Date -
     */
-    public function show_add_event()
-    {
-        $this->load->model('Event/M_dcs_eve_category', 'mcat');
+    public function show_add_promotion(){
+        $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_category'] = $this->mcat->get_all()->result();
-        $data['arr_company']=$this->mcom->get_by_ent_id_approve()->result();
+        $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
         $data['date_now'] = date("Y-m-d");
-        $view = 'entrepreneur/manage_event/v_add_event';
+        $view = 'entrepreneur/manage_promotion/v_add_promotion';
         $this->output_entrepreneur($view, $data);
     }
+
     /*
-    * add_event
-    * add event to database
-    * @input eve_name, eve_description, eve_status, eve_start_date, eve_end_date
+    * add_promotion
+    * add promotion to database
+    * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-26
     * @Update Date 
     */
-    public function add_event()
-    {
-        $this->load->model('Event/M_dcs_event', 'meve');
-        $this->load->model('Event/M_dcs_eve_image', 'mimg');
-        $this->meve->eve_name = $this->input->post('eve_name');
-        $this->meve->eve_description = $this->input->post('eve_description');
-        $this->meve->eve_com_id = $this->input->post('eve_com_id');
-        $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
-        $this->meve->eve_add_date = $this->input->post('eve_add_date');
-        $this->meve->eve_start_date = $this->input->post('eve_start_date');
-        $this->meve->eve_end_date = $this->input->post('eve_end_date');
-    
-        $this->meve->insert_event();
-        $this->set_session_add_event('success');
-        $result = $this->meve->get_by_name()->row();
-        
-        
-        // save data image to database
-        $arr_img_add = array();
-        $arr_name_name = array();
-        $arr_img_add = $this->input->post('new_img');
-        $arr_name_name = $this->input->post('name_new_image');
-        $this->mimg->eve_img_eve_id = $result->eve_id;
-        for ($i = 0; $i < count($arr_img_add); $i++) {
-            $this->mimg->eve_img_path = $arr_img_add[$i];
-            $this->mimg->eve_img_name = $arr_name_name[$i];
-            $this->mimg->insert_image_event();
-        }
+    public function add_promotion(){
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->load->model('Promotions/M_dcs_pro_image', 'mimg');
+        $this->mpro->pro_name = $this->input->post('pro_name');
+        $this->mpro->pro_point = $this->input->post('pro_point');
+        $this->mpro->pro_description = $this->input->post('pro_description');
+        $this->mpro->pro_status = 1;
+        $this->mpro->pro_start_date = $this->input->post('pro_start_date');
+        $this->mpro->pro_end_date = $this->input->post('pro_end_date');
+        $this->mpro->pro_com_id = $this->input->post('pro_com_id');
+        $this->mpro->pro_cat_id = $this->input->post('pro_cat_id');
 
-        // delete data image to database
-        $arr_img_delete = array();
-        $arr_img_delete= $this->input->post('del_new_img');
-        if($arr_img_delete != ''){
-            for ($i = 0; $i < count($arr_img_delete); $i++) {
-                $this->mimg->eve_img_path = $arr_img_delete[$i];
-                unlink('./image_event/' . $arr_img_delete[$i]);
-                $this->mimg->delete_image_event();
-            }
-        }
-          
-        redirect('Entrepreneur/Manage_event/Event_list/show_list_event');
+        $this->mpro->insert_promotions();
+        $this->set_session_add_promotion('success');
+        $result = $this->mpro->get_by_name()->row();
+
+         // save data image to database
+         $arr_img_add = array();
+         $arr_name_name = array();
+         $arr_img_add = $this->input->post('new_img');
+         $arr_name_name = $this->input->post('name_new_image');
+         $this->mimg->pro_img_pro_id = $result->pro_id;
+         for ($i = 0; $i < count($arr_img_add); $i++) {
+             $this->mimg->pro_img_path = $arr_img_add[$i];
+             $this->mimg->pro_img_name = $arr_name_name[$i];
+             $this->mimg->insert_image_promotions();
+         }
+ 
+         // delete data image to database
+         $arr_img_delete = array();
+         $arr_img_delete= $this->input->post('del_new_img');
+         if($arr_img_delete != ''){
+             for ($i = 0; $i < count($arr_img_delete); $i++) {
+                 $this->mimg->pro_img_path = $arr_img_delete[$i];
+                 unlink('./image_promotions/' . $arr_img_delete[$i]);
+                 $this->mimg->delete_image_promotions();
+             }
+         }
+
+         redirect('Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion');
     }
+
     /*
-    * set_session_add_event
+    * set_session_add_promotion
     * add session 
     * @input $data
     * @output -
-    * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-09-25
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-02
     * @Update Date -
     */
-    public function set_session_add_event($data){
-        $this->session->set_userdata("error_add_event", $data);
+    public function set_session_add_promotion($data){
+        $this->session->set_userdata("error_add_promotion", $data);
     }
 
     /*
     * upload_image_ajax
     * upload image
-    * @input eve_file
+    * @input pro_file
     * @output -
-    * @author Acaharaporn pornpattanasap 62160344
-    * @Create Date 2564-09-25
-    * @Update Date 2564-09-26
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-02
+    * @Update Date -
     */
     public function upload_image_ajax()
     {
@@ -115,11 +114,11 @@ class Event_add extends DCS_controller
 
         // Configure file storage
 
-        $file = $_FILES['eve_file'] ?? '';
-        $file_name = $_FILES['eve_file']['name'] ?? '';
-        $file_tmp_name = $_FILES['eve_file']['tmp_name'] ?? '';
-        $file_size = $_FILES['eve_file']['size'] ?? '';
-        $file_error = $_FILES['eve_file']['error'] ?? '';
+        $file = $_FILES['pro_file'] ?? '';
+        $file_name = $_FILES['pro_file']['name'] ?? '';
+        $file_tmp_name = $_FILES['pro_file']['tmp_name'] ?? '';
+        $file_size = $_FILES['pro_file']['size'] ?? '';
+        $file_error = $_FILES['pro_file']['error'] ?? '';
 
         if ($file != '') {
             for ($i = 0; $i < count($file_name); $i++) {
@@ -141,10 +140,10 @@ class Event_add extends DCS_controller
             // Loop to upload files
             for ($i = 0; $i < count($file_name); $i++) {
                 $file_new_name[$i] = uniqid('', true);
-                $file_destination[$i] = './image_event/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+                $file_destination[$i] = './image_promotions/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
                 move_uploaded_file($file_tmp_name[$i], $file_destination[$i]);
                 // $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                $path = base_url() . 'image_event/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+                $path = base_url() . 'image_promotions/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
                 $output_image .= '<div id="' . $file_new_name[$i] . '">
                                         <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
                                         <img src="' . $path . '" alt="Image"><span class="position-absolute" style="font-size: 25px;" 
@@ -161,11 +160,11 @@ class Event_add extends DCS_controller
 
     /*
     * uplink_image_ajax
-    * uplink image when cancel edit and add event
+    * uplink image when cancel edit and add promotion
     * @input arr_img
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-09-29
+    * @Create Date 2564-10-02
     * @Update Date -
     */
     public function uplink_image_ajax()
@@ -175,7 +174,7 @@ class Event_add extends DCS_controller
         if ($this->input->post('arr_image') != NULL) {
             $arr_image = $this->input->post('arr_image');
             for ($i = 0; $i < count($arr_image); $i++) {
-                unlink('./image_event/' . $arr_image[$i]);
+                unlink('./image_promotions/' . $arr_image[$i]);
             }
             $data = "success";
         } else {

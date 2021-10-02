@@ -1,13 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 /*
 * Event_list
 * Manage list event by entrepreneur
 * @author Acharaporn pornpattansap
 * @Create Date 2564-09-16
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
 class Event_edit extends DCS_controller
 {
     /*
@@ -30,6 +30,7 @@ class Event_edit extends DCS_controller
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
+        $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_event/v_edit_event';
         $this->output_entrepreneur($view, $data);
     }

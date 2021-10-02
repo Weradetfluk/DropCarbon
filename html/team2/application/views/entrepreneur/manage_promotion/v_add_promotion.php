@@ -1,9 +1,9 @@
 <!-- 
 /*
-* v_add_event
-* Display form add event by entrepreneur
-* @input arr_company, arr_category
-* @output form add event
+* v_add_promotion
+* Display form add promotion by entrepreneur
+* @input arr_category
+* @output form add promotion
 * @author Priyarat Bumrungkit 62160156
 * @Create Date 2564-09-25
 */ 
@@ -18,76 +18,79 @@
                             <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เพิ่มกิจกรรมการท่องเที่ยว</h4>
                         </center>
                     </div>
-
                     <div class="card-body">
-                        <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_add/add_event/' ?>" id="form_edit_eve" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_add/add_promotion'?>" id="form_edit_pro" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="eve_name">ชื่อกิจกรรม</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
-                                    <input type="text" id="eve_name" name="eve_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" onkeyup="check_name_event_ajax()" required>
-                                    <span class="text-danger" id="error_eve_name"></span>
+                                    <label for="pro_name">ชื่อโปรโมชัน</label>
+                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" onkeyup="" required>
+                                    <span class="text-danger" id="error_pro_name"></span>
                                 </div>
 
                                 <div class="col-lg-3">
-                                    <label for="eve_cat_id">หมวดหมู่</label>
-                                    <select name="eve_cat_id" class="form-control" required>
-                                    <?php if(count($arr_category) != 0){?>
-                                        <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
-                                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_category[$i]->eve_cat_name; ?></option>
+                                    <label for="pro_cat_id">หมวดหมู่</label>
+                                    <select name="pro_cat_id" class="form-control" required>
+                                        <?php if(count($arr_category) != 0){?>
+                                            <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
+                                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_category[$i]->pro_cat_name; ?></option>
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <?php if(count($arr_category) == 0){?>
-                                        <option value="0">ไม่มีหมวดหหมู่</option>
-                                    <?php } ?>
+                                        <?php if(count($arr_category) == 0){?>
+                                            <option value="0">ไม่มีหมวดหหมู่</option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div><br>
 
-
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="com_name">ชื่อสถานที่</label>
-                                    <select name="eve_com_id" id="eve_com_id" class="form-control" required>
-                                    <?php if(count($arr_company) != 0){?>
-                                        <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
-                                            <option value="<?php echo $arr_company[$i]->com_id ?>"><?php echo $arr_company[$i]->com_name; ?></option>
+                                    <select name="pro_com_id" id="pro_com_id" class="form-control" required>
+                                        <?php if(count($arr_company) != 0){?>
+                                            <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
+                                                <option value="<?php echo $arr_company[$i]->com_id ?>"><?php echo $arr_company[$i]->com_name; ?></option>
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <?php if(count($arr_company) == 0){?>
-                                        <option value="0">ไม่มีสถานที่</option>
-                                    <?php } ?>
+                                        <?php if(count($arr_company) == 0){?>
+                                            <option value="0">ไม่มีสถานที่</option>
+                                        <?php } ?>
                                     </select>
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4">
+                                    <label for="pro_point">คะเเนนโปรโมชัน</label>
+                                    <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน">
                                 </div>
                             </div><br>
 
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="eve_description">รายละเอียดกิจกรรม</label>
-                                    <textarea id="eve_description" name="eve_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
+                                    <label for="pro_description">รายละเอียดโปรโมชัน</label>
+                                    <textarea id="pro_description" name="pro_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของโปรโมชัน" required></textarea>
                                 </div>
                             </div><br>
-
+                        
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
-                                    <input type="date" id="eve_start_date" name="eve_start_date" class="form-control" min="<?php echo $date_now?>" required>
+                                    <label for="pro_start_date">วันที่เริ่มโปรโมชัน</label>
+                                    <input type="date" id="pro_start_date" name="pro_start_date" class="form-control" min="<?php echo $date_now?>" required>
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-4">
-                                    <label for="eve_end_date">วันที่เสร็จสิ้นกิจกรรม</label>
-                                    <input type="date" id="eve_end_date" name="eve_end_date" class="form-control" min="<?php echo $date_now?>" required>
+                                    <label for="pro_end_date">วันที่เสร็จสิ้นโปรโมชัน</label>
+                                    <input type="date" id="pro_end_date" name="pro_end_date" class="form-control" min="<?php echo $date_now?>" required>
                                 </div>
                             </div><br>
 
-                            <!-- เลือกรูปภาพกิจกรรม -->
+                            <!-- เลือกรูปภาพโปรโมชัน -->
                             <div class="form-group">
-                                <label for="eve_file">รูปภาพประกอบกิจกรรม <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
+                                <label for="pro_file">รูปภาพประกอบโปรโมชัน <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
-                            <input class="d-none" type="file" id="eve_file" name="eve_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
-                            <button type="button" class="btn btn-info" onclick="document.getElementById('eve_file').click();">เพิ่มรูปภาพ</button>
+                            <input class="d-none" type="file" id="pro_file" name="pro_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('pro_file').click();">เพิ่มรูปภาพ</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
                             <div id="arr_del_img_new"></div><br>
-                            <!-- ส้นสุดเลือกรูปภาพกิจกรรม -->
+                            <!-- ส้นสุดเลือกรูปภาพโปรโมชัน -->
 
                             <!-- Submit button -->
                             <div style="text-align: right;">
@@ -102,11 +105,8 @@
         </div>
     </div>
 </div>
-
 <script>
-
     var count_image = 0;
-    // var check_btn_name = 0;
     /*
      * @author Suwapat Saowarod 62160340
      */
@@ -114,31 +114,30 @@
         check_count_image_btn();
     });
 
-
     /*
      * upload_image_ajax
-     * upload image for event
-     * @input eve_file, card_image, data
+     * upload image for promotion
+     * @input pro_file, card_image, data
      * @output -
-     * @author Priyarat Bumrungkit 62160156
-     * @Create Date 2564-09-26
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-02
      * @Update -
      */
     function upload_image_ajax() {
-        var images = $('#eve_file')[0].files;
+        var images = $('#pro_file')[0].files;
         var form_data = new FormData();
         var count_for_img = 0;
         // console.log(count_image);
         for (let i = 0; i < images.length; i++) {
             var name = images[i].name;
             var extension = name.split('.').pop().toLowerCase();
-            form_data.append("eve_file[]", images[i]);
+            form_data.append("pro_file[]", images[i]);
             count_image += 1;
             count_for_img += 1;
         }
         // console.log(form_data);
         $.ajax({
-            url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/upload_image_ajax" ?>",
+            url: "<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_add/upload_image_ajax" ?>",
             method: "POST",
             dataType: "JSON",
             data: form_data,
@@ -148,12 +147,12 @@
             success: function(data) {
                 if (data.search("error") == -1) {
                     document.getElementById('card_image').innerHTML += data;
-                    $('#eve_file').val('');
+                    $('#pro_file').val('');
                     check_count_image_btn()
                     // console.log(count_image);
                 } else {
                     swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
-                    $('#eve_file').val('');
+                    $('#pro_file').val('');
                     count_image -= count_for_img;
                     check_count_image_btn()
                 }
@@ -161,7 +160,7 @@
             error: function() {
                 console.log('fail');
                 swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
-                $('#eve_file').val('');
+                $('#pro_file').val('');
                 count_image -= count_for_img;
                 check_count_image_btn()
             }
@@ -173,8 +172,8 @@
      * unlink image
      * @input img_path
      * @output -
-     * @author Priyarat Bumrungkit 62160156
-     * @Create Date 2564-09-26
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-02
      * @Update -
      */
     function unlink_new_image(img_path) {
@@ -189,13 +188,14 @@
         check_count_image_btn()
     }
 
+
     /*
      * check_count_image
      * check count image to disable btn submit
      * @input -
      * @output -
      * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-09-28
+     * @Create Date 2564-10-02
      * @Update 
      */
     function check_count_image_btn() {
@@ -209,11 +209,11 @@
 
     /*
      * unlink_image_go_back
-     * uplink image when cancel add company
+     * uplink image when cancel add promotion
      * @input new_img
      * @output -
-     * @author Priyarat Bumrungkit 62160156
-     * @Create Date 2564-09-28
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-02
      * @Update 
      */
     function unlink_image_go_back() {
@@ -223,14 +223,14 @@
         }).get();
         // console.log(arr_image);
         $.ajax({
-            url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
+            url: "<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_add/uplink_image_ajax" ?>",
             method: "POST",
             data: {
                 arr_image: arr_image
             },
             success: function(data) {
                 // console.log(data);
-                location.replace("<?php echo base_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
+                location.replace("<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion" ?>")
             }
         })
     }

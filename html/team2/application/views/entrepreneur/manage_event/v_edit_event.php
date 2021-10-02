@@ -21,7 +21,7 @@
                         </center>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo site_url() . 'Entrepreneur/Manage_event/Event_edit/edit_event/' ?>"
+                        <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/edit_event/' ?>"
                             id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="eve_com_id" value="<?php echo $arr_event[0]->com_id; ?>">
                             <input type="hidden" name="eve_id" value="<?php echo $arr_event[0]->eve_id; ?>">
@@ -81,13 +81,14 @@
                             </div><br>
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
-                                    <input type="date" id="eve_start_date" name="eve_start_date" value="<?php echo $arr_event[0]->eve_start_date; ?>" required>
+                                    <input type="date" id="eve_start_date" name="eve_start_date" value="<?php echo $arr_event[0]->eve_start_date; ?>" class="form-control" min="<?php echo $date_now?>" required>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4">
                                     <label for="eve_end_date">วันที่เสร็จสิ้นกิจกรรม</label>
-                                    <input type="date" id="eve_end_date" name="eve_end_date" value="<?php echo $arr_event[0]->eve_end_date; ?>" required>
+                                    <input type="date" id="eve_end_date" name="eve_end_date" value="<?php echo $arr_event[0]->eve_end_date; ?>" class="form-control" min="<?php echo $date_now?>" required>
                                 </div>
                             </div><br>
 
@@ -201,7 +202,7 @@ function upload_image_ajax() {
     }
     // console.log(form_data);
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_add/upload_image_ajax" ?>",
+        url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/upload_image_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: form_data,
@@ -291,14 +292,14 @@ function unlink_image_go_back() {
     }).get();
     console.log(arr_image);
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
+        url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
         method: "POST",
         data: {
             arr_image: arr_image
         },
         success: function(data) {
             console.log(data);
-            location.replace("<?php echo site_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
+            location.replace("<?php echo base_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
         }
     })
 }

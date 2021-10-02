@@ -1,14 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
-
 /*
 * Company_edit
 * Manage edit company by entrepreneur
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-07-19
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
 class Company_edit extends DCS_controller
 {
    /*

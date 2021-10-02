@@ -57,24 +57,6 @@ class M_dcs_promotions extends Da_dcs_promotions
     }
 
     /*
-    * get_eve_cat
-    * get data event 
-    * @input -
-    * @output -
-    * @author Naaka punparich 62160082
-    * @Create Date 2564-09-25
-    * @Update -
-    */
-    public function get_eve_cat()
-    {
-        $sql = "SELECT * FROM dcs_event AS eve
-        LEFT JOIN {$this->db_name}.dcs_eve_category AS cat 
-        ON eve.eve_cat_id = cat.eve_cat_id";
-
-        return $this->db->query($sql);
-    }
-
-    /*
     *get_data_card_event
     *get data card event form database sum row
     *@input -
@@ -118,20 +100,6 @@ class M_dcs_promotions extends Da_dcs_promotions
         $this->db->group_end();
         $this->db->where("pro_status = '$number_status'");
         $query = $this->db->get();
-        return $query;
-    }
-    /*
-    *get_by_name
-    *get data event by com_name
-    *@input com_name
-    *@output -
-    *@author Priyarat Bumrungkit 62160156
-    *@Create Date 2564-09-26
-    */
-    function get_by_name()
-    {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 1";
-        $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
 
@@ -233,5 +201,19 @@ class M_dcs_promotions extends Da_dcs_promotions
                 ON dcs_promotions.pro_com_id = dcs_company.com_id
                 WHERE pro_status != 4 AND com_ent_id = $ent_id";
         return $this->db->query($sql);
+    }
+
+    /*
+    *get_by_name
+    *get get data by name
+    *@input pro_name
+    *@output -
+    *@author Suwapat Saowarod 62160340
+    *@Create Date 2564-10-02
+    */
+    function get_by_name(){
+        $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
+                WHERE pro_status != 4 AND pro_name = ?";
+        return $this->db->query($sql, array($this->pro_name));
     }
 }

@@ -1,13 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 /*
 * Event_list
 * Manage list event by entrepreneur
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-09-16
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
 class Event_list extends DCS_controller
 {
     /*

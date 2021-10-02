@@ -371,6 +371,71 @@
                     </div>
                 </div>
 
+                <!-- tab show reject promotion -->
+                <div class="tab-pane <?php if ($_SESSION['tab_number_promotion'] == 5) echo "active"; ?>" id="tab_reject">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped" style="text-align: center;">
+                                        <thead class="text-white" style="background-color: #e4a487; text-align: center;">
+                                            <tr>
+                                                <th>ลำดับ</th>
+                                                <th>ชื่อกิจกรรม</th>
+                                                <th>รายละเอียดกิจกรรม</th>
+                                                <th>ของสถานที่</th>
+                                                <th>ดำเนินการ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list">
+                                            <?php
+                                            $count_reject = 0;
+                                            for ($i = 0; $i < count($arr_promotion); $i++) {
+                                                if ($arr_promotion[$i]->pro_status == 3) {
+                                                    $count_reject++;
+                                                }
+                                            }
+                                            if (sizeof($arr_promotion) == 0 || $count_reject == 0) {
+                                                echo "<td colspan = '5'>";
+                                                echo "ไม่มีข้อมูลในตารางนี้";
+                                                echo "</td>";
+                                            } else {
+                                                $count_i = 0;
+                                                for ($i = 0; $i < count($arr_promotion); $i++) {
+                                                    if ($arr_promotion[$i]->pro_status == 1) {
+                                                        $count_i++ ?>
+                                                        <tr>
+                                                            <td><?php echo $count_i; ?></td>
+                                                            <td style="text-align: left;"><?php echo $arr_promotion[$i]->pro_name; ?>
+                                                            </td>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') > 60) { ?>
+                                                                <td style="text-align: left;">
+                                                                    <?php echo iconv_substr($arr_promotion[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
+                                                                </td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') <= 60) { ?>
+                                                                <td style="text-align: left;">
+                                                                    <?php echo $arr_promotion[$i]->pro_description; ?></td>
+                                                            <?php } ?>
+                                                            <td style="text-align: left;"><?php echo $arr_promotion[$i]->com_name; ?>
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
