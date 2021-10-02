@@ -505,8 +505,6 @@ class Admin_approval_event extends DCS_controller
       }
       $all_count = $this->mdce->get_count_all_no_score($number_status);                               //get all count consider
       $data['arr_event'] = $this->mdce->get_all_data_nosocre($limit, $start, $number_status); // query แบบแบ่งหน้า
-      $i = 1;
-
       if ($data['arr_event']) {
         $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
       }
@@ -588,7 +586,6 @@ class Admin_approval_event extends DCS_controller
       }
       $all_count = $this->mdce->get_count_all_over($number_status);                               //get all count consider
       $data['arr_event'] = $this->mdce->get_all_data_over($limit, $start, $number_status); // query แบบแบ่งหน้า
-      $i = 1;
 
       if ($data['arr_event']) {
         $data['paganition'] = $this->config_pagination($page, $all_count, $limit);

@@ -173,7 +173,6 @@ class M_dcs_event extends Da_dcs_event
     */
     function get_all_data_nosocre($limit, $start, $number_status)
     {
-
         $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('dcs_event');
