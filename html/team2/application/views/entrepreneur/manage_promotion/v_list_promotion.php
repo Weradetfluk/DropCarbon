@@ -100,7 +100,7 @@
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="">
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
@@ -122,7 +122,7 @@
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="">
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
@@ -201,7 +201,7 @@
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="">
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
@@ -279,7 +279,7 @@
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="">
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
@@ -352,7 +352,7 @@
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="">
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">edit</span>
                                                                 </a>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
@@ -442,6 +442,16 @@
 </div>
 <script>
     $(document).ready(function() {
+        var success_add = '<?php echo $this->session->userdata("error_add_promotion");?>';
+        if(success_add == 'success'){
+            swal("เพิ่มโปรโมชันสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
+            <?php echo $this->session->unset_userdata("error_add_promotion");?>;
+        }
+        var success_edit = '<?php echo $this->session->userdata("error_edit_promotion");?>';
+        if(success_edit == 'success'){
+            swal("แก้ไขโปรโมชันสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
+            <?php echo $this->session->unset_userdata("error_edit_promotion");?>;
+        }
         check_name_table(<?php echo $_SESSION['tab_number_promotion'] ?>);
     });
     /*

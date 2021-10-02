@@ -1,11 +1,11 @@
 <!-- 
 /*
-* v_add_promotion
-* Display form add promotion by entrepreneur
+* v_edit_promotion
+* Display form edti promotion by entrepreneur
 * @input arr_category
 * @output form add promotion
 * @author Suwapat Saowarod 62160340
-* @Create Date 2564-10-02
+* @Create Date 2564-10-03
 */ 
 -->
 <div class="content">
@@ -15,15 +15,15 @@
                 <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center>
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เพิ่มกิจกรรมการท่องเที่ยว</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เพิ่มโปรโมชัน</h4>
                         </center>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_add/add_promotion'?>" id="form_add_pro" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/edit_promotion'?>" id="form_edit_pro" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
-                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" onkeyup="" required>
+                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" value="<?php echo $arr_promotion[0]->pro_name?>" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
 
@@ -32,7 +32,12 @@
                                     <select name="pro_cat_id" class="form-control" required>
                                         <?php if(count($arr_category) != 0){?>
                                             <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
-                                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_category[$i]->pro_cat_name; ?></option>
+                                                <?php if($arr_category[$i]->pro_cat_id == $arr_promotion[0]->pro_cat_id){?>
+                                                    <option value="<?php echo $i + 1 ?>" selected="selected"><?php echo $arr_category[$i]->pro_cat_name; ?></option>
+                                                <?php } ?>
+                                                <?php if($arr_category[$i]->pro_cat_id != $arr_promotion[0]->pro_cat_id){?>
+                                                    <option value="<?php echo $i + 1 ?>"><?php echo $arr_category[$i]->pro_cat_name; ?></option>
+                                                <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
                                         <?php if(count($arr_category) == 0){?>
@@ -48,7 +53,12 @@
                                     <select name="pro_com_id" id="pro_com_id" class="form-control" required>
                                         <?php if(count($arr_company) != 0){?>
                                             <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
-                                                <option value="<?php echo $arr_company[$i]->com_id ?>"><?php echo $arr_company[$i]->com_name; ?></option>
+                                                <?php if($arr_company[$i]->com_id == $arr_promotion[0]->pro_com_id){?>
+                                                    <option value="<?php echo $arr_company[$i]->com_id ?>" selected="selected"><?php echo $arr_company[$i]->com_name; ?></option>
+                                                <?php } ?>
+                                                <?php if($arr_company[$i]->com_id != $arr_promotion[0]->pro_com_id){?>
+                                                    <option value="<?php echo $arr_company[$i]->com_id ?>"><?php echo $arr_company[$i]->com_name; ?></option>
+                                                <?php } ?>
                                             <?php } ?>
                                         <?php } ?>
                                         <?php if(count($arr_company) == 0){?>
@@ -59,26 +69,26 @@
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-4">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
-                                    <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน" required>
+                                    <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน" value="<?php echo $arr_promotion[0]->pro_point?>" required>
                                 </div>
                             </div><br>
 
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="pro_description">รายละเอียดโปรโมชัน</label>
-                                    <textarea id="pro_description" name="pro_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของโปรโมชัน" required></textarea>
+                                    <textarea id="pro_description" name="pro_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของโปรโมชัน" required><?php echo $arr_promotion[0]->pro_description?></textarea>
                                 </div>
                             </div><br>
                         
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="pro_start_date">วันที่เริ่มโปรโมชัน</label>
-                                    <input type="date" id="pro_start_date" name="pro_start_date" class="form-control" min="<?php echo $date_now?>" required>
+                                    <input type="date" id="pro_start_date" name="pro_start_date" class="form-control" min="<?php echo $date_now?>" value="<?php echo $arr_promotion[0]->pro_start_date?>" required>
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-4">
                                     <label for="pro_end_date">วันที่เสร็จสิ้นโปรโมชัน</label>
-                                    <input type="date" id="pro_end_date" name="pro_end_date" class="form-control" min="<?php echo $date_now?>" required>
+                                    <input type="date" id="pro_end_date" name="pro_end_date" class="form-control" min="<?php echo $date_now?>" value="<?php echo $arr_promotion[0]->pro_end_date?>" required>
                                 </div>
                             </div><br>
 
@@ -88,14 +98,56 @@
                             </div>
                             <input class="d-none" type="file" id="pro_file" name="pro_file[]" accept="image/*" onchange="upload_image_ajax()" multiple>
                             <button type="button" class="btn btn-info" onclick="document.getElementById('pro_file').click();">เพิ่มรูปภาพ</button>
-                            <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
-                            <div id="arr_del_img_new"></div><br>
+                            <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
+                                <?php for ($i = 0; $i < count($arr_promotion); $i++) { ?>
+                                    <?php $arr_path = explode('.', $arr_promotion[$i]->pro_img_path) ?>
+                                    <div id="<?php echo $arr_path[0] . '.' . $arr_path[1] ?>">
+                                        <div class="image_container d-flex justify-content-center position-relative"
+                                            style="border-radius: 7px; width: 200px; height:200px">
+                                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_promotion[$i]->pro_img_path; ?>"
+                                                alt="Image">
+                                            <span class="position-absolute" style="font-size: 25px;"
+                                                onclick="unlink_old_image('<?php echo $arr_promotion[$i]->pro_img_path ?>')">&times;</span>
+                                            <input type="text" value="<?php echo $arr_promotion[$i]->pro_img_path ?>"
+                                                name="old_img[]" hidden>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div id="arr_del_img_new"></div> 
+                            <div id="arr_del_img_old"></div><br>
                             <!-- ส้นสุดเลือกรูปภาพโปรโมชัน -->
 
+                            <input type="hidden" name="pro_id" id="pro_id" value="<?php echo $arr_promotion[0]->pro_id; ?>">
                             <!-- Submit button -->
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                            </div>
+
+                            <!-- modal edit -->
+                            <div class="modal fade" tabindex="-1" role="dialog" id="modal_edit">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน ?
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>คุณต้องการที่แก้ไขข้อมูลโปรโมชัน <span id="pro_name_confirm"></span> ?</p>
+                                            <br>
+                                            <p style="color: red;">***หากทำการแก้ไขข้อมูลโปรโมชัน <span
+                                                    id="pro_name_confirm2"></span>  จะกลับสู่สถานะรออนุมัติ***</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
+                                            <button type="button" class="btn btn-secondary"
+                                                style="color: white; background-color: #777777;"
+                                                data-dismiss="modal">ยกเลิก</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </form>
@@ -105,8 +157,9 @@
         </div>
     </div>
 </div>
+
 <script>
-    var count_image = 0;
+    var count_image = <?= count($arr_promotion)?>;
     /*
      * @author Suwapat Saowarod 62160340
      */
@@ -120,7 +173,7 @@
      * @input pro_file, card_image, data
      * @output -
      * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-10-02
+     * @Create Date 2564-10-03
      * @Update -
      */
     function upload_image_ajax() {
@@ -173,7 +226,7 @@
      * @input img_path
      * @output -
      * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-10-02
+     * @Create Date 2564-10-03
      * @Update -
      */
     function unlink_new_image(img_path) {
@@ -186,6 +239,28 @@
         document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
         count_image -= 1;
         check_count_image_btn()
+    }
+
+    /*
+    * unlink_old_image
+    * unlink image
+    * @input pro_file, card_image, data
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-03
+    * @Update -
+    */
+    function unlink_old_image(img_path) {
+        let html = '';
+        html += '<input name="del_old_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img_old').innerHTML += html;
+
+        let file_name = img_path.split('.');
+        // console.log('#'+file_name[0]+'.'+file_name[1]);
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        console.log(count_image);
+        check_count_image_btn();
     }
 
     /*
@@ -208,7 +283,7 @@
 
     /*
      * unlink_image_go_back
-     * uplink image when cancel add promotion
+     * uplink image when cancel edit promotion
      * @input new_img
      * @output -
      * @author Suwapat Saowarod 62160340
@@ -232,5 +307,24 @@
                 location.replace("<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion" ?>")
             }
         })
+    }
+
+    /*
+    * confirm_edit
+    * confirm delete company
+    * @input com_name_con, com_id_con
+    * @output modal comfirm delete comepany
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-03
+    * @Update -
+    */
+    function confirm_edit(pro_name_con) {
+        $('#pro_name_confirm').text(pro_name_con);
+        $('#pro_name_confirm2').text(pro_name_con);
+        $('#modal_edit').modal();
+
+        $('#submit').click(function() {
+            $('#form_edit_pro').submit();
+        });
     }
 </script>

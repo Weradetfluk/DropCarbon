@@ -375,12 +375,12 @@
   $(document).ready(function() {
     let error_add = '<?php echo $this->session->userdata("error_add_company"); ?>';
     if (error_add == "success") {
-      swal("สำเร็จ", "คุณทำการเพิ่มสถานที่สำเร็จ", "success");
+      swal("เพิ่มสถานที่สำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
       <?php echo $this->session->unset_userdata("error_add_company"); ?>
     }
     let error_edit = '<?php echo $this->session->userdata("error_edit_company"); ?>';
     if (error_edit == "success") {
-      swal("สำเร็จ", "คุณทำการแก้ไขสถานที่สำเร็จ", "success");
+      swal("แก้ไขสถานที่สำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
       <?php echo $this->session->unset_userdata("error_edit_company"); ?>
     }
     check_name_table(<?php echo $_SESSION['tab_number_company']?>);

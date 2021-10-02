@@ -105,21 +105,19 @@
                                 onclick="document.getElementById('eve_file').click();">เพิ่มรูปภาพ</button>
 
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image">
-                                <!-- <?php if ($arr_event[0]->eve_img_path != null) { ?> -->
                                 <?php for ($i = 0; $i < count($arr_event); $i++) { ?>
-                                <?php $arr_path = explode('.', $arr_event[$i]->eve_img_path) ?>
-                                <div id="<?php echo $arr_path[0] . '.' . $arr_path[1] ?>">
-                                    <div class="image_container d-flex justify-content-center position-relative"
-                                        style="border-radius: 7px; width: 200px; height:200px">
-                                        <img src="<?php echo base_url() . 'image_event/' . $arr_event[$i]->eve_img_path; ?>"
-                                            alt="Image">
-                                        <span class="position-absolute" style="font-size: 25px;"
-                                            onclick="unlink_old_image('<?php echo $arr_event[$i]->eve_img_path ?>')">&times;</span>
-                                        <input type="text" value="<?php echo $arr_event[$i]->eve_img_path ?>"
-                                            name="old_img[]" hidden>
+                                    <?php $arr_path = explode('.', $arr_event[$i]->eve_img_path) ?>
+                                    <div id="<?php echo $arr_path[0] . '.' . $arr_path[1] ?>">
+                                        <div class="image_container d-flex justify-content-center position-relative"
+                                            style="border-radius: 7px; width: 200px; height:200px">
+                                            <img src="<?php echo base_url() . 'image_event/' . $arr_event[$i]->eve_img_path; ?>"
+                                                alt="Image">
+                                            <span class="position-absolute" style="font-size: 25px;"
+                                                onclick="unlink_old_image('<?php echo $arr_event[$i]->eve_img_path ?>')">&times;</span>
+                                            <input type="text" value="<?php echo $arr_event[$i]->eve_img_path ?>"
+                                                name="old_img[]" hidden>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php } ?>
                                 <?php } ?>
                             </div>
                             <div id="arr_del_img_new"></div>
@@ -148,8 +146,8 @@
                                         <div class="modal-body">
                                             <p>คุณต้องการที่แก้ไขข้อมูลกิจกรรม <span id="eve_name_confirm"></span> ?</p>
                                             <br>
-                                            <p style="color: red;">***หากทำการแก้ไขข้อมูล กิจกรรม <span
-                                                    id="eve_name_confirm"> จะกลับสู่สถานะรออนุมัติ</span>***</p>
+                                            <p style="color: red;">***หากทำการแก้ไขข้อมูลกิจกรรม <span
+                                                    id="eve_name_confirm2"></span>  จะกลับสู่สถานะรออนุมัติ***</p>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
@@ -230,107 +228,108 @@ function upload_image_ajax() {
             check_count_image_btn();
         }
     });
-}
+    }
 
-/*
- * unlink_new_image
- * unlink image
- * @input com_file, card_image, data
- * @output -
- * @author Acharaporn pornpattanasap 62160344
- * @Create Date 2564-09-27
- * @Update -
- */
-function unlink_new_image(img_path) {
-    let html = '';
-    html += '<input name="del_new_img[]" value="' + img_path + '" hidden>';
-    document.getElementById('arr_del_img_new').innerHTML += html;
+    /*
+    * unlink_new_image
+    * unlink image
+    * @input com_file, card_image, data
+    * @output -
+    * @author Acharaporn pornpattanasap 62160344
+    * @Create Date 2564-09-27
+    * @Update -
+    */
+    function unlink_new_image(img_path) {
+        let html = '';
+        html += '<input name="del_new_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img_new').innerHTML += html;
 
-    let file_name = img_path.split('.');
-    // console.log('#'+file_name[0]+'.'+file_name[1]);
-    document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
-    count_image -= 1;
-    console.log(count_image);
-    check_count_image_btn();
-}
+        let file_name = img_path.split('.');
+        // console.log('#'+file_name[0]+'.'+file_name[1]);
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        console.log(count_image);
+        check_count_image_btn();
+    }
 
-/*
- * unlink_old_image
- * unlink image
- * @input com_file, card_image, data
- * @output -
- * @author Acharaporn pornpattanasap 62160344
- * @Create Date 2564-09-27
- * @Update -
- */
-function unlink_old_image(img_path) {
-    let html = '';
-    html += '<input name="del_old_img[]" value="' + img_path + '" hidden>';
-    document.getElementById('arr_del_img_old').innerHTML += html;
+    /*
+    * unlink_old_image
+    * unlink image
+    * @input com_file, card_image, data
+    * @output -
+    * @author Acharaporn pornpattanasap 62160344
+    * @Create Date 2564-09-27
+    * @Update -
+    */
+    function unlink_old_image(img_path) {
+        let html = '';
+        html += '<input name="del_old_img[]" value="' + img_path + '" hidden>';
+        document.getElementById('arr_del_img_old').innerHTML += html;
 
-    let file_name = img_path.split('.');
-    // console.log('#'+file_name[0]+'.'+file_name[1]);
-    document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
-    count_image -= 1;
-    console.log(count_image);
-    check_count_image_btn();
-}
+        let file_name = img_path.split('.');
+        // console.log('#'+file_name[0]+'.'+file_name[1]);
+        document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+        count_image -= 1;
+        console.log(count_image);
+        check_count_image_btn();
+    }
 
-/*
- * unlink_image_go_back
- * uplink image when cancel edit_event
- * @input new_img
- * @output -
- * @author Suwapat Saowarod 62160340
- * @Create Date 2564-09-29
- * @Update -
- */
-function unlink_image_go_back() {
-    // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
-    var arr_image = $("input[name='new_img[]']").map(function() {
-        return $(this).val();
-    }).get();
-    console.log(arr_image);
-    $.ajax({
-        url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
-        method: "POST",
-        data: {
-            arr_image: arr_image
-        },
-        success: function(data) {
-            console.log(data);
-            location.replace("<?php echo base_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
-        }
-    })
-}
+    /*
+    * unlink_image_go_back
+    * uplink image when cancel edit_event
+    * @input new_img
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-29
+    * @Update -
+    */
+    function unlink_image_go_back() {
+        // ดึงค่าของ input ที่มี name ชื่อ new_img[] มาใส่ตัวแปร arr_image
+        var arr_image = $("input[name='new_img[]']").map(function() {
+            return $(this).val();
+        }).get();
+        console.log(arr_image);
+        $.ajax({
+            url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
+            method: "POST",
+            data: {
+                arr_image: arr_image
+            },
+            success: function(data) {
+                console.log(data);
+                location.replace("<?php echo base_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
+            }
+        })
+    }
 
-/*
- * confirm_edit
- * confirm delete company
- * @input com_name_con, com_id_con
- * @output modal comfirm delete comepany
- * @author Suwapat Saowarod 62160340
- * @Create Date 2564-09-18
- * @Update -
- */
-function confirm_edit(eve_name_con) {
-    $('#eve_name_confirm').text(eve_name_con);
-    $('#modal_edit').modal();
+    /*
+    * confirm_edit
+    * confirm delete company
+    * @input com_name_con, com_id_con
+    * @output modal comfirm delete comepany
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-18
+    * @Update -
+    */
+    function confirm_edit(eve_name_con) {
+        $('#eve_name_confirm').text(eve_name_con);
+        $('#eve_name_confirm2').text(eve_name_con);
+        $('#modal_edit').modal();
 
-    $('#submit').click(function() {
-        $('#form_edit_eve').submit();
-    });
-}
+        $('#submit').click(function() {
+            $('#form_edit_eve').submit();
+        });
+    }
 
-/*
-     * check_count_image
-     * check count image to disable btn submit
-     * @input -
-     * @output -
-     * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-09-28
-     * @Update 
-     */
+    /*
+    * check_count_image
+    * check count image to disable btn submit
+    * @input -
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-28
+    * @Update 
+    */
     function check_count_image_btn() {
         // if (count_image == 0 || check_btn_name == 1) {
         if (count_image == 0){

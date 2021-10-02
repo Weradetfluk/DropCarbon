@@ -45,4 +45,28 @@ class Da_dcs_promotions extends DCS_model
 				VALUES (?,?,?,?,?,?,?,?)";
         $this->db->query($sql, array($this->pro_name, $this->pro_point, $this->pro_description, $this->pro_status, $this->pro_start_date, $this->pro_end_date, $this->pro_com_id, $this->pro_cat_id));
     }
+
+    /*
+    * update_promotions
+    * update promotions in database
+    * @input pro_name, pro_point, pro_description, pro_status, pro_start_date, pro_end_date, pro_com_id, pro_cat_id, pro_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-03
+    * @Update Date -
+    */
+    public function update_promotions()
+    {
+        $sql = "UPDATE `dcs_promotions` 
+                SET `pro_name`=?,
+                    `pro_point`=?,
+                    `pro_description`=?,
+                    `pro_status`=?,
+                    `pro_start_date`=?,
+                    `pro_end_date`=?,
+                    `pro_com_id`=?,
+                    `pro_cat_id`=?  
+                WHERE pro_id=?";
+        $this->db->query($sql, array($this->pro_name, $this->pro_point, $this->pro_description, $this->pro_status, $this->pro_start_date, $this->pro_end_date, $this->pro_com_id, $this->pro_cat_id, $this->pro_id));
+    }
 }

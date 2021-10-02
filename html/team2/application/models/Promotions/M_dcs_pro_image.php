@@ -48,7 +48,7 @@ class M_dcs_pro_image extends Da_dcs_pro_image
     public function get_by_pro_id()
     {
         $sql = "SELECT * FROM dcs_pro_image
-               WHERE pro_img_adm_id = ?";
-        return $this->db->query($sql, array($this->pro_img_adm_id));
+               WHERE pro_img_pro_id = ?";
+        return $this->db->query($sql, array($this->pro_img_pro_id));
     }
 }

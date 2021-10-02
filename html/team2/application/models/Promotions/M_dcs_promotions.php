@@ -162,7 +162,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     {
         $sql = "SELECT * 
         FROM {$this->db_name}.dcs_promotions AS pro
-        LEFT JOIN {$this->db_name}.dcs_pro_image AS img ON pro.pro_id = img.pro_img_adm_id 
+        LEFT JOIN {$this->db_name}.dcs_pro_image AS img ON pro.pro_id = img.pro_img_pro_id 
         LEFT JOIN {$this->db_name}.dcs_company AS com ON pro.pro_com_id = com.com_id
         LEFT JOIN {$this->db_name}.dcs_pro_category AS cat ON pro.pro_cat_id = cat.pro_cat_id
         LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent ON com.com_ent_id = ent.ent_id

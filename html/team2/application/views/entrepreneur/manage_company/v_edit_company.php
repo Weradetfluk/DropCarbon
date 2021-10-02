@@ -132,7 +132,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p>คุณต้องการที่แก้ไขข้อมูลสถานที่ <span id="com_name_confirm"></span> ?</p><br>
-                                            <p style="color: red;">***หากทำการแก้ไขข้อมูล สถานที่ <span id="com_name_confirm"> จะกลับสู่สถานะรออนุมัติ</span>***</p>
+                                            <p style="color: red;">***หากทำการแก้ไขข้อมูลสถานที่ <span id="com_name_confirm2"></span>  จะกลับสู่สถานะรออนุมัติ***</p>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
@@ -461,6 +461,7 @@
      */
     function confirm_edit(com_name_con) {
         $('#com_name_confirm').text(com_name_con);
+        $('#com_name_confirm2').text(com_name_con);
         $('#modal_edit').modal();
 
         $('#submit').click(function() {

@@ -311,7 +311,7 @@ CREATE TABLE `dcs_pro_image` (
   `pro_img_path` varchar(100) NOT NULL primary key,
   `pro_img_name` varchar(100) NOT NULL,
   `pro_img_pro_id` int(10) NOT NULL,
-  FOREIGN KEY (pro_img_adm_id) REFERENCES dcs_promotions(pro_id)
+  FOREIGN KEY (pro_img_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -329,9 +329,9 @@ CREATE TABLE `dcs_company_reject` (
   `cor_id` int(10) NOT NULL primary key AUTO_INCREMENT,
   `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
   `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `cor_ent_id` int(10),
+  `cor_com_id` int(10),
   `cor_adm_id` int(10),
-   FOREIGN KEY (cor_ent_id) REFERENCES dcs_company(com_id),
+   FOREIGN KEY (cor_com_id) REFERENCES dcs_company(com_id),
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

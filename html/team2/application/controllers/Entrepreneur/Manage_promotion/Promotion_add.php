@@ -14,7 +14,7 @@ class Promotion_add extends DCS_controller
     * show form add promotion
     * @input entrepreneur_id
     * @output -
-    * @author Priyarat Bumrungkit 62160156
+    * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02
     * @Update Date -
     */
@@ -34,8 +34,8 @@ class Promotion_add extends DCS_controller
     * add promotion to database
     * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point
     * @output -
-    * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-09-26
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-10-02
     * @Update Date 
     */
     public function add_promotion(){

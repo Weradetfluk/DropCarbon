@@ -368,12 +368,12 @@
 $(document).ready(function() {
     var error = '<?php echo $this->session->userdata("error_add_event");?>';
     if(error == 'success'){
-        swal("สำเร็จ", "คุณทำการเพิ่มกิจกรรมสำเร็จ", "success");
+        swal("เพิ่มกิจกรรมสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
         <?php echo $this->session->unset_userdata("error_add_event");?>;
     }
     var error = '<?php echo $this->session->userdata("error_edit_event");?>';
     if(error == 'success'){
-        swal("สำเร็จ", "คุณทำการแก้ไขกิจกรรมสำเร็จ", "success");
+        swal("เแก้ไขกิจกรรมสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
         <?php echo $this->session->unset_userdata("error_edit_event");?>;
     }
     check_name_table(<?php echo $_SESSION['tab_number_event'] ?>);

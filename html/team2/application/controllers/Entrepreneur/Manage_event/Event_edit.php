@@ -47,32 +47,32 @@ class Event_edit extends DCS_controller
     public function edit_event()
     {
 
-        // $this->load->model('Event/M_dcs_eve_image', 'mimg');
-        $this->load->model('Event/M_dcs_event', 'deve');
-        $this->load->model('Event/Da_dcs_eve_image', 'mimg');
+        $this->load->model('Event/M_dcs_eve_image', 'mimg');
+        $this->load->model('Event/M_dcs_event', 'meve');
 
-
-        $this->deve->eve_name = $this->input->post('eve_name');
-        $this->deve->eve_description = $this->input->post('eve_description');
-        $this->deve->eve_com_id = $this->input->post('eve_com_id');
-        $this->deve->eve_cat_id = $this->input->post('eve_cat_id');
-        $this->deve->eve_start_date = $this->input->post('eve_start_date');
-        $this->deve->eve_end_date = $this->input->post('eve_end_date');
-        $this->deve->eve_id = $this->input->post('eve_id');
-        $this->deve->eve_status = 1;
+        $this->meve->eve_name = $this->input->post('eve_name');
+        $this->meve->eve_description = $this->input->post('eve_description');
+        $this->meve->eve_com_id = $this->input->post('eve_com_id');
+        $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
+        $this->meve->eve_start_date = $this->input->post('eve_start_date');
+        $this->meve->eve_end_date = $this->input->post('eve_end_date');
+        $this->meve->eve_id = $this->input->post('eve_id');
+        $this->meve->eve_status = 1;
 
         // save data company to database
-        $this->deve->update_event();
+        $this->meve->update_event();
         $this->set_session_edit_event('success');
         $this->mimg->eve_img_eve_id = $this->input->post('eve_id');
 
         // save data image to database
         $arr_img_add = array();
         $arr_img_add = $this->input->post('new_img');
+        $arr_name_name = $this->input->post('name_new_image');
         $this->mimg->eve_img_eve_id = $this->input->post('eve_id');
         if ($arr_img_add != '') {
             for ($i = 0; $i < count($arr_img_add); $i++) {
                 $this->mimg->eve_img_path = $arr_img_add[$i];
+                $this->mimg->eve_img_name = $arr_name_name[$i];
                 $this->mimg->insert_image_event();
             }
         }
@@ -114,9 +114,9 @@ class Event_edit extends DCS_controller
     */
     public function delete_event()
     {
-        $this->load->model('Company/M_dcs_event', 'mdeve');
-        $this->mdeve->eve_id = $this->input->post('eve_id');
-        $this->mdeve->delete_event();
+        $this->load->model('Company/M_dcs_event', 'mmeve');
+        $this->mmeve->eve_id = $this->input->post('eve_id');
+        $this->mmeve->delete_event();
     }
 
     /*
