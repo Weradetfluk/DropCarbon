@@ -70,7 +70,7 @@ class Da_dcs_promotions extends DCS_model
         $this->db->query($sql, array($this->pro_name, $this->pro_point, $this->pro_description, $this->pro_status, $this->pro_start_date, $this->pro_end_date, $this->pro_com_id, $this->pro_cat_id, $this->pro_id));
     }
 
-        /*
+    /*
     * update_status
     * update status promotions
     * @input parameter 1, 2, ex. 1 = consider, 2 = approve, 3 = rejected 

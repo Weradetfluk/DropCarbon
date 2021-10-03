@@ -13,7 +13,7 @@ class Da_dcs_pro_image extends DCS_model
 
     public $pro_img_path;
     public $pro_img_name;
-    public $pro_img_adm_id;
+    public $pro_img_pro_id;
 
     /*
     * @author Chutipon Thermsirisuksin 62160081
@@ -25,7 +25,7 @@ class Da_dcs_pro_image extends DCS_model
     /*
     * insert_image_promotions
     * insert image promotions
-    * @input pro_img_path, pro_img_adm_id, pro_img_name
+    * @input pro_img_path, pro_img_pro_id, pro_img_name
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-10-02
@@ -33,9 +33,9 @@ class Da_dcs_pro_image extends DCS_model
     */
     public function insert_image_promotions()
     {
-        $sql = "INSERT INTO `dcs_pro_image`(`pro_img_path`, `pro_img_name`, `pro_img_adm_id`) 
+        $sql = "INSERT INTO `dcs_pro_image`(`pro_img_path`, `pro_img_name`, `pro_img_pro_id`) 
 				VALUES (?, ?, ?)";
-        $this->db->query($sql, array($this->pro_img_path, $this->pro_img_name, $this->pro_img_adm_id));
+        $this->db->query($sql, array($this->pro_img_path, $this->pro_img_name, $this->pro_img_pro_id));
     }
 
     /*
