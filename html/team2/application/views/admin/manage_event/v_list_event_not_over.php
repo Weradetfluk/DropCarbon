@@ -141,7 +141,7 @@
          html_code += '<th class="th-custom res-hide">ลำดับ</th>';
          html_code += '<th class="th-custom ">ชื่อกิจกรรม</th>';
          html_code += '<th class="th-custom ">ชื่อสถานที่</th>';
-         html_code += '<th class="th-custom ">ชื่อผู้ประกอบการ</th>';
+         html_code += '<th class="th-custom res-hide">ชื่อผู้ประกอบการ</th>';
          html_code += '<th class="th-custom ">ดำเนินการ</th>';
          html_code += '</tr>';
          html_code += '</thead>';
@@ -150,10 +150,10 @@
          data.forEach((row_eve, index_eve) => {
 
              html_code += '<tr>';
-             html_code += '<td>' + (index_eve+1) + '</td>';
+             html_code += '<td class ="res-hide">' + (index_eve+1) + '</td>';
              html_code += '<td>' + (row_eve['eve_name']) + '</td>';
              html_code += '<td>' + (row_eve['com_name']) + '</td>';
-             html_code += '<td>' + (row_eve['ent_firstname']) + (row_eve['ent_lastname']) + '</td>';
+             html_code += '<td class ="res-hide">' + (row_eve['ent_firstname']) + (row_eve['ent_lastname']) + '</td>';
              html_code += '<td style="text-align: center;">';
              html_code += '<a class="btn btn-info" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
              html_code +='<i class="material-icons">'

@@ -270,7 +270,7 @@ class Admin_approval_event extends DCS_controller
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อกิจกรรม</th>
                       <th class="th-custom ">ชื่อสถานที่</th>
-                      <th class="th-custom ">ชื่อผู้ประกอบการ</th>
+                      <th class="th-custom res-hide">ชื่อผู้ประกอบการ</th>
                       <th class="th-custom ">ดำเนินการ</th>
                   </tr>
               </thead>
