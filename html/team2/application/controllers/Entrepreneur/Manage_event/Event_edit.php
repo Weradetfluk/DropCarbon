@@ -54,9 +54,13 @@ class Event_edit extends DCS_controller
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
         $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
+
         $this->meve->eve_start_date = $this->input->post('eve_start_date');
         $this->meve->eve_end_date = $this->input->post('eve_end_date');
         $this->meve->eve_id = $this->input->post('eve_id');
+
+        $this->meve->eve_lat = $this->input->post('eve_lat');
+        $this->meve->eve_lon = $this->input->post('eve_lon');
         $this->meve->eve_status = 1;
 
         // save data company to database
