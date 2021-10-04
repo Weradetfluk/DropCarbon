@@ -74,7 +74,7 @@
                                         </thead>
                                         <tbody class="list">
                                             <?php if (sizeof($arr_promotion) == 0) {
-                                                echo "<td colspan = '5'>";
+                                                echo "<td colspan = '6'>";
                                                 echo "ไม่มีข้อมูลในตารางนี้";
                                                 echo "</td>";
                                             } else {
@@ -246,7 +246,7 @@
                                                 }
                                             }
                                             if (sizeof($arr_promotion) == 0 || $count_approved_start == 0) {
-                                                echo "<td colspan = '5'>";
+                                                echo "<td colspan = '6'>";
                                                 echo "ไม่มีข้อมูลในตารางนี้";
                                                 echo "</td>";
                                             } else {
@@ -324,7 +324,7 @@
                                                 }
                                             }
                                             if (sizeof($arr_promotion) == 0 || $count_approved_end == 0) {
-                                                echo "<td colspan = '5'>";
+                                                echo "<td colspan = '6'>";
                                                 echo "ไม่มีข้อมูลในตารางนี้";
                                                 echo "</td>";
                                             } else {
