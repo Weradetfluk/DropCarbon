@@ -3,15 +3,15 @@
 * v_data_card_entrepreneur
 * Display data card of number
 * @input -
-* @output number of card in data entrepreneur
+* @output number of card in data event
 * @author weradet nopsombun 62160110
 * @Create Date 2564-08-08
 */ 
 -->
 <div class="content">
     <div class="container-fluid">
-        <div class="row row-cols-5">
-            <div class="col">
+        <div class="row ">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -28,32 +28,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+        
+            <div class="col-lg">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
                             <div class="col">
-                                <p class="card-title text-title">รอกำหนดคะแนน</p>
-                                <h2 class="card-text text-amount" id="no_score_eve"></h2>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon-shape icon-area">
-                                    <i class="material-icons custom-icon">hourglass_bottom</i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body border-left-yellow">
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-title text-title">กิจกรรมที่ยังไม่สิ้นสุด</p>
+                                <p class="card-title text-title">ยังไม่สิ้นสุด</p>
                                 <h2 class="card-text text-amount" id="not_over_eve"></h2>
                             </div>
-                            <div class="col-auto">
+                            <div class="col">
                                 <div class="icon-shape icon-area">
                                     <i class="material-icons custom-icon">hourglass_bottom</i>
                                 </div>
@@ -62,12 +46,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-green">
                         <div class="row">
                             <div class="col">
-                                <p class="card-title text-title">กิจกรรมที่สิ้นสุด</p>
+                                <p class="card-title text-title">สิ้นสุดแล้ว</p>
                                 <h2 class="card-text" id="over_eve"></h2>
 
                             </div>
@@ -80,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-red">
                         <div class="row">

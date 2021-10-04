@@ -3,7 +3,7 @@
 <!-- Open topbar -->
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: fixed;">
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: sticky;">
     <div class="container-fluid">
 
         <a href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>" class="navbar-brand">

@@ -96,19 +96,6 @@ class Admin_approval_event extends DCS_controller
     $this->output_admin('admin/manage_event/v_list_event_consider', null, 'admin/manage_event/v_data_card_event');
   }
   /*
-        * show_data_approve
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
-  public function show_data_approve_no_score()
-  {
-    $this->output_admin('admin/manage_event/v_list_event_no_score', null, 'admin/manage_event/v_data_card_event');
-  }
-  /*
         * show_data_reject
         * get all data entrepreneur approve  and show table
         * @input
@@ -473,45 +460,6 @@ class Admin_approval_event extends DCS_controller
     $data["arr_event"] = $this->meve->get_by_detail()->result();
     $this->output_admin('admin/manage_event/v_detail_event_admin', $data, null);
   }
-
-
-
-  /*
-    * get_event_data_no_score_ajax
-    * show detail
-    * @input number_status
-    * @output -
-    * @author weradet nopsombun 62160110 
-    * @Create Date 2021-08-20
-    * @Update Date -
-    */
-  public function get_event_data_no_score_ajax($number_status)
-  {
-    $value_search = $this->input->post('query');
-    //กรณีไม่ได้ค้นหา
-    //define pagation
-    if ($value_search != '') {
-      $data['arr_event'] = $this->mdce->get_search_no_score($value_search, $number_status)->result();
-      echo json_encode($data);
-    } else {
-      $limit = '6';
-      $page = 1; // หน้า
-      $post_page = $this->input->post("page");
-      if ($post_page > 1) {
-        $start = (($post_page - 1) * $limit);
-        $page = $post_page;
-      } else {
-        $start = 0;
-      }
-      $all_count = $this->mdce->get_count_all_no_score($number_status);                               //get all count consider
-      $data['arr_event'] = $this->mdce->get_all_data_nosocre($limit, $start, $number_status); // query แบบแบ่งหน้า
-      if ($data['arr_event']) {
-        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
-      }
-      echo json_encode($data);
-    }
-  }
-
 
   /*
     * get_evenr_data_no_score_ajax

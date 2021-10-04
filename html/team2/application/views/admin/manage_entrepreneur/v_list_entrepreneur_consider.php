@@ -64,7 +64,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการอนุมัติ <span id="ent_name_confirm"></span> ?</p>
