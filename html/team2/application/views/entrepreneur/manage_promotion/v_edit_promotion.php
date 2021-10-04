@@ -121,7 +121,7 @@
                             <input type="hidden" name="pro_id" id="pro_id" value="<?php echo $arr_promotion[0]->pro_id; ?>">
                             <!-- Submit button -->
                             <div style="text-align: right;">
-                                <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
+                                <button type="button" id="btn_sub" class="btn btn-success" onclick="confirm_edit('<?php echo $arr_promotion[0]->pro_name?>')">บันทึก</button>
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 

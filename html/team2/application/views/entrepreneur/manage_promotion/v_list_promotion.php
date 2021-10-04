@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($_SESSION['tab_number_promotion'] == 3) echo "active"; ?>" href="#tab_approved_strat" data-toggle="tab" onclick="change_tab_number_ajax(3)">
+                            <a class="nav-link <?php if ($_SESSION['tab_number_promotion'] == 3) echo "active"; ?>" href="#tab_approved_start" data-toggle="tab" onclick="change_tab_number_ajax(3)">
                                 <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                             </a>
                         </li>
@@ -94,29 +94,20 @@
                                                         <?php } ?>
                                                         <td style="text-align: left;"><?php echo $arr_promotion[$i]->com_name; ?>
                                                         </td>
-                                                        <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
-                                                            <td style="color: #fba004;">รออนุมัติ</td>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        <?php } ?>
-                                                        <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
-                                                            <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
-                                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                        <?php if ($arr_promotion[$i]->pro_status != 3) { ?>
+                                                            <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
+                                                                <td style="color: #fba004;">รออนุมัติ</td>
                                                             <?php } ?>
-                                                            <?php if ($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
-                                                                <td style="color: red;">สิ้นสุด</td>
-                                                            <?php } ?>
-                                                            <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
-                                                                <td style="color: #669900;">อนุมัติ</td>
+                                                            <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
+                                                                <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
+                                                                    <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                                <?php } ?>
+                                                                <?php if ($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
+                                                                    <td style="color: red;">สิ้นสุด</td>
+                                                                <?php } ?>
+                                                                <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
+                                                                    <td style="color: #669900;">อนุมัติ</td>
+                                                                <?php } ?>
                                                             <?php } ?>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
@@ -162,6 +153,7 @@
                                                 <th>ชื่อกิจกรรม</th>
                                                 <th>รายละเอียดกิจกรรม</th>
                                                 <th>ของสถานที่</th>
+                                                <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
                                         </thead>
@@ -174,7 +166,7 @@
                                                 }
                                             }
                                             if (sizeof($arr_promotion) == 0 || $count_pending == 0) {
-                                                echo "<td colspan = '5'>";
+                                                echo "<td colspan = '6'>";
                                                 echo "ไม่มีข้อมูลในตารางนี้";
                                                 echo "</td>";
                                             } else {
@@ -197,6 +189,7 @@
                                                             <?php } ?>
                                                             <td style="text-align: left;"><?php echo $arr_promotion[$i]->com_name; ?>
                                                             </td>
+                                                            <td style="color: #fba004;">รออนุมัติ</td>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>
@@ -221,7 +214,7 @@
                 </div>
 
                 <!-- tab show start promotion -->
-                <div class="tab-pane <?php if ($_SESSION['tab_number_promotion'] == 3) echo "active"; ?>" id="tab_approved_strat">
+                <div class="tab-pane <?php if ($_SESSION['tab_number_promotion'] == 3) echo "active"; ?>" id="tab_approved_start">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
@@ -384,6 +377,7 @@
                                                 <th>ชื่อกิจกรรม</th>
                                                 <th>รายละเอียดกิจกรรม</th>
                                                 <th>ของสถานที่</th>
+                                                <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
                                         </thead>
@@ -396,7 +390,7 @@
                                                 }
                                             }
                                             if (sizeof($arr_promotion) == 0 || $count_reject == 0) {
-                                                echo "<td colspan = '5'>";
+                                                echo "<td colspan = '6'>";
                                                 echo "ไม่มีข้อมูลในตารางนี้";
                                                 echo "</td>";
                                             } else {
@@ -419,6 +413,7 @@
                                                             <?php } ?>
                                                             <td style="text-align: left;"><?php echo $arr_promotion[$i]->com_name; ?>
                                                             </td>
+                                                            <td style="color: red;">ปฏิเสธ</td>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="">
                                                                     <span class="material-icons">search</span>

@@ -293,7 +293,7 @@ CREATE TABLE `dcs_com_image` (
 
 -- data image company
 INSERT INTO `dcs_com_image` (`com_img_path`, `com_img_name`, `com_img_com_id`) VALUES
-('613257f20bbb03.90906443.jpg', 'โรงแรม 1', 2),
+('613257f20bbb03.90906443.jpg', 'โรงแรม 1', 1),
 ('613257f20bbb03.90906415.jpg', 'รูปปราสาทสัจธรรม1', 2),
 ('613257f20bbb03.90906345.jpg', 'รูปปราสาทสัจธรรม2', 2);
 

@@ -23,7 +23,7 @@
                         <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_add/add_event/' ?>" id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="eve_name">ชื่อกิจกรรม</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
+                                    <label for="eve_name">ชื่อกิจกรรม</label>
                                     <input type="text" id="eve_name" name="eve_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" onkeyup="check_name_event_ajax()" required>
                                     <span class="text-danger" id="error_eve_name"></span>
                                 </div>
@@ -46,7 +46,7 @@
 
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label>
+                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="eve_com_id" id="eve_com_id" class="form-control" required>
                                     <?php if(count($arr_company) != 0){?>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>

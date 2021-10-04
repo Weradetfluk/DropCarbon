@@ -54,17 +54,17 @@
                             <!-- Text input -->
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label>
+                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="eve_com_id" id="eve_com_id" class="form-control" required>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
-                                        <?php if ($arr_company[$i]->com_id == $arr_event[0]->eve_com_id) { ?>
-                                        <option value="<?php echo $arr_company[$i]->com_id ?>" selected="selected">
-                                            <?php echo $arr_company[$i]->com_name; ?></option>
-                                        <?php } ?>
-                                        <?php if ($arr_company[$i]->com_id != $arr_event[0]->eve_com_id) { ?>
-                                        <option value="<?php echo $arr_company[$i]->com_id ?>">
-                                            <?php echo $arr_company[$i]->com_name; ?></option>
-                                        <?php } ?>
+                                            <?php if ($arr_company[$i]->com_id == $arr_event[0]->eve_com_id) { ?>
+                                            <option value="<?php echo $arr_company[$i]->com_id ?>" selected="selected">
+                                                <?php echo $arr_company[$i]->com_name; ?></option>
+                                            <?php } ?>
+                                            <?php if ($arr_company[$i]->com_id != $arr_event[0]->eve_com_id) { ?>
+                                            <option value="<?php echo $arr_company[$i]->com_id ?>">
+                                                <?php echo $arr_company[$i]->com_name; ?></option>
+                                            <?php } ?>
                                         <?php } ?>
                                     </select>
                                 </div>

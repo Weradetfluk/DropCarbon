@@ -25,6 +25,7 @@ class Event_list extends DCS_controller
         }
         $this->load->model('Event/M_dcs_event', 'meve');
         $data['arr_event'] = $this->meve->get_event_by_ent_id($this->session->userdata("entrepreneur_id"))->result();
+        $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_event/v_list_event';
         $_SESSION['tab_number_entrepreneur'] = 2;
         $this->output_entrepreneur($view, $data);
