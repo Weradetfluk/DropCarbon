@@ -22,13 +22,21 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                             <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> "><h5 class="h5-card-header">รออนุมัติ</h5></a>
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> ">
+                                    <h5 class="h5-card-header">รออนุมัติ</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_approve' ?> "><h5 class="h5-card-header">อนุมัติแล้ว</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_pro_not_over'; ?>">
+                                    <h5 class="h5-card-header">โปรโมชันที่ยังไม่สิ้นสุด</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_reject'; ?>"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_pro_over'; ?>">
+                                     <h5 class="h5-card-header">โปรโมชันที่สิ้นสุด</h5>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_reject'; ?>">
+                                    <h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
                              </li>
                          </ul>
                      </div>

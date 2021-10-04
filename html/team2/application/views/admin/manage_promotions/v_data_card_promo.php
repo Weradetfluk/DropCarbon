@@ -10,14 +10,14 @@
 -->
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
+        <div class="row row-cols-5">
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">รออนุมัติ</p>
-                                <h2 class="card-text text-amount" id="consider_promo"></h2>
+                                <h2 class="card-text text-amount" id="consider_pro"></h2>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-area">
@@ -28,13 +28,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body border-left-yellow">
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-title text-title">โปรโมชันที่ยังไม่สิ้นสุด</p>
+                                <h2 class="card-text text-amount" id="not_over_pro"></h2>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-area">
+                                    <i class="material-icons custom-icon">access_time</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-green">
                         <div class="row">
                             <div class="col">
-                                <p class="card-title text-title">อนุมัติแล้ว</p>
-                                <h2 class="card-text" id="approve_promo"></h2>
+                                <p class="card-title text-title">โปรโมชันที่สิ้นสุด</p>
+                                <h2 class="card-text" id="over_pro"></h2>
 
                             </div>
                             <div class="col-auto">
@@ -46,13 +63,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col">
                 <div class="card">
                     <div class="card-body border-left-red">
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">ถูกปฏิเสธ</p>
-                                <h2 class="card-text text-amount" id="reject_promo"></h2>
+                                <h2 class="card-text text-amount" id="reject_pro"></h2>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-danger">
@@ -86,11 +103,13 @@
                     dataType: 'JSON',
                     success: function(json_data) {
 
-                        $("#consider_promo").html(json_data[0].pro_consider + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+                        $("#consider_pro").html(json_data[0].pro_consider + " <span style='font-size: 16px;'>โปรโมชัน</span>");
 
-                        $("#approve_promo").html(json_data[0].pro_approve  + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+                        $("#not_over_pro").html(json_data[0].pro_not_over  + " <span style='font-size: 16px;'>โปรโมชัน</span>");
 
-                        $("#reject_promo").html(json_data[0].pro_reject  + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+                        $("#over_pro").html(json_data[0].pro_over  + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+
+                        $("#reject_pro").html(json_data[0].pro_reject  + " <span style='font-size: 16px;'>โปรโมชัน</span>");
 
                     },
                     error: function() {

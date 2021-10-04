@@ -120,6 +120,33 @@ class Admin_approval_promotions extends DCS_controller
   {
     $this->output_admin('admin/manage_promotions/v_list_promo_reject', null, 'admin/manage_promotions/v_data_card_promo');
   }
+
+   /*
+        * show_data_pro_not_over
+        * get all data entrepreneur approve  and show table
+        * @input
+        * @output -
+        * @author Weradet Nopsombun 62160110
+        * @Create Date 2564-10-04
+        * @Update Date -
+        */
+  public function show_data_pro_not_over()
+  {
+    $this->output_admin('admin/manage_promotions/v_list_promo_not_over', null, 'admin/manage_promotions/v_data_card_promo');
+  }
+  /*
+        * show_data_pro_over
+        * get all data entrepreneur approve  and show table
+        * @input
+        * @output -
+        * @author Nantasiri Saiwaew 62160093
+        * @Create Date 2564-10-04
+        * @Update Date -
+        */
+        public function show_data_pro_over()
+        {
+          $this->output_admin('admin/manage_promotions/v_list_promo_over', null, 'admin/manage_promotions/v_data_card_promo');
+        }
   /*
         * get_entrepreneur_by_id_ajax
         * get all data entrepreneur by id
@@ -235,7 +262,6 @@ class Admin_approval_promotions extends DCS_controller
                   <tr class="custom-tr-header-table">
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อโปรโมชัน</th>
-                      <th class="th-custom ">รายละเอียด</th>
                       <th class="th-custom ">ชื่อสถานที่</th>
                       <th class="th-custom ">ชื่อผู้ประกอบการ</th>
                       <th class="th-custom ">ดำเนินการ</th>
@@ -259,9 +285,6 @@ class Admin_approval_promotions extends DCS_controller
             '<td class="res-hide">' . $i . '</td>' .
             '<td>'
             . $row->pro_name .
-            '</td>' .
-            '<td>'
-            .    iconv_substr($row->pro_description, 0, 60, "UTF-8") . "..." .
             '</td>' .
             '<td>'
             . $row->com_name .
@@ -340,9 +363,6 @@ class Admin_approval_promotions extends DCS_controller
             . $row->pro_name .
             '</td>' .
             '<td>'
-            .   iconv_substr($row->pro_description, 0, 60, "UTF-8") . "..." .
-            '</td>' .
-            '<td>'
             . $row->com_name .
             '</td>' .
             '<td class="res-hide">' .
@@ -412,12 +432,12 @@ class Admin_approval_promotions extends DCS_controller
     echo  $output; // to view
   }
   /*
-    * show_detail_company
+    * show_detail_pro
     * show detail
     * @input 
     * @output -
-    * @author weradet nopsombun 62160110 
-    * @Create Date 2021-08-20
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2021-10-02
     * @Update Date -
     */
     public function show_detail_pro($pro_id)
@@ -428,4 +448,85 @@ class Admin_approval_promotions extends DCS_controller
         $data["arr_pro"] = $this->mdpe->get_by_detail()->result();
       $this->output_admin('admin/manage_promotions/v_detail_promotions_admin', $data , null);
     }
+
+     /*
+    * get_evenr_data_no_score_ajax
+    * show detail
+    * @input number_status
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+  public function get_promo_data_not_over_ajax($number_status)
+  {
+    $value_search = $this->input->post('query');
+    //กรณีค้นหา
+    if ($value_search != '') {
+
+      $data['arr_promo'] = $this->mdcp->get_search_not_over($value_search, $number_status)->result();
+      echo json_encode($data);
+    } else {
+      //ไม่ได้ค้นหา
+      $limit = '6';
+      $page = 1; // หน้า
+      $post_page = $this->input->post("page");
+
+      // page 
+      if ($post_page > 1) {
+        $start = (($post_page - 1) * $limit);
+        $page = $post_page;
+      } else {
+        $start = 0;
+      }
+      $all_count = $this->mdcp->get_count_all_not_over($number_status);                               //get all count consider
+      $data['arr_promo'] = $this->mdcp->get_all_data_not_over($limit, $start, $number_status); // query แบบแบ่งหน้า
+      $i = 1;
+
+      if ($data['arr_promo']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
+      }
+      echo json_encode($data);
+    }
+  }
+
+  /*
+    * get_evenr_data_no_score_ajax
+    * show detail
+    * @input number_status
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-08-20
+    * @Update Date -
+    */
+  public function get_pro_data_over_ajax($number_status)
+  {
+    $value_search = $this->input->post('query');
+    //กรณีค้นหา
+    if ($value_search != '') {
+
+      $data['arr_promo'] = $this->mdcp->get_search_over($value_search, $number_status)->result();
+      echo json_encode($data);
+    } else {
+      //ไม่ได้ค้นหา
+      $limit = '6';
+      $page = 1; // หน้า
+      $post_page = $this->input->post("page");
+
+      // page 
+      if ($post_page > 1) {
+        $start = (($post_page - 1) * $limit);
+        $page = $post_page;
+      } else {
+        $start = 0;
+      }
+      $all_count = $this->mdcp->get_count_all_over($number_status);                               //get all count consider
+      $data['arr_promo'] = $this->mdcp->get_all_data_over($limit, $start, $number_status); // query แบบแบ่งหน้า
+
+      if ($data['arr_promo']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit);
+      }
+      echo json_encode($data);
+    }
+  }
 }
