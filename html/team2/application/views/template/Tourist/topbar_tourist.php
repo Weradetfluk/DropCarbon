@@ -1,33 +1,153 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 
-<!-- Open topbar -->
+<style>
+    nav {
+        background: #fff;
+        padding: 0px 10px;
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+        margin-top: -3%;
+    }
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light" style="position: sticky;">
-    <div class="container-fluid">
+    ul {
+        list-style-type: none;
+        margin-bottom: 0rem;
+    }
 
-        <a href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>" class="navbar-brand">
-            <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -10px; margin-left: -40px;">
-        </a>
+    .h4 {
+        padding-top: 10px;
+    }
 
-        <!-- nav with responesive -->
+    .a {
+        color: black;
+        text-decoration: none !important;
+    }
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav nav-moblie-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_login' ?>"><h4><i class="material-icons">person</i> เข้าสู่ระบบ</h4></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() . 'Landing_page/Select_register' ?>"><h4><i class="material-icons">person_add_alt_1</i> สมัครสมาชิก</h4></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .logo a:hover {
+        text-decoration: none;
+    }
+
+    .menu li {
+        font-size: 16px;
+        padding: 15px 5px;
+        white-space: nowrap;
+    }
+
+    .logo a,
+    .toggle a {
+        font-size: 20px;
+    }
+
+    /* Mobile Menu */
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toggle {
+        order: 1;
+    }
+
+    .item {
+        width: 100%;
+        text-align: center;
+        order: 2;
+        display: none;
+    }
+
+    .item.active {
+        display: block;
+    }
+
+    /* Tablet Menu */
+
+    @media all and (min-width: 768px) {
+        .menu {
+            justify-content: center;
+        }
+
+        .logo {
+            flex: 1;
+        }
+
+        .toggle {
+            flex: 1;
+            text-align: center;
+            order: 2;
+        }
+    }
+
+    /* Desktop Menu */
+
+    @media all and (min-width: 900px) {
+        .item {
+            display: block;
+            width: auto;
+        }
+
+        .toggle {
+            display: none;
+        }
+
+        .logo {
+            order: 0;
+        }
+
+        .item {
+            order: 1;
+        }
+
+        .menu li {
+            padding: 15px 10px;
+        }
+    }
+</style>
+
+<nav>
+    <ul class="menu">
+        <li class="logo">
+            <a class="a" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
+                <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
+            </a>
+        </li>
+        <li class="item active">
+            <a class="a" href="<?php echo base_url() . 'Landing_page/Select_login' ?>">
+                <h4 class="h4"><i class="material-icons">person</i> เข้าสู่ระบบ</h4>
+            </a>
+        </li>
+        <li class="item active">
+            <a class="a" href="<?php echo base_url() . 'Landing_page/Select_register' ?>">
+                <h4 class="h4"><i class="material-icons">person_add_alt_1</i> สมัครสมาชิก</h4>
+            </a>
+        </li>
+        <li class="toggle">
+            <a class="a" href="#">
+                <span class="material-icons" style="color: #000;">
+                    menu
+                </span>
+            </a>
+        </li>
+    </ul>
 </nav>
-<!-- Close topbar -->
+
+<script>
+    $(function() {
+        $('.toggle').on("click", function() {
+            if ($(".item").hasClass("active")) {
+                $(".item").removeClass("active");
+                $(this).find("a").html("<span class='material-icons' style='color: #000;'>menu</span>");
+            } else {
+                $(".item").addClass("active");
+                $(this).find("a").html("<span class='material-icons' style='color: #000;'>close</span>");
+            }
+        });
+    });
+</script>
