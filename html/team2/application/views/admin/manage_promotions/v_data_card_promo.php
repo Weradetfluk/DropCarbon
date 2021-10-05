@@ -10,8 +10,8 @@
 -->
 <div class="content">
     <div class="container-fluid">
-        <div class="row row-cols-5">
-            <div class="col">
+        <div class="row">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-green">
                         <div class="row">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-red">
                         <div class="row">

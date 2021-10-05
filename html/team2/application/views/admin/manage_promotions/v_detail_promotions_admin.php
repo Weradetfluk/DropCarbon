@@ -86,7 +86,22 @@
                             <h2 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;"><?php echo $arr_pro[0]->pro_name; ?></h2>
                         </center>
                     </div>
-                    <br>
+                    <div class="carousel-inner">
+                                <hr width="100%" size="5" color="#cccccc">
+                                <?php for ($i = 0; $i < count($arr_pro); $i++) { ?>
+                                    <?php if ($i == 0) { ?>
+                                        <div class="carousel-item image-detail active">
+                                            <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>">
+                                        </div>
+                                    <?php } ?>
+                                    <?php if ($i != 0) { ?>
+                                        <div class="carousel-item image-detail">
+                                            <img class="d-block w-100 image_banner" src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>">
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                                <br>
+                            </div>
     <div class="row" style="padding-top: 5%;">
         <div class="col">
             <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียด</h3>
@@ -179,7 +194,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการอนุมัติ <span id="pro_name_confirm"></span> ?</p>
@@ -197,9 +212,10 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="pro_reject_name_confirm"></span> ?</h5>
+                <h5 class="modal-title">รายละเอียด</h5>
              </div>
              <div class="modal-body">
+                <p>คุณต้องการที่จะปฏิเสธ<span id="pro_reject_name_confirm"></span> ?</p><br>
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/reject_pro'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">

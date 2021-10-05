@@ -11,10 +11,12 @@ body{font-size: 18px; font-family: 'Prompt', sans-serif;}
 .border-left-green {border-left: 4px solid #4caf50;}
 .border-left-red {border-left: 4px solid #f44336;}
 .border-left-purple {border-left: 4px solid #8e24aa;}
+.border-left-blue {border-left: 4px solid #21069c;}
 .text-title {color: #8898aa;font-weight: 500;font-size: 14px;}
 .icon-shape {border-radius: 50%;color: #fff;width: 80px;height: 80px;display: flex;justify-content: center;align-items: center;font-size: 25px;box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;}
 .icon-area {background: #fba004;}
 .icon-purple{background: #8e24aa;}
+.icon-blue{background: #21069c;}
 .custom-icon{font-size: 30px  !important;}
 .vr-line{border-left: 4px solid #4caf50 !important;margin : 0 auto !important; height: auto; padding-left: 3px !important;padding-bottom: 10px;}
 

@@ -69,10 +69,10 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติ <span id="pro_name_confirm"></span> ?</p>
+                 <p>คุณต้องการอนุมัติ <span id="pro_name_confirm"></span>?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -141,9 +141,10 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="pro_reject_name_confirm"></span> ?</h5>
+                <h5 class="modal-title">รายละเอียด</h5>
              </div>
              <div class="modal-body">
+                 <p>คุณต้องการที่จะปฏิเสธ <span id="pro_reject_name_confirm"></span> ?</p><br>
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/reject_pro'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
