@@ -15,7 +15,7 @@
                 <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                     <div class="card-header" style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center>
-                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">เพิ่มโปรโมชัน</h4>
+                            <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">แก้ไขโปรโมชัน</h4>
                         </center>
                     </div>
                     <div class="card-body">

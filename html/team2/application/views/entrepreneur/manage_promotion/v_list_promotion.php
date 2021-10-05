@@ -121,7 +121,7 @@
                                                 <?php } ?>
                                                 <td>
                                                     <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
+                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                     <a class="btn btn-warning" style="font-size:10px; padding:12px;"
@@ -138,7 +138,7 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
+                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                 </td>
@@ -210,7 +210,7 @@
                                                 <td style="color: #fba004;">รออนุมัติ</td>
                                                 <td>
                                                     <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
+                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                         <span class="material-icons">search</span>
                                                     </a>
                                                     <a class="btn btn-warning" style="font-size:10px; padding:12px;"
@@ -295,7 +295,7 @@
                                                             <?php } ?>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="">
+                                                                    href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
                                                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;"
@@ -375,7 +375,7 @@
                                                             <td style="color: red;">สิ้นสุด</td>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="">
+                                                                    href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                                     <span class="material-icons">search</span>
                                                                 </a>
                                                                 <a class="btn btn-warning" style="font-size:10px; padding:12px;"
@@ -455,7 +455,7 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
+                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/'.$arr_promotion[$i]->pro_id?>">
                                                         <span class="material-icons">search</span>
                                                     </a>
 
