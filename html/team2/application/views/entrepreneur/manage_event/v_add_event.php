@@ -132,8 +132,18 @@
         </div>
     </div>
 </div>
+<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
+    var count_image = 0;
+    // var check_btn_name = 0;
+    /*
+     * @author Suwapat Saowarod 62160340
+     */
+    $(document).ready(function() {
+        check_count_image_btn();
+        set_lat_lon();
+    });
     // openstreet map
     var map, vectorLayer, selectedFeature;
     var zoom = 16;
@@ -253,14 +263,8 @@
             init(lat, lon);
         });
     }
-    var count_image = 0;
-    // var check_btn_name = 0;
-    /*
-     * @author Suwapat Saowarod 62160340
-     */
-    $(document).ready(function() {
-        check_count_image_btn();
-    });
+
+
 
 
     /*
