@@ -88,13 +88,43 @@
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
                             <div id="arr_del_img_new"></div><br>
                             <!-- ส้นสุดเลือกรูปภาพกิจกรรม -->
+                            
+                            <!-- lat lon map -->
+                            <div class="row">
+                                <div class="col">
+                                    <span>ถ้าหากท่านรู้ ละติจูด ลองจิจูด สามารถใส่ข้อมูลด้านล่างได้เลย</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="eve_lat">ละติจูด</label>
+                                    <input type="text" id="eve_lat" name="eve_lat" class="form-control" value="" placeholder="ใส่ละติจูด">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="eve_lon">ลองจิจูด</label>
+                                    <input type="text" id="eve_lon" name="eve_lon" class="form-control" value="" placeholder="ใส่ลองจิจูด">
+                                </div>
+                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
+                                    <i class="material-icons" style="font-size:30px;">add_location</i>
+                                </a>
+                            </div><br><br>
 
+                            <div class="container-fluid">
+                                <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  เลือกสถานที่ตั้ง</h3>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <td style="border: 2px solid black;">
+                                            <div id="map" style="width: 900px; height: 400px;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
                             <!-- Submit button -->
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -104,7 +134,125 @@
 </div>
 
 <script>
+    // openstreet map
+    var map, vectorLayer, selectedFeature;
+    var zoom = 16;
+    var curpos = new Array();
+    var markers = new OpenLayers.Layer.Markers("Markers");
+    var position;
+    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var count_image = 0;
+    var check_btn_name = 0;
 
+    OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
+        initialize: function(name, options) {
+            var url = [
+                "http://a.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
+                "http://b.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
+                "http://c.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
+            ];
+            var newArguments = [name, url, options];
+            OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+        },
+    });
+
+    /*
+     * init
+     * show map and get location event
+     * @input lat, lon
+     * @output open street map
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-10-01
+     * @Update 
+     */
+    function init(lat, lon) {
+        var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
+        console.log(lat, lon);
+
+        map = new OpenLayers.Map("map");
+        var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
+        map.addLayer(cycleLayer);
+        map.setCenter(cntrposition, zoom);
+        var click = new OpenLayers.Control.Click();
+        map.addControl(click);
+        click.activate();
+        show_maker(lat, lon);
+    };
+
+    OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
+        defaultHandlerOptions: {
+            'single': true,
+            'double': false,
+            'pixelTolerance': 0,
+            'stopSingle': false,
+            'stopDouble': false
+        },
+
+        initialize: function(options) {
+            this.handlerOptions = OpenLayers.Util.extend({}, this.defaultHandlerOptions);
+            OpenLayers.Control.prototype.initialize.apply(this, arguments);
+            this.handler = new OpenLayers.Handler.Click(this, {
+                'click': this.trigger
+            }, this.handlerOptions);
+        },
+
+        trigger: function(e) {
+            var lonlat = map.getLonLatFromPixel(e.xy);
+            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+
+            markers.clearMarkers();
+            $('#eve_lat').val(lonlat1.lat);
+            $('#eve_lon').val(lonlat1.lon);
+            show_maker(lonlat1.lat, lonlat1.lon);
+        },
+    });
+
+    /*
+     * show_maker
+     * show marker in open street map
+     * @input lat, lon
+     * @output marker in open street map
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-10-01
+     * @Update 2564-10-01
+     */
+    function show_maker(lon, lat) {
+        // console.log(lon + " " + lat);
+        markers.clearMarkers();
+        var lonLat = new OpenLayers.LonLat(lat, lon)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+        var zoom = 16;
+
+        map.addLayer(markers);
+
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+
+        map.setCenter(lonLat, zoom);
+    }
+
+    /*
+     * set_lat_lon
+     * set lat and lon
+     * @input -
+     * @output -
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-10-01
+     * @Update -
+     */
+    function set_lat_lon() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            $('#eve_lat').val(position.coords.latitude);
+            $('#eve_lon').val(position.coords.longitude);
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            init(lat, lon);
+        });
+    }
     var count_image = 0;
     // var check_btn_name = 0;
     /*
@@ -234,4 +382,5 @@
             }
         })
     }
+
 </script>

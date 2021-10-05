@@ -50,6 +50,8 @@ class Event_add extends DCS_controller
         $this->meve->eve_add_date = $this->input->post('eve_add_date');
         $this->meve->eve_start_date = $this->input->post('eve_start_date');
         $this->meve->eve_end_date = $this->input->post('eve_end_date');
+        $this->meve->eve_lat = $this->input->post('eve_lat');
+        $this->meve->eve_lon = $this->input->post('eve_lon');
     
         $this->meve->insert_event();
         $this->set_session_add_event('success');
