@@ -58,9 +58,6 @@
          <div class="modal-content">
              <div class="modal-header">
                  <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">แจ้งเตือน</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการอนุมัติ <span id="com_name_confirm"></span> ?</p>
@@ -73,41 +70,15 @@
      </div>
  </div>
 
-
-
- <!-- warnning reject  -->
- <!-- <div class="modal" tabindex="-1" role="dialog" id="Rejectent">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการปฏิเสธ ?</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <p>กรุณาระบุเหตุผล</p>
-                 <form method="POST" action=" echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>">
-                     <input type="hidden" id="email" name="email">
-                     <input type="hidden" id="com_id" name="com_id">
-                     <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason"></textarea>
-             </div>
-             <div class="modal-footer">
-                 <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div> -->
 <!-- warnning reject  -->
 <div class="modal" tabindex="-1" role="dialog" id="rejected_com">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="com_reject_name_confirm"></span> ?</h5>
+                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
+                 <p class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="com_reject_name_confirm"></span> ?</p>
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">

@@ -145,9 +145,10 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</h5>
+             <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
+                 <p class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="ent_reject_name_confirm"></span> ?</p>
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/reject_entrepreneur'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">

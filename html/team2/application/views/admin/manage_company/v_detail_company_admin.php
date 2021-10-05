@@ -145,9 +145,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">แจ้งเตือน</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <p>คุณต้องการอนุมัติ <span id="com_name_confirm"></span> ?</p>
@@ -166,9 +163,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="com_reject_name_confirm"></span> ?</h5>
+                        <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">แจ้งเตือน</h5>
                     </div>
                     <div class="modal-body">
+                        <p class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="com_reject_name_confirm"></span> ?</p>
                         <p>กรุณาระบุเหตุผล</p>
                         <form method="POST" action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/reject_company'; ?>" id="reject_form">
                             <input type="hidden" id="email" name="email">
@@ -250,7 +248,7 @@
                 $('#rejected_com').modal();
                 $('#email').val(ent_email);
                 $('#com_id_form').val(com_id);
-                //$('#cor_com_id').val(com_id);
+                $('#cor_com_id').val(com_id);
                 console.log(ent_email);
 
                 let admin_reson = document.querySelectorAll('#admin_reason');
@@ -277,7 +275,7 @@
                             showConfirmButton: false,
                             timer: 3000,
                         }, function() {
-                            location.reload();
+                            window.location.href = '<?php echo base_url('Admin/Manage_company/Admin_approval_company/show_data_reject'); ?>'
                         });
                     }
                 });
@@ -309,10 +307,10 @@
                             showConfirmButton: false,
                             timer: 3000,
                         }, function() {
-                            location.reload();
+                            window.location.href = '<?php echo base_url('Admin/Manage_company/Admin_approval_company/show_data_approve'); ?>'
                         })
-                        var content = "ผู้ดูแลระบบได้ทำการอนุมัติสถานที่ "+com_name+" ของคุณ";
-                        var content_h1 = "คุณได้รับการอนุมัติสถานที่ "+com_name;
+                        var content = "ผู้ดูแลระบบได้ทำการอนุมัติสถานที่ " + com_name + " ของคุณ";
+                        var content_h1 = "คุณได้รับการอนุมัติสถานที่ " + com_name;
                         var subject = "Approval";
                         send_mail_ajax(content, ent_email, subject, content_h1);
                     },
