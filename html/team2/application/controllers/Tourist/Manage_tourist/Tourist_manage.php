@@ -16,6 +16,8 @@ class Tourist_manage extends DCS_controller
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
+    * @Update By Chutipon Thermsirisuksin 62160081
+    * @Update Date 2564-10-05
    */
    public function show_information_tourist()
    {
@@ -26,6 +28,15 @@ class Tourist_manage extends DCS_controller
       $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+
+      $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
+      $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
+      if ($this->session->userdata("tourist_id")) {
+         $topbar = 'template/Tourist/topbar_tourist_login';
+      } else {
+         $topbar = 'template/Tourist/topbar_tourist';
+      }
+
       $this->output_tourist('tourist/manage_tourist/v_information_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
 
@@ -37,17 +48,17 @@ class Tourist_manage extends DCS_controller
     * @author Naaka Punparich 62160082
     * @Create Date 2564-07-24
    */
-  public function show_edit_tourist()
-  {
-     $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-     $this->mtou->tus_id = $this->session->userdata("tourist_id");
-     $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-     $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-     $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
-     $tus_img_tus_id = $this->mpic->tus_img_tus_id;
-     $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-     $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
-  }
+   public function show_edit_tourist()
+   {
+      $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+      $this->mtou->tus_id = $this->session->userdata("tourist_id");
+      $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+      $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+      $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+      $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+      $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
+   }
 
    /*
     * update_tourist
@@ -160,4 +171,26 @@ class Tourist_manage extends DCS_controller
    {
       $this->session->set_userdata("Tourist_name", "$name");
    }
+
+   /*
+    * show_promotion_tourist
+    * show detail promotion page of tourist
+    * @input -
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-05
+    */
+   // public function show_promotions_tourist($tus_id)
+   // {
+   //    $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
+   //    $this->mpro->tus_id = $tus_id;
+   //    $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($tus_id)->result();
+   //    if ($this->session->userdata("tourist_id")) {
+   //       $topbar = 'template/Tourist/topbar_tourist_login';
+   //    } else {
+   //       $topbar = 'template/Tourist/topbar_tourist';
+   //    }
+
+   //    $this->output_tourist('landing_page/v_detail_promotions', $data, $topbar, 'footer');
+   // }
 }

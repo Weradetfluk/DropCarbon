@@ -7,11 +7,11 @@
         <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_promotions_list' ?>" style="color: green;">รายการโปรโมชัน</a></li>
-        <li class="colorchange"><?php echo $promotions->pro_name ?></li>
+        <li class="colorchange"><?php echo $promotions[0]->pro_name ?></li>
     </ul>
     <div class="row text-left py-3">
         <div class="col-m-auto">
-            <h1 class="h1" style="padding-bottom: 2%"><?php echo $promotions->pro_name ?></h1>
+            <h1 class="h1" style="padding-bottom: 2%"><?php echo $promotions[0]->pro_name ?></h1>
         </div>
     </div>
     <!-- ชื่อกิจกรรม -->
@@ -25,22 +25,22 @@
     <div class="row">
         <div class="col-12">
             <div class="container">
-                <?php if (count($image_promotions) == 1) { ?>
-                <img src="<?php echo base_url() . 'image_promotions/' . $image_promotions[0]->pro_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
-                <?php } elseif (count($image_promotions) == 2) { ?>
+                <?php if (count($promotions) == 1) { ?>
+                <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
+                <?php } elseif (count($promotions) == 2) { ?>
                 <div class="row">
                     <div class="col">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $image_promotions[0]->pro_img_path; ?>" style="object-fit: cover;  height: 300px;" id="img_01">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>" style="object-fit: cover;  height: 300px;" id="img_01">
                     </div>
                     <div class="col">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $image_promotions[1]->pro_img_path; ?>" style="object-fit: cover; height: 300px;" id="img_02">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[1]->pro_img_path; ?>" style="object-fit: cover; height: 300px;" id="img_02">
                     </div>
                 </div>
                 <?php } else { ?>
                 <div class="responsive">
-                    <?php for ($i = 0; $i < count($image_promotions); $i++) { ?>
+                    <?php for ($i = 0; $i < count($promotions); $i++) { ?>
                     <div class="">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $image_promotions[$i]->pro_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
                     </div>
                     <?php } ?>
                 </div>
@@ -49,13 +49,13 @@
         </div>
     </div>
     <?php
-    $start_date = date_create($promotions->pro_start_date);
+    $start_date = date_create($promotions[0]->pro_start_date);
     $month_en = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     $month_th = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษจิกายน", "ธันวาคม");
     $convert_start_month = "";
-    $start_day = date("d", strtotime("$promotions->pro_start_date"));
-    $start_month = date("F", strtotime("$promotions->pro_start_date"));
-    $start_year = date("Y", strtotime("$promotions->pro_start_date"));
+    $start_day = date("d", strtotime($promotions[0]->pro_start_date));
+    $start_month = date("F", strtotime($promotions[0]->pro_start_date));
+    $start_year = date("Y", strtotime($promotions[0]->pro_start_date));
     $start_year = (int)$start_year + 543;
     // echo $day . " " . $month . " " . $year;
     if ($start_day[0] == 0) {
@@ -68,11 +68,11 @@
     }
     // echo $convert_month;
 
-    $end_date = date_create($promotions->pro_end_date);
+    $end_date = date_create($promotions[0]->pro_end_date);
     $convert_end_month = "";
-    $end_day = date("d", strtotime("$promotions->pro_end_date"));
-    $end_month = date("F", strtotime("$promotions->pro_end_date"));
-    $end_year = date("Y", strtotime("$promotions->pro_end_date"));
+    $end_day = date("d", strtotime($promotions[0]->pro_end_date));
+    $end_month = date("F", strtotime($promotions[0]->pro_end_date));
+    $end_year = date("Y", strtotime($promotions[0]->pro_end_date));
     $end_year = (int)$end_year + 543;
     // echo $day . " " . $month . " " . $year;
     if ($end_day[0] == 0) {
@@ -91,7 +91,7 @@
             <div class="col" style="padding-left: 2%">
                 <div class="container">
                     <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
-                        <p style="text-indent: 50px;"><?php echo $promotions->pro_description ?>
+                        <p style="text-indent: 50px;"><?php echo $promotions[0]->pro_description ?>
                         </p>
                         <p style="text-indent: 50px;"><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
                         </p>
@@ -107,7 +107,7 @@
             <div class="col-5">
                 <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
                 <hr width="100%" size="10" color="#cccccc">
-                <p style="font-size: 18px; text-indent: 50px;">โปรโมชันนี้จัดอยู่ในประเภท: <?php echo $promotions->pro_cat_name; ?></p>
+                <p style="font-size: 18px; text-indent: 50px;">โปรโมชันนี้จัดอยู่ในประเภท: <?php echo $promotions[0]->pro_cat_name; ?></p>
             </div>
             <div class="col-2"></div>
         </div>
@@ -117,7 +117,7 @@
             <h3>ตำแหน่งสถานที่</h3>
             <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
-                <h3 style="padding-top: 2%; "> <?php echo $company->com_name ?></h3>
+                <h3 style="padding-top: 2%; "> <?php echo $promotions[0]->com_name ?></h3>
                 <!-- ชื่อสถานที่ -->
                 <hr>
                 <div class="row">
@@ -127,13 +127,13 @@
                         <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
                             <span class="material-icons">
                                 location_on
-                            </span> <?php echo $company->com_location ?>
+                            </span> <?php echo $promotions[0]->com_location ?>
                         </div>
                         <div class="row">
                             <div class="col">
 
                                 <span class="material-icons">contact_phone</span>
-                                <?php echo $company->com_tel ?>
+                                <?php echo $promotions[0]->com_tel ?>
                             </div>
                         </div>
                     </div>
@@ -162,8 +162,8 @@
 <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
-var lat = '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-var long = '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+var long = '<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
 var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
 var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984

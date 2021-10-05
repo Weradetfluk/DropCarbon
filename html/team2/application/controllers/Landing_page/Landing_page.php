@@ -166,19 +166,9 @@ class Landing_page extends DCS_controller
     */
     public function show_promotions_detail($pro_id)
     {
-        $this->load->model('Company/M_dcs_company', 'mcom');
-        $this->load->model('Company/M_dcs_com_image', 'mimg');
-        $this->mimg->com_img_com_id = $pro_id;
-        $this->mcom->com_id = $pro_id;
-        $data["image"] = $this->mimg->get_by_com_id()->result();
-        $data["company"] = $this->mcom->get_by_detail()->row();
-
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
-        $this->load->model('Promotions/M_dcs_pro_image', 'mima');
-        $this->mima->pro_img_adm_id = $pro_id;
         $this->mpro->pro_id = $pro_id;
-        $data["image_promotions"] = $this->mima->get_by_pro_id()->result();
-        $data["promotions"] = $this->mpro->get_by_detail()->row();
+        $data["promotions"] = $this->mpro->get_by_detail()->result();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
         } else {

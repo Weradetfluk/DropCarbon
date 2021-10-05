@@ -1,3 +1,12 @@
+<style>
+.subtext {
+    white-space: nowrap;
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+
 <div class="bg-gray">
     <div class="container py-5" style="border-radius: 25px; padding-bottom: 4% !important">
         <ul class="breadcrumb">
@@ -12,9 +21,9 @@
                     <div class="col">
                         <div class="profile-pic-div">
                             <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                            <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
                             <?php } else { ?>
-                                <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
+                            <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                             <?php } ?>
                         </div>
                     </div>
@@ -37,15 +46,15 @@
             <div class="header-break">
                 โปรโมชันของฉัน
             </div>
-
             <div class="container">
                 <div class="card">
                     <div class="row">
                         <div class="col">
-                            <p style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;"></p>
+                            <!-- <p style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;">#</p> -->
+                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[0]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
                         </div>
                         <div class="col">
-                            <p style="margin: 100px 30px; font-size: 28px;">คำอธิบาย...</p>
+                            <p style="margin: 100px 30px; font-size: 28px;" class="subtext"><?php echo $tou_pro[0]->pro_description ?></p>
                         </div>
                         <div class="col"></div>
                         <div class="col">
