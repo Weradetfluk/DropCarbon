@@ -128,7 +128,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
+                                            <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
                                         </div>
                                         <div class="modal-body">
                                             <p>คุณต้องการที่แก้ไขข้อมูลสถานที่ <span id="com_name_confirm"></span> ?</p><br>

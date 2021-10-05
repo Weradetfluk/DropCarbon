@@ -131,7 +131,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title"
-                                                style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน ?
+                                                style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน
                                             </h5>
                                         </div>
                                         <div class="modal-body">

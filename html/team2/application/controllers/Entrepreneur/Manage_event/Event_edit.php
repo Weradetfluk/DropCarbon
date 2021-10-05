@@ -108,22 +108,6 @@ class Event_edit extends DCS_controller
     }
 
     /*
-    * delete_company
-    * update com_status = 4 in database
-    * @input com_id
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-07-19
-    * @Update Date -
-    */
-    public function delete_event()
-    {
-        $this->load->model('Company/M_dcs_event', 'mmeve');
-        $this->mmeve->eve_id = $this->input->post('eve_id');
-        $this->mmeve->delete_event();
-    }
-
-    /*
     * set_session_edit_company
     * edit session 
     * @input $data

@@ -166,8 +166,8 @@
                                             style="background-color: #e4a487; text-align: center;">
                                             <tr>
                                                 <th>ลำดับ</th>
-                                                <th>ชื่อกิจกรรม</th>
-                                                <th>รายละเอียดกิจกรรม</th>
+                                                <th>ชื่อโปรโมชัน</th>
+                                                <th>รายละเอียดโปรโมชัน</th>
                                                 <th>ของสถานที่</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
@@ -246,8 +246,8 @@
                                             style="background-color: #e4a487; text-align: center;">
                                             <tr>
                                                 <th>ลำดับ</th>
-                                                <th>ชื่อกิจกรรม</th>
-                                                <th>รายละเอียดกิจกรรม</th>
+                                                <th>ชื่อโปรโมชัน</th>
+                                                <th>รายละเอียดโปรโมชัน</th>
                                                 <th>ของสถานที่</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
@@ -257,7 +257,7 @@
                                             <?php
                                             $count_approved_start = 0;
                                             for ($i = 0; $i < count($arr_promotion); $i++) {
-                                                if ($arr_promotion[$i]->pro_status == 2 && $arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now) {
+                                                if ($arr_promotion[$i]->pro_status == 2 && ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now)) {
                                                     $count_approved_start++;
                                                 }
                                             }
@@ -268,48 +268,48 @@
                                             } else {
                                                 $count_i = 0;
                                                 for ($i = 0; $i < count($arr_promotion); $i++) {
-                                                    if ($arr_promotion[$i]->pro_status == 2 && $arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now) {
+                                                    if ($arr_promotion[$i]->pro_status == 2 && ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now)) {
                                                         $count_i++ ?>
-                                            <tr>
-                                                <td><?php echo $count_i; ?></td>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->pro_name; ?>
-                                                </td>
-                                                <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') > 60) { ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo iconv_substr($arr_promotion[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
-                                                </td>
+                                                        <tr>
+                                                            <td><?php echo $count_i; ?></td>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->pro_name; ?>
+                                                            </td>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') > 60) { ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo iconv_substr($arr_promotion[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
+                                                            </td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') <= 60) { ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->pro_description; ?></td>
+                                                            <?php } ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->com_name; ?>
+                                                            </td>
+                                                            <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
+                                                            <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                            <?php } ?>
+                                                            <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
+                                                            <td style="color: #669900;">อนุมัติ</td>
+                                                            <?php } ?>
+                                                            <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                                    href="">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                                    href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
+                                                                    <span class="material-icons">edit</span>
+                                                                </a>
+                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                    onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                    <span class="material-icons">clear</span>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                                <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') <= 60) { ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->pro_description; ?></td>
-                                                <?php } ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
-                                                </td>
-                                                <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
-                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
-                                                <td style="color: #669900;">อนุมัติ</td>
-                                                <?php } ?>
-                                                <td>
-                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
-                                                        <span class="material-icons">search</span>
-                                                    </a>
-                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
-                                                        <span class="material-icons">edit</span>
-                                                    </a>
-                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                        <span class="material-icons">clear</span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -331,8 +331,8 @@
                                             style="background-color: #e4a487; text-align: center;">
                                             <tr>
                                                 <th>ลำดับ</th>
-                                                <th>ชื่อกิจกรรม</th>
-                                                <th>รายละเอียดกิจกรรม</th>
+                                                <th>ชื่อโปรโมชัน</th>
+                                                <th>รายละเอียดโปรโมชัน</th>
                                                 <th>ของสถานที่</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
@@ -355,41 +355,41 @@
                                                 for ($i = 0; $i < count($arr_promotion); $i++) {
                                                     if ($arr_promotion[$i]->pro_status == 2 && $arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) {
                                                         $count_i++ ?>
-                                            <tr>
-                                                <td><?php echo $count_i; ?></td>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->pro_name; ?>
-                                                </td>
-                                                <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') > 60) { ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo iconv_substr($arr_promotion[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
-                                                </td>
+                                                        <tr>
+                                                            <td><?php echo $count_i; ?></td>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->pro_name; ?>
+                                                            </td>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') > 60) { ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo iconv_substr($arr_promotion[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
+                                                            </td>
+                                                            <?php } ?>
+                                                            <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') <= 60) { ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->pro_description; ?></td>
+                                                            <?php } ?>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->com_name; ?>
+                                                            </td>
+                                                            <td style="color: red;">สิ้นสุด</td>
+                                                            <td>
+                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                                    href="">
+                                                                    <span class="material-icons">search</span>
+                                                                </a>
+                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                                    href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
+                                                                    <span class="material-icons">edit</span>
+                                                                </a>
+                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                    onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                    <span class="material-icons">clear</span>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                                <?php if (iconv_strlen($arr_promotion[$i]->pro_description, 'UTF-8') <= 60) { ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->pro_description; ?></td>
-                                                <?php } ?>
-                                                <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
-                                                </td>
-                                                <td style="color: red;">สิ้นสุด</td>
-                                                <td>
-                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        href="">
-                                                        <span class="material-icons">search</span>
-                                                    </a>
-                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                        href="<?php echo base_url().'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/'.$arr_promotion[$i]->pro_id?>">
-                                                        <span class="material-icons">edit</span>
-                                                    </a>
-                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                        <span class="material-icons">clear</span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -411,8 +411,8 @@
                                             style="background-color: #e4a487; text-align: center;">
                                             <tr>
                                                 <th>ลำดับ</th>
-                                                <th>ชื่อกิจกรรม</th>
-                                                <th>รายละเอียดกิจกรรม</th>
+                                                <th>ชื่อโปรโมชัน</th>
+                                                <th>รายละเอียดโปรโมชัน</th>
                                                 <th>ของสถานที่</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
@@ -489,7 +489,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">คุณเเน่ใจหรือไม่ ?</h5>
+                <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
             </div>
             <div class="modal-body">
                 <p>คุณต้องการที่จะลบ <span id="pro_name_confirm"></span> ?</p>
