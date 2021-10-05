@@ -198,7 +198,7 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_tel">เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" required>
+                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="12" minlength="12" placeholder="088-XXX-XXXX" required>
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_id_card">หมายเลขบัตรประชาชน</label>

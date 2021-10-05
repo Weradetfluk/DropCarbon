@@ -3,7 +3,7 @@
 <nav>
     <ul class="menu">
         <li class="logo">
-            <a class="a" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>>">
+            <a class="a" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
                 <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
             </a>
         </li>
