@@ -1,12 +1,3 @@
-<style>
-.subtext {
-    white-space: nowrap;
-    width: 30%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-</style>
-
 <div class="bg-gray">
     <div class="container py-5" style="border-radius: 25px; padding-bottom: 4% !important">
         <ul class="breadcrumb">
@@ -50,13 +41,11 @@
                 <div class="card">
                     <div class="row">
                         <div class="col">
-                            <!-- <p style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;">#</p> -->
                             <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[0]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
                         </div>
-                        <div class="col">
-                            <p style="margin: 100px 30px; font-size: 28px;" class="subtext"><?php echo $tou_pro[0]->pro_description ?></p>
+                        <div class="col-7">
+                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo substr($tou_pro[0]->pro_description, 0, 100) . "..."; ?></p>
                         </div>
-                        <div class="col"></div>
                         <div class="col">
                             <button class="btn btn-success" style="margin: 100px 30px;">ใช้</button>
                         </div>
@@ -75,11 +64,12 @@
                 <div class="card">
                     <div class="row">
                         <div class="col">
-                            <p style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;"></p>
+                            <img src="<?php echo base_url() . 'image_reward/' . $rw_pro[0]->rew_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
                         </div>
                         <div class="col">
-                            <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;">ชื่อของรางวัล</p>
+                            <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
                             <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
+                            <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
                             <p style="display:inline; font-size: 28px;"> แต้ม</p>
                         </div>
                         <div class="col"></div>

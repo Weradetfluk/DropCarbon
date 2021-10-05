@@ -49,6 +49,7 @@
                         <p class="card-tex text-dark">
                             <?php echo iconv_substr($promotions[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
                         </p>
+                        <button class="btn btn-success" style="margin: 0px 30px;">แลก</button>
                     </div>
                     <!-- ชื่อของรูปที่ 1 -->
                 </div>

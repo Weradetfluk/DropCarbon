@@ -31,6 +31,11 @@ class Tourist_manage extends DCS_controller
 
       $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
       $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
+
+      $this->load->model('Promotions/M_dcs_reward_tourist', 'mrto');
+      $this->mrto->tus_id = $this->session->userdata("tourist_id");
+      $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
+
       if ($this->session->userdata("tourist_id")) {
          $topbar = 'template/Tourist/topbar_tourist_login';
       } else {

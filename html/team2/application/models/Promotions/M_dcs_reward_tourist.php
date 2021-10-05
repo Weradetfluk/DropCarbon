@@ -6,9 +6,9 @@
 * @Create Date 2564-10-05
 */
 defined('BASEPATH') or exit('No direct script access allowed');
-include_once "Da_dcs_tou_promotion.php";
+include_once "Da_dcs_reward_tourist.php";
 
-class M_dcs_reward extends Da_dcs_reward_tourist
+class M_dcs_reward_tourist extends Da_dcs_reward_tourist
 {
     /*
     * @author Chutipon Thermsirisuksin 62160081
@@ -18,12 +18,12 @@ class M_dcs_reward extends Da_dcs_reward_tourist
         parent::__construct();
     }
 
-    function get_promotion_by_tou_id($tou_id)
+    function get_reward_by_tus_id($tus_id)
     {
-        $sql = "SELECT * FROM dcs_tou_promotion AS tou_pro
-                LEFT JOIN dcs_promotions ON tou_pro.tou_pro_id = dcs_promotions.pro_id
-                LEFT JOIN dcs_pro_image ON dcs_pro_image.pro_img_pro_id = dcs_promotions.pro_id
-                WHERE tou_pro.tou_id = '$tou_id'";
-        return $this->db->query($sql, array($this->tou_id));
+        $sql = "SELECT * FROM dcs_reward_tourist AS rw_tus
+                LEFT JOIN dcs_tourist ON rw_tus.ret_tus_id = dcs_tourist.tus_id
+                LEFT JOIN dcs_reward ON rw_tus.ret_rew_id = dcs_reward.rew_id
+                WHERE rw_tus.ret_tus_id = '$tus_id'";
+        return $this->db->query($sql, array($this->tus_id));
     }
 }
