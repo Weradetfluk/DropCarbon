@@ -62,7 +62,7 @@
 
                         <br>
                         <div class="container">
-                            <h3 style="font-family: 'Prompt', sans-serif !important;"><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียด</h3>
+                            <h3 style="font-family: 'Prompt', sans-serif !important;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px">  รายละเอียด</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $obj_company->com_description; ?></p>
                         </div><br>
@@ -70,13 +70,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">category</span>  ประเภท</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px">  ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $obj_company->com_name;?></p>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">phone</span>  ข้อมูลติดต่อ</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="34px">  ข้อมูลติดต่อ</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">เบอร์โทรศัพท์: <?php echo $obj_company->com_tel;?></p>
                                 </div>
@@ -84,7 +84,7 @@
                         </div><br><br>
 
                         <div class="container">
-                            <h4 style="font-family: 'Prompt', sans-serif !important;"><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  สถานที่ตั้ง</h4>
+                            <h4 style="font-family: 'Prompt', sans-serif !important;"><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px">  สถานที่ตั้ง</h4>
                             <hr width="100%" size="5" color="#cccccc">
 
                             <table class="table table-responsive">

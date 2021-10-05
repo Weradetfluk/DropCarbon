@@ -58,34 +58,32 @@
                         </div>
 
                         <div class="container">
-                            <h3 style="font-family: 'Prompt', sans-serif;"><span class="material-icons" style="font-size: 30px;">description</span>  รายละเอียดกิจกรรม</h3>
+                            <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px">  รายละเอียดกิจกรรม</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->eve_description;?></p>
                         </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">credit_score</span>  คะแนนกิจกรรม</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>" width="40px">  คะแนนกิจกรรม</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม: <?php echo $arr_event[0]->eve_point;?> คะเเนน</p>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">category</span>  ประเภท</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px">  ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_event[0]->eve_cat_name;?></p>
                                 </div>
                             </div>
                         </div><br><br>
                         <div class="container">
-                            <h3><span class="material-icons" style="font-size: 30px;">location_city</span>  <?php echo $arr_event[0]->com_name;?></h3>
+                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>" width="40px">  <?php echo $arr_event[0]->com_name;?></h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <ul>
-                                <li><h4>สถานที่ตั้ง: </h4></li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_location;?></p>
                                 <li><h4>เบอร์โทรศัพท์: </h4></li>
                                 <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel;?></p><br>
-                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  ตำแหน่งสถานที่</h4>
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px">  ตำแหน่งกิจกรรม</h4>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
@@ -105,8 +103,8 @@
 <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
-    var lat = '<?= $arr_event[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-    var long = '<?= $arr_event[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+    var lat = '<?= $arr_event[0]->eve_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+    var long = '<?= $arr_event[0]->eve_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
     var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
     var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
