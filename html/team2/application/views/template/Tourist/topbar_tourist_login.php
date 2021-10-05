@@ -8,12 +8,12 @@
             </a>
         </li>
         <li class="item">
-            <a class="nav-link" href="#">
-                 คะแนน
+            <a href="#">
+                <h4 style="display: inline;"><?php echo $this->session->userdata("tus_score"); ?></h4> คะแนน
             </a>
         </li>
         <li class="item">
-            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
                 <?php echo $this->session->userdata("Tourist_name"); ?>
             </a>

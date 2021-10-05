@@ -84,11 +84,12 @@ class Login_tourist extends DCS_controller
             $tus_username =  $result->tus_username;
             $tus_name = $result->tus_firstname . ' ' . $result->tus_lastname;
             $tus_id = $result->tus_id;
+            $tus_score = $result->tus_score;
             if ($result_img != null) {
                 $tus_img_path = $result_img->tus_img_path;
-                $this->set_session($tus_username, $tus_name, $tus_id, $tus_img_path);
+                $this->set_session($tus_username, $tus_name, $tus_id, $tus_img_path, $tus_score);
             } else {
-                $this->set_session($tus_username, $tus_name, $tus_id, '');
+                $this->set_session($tus_username, $tus_name, $tus_id, '', $tus_score);
             }
             //echo $tus_name; test name
             // echo $tus_img_path; test path
@@ -127,12 +128,13 @@ class Login_tourist extends DCS_controller
     * @Update -
     */
 
-    public function set_session($username, $name, $id, $tus_img_path)
+    public function set_session($username, $name, $id, $tus_img_path, $tus_score)
     {
         $this->session->set_userdata("username", "$username");
         $this->session->set_userdata("Tourist_name", "$name");
         $this->session->set_userdata("tourist_id", "$id");
         $this->session->set_userdata("tus_img_path", $tus_img_path);
+        $this->session->set_userdata("tus_score", $tus_score);
     }
 
 
