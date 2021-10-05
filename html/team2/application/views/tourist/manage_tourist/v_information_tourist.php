@@ -37,6 +37,10 @@
             <div class="header-break">
                 โปรโมชันของฉัน
             </div>
+            <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
+            <h4 align="center">ไม่มีข้อมูลโปรโมชันของคุณ</h4>
+            <?php } else { ?>
+
             <div class="container">
                 <div class="card">
                     <div class="row">
@@ -46,20 +50,23 @@
                         <div class="col-7">
                             <p style="margin: 100px 30px; font-size: 28px;"><?php echo substr($tou_pro[0]->pro_description, 0, 100) . "..."; ?></p>
                         </div>
-                        <div class="col">
-                            <button class="btn btn-success" style="margin: 100px 30px;">ใช้</button>
+                        <div class="col" style="margin: 100px 30px;">
+                            <button class="btn btn-success">ใช้</button>
                         </div>
                     </div>
                 </div>
                 <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
             </div>
+            <?php } ?>
         </section>
 
         <section>
             <div class="header-break">
                 รางวัลของฉัน
             </div>
-
+            <?php if (empty($rw_pro[0]->ret_rew_id)) { ?>
+            <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
+            <?php } else { ?>
             <div class="container">
                 <div class="card">
                     <div class="row">
@@ -80,6 +87,7 @@
                 </div>
                 <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
             </div>
+            <?php } ?>
         </section>
 
         <section>
@@ -89,47 +97,47 @@
 
             <div class="container">
                 <div class="row">
+                    <?php for ($i = 0; $i < count($checkin); $i++) { ?>
+                    <?php if (count($checkin) < 3) { ?>
+
+
+
+
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="#">
-                                    <h2>เก็บขยะริมหาด</h2>
+                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
                                 </a>
-                                <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
+                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+
+
+
+
+                    <!-- <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100" id="card">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                                <div class="card-body" align="center">
+                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                    <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                </div>
                             </a>
-                            <div class="card-body">
-                                <a href="#">
-                                    <h2>ปลูกป่าชายเลน</h2>
-                                </a>
-                                <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div class="card">
-                            <a href="#">
-                                <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <a href="#">
-                                    <h2>วิ่งชมธรรมชาติ</h2>
-                                </a>
-                                <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
+                    <?php } ?>
+                    <?php } ?>
+
                 </div>
+                <?php if (count($checkin) > 3) { ?>
                 <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_event_list_tourist' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+                <?php } ?>
             </div>
         </section>
     </div>

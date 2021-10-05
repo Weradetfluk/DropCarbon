@@ -36,6 +36,22 @@ class Tourist_manage extends DCS_controller
       $this->mrto->tus_id = $this->session->userdata("tourist_id");
       $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
 
+      $this->load->model('Event/M_dcs_event', 'mde');
+      $this->load->model('Event/M_dcs_eve_category', 'mcat');
+      $this->load->model('Checkin/M_dcs_checkin', 'mche');
+      $number_status = 2;
+      $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
+      $data['eve_cat'] = $this->mcat->get_all()->result();
+      $tus_id = $this->session->userdata("tourist_id");
+      $data['checkin'] = $this->mche->get_checkin_by_eve_id($tus_id)->result();
+
+
+      if (isset($_POST)) {
+         $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
+      } else {
+         $data["event"] = $this->mde->get_event_and_img($number_status)->result();
+      }
+
       if ($this->session->userdata("tourist_id")) {
          $topbar = 'template/Tourist/topbar_tourist_login';
       } else {
@@ -176,26 +192,4 @@ class Tourist_manage extends DCS_controller
    {
       $this->session->set_userdata("Tourist_name", "$name");
    }
-
-   /*
-    * show_promotion_tourist
-    * show detail promotion page of tourist
-    * @input -
-    * @output -
-    * @author Chutipon Thermsirisuksin 62160081
-    * @Create Date 2564-10-05
-    */
-   // public function show_promotions_tourist($tus_id)
-   // {
-   //    $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
-   //    $this->mpro->tus_id = $tus_id;
-   //    $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($tus_id)->result();
-   //    if ($this->session->userdata("tourist_id")) {
-   //       $topbar = 'template/Tourist/topbar_tourist_login';
-   //    } else {
-   //       $topbar = 'template/Tourist/topbar_tourist';
-   //    }
-
-   //    $this->output_tourist('landing_page/v_detail_promotions', $data, $topbar, 'footer');
-   // }
 }
