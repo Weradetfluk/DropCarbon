@@ -60,10 +60,15 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการอนุมัติ <span id="eve_name_confirm"></span> ?</p>
+                 <p>คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></p>
+                 <p>เพิ่มคะแนนให้กับ<span id="eve_point_name_confirm"></span> ?</h5><br>
+                 <input type="hidden" id="eve_id_form" name="eve_id">
+                 <input type="hidden" id="eve_id_name_form" name="eve_name"><br>
+                 <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
+                 <p id="err_message_point" style="color: red;font-size: 16px"></p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
@@ -78,9 +83,10 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="eve_reject_name_confirm"></span> ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
+                 <p class="modal-title">คุณต้องการที่จะปฏิเสธ <span id="eve_reject_name_confirm"></span> ?</p>
                  <p>กรุณาระบุเหตุผล</p>
                  <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/reject_event'; ?>" id="reject_form">
                      <input type="hidden" id="email" name="email">
@@ -91,6 +97,30 @@
              </div>
              <div class="modal-footer">
                  <button type="submit" class="btn btn-success" id="rejected">ยืนยัน</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+  <!-- warnning add score  -->
+  <div class="modal" tabindex="-1" role="dialog" id="add_score_eve">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">กรุณาเพิ่มคะแนนให้กับ <span id="eve_name_confirm"></span> ?</h5>
+             </div>
+             <div class="modal-body">
+                 <p>กรุณาระบุคะแนน</p>
+                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/add_point_event'; ?>" id="add_point_form">
+                     <input type="hidden" id="email" name="ent_email">
+                     <input type="hidden" id="eve_id_form" name="eve_id">
+                     <input type="number" id="eve_point" name="eve_point" >
+                     <!-- <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea> -->
+                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
+             </div>
+             <div class="modal-footer">
+                 <button type="submit" class="btn btn-success" id="add_score">ยืนยัน</button>
                  <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                  </form>
              </div>
@@ -137,14 +167,29 @@
       * @Update 2564-09-18
       */
      function confirm_approve(eve_id, eve_name, ent_email) {
+        let form = document.querySelector('#aprove_modal');
          $('#eve_name_confirm').text(eve_name);
-         console.log(ent_email)
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
+         $('#eve_point_name_confirm').text(eve_name);
+         $('#eve_id_form').val(eve_id);
+         $('#eve_point').val(eve_point);
+         console.log(eve_point)
          $('#approves').click(function() {
-             approve_event(eve_id, eve_name, ent_email) //function 
+             let point = document.getElementById('eve_point').value;
+             if(point < 1){
+                event.preventDefault();
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+                 $('#aprove_modal').modal('toggle');
+             } else {
+                console.log(ent_email)
+                let eve_point = $('#eve_point').val();
+                console.log(eve_point)
+                
+                approve_event(eve_id, eve_name, ent_email,eve_point) //function 
+             }
          });
      }
      /*
@@ -167,8 +212,9 @@
              backdrop: 'static',
              keyboard: false
          });
+         
          $('#approves').click(function() {
-             approve_event(eve_id, eve_name, ent_email) //function 
+            approve_event(eve_id, eve_name, ent_email) //function 
          });
      }
      /*
@@ -218,7 +264,6 @@
              }
          });
      }
-  
      /*
       * approve_event
       * change status to approve 
@@ -228,11 +273,12 @@
       * @Create Date 2564-09-26
       * @Update -
       */
-     function approve_event(eve_id, eve_name, ent_email) {
+     function approve_event(eve_id, eve_name, ent_email,eve_point) {
          $.ajax({
              type: "POST",
              data: {
-                 eve_id: eve_id
+                 eve_id: eve_id,
+                 eve_point: eve_point
              },
              url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
              success: function() {
@@ -256,4 +302,45 @@
              }
          });
      }
+
+     /* confirm_add_score_eve
+      * open modal id = Aprovemodal 
+      * @input 
+      * @output modal to confirm approve modal
+      * @author Weradet Nopsombun 62160110
+      * @Create Date 2564-07-17
+      * @Update 2564-09-18
+      */
+function confirm_add_score_eve(eve_id, eve_name, ent_email) {
+    let form = document.querySelector('#add_point_form');
+         $('#eve_name_confirm').text(eve_name);
+         $('#add_score_eve').modal();
+         $('#email').val(ent_email);
+         $('#eve_id_form').val(eve_id);
+         $('#eve_point').val(eve_point);
+         console.log(eve_point)
+         $('#add_score').click(function() {
+             let point = document.getElementById('eve_point').value;
+             if(point < 1){
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+                 event.preventDefault();
+             } else{
+                $('#add_score_eve').modal('toggle');
+                swal({
+                     title: "อนุมัติสำเร็จ",
+                     text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
+                     type: "success",
+                     showConfirmButton: false,
+                     timer: 3000
+                 }, function() {
+                    location.reload();
+                 })
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
+                 var subject = "Approval";
+                 send_mail_ajax(content, ent_email, subject, content_h1);
+             }
+         });
+}
+
  </script>

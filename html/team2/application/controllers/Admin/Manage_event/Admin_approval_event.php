@@ -178,10 +178,27 @@ class Admin_approval_event extends DCS_controller
         */
   public function approval_event()
   {
+     //update point
     $this->mdce->eve_id = $this->input->post('eve_id');
+    $this->mdce->eve_point = $this->input->post('eve_point');
+    $this->mdce->update_point();
+    //update status
     $status_number = 2;
     $this->mdce->update_status($status_number);
+    
   }
+
+  // public function add_point_event()
+  // {
+  //   $this->mdce->eve_id = $this->input->post('eve_id');
+
+  //   $eve_point = $this->input->post('eve_point');
+  //   $this->mdce->eve_point =  $eve_point;
+
+  //   $this->mdce->insert_point();
+  //   redirect('Admin/Manage_event/Admin_approval_event/show_data_event_not_over');
+    
+  // }
   /*
         * reject_entrepreneur
         * change ent_status
@@ -238,16 +255,7 @@ class Admin_approval_event extends DCS_controller
     * @Create Date 2564-07-17
     * @Update Date -
     */
-  public function add_point_event()
-  {
-    $this->mdce->eve_id = $this->input->post('eve_id');
-
-    $eve_point = $this->input->post('eve_point');
-    $this->mdce->eve_point =  $eve_point;
-
-    $this->mdce->insert_point();
-    redirect('Admin/Manage_event/Admin_approval_event/show_data_approve_no_score');
-  }
+  
   /*
          * show_data_consider_ajax
          * get all data entrepreneur not approve and show table
@@ -323,12 +331,7 @@ class Admin_approval_event extends DCS_controller
                       <i class="material-icons">
                         search
                       </i>
-                    </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons">
-                              add
-                            </i>
-                        </button>';
+                    </button>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -405,12 +408,7 @@ class Admin_approval_event extends DCS_controller
                     <i class="material-icons">
                         search
                       </i>
-                    </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
-                    <i class="material-icons">
-                      add
-                    </i>
-                </button>';
+                    </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">

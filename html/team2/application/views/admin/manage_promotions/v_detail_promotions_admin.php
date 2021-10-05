@@ -130,7 +130,7 @@
                         <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
                             <span class="material-icons">
                                 location_on
-                            </span> <?php $arr_pro[0]->com_location ?>
+                            </span> <?php echo $arr_pro[0]->com_location ?>
                         </div>
                         <div class="row">
                             <div class="col">

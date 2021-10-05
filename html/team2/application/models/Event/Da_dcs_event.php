@@ -79,15 +79,15 @@ class Da_dcs_event extends DCS_model
         $this->db->query($sql, array($this->eve_id));
     }
     /*
-    * insert_point
-    * insert point event
+    * update_point
+    * update point event
     * @input -
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-08
 	* @Update -
     */
-    public function insert_point()
+    public function update_point()
     {
         $sql = "UPDATE {$this->db_name}.dcs_event SET eve_point = ?
         Where eve_id = ?";

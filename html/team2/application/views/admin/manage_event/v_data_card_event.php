@@ -29,7 +29,7 @@
                 </div>
             </div>
         
-            <div class="col-lg">
+            <div class="col-lg col-md-6">
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -105,8 +105,6 @@
                     success: function(json_data) {
 
                         $("#consider_eve").html(json_data[0].eve_consider + " <span style='font-size: 16px;'>กิจกรรม</span>");
-
-                        $("#no_score_eve").html(json_data[0].eve_no_score  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
                         $("#not_over_eve").html(json_data[0].eve_not_over  + " <span style='font-size: 16px;'>กิจกรรม</span>");
 
