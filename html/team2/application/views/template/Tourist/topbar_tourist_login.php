@@ -7,12 +7,12 @@
                 <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
             </a>
         </li>
-        <li class="item active">
+        <li class="item">
             <a class="nav-link" href="#">
                  คะแนน
             </a>
         </li>
-        <li class="item active">
+        <li class="item">
             <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
                 <?php echo $this->session->userdata("Tourist_name"); ?>

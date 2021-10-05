@@ -7,12 +7,12 @@
                 <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>" style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
             </a>
         </li>
-        <li class="item active">
+        <li class="item">
             <a class="a" href="<?php echo base_url() . 'Landing_page/Select_login' ?>">
                 <h4 class="h4"><i class="material-icons">person</i> เข้าสู่ระบบ</h4>
             </a>
         </li>
-        <li class="item active">
+        <li class="item">
             <a class="a" href="<?php echo base_url() . 'Landing_page/Select_register' ?>">
                 <h4 class="h4"><i class="material-icons">person_add_alt_1</i> สมัครสมาชิก</h4>
             </a>
