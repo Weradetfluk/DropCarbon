@@ -31,15 +31,15 @@
         
             <div class="col-lg col-md-6">
                 <div class="card">
-                    <div class="card-body border-left-yellow">
+                    <div class="card-body border-left-orange">
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">ยังไม่สิ้นสุด</p>
                                 <h2 class="card-text text-amount" id="not_over_eve"></h2>
                             </div>
-                            <div class="col">
-                                <div class="icon-shape icon-area">
-                                    <i class="material-icons custom-icon">hourglass_bottom</i>
+                            <div class="col-auto">
+                                <div class="icon-shape icon-orange">
+                                    <i class="material-icons custom-icon">access_time</i>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-success">
-                                    <i class="material-icons custom-icon">check</i>
+                                    <i class="material-icons custom-icon">timer_off</i>
                                 </div>
                             </div>
                         </div>
