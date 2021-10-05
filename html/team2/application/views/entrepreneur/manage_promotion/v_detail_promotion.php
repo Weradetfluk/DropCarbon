@@ -117,7 +117,7 @@
                             <ul>
                                 <li><h4>เบอร์โทรศัพท์: </h4></li>
                                 <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_promotion[0]->com_tel;?></p><br>
-                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px">  ตำแหน่งกิจกรรม</h4>
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px">  ตำแหน่งสถานที่</h4>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
