@@ -16,7 +16,8 @@
             </h3>
         </div>
         <div class="col">
-            <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="<?php echo base_url().'Entrepreneur/Manage_event/Event_add/show_add_event'?>">เพิ่มกิจกรรม</a>
+            <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;"
+                href="<?php echo base_url().'Entrepreneur/Manage_event/Event_add/show_add_event'?>">เพิ่มกิจกรรม</a>
         </div>
     </div>
     <div class="card card-nav-tabs custom-card-tab">
@@ -26,23 +27,33 @@
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 1) echo "active"; ?>"
-                                href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)"><h5 class="h5-card-header">ทั้งหมด</h5></a>
+                                href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)">
+                                <h5 class="h5-card-header">ทั้งหมด</h5>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 2) echo "active"; ?>"
-                                href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)"><h5 class="h5-card-header">รออนุมัติ</h5></a>
+                                href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)">
+                                <h5 class="h5-card-header">รออนุมัติ</h5>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 3) echo "active"; ?>"
-                                href="#tab_approved_start" data-toggle="tab" onclick="change_tab_number_ajax(3)"><h5 class="h5-card-header">ยังไม่สิ้นสุด</h5></a>
+                                href="#tab_approved_start" data-toggle="tab" onclick="change_tab_number_ajax(3)">
+                                <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 4) echo "active"; ?>"
-                                href="#tab_approved_end" data-toggle="tab" onclick="change_tab_number_ajax(4)"><h5 class="h5-card-header">สิ้นสุดแล้ว</h5></a>
+                                href="#tab_approved_end" data-toggle="tab" onclick="change_tab_number_ajax(4)">
+                                <h5 class="h5-card-header">สิ้นสุดแล้ว</h5>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_event'] == 5) echo "active"; ?>"
-                                href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(5)"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+                                href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(5)">
+                                <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -76,62 +87,62 @@
                                                 echo "</td>";
                                             } else {
                                                 for ($i = 0; $i < count($arr_event); $i++) { ?>
-                                                    <tr>
-                                                        <td><?php echo $i + 1; ?></td>
-                                                        <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                        </td>
-                                                        <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                        <td style="text-align: left;">
-                                                            <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                                        </td>
-                                                        <?php } ?>
-                                                        <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                        <td style="text-align: left;">
-                                                            <?php echo $arr_event[$i]->eve_description; ?></td>
-                                                        <?php } ?>
-                                                        <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
-                                                        </td>
-                                                        <?php if($arr_event[$i]->eve_status != 3){?>
-                                                            <?php if($arr_event[$i]->eve_status == 1){?>
-                                                                <td style="color: #fba004;">รออนุมัติ</td>
-                                                            <?php } ?>
-                                                            <?php if($arr_event[$i]->eve_status == 2){?>
-                                                                <?php if($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
-                                                                    <td style="color: #669900;">ยังไม่สิ้นสุด</td>
-                                                                <?php } ?> 
-                                                                <?php if($arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
-                                                                    <td style="color: red;">สิ้นสุด</td>
-                                                                <?php } ?>
-                                                                <?php if($arr_event[$i]->eve_start_date > $date_now){?>
-                                                                    <td style="color: red;">อนุมัติ</td>
-                                                                <?php } ?>
-                                                            <?php } ?>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        <?php } ?>
-                                                        <?php if($arr_event[$i]->eve_status == 3){?>
-                                                            <td style="color: #fba004;">ปฏิเสธ</td>
-                                                            <td>
-                                                            <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                <span class="material-icons">search</span>
-                                                            </a>
-                                                        </td>
-                                                        <?php } ?>  
-                                                    </tr>
+                                            <tr>
+                                                <td><?php echo $i + 1; ?></td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
+                                                </td>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                                </td>
                                                 <?php } ?>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo $arr_event[$i]->eve_description; ?></td>
+                                                <?php } ?>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                </td>
+                                                <?php if($arr_event[$i]->eve_status != 3){?>
+                                                <?php if($arr_event[$i]->eve_status == 1){?>
+                                                <td style="color: #fba004;">รออนุมัติ</td>
+                                                <?php } ?>
+                                                <?php if($arr_event[$i]->eve_status == 2){?>
+                                                <?php if($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
+                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                <?php } ?>
+                                                <?php if($arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
+                                                <td style="color: red;">สิ้นสุด</td>
+                                                <?php } ?>
+                                                <?php if($arr_event[$i]->eve_start_date > $date_now){?>
+                                                <td style="color: red;">อนุมัติ</td>
+                                                <?php } ?>
+                                                <?php } ?>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">edit</span>
+                                                    </a>
+                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        <span class="material-icons">clear</span>
+                                                    </button>
+                                                </td>
+                                                <?php } ?>
+                                                <?php if($arr_event[$i]->eve_status == 3){?>
+                                                <td style="color: #fba004;">ปฏิเสธ</td>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+                                                </td>
+                                                <?php } ?>
+                                            </tr>
+                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -176,39 +187,39 @@
                                                 for ($i = 0; $i < count($arr_event); $i++) {
                                                     if ($arr_event[$i]->eve_status == 1) {
                                                         $count_i++ ?>
-                                                        <tr>
-                                                            <td><?php echo $count_i; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                            </td>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                                            </td>
-                                                            <?php } ?>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo $arr_event[$i]->eve_description; ?></td>
-                                                            <?php } ?>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
-                                                            </td>
-                                                            <td style="color: #fba004;">รออนุมัติ</td>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                            <tr>
+                                                <td><?php echo $count_i; ?></td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
+                                                </td>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                                </td>
                                                 <?php } ?>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo $arr_event[$i]->eve_description; ?></td>
+                                                <?php } ?>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                </td>
+                                                <td style="color: #fba004;">รออนุมัติ</td>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">edit</span>
+                                                    </a>
+                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        <span class="material-icons">clear</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -219,7 +230,8 @@
                 </div>
 
                 <!-- tab show start event -->
-                <div class="tab-pane <?php if ($_SESSION['tab_number_event'] == 3) echo "active"; ?>" id="tab_approved_start">
+                <div class="tab-pane <?php if ($_SESSION['tab_number_event'] == 3) echo "active"; ?>"
+                    id="tab_approved_start">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
@@ -253,44 +265,44 @@
                                                 for ($i = 0; $i < count($arr_event); $i++) {
                                                     if ($arr_event[$i]->eve_status == 2 && $arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now) {
                                                         $count_i++; ?>
-                                                        <tr>
-                                                            <td><?php echo $count_i; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                            </td>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                                            </td>
-                                                            <?php } ?>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo $arr_event[$i]->eve_description; ?></td>
-                                                            <?php } ?>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
-                                                            </td>
-                                                            <?php if($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
-                                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
-                                                            <?php } ?> 
-                                                            <?php if($arr_event[$i]->eve_start_date > $date_now){?>
-                                                                <td style="color: red;">อนุมัติ</td>
-                                                            <?php } ?>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                            <tr>
+                                                <td><?php echo $count_i; ?></td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
+                                                </td>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                                </td>
                                                 <?php } ?>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo $arr_event[$i]->eve_description; ?></td>
+                                                <?php } ?>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                </td>
+                                                <?php if($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
+                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                <?php } ?>
+                                                <?php if($arr_event[$i]->eve_start_date > $date_now){?>
+                                                <td style="color: red;">อนุมัติ</td>
+                                                <?php } ?>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">edit</span>
+                                                    </a>
+                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        <span class="material-icons">clear</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -301,7 +313,8 @@
                 </div>
 
                 <!-- tab show end event -->
-                <div class="tab-pane <?php if ($_SESSION['tab_number_event'] == 4) echo "active"; ?>" id="tab_approved_end">
+                <div class="tab-pane <?php if ($_SESSION['tab_number_event'] == 4) echo "active"; ?>"
+                    id="tab_approved_end">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
@@ -335,41 +348,41 @@
                                                 for ($i = 0; $i < count($arr_event); $i++) {
                                                     if ($arr_event[$i]->eve_status == 2 && $arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now) {
                                                         $count_i++; ?>
-                                                        <tr>
-                                                            <td><?php echo $count_i; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                            </td>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                                            </td>
-                                                            <?php } ?>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo $arr_event[$i]->eve_description; ?></td>
-                                                            <?php } ?>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
-                                                            </td>
-                                                            <?php if($arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
-                                                                <td style="color: red;">สิ้นสุด</td>
-                                                            <?php } ?>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                            <tr>
+                                                <td><?php echo $count_i; ?></td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
+                                                </td>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                                </td>
                                                 <?php } ?>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo $arr_event[$i]->eve_description; ?></td>
+                                                <?php } ?>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                </td>
+                                                <?php if($arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
+                                                <td style="color: red;">สิ้นสุด</td>
+                                                <?php } ?>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">edit</span>
+                                                    </a>
+                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        <span class="material-icons">clear</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -414,37 +427,37 @@
                                                 for ($i = 0; $i < count($arr_event); $i++) {
                                                     if ($arr_event[$i]->eve_status == 3) {
                                                         $count_i++; ?>
-                                                        <tr>
-                                                            <td><?php echo $count_i; ?></td>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                            </td>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                                            </td>
-                                                            <?php } ?>
-                                                            <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                            <td style="text-align: left;">
-                                                                <?php echo $arr_event[$i]->eve_description; ?></td>
-                                                            <?php } ?>
-                                                            <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
-                                                            </td>
-                                                            <td style="color: #fba004;">ปฏิเสธ</td>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-
-                                                                <!-- clear -->
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">clear</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                            <tr>
+                                                <td><?php echo $count_i; ?></td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
+                                                </td>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                                </td>
                                                 <?php } ?>
+                                                <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
+                                                <td style="text-align: left;">
+                                                    <?php echo $arr_event[$i]->eve_description; ?></td>
+                                                <?php } ?>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                </td>
+                                                <td style="color: #fba004;">ปฏิเสธ</td>
+                                                <td>
+                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                        href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
+                                                        <span class="material-icons">search</span>
+                                                    </a>
+
+                                                    <!-- clear -->
+                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        <span class="material-icons">clear</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -484,12 +497,12 @@
  */
 $(document).ready(function() {
     var error = '<?php echo $this->session->userdata("error_add_event");?>';
-    if(error == 'success'){
+    if (error == 'success') {
         swal("เพิ่มกิจกรรมสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
         <?php echo $this->session->unset_userdata("error_add_event");?>;
     }
     var error = '<?php echo $this->session->userdata("error_edit_event");?>';
-    if(error == 'success'){
+    if (error == 'success') {
         swal("เแก้ไขกิจกรรมสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
         <?php echo $this->session->unset_userdata("error_edit_event");?>;
     }
@@ -545,7 +558,7 @@ function check_name_table(tab_event) {
 /*
  * confirm_delete
  * confirm delete event
- * @input com_name_con,com_id_con
+ * @input eve_name_con,eve_id_con
  * @output modal comfirm delete event
  * @author Thanchanok Thonhjumroon 62160089
  * @Create Date 2564-09-25
@@ -571,12 +584,13 @@ function confirm_delete(eve_name_con, eve_id_con) {
  * @Update Date 2564-09-25
  */
 function delete_event(eve_id_con) {
+
     $.ajax({
         type: "POST",
         data: {
             eve_id: eve_id_con
         },
-        url: '<?php echo site_url() . 'Entrepreneur/Manage_event/Event_list/delete_event/' ?>',
+        url: '<?php echo site_url() . 'Entrepreneur/Manage_event/Event_edit/delete_event' ?>',
         success: function() {
             swal({
                     title: "ลบกิจกรรม",

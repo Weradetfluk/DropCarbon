@@ -136,4 +136,19 @@ class Event_edit extends DCS_controller
     {
         $this->session->set_userdata("error_edit_event", $data);
     }
+
+     /*
+    * delete_event
+    * update eve_status = 4 in database
+    * @input eve_id
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-09-25
+    */
+   public function delete_event()
+   {
+      $this->load->model('Event/M_dcs_event', 'meve');
+      $this->meve->eve_id = $this->input->post('eve_id');
+      $this->meve->delete_event();
+   }
 }

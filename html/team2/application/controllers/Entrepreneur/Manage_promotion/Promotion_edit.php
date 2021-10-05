@@ -114,4 +114,21 @@ class Promotion_edit extends DCS_controller
     {
         $this->session->set_userdata("error_edit_promotion", $data);
     }
+
+    /*
+    * delete_promotion
+    * update pro_status 
+    * @input pro_id
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-10-02
+    * @Update Date 2564-10-05
+    */
+   public function delete_promotion()
+   {
+      $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+      $this->mpro->pro_id = $this->input->post('pro_id');
+      $this->mpro->delete_promotion();
+   }
+
 }

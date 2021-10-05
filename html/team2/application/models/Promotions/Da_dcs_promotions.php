@@ -86,4 +86,20 @@ class Da_dcs_promotions extends DCS_model
 
         $this->db->query($sql, array($status_number, $this->pro_id));
     }
+
+    /*
+    * delete_promotion
+    * update pro_status 
+    * @input pro_id
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-10-03
+    */
+    public function delete_promotion()
+    {
+        $sql = "UPDATE `dcs_promotions` 
+				SET `pro_status`=4
+				WHERE pro_id=?";
+        $this->db->query($sql, array($this->pro_id));
+    }
 }
