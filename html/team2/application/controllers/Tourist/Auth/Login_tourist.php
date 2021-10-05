@@ -154,6 +154,7 @@ class Login_tourist extends DCS_controller
         $this->session->unset_userdata("Tourist_name");
         $this->session->set_userdata("tourist_id");
         $this->session->set_userdata("tus_img_path");
+        $this->session->set_userdata("tus_score");
     }
 
 
