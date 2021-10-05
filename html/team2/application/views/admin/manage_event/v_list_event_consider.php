@@ -71,7 +71,7 @@
                  <p id="err_message_point" style="color: red;font-size: 16px"></p>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
+                 <button type="button" class="btn btn-success" id="approves">ยืนยัน</button>
                  <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
@@ -116,7 +116,6 @@
                      <input type="hidden" id="email" name="ent_email">
                      <input type="hidden" id="eve_id_form" name="eve_id">
                      <input type="number" id="eve_point" name="eve_point" >
-                     <!-- <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea> -->
                      <p id="err_message_point" style="color: red;font-size: 16px"></p>
              </div>
              <div class="modal-footer">
@@ -182,12 +181,11 @@
              if(point < 1){
                 event.preventDefault();
                  $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-                 $('#aprove_modal').modal('toggle');
              } else {
                 console.log(ent_email)
                 let eve_point = $('#eve_point').val();
                 console.log(eve_point)
-                
+                $('#aprove_modal').modal('toggle');
                 approve_event(eve_id, eve_name, ent_email,eve_point) //function 
              }
          });
