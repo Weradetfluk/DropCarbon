@@ -15,7 +15,9 @@
 
 
 <!-- openstreet map -->
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+<!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
+<script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
+
 
 
 <script>

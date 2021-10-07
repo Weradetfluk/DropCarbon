@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" type="text/css">
     
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/Openlayer/theme/default/style.css'?>" type="text/css">
 
 </head>
 

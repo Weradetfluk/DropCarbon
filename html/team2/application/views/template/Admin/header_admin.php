@@ -32,7 +32,11 @@
     <!-- <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url().'assets/plugin/sweetalert/sweetalert.min.css'?>" as="style" type="text/css"> -->
     <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">	
+    <link rel="stylesheet" href="<?php echo base_url().'assets/templete/material-dashboard-master'?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">	
+
+
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/Openlayer/theme/default/style.css'?>" type="text/css">
+
 
 </head>
 <body>

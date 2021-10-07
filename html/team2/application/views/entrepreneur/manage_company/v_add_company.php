@@ -118,9 +118,6 @@
     </div>
 </div>
 </div>
-
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
-
 <script>
     /*
      * @author Suwapat Saowarod 62160340
