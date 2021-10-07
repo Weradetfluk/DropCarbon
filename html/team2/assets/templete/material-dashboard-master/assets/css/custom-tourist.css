@@ -4,6 +4,11 @@ section {
   padding: 5vh 0;
 }
 
+a,
+a:hover {
+  color: black;
+}
+
 .body {
   font-family       : 'Prompt', sans-serif !important;
   font-size         : 16px;
@@ -571,24 +576,24 @@ a:hover {
 
 @media all and (max-width: 500px) {
   .d-block {
-    margin-top: 70px;
-  }
-  .breadcrumb{
-    margin-top: 70px;
+    margin-top: 65px;
   }
 }
 
-
-@media all and (max-width: 320px) {
-  .d-block {
-    margin-top: 145px;
-  }
-  .breadcrumb{
-    margin-top: 70px;
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1440px;
   }
 }
 
-.footer-top{
-  padding: 50px 0 40px 0; 
-  background-color: #e9f5db;
+.card {
+  transition: transform .2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+p {
+  font-size: 18px;
 }

@@ -1,4 +1,3 @@
-
 <!-- carousel slide banner-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
 
@@ -18,6 +17,9 @@
                             <h2>เก็บขยะริมหาด</h2>
                         </a>
                         <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
+                        <br>
+                        <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                        <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                     </div>
                 </div>
             </div>
@@ -31,6 +33,9 @@
                             <h2>ปลูกป่าชายเลน</h2>
                         </a>
                         <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                        <br>
+                        <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                        <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                     </div>
                 </div>
             </div>
@@ -44,11 +49,14 @@
                             <h2>วิ่งชมธรรมชาติ</h2>
                         </a>
                         <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                        <br>
+                        <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                        <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                     </div>
                 </div>
             </div>
         </div>
-        <p class="align-center"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+            
     </div>
 </section>
 
@@ -78,7 +86,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="#" class="h2">เขาชีจรรย์</a>
-                                <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียน...</p>
+                                <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่มีความ...</p>
                             </div>
                         </div>
                     </div>
@@ -94,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: -32.5px;">
+                <div class="row" style="margin-top: 12.5px;">
                     <div class="col-lg-6">
                         <div class="card">
                             <a href="#">
