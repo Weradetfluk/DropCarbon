@@ -320,7 +320,7 @@ class Admin_approval_event extends DCS_controller
                               done
                             </i>
                         </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->eve_name .  '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->ent_email .  '\')">
                             <i class="material-icons">
                               clear
                             </i>
@@ -397,7 +397,7 @@ class Admin_approval_event extends DCS_controller
                           </i>
                         </button>' .
 
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->ent_email . '\',\'' . $row->eve_name .  '\')">
+              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->ent_email .  '\')">
                           <i class="material-icons">
                             clear
                           </i>

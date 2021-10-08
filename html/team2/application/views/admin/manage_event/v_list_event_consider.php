@@ -224,7 +224,7 @@
       * @Create Date 2564-07-17
       * @Update -
       */
-     function confirm_reject(eve_id, eve_name, ent_email, eve_name) {
+     function confirm_reject(eve_id, eve_name, ent_email) {
          let form = document.querySelector('#reject_form');
          $('#eve_reject_name_confirm').text(eve_name);
          $('#rejected_eve').modal();
