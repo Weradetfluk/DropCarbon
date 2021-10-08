@@ -8,6 +8,7 @@
 * @Create Date 2564-09-16
 */ 
 -->
+<script type="text/javascript" src="<?php echo base_url('assets/plugin/QRCODE/qrcode.js') ?>"></script>
 <div class="content">
     <div class="row">
         <div class="col">
@@ -299,6 +300,10 @@
                                                         onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
                                                         <span class="material-icons">clear</span>
                                                     </button>
+                                                    <button class="btn btn-success" style="font-size:10px; padding:12px;"
+                                                        onclick="make_qr_code()">
+                                                        <span class="material-icons">qr_code</span>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -491,6 +496,26 @@
     </div>
 </div>
 
+
+<!-- modal delete event  -->
+<div class="modal" tabindex="-1" role="dialog" id="modal_qrcode">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">QRCODE</h5>
+            </div>
+            <div class="modal-body">
+            <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
+                    data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 /*
  * @author Suwapat Saowarod 62160340
@@ -508,6 +533,19 @@ $(document).ready(function() {
     }
     check_name_table(<?php echo $_SESSION['tab_number_event'] ?>);
 });
+
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 200,
+	height : 200
+});
+
+function make_qr_code(){
+
+
+    qrcode.makeCode("https://web.facebook.com/");
+    $('#modal_qrcode').modal();
+}
+
 
 /*
  * change_tab_number_ajax
