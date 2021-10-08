@@ -59,6 +59,7 @@
                          </div>
                          <span style="color: red;">***ขนาดภาพไม่เกิน 3000 KB</span>
                          <span style="color: red;">***หากเลือกผิดรูป ให้คลิกที่รูปเพื่อเปลี่ยนอีกครั้ง</span>
+                         <span id="err_banner" style="display: none; color:red;">กรุณาเพิ่มภาพ</span>
                          </form>
                      </div>
                      <div class="modal-footer">
@@ -74,7 +75,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจใช่หรือไม่ ?</h5>
+                 <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการลบแบนเนอร์ใช่หรือไม่ ?</p>
@@ -123,6 +124,7 @@
                              img.setAttribute('src', "https://via.placeholder.com/1920x678");
                              document.getElementById("file").value = '';
                              get_data_banner();
+                             err_banner.style.display = 'none';
                          } else {
                              $('#add_banner_modal').modal('toggle');
                              swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
@@ -136,14 +138,15 @@
                          //  $('#com_file').val('');
                      }
                  });
-             } else if( row_count >= 5) {
+             } else if( row_count == 5 && images.length > 0) {
                  swal('ไม่สามารถเพิ่มภาพได้', 'ไม่สามารถเพิ่มภาพได้เนื่องจากภาพมีจำนวนเกิน', 'error');
                  $('#add_banner_modal').modal('toggle');
                  document.getElementById("file").value = '';
+                 err_banner.style.display = 'none';
                  img.setAttribute('src', "https://via.placeholder.com/1920x678");
              }else if(images.length == 0){
-                swal('คุณไม่ได้เพิ่มภาพ', 'กรุณาเพิ่มภาพ', 'error');
-                $('#add_banner_modal').modal('toggle');
+                err_banner.style.display = 'block';
+              
              }
          });
      });
