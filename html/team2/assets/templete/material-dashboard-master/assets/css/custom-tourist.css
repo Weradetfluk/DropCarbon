@@ -586,6 +586,24 @@ a:hover {
   }
 }
 
+@media all and (max-width: 320px) {
+  .d-block {
+    margin-top: 150px;
+  }
+  .section-com {
+    margin-top: 100px;
+  }
+}
+@media all and (max-width: 360px) {
+  .d-block {
+    margin-top: 80px;
+  }
+  .section-com {
+    margin-top: 50px;
+  }
+
+}
+
 .card {
   transition: transform .2s;
 }

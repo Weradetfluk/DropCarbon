@@ -1,4 +1,4 @@
-<div class="container py-5">
+<div class="container py-5 section-com">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
             <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
