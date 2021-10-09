@@ -149,9 +149,6 @@
     </div>
 </div>
 
-
-
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
     $(document).ready(function() {
         init($('#com_lat').val(), $('#com_lon').val());

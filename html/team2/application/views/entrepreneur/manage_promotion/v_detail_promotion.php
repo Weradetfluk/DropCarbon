@@ -135,9 +135,6 @@
 </div>
 
 
-
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
-
 <script>
     var lat = '<?= $arr_promotion[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
     var long = '<?= $arr_promotion[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript

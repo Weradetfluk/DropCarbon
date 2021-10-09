@@ -132,7 +132,6 @@
         </div>
     </div>
 </div>
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
     var count_image = 0;

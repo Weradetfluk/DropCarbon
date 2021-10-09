@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
-                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" onkeyup="" required>
+                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อโปรโมชัน" onkeyup="" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
 

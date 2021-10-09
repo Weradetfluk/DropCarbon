@@ -212,8 +212,6 @@
     </div>
 </div>
 
-
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 $(document).ready(function() {
     init($('#eve_lat').val(), $('#eve_lon').val());
