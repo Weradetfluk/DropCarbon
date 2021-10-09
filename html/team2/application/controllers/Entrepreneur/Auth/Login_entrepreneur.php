@@ -37,7 +37,7 @@ class Login_entrepreneur extends DCS_controller
     {
 
         $username = $this->input->post('username');
-        $password = $this->input->post('password'); //รับค่า username & password
+        $password = md5($this->input->post('password')); //รับค่า username & password
 
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');  //load database
 

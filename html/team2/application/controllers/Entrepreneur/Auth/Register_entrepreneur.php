@@ -52,7 +52,7 @@ class Register_entrepreneur extends DCS_controller {
         $this->ment->ent_email = $this->input->post('ent_email');
         $this->ment->ent_birthdate = $this->input->post('ent_birthdate');
         $this->ment->ent_username = $this->input->post('ent_username');
-        $this->ment->ent_password = $this->input->post('ent_password');
+        $this->ment->ent_password = md5($this->input->post('ent_password'));
         $this->ment->ent_status = 1;
         $this->ment->insert_entrepreneur();
         $this->session->set_userdata("error_register_entrepreneur", "success");
