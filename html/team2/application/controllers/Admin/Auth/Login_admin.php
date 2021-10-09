@@ -70,8 +70,8 @@ class Login_admin extends DCS_controller
 
     $this->load->model('Admin/M_dcs_admin', 'login');  //load database
 
-    $this->login->adm_username =  $username;
-    $this->login->adm_password = $password;
+    $this->login->adm_username = $username;
+    $this->login->adm_password = md5($password);
 
     $result = $this->login->login(); //function in model
      

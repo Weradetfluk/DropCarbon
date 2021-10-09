@@ -241,10 +241,10 @@
                                         <thead class="text-white"
                                             style="background-color: #e4a487; text-align: center;">
                                             <tr>
-                                                <th>ลำดับ</th>
+                                                <th class ="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th>รายละเอียดกิจกรรม</th>
-                                                <th>ของสถานที่</th>
+                                                <th class ="res-hide">รายละเอียดกิจกรรม</th>
+                                                <th class ="res-hide">ของสถานที่</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -267,19 +267,19 @@
                                                     if ($arr_event[$i]->eve_status == 2 && ($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now || $arr_event[$i]->eve_start_date > $date_now)) {
                                                         $count_i++; ?>
                                             <tr>
-                                                <td><?php echo $count_i; ?></td>
+                                                <td class ="res-hide"><?php echo $count_i; ?></td>
                                                 <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
                                                 </td>
                                                 <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') > 60) { ?>
-                                                <td style="text-align: left;">
+                                                <td style="text-align: left;" class ="res-hide">
                                                     <?php echo iconv_substr($arr_event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                                                 </td>
                                                 <?php } ?>
                                                 <?php if (iconv_strlen($arr_event[$i]->eve_description, 'UTF-8') <= 60) { ?>
-                                                <td style="text-align: left;">
+                                                <td style="text-align: left;" class ="res-hide">
                                                     <?php echo $arr_event[$i]->eve_description; ?></td>
                                                 <?php } ?>
-                                                <td style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
+                                                <td style="text-align: left;" class ="res-hide"><?php echo $arr_event[$i]->com_name; ?>
                                                 </td>
                                                 <?php if($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now){?>
                                                 <td style="color: #669900;">ยังไม่สิ้นสุด</td>
@@ -505,7 +505,7 @@
                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">QRCODE</h5>
             </div>
             <div class="modal-body">
-            <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+            <div id="qrcode" style="width:100%; height:100%;"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
@@ -535,14 +535,12 @@ $(document).ready(function() {
 });
 
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 200,
-	height : 200
+	width : 250,
+	height : 250
 });
 
 function make_qr_code(){
-
-
-    qrcode.makeCode("https://web.facebook.com/");
+    qrcode.makeCode("<?php echo base_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>");
     $('#modal_qrcode').modal();
 }
 

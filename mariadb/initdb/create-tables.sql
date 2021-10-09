@@ -41,7 +41,7 @@ CREATE TABLE `dcs_admin` (
 --
 
 INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_username`, `adm_password`, `adm_status`) VALUES
-(1, 'adminfluk', 'weradet', 'adm1_1234', 1),
+(1, 'adminfluk', 'weradet', '958eab45014e55ca1ffc41ff3b2d808d', 1),
 (2, 'adminpip', 'suwapat', 'adm2_1234', 1);
 
 -- --------------------------------------------------------

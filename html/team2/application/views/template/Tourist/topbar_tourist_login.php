@@ -1,5 +1,15 @@
 <!-- Make by : Naaka Punparich 62160082 -->
+<?php
 
+// check session
+
+if (!$this->session->has_userdata("tus_score")) {
+  $path = site_url() . "Tourist/Auth/Login_tourist";
+  header("Location: " . $path);
+  exit();
+}
+
+?>
 <nav>
     <ul class="menu">
         <li class="logo">
