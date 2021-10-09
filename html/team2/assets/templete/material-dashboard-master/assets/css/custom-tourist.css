@@ -587,8 +587,8 @@ a:hover {
 }
 
 @media all and (max-width: 320px) {
-  .d-block {
-    margin-top: 150px;
+  .carousel-inner {
+    margin-top: 60px;
   }
   .section-com {
     margin-top: 100px;
