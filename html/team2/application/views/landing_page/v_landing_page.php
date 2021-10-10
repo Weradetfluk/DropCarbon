@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-
+        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม</a>
     </div>
 </section>
 
