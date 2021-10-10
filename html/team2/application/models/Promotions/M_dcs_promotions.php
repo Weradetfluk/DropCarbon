@@ -56,8 +56,8 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query->result();
     }
 
-     /* event not over */
-     /*
+    /* event not over */
+    /*
     *get_all_data_not_over
     *get data promotions&entrepreneur&company form database
     *@input $limit, $start, $number_status
@@ -76,7 +76,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->get();
         return $query->result();
     }
-      /*
+    /*
     *get_count_all_no_score
     *get data count event by form database
     *@input num_status
@@ -121,27 +121,27 @@ class M_dcs_promotions extends Da_dcs_promotions
 
 
 
-       /* event over */
+    /* event over */
 
-       /*get_all_data_not_over
+    /*get_all_data_not_over
        *get data event&entrepreneur&company form database
        *@input $limit, $start, $number_status
        *@output entrepreneur data & company data & event data
        *@author Kasama Donwong 62160074
        *@Create Date 2564-09-24
        */
-       function get_all_data_over($limit, $start, $number_status)
-       {
-           $this->db->limit($limit, $start);
-           $this->db->select('*');
-           $this->db->from('dcs_promotions');
-           $this->db->join('dcs_company', 'dcs_company.com_id = dcs_promotions.pro_com_id', 'left');
-           $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
-           $this->db->where("pro_status = '$number_status' AND pro_end_date < CURDATE()");
-           $query = $this->db->get();
-           return $query->result();
-       }
-         /*
+    function get_all_data_over($limit, $start, $number_status)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_promotions');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_promotions.pro_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->where("pro_status = '$number_status' AND pro_end_date < CURDATE()");
+        $query = $this->db->get();
+        return $query->result();
+    }
+    /*
        *get_count_all_no_score
        *get data count event by form database
        *@input num_status
@@ -149,15 +149,15 @@ class M_dcs_promotions extends Da_dcs_promotions
        *@author Kasama Donwong 62160074
        *@Create Date 2564-09-24
        */
-       function get_count_all_over($num_status)
-       {
-           $this->db->select('*');
-           $this->db->from('dcs_promotions ');
-           $this->db->where("pro_status = '$num_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
-           $num_results = $this->db->count_all_results();
-           return $num_results;
-       }
-       /*
+    function get_count_all_over($num_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_promotions ');
+        $this->db->where("pro_status = '$num_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+    /*
        *get_search_not_over
        *get data with search
        *@input number_status, search
@@ -166,23 +166,23 @@ class M_dcs_promotions extends Da_dcs_promotions
        *@Create Date 2564-09-26
        *@Update Date -
        */
-       function get_search_over($search, $number_status)
-       {
-   
-           $this->db->select('*');
-           $this->db->from('dcs_promotions');
-           $this->db->join('dcs_company', 'dcs_company.com_id = dcs_promotionst.pro_com_id', 'left');
-           $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
-           $this->db->group_start();
-           $this->db->like('pro_name', $search);
-           $this->db->or_like('ent_firstname', $search);
-           $this->db->or_like('ent_lastname', $search);
-           $this->db->or_like('com_name', $search);
-           $this->db->group_end();
-           $this->db->where("pro_status = '$number_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
-           $query = $this->db->get();
-           return $query;
-       }
+    function get_search_over($search, $number_status)
+    {
+
+        $this->db->select('*');
+        $this->db->from('dcs_promotions');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_promotionst.pro_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('pro_name', $search);
+        $this->db->or_like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("pro_status = '$number_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
+        $query = $this->db->get();
+        return $query;
+    }
 
     /*
     *get_data_card_event
@@ -279,6 +279,20 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query;
     }
 
+    public function get_promotion_by_com_id($com_id)
+    {
+        $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
+        from dcs_promotions
+        LEFT JOIN dcs_pro_image
+        ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
+        WHERE pro_status = '2'
+        AND dcs_promotions.pro_com_id = '" . $com_id . "'
+        GROUP BY dcs_promotions.pro_id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
     /*
     *get_by_detail
     *get data form database
@@ -324,7 +338,8 @@ class M_dcs_promotions extends Da_dcs_promotions
     *@author Suwapat Saowarod 62160340
     *@Create Date 2564-10-02
     */
-    function get_promotion_by_ent_id($ent_id){
+    function get_promotion_by_ent_id($ent_id)
+    {
         $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
                 LEFT JOIN dcs_company
                 ON dcs_promotions.pro_com_id = dcs_company.com_id
@@ -340,7 +355,8 @@ class M_dcs_promotions extends Da_dcs_promotions
     *@author Suwapat Saowarod 62160340
     *@Create Date 2564-10-02
     */
-    function get_by_name(){
+    function get_by_name()
+    {
         $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
                 WHERE pro_status != 4 AND pro_name = ?";
         return $this->db->query($sql, array($this->pro_name));

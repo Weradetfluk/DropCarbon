@@ -52,10 +52,18 @@ class Landing_page extends DCS_controller
     {
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_image', 'mimg');
+        $this->load->model('Event/M_dcs_event', 'mde');
+        $this->load->model('Event/M_dcs_eve_category', 'mcat');
+        $this->load->model('Promotions/M_dcs_promotions', 'mpt');
         $this->mimg->com_img_com_id = $com_id;
         $this->mcom->com_id = $com_id;
+
         $data["image"] = $this->mimg->get_by_com_id()->result();
         $data["company"] = $this->mcom->get_by_detail()->row();
+
+        $data["event"] = $this->mde->get_event_by_com_id($com_id)->result();
+        $data["promotions"] = $this->mpt->get_promotion_by_com_id($com_id)->result();
+
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
         } else {

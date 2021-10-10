@@ -99,7 +99,7 @@ class M_dcs_event extends Da_dcs_event
 
         $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
         from dcs_event
-        RIGHT JOIN dcs_eve_image
+        LEFT JOIN dcs_eve_image
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
         WHERE eve_status = '" . $number_status . "'
         $and
@@ -107,6 +107,24 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql);
         return $query;
     }
+
+    public function get_event_by_com_id($com_id)
+    {
+        $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
+        from dcs_event
+        LEFT JOIN dcs_eve_image
+        ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
+        WHERE eve_status = '2'
+        AND dcs_event.eve_com_id = '" . $com_id . "'
+        GROUP BY dcs_event.eve_id
+        ";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
+
+
     /*
     *get_count_all
     *get data count event by form database
@@ -145,7 +163,7 @@ class M_dcs_event extends Da_dcs_event
         return $query->result();
     }
     /* event not over */
-     /*
+    /*
     *get_all_data_not_over
     *get data event&entrepreneur&company form database
     *@input $limit, $start, $number_status
@@ -164,7 +182,7 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query->result();
     }
-      /*
+    /*
     *get_count_all_no_score
     *get data count event by form database
     *@input num_status
@@ -209,27 +227,27 @@ class M_dcs_event extends Da_dcs_event
 
 
 
-       /* event over */
+    /* event over */
 
-       /*get_all_data_not_over
+    /*get_all_data_not_over
        *get data event&entrepreneur&company form database
        *@input $limit, $start, $number_status
        *@output entrepreneur data & company data & event data
        *@author Kasama Donwong 62160074
        *@Create Date 2564-09-24
        */
-       function get_all_data_over($limit, $start, $number_status)
-       {
-           $this->db->limit($limit, $start);
-           $this->db->select('*');
-           $this->db->from('dcs_event');
-           $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
-           $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
-           $this->db->where("eve_status = '$number_status' AND eve_end_date < CURDATE()");
-           $query = $this->db->get();
-           return $query->result();
-       }
-         /*
+    function get_all_data_over($limit, $start, $number_status)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->where("eve_status = '$number_status' AND eve_end_date < CURDATE()");
+        $query = $this->db->get();
+        return $query->result();
+    }
+    /*
        *get_count_all_no_score
        *get data count event by form database
        *@input num_status
@@ -237,15 +255,15 @@ class M_dcs_event extends Da_dcs_event
        *@author Kasama Donwong 62160074
        *@Create Date 2564-09-24
        */
-       function get_count_all_over($num_status)
-       {
-           $this->db->select('*');
-           $this->db->from('dcs_event ');
-           $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
-           $num_results = $this->db->count_all_results();
-           return $num_results;
-       }
-       /*
+    function get_count_all_over($num_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_event ');
+        $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+    /*
        *get_search_not_over
        *get data with search
        *@input number_status, search
@@ -254,23 +272,23 @@ class M_dcs_event extends Da_dcs_event
        *@Create Date 2564-09-26
        *@Update Date -
        */
-       function get_search_over($search, $number_status)
-       {
-   
-           $this->db->select('*');
-           $this->db->from('dcs_event');
-           $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
-           $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
-           $this->db->group_start();
-           $this->db->like('eve_name', $search);
-           $this->db->or_like('ent_firstname', $search);
-           $this->db->or_like('ent_lastname', $search);
-           $this->db->or_like('com_name', $search);
-           $this->db->group_end();
-           $this->db->where("eve_status = '$number_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
-           $query = $this->db->get();
-           return $query;
-       }
+    function get_search_over($search, $number_status)
+    {
+
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('eve_name', $search);
+        $this->db->or_like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("eve_status = '$number_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
+        $query = $this->db->get();
+        return $query;
+    }
 
     /*
     * get_eve_cat
@@ -338,7 +356,7 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query;
     }
-     /*
+    /*
     *get_by_name
     *get data event by com_name
     *@input com_name
