@@ -590,14 +590,17 @@ a:hover {
   .carousel-inner {
     margin-top: 60px;
   }
+
   .section-com {
     margin-top: 100px;
   }
 }
+
 @media all and (max-width: 360px) {
   .d-block {
     margin-top: 80px;
   }
+
   .section-com {
     margin-top: 50px;
   }
@@ -614,4 +617,9 @@ a:hover {
 
 p {
   font-size: 18px;
+}
+
+.footer-top {
+  margin-top   : 40px;
+  margin-bottom: 40px;
 }

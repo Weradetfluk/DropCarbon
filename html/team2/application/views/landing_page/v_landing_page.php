@@ -2,7 +2,7 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
 
 <section class="bg-white">
-    <div class="container">
+    <div class="container" data-aos="fade-down">
         <div class="header-break">
             กิจกรรมยอดนิยม
         </div>
@@ -111,12 +111,12 @@
 
 <section class="bg-gray">
     <div class="container">
-        <div class="header-break">
+        <div class="header-break" data-aos="fade-down">
             สถานที่ยอดนิยม
         </div>
         <div class="row">
             <div class="col-xl-7 col-lg-6">
-                <div class="card">
+                <div class="card" data-aos="fade-right">
                     <?php if (count($arr_image_com) < 1 || count($arr_image_com) == 0) { ?>
                         <a href="#">
                             <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
@@ -132,7 +132,7 @@
                             <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
                         <?php } else { ?>
                             <a href="" class="h2"><?php echo $arr_com[0]->com_name ?></a>
-                            <p class="card-text"><?php echo substr($arr_com[0]->com_description,0,440) ?> ...</p>
+                            <p class="card-text"><?php echo substr($arr_com[0]->com_description, 0, 440) ?> ...</p>
                         <?php } ?>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
             <div class="col-xl-5 col-mg-4 mg-4">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card">
+                        <div class="card" data-aos="fade-down">
                             <?php if (count($arr_image_com) != 2 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
@@ -156,13 +156,13 @@
                                     <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่มีความ...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[1]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[1]->com_description,0,155) ?> ...</p>
+                                    <p class="card-text"><?php echo substr($arr_com[1]->com_description, 0, 155) ?> ...</p>
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="card">
+                        <div class="card" data-aos="fade-left">
                             <?php if (count($arr_image_com) < 3 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
@@ -178,7 +178,7 @@
                                     <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความ...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[2]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[2]->com_description,0,155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[2]->com_description, 0, 155) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="row" style="margin-top: 12.5px;">
                     <div class="col-lg-6">
-                        <div class="card">
+                        <div class="card" data-aos="fade-right">
                             <?php if (count($arr_image_com) < 4 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
@@ -202,13 +202,13 @@
                                     <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[3]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[3]->com_description,0,155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[3]->com_description, 0, 155) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="card">
+                        <div class="card" data-aos="fade-up">
                             <?php if (count($arr_image_com) < 5 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
                                     <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
@@ -224,7 +224,7 @@
                                     <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[4]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[4]->com_description,0,155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[4]->com_description, 0, 155) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
@@ -237,10 +237,10 @@
 </section>
 <section class="bg-white">
     <div class="container">
-        <div class="header-break">
+        <div class="header-break" data-aos="fade-down">
             จุดเด่น
         </div>
-        <div class="row" style="margin:1.5% 0">
+        <div class="row" style="margin:1.5% 0" data-aos="fade-up">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
@@ -251,28 +251,28 @@
         <div class="row" style="margin:1.5% 0">
             <div class="row row-50 justify-content-center">
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">12</span>
                         </div>
                         <div class="counter-classic-title">Members</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">194</span>
                         </div>
                         <div class="counter-classic-title">Partners</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">2</span><span class="symbol">k</span>
                         </div>
                         <div class="counter-classic-title">Travelers</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">25</span>
                         </div>
                         <div class="counter-classic-title">Team members</div>
@@ -284,12 +284,12 @@
 </section>
 <section class="bg-gray">
     <div class="container">
-        <div class="header-break">
+        <div class="header-break" data-aos="fade-down">
             โปรโมชัน
         </div>
         <div class="row">
             <div class="col-md-3">
-                <div class="card">
+                <div class="card" data-aos="fade-right">
                     <a href="#">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
                     </a>
@@ -302,7 +302,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card">
+                <div class="card" data-aos="fade-right">
                     <a href="#">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
                     </a>
@@ -315,7 +315,7 @@
                 </div>
             </div>
             <div class="col-md-3 ">
-                <div class="card">
+                <div class="card" data-aos="fade-left">
                     <a href="#">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
                     </a>
@@ -328,7 +328,7 @@
                 </div>
             </div>
             <div class="col-md-3 ">
-                <div class="card">
+                <div class="card" data-aos="fade-left">
                     <a href="#">
                         <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
                     </a>

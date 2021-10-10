@@ -17,14 +17,15 @@
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/custom-tourist.css" as="style" type="text/css">
     <!-- fonts css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
-
+    <!-- AOS - Animate on scroll -->
+    <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/css/aos.css" as="style" type="text/css">
     <!-- sweet alert plugin -->
     <link rel="preload" onload="this.rel = 'stylesheet'" href="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.css' ?>" as="style" type="text/css">
     <!-- material icon css -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete' ?>/material_icon.css" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/plugin/slick/slick.css' ?>">
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>\assets\fonts\fonts_prompt\font_prompt.css" type="text/css">
-    
+
     <title>Drop Carbon</title>
 </head>
 

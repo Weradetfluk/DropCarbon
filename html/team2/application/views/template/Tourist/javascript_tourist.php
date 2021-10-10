@@ -13,3 +13,17 @@
  <!-- Sweet alert -->
  <script src="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.js' ?>"></script>
  <script type="text/javascript" src="<?php echo base_url() . 'assets/plugin/slick/slick.js' ?>"></script>
+ <!-- AOS - Animate on scroll -->
+ <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/aos.js" type="text/javascript"></script>
+
+ <script>
+     AOS.init({
+         offset: 120, // offset (in px) from the original trigger point
+         delay: 0, // values from 0 to 3000, with step 50ms
+         duration: 600, // values from 0 to 3000, with step 50ms
+         easing: 'ease', // default easing for AOS animations
+         once: false, // whether animation should happen only once - while scrolling down
+         mirror: false, // whether elements should animate out while scrolling past them
+         anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+     });
+ </script>
