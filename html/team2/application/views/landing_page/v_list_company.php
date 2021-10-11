@@ -45,7 +45,7 @@
         <?php for ($i = 0; $i < count($company); $i++) { ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
                 <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $company[$i]->com_id; ?>">
-                    <div class="card" id="card" >
+                    <div class="card" style="height: 30rem;" id="card" >
                         <img src="<?php echo base_url() . 'image_company/' . $company[$i]->com_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
                         <!-- รูปที่ 1 -->
                         <div class="card-body" align="center">

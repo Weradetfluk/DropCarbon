@@ -28,12 +28,12 @@ USE `team2`;
 --
 
 CREATE TABLE `dcs_admin` (
-  `adm_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `adm_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `adm_email` varchar(30) NULL,
-  `adm_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `adm_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `adm_status` int(1) DEFAULT 1
+  `adm_id` int(10) NOT NULL  primary key AUTO_INCREMENT COMMENT ' ไอดีของ Admin ',
+  `adm_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT ' ชื่อของ Admin ',
+  `adm_email` varchar(30) NULL COMMENT ' อีเมลของ Admin ',
+  `adm_username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT ' username ของ Admin ',
+  `adm_password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'รหัสผ่านของผู้ดูแลระบบ',
+  `adm_status` int(1) DEFAULT 1 COMMENT 'สถานะของผู้ดูแลระบบ 1=ใช้งาน 2=ถูกลบ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -47,8 +47,8 @@ INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_username`, `adm_password`, `
 -- --------------------------------------------------------
 
 CREATE TABLE `dcs_com_category` (
-  `com_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `com_cat_name` varchar(50)
+  `com_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT ' ไอดีของ ประเภทสถานที่ ',
+  `com_cat_name` varchar(50) COMMENT 'ชื่อของประเภท '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Table structure for table `dcs_company`
@@ -75,8 +75,8 @@ INSERT INTO `dcs_com_category` (`com_cat_name`) VALUES
 --
 
 CREATE TABLE `dcs_prefix` (
-  `pre_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `pre_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `pre_id` int(10) NOT NULL  primary key AUTO_INCREMENT COMMENT ' ไอดีของ ตารางคำนำหน้า ',
+  `pre_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'ตัวอย่าง Ex. นาย, นาง, นางสาว '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -96,18 +96,18 @@ INSERT INTO `dcs_prefix` (`pre_id`, `pre_name`) VALUES
 --
 
 CREATE TABLE `dcs_entrepreneur` (
-  `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `ent_firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_birthdate` date NOT NULL,
-  `ent_tel` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_id_card` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `ent_status` int(1) DEFAULT 1,
-  `ent_pre_id` int(1) NOT NULL,
-  `ent_regis_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
+  `ent_id` int(10) NOT NULL  primary key AUTO_INCREMENT COMMENT ' ไอดีของ ผู้ประกอบการ ',
+  `ent_firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อจริงของผู้ประกอบการ',
+  `ent_lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'นามสกุลของผู้ประกอบการ ',
+  `ent_username` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT ' username ของ ผู้ประกอบการ',
+  `ent_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT ' รหัสผ่าน ของ ผู้ประกอบการ ',
+  `ent_birthdate` date NOT NULL COMMENT 'วันเกิดของของผู้ประกอบการ',
+  `ent_tel` varchar(12) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เบอร์โทรของผู้ประกอบการ',
+  `ent_id_card` varchar(13) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รหัสประชาชน ของผู้ประกอบการ',
+  `ent_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมลของผู้ประกอบการ',
+  `ent_status` int(1) DEFAULT 1 COMMENT ' สถานะของผู้ประกอบการ 1=รออนุมัติ 2=อนุมัติ, 3=ปฏิเสธ, 4=ถูกบล็อค',
+  `ent_pre_id` int(1) NOT NULL COMMENT ' คำนำหน้า จากตาราง dcs_prefix',
+  `ent_regis_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ลงทะบียน',
    FOREIGN KEY (ent_pre_id) REFERENCES dcs_prefix(pre_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -122,9 +122,9 @@ CREATE TABLE `dcs_entrepreneur` (
 --
 
 CREATE TABLE `dcs_document` (
-  `doc_path` varchar(100) NOT NULL primary key,
-  `doc_name` varchar(100) NOT NULL,
-  `doc_ent_id` int(10) NOT NULL,
+  `doc_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่จัดเก็บของเอกสาร ',
+  `doc_name` varchar(100) NOT NULL COMMENT 'เอกสารยืนยันตัวตนของผู้ประกอบการ ',
+  `doc_ent_id` int(10) NOT NULL COMMENT ' ไอดีของ ผู้ประกอบการ จากตาราง dcs_entrepreneur ',
   FOREIGN KEY (doc_ent_id) REFERENCES dcs_entrepreneur(ent_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -135,35 +135,35 @@ CREATE TABLE `dcs_document` (
 --
 
 CREATE TABLE `dcs_tourist` (
-  `tus_id` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `tus_firstname` varchar(50) NOT NULL,
-  `tus_lastname` varchar(50) NOT NULL,
-  `tus_username` varchar(100) NOT NULL,
-  `tus_password` varchar(100) NOT NULL,
-  `tus_birthdate` date NOT NULL,
-  `tus_tel` varchar(12) NOT NULL,
-  `tus_score` INT(10) DEFAULT 0,
-  `tus_email` varchar(30) NOT NULL,
-  `tus_cur_score` int(10) DEFAULT 0,
-  `tus_status` int(1) DEFAULT 1,
-  `tus_pre_id` int(10) NOT NULL,
+  `tus_id` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ไอดีของนักท่องเที่ยว',
+  `tus_firstname` varchar(50) NOT NULL COMMENT 'ชื่อจริงของนักท่องเที่ยว',
+  `tus_lastname` varchar(50) NOT NULL COMMENT 'นามสกุลของนักท่องเที่ยว',
+  `tus_username` varchar(100) NOT NULL COMMENT ' username ',
+  `tus_password` varchar(100) NOT NULL COMMENT 'รหัสผ่าน',
+  `tus_birthdate` date NOT NULL COMMENT 'วันเกิดของนักท่องเที่ยว',
+  `tus_tel` varchar(12) NOT NULL COMMENT 'เบอร์โทรของนักท่องเที่ยว',
+  `tus_score` INT(10) DEFAULT 0 COMMENT 'คะแนนของนักท่องเที่ยวที่ใช้งาน ',
+  `tus_email` varchar(30) NOT NULL COMMENT 'อีเมลของนักท่องเที่ยว',
+  `tus_cur_score` int(10) DEFAULT 0 COMMENT 'คะแนนสูงสุดของนักท่องเที่ยว เพื่อนำไปเช็คกับ Ranking',
+  `tus_status` int(1) DEFAULT 1 COMMENT ' สถานะของนักท่องเที่ยว 1=กำลังใช้งาน 2=ถูกระงับ',
+  `tus_pre_id` int(10) NOT NULL COMMENT 'คำนำหน้า จากตาราง dcs_prefix',
    FOREIGN KEY (tus_pre_id) REFERENCES dcs_prefix(pre_id)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_company` (
-  `com_id` int(10) NOT NULL  primary key AUTO_INCREMENT,
-  `com_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `com_num_visitor` int(10) DEFAULT 0,
-  `com_lat` float(20) NOT NULL,
-  `com_lon` float(20) NOT NULL,
-  `com_status` int(1) DEFAULT 1,
-  `com_description` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `com_ent_id` int(10) NOT NULL,
-  `com_tel` varchar(12) NOT NULL,
-  `com_location` varchar(200) NOT NULL,
-  `com_cat_id` int(10) NOT NULL,
-  `com_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
+  `com_id` int(10) NOT NULL  primary key AUTO_INCREMENT COMMENT 'ไอดีของสถานที่',
+  `com_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อสถานที่',
+  `com_num_visitor` int(10) DEFAULT 0 COMMENT 'จำนวนผู้เข้าชม',
+  `com_lat` float(20) NOT NULL COMMENT 'latitude ของสถานที่',
+  `com_lon` float(20) NOT NULL COMMENT 'logtitude ของสถานที่',
+  `com_status` int(1) DEFAULT 1  COMMENT ' สถานะของสถานที่, ร้านค้า 1=รออนุมัติ 2=อนุมัติ 3=ปฏิเสธ 4=ถูกลบ ',
+  `com_description` varchar(2000) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดของสถานที่',
+  `com_ent_id` int(10) NOT NULL COMMENT 'ไอดีของผู้ประกอบการ จากตาราง dcs_entrepreneur',
+  `com_tel` varchar(12) NOT NULL COMMENT 'เบอร์โทรสถานที่',
+  `com_location` varchar(200) NOT NULL COMMENT 'ที่อยู่ของสถานที่ เป็น ตัวอักษร คำ',
+  `com_cat_id` int(10) NOT NULL COMMENT 'หมวดหมู่สถานที่ ของ dcs_com_category',
+  `com_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'เวลาที่ถูกเพิ่ม',
    FOREIGN KEY (com_ent_id) REFERENCES dcs_entrepreneur(ent_id),
    FOREIGN KEY (com_cat_id) REFERENCES dcs_com_category(com_cat_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -202,43 +202,44 @@ INSERT INTO `dcs_document` (`doc_path`, `doc_name`, `doc_ent_id`) VALUES
 
 
 CREATE TABLE `dcs_entrepreneur_reject` (
-  `enr_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `enr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
-  `enr_ent_id` int(10),
-  `enr_adm_id` int(10),
-  `enr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
+  `enr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของการปฏิเสธ',
+  `enr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลว่าทำไมต้องมีการปฏิเสธผู้ประกอบการ',
+  `enr_ent_id` int(10) COMMENT 'ไอดีของผู้ประกอบการ จากตาราง dcs_entrepreneur',
+  `enr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบที่ถูกปฏิเสธ จากตาราง dcs_admin',
+  `enr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ปฏิเสธ',
    FOREIGN KEY (enr_ent_id) REFERENCES dcs_entrepreneur(ent_id),
    FOREIGN KEY (enr_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_tourist_image` (
-  `tus_img_path` varchar(100) NOT NULL primary key,
-  `tus_img_name` varchar(100),
-  `tus_img_tus_id` int(10),
+  `tus_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่เก็บไฟล์ รูปประจำตัวของนักท่องเที่ยว',
+  `tus_img_name` varchar(100) COMMENT 'ชื่อรูปประจำตัว',
+  `tus_img_tus_id` int(10) COMMENT 'ไอดีของนักท่องเที่ยวจากตาราง dcs_tourist',
   FOREIGN KEY (tus_img_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `dcs_reward` (
   `rew_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `rew_name`  varchar(100),
-  `rew_request` int(10),
-  `rew_img_path` varchar(100)
+  `rew_name`  varchar(100) COMMENT 'ชื่อRank',
+  `rew_request` int(10) COMMENT 'คะแนนที่ต้องการไปยัง Rank นั้นได้',
+  `rew_img_path` varchar(100) COMMENT 'ที่อยู่ของรูป Rank'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_reward_tourist` (
   `ret_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `ret_rew_id`  int(10),
-  `ret_tus_id` int(10),
+  `ret_rew_id`  int(10) COMMENT 'Rank ของนักท่องเที่ยว จากตาราง dcs_reward',
+  `ret_tus_id` int(10) COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist ',
   FOREIGN KEY (ret_rew_id) REFERENCES dcs_reward(rew_id),
   FOREIGN KEY (ret_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_eve_category` (
-  `eve_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `eve_cat_name` varchar(50)
+  `eve_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของประเภท',
+  `eve_cat_name` varchar(50) COMMENT 'ชื่อประเภท',
+  `eve_drop_carbon` float(20) DEFAULT 0 COMMENT 'จำนวนการลดคาร์บอน'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- data category event
@@ -251,20 +252,19 @@ INSERT INTO `dcs_eve_category` (`eve_cat_name`) VALUES
 ('อื่นๆ');
 
 CREATE TABLE `dcs_event` (
-  `eve_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `eve_name` varchar(100),
-  `eve_point` int(10) DEFAULT 0,
-  `eve_num_visitor` int(10) DEFAULT 0,
-  `eve_description` varchar (2000),
-  `eve_status` int(10) DEFAULT 1,
-  `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `eve_start_date` DATE NOT NULL,
-  `eve_end_date` DATE NULL,
-  `eve_lat` float(20) NOT NULL,
-  `eve_lon` float(20) NOT NULL,
-  `eve_drop_carbon` float(20) DEFAULT 0,
-  `eve_com_id` int(10),
-  `eve_cat_id` int(10),
+  `eve_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของกิจกรรม',
+  `eve_name` varchar(100) COMMENT 'ชื่อกิจกรรม ',
+  `eve_point` int(10) DEFAULT 0 COMMENT 'แต้มของกิจกรรม',
+  `eve_num_visitor` int(10) DEFAULT 0 COMMENT 'จำนวนผู้เข้าชมกิจกรรม',
+  `eve_description` varchar (2000) COMMENT 'รายละเอียดของกิจกรรม',
+  `eve_status` int(10) DEFAULT 1 COMMENT 'สถานะของกิจกรรม 1=รออนุมัติ 2=อนุมัติแล้ว 3=ถูกปฏิเสธ 4=ถูกลบ 5=สิ้นสุดกิจกรรม',
+  `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่เพิ่มกิจกรรม',
+  `eve_start_date` DATE NOT NULL COMMENT 'วันเริ่มต้นกิจกรรม',
+  `eve_end_date` DATE NULL COMMENT 'วันสิ้นสุดกิจกรรม',
+  `eve_lat` float(20) NOT NULL COMMENT 'latitude ของ สถานที่จัดกิจกรรม',
+  `eve_lon` float(20) NOT NULL COMMENT 'logtitude ของ สถานที่จัดกิจกรรม',
+  `eve_com_id` int(10) COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
+  `eve_cat_id` int(10) COMMENT 'ไอดีประเภทของกิจกรรมนี้ จากตาราง dcs_eve_category',
   FOREIGN KEY (eve_com_id) REFERENCES dcs_company(com_id),
   FOREIGN KEY (eve_cat_id) REFERENCES dcs_eve_category(eve_cat_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -272,12 +272,12 @@ CREATE TABLE `dcs_event` (
 
 
 CREATE TABLE `dcs_checkin` (
-  `che_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `che_status` int(1) NOT NULL,
-  `che_date_time_in` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `che_date_time_out` TIMESTAMP,
-  `che_tus_id` int(10) NOT NULL,
-  `che_eve_id` int(10) NOT NULL,
+  `che_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของการเช็คอิน',
+  `che_status` int(1) NOT NULL COMMENT 'สถานะการเช็คอิน 1=ไม่ถูกลบ 2=ถูกลบ',
+  `che_date_time_in` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'เวลาการเช็คอิน',
+  `che_date_time_out` TIMESTAMP COMMENT 'เวลาการเช็คเอาท์',
+  `che_tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยวที่เช็คอิน จาก ตาราง dcs_tourist',
+  `che_eve_id` int(10) NOT NULL COMMENT 'กิจกรรม ที่ถูกเช็คอิน จากตาราง dcs_event',
   FOREIGN KEY (che_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (che_eve_id) REFERENCES dcs_event(eve_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -285,17 +285,17 @@ CREATE TABLE `dcs_checkin` (
 
 
 CREATE TABLE `dcs_eve_image` (
-  `eve_img_path` varchar(100) NOT NULL primary key,
-  `eve_img_name` varchar(100),
-  `eve_img_eve_id` int(10),
+  `eve_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่จัดเก็บรูปกิจกรรม',
+  `eve_img_name` varchar(100) COMMENT 'ชื่อรูปกิจกรรม',
+  `eve_img_eve_id` int(10) COMMENT 'ไอดีกิจกรรมจากตาราง dcs_event',
   FOREIGN KEY (eve_img_eve_id) REFERENCES dcs_event(eve_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_com_image` (
-  `com_img_path` varchar(100) NOT NULL primary key,
-  `com_img_name` varchar(100),
-  `com_img_com_id` int(10),
+  `com_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่เก็บรูปสถานที่',
+  `com_img_name` varchar(100) COMMENT 'ชื่อรูปสถานที่',
+  `com_img_com_id` int(10) COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
   FOREIGN KEY (com_img_com_id) REFERENCES dcs_company(com_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -308,8 +308,8 @@ INSERT INTO `dcs_com_image` (`com_img_path`, `com_img_name`, `com_img_com_id`) V
 
 
 CREATE TABLE `dcs_pro_category` (
-  `pro_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `pro_cat_name` varchar(50)
+  `pro_cat_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของประเภทโปรโมชัน',
+  `pro_cat_name` varchar(50) COMMENT 'ชื่อประเภทโปรโมชัน'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- data category promotion
@@ -319,76 +319,76 @@ INSERT INTO `dcs_pro_category` (`pro_cat_name`) VALUES
 ('อื่นๆ');
 
 CREATE TABLE `dcs_promotions` (
-  `pro_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `pro_name` varchar(100) NOT NULL,
-  `pro_point` int(10) DEFAULT 0,
-  `pro_description` varchar (2000) NOT NULL,
-  `pro_status` int(10) DEFAULT 1,
-  `pro_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `pro_start_date` DATE NOT NULL,
-  `pro_end_date` DATE NULL,
-  `pro_com_id` int(10) NOT NULL,
-  `pro_cat_id` int(10) NOT NULL,
+  `pro_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของโปรโมชัน หรือของรางวัล',
+  `pro_name` varchar(100) NOT NULL COMMENT 'ชื่อโปรโมชัน',
+  `pro_point` int(10) DEFAULT 0 COMMENT 'แต้มที่ใช้แลก',
+  `pro_description` varchar (2000) NOT NULL COMMENT 'รายละเอียดของโปรโมชัน หรือของรางวัล',
+  `pro_status` int(10) DEFAULT 1 COMMENT 'สถานะของผู้โปรโมชัน 1=รออนุมัติ 2=อนุมัติแล้ว 3=ปฏิเสธ 4=ถูกลบ 5=หมดอายุ',
+  `pro_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่เพิ่มโปรโมชัน',
+  `pro_start_date` DATE NOT NULL COMMENT 'วันที่เพิ่มโปรโมชัน หรือของรางวัล',
+  `pro_end_date` DATE NULL COMMENT 'วันที่หมดโปรโมชั่น หรือของรางวัล',
+  `pro_com_id` int(10) NOT NULL COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
+  `pro_cat_id` int(10) NOT NULL COMMENT 'ไอดีของประเภทโปรโมชัน หรือของรางวัล จากตาราง dcs_pro_category',
   FOREIGN KEY (pro_com_id) REFERENCES dcs_company(com_id),
   FOREIGN KEY (pro_cat_id) REFERENCES dcs_pro_category(pro_cat_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_pro_image` (
-  `pro_img_path` varchar(100) NOT NULL primary key,
-  `pro_img_name` varchar(100) NOT NULL,
-  `pro_img_pro_id` int(10) NOT NULL,
+  `pro_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่จัดเก็บของรูปโปรโมชัน',
+  `pro_img_name` varchar(100) NOT NULL COMMENT 'ชื่อรูปโปรโมชัน',
+  `pro_img_pro_id` int(10) NOT NULL COMMENT 'ไอดีของโปรโมชัน จากตาราง dcs_promotions',
   FOREIGN KEY (pro_img_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_tou_promotion` (
-  `tou_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `tou_pro_status` int(10),
-  `tou_pro_id` int(10),
-  `tou_tus_id` int(10),
+  `tou_id` int(10) NOT NULL primary key AUTO_INCREMENT  COMMENT 'ไอดีของตารางนักท่องเที่ยวที่ใช้โปรโมชัน',
+  `tou_pro_status` int(10)  COMMENT 'สถานะของรางวัล ที่ถูกใช้ 1=ยังไม่หมดอายุ 2=หมดอายุ',
+  `tou_pro_id` int(10)  COMMENT 'ไอดีโปรโมชัน หรือของรางวัล จากตาราง dcs_promotion',
+  `tou_tus_id` int(10)  COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist',
   FOREIGN KEY (tou_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (tou_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_company_reject` (
-  `cor_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
-  `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `cor_com_id` int(10),
-  `cor_adm_id` int(10),
+  `cor_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของสถานที่ที่ปฏิเสธ',
+  `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ ปฏิเสธสถานที่',
+  `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
+  `cor_com_id` int(10) COMMENT 'ไอดีของสถานที่ ถูกปฏิเสธ จากตาราง dcs_company',
+  `cor_adm_id` int(10)  COMMENT 'ไอดีของผู้ดูแลระบบจากตาราง dcs_admin',
    FOREIGN KEY (cor_com_id) REFERENCES dcs_company(com_id),
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_event_reject` (
-  `evr_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `evr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
-  `evr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `evr_eve_id` int(10),
-  `evr_adm_id` int(10),
+  `evr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของกิจกรรมที่ปฏิเสธ',
+  `evr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ ปฏิเสธกิจกรรม',
+  `evr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
+  `evr_eve_id` int(10) COMMENT 'เหตุผลที่ปฏิเสธ กิจกรรม จากตาราง dcs_event',
+  `evr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบที่ปฏิเสธ',
    FOREIGN KEY (evr_eve_id) REFERENCES dcs_event(eve_id),
    FOREIGN KEY (evr_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_promotion_reject` (
-  `prr_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `prr_admin_reason` varchar(255) COLLATE utf8_unicode_ci,
-  `prr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00'),
-  `prr_pro_id` int(10),
-  `prr_adm_id` int(10),
+  `prr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของโปรโมชันที่ปฏิเสธ',
+  `prr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ปฏิเสธ โปรโมชัน',
+  `prr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
+  `prr_pro_id` int(10) COMMENT 'ไอดีของโปรโมชัน จากตาราง dcs_promotions',
+  `prr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบจากตาราง dcs_admin',
    FOREIGN KEY (prr_pro_id) REFERENCES dcs_promotions(pro_id),
    FOREIGN KEY (prr_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_banner` (
-  `ban_path` varchar(100) NOT NULL primary key,
-  `ban_name` varchar(100) NOT NULL,
-  `ban_adm_id` int(10),
+  `ban_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่จัดเก็บ' ,
+  `ban_name` varchar(100) NOT NULL COMMENT 'ชื่อภาพแบนเนอร์',
+  `ban_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบที่เพิ่มแบนเนอร์ จากตาราง dcs_admin',
   FOREIGN KEY (ban_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

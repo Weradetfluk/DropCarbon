@@ -1,11 +1,11 @@
  <!-- 
 /*
-* v_list_entrepreneur_approve
-* Display table entrepreneur approve
+* v_list_banner
+* Display table Banner approve
 * @input -
 * @output list table entrepreneur approve
 * @author weradet nopsombun 62160110
-* @Create Date 2564-08-08
+* @Create Date 2564-09-14
 */ 
 -->
  <div class="content">
@@ -95,16 +95,18 @@
          get_data_banner(); // get data banner in table
          //add banner
          $('#add_banner_confirm').click(function() {
-             console.log("OK")
+
+             // กรณีคลิกเพิ่ม banner
              var form_data = new FormData();
              var images = $('#file')[0].files;
-             console.log(images);
-
              var row_count = document.getElementById('banner_table').rows.length; // นับแถว ตาราง
-             console.log(row_count);
+
+
              if (images.length > 0 && row_count < 5) {
-                 var name = images[0].name;
-                 form_data.append('file', images[0]);
+                 // กรณี มีภาพ และจำนวนภาพน้อยกว่า 5
+                 var name = images[0].name; 
+                 form_data.append('file', images[0]); 
+
                  $.ajax({
                      url: "<?php echo site_url() . "Admin/Manage_banner/Admin_manage_banner/insert_banner_ajax" ?>",
                      method: "POST",
@@ -123,9 +125,11 @@
                              $('#add_banner_modal').modal('toggle');
                              img.setAttribute('src', "https://via.placeholder.com/1920x678");
                              document.getElementById("file").value = '';
-                             get_data_banner();
+                             get_data_banner();// ดึงข้อมูล แบนเนอร์
                              err_banner.style.display = 'none';
+                             // เพิ่มภาพสำเร็จ
                          } else {
+                             //ภาพใหญ่
                              $('#add_banner_modal').modal('toggle');
                              swal('เพิ่มรูปไม่สำเร็จ', 'ไฟล์ ' + name + ' มีขนาดใหญ่เกินไป', 'error');
                              img.setAttribute('src', "https://via.placeholder.com/1920x678");
@@ -139,6 +143,7 @@
                      }
                  });
              } else if( row_count == 5 && images.length > 0) {
+                 //มีภาพเกินจำนวน
                  swal('ไม่สามารถเพิ่มภาพได้', 'ไม่สามารถเพิ่มภาพได้เนื่องจากภาพมีจำนวนเกิน', 'error');
                  $('#add_banner_modal').modal('toggle');
                  document.getElementById("file").value = '';
@@ -150,6 +155,7 @@
              }
          });
      });
+     
      const img = document.querySelector('#photo');
      const file = document.querySelector('#file');
      file.addEventListener('change', function() {
