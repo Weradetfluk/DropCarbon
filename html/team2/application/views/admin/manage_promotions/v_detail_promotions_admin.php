@@ -194,7 +194,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">แจ้งเตือน</h5>
+                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif;">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
                  <p>คุณต้องการอนุมัติ <span id="pro_name_confirm"></span> ?</p>
@@ -212,7 +212,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                <h5 class="modal-title">รายละเอียด</h5>
+                <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
                 <p>คุณต้องการที่จะปฏิเสธ<span id="pro_reject_name_confirm"></span> ?</p><br>
