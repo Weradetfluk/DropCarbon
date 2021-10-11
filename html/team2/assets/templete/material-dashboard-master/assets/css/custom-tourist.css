@@ -92,9 +92,10 @@ a:hover {
   color        : #000000;
 }
 
-.row>* {
-  width    : 100%;
-  max-width: 100%;
+.row-max-100 {
+  width    : 100% !important; 
+  max-width: 100% !important;
+  margin:1.5% 0 !important;
 }
 
 .counter {
