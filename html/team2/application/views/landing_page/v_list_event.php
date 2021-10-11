@@ -42,7 +42,7 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                 <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
                     <div class="card" id="card" style="max-height: 30rem;">
-                        <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="max-height: 300px;" alt="...">
+                        <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; width: 450px; object-fit: cover;" alt="...">
                         <!-- รูปที่ 1 -->
                         <div class="card-body" align="center">
                             <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
