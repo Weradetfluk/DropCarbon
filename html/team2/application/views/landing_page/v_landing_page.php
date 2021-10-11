@@ -11,11 +11,11 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 1 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" style="height: 300px;" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>"  style="height: 300px;" class="card-img-top">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>"  style="height: 300px; weight: 450;" class="card-img-top">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -45,12 +45,12 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 2 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" style="height: 300px;" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
 
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>"  class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -78,11 +78,11 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 3 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" style="height: 300px;" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[2]->eve_img_path; ?>" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[2]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -121,11 +121,11 @@
                 <div class="card" data-aos="fade-right">
                     <?php if (count($arr_image_com) < 1 || count($arr_image_com) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" style="height: 550px; weight: 810;" class="card-img-top" alt="...">
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[0]->com_img_path; ?>" class="card-img-top">
+                            <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[0]->com_img_path; ?>" style="height: 550px; weight: 810;" class="card-img-top">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -145,11 +145,11 @@
                         <div class="card" data-aos="fade-down">
                             <?php if (count($arr_image_com) != 2 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
                                 </a>
                             <?php } else { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[1]->com_img_path; ?>" class="card-img-top">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
                                 </a>
                             <?php } ?>
                             <div class="card-body">
@@ -158,7 +158,7 @@
                                     <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่มีความ...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[1]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[1]->com_description, 0, 155) ?> ...</p>
+                                    <p class="card-text"><?php echo substr($arr_com[1]->com_description, 0, 150) ?> ...</p>
                                 <?php } ?>
                             </div>
                         </div>
@@ -167,11 +167,11 @@
                         <div class="card" data-aos="fade-left">
                             <?php if (count($arr_image_com) < 3 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
                                 </a>
                             <?php } else { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[2]->com_img_path; ?>" class="card-img-top">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[2]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
                                 </a>
                             <?php } ?>
                             <div class="card-body">
@@ -180,22 +180,22 @@
                                     <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความ...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[2]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[2]->com_description, 0, 155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[2]->com_description, 0, 150) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 12.5px;">
+                <div class="row" style="margin-top: -40px;">
                     <div class="col-lg-6">
                         <div class="card" data-aos="fade-right">
                             <?php if (count($arr_image_com) < 4 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
                                 </a>
                             <?php } else { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[3]->com_img_path; ?>" class="card-img-top">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[3]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
                                 </a>
                             <?php } ?>
                             <div class="card-body">
@@ -204,7 +204,7 @@
                                     <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[3]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[3]->com_description, 0, 155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[3]->com_description, 0, 150) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
@@ -213,11 +213,11 @@
                         <div class="card" data-aos="fade-up">
                             <?php if (count($arr_image_com) < 5 || count($arr_image_com) == 0) { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" class="card-img-top" alt="...">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
                                 </a>
                             <?php } else { ?>
                                 <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[4]->com_img_path; ?>" class="card-img-top">
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[4]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
                                 </a>
                             <?php } ?>
                             <div class="card-body">
@@ -226,7 +226,7 @@
                                     <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
                                 <?php } else { ?>
                                     <a href="" class="h2"><?php echo $arr_com[4]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[4]->com_description, 0, 155) ?></p>
+                                    <p class="card-text"><?php echo substr($arr_com[4]->com_description, 0, 150) ?></p>
                                 <?php } ?>
                             </div>
                         </div>
