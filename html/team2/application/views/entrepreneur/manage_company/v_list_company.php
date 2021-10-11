@@ -17,23 +17,31 @@
       <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
     </div>
   </div>
-  
+
   <div class="card card-nav-tabs custom-card-tab">
     <div class="card-header custom-header-tab">
       <div class="nav-tabs-navigation">
         <div class="nav-tabs-wrapper">
           <ul class="nav nav-tabs" data-tabs="tabs">
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)"><h5 class="h5-card-header">ทั้งหมด</h5></a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 1) echo "active"; ?>" href="#tab_all" data-toggle="tab" onclick="change_tab_number_ajax(1)">
+                <h5 class="h5-card-header">ทั้งหมด</h5>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)"><h5 class="h5-card-header">รออนุมัติ</h5></a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 2) echo "active"; ?>" href="#tab_pending" data-toggle="tab" onclick="change_tab_number_ajax(2)">
+                <h5 class="h5-card-header">รออนุมัติ</h5>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" href="#tab_approved" data-toggle="tab" onclick="change_tab_number_ajax(3)"><h5 class="h5-card-header">อนุมัติเเล้ว</h5></a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 3) echo "active"; ?>" href="#tab_approved" data-toggle="tab" onclick="change_tab_number_ajax(3)">
+                <h5 class="h5-card-header">อนุมัติเเล้ว</h5>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(4)"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+              <a class="nav-link <?php if ($_SESSION['tab_number_company'] == 4) echo "active"; ?>" href="#tab_reject" data-toggle="tab" onclick="change_tab_number_ajax(4)">
+                <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
+              </a>
             </li>
           </ul>
         </div>
@@ -51,29 +59,22 @@
                   <table class="table table-hover table-striped " style="text-align: center;">
                     <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                       <tr>
-                        <th>ลำดับ</th>
+                        <th class="res-hide">ลำดับ</th>
                         <th>ชื่อสถานที่</th>
-                        <th>รายละเอียด</th>
                         <th>สถานะ</th>
                         <th>ดำเนินการ</th>
                       </tr>
                     </thead>
                     <tbody class="list">
                       <?php if (sizeof($arr_company) == 0) {
-                        echo "<td colspan = '5'>";
+                        echo "<td colspan = '4'>";
                         echo "ไม่มีข้อมูลในตารางนี้";
                         echo "</td>";
                       } else {
                         for ($i = 0; $i < count($arr_company); $i++) { ?>
                           <tr>
-                            <td><?php echo $i + 1; ?></td>
+                            <td class="res-hide"><?php echo $i + 1; ?></td>
                             <td style="text-align: left;"><?php echo $arr_company[$i]->com_name; ?></td>
-                            <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 60) { ?>
-                              <td style="text-align: left;"><?php echo iconv_substr($arr_company[$i]->com_description, 0, 60, "UTF-8") . "..."; ?></td>
-                            <?php } ?>
-                            <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 60) { ?>
-                              <td style="text-align: left;"><?php echo $arr_company[$i]->com_description; ?></td>
-                            <?php } ?>
 
                             <?php if ($arr_company[$i]->com_status == 1) { ?>
                               <td style="color: #fba004;">รออนุมัติ</td>
@@ -131,9 +132,8 @@
                   <table class="table table-hover table-striped " style="text-align: center;">
                     <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                       <tr>
-                        <th>ลำดับ</th>
+                        <th class="res-hide">ลำดับ</th>
                         <th>ชื่อสถานที่</th>
-                        <th>รายละเอียด</th>
                         <th>สถานะ</th>
                         <th>ดำเนินการ</th>
                       </tr>
@@ -148,21 +148,16 @@
                       }
 
                       if (sizeof($arr_company) == 0 || $count_pending == 0) {
-                        echo "<td colspan = '5'>";
+                        echo "<td colspan = '4'>";
                         echo "ไม่มีข้อมูลในตารางนี้";
                         echo "</td>";
                       } else {
+                        $count_pending = 0;
                         for ($i = 0; $i < count($arr_company); $i++) {
                           if ($arr_company[$i]->com_status == 1) { ?>
                             <tr>
-                              <td><?php echo $i + 1; ?></td>
+                              <td class="res-hide"><?php echo $count_pending + 1; ?></td>
                               <td style="text-align: left;"><?php echo $arr_company[$i]->com_name; ?></td>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 60) { ?>
-                                <td style="text-align: left;"><?php echo iconv_substr($arr_company[$i]->com_description, 0, 60, "UTF-8") . "..."; ?></td>
-                              <?php } ?>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 60) { ?>
-                                <td style="text-align: left;"><?php echo $arr_company[$i]->com_description; ?></td>
-                              <?php } ?>
 
                               <?php if ($arr_company[$i]->com_status == 1) { ?>
                                 <td style="color: #fba004;">รออนุมัติ</td>
@@ -186,6 +181,7 @@
                                 </button>
                               </td>
                             </tr>
+                            <?php $count_pending++; ?>
                           <?php } ?>
                         <?php } ?>
                         <?php $count_pending = 0; ?>
@@ -207,9 +203,8 @@
                   <table class="table table-hover table-striped " style="text-align: center;">
                     <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                       <tr>
-                        <th>ลำดับ</th>
+                        <th class="res-hide">ลำดับ</th>
                         <th>ชื่อสถานที่</th>
-                        <th>รายละเอียด</th>
                         <th>สถานะ</th>
                         <th>ดำเนินการ</th>
                       </tr>
@@ -224,21 +219,16 @@
                       }
 
                       if (sizeof($arr_company) == 0 || $count_approved == 0) {
-                        echo "<td colspan = '5'>";
+                        echo "<td colspan = '4'>";
                         echo "ไม่มีข้อมูลในตารางนี้";
                         echo "</td>";
                       } else {
+                        $count_approved = 0;
                         for ($i = 0; $i < count($arr_company); $i++) {
                           if ($arr_company[$i]->com_status == 2) { ?>
                             <tr>
-                              <td><?php echo $i + 1; ?></td>
+                              <td class="res-hide"><?php echo $count_approved + 1; ?></td>
                               <td style="text-align: left;"><?php echo $arr_company[$i]->com_name; ?></td>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 60) { ?>
-                                <td style="text-align: left;"><?php echo iconv_substr($arr_company[$i]->com_description, 0, 60, "UTF-8") . "..."; ?></td>
-                              <?php } ?>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 60) { ?>
-                                <td style="text-align: left;"><?php echo $arr_company[$i]->com_description; ?></td>
-                              <?php } ?>
 
                               <?php if ($arr_company[$i]->com_status == 1) { ?>
                                 <td style="color: #fba004;">รออนุมัติ</td>
@@ -262,6 +252,7 @@
                                 </button>
                               </td>
                             </tr>
+                            <?php $count_approved++; ?>
                           <?php } ?>
                         <?php } ?>
                         <?php $count_approved = 0; ?>
@@ -283,9 +274,8 @@
                   <table class="table table-hover table-striped " style="text-align: center;">
                     <thead class="text-white" style="background-color: #e4a487; text-align: center;">
                       <tr>
-                        <th>ลำดับ</th>
+                        <th class="res-hide">ลำดับ</th>
                         <th>ชื่อสถานที่</th>
-                        <th>รายละเอียด</th>
                         <th>สถานะ</th>
                         <th>ดำเนินการ</th>
                       </tr>
@@ -300,21 +290,16 @@
                       }
 
                       if (sizeof($arr_company) == 0 || $count_reject == 0) {
-                        echo "<td colspan = '5'>";
+                        echo "<td colspan = '4'>";
                         echo "ไม่มีข้อมูลในตารางนี้";
                         echo "</td>";
                       } else {
+                        $count_reject = 0;
                         for ($i = 0; $i < count($arr_company); $i++) {
                           if ($arr_company[$i]->com_status == 3) { ?>
                             <tr>
-                              <td><?php echo $i + 1; ?></td>
+                              <td class="res-hide"><?php echo $count_reject + 1; ?></td>
                               <td style="text-align: left;"><?php echo $arr_company[$i]->com_name; ?></td>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, 'UTF-8') > 60) { ?>
-                                <td style="text-align: left;"><?php echo iconv_substr($arr_company[$i]->com_description, 0, 60, "UTF-8") . "..."; ?></td>
-                              <?php } ?>
-                              <?php if (iconv_strlen($arr_company[$i]->com_description, "UTF-8") <= 60) { ?>
-                                <td style="text-align: left;"><?php echo $arr_company[$i]->com_description; ?></td>
-                              <?php } ?>
 
                               <?php if ($arr_company[$i]->com_status == 1) { ?>
                                 <td style="color: #fba004;">รออนุมัติ</td>
@@ -332,6 +317,7 @@
                                 </a>
                               </td>
                             </tr>
+                            <?php $count_reject++; ?>
                           <?php } ?>
                         <?php } ?>
                         <?php $count_reject = 0; ?>
@@ -383,7 +369,7 @@
       swal("แก้ไขสถานที่สำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
       <?php echo $this->session->unset_userdata("error_edit_company"); ?>
     }
-    check_name_table(<?php echo $_SESSION['tab_number_company']?>);
+    check_name_table(<?php echo $_SESSION['tab_number_company'] ?>);
   });
 
   /*
@@ -454,7 +440,7 @@
       data: {
         tab_company: tab_company
       },
-      success: function(data){
+      success: function(data) {
         check_name_table(data);
       }
     });
@@ -469,16 +455,15 @@
    * @Create Date 2564-09-16
    * @Update -
    */
-  function check_name_table(tab_company){
-    if(tab_company == 1){
+  function check_name_table(tab_company) {
+    if (tab_company == 1) {
       $('#name_table').html('สถานที่ทั้งหมด');
-    }else if(tab_company == 2){
+    } else if (tab_company == 2) {
       $('#name_table').html('สถานที่ที่รออนุมัติ');
-    }else if(tab_company == 3){
+    } else if (tab_company == 3) {
       $('#name_table').html('สถานที่ที่อนุมัติเเล้ว');
-    }else if(tab_company == 4){
+    } else if (tab_company == 4) {
       $('#name_table').html('สถานที่ที่ถูกปฏิเสธ');
     }
   }
-
 </script>

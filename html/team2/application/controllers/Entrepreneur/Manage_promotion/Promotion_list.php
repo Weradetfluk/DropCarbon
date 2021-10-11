@@ -24,6 +24,7 @@ class Promotion_list extends DCS_controller
         }
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $data['arr_promotion'] = $this->mpro->get_promotion_by_ent_id($this->session->userdata("entrepreneur_id"))->result();
+        date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_promotion/v_list_promotion';
         $_SESSION['tab_number_entrepreneur'] = 3;
