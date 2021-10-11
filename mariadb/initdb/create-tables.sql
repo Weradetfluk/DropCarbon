@@ -173,7 +173,7 @@ CREATE TABLE `dcs_company` (
 --
 
 INSERT INTO `dcs_entrepreneur` (`ent_id`, `ent_firstname`, `ent_lastname`, `ent_username`, `ent_password`, `ent_birthdate`, `ent_tel`, `ent_id_card`, `ent_email`, `ent_status`, `ent_pre_id`) VALUES
-(1, 'ณเอก', 'ปุณย์ปริชญ์', 'Entrepreneur1', 'ent1_1234', '2001-07-17', '0955572662', '777777777777', '62160082@go.buu.ac.th', 2, 1),
+(1, 'ณเอก', 'ปุณย์ปริชญ์', 'Entrepreneur1', '756b6dda5f9669f0277e9fb50c279a59', '2001-07-17', '0955572662', '777777777777', '62160082@go.buu.ac.th', 2, 1),
 (2, 'อัจฉราภรณ์', 'พรพัฒนทรัพย์', 'Entrepreneur2', 'ent2_1234', '2001-02-14', '0991584644', '1249900858895', '62160344@gmail.com', 1, 1);
 
 INSERT INTO `dcs_company` (`com_name`, `com_num_visitor`, `com_lat`, `com_lon`, `com_status`, `com_description`, `com_ent_id`, `com_tel`, `com_location`, `com_cat_id`) VALUES

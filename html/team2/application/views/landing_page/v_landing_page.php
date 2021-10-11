@@ -11,11 +11,11 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 1 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" style="height: 300px;" class="card-img-top" alt="...">
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>" class="card-img-top">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>"  style="height: 300px;" class="card-img-top">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -31,7 +31,9 @@
                             <a href="#">
                                 <h2><?php echo $arr_eve[0]->eve_name; ?></h2>
                             </a>
-                            <p class="card-text"><?php echo $arr_eve[0]->eve_description; ?></p>
+                            <p class="card-tex text-dark">
+                                <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                            </p>
                             <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[0]->eve_start_date; ?> - <?php echo $arr_eve[0]->eve_end_date; ?></p>
@@ -43,12 +45,12 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 2 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" style="height: 300px;" class="card-img-top" alt="...">
 
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>"  class="card-img-top" alt="...">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -76,7 +78,7 @@
                 <div class="card">
                     <?php if (count($arr_image_eve) < 3 || count($arr_image_eve) == 0) { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" style="height: 300px;" class="card-img-top" alt="...">
                         </a>
                     <?php } else { ?>
                         <a href="#">
@@ -248,7 +250,7 @@
             with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
             publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </div>
-        <div class="row" style="margin:1.5% 0">
+        <div class="row-max-100">
             <div class="row row-50 justify-content-center">
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
