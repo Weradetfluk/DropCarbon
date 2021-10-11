@@ -1,3 +1,11 @@
+<style> 
+.radius {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+</style>
 <div class="bg-gray">
     <div class="container py-5" style="border-radius: 25px; padding-bottom: 4% !important">
         <ul class="breadcrumb">
@@ -5,9 +13,9 @@
             <li>ข้อมูลส่วนตัว</li>
         </ul>
 
-        <section>
+        <section style="border: 2px solid; width: 1410px; height: 500px;" class="radius">
             <div class="container">
-                <h2>ข้อมูลส่วนตัว</h2>
+                <h2 class="container"> &nbsp; &nbsp;ข้อมูลส่วนตัว</h2>
                 <div class="row">
                     <div class="col">
                         <div class="profile-pic-div">
@@ -22,10 +30,10 @@
                         <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
                         <h3>คะแนนของฉัน</h3>
                         <h1 style="display:inline; color: #239d58;"><?php echo $arr_tus[0]->tus_score; ?></h1>
-                        <h3 style="display:inline;"> แต้ม</h3>
+                        <h3 style="display:inline;">แต้ม</h3>
                     </div>
                     <div class="col"></div>
-                    <div class="col">
+                    <div class="col" style="margin-right: 30px;">
                         <p style="border: 2px solid; width: 350px; height: 250px;"></p>
                         <h3 style="text-align: center;">Drop Carbon Hero</h3>
                     </div>
@@ -33,7 +41,7 @@
             </div>
         </section>
 
-        <section>
+        <!-- <section>
             <div class="header-break">
                 โปรโมชันของฉัน
             </div>
@@ -58,7 +66,7 @@
                 <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
             </div>
             <?php } ?>
-        </section>
+        </section> -->
 
         <section>
             <div class="header-break">

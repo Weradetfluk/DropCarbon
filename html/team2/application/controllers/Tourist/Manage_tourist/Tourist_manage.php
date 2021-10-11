@@ -60,7 +60,34 @@ class Tourist_manage extends DCS_controller
 
       $this->output_tourist('tourist/manage_tourist/v_information_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
+   /*
+    * show_reward_tourist
+    * show reward tourist page
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-09-09
+    * @Update By Thanisorn thumsawanit 62160088
+    * @Update Date 2564-10-09
+   */
+   public function show_reward_tourist()
+   {
+      $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+      $this->mtou->tus_id = $this->session->userdata("tourist_id");
+      $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+      $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+      $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+      $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
 
+      if ($this->session->userdata("tourist_id")) {
+         $topbar = 'template/Tourist/topbar_tourist_login';
+      } else {
+         $topbar = 'template/Tourist/topbar_tourist';
+      }
+
+      $this->output_tourist('tourist/manage_tourist/v_reward_tourist', $data, 'template/Tourist/topbar_tourist_login');
+   }
    /*
     * show_edit_tourist
     * show edit tourist page
