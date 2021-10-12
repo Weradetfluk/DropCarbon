@@ -94,12 +94,10 @@ class Login_tourist extends DCS_controller
             //echo $tus_name; test name
             // echo $tus_img_path; test path
 
-            if(!isset($_SESSION['old_url'])){
+            if(!isset($_SESSION['number_event'])){
                 redirect("Tourist/Auth/Landing_page_tourist");  
             }else{
-                $pos = strpos($_SESSION['old_url'], '/', 1);
-                 redirect(substr($_SESSION['old_url'], $pos+1));   
-                //echo substr($_SESSION['old_url'], $pos+1);
+                redirect("Tourist/Manage_tourist/Tourist_manage/show_information_tourist");   
             }
 
         } else {
@@ -163,7 +161,8 @@ class Login_tourist extends DCS_controller
         $this->session->unset_userdata("tourist_id");
         $this->session->unset_userdata("tus_img_path");
         $this->session->unset_userdata("tus_score");
-        unset($_SESSION['old_url']);
+        unset($_SESSION['number_event']);
+        // unset($_SESSION['QR_confirm']);
     }
 
 

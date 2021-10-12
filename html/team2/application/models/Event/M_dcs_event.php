@@ -370,4 +370,11 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
+
+    function get_event_by_id()
+    {
+        $sql = "SELECT eve_id, eve_name, eve_point, eve_description, eve_cat_id, eve_status, eve_end_date, eve_start_date, eve_lat, eve_lon FROM `dcs_event` 
+        WHERE  eve_id = ?";
+        return $this->db->query($sql, array($this->eve_id));
+    }
 }

@@ -424,7 +424,7 @@
                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">QRCODE</h5>
             </div>
             <div class="modal-body">
-                <div id="qrcode" style="width:100%; height:100%;"></div>
+                <div id="qr_code" style="width:100%; height:100%;"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
@@ -452,17 +452,15 @@
         check_name_table(<?php echo $_SESSION['tab_number_event'] ?>);
     });
 
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
+    var qrcode = new QRCode(document.getElementById("qr_code"), {
         width: 250,
         height: 250
     });
 
     function make_qr_code(eve_id) {
-        qrcode.makeCode("<?php echo base_url('Tourist/Checkin_event/Checkin_event/checkin_or_checkout_event/') ?>" + eve_id );
+        qrcode.makeCode("<?php echo base_url('Tourist/Checkin_event/Checkin_event/check_login_before_check_in/') ?>" + eve_id );
         $('#modal_qrcode').modal();
     }
-
-
     /*
      * change_tab_number_ajax
      * change tab session tab_number_event
