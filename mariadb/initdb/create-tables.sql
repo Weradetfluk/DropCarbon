@@ -315,8 +315,7 @@ CREATE TABLE `dcs_pro_category` (
 -- data category promotion
 INSERT INTO `dcs_pro_category` (`pro_cat_name`) VALUES
 ('โปรโมชัน'),
-('ของรางวัล'),
-('อื่นๆ');
+('ของรางวัล');
 
 CREATE TABLE `dcs_promotions` (
   `pro_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของโปรโมชัน หรือของรางวัล',

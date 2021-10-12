@@ -141,6 +141,7 @@
     $(document).ready(function() {
         check_count_image_btn();
         set_lat_lon();
+        change_min_end_date();
     });
     // openstreet map
     var map, vectorLayer, selectedFeature;
@@ -419,5 +420,23 @@
                 }
             }
         })
+    }
+
+    /*
+     * change_min_end_date
+     * change min end date event
+     * @input pro_start_date
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-13
+     * @Update 
+     */
+    function change_min_end_date(){
+        $('#eve_start_date').on('blur', function() { 
+            var start_date = document.getElementById("eve_start_date").value;
+            document.getElementById("eve_end_date").value = '';
+            document.getElementById("eve_end_date").min = start_date;
+            console.log(start_date);
+        });
     }
 </script>

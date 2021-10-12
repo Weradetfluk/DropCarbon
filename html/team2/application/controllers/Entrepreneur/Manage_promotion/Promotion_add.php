@@ -24,6 +24,7 @@ class Promotion_add extends DCS_controller
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
+        date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_promotion/v_add_promotion';
         $this->output_entrepreneur($view, $data);
@@ -42,7 +43,11 @@ class Promotion_add extends DCS_controller
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->load->model('Promotions/M_dcs_pro_image', 'mimg');
         $this->mpro->pro_name = $this->input->post('pro_name');
-        $this->mpro->pro_point = $this->input->post('pro_point');
+        if($this->input->post('pro_cat_id') == 1){
+            $this->mpro->pro_point = 0;
+        }else{
+            $this->mpro->pro_point = $this->input->post('pro_point');
+        }
         $this->mpro->pro_description = $this->input->post('pro_description');
         $this->mpro->pro_status = 1;
         $this->mpro->pro_start_date = $this->input->post('pro_start_date');

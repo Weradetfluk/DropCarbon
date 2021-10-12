@@ -29,7 +29,7 @@
 
                                 <div class="col-lg-3">
                                     <label for="pro_cat_id">หมวดหมู่</label>
-                                    <select name="pro_cat_id" class="form-control" required>
+                                    <select name="pro_cat_id" id="pro_cat_id" class="form-control" onchange="check_category()" required>
                                         <?php if(count($arr_category) != 0){?>
                                             <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
                                                 <option value="<?php echo $i + 1 ?>"><?php echo $arr_category[$i]->pro_cat_name; ?></option>
@@ -57,9 +57,9 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-2"></div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4" id="div-point">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
-                                    <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน" required>
+                                    <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน">
                                 </div>
                             </div><br>
 
@@ -112,6 +112,8 @@
      */
     $(document).ready(function() {
         check_count_image_btn();
+        check_category();
+        change_min_end_date();
     });
 
     /*
@@ -233,4 +235,43 @@
             }
         })
     }
+
+    /*
+     * check_category
+     * check category promotion
+     * @input pro_cat_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-13
+     * @Update 
+     */
+    function check_category(){
+        let pro_cat_id = $('#pro_cat_id').val();
+        if(pro_cat_id == 1){
+            $('#div-point').hide();
+            $('#pro_point').prop('required', false);
+        }else{
+            $('#div-point').show();
+            $('#pro_point').prop('required', true);
+        }
+    }
+
+    /*
+     * change_min_end_date
+     * change min end date promotion
+     * @input pro_start_date
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-13
+     * @Update 
+     */
+    function change_min_end_date(){
+        $('#pro_start_date').on('blur', function() { 
+            var start_date = document.getElementById("pro_start_date").value;
+            document.getElementById("pro_end_date").value = '';
+            document.getElementById("pro_end_date").min = start_date;
+            console.log(start_date);
+        });
+    }
+
 </script>

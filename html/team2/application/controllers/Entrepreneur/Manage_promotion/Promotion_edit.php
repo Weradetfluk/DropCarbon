@@ -27,6 +27,7 @@ class Promotion_edit extends DCS_controller
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
         $data['arr_promotion'] = $this->mpro->get_by_detail()->result();
+        date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_promotion/v_edit_promotion';
         $this->output_entrepreneur($view, $data);

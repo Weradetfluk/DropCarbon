@@ -30,6 +30,7 @@ class Event_edit extends DCS_controller
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
+        date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_event/v_edit_event';
         $this->output_entrepreneur($view, $data);
