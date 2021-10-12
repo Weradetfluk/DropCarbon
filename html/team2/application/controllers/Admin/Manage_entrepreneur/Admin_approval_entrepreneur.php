@@ -1,15 +1,15 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_approval_entrepreneur
 * Manage Approve reject entrepreneur
 * @author weradet nopsombun 62160110
 * @Create Date 2564-07-17
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_approval_entrepreneur extends DCS_controller
 {
-    /*
+        /*
         * @author Weradet Nopsombun 62160110
         */
 
@@ -20,7 +20,6 @@ class Admin_approval_entrepreneur extends DCS_controller
         $this->load->library('pagination');
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
     }
-
     public function index()
     {
       $this->show_data_consider();

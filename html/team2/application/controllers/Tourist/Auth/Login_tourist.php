@@ -93,7 +93,15 @@ class Login_tourist extends DCS_controller
             }
             //echo $tus_name; test name
             // echo $tus_img_path; test path
-            redirect("Tourist/Auth/Landing_page_tourist");
+
+            if(!isset($_SESSION['old_url'])){
+                redirect("Tourist/Auth/Landing_page_tourist");  
+            }else{
+                $pos = strpos($_SESSION['old_url'], '/', 1);
+                 redirect(substr($_SESSION['old_url'], $pos+1));   
+                //echo substr($_SESSION['old_url'], $pos+1);
+            }
+
         } else {
             $data_warning = array();
             $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
@@ -152,9 +160,10 @@ class Login_tourist extends DCS_controller
     {
         $this->session->unset_userdata("username");
         $this->session->unset_userdata("Tourist_name");
-        $this->session->set_userdata("tourist_id");
-        $this->session->set_userdata("tus_img_path");
-        $this->session->set_userdata("tus_score");
+        $this->session->unset_userdata("tourist_id");
+        $this->session->unset_userdata("tus_img_path");
+        $this->session->unset_userdata("tus_score");
+        unset($_SESSION['old_url']);
     }
 
 

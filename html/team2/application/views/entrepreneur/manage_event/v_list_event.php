@@ -249,7 +249,7 @@
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
                                                                     <span class="material-icons">clear</span>
                                                                 </button>
-                                                                <button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code()">
+                                                                <button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>)">
                                                                     <span class="material-icons">qr_code</span>
                                                                 </button>
                                                             </td>
@@ -457,8 +457,8 @@
         height: 250
     });
 
-    function make_qr_code() {
-        qrcode.makeCode("<?php echo base_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>");
+    function make_qr_code(eve_id) {
+        qrcode.makeCode("<?php echo base_url('Tourist/Checkin_event/Checkin_event/checkin_or_checkout_event/') ?>" + eve_id );
         $('#modal_qrcode').modal();
     }
 

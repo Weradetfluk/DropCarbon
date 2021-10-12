@@ -1,14 +1,14 @@
 <!-- Make by : Naaka Punparich 62160082 -->
 <?php
-
 // check session
-
+if ($_SERVER['REQUEST_URI'] != base_url('Tourist/Auth/Login_tourist')) {
+    $_SESSION['old_url']     = $_SERVER['REQUEST_URI'];    
+}
 if (!$this->session->has_userdata("tus_score")) {
   $path = site_url() . "Tourist/Auth/Login_tourist";
   header("Location: " . $path);
   exit();
 }
-
 ?>
 <nav>
     <ul class="menu">

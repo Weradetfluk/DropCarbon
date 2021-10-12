@@ -1,12 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
-* Admin_block_user
-* Manage block entrepreneur
+* Admin_manage_banner
+* Admin_manage_banner
 * @author weradet nopsombun 62160110
 * @Create Date 2564-09-23
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_manage_banner extends DCS_controller
 {
     /*
@@ -17,20 +17,33 @@ class Admin_manage_banner extends DCS_controller
     {
         parent::__construct();
     }
-
-
     public function index()
     {
         $this->show_banner_list();
     }
-
-
+    /*
+    * show_banner_list
+    * show page banner
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
     public function show_banner_list()
     {
         $_SESSION['tab_number'] = 2; //set tab number in topbar_admin.php
         $this->output_admin('admin/manage_banner/v_list_banner', null, null);
     }
-
+    /*
+    * get_banner_list_ajax
+    * get banner
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
 
     public function get_banner_list_ajax(){
         $this->load->model('Banner/M_dcs_banner', 'mmbn');
@@ -39,7 +52,15 @@ class Admin_manage_banner extends DCS_controller
 
         echo json_encode($data);
     }
-
+    /*
+    * insert_banner_ajax
+    * insert data  banner
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
 
     public function insert_banner_ajax()
     {
@@ -80,6 +101,16 @@ class Admin_manage_banner extends DCS_controller
             echo 2;
         }
     }
+
+    /*
+    * delete_banner_ajax
+    * insert data  banner
+    * @input path img
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
 
     public function delete_banner_ajax()
     {
