@@ -185,4 +185,25 @@ class Event_add extends DCS_controller
         }
         echo json_encode($data);
     }
+
+    /*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_name_event_ajax(){
+        $this->load->model('Event/M_dcs_event', 'meve');
+        $this->meve->eve_name = $this->input->post('eve_name');
+        $event = $this->meve->get_by_name()->row();
+        if($event){
+            // have name company
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
 }

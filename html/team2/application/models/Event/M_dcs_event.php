@@ -366,7 +366,7 @@ class M_dcs_event extends Da_dcs_event
     */
     function get_by_name()
     {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 1";
+        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ?";
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }

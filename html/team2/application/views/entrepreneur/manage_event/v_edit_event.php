@@ -24,7 +24,6 @@
                         <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/edit_event/' ?>"
                             id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="eve_com_id" value="<?php echo $arr_event[0]->com_id; ?>">
-                            <input type="hidden" name="eve_id" value="<?php echo $arr_event[0]->eve_id; ?>">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="eve_name">ชื่อกิจกรรม</label>
@@ -475,4 +474,44 @@ function check_count_image_btn() {
         $('#btn_sub').prop('disabled', false);
     }
 }
+
+/*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_name_event_ajax() {
+        var eve_name = $('#eve_name').val();
+        var eve_id = $('#eve_id').val();
+        console.log(eve_id);
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/check_name_event_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                eve_name: eve_name,
+                eve_id: eve_id
+            },
+            success: function(data) {
+                // console.log(data);
+                if (data == 1) {
+                    // console.log(1);
+                    $('#error_eve_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
+                    check_btn_name = 1;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', true); 
+                } else if (data == 2) {
+                    console.log(2);
+                    $('#error_eve_name').html('');
+                    check_btn_name = 0;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
+    }
 </script>

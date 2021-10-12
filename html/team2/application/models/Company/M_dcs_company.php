@@ -146,7 +146,7 @@ class M_dcs_company extends Da_dcs_company
     */
     function get_by_name()
     {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_company where com_name =  ? AND com_status = 1";
+        $sql = "SELECT * FROM {$this->db_name}.dcs_company where com_name =  ?";
         $query = $this->db->query($sql, array($this->com_name));
         return $query;
     }

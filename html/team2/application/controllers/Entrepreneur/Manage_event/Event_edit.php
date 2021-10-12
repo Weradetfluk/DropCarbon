@@ -135,4 +135,30 @@ class Event_edit extends DCS_controller
       $this->meve->eve_id = $this->input->post('eve_id');
       $this->meve->delete_event();
    }
+
+    /*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_name_event_ajax(){
+        $this->load->model('Event/M_dcs_event', 'meve');
+        $this->meve->eve_name = $this->input->post('eve_name');
+        $event = $this->meve->get_by_name()->row();
+        if($event){
+            if ($event->eve_id != $this->input->post('eve_id')) {
+                // have name event
+                echo 1;
+             } else {
+                // have name event but is old name           
+                echo 2;
+             }
+        }else{
+            echo 2;
+        }
+    }
 }

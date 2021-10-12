@@ -134,8 +134,7 @@
 </div>
 
 <script>
-    var count_image = 0;
-    // var check_btn_name = 0;
+
     /*
      * @author Suwapat Saowarod 62160340
      */
@@ -350,8 +349,7 @@
      * @Update 
      */
     function check_count_image_btn() {
-        // if (count_image == 0 || check_btn_name == 1) {
-        if (count_image == 0){
+        if (count_image == 0 || check_btn_name == 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
@@ -386,4 +384,40 @@
         })
     }
 
+    /*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_name_event_ajax() {
+        var eve_name = $('#eve_name').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_add/check_name_event_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                eve_name: eve_name
+            },
+            success: function(data) {
+                // console.log(data);
+                if (data == 1) {
+                    console.log(1);
+                    $('#error_eve_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
+                    check_btn_name = 1;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', true); 
+                } else if (data == 2) {
+                    console.log(2);
+                    $('#error_eve_name').html('');
+                    check_btn_name = 0;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
+    }
 </script>
