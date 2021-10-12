@@ -1,3 +1,14 @@
+<style>
+.card-custom {
+    border-radius: 20px;
+}
+
+.card-img-top {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+</style>
+
 <div class="container py-5 section-com">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
@@ -73,34 +84,34 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-5">
+            <div class="col">
                 <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
                 <hr width="100%" size="10" color="#cccccc">
                 <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท:
                     <?php echo $company->com_cat_name; ?></p>
             </div>
-            <div class="col-2"></div>
         </div>
     </div>
 
+    <!-- กิจกรรมของสถานที่นี้ -->
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col">
                 <h3>กิจกรรมของ <?php echo $company->com_name ?> </h3>
                 <hr width="100%" size="10" color="#cccccc">
             </div>
         </div>
 
         <div class="row">
-            <?php for ($i = 0; $i < count($event); $i++) { ?>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+            <?php for ($i = 0; $i < (count($event)); $i++) { ?>
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                 <a
                     href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
-                    <div class="card" id="card" style="max-height: 30rem;">
+                    <div class="card card-custom" id="card" style="max-height: 30rem;">
                         <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>"
                             class="card-img-top" style="max-height: 300px;" alt="...">
                         <!-- รูปที่ 1 -->
-                        <div class="card-body" align="center">
+                        <div class="card-body" style="text-align: left;">
                             <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
@@ -115,29 +126,30 @@
         </div>
     </div>
 
+    <!-- โปรโมชั่นของสถานที่นี้ -->
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h3>โปรโมชันของ <?php echo $company->com_name ?> </h3>
+            <div class="col">
+                <h3>โปรโมชั่นของ <?php echo $company->com_name ?> </h3>
                 <hr width="100%" size="10" color="#cccccc">
             </div>
         </div>
 
         <div class="row">
             <?php for ($i = 0; $i < count($promotions); $i++) { ?>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                 <a
                     href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
-                    <div class="card" id="card" style="max-height: 30rem;">
+                    <div class="card card-custom" id="card" style="max-height: 30rem;">
                         <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>"
                             class="card-img-top" style="max-height: 300px;" alt="...">
                         <!-- รูปที่ 1 -->
-                        <div class="card-body" align="center">
+                        <div class="card-body" style="text-align: left;">
                             <h3 class="text-decoration-none text-dark"><?php echo $promotions[$i]->pro_name ?></h3>
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($promotions[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <button class="btn btn-success" style="margin: 0px 30px;">แลก</button>
+                            <button class="btn btn-sm btn-success" style="float:right;">แลก</button>
                         </div>
                         <!-- ชื่อของรูปที่ 1 -->
                     </div>
@@ -197,16 +209,15 @@
 
 <script>
 var lat =
-    '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+'<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
 var long =
-    '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+'<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
 var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
 var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
 var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
-    toProjection
-); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
 map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
@@ -215,8 +226,7 @@ var mapnik = new OpenLayers.Layer.OSM();
 map.addLayer(mapnik);
 
 var markers = new OpenLayers.Layer.Markers(
-    "Markers"
-); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+"Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
 map.addLayer(markers);
 markers.addMarker(new OpenLayers.Marker(position));
