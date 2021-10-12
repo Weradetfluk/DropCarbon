@@ -206,7 +206,7 @@ var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from W
 var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
     toProjection
-    ); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
 map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
@@ -216,7 +216,7 @@ map.addLayer(mapnik);
 
 var markers = new OpenLayers.Layer.Markers(
     "Markers"
-    ); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
 map.addLayer(markers);
 markers.addMarker(new OpenLayers.Marker(position));
