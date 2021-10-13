@@ -15,7 +15,7 @@
                         </a>
                     <?php } else { ?>
                         <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>"  style="height: 300px; weight: 450;" class="card-img-top">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top">
                         </a>
                     <?php } ?>
                     <div class="card-body">
@@ -66,7 +66,9 @@
                             <a href="#">
                                 <h2><?php echo $arr_eve[1]->eve_name; ?></h2>
                             </a>
-                            <p class="card-text"><?php echo $arr_eve[1]->eve_description; ?></p>
+                            <p class="card-tex text-dark">
+                                <?php echo iconv_substr($arr_eve[1]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                            </p>
                             <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[1]->eve_start_date; ?> - <?php echo $arr_eve[1]->eve_end_date; ?></p>
@@ -98,7 +100,9 @@
                             <a href="#">
                                 <h2><?php echo $arr_eve[2]->eve_name; ?></h2>
                             </a>
-                            <p class="card-text"><?php echo $arr_eve[2]->eve_description; ?></p>
+                            <p class="card-tex text-dark">
+                                <?php echo iconv_substr($arr_eve[2]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                            </p>
                             <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[2]->eve_start_date; ?> - <?php echo $arr_eve[2]->eve_end_date; ?></p>
