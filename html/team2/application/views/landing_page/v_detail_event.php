@@ -1,3 +1,157 @@
+<style>
+    .i {
+        position: relative;
+        display: block;
+        width: 1410px;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    .i:before,
+    .i:after {
+        content: '←';
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        z-index: 2;
+        width: 2rem;
+        height: 2rem;
+        background: dodgerblue;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+    }
+
+    .i:after {
+        content: '→';
+        left: auto;
+        right: 1rem;
+    }
+
+    /* I haven't found a way for IE and Edge to let me style inputs that way */
+    input {
+        appearance: none;
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 5px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        transform: translateX(100%);
+        transition: transform ease-in-out 400ms;
+        z-index: 1;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input:after {
+        content: attr(title);
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        padding: .5rem;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+    input:not(checked):before {
+        content: '';
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        top: 50%;
+        left: calc(-100% + 1rem);
+    }
+
+    input:checked:before {
+        display: none;
+        left: 1rem;
+    }
+
+    input:checked {
+        transform: translateX(0);
+        z-index: 0;
+        box-shadow: -5px 10px 20px -15px rgba(0, 0, 0, 1);
+    }
+
+    input:checked+input:before {
+        left: -3rem;
+    }
+
+    input:checked+input~input:before {
+        display: none;
+    }
+
+    @media all and (min-width: 340px) {
+        .i {
+            width: 300px;
+        }
+    }
+
+    @media all and (min-width: 370px) {
+        .i {
+            width: 330px;
+        }
+    }
+
+    @media all and (min-width: 500px) {
+        .i {
+            width: 468px;
+        }
+    }
+
+    @media all and (min-width: 768px) {
+        .i {
+            width: 700px;
+        }
+    }
+
+    @media all and (min-width: 1000px) {
+        .i {
+            width: 930px;
+        }
+    }
+
+    @media all and (min-width: 1200px) {
+        .i {
+            width: 1170px;
+        }
+    }
+
+    @media all and (min-width: 1200px) {
+        .i {
+            width: 1170px;
+        }
+    }
+
+    @media all and (min-width: 1400px) {
+        .i {
+            width: 1410px;
+        }
+    }
+
+    @media all and (min-width: 1920px) {
+        .i {
+            width: 1410px;
+        }
+    }
+</style>
+
 <div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
@@ -9,131 +163,104 @@
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_event_list' ?>" style="color: green;">รายการกิจกรรม</a></li>
         <li class="colorchange"><?php echo $event->eve_name ?></li>
     </ul>
-    <div class="row text-left py-3">
-        <div class="col-m-auto">
-            <h1 class="h1" style="padding-bottom: 2%"><?php echo $event->eve_name ?></h1>
+    <!-- nav bar -->
+
+    <div class="row py-3">
+        <div class="col">
+            <h1 class="h1"><?php echo $event->eve_name ?></h1>
         </div>
     </div>
     <!-- ชื่อกิจกรรม -->
+
     <div class="row">
-        <div class="fb-share-button" data-href="" data-layout="button" data-size="large">
+        <div class="col fb-share-button" data-href="" data-layout="button" data-size="large">
             <a target="_blank" href="" class="fb-xfbml-parse-ignore">แชร์</a>
         </div>
     </div>
     <br>
     <!-- แชร์ -->
-    <div class="row">
-        <div class="col-12">
-            <div class="container">
-                <?php if (count($image_event) == 1) { ?>
-                    <img src="<?php echo base_url() . 'image_event/' . $image_event[0]->eve_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
-                <?php } elseif (count($image_event) == 2) { ?>
-                    <div class="row">
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_event/' . $image_event[0]->eve_img_path; ?>" style="object-fit: cover;  height: 300px;" id="img_01">
-                        </div>
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_event/' . $image_event[1]->eve_img_path; ?>" style="object-fit: cover; height: 300px;" id="img_02">
-                        </div>
-                    </div>
-                <?php } else { ?>
-                    <div class="responsive">
-                        <?php for ($i = 0; $i < count($image_event); $i++) { ?>
-                            <div class="">
-                                <img src="<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
-                            </div>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
 
-    <div class="row" style="padding-top: 5%;">
+    <i class="i">
+        <?php for ($i = 0; $i < count($image_event); $i++) { ?>
+            <?php if ($i == 0) { ?>
+                <input checked type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i+1 ?>">
+            <?php } else { ?>
+                <input type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i+1 ?>">
+            <?php } ?>
+        <?php } ?>
+    </i>
+    <!-- banner img -->
+
+    <div class="row py-3">
         <div class="col">
             <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียด</h3>
-            <hr width="100%" size="10" color="#cccccc">
-            <div class="col" style="padding-left: 2%">
-                <div class="container">
-                    <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
-                        <p style="text-indent: 50px;"><?php echo $event->eve_description ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- รายละเอียด -->
+            <hr color="#cccccc">
+            <p style="text-indent: 50px;"><?php echo $event->eve_description ?></p>
+
         </div>
     </div>
+    <!-- รายละเอียด -->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-5">
-                <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
-                <hr width="100%" size="10" color="#cccccc">
-                <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $event->eve_cat_name; ?></p>
-            </div>
-            <div class="col-2"></div>
-        </div>
-    </div>
-
-    <div class="row" style="padding-top: 5%;">
+    <div class="row py-3">
         <div class="col">
-            <h3>ตำแหน่งสถานที่</h3>
-            <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                <h3 style="padding-top: 2%; "> <?php echo $event->eve_name ?></h3>
-                <!-- ชื่อสถานที่ -->
+            <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
+            <hr width="100%" size="10" color="#cccccc">
+            <p style="text-indent: 50px;">ประเภทของกิจกรรม: <?php echo $event->eve_cat_name; ?></p>
+        </div>
+    </div>
+    <!-- ประเภท -->
+
+    <div class="row py-3">
+        <div class="col">
+            <h3><span class="material-icons" style="font-size: 30px;">place</span> ตำแหน่งสถานที่</h3>
+            <div class="card" style="padding-left: 2%; transform: unset;">
+                <h2 style="padding-top: 2%; "> <?php echo $event->eve_name ?></h2>
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <h4>ที่อยู่</h4>
+                        <h3>ที่อยู่</h3>
                         <hr>
-                        <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
-                            <span class="material-icons">
-                                location_on
-                            </span> 
-                            ปั่นขึ้นเขา  10  km ที่ชลบุรี มี point ให้ 1000 แต้ม
-                        </div>
-                        <div class="row">
+                        <div class="row py-3" style="padding-left: 2%;">
+                            <span class="material-icons">info</span>
                             <div class="col">
-
-                                <span class="material-icons">contact_phone</span>
-                                0905530622
+                                <p>158/1 หมู่.9 ตำบล.หนองอิรุณ อำเภอ.บ้านบึง จังหวัด.ชลบุรี 20170</pe=>
+                            </div>
+                        </div>
+                        <div class="row py-3" style="padding-left: 2%;">
+                            <span class="material-icons">contact_phone</span>
+                            <div class="col">
+                                <p>0905530622</pe=>
                             </div>
                         </div>
                     </div>
                     <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
                         <div class="table-responsive">
-                            <table class="table ">
+                            <table class="table">
                                 <tr>
                                     <td style="border: 2px solid black;">
-                                        <div id="Map" style="width: 500px; height: 400px;"></div>
-                                        <? $company->com_lat ?>
+                                        <div id="Map" style="width: 700px; height: 300px;"></div>
+                                        <? $event->eve_lat ?>
                                     </td>
                                 </tr>
                             </table>
-
                         </div>
                     </div>
                 </div>
-                <!-- ข้อมูลของสถานที่ -->
-
             </div>
-            <!-- ตำแหน่ง -->
-
         </div>
     </div>
+    <!-- ตำแหน่ง -->
 </div>
 <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
-    var lat = '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-    var long = '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+    var lat = '<?= $event->eve_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+    var long = '<?= $event->eve_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
     var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
     var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
     var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
-
 
     map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
@@ -183,9 +310,6 @@
                 // instead of a settings object
             ]
         });
-
-
-
     });
 </script>
 <script>
