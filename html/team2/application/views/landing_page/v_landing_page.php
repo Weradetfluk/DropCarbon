@@ -24,7 +24,6 @@
                                 <h2>เก็บขยะริมหาด</h2>
                             </a>
                             <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
-                            <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                         <?php } else { ?>
@@ -34,8 +33,8 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <br>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[0]->eve_drop_carbon; ?> กรัม</b></p>
+                            <!-- ยังไม่ได้ดัก ว่าให้มันโชว์ของประเภทนั้น -->
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[0]->eve_start_date; ?> - <?php echo $arr_eve[0]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>
@@ -59,7 +58,6 @@
                                 <h2>ปลูกป่าชายเลน</h2>
                             </a>
                             <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
-                            <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                         <?php } else { ?>
@@ -69,8 +67,8 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[1]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <br>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[1]->eve_drop_carbon; ?> กรัม</b></p>
+                            <!-- ยังไม่ได้ดัก ว่าให้มันโชว์ของประเภทนั้น -->
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[1]->eve_start_date; ?> - <?php echo $arr_eve[1]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>
@@ -93,7 +91,6 @@
                                 <h2>วิ่งชมธรรมชาติ</h2>
                             </a>
                             <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
-                            <br>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
                         <?php } else { ?>
@@ -103,8 +100,8 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[2]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <br>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[2]->eve_drop_carbon; ?> กรัม</b></p>
+                            <!-- ยังไม่ได้ดัก ว่าให้มันโชว์ของประเภทนั้น -->
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[2]->eve_start_date; ?> - <?php echo $arr_eve[2]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>

@@ -24,7 +24,9 @@ class DCS_controller extends CI_Controller
         $this->load->model('Company/M_dcs_company', 'mdc');
         $this->load->model('Event/M_dcs_eve_image', 'mdei');
         $this->load->model('Event/M_dcs_event', 'mde');
+        $this->load->model('Event/M_dcs_eve_category', 'mcat');
 
+        $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
         $data['arr_image_com'] = $this->mdci->get_all()->result();
         $data['arr_com'] = $this->mdc->get_all()->result();
         $data['arr_image_eve'] = $this->mdei->get_all()->result();
