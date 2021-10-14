@@ -33,7 +33,7 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[0]->eve_drop_carbon; ?> กรัม</b></p>                            
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[0]->eve_drop_carbon; ?> กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[0]->eve_start_date; ?> - <?php echo $arr_eve[0]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>
@@ -66,7 +66,7 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[1]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[1]->eve_drop_carbon; ?> กรัม</b></p>                            
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[1]->eve_drop_carbon; ?> กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[1]->eve_start_date; ?> - <?php echo $arr_eve[1]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>
@@ -98,7 +98,7 @@
                             <p class="card-tex text-dark">
                                 <?php echo iconv_substr($arr_eve[2]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[2]->eve_drop_carbon; ?> กรัม</b></p>                            
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[2]->eve_drop_carbon; ?> กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[2]->eve_start_date; ?> - <?php echo $arr_eve[2]->eve_end_date; ?></p>
                         <?php } ?>
                     </div>
@@ -291,52 +291,52 @@
             <div class="col-md-3">
                 <div class="card" data-aos="fade-right">
                     <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" class="card-img-top" alt="...">
+                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                     </a>
                     <div class="card-body">
                         <a href="#">
-                            <h3>เก็บขยะริมหาด</h3>
+                            <h3>รางวัล 1</h3>
                         </a>
-                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
+                        <p class="card-text">รายละเอียด...</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card" data-aos="fade-right">
                     <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" class="card-img-top" alt="...">
+                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                     </a>
                     <div class="card-body">
                         <a href="#">
-                            <h3>ปลูกป่าชายเลน</h3>
+                            <h3>รางวัล 2</h3>
                         </a>
-                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
+                        <p class="card-text">รายละเอียด...</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 ">
                 <div class="card" data-aos="fade-left">
                     <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                     </a>
                     <div class="card-body">
                         <a href="#">
-                            <h3>วิ่งชมธรรมชาติ</h3>
+                            <h3>รางวัล 3</h3>
                         </a>
-                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                        <p class="card-text">รายละเอียด...</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 ">
                 <div class="card" data-aos="fade-left">
                     <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" class="card-img-top" alt="...">
+                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                     </a>
                     <div class="card-body">
                         <a href="#">
-                            <h3>วิ่งชมธรรมชาติ</h3>
+                            <h3>รางวัล 4</h3>
                         </a>
-                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
+                        <p class="card-text">รายละเอียด...</p>
                     </div>
                 </div>
             </div>
