@@ -25,4 +25,10 @@ class Da_dcs_checkin extends DCS_model
     {
         parent::__construct();
     }
+
+    function insert_checkin($status){
+        $sql = "INSERT INTO `dcs_checkin` (che_status, `che_tus_id`, `che_eve_id`)
+        VALUES ('$status' , ?, ?)";
+        $query = $this->db->query($sql, array($this->mcin->che_tus_id, $this->mcin->che_eve_id));
+    }
 }

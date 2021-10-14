@@ -97,7 +97,7 @@ class Login_tourist extends DCS_controller
             if(!isset($_SESSION['number_event'])){
                 redirect("Tourist/Auth/Landing_page_tourist");  
             }else{
-                redirect("Tourist/Manage_tourist/Tourist_manage/show_information_tourist");   
+                redirect("Tourist/Checkin_event/Checkin_event/load_checkin_or_checkout_page");   
             }
 
         } else {
