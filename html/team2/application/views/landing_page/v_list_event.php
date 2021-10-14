@@ -44,11 +44,15 @@
                     <div class="card" style="height: 30rem;" id="card">
                         <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
                         <!-- รูปที่ 1 -->
-                        <div class="card-body" align="center">
-                            <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
+                        <div class="card-body">
+                            <a href="#">
+                                <h2 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h2>
+                            </a>
                             <p class="card-tex text-dark">
-                                <?php echo iconv_substr($event[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                            <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[$i]->eve_start_date; ?> - <?php echo $arr_eve[$i]->eve_end_date; ?></p>
                         </div>
                         <!-- ชื่อของรูปที่ 1 -->
                     </div>

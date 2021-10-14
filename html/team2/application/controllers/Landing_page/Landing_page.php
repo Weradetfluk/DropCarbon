@@ -87,7 +87,7 @@ class Landing_page extends DCS_controller
         $number_status = 2;
         $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
         $data['eve_cat'] = $this->mcat->get_all()->result();
-
+        $data['arr_eve'] = $this->mde->get_all()->result();
         if (isset($_POST)) {
             $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
         } else {

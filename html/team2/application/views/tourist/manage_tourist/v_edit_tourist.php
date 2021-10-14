@@ -9,7 +9,7 @@
         <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;" class="font-w-500">แก้ไขข้อมูลส่วนตัว</h1>
         <!-- แก้ไขข้อมูลส่วนตัว -->
 
-        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_edit/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
+        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
             <div class="profile-pic-div">
                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
