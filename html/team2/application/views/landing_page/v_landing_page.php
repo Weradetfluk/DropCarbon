@@ -290,58 +290,110 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card" data-aos="fade-right">
-                    <a href="#">
-                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                    </a>
-                    <div class="card-body">
+                    <?php if (count($arr_image_pro) < 1 || count($arr_image_pro) == 0) { ?>
                         <a href="#">
-                            <h3>รางวัล 1</h3>
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                         </a>
-                        <p class="card-text">รายละเอียด...</p>
+                    <?php } else { ?>
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[0]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                        </a>
+                    <?php } ?>
+                    <div class="card-body">
+                        <?php if (count($arr_pro) < 1 || count($arr_pro) == 0) { ?>
+                            <a href="#">
+                                <h3>รางวัล 1</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด...</p>
+                        <?php } else { ?>
+                            <a href="#">
+                                <h3><?php echo $arr_pro[0]->pro_name ?></h3>
+                            </a>
+                            <p class="card-text"><?php echo substr($arr_pro[0]->pro_description, 0, 150) ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card" data-aos="fade-right">
-                    <a href="#">
-                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                    </a>
-                    <div class="card-body">
+                    <?php if (count($arr_image_pro) < 2 || count($arr_image_pro) == 0) { ?>
                         <a href="#">
-                            <h3>รางวัล 2</h3>
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                         </a>
-                        <p class="card-text">รายละเอียด...</p>
+                    <?php } else { ?>
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[1]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                        </a>
+                    <?php } ?>
+                    <div class="card-body">
+                        <?php if (count($arr_pro) < 2 || count($arr_pro) == 0) { ?>
+                            <a href="#">
+                                <h3>รางวัล 2</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด...</p>
+                        <?php } else { ?>
+                            <a href="#">
+                                <h3><?php echo $arr_pro[1]->pro_name ?></h3>
+                            </a>
+                            <p class="card-text"><?php echo substr($arr_pro[1]->pro_description, 0, 150) ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 ">
                 <div class="card" data-aos="fade-left">
-                    <a href="#">
-                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                    </a>
-                    <div class="card-body">
+                    <?php if (count($arr_image_pro) < 3 || count($arr_image_pro) == 0) { ?>
                         <a href="#">
-                            <h3>รางวัล 3</h3>
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                         </a>
-                        <p class="card-text">รายละเอียด...</p>
+                    <?php } else { ?>
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[2]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                        </a>
+                    <?php } ?>
+                    <div class="card-body">
+                        <?php if (count($arr_pro) < 3 || count($arr_pro) == 0) { ?>
+                            <a href="#">
+                                <h3>รางวัล 3</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด...</p>
+                        <?php } else { ?>
+                            <a href="#">
+                                <h3><?php echo $arr_pro[2]->pro_name ?></h3>
+                            </a>
+                            <p class="card-text"><?php echo substr($arr_pro[2]->pro_description, 0, 150) ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 ">
                 <div class="card" data-aos="fade-left">
-                    <a href="#">
-                        <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                    </a>
-                    <div class="card-body">
+                    <?php if (count($arr_image_pro) < 4 || count($arr_image_pro) == 0) { ?>
                         <a href="#">
-                            <h3>รางวัล 4</h3>
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
                         </a>
-                        <p class="card-text">รายละเอียด...</p>
+                    <?php } else { ?>
+                        <a href="#">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[3]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                        </a>
+                    <?php } ?>
+                    <div class="card-body">
+                        <?php if (count($arr_pro) < 4 || count($arr_pro) == 0) { ?>
+                            <a href="#">
+                                <h3>รางวัล 4</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด...</p>
+                        <?php } else { ?>
+                            <a href="#">
+                                <h3><?php echo $arr_pro[3]->pro_name ?></h3>
+                            </a>
+                            <p class="card-text"><?php echo substr($arr_pro[3]->pro_description, 0, 150) ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-        <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
+        <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_arr_pro_list' ?>">ดูเพิ่มเติม</a>
     </div>
 </section>
 
