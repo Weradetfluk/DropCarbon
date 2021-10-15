@@ -20,14 +20,26 @@ class Register_tourist extends DCS_controller
     * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
-    * @Update -
+    * @Update by Naaka Punparich 62160082
+    * @Update 2564-10-15
     */
     public function show_regis_tourist()
     {
-        $this->session->unset_userdata("tus_img_path");
-        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-        $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-        $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist');
+        if ($this->session->userdata("tourist_id") == '') {
+            $this->session->unset_userdata("tus_img_path");
+            $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+            $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+            $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist');
+        } else {
+            $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+            $this->mtou->tus_id = $this->session->userdata("tourist_id");
+            $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+            $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+            $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+            $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+            $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+            $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist_login');
+        }
     }
 
     /*
@@ -141,7 +153,7 @@ class Register_tourist extends DCS_controller
         $this->session->set_userdata("error_register_tourist", $data);
     }
 
-     /*
+    /*
     * check_email_tourist_ajax
     * output check username
     * @input tourist username
