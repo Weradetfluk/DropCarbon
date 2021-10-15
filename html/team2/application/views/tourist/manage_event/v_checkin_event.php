@@ -147,7 +147,7 @@
 
 
     function checkin_or_check_out(eve_id, eve_name) {
-        //   alert(eve_id + eve_name);
+          console.log(eve_id + eve_name);
         $.ajax({
             type: 'post',
             dataType: 'JSON',
@@ -158,12 +158,35 @@
 
             success: function(json_data) {
 
-               console.log(json_data);
+               console.log(json_data['date_now']);
+
+               let format_date = format_date_time(json_data['date_now']);
+
+           
 
             },
             error: function() {
                 alert('ajax get data error');
             }
         });
+    }
+
+    function format_date_time(old_date) {
+        let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                ];
+
+                let year = old_date.substr(0, old_date.indexOf("-"));
+
+                let year_thai = parseInt(year) + 543;
+                let month = old_date.substr(old_date.indexOf("-") + 1, 2);
+                let day   = old_date.substr(old_date.indexOf("-") + 4, 2);
+
+               // console.log(old_date_sub);
+
+                let format =  day + " " + month_name[month - 1] + " " + year_thai;
+                console.log(format);
+
+                return  format;
     }
 </script>

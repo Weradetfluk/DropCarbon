@@ -18,6 +18,7 @@ class Checkin_event extends DCS_controller
       parent::__construct();
       $this->load->model('Event/M_dcs_event', 'meve');
       $this->load->model('Checkin/M_dcs_checkin', 'mcin');
+      $this->Set_Time_Zone();
    }
    /*
     * check_login_before_check_in
@@ -71,16 +72,17 @@ class Checkin_event extends DCS_controller
       $data_checkin_row = $this->mcin->get_status_by_tus_id()->row();
 
       if ($data_checkin_row) {
-
+         $data['date_now'] = $this->get_date_today();
+         $data['time_now'] =  $this->get_time_now();
       } else {
          $status = 1;
+         $month_th = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษจิกายน", "ธันวาคม");
          $this->mcin->insert_checkin($status);
          $data['json_message'] = "check-in";
-         $data['time_now'] = $this->get_date_today();
+         $data['date_now'] = $this->get_date_today();
+         $data['time_now'] =  $this->get_time_now();
       }
-
       unset($_SESSION['number_event']);
-      
       echo json_encode($data);
    }
 
