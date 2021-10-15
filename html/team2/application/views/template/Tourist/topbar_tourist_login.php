@@ -2,12 +2,12 @@
 <?php
 // check session
 if ($_SERVER['REQUEST_URI'] != base_url('Tourist/Auth/Login_tourist')) {
-    $_SESSION['old_url']     = $_SERVER['REQUEST_URI'];    
+    $_SESSION['old_url']     = $_SERVER['REQUEST_URI'];
 }
 if (!$this->session->has_userdata("tus_score")) {
-  $path = site_url() . "Tourist/Auth/Login_tourist";
-  header("Location: " . $path);
-  exit();
+    $path = site_url() . "Tourist/Auth/Login_tourist";
+    header("Location: " . $path);
+    exit();
 }
 ?>
 <nav>
@@ -18,12 +18,12 @@ if (!$this->session->has_userdata("tus_score")) {
             </a>
         </li>
         <li class="item">
-            <a href="#" class="nav-link">
+            <a href="#" class="a">
                 <h4 style="display: inline;"><?php echo $this->session->userdata("tus_score"); ?></h4> คะแนน
             </a>
         </li>
         <li class="item">
-            <a class="nav-link" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link a" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
                 <?php echo $this->session->userdata("Tourist_name"); ?>
             </a>

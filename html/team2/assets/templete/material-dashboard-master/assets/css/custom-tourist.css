@@ -491,6 +491,7 @@ ul {
 }
 
 a:hover {
+  color     : #27b03e !important;
   text-decoration: none;
 }
 
@@ -630,7 +631,7 @@ p {
   color           : #fff !important;
 }
 
-.nav-link:hover {
-  color: #27b03e !important;
-  transition: 0.4s;
+.a:hover {
+  color     : #27b03e !important;
+  transition: 0.3s;
 }
