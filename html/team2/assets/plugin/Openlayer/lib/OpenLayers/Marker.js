@@ -235,7 +235,7 @@ OpenLayers.Marker = OpenLayers.Class({
  */
 OpenLayers.Marker.defaultIcon = function() {
     return new OpenLayers.Icon(OpenLayers.Util.getImageLocation("marker.png"),
-                               {w: 21, h: 25}, {x: -10.5, y: -25});
+                               {w: 32, h: 32}, {x: -10.5, y: -25});
 };
     
 
