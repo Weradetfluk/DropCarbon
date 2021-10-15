@@ -38,7 +38,7 @@ class Register_tourist extends DCS_controller
             $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
             $tus_img_tus_id = $this->mpic->tus_img_tus_id;
             $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-            $this->output_tourist('tourist/manage_tourist/v_edit_tourist', $data, 'template/Tourist/topbar_tourist_login');
+            $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist_login');
         }
     }
 
