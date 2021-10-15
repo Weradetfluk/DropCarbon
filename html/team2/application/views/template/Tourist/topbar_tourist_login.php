@@ -18,7 +18,7 @@ if (!$this->session->has_userdata("tus_score")) {
             </a>
         </li>
         <li class="item">
-            <a href="#">
+            <a href="#" class="nav-link">
                 <h4 style="display: inline;"><?php echo $this->session->userdata("tus_score"); ?></h4> คะแนน
             </a>
         </li>

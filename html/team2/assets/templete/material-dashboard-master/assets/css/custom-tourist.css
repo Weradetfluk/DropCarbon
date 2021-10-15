@@ -93,9 +93,9 @@ a:hover {
 }
 
 .row-max-100 {
-  width    : 100% !important; 
+  width    : 100% !important;
   max-width: 100% !important;
-  margin:1.5% 0 !important;
+  margin   : 1.5% 0 !important;
 }
 
 .counter {
@@ -623,4 +623,14 @@ p {
 .footer-top {
   margin-top   : 40px;
   margin-bottom: 40px;
+}
+
+.dropdown-item:hover {
+  background-color: #27b03e !important;
+  color           : #fff !important;
+}
+
+.nav-link:hover {
+  color: #27b03e !important;
+  transition: 0.4s;
 }
