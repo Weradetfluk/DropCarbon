@@ -74,7 +74,7 @@ class Login_tourist extends DCS_controller
         $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
 
         $this->mlog->tus_username =  $username;
-        $this->mlog->tus_password = $password;
+        $this->mlog->tus_password = md5($password);
 
         $result = $this->mlog->login(); //function in model
 
@@ -94,13 +94,12 @@ class Login_tourist extends DCS_controller
             //echo $tus_name; test name
             // echo $tus_img_path; test path
 
-            if(!isset($_SESSION['number_event'])){
-                redirect("Tourist/Auth/Landing_page_tourist");  
-            }else{
-                
-                redirect("Tourist/Checkin_event/Checkin_event/load_checkin_or_checkout_page");   
-            }
+            if (!isset($_SESSION['number_event'])) {
+                redirect("Tourist/Auth/Landing_page_tourist");
+            } else {
 
+                redirect("Tourist/Checkin_event/Checkin_event/load_checkin_or_checkout_page");
+            }
         } else {
             $data_warning = array();
             $data_warning['warning'] = "ชื่อผู้ใช้หรือรหัสผ่านของคุณไม่ถูกต้อง";
@@ -178,9 +177,9 @@ class Login_tourist extends DCS_controller
     */
 
 
-    public function forgot_password_page($data=null)
+    public function forgot_password_page($data = null)
     {
-        $this->output_login_entrepreneur('tourist/auth/v_forgot_password_tourist',$data);
+        $this->output_login_entrepreneur('tourist/auth/v_forgot_password_tourist', $data);
     }
 
     /*
