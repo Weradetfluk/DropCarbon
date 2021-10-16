@@ -96,4 +96,20 @@ class Da_dcs_tourist extends DCS_model
                 WHERE tus_id = ?";
         $this->db->query($sql, array($this->tus_pre_id, $this->tus_firstname, $this->tus_lastname, $this->tus_tel, $this->tus_birthdate, $this->tus_email, $this->tus_id));
     }
+
+     /*
+    * update_score
+    * Update data  score tourist
+    * @input tus_id tus_score
+    * @output -
+    * @author weradet nopsomsbun 62160110
+    * @Create Date 2564-10-16
+    * @Update Date -
+    */
+    public function update_score()
+    {
+        $sql = "UPDATE {$this->db_name}.dcs_tourist 
+               SET tus_score=tus_score + ?, tus_cur_score = tus_cur_score + ?  WHERE tus_id = ?";
+        $this->db->query($sql, array(  $this->mdct->tus_score,   $this->mdct->tus_score, $this->mdct->tus_id));
+    }
 }

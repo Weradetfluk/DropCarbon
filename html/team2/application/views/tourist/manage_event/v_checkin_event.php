@@ -31,12 +31,12 @@
                         <i class="material-icons custom-icon">cancel</i>
                     </div>
                 </div>
-                <div class="col text-center" style="text-align: center; display: none;">
+                <div class="col text-center" style="text-align: center; display: none;" id="check_in">
                     <div class="icon-shape bg-success" style="margin-left: auto; margin-right: auto;">
                         <i class="material-icons custom-icon">room</i>
                     </div>
                 </div>
-                <div class="col text-center" style="text-align: center; display: none;">
+                <div class="col text-center" style="text-align: center; display: none;" id="check_out">
                     <div class="icon-shape bg-success" style="margin-left: auto; margin-right: auto;">
                         <i class="material-icons custom-icon">check</i>
                     </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h2 class="text-center py-2" style="display: none;">เช็คเอาท์แล้ว</h2>
+                    <h2 class="text-center py-2" style="display: none;" id="checkout_header">เช็คเอาท์แล้ว</h2>
                     <h2 class="text-center py-2" style="display: none;" id="checkin_header">เช็คอินแล้ว</h2>
                     <h2 class="text-center py-2" style="display: none;" id="err_header">ไม่สามารถเช็คอินได้</h2>
                 </div>
@@ -77,7 +77,6 @@
         navigator.geolocation.getCurrentPosition((position) => {
             let user_lat = position.coords.latitude;
             let user_lon = position.coords.longitude;
-            console.log(user_lat, user_lon);
             <?php
             if (isset($_SESSION['number_event'])) {
                 echo "let number_event = " . $_SESSION['number_event'] . ";";
@@ -96,8 +95,8 @@
             url: "<?php echo base_url('Tourist/Checkin_event/Checkin_event/load_data_checkin_ajax/') ?>" + number_event,
             success: function(json_data) {
                 console.log(json_data);
-
-
+                console.log("User=" + " " + user_lat + " " + user_lon );
+                console.log("Event=" + " " + json_data['arr_event'][0]['eve_lat'] + " " + json_data['arr_event'][0]['eve_lon'] );
                 if ((user_lat == json_data['arr_event'][0]['eve_lat']) && (user_lon == json_data['arr_event'][0]['eve_lon'])) {
                     // กรณีที่เดียวกัน
                     console.log("OK");
@@ -108,7 +107,7 @@
                     if (distance < 0.5) {
                         //ระยะห่าง ต่ำกว่า 500m
                         console.log("ok");
-                        checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'])
+                        checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'], json_data['arr_event'][0]['eve_point'])
                     } else {
                         //กรณี Error
                         err_shape.style.display = 'block';
@@ -147,13 +146,13 @@
 
 
 
-    function checkin_or_check_out(eve_id, eve_name) {
-          console.log(eve_id + eve_name);
+    function checkin_or_check_out(eve_id, eve_name, eve_point) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
             data: {
-                eve_id: eve_id
+                eve_id: eve_id,
+                eve_point: eve_point
             },
             url: '<?php echo base_url('Tourist/Checkin_event/Checkin_event/checkin_or_checkout_event') ?>',
 
@@ -162,9 +161,20 @@
                console.log(json_data['date_now']);
 
                let format_date = format_date_time(json_data['date_now']);
-
-           
-
+                console.log(json_data['json_message']);
+                
+               if(json_data['json_message'] == "check-in"){
+                    check_in.style.display = 'block';
+                    checkin_header.style.display = 'block';
+                       
+                    document.getElementById("eve_name").textContent = eve_name;
+                    document.getElementById("time_checkin").textContent = format_date + " " + json_data['time_now'];
+               }else{
+                    check_out.style.display = 'block';
+                    checkout_header.style.display = 'block';
+                    document.getElementById("eve_name").textContent = eve_name;
+                    document.getElementById("time_checkin").textContent = format_date + " " + json_data['time_now'];
+               }
             },
             error: function() {
                 alert('ajax get data error');

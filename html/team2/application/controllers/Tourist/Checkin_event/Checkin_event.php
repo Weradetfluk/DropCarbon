@@ -18,6 +18,7 @@ class Checkin_event extends DCS_controller
       parent::__construct();
       $this->load->model('Event/M_dcs_event', 'meve');
       $this->load->model('Checkin/M_dcs_checkin', 'mcin');
+      $this->load->model('Tourist/M_dcs_tourist', 'mdct');
       $this->Set_Time_Zone();
    }
    /*
@@ -65,22 +66,43 @@ class Checkin_event extends DCS_controller
    function checkin_or_checkout_event()
    {
       $che_eve_id = $this->input->post('eve_id');
+      $eve_point = $this->input->post('eve_point');
       $this->mcin->che_eve_id =  $che_eve_id;
+    
       $this->mcin->che_tus_id = $this->session->userdata("tourist_id");
 
-
       $data_checkin_row = $this->mcin->get_status_by_tus_id()->row();
+      //ตั้งค่าเวลา
+      $data['date_now'] = $this->get_date_today();
+      $data['time_now'] =  $this->get_time_now();
 
       if ($data_checkin_row) {
-         $data['date_now'] = $this->get_date_today();
-         $data['time_now'] =  $this->get_time_now();
+         //มีข้อมูลเช็คอินหรือไม่ ดูจากข้อมูลล่าสุด
+         if($data_checkin_row->che_status == '1'){
+            // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 1 = เช็คอิน
+            $status = 2;
+            $data['json_message'] = "check-out";
+
+            $this->mdct->tus_score =  $eve_point;
+            $this->mdct->tus_id = $this->session->userdata("tourist_id");
+
+            $this->mcin->che_date_time_out =   $data['date_now'] . " " .  $data['time_now'];
+            $this->mcin->che_id =  $data_checkin_row->che_id;
+
+            $this->mcin->update_checkout($status);
+            $this->mdct->update_score();
+
+         }elseif($data_checkin_row->che_status == '2'){
+             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 2 = เช็คเอาท์
+            $status = 1;
+            $this->mcin->insert_checkin($status);
+            $data['json_message'] = "check-in";
+         }
       } else {
+          // ถ้ากรณีไม่มีข้อมูล
          $status = 1;
-         $month_th = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษจิกายน", "ธันวาคม");
          $this->mcin->insert_checkin($status);
          $data['json_message'] = "check-in";
-         $data['date_now'] = $this->get_date_today();
-         $data['time_now'] =  $this->get_time_now();
       }
       unset($_SESSION['number_event']);
       echo json_encode($data);
