@@ -77,6 +77,7 @@
         navigator.geolocation.getCurrentPosition((position) => {
             let user_lat = position.coords.latitude;
             let user_lon = position.coords.longitude;
+            console.log(user_lat, user_lon);
             <?php
             if (isset($_SESSION['number_event'])) {
                 echo "let number_event = " . $_SESSION['number_event'] . ";";
