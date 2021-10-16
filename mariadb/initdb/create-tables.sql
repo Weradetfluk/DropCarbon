@@ -182,7 +182,7 @@ INSERT INTO `dcs_company` (`com_name`, `com_num_visitor`, `com_lat`, `com_lon`, 
 ('อ่าวแสมสาร', 0, 12.600690, 100.958160, 2, 'อ.สัตหีบ เป็นเมืองชายทะเลในเขตพื้นที่ของทหาร มีชายหาด เกาะน้อย-ใหญ่ สวยๆ มากมาย ไม่ว่าจะเป็นหาดทรายแก้ว หาดเตยงาม หาดนางรำ เกาะขาม เกาะแสมสาร ฯลฯ ในรีวิวนี้จะพาไปเที่ยวที่ เกาะแสมสาร สัตหีบ เกาะที่กำลังจะเป็นที่รู้จักของนักท่องเที่ยว มีนักท่องเที่ยวเพิ่มขึ้นเรื่อยๆ เกาะแห่งนี้ขึ้นชื่อว่าทะเลสวย น้ำใส ปะการังอุดมสมบูรณ์ แถมยังอยู่ไม่ไกลจากฝั่งอีกด้วย เหมาะสำหรับการมาเที่ยวแบบ One day trip', 1, '095-543-5723', 'หมู่ที่ 2 ตำบลแสมสาร อำเภอสัตหีบ จังหวัดชลบุรี', 1);
 
 INSERT INTO `dcs_tourist` (`tus_id`, `tus_firstname`, `tus_lastname`, `tus_username`, `tus_password`, `tus_birthdate`, `tus_tel`, `tus_score`, `tus_email`, `tus_cur_score`, `tus_status`, `tus_pre_id`) VALUES
-(1, 'สมชาย', 'ชาติทหาร', 'Tourist1', 'tou1_1234', '2021-09-05', '0901111111', NULL, '62160110@go.buu.ac.th', NULL, 1, 1);
+(1, 'สมชาย', 'ชาติทหาร', 'Tourist1', 'tou1_1234', '2021-09-05', '0901111111', 0, '62160110@go.buu.ac.th', 0, 1, 1);
 
 INSERT INTO `dcs_document` (`doc_path`, `doc_name`, `doc_ent_id`) VALUES
 ('613257f20bbb03.90906788.pdf', 'รูปบัตรประชาชน', 1);
@@ -256,11 +256,12 @@ CREATE TABLE `dcs_event` (
   `eve_name` varchar(100) COMMENT 'ชื่อกิจกรรม ',
   `eve_point` int(10) DEFAULT 0 COMMENT 'แต้มของกิจกรรม',
   `eve_num_visitor` int(10) DEFAULT 0 COMMENT 'จำนวนผู้เข้าชมกิจกรรม',
-  `eve_description` varchar (2000) COMMENT 'รายละเอียดของกิจกรรม',
+  `eve_description` varchar(2000) COMMENT 'รายละเอียดของกิจกรรม',
   `eve_status` int(10) DEFAULT 1 COMMENT 'สถานะของกิจกรรม 1=รออนุมัติ 2=อนุมัติแล้ว 3=ถูกปฏิเสธ 4=ถูกลบ 5=สิ้นสุดกิจกรรม',
   `eve_add_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่เพิ่มกิจกรรม',
   `eve_start_date` DATE NOT NULL COMMENT 'วันเริ่มต้นกิจกรรม',
   `eve_end_date` DATE NULL COMMENT 'วันสิ้นสุดกิจกรรม',
+  `eve_location` varchar(200) NULL COMMENT 'ที่อยู่ของกิจกรรม เป็น ตัวอักษร คำ',
   `eve_lat` float(20) NOT NULL COMMENT 'latitude ของ สถานที่จัดกิจกรรม',
   `eve_lon` float(20) NOT NULL COMMENT 'logtitude ของ สถานที่จัดกิจกรรม',
   `eve_com_id` int(10) COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
