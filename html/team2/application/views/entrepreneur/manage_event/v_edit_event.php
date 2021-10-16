@@ -312,6 +312,7 @@ function show_maker(lon, lat) {
     var lonLat = new OpenLayers.LonLat(lat, lon)
         .transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            new OpenLayers.Projection("EPSG:900913"), 
             map.getProjectionObject() // to Spherical Mercator Projection
         );
 

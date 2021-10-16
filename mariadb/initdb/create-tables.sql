@@ -203,9 +203,9 @@ INSERT INTO `dcs_document` (`doc_path`, `doc_name`, `doc_ent_id`) VALUES
 
 CREATE TABLE `dcs_entrepreneur_reject` (
   `enr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของการปฏิเสธ',
-  `enr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลว่าทำไมต้องมีการปฏิเสธผู้ประกอบการ',
-  `enr_ent_id` int(10) COMMENT 'ไอดีของผู้ประกอบการ จากตาราง dcs_entrepreneur',
-  `enr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบที่ถูกปฏิเสธ จากตาราง dcs_admin',
+  `enr_admin_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เหตุผลว่าทำไมต้องมีการปฏิเสธผู้ประกอบการ',
+  `enr_ent_id` int(10) NOT NULL COMMENT 'ไอดีของผู้ประกอบการ จากตาราง dcs_entrepreneur',
+  `enr_adm_id` int(10) NOT NULL COMMENT 'ไอดีของผู้ดูแลระบบที่ถูกปฏิเสธ จากตาราง dcs_admin',
   `enr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ปฏิเสธ',
    FOREIGN KEY (enr_ent_id) REFERENCES dcs_entrepreneur(ent_id),
    FOREIGN KEY (enr_adm_id) REFERENCES dcs_admin(adm_id)
@@ -214,23 +214,23 @@ CREATE TABLE `dcs_entrepreneur_reject` (
 
 CREATE TABLE `dcs_tourist_image` (
   `tus_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่เก็บไฟล์ รูปประจำตัวของนักท่องเที่ยว',
-  `tus_img_name` varchar(100) COMMENT 'ชื่อรูปประจำตัว',
-  `tus_img_tus_id` int(10) COMMENT 'ไอดีของนักท่องเที่ยวจากตาราง dcs_tourist',
+  `tus_img_name` varchar(100) NOT NULL COMMENT 'ชื่อรูปประจำตัว',
+  `tus_img_tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยวจากตาราง dcs_tourist',
   FOREIGN KEY (tus_img_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `dcs_reward` (
   `rew_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `rew_name`  varchar(100) COMMENT 'ชื่อRank',
-  `rew_request` int(10) COMMENT 'คะแนนที่ต้องการไปยัง Rank นั้นได้',
-  `rew_img_path` varchar(100) COMMENT 'ที่อยู่ของรูป Rank'
+  `rew_name`  varchar(100) NOT NULL COMMENT 'ชื่อRank',
+  `rew_request` int(10) NOT NULL COMMENT 'คะแนนที่ต้องการไปยัง Rank นั้นได้',
+  `rew_img_path` varchar(100) NOT NULL COMMENT 'ที่อยู่ของรูป Rank'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_reward_tourist` (
   `ret_id` int(10) NOT NULL primary key AUTO_INCREMENT,
-  `ret_rew_id`  int(10) COMMENT 'Rank ของนักท่องเที่ยว จากตาราง dcs_reward',
-  `ret_tus_id` int(10) COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist ',
+  `ret_rew_id`  int(10) NOT NULL COMMENT 'Rank ของนักท่องเที่ยว จากตาราง dcs_reward',
+  `ret_tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist ',
   FOREIGN KEY (ret_rew_id) REFERENCES dcs_reward(rew_id),
   FOREIGN KEY (ret_tus_id) REFERENCES dcs_tourist(tus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -273,9 +273,9 @@ CREATE TABLE `dcs_event` (
 
 CREATE TABLE `dcs_checkin` (
   `che_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดีของการเช็คอิน',
-  `che_status` int(1) NOT NULL COMMENT 'สถานะการเช็คอิน 1=ไม่ถูกลบ 2=ถูกลบ',
+  `che_status` int(1) NOT NULL COMMENT 'สถานะการเช็คอิน 1=เช็คอิน 2=เช็คเอาต์',
   `che_date_time_in` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'เวลาการเช็คอิน',
-  `che_date_time_out` TIMESTAMP COMMENT 'เวลาการเช็คเอาท์',
+  `che_date_time_out` TIMESTAMP DEFAULT 0 COMMENT 'เวลาการเช็คเอาท์',
   `che_tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยวที่เช็คอิน จาก ตาราง dcs_tourist',
   `che_eve_id` int(10) NOT NULL COMMENT 'กิจกรรม ที่ถูกเช็คอิน จากตาราง dcs_event',
   FOREIGN KEY (che_tus_id) REFERENCES dcs_tourist(tus_id),
@@ -286,16 +286,16 @@ CREATE TABLE `dcs_checkin` (
 
 CREATE TABLE `dcs_eve_image` (
   `eve_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่จัดเก็บรูปกิจกรรม',
-  `eve_img_name` varchar(100) COMMENT 'ชื่อรูปกิจกรรม',
-  `eve_img_eve_id` int(10) COMMENT 'ไอดีกิจกรรมจากตาราง dcs_event',
+  `eve_img_name` varchar(100) NOT NULL COMMENT 'ชื่อรูปกิจกรรม',
+  `eve_img_eve_id` int(10) NOT NULL COMMENT 'ไอดีกิจกรรมจากตาราง dcs_event',
   FOREIGN KEY (eve_img_eve_id) REFERENCES dcs_event(eve_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE `dcs_com_image` (
   `com_img_path` varchar(100) NOT NULL primary key COMMENT 'ที่อยู่เก็บรูปสถานที่',
-  `com_img_name` varchar(100) COMMENT 'ชื่อรูปสถานที่',
-  `com_img_com_id` int(10) COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
+  `com_img_name` varchar(100) NOT NULL COMMENT 'ชื่อรูปสถานที่',
+  `com_img_com_id` int(10) NOT NULL COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company',
   FOREIGN KEY (com_img_com_id) REFERENCES dcs_company(com_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -343,9 +343,9 @@ CREATE TABLE `dcs_pro_image` (
 
 CREATE TABLE `dcs_tou_promotion` (
   `tou_id` int(10) NOT NULL primary key AUTO_INCREMENT  COMMENT 'ไอดีของตารางนักท่องเที่ยวที่ใช้โปรโมชัน',
-  `tou_pro_status` int(10)  COMMENT 'สถานะของรางวัล ที่ถูกใช้ 1=ยังไม่หมดอายุ 2=หมดอายุ',
-  `tou_pro_id` int(10)  COMMENT 'ไอดีโปรโมชัน หรือของรางวัล จากตาราง dcs_promotion',
-  `tou_tus_id` int(10)  COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist',
+  `tou_pro_status` int(10) NOT NULL COMMENT 'สถานะของรางวัล ที่ถูกใช้ 1=ยังไม่หมดอายุ 2=หมดอายุ',
+  `tou_pro_id` int(10) NOT NULL COMMENT 'ไอดีโปรโมชัน หรือของรางวัล จากตาราง dcs_promotion',
+  `tou_tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว จากตาราง dcs_tourist',
   FOREIGN KEY (tou_tus_id) REFERENCES dcs_tourist(tus_id),
   FOREIGN KEY (tou_pro_id) REFERENCES dcs_promotions(pro_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -353,10 +353,10 @@ CREATE TABLE `dcs_tou_promotion` (
 
 CREATE TABLE `dcs_company_reject` (
   `cor_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของสถานที่ที่ปฏิเสธ',
-  `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ ปฏิเสธสถานที่',
+  `cor_admin_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เหตุผลที่ ปฏิเสธสถานที่',
   `cor_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
-  `cor_com_id` int(10) COMMENT 'ไอดีของสถานที่ ถูกปฏิเสธ จากตาราง dcs_company',
-  `cor_adm_id` int(10)  COMMENT 'ไอดีของผู้ดูแลระบบจากตาราง dcs_admin',
+  `cor_com_id` int(10) NOT NULL COMMENT 'ไอดีของสถานที่ ถูกปฏิเสธ จากตาราง dcs_company',
+  `cor_adm_id` int(10) NOT NULL COMMENT 'ไอดีของผู้ดูแลระบบจากตาราง dcs_admin',
    FOREIGN KEY (cor_com_id) REFERENCES dcs_company(com_id),
    FOREIGN KEY (cor_adm_id) REFERENCES dcs_admin(adm_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -364,7 +364,7 @@ CREATE TABLE `dcs_company_reject` (
 
 CREATE TABLE `dcs_event_reject` (
   `evr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของกิจกรรมที่ปฏิเสธ',
-  `evr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ ปฏิเสธกิจกรรม',
+  `evr_admin_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เหตุผลที่ ปฏิเสธกิจกรรม',
   `evr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
   `evr_eve_id` int(10) COMMENT 'เหตุผลที่ปฏิเสธ กิจกรรม จากตาราง dcs_event',
   `evr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบที่ปฏิเสธ',
@@ -375,7 +375,7 @@ CREATE TABLE `dcs_event_reject` (
 
 CREATE TABLE `dcs_promotion_reject` (
   `prr_id` int(10) NOT NULL primary key AUTO_INCREMENT COMMENT 'ไอดี ของโปรโมชันที่ปฏิเสธ',
-  `prr_admin_reason` varchar(255) COLLATE utf8_unicode_ci COMMENT 'เหตุผลที่ปฏิเสธ โปรโมชัน',
+  `prr_admin_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เหตุผลที่ปฏิเสธ โปรโมชัน',
   `prr_rej_date` TIMESTAMP DEFAULT CONVERT_TZ(NOW(), @@session.time_zone, '+07:00') COMMENT 'วันที่ถูกปฏิเสธ',
   `prr_pro_id` int(10) COMMENT 'ไอดีของโปรโมชัน จากตาราง dcs_promotions',
   `prr_adm_id` int(10) COMMENT 'ไอดีของผู้ดูแลระบบจากตาราง dcs_admin',

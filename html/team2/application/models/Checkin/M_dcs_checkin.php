@@ -55,4 +55,17 @@ class M_dcs_checkin extends Da_dcs_checkin
         $query = $this->db->query($sql);
         return $query;
     }
+
+
+
+    public function get_status_by_tus_id()
+    {
+        $sql = "SELECT che_status, che_id FROM dcs_checkin WHERE
+        che_tus_id = ? AND che_eve_id = ? 
+        ORDER by che_id DESC
+        LIMIT 1;";
+
+        $query = $this->db->query($sql, array($this->mcin->che_tus_id, $this->mcin->che_eve_id));
+        return $query;
+    }
 }
