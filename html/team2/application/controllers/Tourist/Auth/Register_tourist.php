@@ -62,7 +62,7 @@ class Register_tourist extends DCS_controller
         $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
         $this->mtou->tus_email = $this->input->post('tus_email');
         $this->mtou->tus_username = $this->input->post('tus_username');
-        $this->mtou->tus_password = $this->input->post('tus_password');
+        $this->mtou->tus_password = md5($this->input->post('tus_password'));
         $this->mtou->tus_status = 1;
 
         // Create file storage variables

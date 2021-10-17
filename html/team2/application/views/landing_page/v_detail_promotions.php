@@ -16,9 +16,9 @@
     </div>
     <!-- ชื่อกิจกรรม -->
     <div class="row">
-        <div class="fb-share-button" data-href="" data-layout="button" data-size="large">
-            <a target="_blank" href="" class="fb-xfbml-parse-ignore">แชร์</a>
-        </div>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1" nonce="YLQSWYS9"></script>
+        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
     <br>
     <!-- แชร์ -->
@@ -56,7 +56,10 @@
     $start_day = date("d", strtotime($promotions[0]->pro_start_date));
     $start_month = date("F", strtotime($promotions[0]->pro_start_date));
     $start_year = date("Y", strtotime($promotions[0]->pro_start_date));
-    $start_year = (int)$start_year + 543;
+    if ($start_year == date("Y")) {
+        $start_year = (int)$start_year + 543;
+    }
+
     // echo $day . " " . $month . " " . $year;
     if ($start_day[0] == 0) {
         $start_day = $start_day[1];
@@ -73,7 +76,9 @@
     $end_day = date("d", strtotime($promotions[0]->pro_end_date));
     $end_month = date("F", strtotime($promotions[0]->pro_end_date));
     $end_year = date("Y", strtotime($promotions[0]->pro_end_date));
-    $end_year = (int)$end_year + 543;
+    if ($end_year == date("Y")) {
+        $end_year = (int)$end_year + 543;
+    }
     // echo $day . " " . $month . " " . $year;
     if ($end_day[0] == 0) {
         $end_day = $end_day[1];
@@ -94,6 +99,7 @@
                         <p style="text-indent: 50px;"><?php echo $promotions[0]->pro_description ?>
                         </p>
                         <p style="text-indent: 50px;"><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
+                            <!-- <br><?php echo "Today is " . date("Y") . "<br>"; ?> -->
                         </p>
                     </div>
                 </div>
@@ -223,14 +229,4 @@ $(document).ready(function() {
 
 
 });
-</script>
-<script>
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
 </script>
