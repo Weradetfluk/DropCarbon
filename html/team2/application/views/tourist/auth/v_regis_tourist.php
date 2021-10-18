@@ -223,7 +223,12 @@
      *@update Date 2564-09-20
      */
     function confirmpassword() {
-        if ($('#pass').val() != $('#confirm').val()) {
+        if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
+            $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', true);
+            check_password = 1;
+            check_btn_submit();
+        } else if ($('#pass').val() != $('#confirm').val()) {
             $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
             //$('#next_btn').prop('disabled', true);
             check_password = 1;
