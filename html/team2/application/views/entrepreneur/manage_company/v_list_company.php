@@ -86,7 +86,7 @@
                                   <span class="material-icons">edit</span>
                                 </a>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
-                                  <span class="material-icons">clear</span>
+                                  <span class="material-icons">delete</span>
                                 </button>
                               </td>
                             <?php } ?>
@@ -100,7 +100,7 @@
                                   <span class="material-icons">edit</span>
                                 </a>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
-                                  <span class="material-icons">clear</span>
+                                  <span class="material-icons">delete</span>
                                 </button>
                               </td>
                             <?php } ?>
@@ -177,7 +177,7 @@
                                   <span class="material-icons">edit</span>
                                 </a>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
-                                  <span class="material-icons">clear</span>
+                                  <span class="material-icons">delete</span>
                                 </button>
                               </td>
                             </tr>
@@ -248,7 +248,7 @@
                                   <span class="material-icons">edit</span>
                                 </a>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
-                                  <span class="material-icons">clear</span>
+                                  <span class="material-icons">delete</span>
                                 </button>
                               </td>
                             </tr>
