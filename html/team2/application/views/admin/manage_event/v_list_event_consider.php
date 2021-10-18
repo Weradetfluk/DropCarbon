@@ -66,7 +66,9 @@
                  <p>คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></p>
                  <p>เพิ่มคะแนนให้กับ<span id="eve_point_name_confirm"></span> ?</h5><br>
                  <input type="hidden" id="eve_id_form" name="eve_id">
-                 <input type="hidden" id="eve_id_name_form" name="eve_name"><br>
+                 <input type="hidden" id="eve_cat_id" name="eve_cat_id">
+                 <input type="hidden"id="eve_cat_name" name="eve_cat_name">
+                 <input type="hidden"id="eve_id_name_form" name="eve_name"><br>
                  <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
                  <p id="err_message_point" style="color: red;font-size: 16px"></p>
              </div>
@@ -165,7 +167,7 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(eve_id, eve_name, ent_email) {
+     function confirm_approve(eve_id, eve_name, ent_email,eve_cat_id,eve_cat_name) {
         let form = document.querySelector('#aprove_modal');
          $('#eve_name_confirm').text(eve_name);
          $('#aprove_modal').modal({
@@ -174,13 +176,14 @@
          });
          $('#eve_point_name_confirm').text(eve_name);
          $('#eve_id_form').val(eve_id);
+         $('#eve_cat_id').val(eve_cat_id);
+         $('#eve_cat_name').val(eve_cat_name);
          $('#eve_point').val(eve_point);
          console.log(eve_point)
          $('#approves').click(function() {
              let point = document.getElementById('eve_point').value;
-             if(point < 1){
-                event.preventDefault();
-                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+             if(check_point(point)){
+                 //console.log('pass');
              } else {
                 console.log(ent_email)
                 let eve_point = $('#eve_point').val();
@@ -189,6 +192,20 @@
                 approve_event(eve_id, eve_name, ent_email,eve_point) //function 
              }
          });
+     }
+
+     function check_point(point) {
+         if(point <1){
+             $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+            event.preventDefault();
+            return true;
+         }
+     }
+
+     function check_point_eve_cat(point,eve_cat_id) {
+        //  if(){
+
+        //  }
      }
      /*
       * confirm_approve_view_data_madal

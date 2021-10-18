@@ -315,7 +315,7 @@ class Admin_approval_event extends DCS_controller
                             search
                           </i>
                        </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
                             <i class="material-icons">
                               done
                             </i>
@@ -391,7 +391,7 @@ class Admin_approval_event extends DCS_controller
                             search
                           </i>
                         </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
                           <i class="material-icons">
                             done
                           </i>

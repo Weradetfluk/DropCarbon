@@ -156,6 +156,7 @@ class M_dcs_event extends Da_dcs_event
         $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('dcs_event');
+        $this->db->join('dcs_eve_category', 'dcs_eve_category.eve_cat_id = dcs_event.eve_com_id', 'left');
         $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
         $this->db->where("eve_status = '$number_status'");
@@ -366,15 +367,8 @@ class M_dcs_event extends Da_dcs_event
     */
     function get_by_name()
     {
-        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ?";
+        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 1";
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
-    }
-
-    function get_event_by_id()
-    {
-        $sql = "SELECT eve_id, eve_name, eve_point, eve_description, eve_cat_id, eve_status, eve_end_date, eve_start_date, eve_lat, eve_lon FROM `dcs_event` 
-        WHERE  eve_id = ?";
-        return $this->db->query($sql, array($this->eve_id));
     }
 }
