@@ -90,38 +90,66 @@
                         </div>
 
                         <div class="container">
-                            <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียดกิจกรรม</h3>
+                        <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px">  รายละเอียดกิจกรรม</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->eve_description; ?></p>
                         </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">credit_score</span> คะแนนกิจกรรม</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>" width="40px">  คะแนนกิจกรรม</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม: <?php echo $arr_event[0]->eve_point; ?> คะเเนน</p>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-5">
-                                    <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px">  ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_event[0]->eve_cat_name; ?></p>
                                 </div>
                             </div>
                         </div><br><br>
                         <div class="container">
-                            <h3><span class="material-icons" style="font-size: 30px;">location_city</span> <?php echo $arr_event[0]->com_name; ?></h3>
+                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>" width="40px"> ระยะเวลากิจกรรม</h3>
+                            <hr width="100%" size="10" color="#cccccc">
+                            <?php
+                            if (!function_exists('month_convert')) {
+                                function month_convert($full_date = '')
+                                {
+                                    $m = substr($full_date, 5, 2);
+                                    $m = intval($m);
+                                    $arr_month = array('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายยน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
+                                    return $arr_month[$m - 1];
+                                }
+                            }
+                            if (!function_exists('year_convert')) {
+                                function year_convert($full_date = '')
+                                {
+                                    $y = substr($full_date, 0, 4);
+                                    $y = intval($y);
+                                    return $y + 543;
+                                }
+                            }
+                            if (!function_exists('full_date_convert')) {
+                                function full_date_convert($full_date = '')
+                                {
+                                    $d = substr($full_date, 8, 2);
+                                    $d = intval($d);
+                                    return $d . ' ' . month_convert($full_date) . ' ' . year_convert($full_date);
+                                }
+                            }
+                            ?>
+                            <p style="font-size: 18px; text-indent: 50px;">วันที่ <?php echo full_date_convert($arr_event[0]->eve_start_date) ?> - <?php echo full_date_convert($arr_event[0]->eve_end_date) ?></p>
+                        </div><br><br>
+                        <div class="container">
+                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>" width="40px"> <?php echo $arr_event[0]->com_name; ?></h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <ul>
-                                <!-- <li>
-                                    <h4>สถานที่ตั้ง: </h4>
-                                </li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_location; ?></p> -->
                                 <li>
                                     <h4>เบอร์โทรศัพท์: </h4>
                                 </li>
                                 <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel; ?></p><br>
-                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%"> ตำแหน่งสถานที่</h4>
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px"> ตำแหน่งกิจกรรม</h4>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
