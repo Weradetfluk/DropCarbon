@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_checkin.php";
-
 /*
 * M_dcs_checkin
 * Manage tourist checkin
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-09-25
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_checkin.php";
 class M_dcs_checkin extends Da_dcs_checkin
 {
 
@@ -56,8 +54,14 @@ class M_dcs_checkin extends Da_dcs_checkin
         return $query;
     }
 
-
-
+    /*
+    * get_all
+    * get data checkin all
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-09-25
+    * @Update 2564-09-16
+    */
     public function get_status_by_tus_id()
     {
         $sql = "SELECT che_status, che_id FROM dcs_checkin WHERE

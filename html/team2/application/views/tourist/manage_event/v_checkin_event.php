@@ -1,3 +1,13 @@
+ <!-- 
+/*
+* v_checkin_event
+* Display checkin page
+* @input -
+* @output checkin page
+* @author weradet nopsombun 62160110
+* @Create Date 2564-10-12
+*/ 
+-->
 <style>
     .icon-shape {
         border-radius: 50%;
@@ -73,6 +83,14 @@
 
     });
 
+    /*
+    *get_location
+    *get user location
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-09-26
+    */ 
     function get_location() {
         navigator.geolocation.getCurrentPosition((position) => {
             let user_lat = position.coords.latitude;
@@ -82,12 +100,19 @@
                 echo "let number_event = " . $_SESSION['number_event'] . ";";
                 echo "get_data_event_ajax(user_lat, user_lon, number_event);";
             } else {
-                echo "window.location.href = 'http://www.google.com';";
+                echo "window.location.href = '". base_url('') ."';";
             }
             ?>
         });
     }
-
+    /*
+    *get_data_event_ajax
+    *get data event with session QR CODE
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-10-13
+    */ 
     function get_data_event_ajax(user_lat, user_lon, number_event) {
         $.ajax({
             type: 'post',
@@ -99,20 +124,22 @@
                 console.log("Event=" + " " + json_data['arr_event'][0]['eve_lat'] + " " + json_data['arr_event'][0]['eve_lon'] );
                 if ((user_lat == json_data['arr_event'][0]['eve_lat']) && (user_lon == json_data['arr_event'][0]['eve_lon'])) {
                     // กรณีที่เดียวกัน
-                    console.log("OK");
+                
                 } else {
                     //ต้องคำนวณระยะห่าง
                     let distance = cal_distance(user_lat, user_lon, json_data['arr_event'][0]['eve_lat'], json_data['arr_event'][0]['eve_lon']);
 
                     if (distance < 0.5) {
                         //ระยะห่าง ต่ำกว่า 500m
-                        console.log("ok");
+                   
                         checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'], json_data['arr_event'][0]['eve_point'])
                     } else {
                         //กรณี Error
                         err_shape.style.display = 'block';
                         err_header.style.display = 'block';
                         err_detail.style.display = 'block';
+                        //unset session QR
+                        <?php  unset($_SESSION['number_event']); ?>
                     }
                 }
             },
@@ -122,8 +149,14 @@
         });
 
     }
-
-
+     /*
+    *cal_distance
+    *calcuate distance with userlat,lon and event lat,lon
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-10-13
+    */ 
 
     function cal_distance(user_lat, user_lon, eve_lat, eve_lon) {
         var R = 6371; // km
@@ -145,7 +178,14 @@
 
 
 
-
+    /*
+    *checkin_or_check_out
+    *checkin and checkout  
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-10-13
+    */ 
     function checkin_or_check_out(eve_id, eve_name, eve_point) {
         $.ajax({
             type: 'post',
@@ -181,7 +221,14 @@
             }
         });
     }
-
+    /*
+    *format_date_time
+    *format date and time  
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-10-13
+    */ 
     function format_date_time(old_date) {
         let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
                     "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
