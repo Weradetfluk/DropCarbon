@@ -1,6 +1,3 @@
-<?php
-$warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
-?>
 
 <!-- 
 /*
@@ -12,7 +9,9 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 * @Create Date 2564-07-17
 */ 
 -->
-
+<?php
+$warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
+?>
 <!-- navbar -->
 
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-light ">

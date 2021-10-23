@@ -37,11 +37,11 @@
      </div>
  </div>
  <!-- Modal -->
- <div class="modal fade bd-example-modal-lg" id="add_banner_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade bd-example-modal-lg" id="add_banner_modal" tabindex="-1" role="dialog" aria-labelledby="banner_label" aria-hidden="true">
      <div class="modal-dialog" role="document" style="max-width: 1200px;">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">เพิ่มแบนเนอร์</h5>
+                 <h5 class="modal-title" id="banner_label">เพิ่มแบนเนอร์</h5>
                  </button>
              </div>
              <div class="modal-body">
@@ -174,6 +174,16 @@
          }
      });
 
+
+     /*
+     * get_data_banner
+     * get_data_banner
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-09-28
+     * @Update -
+     */
      function get_data_banner() {
          $.ajax({
              method: "POST",
@@ -190,6 +200,16 @@
          });
      }
 
+
+      /*
+     * create_table_banner
+     * create_table_banner
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-09-28
+     * @Update -
+     */
      function create_table_banner(arr_banner) {
          let html_code = '';
 
@@ -232,6 +252,17 @@
          $('#data_banner').html(html_code);
      }
 
+
+
+      /*
+     * confirm_delete_banner
+     * confirm_delete_banner
+     * @input 
+     * @output -
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-09-28
+     * @Update -
+     */
      function confirm_delete_banner(img_path) {
          $('#delete_banner_modal').modal();
          $('#delete_banner_confirm').click(function() {

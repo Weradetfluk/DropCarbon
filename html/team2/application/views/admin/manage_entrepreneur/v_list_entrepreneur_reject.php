@@ -85,6 +85,15 @@
      $(document).ready(function() {
          load_data(1);
 
+      /*
+      * load_data
+      * load_data
+      * @input 
+      * @output  table data entrepreneur
+      * @author Weradet Nopsombun 62160110 
+      * @Create Date 2564-07-27
+      * @Update -
+      */
          function load_data(page, query = '') {
              console.log(query);
              $.ajax({
