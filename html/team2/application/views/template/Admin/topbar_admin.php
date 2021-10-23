@@ -38,14 +38,14 @@ if (!isset($_SESSION['tab_number'])) {
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav nav-moblie-menu">
           <li class="nav-item dropdown">
-            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="javascript:;" id="navbar_dropdown_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">person</i>
               <?php echo $this->session->userdata("Admin_name"); ?>
               <p class="d-lg-none d-md-block">
                 Account
               </p>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar_dropdown_profile">
               <a class="dropdown-item" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">ออกจากระบบ</a>
             </div>
           </li>

@@ -1,13 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_entrepreneur.php';
-
 /*
 * M_dcs_entrepreneur
 * get data entrepreneur
 * @author Weradet Nopsombun 62160110
 * @Create Date 2564-07-31
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_entrepreneur.php';
+
 class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 {
     /*

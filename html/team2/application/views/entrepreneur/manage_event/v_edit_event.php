@@ -234,12 +234,7 @@ var cntrposition = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toP
 
 OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
     initialize: function(name, options) {
-        var url = [
-            "http://a.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            "http://b.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            "http://c.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-        ];
-        var newArguments = [name, url, options];
+        var newArguments = [name, options];
         OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
     },
 });
