@@ -22,14 +22,14 @@
                     <br>
                     <div class="card-body">
 
-                        <div id="carousel_example_indicators" class="carousel slide" data-ride="carousel">
+                        <div id="carousel_indicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <?php for ($i = 0; $i < count($arr_image); $i++) { ?>
                                     <?php if ($i == 0) { ?>
-                                        <li data-target="#carousel_example_indicators" data-slide-to="<?php echo $i; ?>" class="active"></li>
+                                        <li data-target="#carousel_indicators" data-slide-to="<?php echo $i; ?>" class="active"></li>
                                     <?php } ?>
                                     <?php if ($i != 0) { ?>
-                                        <li data-target="#carousel_example_indicators" data-slide-to="<?php echo $i; ?>"></li>
+                                        <li data-target="#carousel_indicators" data-slide-to="<?php echo $i; ?>"></li>
                                     <?php } ?>
                                 <?php } ?>
                             </ol>
@@ -49,11 +49,11 @@
                                 <?php } ?>
                                 <br>
                             </div>
-                            <a class="carousel-control-prev" href="#carousel_example_indicators" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#carousel_indicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carousel_example_indicators" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#carousel_indicators" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
