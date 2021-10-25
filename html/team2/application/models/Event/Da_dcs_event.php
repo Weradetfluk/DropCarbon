@@ -21,6 +21,7 @@ class Da_dcs_event extends DCS_model
     public $eve_status;
     public $eve_start_date;
     public $eve_end_date;
+    public $eve_location;
     public $eve_lat;
     public $eve_lon;
 
@@ -114,9 +115,13 @@ class Da_dcs_event extends DCS_model
                     `eve_status`=?,
                     `eve_start_date`=?,
                     `eve_end_date`=?,
+                    `eve_location`=?,
                     `eve_lat`=?,
                     `eve_lon`=?
 				WHERE eve_id=?";
-        $this->db->query($sql, array($this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status, $this->eve_start_date, $this->eve_end_date, $this->eve_lat, $this->eve_lon, $this->eve_id));
+        $this->db->query($sql, array(
+            $this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
+            $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_id
+        ));
     }
 }
