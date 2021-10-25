@@ -8,6 +8,12 @@
 * @Create Date 2564-10-03
 */ 
 -->
+<?php if($arr_promotion[0]->pro_status == 3 || $arr_promotion[0]->pro_status == 4 || $arr_promotion[0]->pro_end_date > $date_now && $arr_promotion[0]->pro_start_date <= $date_now || $arr_promotion[0]->pro_start_date > $date_now && $arr_promotion[0]->pro_status == 2){
+    $path = site_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion";
+    header("Location: " . $path);
+    exit();
+}?>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
