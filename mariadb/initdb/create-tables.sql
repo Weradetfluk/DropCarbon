@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Oct 25, 2021 at 11:15 AM
+-- Generation Time: Oct 25, 2021 at 03:27 PM
 -- Server version: 10.3.30-MariaDB-1:10.3.30+maria~focal
 -- PHP Version: 7.4.20
 
@@ -448,6 +448,13 @@ CREATE TABLE `dcs_tourist` (
   `tus_pre_id` int(10) NOT NULL COMMENT 'คำนำหน้า จากตาราง dcs_prefix'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `dcs_tourist`
+--
+
+INSERT INTO `dcs_tourist` (`tus_id`, `tus_firstname`, `tus_lastname`, `tus_username`, `tus_password`, `tus_birthdate`, `tus_tel`, `tus_score`, `tus_email`, `tus_cur_score`, `tus_status`, `tus_pre_id`) VALUES
+(1, 'สมชาย', 'ชาติทหาร', 'Tourist1', '505dcb6961f3f927df15f9fec5ff7ae8', '2021-10-25', '0901111111', 0, '62160110@go.buu.ac.th', 0, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -753,7 +760,7 @@ ALTER TABLE `dcs_reward_tourist`
 -- AUTO_INCREMENT for table `dcs_tourist`
 --
 ALTER TABLE `dcs_tourist`
-  MODIFY `tus_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ไอดีของนักท่องเที่ยว';
+  MODIFY `tus_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ไอดีของนักท่องเที่ยว', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dcs_tou_promotion`
