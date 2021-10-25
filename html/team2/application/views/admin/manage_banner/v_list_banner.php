@@ -159,6 +159,7 @@
      const img = document.querySelector('#photo');
      const file = document.querySelector('#file');
      file.addEventListener('change', function() {
+         //เมื่อมีการอัพไฟล์
          const choosedFile = this.files[0];
          if (choosedFile) {
              const reader = new FileReader();

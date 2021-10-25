@@ -279,6 +279,31 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query;
     }
 
+
+      /*
+    * get_promotions_landing_page
+    * get data promotions Landing page
+    * @input pro_id
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-10-26
+    * @Update 2564-10-26
+    */
+    public function get_promotions_landing_page(){
+        $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
+        from dcs_promotions
+        RIGHT JOIN dcs_pro_image
+        ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
+        WHERE pro_status = 2
+        GROUP BY dcs_promotions.pro_id
+        LIMIT 4  ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
+
     public function get_promotion_by_com_id($com_id)
     {
         $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
