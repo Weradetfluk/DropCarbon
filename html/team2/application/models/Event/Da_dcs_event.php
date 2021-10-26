@@ -43,9 +43,9 @@ class Da_dcs_event extends DCS_model
     */
     public function insert_event()
     {
-        $sql = "INSERT INTO `dcs_event`(`eve_name`, `eve_description`, `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`, `eve_lat`, `eve_lon`) 
-				VALUES (?,?,?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date, $this->eve_lat, $this->eve_lon));
+        $sql = "INSERT INTO `dcs_event`(`eve_name`, `eve_description`, `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`, `eve_location`,`eve_lat`, `eve_lon`) 
+				VALUES (?,?,?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date, $this->eve_location,$this->eve_lat, $this->eve_lon));
     }
     /*
     * update_status

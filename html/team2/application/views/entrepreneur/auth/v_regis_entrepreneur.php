@@ -198,7 +198,7 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_tel">เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="12" minlength="12" placeholder="088-XXX-XXXX" required>
+                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="10" minlength="10" placeholder="088XXXXXXX" onkeyup="check_tel()"required>
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_id_card">หมายเลขบัตรประชาชน</label>
@@ -210,7 +210,7 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_email">อีเมล</label>
-                        <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="example@email.com" required>
+                        <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" onblur="check_email_ajax()" placeholder="example@email.com" required>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
@@ -240,12 +240,12 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_password">รหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
+                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="confirm">ยืนยันรหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
+                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
                         <div id="errorpassword" class="text-danger"></div>
                     </div>
                 </div>
@@ -298,30 +298,40 @@
         check_box_agree();
     });
 
-    var check_username = 1;
-    var check_password = 1;
+    
     var count_file = 0;
+    var check_phone_number = 0;
+    var check_email = 0;
+    var check_username = 1;
+    var check_password = 0;
 
     /*
+     * 
      * confirmpassword
-     * check password with confirm_password
-     * @input pass, confirm 
-     * @output -
-     * @author Thanisorn thumsawanit 62160088
-     * @Create Date 2564-07-20
-     * @Update -
+     * alert confirmpassword not match passwords
+     *@input password
+     *@parameter -
+     *output  checkconfirmpassword
+     *@author Priyarat Bumrungkit
+     *@Create Date 2564-10-25
+     *@update Date 2564-10-26
      */
-    function confirm_password() {
-        if ($('#pass').val() != $('#confirm').val()) {
-            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
+    function confirmpassword() {
+        if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
+            $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', true);
             check_password = 1;
             check_btn_submit();
-            // $('#next_btn').prop('disabled', true);
+        } else if ($('#pass').val() != $('#confirm').val()) {
+            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
+            //$('#next_btn').prop('disabled', true);
+            check_password = 1;
+            check_btn_submit();
         } else {
             $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', false);
             check_password = 0;
             check_btn_submit();
-            // $('#next_btn').prop('disabled', false);
         }
     }
 
@@ -556,4 +566,62 @@
             $('#submit').prop('disabled', false);
         }
     }
+    
+    /*
+    * check_tel
+    * Check tel format
+    * @input ent_tel 
+    * @output ent_tel 
+    * @author Priyarat Bumrungkit 62160156
+   * @Create Date 2564-10-22
+    * @Update Date -
+    */
+    function check_tel() {
+        var tel = document.getElementById("ent_tel").value;
+        var patt = '[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}';
+        if (!tel.match(patt)) {
+            document.getElementById("error").innerHTML = "**";
+        }
+    }
+
+    /*
+     * 
+     * check_email_ajax
+     * check duplicate email in database
+     *@input tus_email
+     *@parameter -
+     *output  email validation
+     *@author Priyarat Bumrungkit 62160156
+     *@Create Date 2564-10-25
+     * @Update Date 
+     */
+    function check_email_ajax() {
+        let ent_email = $('#ent_email').val();
+        $.ajax({
+            url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_email_entrepreneur_ajax'); ?>',
+            type: "POST",
+            data: {
+                ent_email: ent_email
+
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {
+                    $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    //$('#next_btn').prop('disabled', true);
+                    check_email = 1;
+                    check_btn_submit();
+
+                } else {
+                    $('#emailavailable').html("");
+                    //$('#next_btn').prop('disabled', false);
+                    check_email = 0;
+                    check_btn_submit();
+                }
+            }
+        });
+
+    }
+
+    
 </script>

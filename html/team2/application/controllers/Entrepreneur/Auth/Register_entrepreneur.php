@@ -201,4 +201,25 @@ class Register_entrepreneur extends DCS_controller {
         }
         echo json_encode($data);
     }
+
+    /*
+    * check_email_entrepreneur_ajax
+    * output check username
+    * @input tourist username
+    * @output -
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-10-25
+    * @Update Date 2564-10-26
+    */
+    public function check_email_entrepreneur_ajax()
+    {
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+        $this->ment->ent_email = $this->input->post('ent_email');
+        $result = $this->ment->check_email()->row(); //function in model
+        if ($result) {
+            echo 1;
+        } else{
+            echo 2;
+        }
+    }
 }

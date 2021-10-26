@@ -66,7 +66,15 @@
                                     <textarea id="eve_description" name="eve_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
                                 </div>
                             </div><br>
-
+                            
+                            <!-- กรอกที่อยู่ -->        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="eve_location">ที่อยู่</label>
+                                    <textarea id="eve_location" name="eve_location" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม" required></textarea>
+                                </div>
+                            </div><br>
+                            
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
