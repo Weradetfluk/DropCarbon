@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Oct 25, 2021 at 03:27 PM
+-- Generation Time: Oct 26, 2021 at 02:26 PM
 -- Server version: 10.3.30-MariaDB-1:10.3.30+maria~focal
 -- PHP Version: 7.4.20
 
@@ -161,6 +161,22 @@ CREATE TABLE `dcs_com_image` (
   `com_img_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อรูปสถานที่',
   `com_img_com_id` int(10) NOT NULL COMMENT 'ไอดีของสถานที่ จากตาราง dcs_company'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `dcs_com_image`
+--
+
+INSERT INTO `dcs_com_image` (`com_img_path`, `com_img_name`, `com_img_com_id`) VALUES
+('61780f4b44e1f8.78846023.jfif', 'download (1).jfif', 1),
+('61780f4b463cf8.84812381.jpg', 'overall1.jpg', 1),
+('61780f4b47cbf6.10065915.jpg', 'the-sanctuary-of-truth-standard.jpg', 1),
+('61780f4b4a7896.42824837.jpg', 'zw3zzo5t8h.jpg', 1),
+('61780f5e4d77f9.67219882.jfif', 'images (1).jfif', 2),
+('61780f5e4ec285.52881903.jpg', 's_62455_5240.jpg', 2),
+('61780f6c8bc2b0.74133682.jpg', 'b5d6gjabifbdibjajj5a9.jpg', 3),
+('61780f6c8f5609.31221403.jpg', 'หาดวอนนภา Bang San.jpg', 3),
+('61780f811cc615.71457478.jpg', '568287_15072200530032738922.jpg', 4),
+('61780f911833c4.51609557.jpg', '273267830cdf3dc2b4daa8d924dfc551f8bfda8a.jpg', 5);
 
 -- --------------------------------------------------------
 
