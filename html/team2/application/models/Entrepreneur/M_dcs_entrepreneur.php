@@ -1,13 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_entrepreneur.php';
-
 /*
 * M_dcs_entrepreneur
 * get data entrepreneur
 * @author Weradet Nopsombun 62160110
 * @Create Date 2564-07-31
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_entrepreneur.php';
+
 class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 {
     /*
@@ -205,18 +205,9 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     */
     function check_email()
     {
-        $sql = "SELECT * 
-            from dcs_entrepreneur
-            where ent_email = ?";
-
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_email = ?";  
         $query = $this->db->query($sql, array($this->ent_email));
-
-        $query_row = $query->num_rows();
-
-        if ($query_row) {
-            return $query->row();
-        } else {
-            return false;
-        }
+        return $query;
     }
 }

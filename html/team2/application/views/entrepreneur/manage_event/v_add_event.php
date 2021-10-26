@@ -66,7 +66,15 @@
                                     <textarea id="eve_description" name="eve_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
                                 </div>
                             </div><br>
-
+                            
+                            <!-- กรอกที่อยู่ -->        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="eve_location">ที่อยู่</label>
+                                    <textarea id="eve_location" name="eve_location" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม" required></textarea>
+                                </div>
+                            </div><br>
+                            
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
@@ -156,12 +164,7 @@
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
         initialize: function(name, options) {
-            var url = [
-                "http://a.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-                "http://b.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-                "http://c.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            ];
-            var newArguments = [name, url, options];
+            var newArguments = [name, options];
             OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
         },
     });

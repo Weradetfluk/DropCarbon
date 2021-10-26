@@ -1,13 +1,14 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once dirname(__FILE__) ."/../DCS_model.php";
 /*
 * Da_dcs_document
 * Manage document entrepreneur
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+
+include_once dirname(__FILE__) ."/../DCS_model.php";
+
 class Da_dcs_document extends DCS_model{
     public $doc_path;
     public $doc_ent_id;

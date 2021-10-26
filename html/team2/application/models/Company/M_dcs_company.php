@@ -32,6 +32,16 @@ class M_dcs_company extends Da_dcs_company
         return $query;
     }
 
+
+    /*
+    * get_company_and_img
+    * get data company
+    * @input com_ent_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-07-19
+    * @Update 2564-09-16
+    */
     public function get_company_and_img($number_status, $post)
     {
 
@@ -56,6 +66,29 @@ class M_dcs_company extends Da_dcs_company
     }
 
 
+
+     /*
+    * get_company_landing_page
+    * get data company Landing page
+    * @input com_ent_id
+    * @output -
+    * @author Weradet Nopsombun
+    * @Create Date 2564-07-19
+    * @Update 2564-09-16
+    */
+    public function get_company_landing_page(){
+        $sql = "SELECT dcs_company.com_id, dcs_company.com_name,dcs_company.com_description,dcs_com_image.com_img_path 
+        from dcs_company 
+        LEFT JOIN dcs_com_image
+        ON  dcs_company.com_id = dcs_com_image.com_img_com_id
+        WHERE com_status = 2
+        GROUP BY dcs_company.com_id
+        ORDER by com_num_visitor DESC 
+        LIMIT 5 ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
     /*
     * get_by_id

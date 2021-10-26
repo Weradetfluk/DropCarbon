@@ -47,7 +47,8 @@ class Event_add extends DCS_controller
         $this->meve->eve_name = $this->input->post('eve_name');
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
-        $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
+        $this->meve->eve_cat_id = $this->input->post('eve_cat_id'); 
+        $this->meve->eve_location = $this->input->post('eve_location');
         $this->meve->eve_add_date = $this->input->post('eve_add_date');
         $this->meve->eve_start_date = $this->input->post('eve_start_date');
         $this->meve->eve_end_date = $this->input->post('eve_end_date');

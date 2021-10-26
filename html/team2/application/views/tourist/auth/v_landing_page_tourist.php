@@ -1,5 +1,5 @@
 <!-- carousel slide banner-->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
+<div id="carousel_landing" class="carousel slide" data-ride="carousel"></div>
 
 <section class="bg-white">
     <div class="container">
@@ -299,9 +299,9 @@ function create_banner(arr_banner) {
 
     for (let i = 0; i < arr_banner.length; i++) {
         if (i === 0) {
-            html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="' + i + '" class="active"></li>';
+            html_code += '<li data-target="#carousel_landing" data-slide-to="' + i + '" class="active"></li>';
         } else {
-            html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="data-slide-to="' + i + '"></li>';
+            html_code += '<li data-target="#carousel_landing" data-slide-to="data-slide-to="' + i + '"></li>';
         }
     }
     html_code += '</ol>';
@@ -335,15 +335,15 @@ function create_banner(arr_banner) {
         html_code += '</div>';
     }
     html_code += '</div>';
-    html_code += '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">';
+    html_code += '<a class="carousel-control-prev" href="#carousel_landing" role="button" data-slide="prev">';
     html_code += '<span class="material-icons" style="color: black;">arrow_back</span>';
     html_code += '<span class="sr-only">Previous</span>';
     html_code += '</a>';
-    html_code += '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">';
+    html_code += '<a class="carousel-control-next" href="#carousel_landing" role="button" data-slide="next">';
     html_code += '<span class="material-icons" style="color: black;">arrow_forward</span>';
     html_code += ' <span class="sr-only">Next</span>';
     html_code += '</a>';
 
-    $('#carouselExampleIndicators').html(html_code);
+    $('#carousel_landing').html(html_code);
 }
 </script>

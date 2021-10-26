@@ -7,103 +7,25 @@
             กิจกรรมยอดนิยม
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <?php if (count($arr_image_eve) < 1 || count($arr_image_eve) == 0) { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[0]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_eve) < 1 || count($arr_eve) == 0) { ?>
-                            <a href="#">
-                                <h2>เก็บขยะริมหาด</h2>
-                            </a>
-                            <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h2><?php echo $arr_eve[0]->eve_name; ?></h2>
-                            </a>
-                            <p class="card-tex text-dark">
-                                <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                            </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[0]->eve_drop_carbon; ?> กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[0]->eve_start_date; ?> - <?php echo $arr_eve[0]->eve_end_date; ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <?php if (count($arr_image_eve) < 2 || count($arr_image_eve) == 0) { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
+            <?php for ($i = 0; $i < count($arr_eve); $i++) {  ?>
+                <div class="col-md-4">
+                    <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
+                        <div class="card">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top">
+                            <div class="card-body">
+                                <h2> <?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 20, "UTF-8") . "..."; ?></h2>
+                                <p class="card-tex text-dark">
+                                    <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                </p>
+                                <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                                <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[$i]->eve_start_date; ?> - <?php echo $arr_eve[$i]->eve_end_date; ?></p>
 
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[1]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_eve) < 2 || count($arr_eve) == 0) { ?>
-                            <a href="#">
-                                <h2>ปลูกป่าชายเลน</h2>
-                            </a>
-                            <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน จ.ชลบุรี...</p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h2><?php echo $arr_eve[1]->eve_name; ?></h2>
-                            </a>
-                            <p class="card-tex text-dark">
-                                <?php echo iconv_substr($arr_eve[1]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                            </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[1]->eve_drop_carbon; ?> กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[1]->eve_start_date; ?> - <?php echo $arr_eve[1]->eve_end_date; ?></p>
-                        <?php } ?>
-                    </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-md-4 ">
-                <div class="card">
-                    <?php if (count($arr_image_eve) < 3 || count($arr_image_eve) == 0) { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_image_eve[2]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_eve) < 3 || count($arr_eve) == 0) { ?>
-                            <a href="#">
-                                <h2>วิ่งชมธรรมชาติ</h2>
-                            </a>
-                            <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ 0.6 กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;">15 มิ.ย. 2564 - 30 มิ.ย. 2564</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h2><?php echo $arr_eve[2]->eve_name; ?></h2>
-                            </a>
-                            <p class="card-tex text-dark">
-                                <?php echo iconv_substr($arr_eve[2]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                            </p>
-                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[2]->eve_drop_carbon; ?> กรัม</b></p>
-                            <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[2]->eve_start_date; ?> - <?php echo $arr_eve[2]->eve_end_date; ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
+
+            <?php } ?>
         </div>
         <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม</a>
     </div>
@@ -116,119 +38,29 @@
         </div>
         <div class="row">
             <div class="col-xl-7 col-lg-6">
-                <div class="card" data-aos="fade-right">
-                    <?php if (count($arr_image_com) < 1 || count($arr_image_com) == 0) { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangsaen2.jpg" style="height: 550px; weight: 810;" class="card-img-top" alt="...">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[0]->com_img_path; ?>" style="height: 550px; weight: 810;" class="card-img-top">
-                        </a>
-                    <?php } ?>
+                <div class="card"  style="height: 50rem;"  data-aos="fade-right">
+                    <img src="<?php echo base_url() . 'image_company/' . $arr_com[0]->com_img_path; ?>" style="height: 550px; weight: 810;" class="card-img-top">
                     <div class="card-body">
-                        <?php if (count($arr_com) < 1 || count($arr_com) == 0) { ?>
-                            <a href="" class="h2">บางแสน</a>
-                            <p class="card-text">หาดบางแสนเป็นสถานที่ท่องเที่ยวที่เป็นที่รู้จักและนิยมมาอย่างยาวนานของนักท่องเที่ยว ด้วยความที่อยู่ใกล้กรุงเทพมหานคร ด้วยการเดินทางรถยนต์ใช้เวลาเพียงชั่วโมงเศษมีความยาวประมาณ...</p>
-                        <?php } else { ?>
-                            <a href="" class="h2"><?php echo $arr_com[0]->com_name ?></a>
-                            <p class="card-text"><?php echo substr($arr_com[0]->com_description, 0, 440) ?> ...</p>
-                        <?php } ?>
+
+                        <h2><?php echo $arr_com[0]->com_name ?></h2>
+                        <p class="card-text"> <?php echo iconv_substr( $arr_com[0]->com_description, 0, 300, "UTF-8") . "..."; ?></p>
+
                     </div>
                 </div>
             </div>
             <div class="col-xl-5 col-mg-4 mg-4">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card" data-aos="fade-down">
-                            <?php if (count($arr_image_com) != 2 || count($arr_image_com) == 0) { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./jan.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
-                                </a>
-                            <?php } else { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
-                                </a>
-                            <?php } ?>
-                            <div class="card-body">
-                                <?php if (count($arr_com) < 2 || count($arr_com) == 0) { ?>
-                                    <a href="#" class="h2">เขาชีจรรย์</a>
-                                    <p class="card-text">เขาชีจรรย์เป็นเขาหินปูนในนาจอมเทียนที่มีความ...</p>
-                                <?php } else { ?>
-                                    <a href="" class="h2"><?php echo $arr_com[1]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[1]->com_description, 0, 150) ?> ...</p>
-                                <?php } ?>
+                    <?php for ($i = 0; $i < count($arr_com)-1; $i++) {  ?>
+                        <div class="col-lg-6">
+                    <div class="card" style="height: 23rem;" id="card"  data-aos="fade-down">            
+                                    <img src="<?php echo base_url() . 'image_company/' . $arr_com[$i+1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
+                            <div class="card-body">                 
+                                    <h3><?php  echo iconv_substr($arr_com[$i+1]->com_name, 0, 20, "UTF-8") . "...";?></h3>
+                                    <p class="card-text">   <?php echo iconv_substr( $arr_com[$i+1]->com_description, 0, 35, "UTF-8") . "..."; ?></p> 
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card" data-aos="fade-left">
-                            <?php if (count($arr_image_com) < 3 || count($arr_image_com) == 0) { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./bangmong.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
-                                </a>
-                            <?php } else { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[2]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
-                                </a>
-                            <?php } ?>
-                            <div class="card-body">
-                                <?php if (count($arr_com) < 3 || count($arr_com) == 0) { ?>
-                                    <a href="#" class="h2">บางละมุง</a>
-                                    <p class="card-text">อำเภอบางละมุง เป็นเมืองท่องเที่ยวที่มีความ...</p>
-                                <?php } else { ?>
-                                    <a href="" class="h2"><?php echo $arr_com[2]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[2]->com_description, 0, 150) ?></p>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: -40px;">
-                    <div class="col-lg-6">
-                        <div class="card" data-aos="fade-right">
-                            <?php if (count($arr_image_com) < 4 || count($arr_image_com) == 0) { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./kaolan.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
-                                </a>
-                            <?php } else { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[3]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
-                                </a>
-                            <?php } ?>
-                            <div class="card-body">
-                                <?php if (count($arr_com) < 4 || count($arr_com) == 0) { ?>
-                                    <a href="#" class="h2">เกาะล้าน</a>
-                                    <p class="card-text">เกาะล้าน ตั้งอยู่ในเขตอำเภอบางละมุง จังหวัดชลบุรี...</p>
-                                <?php } else { ?>
-                                    <a href="" class="h2"><?php echo $arr_com[3]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[3]->com_description, 0, 150) ?></p>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card" data-aos="fade-up">
-                            <?php if (count($arr_image_com) < 5 || count($arr_image_com) == 0) { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./pattaya.jpg" style="height: 200px; weight: 270;" class="card-img-top" alt="...">
-                                </a>
-                            <?php } else { ?>
-                                <a href="#">
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_image_com[4]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
-                                </a>
-                            <?php } ?>
-                            <div class="card-body">
-                                <?php if (count($arr_com) < 5 || count($arr_com) == 0) { ?>
-                                    <a href="#" class="h2">พัทยา</a>
-                                    <p class="card-text">พัทยามีชายหาดสวยงามเป็นที่รู้จักในหมู่นักท่องเที่ยว...</p>
-                                <?php } else { ?>
-                                    <a href="" class="h2"><?php echo $arr_com[4]->com_name ?></a>
-                                    <p class="card-text"><?php echo substr($arr_com[4]->com_description, 0, 150) ?></p>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -241,12 +73,10 @@
             จุดเด่น
         </div>
         <div class="row" style="margin:1.5% 0" data-aos="fade-up">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
+            ซึ่งจะทำให้นักท่องเที่ยวได้รับประสบการณ์เกี่ยวกับการช่วยลดคาร์บอน
+            Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง ๆ ในพื้นที่จังหวัดชลบุรี
+            ซึ่งจะช่วยสร้างรายได้ให้ชุมชน และลดโลกร้อนไปด้วยกัน
         </div>
         <div class="row-max-100">
             <div class="row row-50 justify-content-center">
@@ -254,28 +84,28 @@
                     <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">12</span>
                         </div>
-                        <div class="counter-classic-title">Members</div>
+                        <div class="counter-classic-title">สมาชิก</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">194</span>
                         </div>
-                        <div class="counter-classic-title">Partners</div>
+                        <div class="counter-classic-title">ผู้ประกอบการ</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number"><span class="counter">2</span><span class="symbol">k</span>
+                        <div class="counter-classic-number"><span class="counter">20</span>
                         </div>
-                        <div class="counter-classic-title">Travelers</div>
+                        <div class="counter-classic-title">กิจกรรม</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">25</span>
                         </div>
-                        <div class="counter-classic-title">Team members</div>
+                        <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
                     </div>
                 </div>
             </div>
@@ -288,110 +118,7 @@
             โปรโมชัน
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <div class="card" data-aos="fade-right">
-                    <?php if (count($arr_image_pro) < 1 || count($arr_image_pro) == 0) { ?>
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[0]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_pro) < 1 || count($arr_pro) == 0) { ?>
-                            <a href="#">
-                                <h3>รางวัล 1</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด...</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h3><?php echo $arr_pro[0]->pro_name ?></h3>
-                            </a>
-                            <p class="card-text"><?php echo substr($arr_pro[0]->pro_description, 0, 150) ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card" data-aos="fade-right">
-                    <?php if (count($arr_image_pro) < 2 || count($arr_image_pro) == 0) { ?>
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[1]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_pro) < 2 || count($arr_pro) == 0) { ?>
-                            <a href="#">
-                                <h3>รางวัล 2</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด...</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h3><?php echo $arr_pro[1]->pro_name ?></h3>
-                            </a>
-                            <p class="card-text"><?php echo substr($arr_pro[1]->pro_description, 0, 150) ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card" data-aos="fade-left">
-                    <?php if (count($arr_image_pro) < 3 || count($arr_image_pro) == 0) { ?>
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[2]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_pro) < 3 || count($arr_pro) == 0) { ?>
-                            <a href="#">
-                                <h3>รางวัล 3</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด...</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h3><?php echo $arr_pro[2]->pro_name ?></h3>
-                            </a>
-                            <p class="card-text"><?php echo substr($arr_pro[2]->pro_description, 0, 150) ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card" data-aos="fade-left">
-                    <?php if (count($arr_image_pro) < 4 || count($arr_image_pro) == 0) { ?>
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> ">
-                        </a>
-                    <?php } else { ?>
-                        <a href="#">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $arr_image_pro[3]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
-                        </a>
-                    <?php } ?>
-                    <div class="card-body">
-                        <?php if (count($arr_pro) < 4 || count($arr_pro) == 0) { ?>
-                            <a href="#">
-                                <h3>รางวัล 4</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด...</p>
-                        <?php } else { ?>
-                            <a href="#">
-                                <h3><?php echo $arr_pro[3]->pro_name ?></h3>
-                            </a>
-                            <p class="card-text"><?php echo substr($arr_pro[3]->pro_description, 0, 150) ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
+      
         </div>
         <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
     </div>
@@ -446,12 +173,8 @@
         html_code += '</ol>';
         html_code += '<div class="carousel-inner" style="max-height: 678px; !important">'
 
-
-
-
         if (arr_banner.length != 0) {
             arr_banner.forEach((row_ban, index_ban) => {
-
 
                 if (index_ban == 0) {
                     html_code += '<div class="carousel-item active" >';
