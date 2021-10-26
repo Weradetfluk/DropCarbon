@@ -210,4 +210,36 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         $query = $this->db->query($sql, array($this->ent_email));
         return $query;
     }
+
+    /*
+    * check_phone_number
+    * get data entrepreneur by phone number
+    * @input -
+    * @output -
+    * @author Priyarat Bumrunglit 62160156
+    * @Create Date 2564-10-26
+    */
+    public function check_phone_number()
+    {
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_tel = ?";
+        $query = $this->db->query($sql, array($this->ent_tel));
+        return $query;
+    }
+
+    /*
+    * check_id_card
+    * get data entrepreneur by id_card
+    * @input -
+    * @output -
+    * @author Priyarat Bumrunglit 62160156
+    * @Create Date 2564-10-26
+    */
+    public function check_id_card()
+    {
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_id_card = ?";
+        $query = $this->db->query($sql, array($this->ent_id_card));
+        return $query;
+    }
 }
