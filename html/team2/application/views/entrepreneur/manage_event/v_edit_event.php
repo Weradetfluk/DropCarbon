@@ -72,7 +72,7 @@
 
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="eve_description" style="color:black">รายละเอียดกิจกรรม</label>
+                                    <label for="eve_description">รายละเอียดกิจกรรม</label>
                                     <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดกิจกรรม"
@@ -109,7 +109,7 @@
 
                             <!-- เลือกรูปภาพประกอบกิจกรรม -->
                             <div class="form-group">
-                                <label for="eve_file" style="color:black">รูปภาพประกอบสถานที่ <br><span
+                                <label for="eve_file">รูปภาพประกอบสถานที่ <br><span
                                         style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ
                                         และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
