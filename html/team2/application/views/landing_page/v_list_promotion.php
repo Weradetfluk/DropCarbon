@@ -36,67 +36,67 @@
             </div>
         </div>
     </form>
-    
+
     <section class="bg-gray">
-    <div class="container">
-        <div class="header-break">
-            รางวัล
+        <div class="container">
+            <div class="header-break">
+                รางวัล
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <a href="#">
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
+                            <div class="card-body">
+                                <a href="#">
+                                    <h3>รางวัล1</h3>
+                                </a>
+                                <p class="card-text">รายละเอียด</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <a href="#">
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
+                        </a>
+                        <div class="card-body">
+                            <a href="#">
+                                <h3>รางวัล2</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="card">
+                        <a href="#">
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
+                        </a>
+                        <div class="card-body">
+                            <a href="#">
+                                <h3>รางวัล3</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="card">
+                        <a href="#">
+                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
+                        </a>
+                        <div class="card-body">
+                            <a href="#">
+                                <h3>รางวัล4</h3>
+                            </a>
+                            <p class="card-text">รายละเอียด</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <a href="#">
-                    <img class="card-img-top" alt="..."style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>รางวัล1</h3>
-                        </a>
-                        <p class="card-text">รายละเอียด</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <a href="#">
-                    <img class="card-img-top" alt="..."style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>รางวัล2</h3>
-                        </a>
-                        <p class="card-text">รายละเอียด</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card">
-                    <a href="#">
-                    <img class="card-img-top" alt="..."style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>รางวัล3</h3>
-                        </a>
-                        <p class="card-text">รายละเอียด</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card">
-                    <a href="#">
-                    <img class="card-img-top" alt="..."style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>รางวัล4</h3>
-                        </a>
-                        <p class="card-text">รายละเอียด</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <div class="row">
         <?php for ($i = 0; $i < count($promotions); $i++) { ?>
@@ -110,7 +110,6 @@
                         <p class="card-tex text-dark">
                             <?php echo iconv_substr($promotions[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
                         </p>
-                        <button class="btn btn-success" style="margin: 0px 30px;">แลก</button>
                     </div>
                     <!-- ชื่อของรูปที่ 1 -->
                 </div>

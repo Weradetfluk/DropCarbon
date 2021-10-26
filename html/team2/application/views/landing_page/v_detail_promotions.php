@@ -18,7 +18,7 @@
     <div class="row">
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1" nonce="YLQSWYS9"></script>
-        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
+        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
     <br>
     <!-- แชร์ -->
@@ -91,7 +91,7 @@
     ?>
     <div class="row" style="padding-top: 5%;">
         <div class="col">
-            <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียด</h3>
+            <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียดโปรโมชัน</h3>
             <hr width="100%" size="10" color="#cccccc">
             <div class="col" style="padding-left: 2%">
                 <div class="container">
@@ -111,7 +111,7 @@
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
+                <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px"> ประเภท</h3>
                 <hr width="100%" size="10" color="#cccccc">
                 <p style="font-size: 18px; text-indent: 50px;">โปรโมชันนี้จัดอยู่ในประเภท: <?php echo $promotions[0]->pro_cat_name; ?></p>
             </div>
@@ -120,10 +120,10 @@
     </div>
     <div class="row" style="padding-top: 5%;">
         <div class="col">
-            <h3>ตำแหน่งสถานที่</h3>
+            <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px"> ตำแหน่งสถานที่</h4>
             <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
-                <h3 style="padding-top: 2%; "> <?php echo $promotions[0]->com_name ?></h3>
+                <h3 style="padding-top: 2%; "><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>" width="40px"> <?php echo $promotions[0]->com_name ?></h3>
                 <!-- ชื่อสถานที่ -->
                 <hr>
                 <div class="row">
