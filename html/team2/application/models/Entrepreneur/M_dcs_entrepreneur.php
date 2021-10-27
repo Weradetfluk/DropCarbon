@@ -1,13 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_entrepreneur.php';
-
 /*
 * M_dcs_entrepreneur
 * get data entrepreneur
 * @author Weradet Nopsombun 62160110
 * @Create Date 2564-07-31
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_entrepreneur.php';
+
 class M_dcs_entrepreneur extends Da_dcs_entrepreneur
 {
     /*
@@ -205,18 +205,41 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     */
     function check_email()
     {
-        $sql = "SELECT * 
-            from dcs_entrepreneur
-            where ent_email = ?";
-
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_email = ?";  
         $query = $this->db->query($sql, array($this->ent_email));
+        return $query;
+    }
 
-        $query_row = $query->num_rows();
+    /*
+    * check_phone_number
+    * get data entrepreneur by phone number
+    * @input -
+    * @output -
+    * @author Priyarat Bumrunglit 62160156
+    * @Create Date 2564-10-26
+    */
+    public function check_phone_number()
+    {
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_tel = ?";
+        $query = $this->db->query($sql, array($this->ent_tel));
+        return $query;
+    }
 
-        if ($query_row) {
-            return $query->row();
-        } else {
-            return false;
-        }
+    /*
+    * check_id_card
+    * get data entrepreneur by id_card
+    * @input -
+    * @output -
+    * @author Priyarat Bumrunglit 62160156
+    * @Create Date 2564-10-26
+    */
+    public function check_id_card()
+    {
+        $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
+        WHERE ent_id_card = ?";
+        $query = $this->db->query($sql, array($this->ent_id_card));
+        return $query;
     }
 }

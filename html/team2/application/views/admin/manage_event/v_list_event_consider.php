@@ -183,8 +183,13 @@
          $('#approves').click(function() {
              let point = document.getElementById('eve_point').value;
              if(check_point(point)){
-                 //console.log('pass');
-             } else {
+                // console.log('pass');
+             }
+             
+            //  if (check_point_eve_cat(point,eve_cat_id,eve_cat_name)){
+            //     console.log('pass');
+            //  } 
+             else {
                 console.log(ent_email)
                 let eve_point = $('#eve_point').val();
                 console.log(eve_point)
@@ -193,6 +198,15 @@
              }
          });
      }
+     /*
+      * check_point
+      * check point inevent
+      * @input point
+      * @output err_message
+      * @author Nantasiri Saiwaew 62160093
+      * @Create Date 2564-10-11
+      * @Update -
+      */
 
      function check_point(point) {
          if(point <1){
@@ -202,11 +216,13 @@
          }
      }
 
-     function check_point_eve_cat(point,eve_cat_id) {
-        //  if(){
-
-        //  }
-     }
+    //  function check_point_eve_cat(point,eve_cat_id,eve_cat_name) {
+    //      if(point> 1 && point <=19){
+    //         $('#err_message_point').html('กิจกรรมอยู่ในประเภทการจัดการทางน้ำ');
+    //         event.preventDefault();
+    //         return true;
+    //      }
+    //  }
      /*
       * confirm_approve_view_data_madal
       * open modal id = Aprovemodal 

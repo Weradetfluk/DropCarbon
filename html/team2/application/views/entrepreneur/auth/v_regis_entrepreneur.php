@@ -198,19 +198,23 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_tel">เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control mt-1" id="ent_tel" name="ent_tel" maxlength="12" minlength="12" placeholder="088-XXX-XXXX" required>
+                        <input type="text" class="form-control mt-1" id="ent_tel" onkeyup="auto_tap(this); check_phone_number_ajax();" name="ent_tel" maxlength="12" minlength="12" placeholder="088-XXX-XXXX" required>
+                        <span id="tel_available" style="color: red;"></span>
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_id_card">หมายเลขบัตรประชาชน</label>
-                        <input type="text" class="form-control mt-1" id="ent_id_card" name="ent_id_card" maxlength="13" minlength="13" placeholder="หมายเลขบัตรประชาชน" required>
-                        <span class="error text-danger"></span>
+                        <input type="text" class="form-control mt-1" id="ent_id_card" onkeyup="auto_tap_id_card(this); check_id_card_ajax();" name="ent_id_card" maxlength="17" minlength="17" placeholder="หมายเลขบัตรประชาชน" required>
+                        
+                        <span id="id_card_available" style="color: red;"></span>
+                        <!--<span class="error text-danger"></span>-->
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_email">อีเมล</label>
-                        <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" placeholder="example@email.com" required>
+                        <input type="email" class="form-control mt-1" id="ent_email" name="ent_email" onblur="check_email_ajax()" placeholder="example@email.com" required>
+                        <span id="emailavailable" style="color: red;"></span>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
@@ -240,12 +244,12 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_password">รหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
+                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="confirm">ยืนยันรหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
+                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
                         <div id="errorpassword" class="text-danger"></div>
                     </div>
                 </div>
@@ -276,7 +280,7 @@
                                     2.1 ผู้ขอใช้บริการรับรองและรับประกันว่าตนได้อ่าน และรับทราบถึงเนื้อหาของนโยบายคุ้มครองข้อมูลส่วนบุคคลของ Drop Carbon
                                 </p>
                                 <br>
-                                <input type="checkbox" id="agree" onchange="check_box_agree()"> ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
+                                <input type="checkbox" id="agree" onblur="check_box_agree()"> ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
                             </div>
                             <div class="modal-footer">
                                 <button id="submit" class="btn btn-success success">ยืนยัน</button>
@@ -298,30 +302,41 @@
         check_box_agree();
     });
 
-    var check_username = 1;
-    var check_password = 1;
+    
     var count_file = 0;
+    var check_phone_number = 0;
+    var check_email = 0;
+    var check_id_card = 0;
+    var check_username = 1;
+    var check_password = 0;
 
     /*
+     * 
      * confirmpassword
-     * check password with confirm_password
-     * @input pass, confirm 
-     * @output -
-     * @author Thanisorn thumsawanit 62160088
-     * @Create Date 2564-07-20
-     * @Update -
+     * alert confirmpassword not match passwords
+     *@input password
+     *@parameter -
+     *output  checkconfirmpassword
+     *@author Priyarat Bumrungkit
+     *@Create Date 2564-10-25
+     *@update Date 2564-10-26
      */
-    function confirm_password() {
-        if ($('#pass').val() != $('#confirm').val()) {
-            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
+    function confirmpassword() {
+        if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
+            $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', true);
             check_password = 1;
             check_btn_submit();
-            // $('#next_btn').prop('disabled', true);
+        } else if ($('#pass').val() != $('#confirm').val()) {
+            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
+            //$('#next_btn').prop('disabled', true);
+            check_password = 1;
+            check_btn_submit();
         } else {
             $('#errorpassword').text('');
+            //$('#next_btn').prop('disabled', false);
             check_password = 0;
             check_btn_submit();
-            // $('#next_btn').prop('disabled', false);
         }
     }
 
@@ -369,7 +384,7 @@
      * @Update -
      */
     function check_btn_submit() {
-        if (check_password == 1 || check_username == 1 || count_file < 1) {
+        if (check_phone_number == 1 || check_password == 1 || check_username == 1 || count_file < 1) {
             $('#btn_sub').prop('disabled', true);
         } else {
             $('#btn_sub').prop('disabled', false);
@@ -555,5 +570,193 @@
         } else {
             $('#submit').prop('disabled', false);
         }
+    }
+    
+    /*
+    * check_tel
+    * Check tel format
+    * @input ent_tel 
+    * @output ent_tel 
+    * @author Priyarat Bumrungkit 62160156
+   * @Create Date 2564-10-22
+    * @Update Date -
+    */
+    function check_tel() {
+        var tel = document.getElementById("ent_tel").value;
+        var patt = '[0]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}';
+        if (!tel.match(patt)) {
+            document.getElementById("error").innerHTML = "**";
+        }
+    }
+
+    /*
+     * 
+     * check_email_ajax
+     * check duplicate email in database
+     *@input tus_email
+     *@parameter -
+     *output  email validation
+     *@author Priyarat Bumrungkit 62160156
+     *@Create Date 2564-10-25
+     * @Update Date 
+     */
+    function check_email_ajax() {
+        let ent_email = $('#ent_email').val();
+        $.ajax({
+            url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_email_entrepreneur_ajax'); ?>',
+            type: "POST",
+            data: {
+                ent_email: ent_email
+
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == 1) {
+                    $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    //$('#next_btn').prop('disabled', true);
+                    check_email = 1;
+                    check_btn_submit();
+
+                } else {
+                    $('#emailavailable').html("");
+                    //$('#next_btn').prop('disabled', false);
+                    check_email = 0;
+                    check_btn_submit();
+                }
+            }
+        });
+
+    }
+
+    /*
+    * Auto Tab 
+    * @input ent_tel 
+    * @output ent_tel 
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-10-07
+    * @Update Date 2564-10-09
+    */
+    function auto_tap(obj) {
+
+        var pattern = new String("___-___-____"); // 080-123-4567
+        var pattern_ex = new String("-"); //ใช้เครื่องหมาย - ในการแบ่ง
+        var returnText = new String("");
+        var obj_l = obj.value.length;
+        var obj_l2 = obj_l - 1;
+        for (i = 0; i < pattern.length; i++) {
+            if (obj_l2 == i && pattern.charAt(i + 1) == pattern_ex) {
+                returnText += obj.value + pattern_ex;
+                obj.value = returnText;
+            }
+        }
+        if (obj_l >= pattern.length) {
+            obj.value = obj.value.substr(0, pattern.length);
+        }
+    }   
+
+    /*
+     * Auto Tab  
+    * @output ent_id_card 
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-10-26
+    */
+    function auto_tap_id_card(obj) {
+
+        var pattern = new String("_-____-_____-_-__");
+        var pattern_ex = new String("-");
+        var returnText = new String("");
+        var obj_l = obj.value.length;
+        var obj_l2 = obj_l - 1;
+        for (i = 0; i < pattern.length; i++) {
+            if (obj_l2 == i && pattern.charAt(i + 1) == pattern_ex) {
+                returnText += obj.value + pattern_ex;
+                obj.value = returnText;
+            }
+        }
+        if (obj_l >= pattern.length) {
+            obj.value = obj.value.substr(0, pattern.length);
+        }
+    }
+
+    /*
+     * 
+     * check_email_ajax
+     * check duplicate email in database
+     *@input tus_email
+     *@parameter -
+     *output  email validation
+     *@author Priyarat Bumrungkit 62160156
+     *@Create Date 2564-10-25
+     * @Update Date 
+     */
+    function check_phone_number_ajax() {
+        //console.log("use");
+        let ent_tel = $('#ent_tel').val();
+        $.ajax({
+            url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_phone_number_entrepreneur_ajax'); ?>',
+            type: "POST",
+            data: {
+                ent_tel: ent_tel
+
+            },
+            success: function(data) {
+                //console.log(data);
+                if (data == 1) {
+                    
+                    $('#tel_available').html("เบอร์โทรศัพท์นี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    //$('#next_btn').prop('disabled', true);
+                    check_phone_number = 1;
+                    check_btn_submit();
+
+                } else {
+                    $('#tel_available').html("");
+                    //$('#next_btn').prop('disabled', false);
+                    check_phone_number = 0;
+                    check_btn_submit();
+                }
+            }
+        });
+
+    }
+
+    /*
+     * 
+     * check_id_card_ajax
+     * check duplicate id_card in database
+     *@input ent_id_card
+     *@parameter -
+     *output  id_card validation
+     *@author Priyarat Bumrungkit 62160156
+     *@Create Date 2564-10-26
+     * @Update Date 
+     */
+    function check_id_card_ajax() {
+        //console.log("use");
+        let ent_id_card = $('#ent_id_card').val();
+        $.ajax({
+            url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_id_card_entrepreneur_ajax'); ?>',
+            type: "POST",
+            data: {
+                ent_id_card: ent_id_card
+
+            },
+            success: function(data) {
+                //console.log(data);
+                if (data == 1) {
+                    
+                    $('#id_card_available').html("หมายเลขบัตรประชาชนนี้ได้ใช้ทำการลงทะเบียนแล้ว");
+                    //$('#next_btn').prop('disabled', true);
+                    check_id_card = 1;
+                    check_btn_submit();
+
+                } else {
+                    $('#id_card_available').html("");
+                    //$('#next_btn').prop('disabled', false);
+                    check_id_card = 0;
+                    check_btn_submit();
+                }
+            }
+        });
+
     }
 </script>

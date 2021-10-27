@@ -66,7 +66,15 @@
                                     <textarea id="eve_description" name="eve_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
                                 </div>
                             </div><br>
-
+                            
+                            <!-- กรอกที่อยู่ -->        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="eve_location">ที่อยู่</label>
+                                    <textarea id="eve_location" name="eve_location" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม" required></textarea>
+                                </div>
+                            </div><br>
+                            
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
@@ -149,20 +157,15 @@
     var curpos = new Array();
     var markers = new OpenLayers.Layer.Markers("Markers");
     var position;
-    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
     var count_image = 0;
     var check_btn_name = 0;
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
         initialize: function(name, options) {
-            var url = [
-                "http://a.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-                "http://b.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-                "http://c.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            ];
-            var newArguments = [name, url, options];
-            OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+            var new_arguments = [name, options];
+            OpenLayers.Layer.OSM.prototype.initialize.apply(this, new_arguments);
         },
     });
 
@@ -176,13 +179,13 @@
      * @Update 
      */
     function init(lat, lon) {
-        var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
+        var cntr_position = new OpenLayers.LonLat(lat, lon).transform(from_projection, to_projection);
         console.log(lat, lon);
 
         map = new OpenLayers.Map("map");
         var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
         map.addLayer(cycleLayer);
-        map.setCenter(cntrposition, zoom);
+        map.setCenter(cntr_position, zoom);
         var click = new OpenLayers.Control.Click();
         map.addControl(click);
         click.activate();
@@ -208,7 +211,7 @@
 
         trigger: function(e) {
             var lonlat = map.getLonLatFromPixel(e.xy);
-            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(to_projection, from_projection);
 
             markers.clearMarkers();
             $('#eve_lat').val(lonlat1.lat);

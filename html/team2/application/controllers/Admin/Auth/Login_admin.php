@@ -191,12 +191,12 @@ class Login_admin extends DCS_controller
 
 
     if($result){
-      echo 1;
+      echo 1; //ture
 
       $this->send_mail_reset($email);
 
     }else{
-      echo 2;
+      echo 2; //false
     }
     
   }
@@ -236,7 +236,7 @@ class Login_admin extends DCS_controller
       $mail->Host     = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
       $mail->Username = 'weradet2543@gmail.com';
-      $mail->Password = 'sykildxigujdlfnz';
+      $mail->Password = 'sozftcaimvjxykek';
       $mail->SMTPSecure = 'tls';
       $mail->Port     = 587;
       $mail->charSet = "UTF-8";

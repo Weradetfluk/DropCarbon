@@ -108,6 +108,8 @@ class M_dcs_event extends Da_dcs_event
         return $query;
     }
 
+
+
     public function get_event_by_com_id($com_id)
     {
         $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
@@ -123,7 +125,32 @@ class M_dcs_event extends Da_dcs_event
     }
 
 
+    /*
+    *get_event_landing_page
+    *get data form database
+    *@input number_status
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-10-26
+    */
+    public function get_event_landing_page(){
 
+        $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_event.eve_start_date, 
+        dcs_event.eve_end_date, dcs_eve_category.eve_cat_name, dcs_event.eve_description,
+        dcs_eve_image.eve_img_path, dcs_eve_category.eve_drop_carbon
+        from dcs_event
+        LEFT JOIN dcs_eve_image
+        ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
+        LEFT JOIN dcs_eve_category 
+        ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
+        WHERE eve_status = 2
+        GROUP BY dcs_event.eve_id 
+        ORDER BY eve_num_visitor DESC
+        LIMIT 3 ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
     /*
     *get_count_all
@@ -371,4 +398,19 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
+    /*
+    *get_event_by_id
+    *get data event by id
+    *@input eve_id 
+    *@output -
+    *@author Weradet Nopsombun 62160110
+    *@Create Date 2564-09-26
+    */
+    function get_event_by_id()
+    {
+        $sql = "SELECT eve_id, eve_name, eve_point, eve_description, eve_cat_id, eve_status, eve_end_date, eve_start_date, eve_lat, eve_lon FROM dcs_event 
+        WHERE  eve_id = ?";
+        return $this->db->query($sql, array($this->eve_id));
+    }
+
 }

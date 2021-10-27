@@ -19,11 +19,11 @@ class Checkin_event extends DCS_controller
       $this->load->model('Event/M_dcs_event', 'meve');
       $this->load->model('Checkin/M_dcs_checkin', 'mcin');
       $this->load->model('Tourist/M_dcs_tourist', 'mdct');
-      $this->Set_Time_Zone();
+      $this->set_time_zone();
    }
    /*
     * check_login_before_check_in
-    * show page banner
+    * check login and set session id event
     * @input 
     * @output -
     * @author Weradet Nopsombun 62160110
@@ -47,13 +47,31 @@ class Checkin_event extends DCS_controller
       }
    }
 
+
+    /*
+    * load_checkin_or_checkout_page
+    * show page checkin
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    function load_checkin_or_checkout_page()
    {
       $this->output_tourist('tourist/manage_event/v_checkin_event', NULL, 'template/Tourist/topbar_tourist_login');
    }
 
 
-
+   /*
+    * load_data_checkin_ajax
+    * Load data for cal culate lat lon
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    function load_data_checkin_ajax($eve_id)
    {
       $this->meve->eve_id = $eve_id;
@@ -62,7 +80,15 @@ class Checkin_event extends DCS_controller
    }
 
 
-
+    /*
+    * checkin_or_checkout_event
+    * checkin and check out logic
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    function checkin_or_checkout_event()
    {
       $che_eve_id = $this->input->post('eve_id');
@@ -108,24 +134,44 @@ class Checkin_event extends DCS_controller
       echo json_encode($data);
    }
 
-
-   function Set_Time_Zone()
+   /*
+    * set_time_zone
+    * set time zone asia bangkok
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
+   function set_time_zone()
    {
       date_default_timezone_set('Asia/Bangkok');
    }
 
+    /*
+    * get_date_today
+    * get today date format 2021-10-012
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    function get_date_today()
    {
       return date("Y-m-d");
    }
-
+    /*
+    * get_time_now
+    * get time now format 22:00
+    * @input 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    function get_time_now()
    {
       return date("H:i");
-   }
-
-   function get_date_mouth()
-   {
-      return date("Y-m");
    }
 }

@@ -101,17 +101,32 @@
                                                                     <td style="color: #669900;">อนุมัติ</td>
                                                                 <?php } ?>
                                                             <?php } ?>
-                                                            <td>
-                                                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>">
-                                                                    <span class="material-icons">search</span>
-                                                                </a>
-                                                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>">
-                                                                    <span class="material-icons">edit</span>
-                                                                </a>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                                    <span class="material-icons">delete</span>
-                                                                </button>
-                                                            </td>
+                                                            <?php if ($arr_promotion[$i]->pro_status == 1 || $arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now && $arr_promotion[$i]->pro_status == 2) { ?>
+                                                                <td>
+                                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>">
+                                                                        <span class="material-icons">search</span>
+                                                                    </a>
+                                                                    <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>">
+                                                                        <span class="material-icons">edit</span>
+                                                                    </a>
+                                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                        <span class="material-icons">delete</span>
+                                                                    </button>
+                                                                </td>
+                                                            <?php }?>
+                                                            <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
+                                                                <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now) { ?>
+                                                                    <td>
+                                                                    <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>">
+                                                                        <span class="material-icons">search</span>
+                                                                    </a>
+                                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                        <span class="material-icons">delete</span>
+                                                                    </button>
+                                                                </td>
+                                                                <?php }?>
+                                                            <?php }?>
+                                                            
                                                         <?php } ?>
                                                         <?php if ($arr_promotion[$i]->pro_status == 3) { ?>
                                                             <td style="color: red;">ปฏิเสธ</td>

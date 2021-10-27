@@ -53,17 +53,18 @@
                             <!-- Text input -->
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
+                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;">
+                                        (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="eve_com_id" id="eve_com_id" class="form-control" required>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
-                                            <?php if ($arr_company[$i]->com_id == $arr_event[0]->eve_com_id) { ?>
-                                            <option value="<?php echo $arr_company[$i]->com_id ?>" selected="selected">
-                                                <?php echo $arr_company[$i]->com_name; ?></option>
-                                            <?php } ?>
-                                            <?php if ($arr_company[$i]->com_id != $arr_event[0]->eve_com_id) { ?>
-                                            <option value="<?php echo $arr_company[$i]->com_id ?>">
-                                                <?php echo $arr_company[$i]->com_name; ?></option>
-                                            <?php } ?>
+                                        <?php if ($arr_company[$i]->com_id == $arr_event[0]->eve_com_id) { ?>
+                                        <option value="<?php echo $arr_company[$i]->com_id ?>" selected="selected">
+                                            <?php echo $arr_company[$i]->com_name; ?></option>
+                                        <?php } ?>
+                                        <?php if ($arr_company[$i]->com_id != $arr_event[0]->eve_com_id) { ?>
+                                        <option value="<?php echo $arr_company[$i]->com_id ?>">
+                                            <?php echo $arr_company[$i]->com_name; ?></option>
+                                        <?php } ?>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -71,11 +72,22 @@
 
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="eve_description" style="color:black">รายละเอียดกิจกรรม</label>
+                                    <label for="eve_description">รายละเอียดกิจกรรม</label>
                                     <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดกิจกรรม"
                                         required><?php echo $arr_event[0]->eve_description; ?> </textarea>
+                                </div>
+                            </div><br>
+
+                            <!-- ******** -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="eve_location">ที่อยู่</label>
+                                    <textarea id="eve_location" name="eve_location" class="form-control"
+                                        style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
+                                        rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม"
+                                        required><?php echo $arr_event[0]->eve_location; ?> </textarea>
                                 </div>
                             </div><br>
 
@@ -97,7 +109,7 @@
 
                             <!-- เลือกรูปภาพประกอบกิจกรรม -->
                             <div class="form-group">
-                                <label for="eve_file" style="color:black">รูปภาพประกอบสถานที่ <br><span
+                                <label for="eve_file">รูปภาพประกอบสถานที่ <br><span
                                         style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ
                                         และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
@@ -228,19 +240,14 @@ var position;
 var count_image = `<?= count($arr_image) ?>`;
 var check_btn_name = 0;
 
-var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-var cntrposition = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+var cntr_position = new OpenLayers.LonLat(lon, lat).transform(from_projection, to_projection);
 
 OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
     initialize: function(name, options) {
-        var url = [
-            "http://a.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            "http://b.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-            "http://c.tile.thunderforest.com/outdoors/${z}/${x}/${y}.png?apikey=698be2e6da1a43b191eb6265f1c002aa",
-        ];
-        var newArguments = [name, url, options];
-        OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+        var new_arguments = [name, options];
+        OpenLayers.Layer.OSM.prototype.initialize.apply(this, new_arguments);
     },
 });
 
@@ -260,7 +267,7 @@ function init(lat, lon) {
     map = new OpenLayers.Map("map");
     var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
     map.addLayer(cycleLayer);
-    map.setCenter(cntrposition, zoom);
+    map.setCenter(cntr_position, zoom);
     var click = new OpenLayers.Control.Click();
     map.addControl(click);
     click.activate();
@@ -286,7 +293,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
     trigger: function(e) {
         var lonlat = map.getLonLatFromPixel(e.xy);
-        lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+        lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(to_projection, from_projection);
 
         markers.clearMarkers();
         $('#eve_lat').val(lonlat1.lat);
@@ -312,7 +319,7 @@ function show_maker(lon, lat) {
     var lonLat = new OpenLayers.LonLat(lat, lon)
         .transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            new OpenLayers.Projection("EPSG:900913"), 
+            new OpenLayers.Projection("EPSG:900913"),
             map.getProjectionObject() // to Spherical Mercator Projection
         );
 
@@ -477,42 +484,42 @@ function check_count_image_btn() {
 }
 
 /*
-     * check_name_event_ajax
-     * check name event by ajax
-     * @input eve_name
-     * @output -
-     * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-10-12
-     * @Update -
-     */
-    function check_name_event_ajax() {
-        var eve_name = $('#eve_name').val();
-        var eve_id = $('#eve_id').val();
-        console.log(eve_id);
-        $.ajax({
-            url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/check_name_event_ajax" ?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-                eve_name: eve_name,
-                eve_id: eve_id
-            },
-            success: function(data) {
-                // console.log(data);
-                if (data == 1) {
-                    // console.log(1);
-                    $('#error_eve_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
-                    check_btn_name = 1;
-                    check_count_image_btn()
-                    // $('#btn_sub').prop('disabled', true); 
-                } else if (data == 2) {
-                    console.log(2);
-                    $('#error_eve_name').html('');
-                    check_btn_name = 0;
-                    check_count_image_btn()
-                    // $('#btn_sub').prop('disabled', false);
-                }
+ * check_name_event_ajax
+ * check name event by ajax
+ * @input eve_name
+ * @output -
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-10-12
+ * @Update -
+ */
+function check_name_event_ajax() {
+    var eve_name = $('#eve_name').val();
+    var eve_id = $('#eve_id').val();
+    console.log(eve_id);
+    $.ajax({
+        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/check_name_event_ajax" ?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            eve_name: eve_name,
+            eve_id: eve_id
+        },
+        success: function(data) {
+            // console.log(data);
+            if (data == 1) {
+                // console.log(1);
+                $('#error_eve_name').html('ชื่อสถานที่นี้ได้ถูกใช้งานเเล้ว');
+                check_btn_name = 1;
+                check_count_image_btn()
+                // $('#btn_sub').prop('disabled', true); 
+            } else if (data == 2) {
+                console.log(2);
+                $('#error_eve_name').html('');
+                check_btn_name = 0;
+                check_count_image_btn()
+                // $('#btn_sub').prop('disabled', false);
             }
-        })
-    }
+        }
+    })
+}
 </script>

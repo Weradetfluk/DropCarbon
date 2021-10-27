@@ -1,11 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
 /*
 * DCS_controller
 * Base controller system
 * @author weradet nopsombun 62160110
 * @Create Date 2564-07-17
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class DCS_controller extends CI_Controller
 {
     /*
@@ -20,21 +21,19 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
-        $this->load->model('Company/M_dcs_com_image', 'mdci');
+
         $this->load->model('Company/M_dcs_company', 'mdc');
-        $this->load->model('Event/M_dcs_eve_image', 'mdei');
+   
         $this->load->model('Event/M_dcs_event', 'mde');
-        $this->load->model('Event/M_dcs_eve_category', 'mcat');
+
         $this->load->model('Promotions/M_dcs_promotions', 'mdp');
-        $this->load->model('Promotions/M_dcs_pro_image', 'mdpi');
         
-        $data['arr_image_pro'] = $this->mdpi->get_all()->result();
-        $data['arr_pro'] = $this->mdp->get_all()->result();
-        $data['arr_image_com'] = $this->mdci->get_all()->result();
-        $data['arr_com'] = $this->mdc->get_all()->result();
-        $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
-        $data['arr_image_eve'] = $this->mdei->get_all()->result();
-        $data['arr_eve'] = $this->mde->get_all()->result();
+     
+        $data['arr_pro'] = $this->mdp->get_promotions_landing_page()->result();
+       
+        $data['arr_com'] = $this->mdc->get_company_landing_page()->result();
+
+        $data['arr_eve'] = $this->mde->get_event_landing_page()->result();
 
         $this->output_tourist('landing_page/v_landing_page', $data, 'template/Tourist/topbar_tourist', 'footer');
     }
@@ -180,7 +179,7 @@ class DCS_controller extends CI_Controller
         $mail->Host     = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'weradet2543@gmail.com';
-        $mail->Password = 'sykildxigujdlfnz';
+        $mail->Password = 'sozftcaimvjxykek';
         $mail->SMTPSecure = 'tls';
         $mail->Port     = 587;
         $mail->charSet = "UTF-8";
