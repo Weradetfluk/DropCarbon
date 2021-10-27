@@ -113,7 +113,7 @@
                                                             </td>
                                                         <?php } ?>
                                                         <?php if ($arr_event[$i]->eve_status == 3) { ?>
-                                                            <td style="color: #fba004;">ปฏิเสธ</td>
+                                                            <td style="color: red;">ปฏิเสธ</td>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
                                                                     <span class="material-icons">search</span>
@@ -369,7 +369,7 @@
                                                             </td>
                                                             <td class="res-hide" style="text-align: left;"><?php echo $arr_event[$i]->com_name; ?>
                                                             </td>
-                                                            <td style="color: #fba004;">ปฏิเสธ</td>
+                                                            <td style="color: red;">ปฏิเสธ</td>
                                                             <td>
                                                                 <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>">
                                                                     <span class="material-icons">search</span>
