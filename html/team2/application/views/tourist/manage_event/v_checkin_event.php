@@ -68,6 +68,12 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn btn-primary">ตกลง</button>
+                </div>
+            </div>
+
 
 
         </div>
@@ -159,7 +165,7 @@
     */ 
 
     function cal_distance(user_lat, user_lon, eve_lat, eve_lon) {
-        var R = 6371; // km
+        var R = 6371; // km //รัศมีโลก หน่วย km
         var duser_lat = to_rad(eve_lat - user_lat);
         var duser_lon = to_rad(eve_lon - user_lon);
         var user_lat = to_rad(user_lat);

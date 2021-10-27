@@ -56,7 +56,7 @@ class M_dcs_company extends Da_dcs_company
 
         $sql = "SELECT dcs_company.com_id, dcs_company.com_name,dcs_company.com_description,dcs_com_image.com_img_path 
         from dcs_company 
-        RIGHT JOIN dcs_com_image
+        LEFT JOIN dcs_com_image
         ON  dcs_company.com_id = dcs_com_image.com_img_com_id
         WHERE com_status = '" . $number_status . "'
         $and

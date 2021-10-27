@@ -191,12 +191,12 @@ class Login_admin extends DCS_controller
 
 
     if($result){
-      echo 1;
+      echo 1; //ture
 
       $this->send_mail_reset($email);
 
     }else{
-      echo 2;
+      echo 2; //false
     }
     
   }

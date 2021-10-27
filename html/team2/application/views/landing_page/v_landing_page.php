@@ -11,7 +11,7 @@
                 <div class="col-md-4">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
                         <div class="card">
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" style="height: 300px; weight: 450;" class="card-img-top">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" style="height: 300px; weight: 450; object-fit: cover;" class="card-img-top">
                             <div class="card-body">
                                 <h2> <?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 20, "UTF-8") . "..."; ?></h2>
                                 <p class="card-tex text-dark">
@@ -38,28 +38,28 @@
         </div>
         <div class="row">
             <div class="col-xl-7 col-lg-6">
-                <div class="card"  style="height: 50rem;"  data-aos="fade-right">
+                <div class="card" style="height: 50rem;" data-aos="fade-right">
                     <img src="<?php echo base_url() . 'image_company/' . $arr_com[0]->com_img_path; ?>" style="height: 550px; weight: 810;" class="card-img-top">
                     <div class="card-body">
 
                         <h2><?php echo $arr_com[0]->com_name ?></h2>
-                        <p class="card-text"> <?php echo iconv_substr( $arr_com[0]->com_description, 0, 300, "UTF-8") . "..."; ?></p>
+                        <p class="card-text"> <?php echo iconv_substr($arr_com[0]->com_description, 0, 300, "UTF-8") . "..."; ?></p>
 
                     </div>
                 </div>
             </div>
             <div class="col-xl-5 col-mg-4 mg-4">
                 <div class="row">
-                    <?php for ($i = 0; $i < count($arr_com)-1; $i++) {  ?>
+                    <?php for ($i = 0; $i < count($arr_com) - 1; $i++) {  ?>
                         <div class="col-lg-6">
-                    <div class="card" style="height: 23rem;" id="card"  data-aos="fade-down">            
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_com[$i+1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
-                            <div class="card-body">                 
-                                    <h3><?php  echo iconv_substr($arr_com[$i+1]->com_name, 0, 20, "UTF-8") . "...";?></h3>
-                                    <p class="card-text">   <?php echo iconv_substr( $arr_com[$i+1]->com_description, 0, 35, "UTF-8") . "..."; ?></p> 
+                            <div class="card" style="height: 23rem;" id="card" data-aos="fade-down">
+                                <img src="<?php echo base_url() . 'image_company/' . $arr_com[$i + 1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
+                                <div class="card-body">
+                                    <h3><?php echo iconv_substr($arr_com[$i + 1]->com_name, 0, 20, "UTF-8") . "..."; ?></h3>
+                                    <p class="card-text"> <?php echo iconv_substr($arr_com[$i + 1]->com_description, 0, 35, "UTF-8") . "..."; ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -118,7 +118,17 @@
             โปรโมชัน
         </div>
         <div class="row">
-      
+            <?php for ($i = 0; $i < count($arr_pro); $i++) {  ?>
+                <div class="col-md-3">
+                <div class="card" data-aos="fade-right" style="height: 23rem;">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>"" style="height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
+                        <div class="card-body">
+                            <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
+                            <p class="card-text"> <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
         <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
     </div>
