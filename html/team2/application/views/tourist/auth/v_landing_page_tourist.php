@@ -53,9 +53,8 @@
                 </div>
             </div>
         </div>
-        <p class="align-center"><a
-                href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม <span
-                    class="material-icons">arrow_right_alt</span></a></p>
+        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม
+        </a></p>
     </div>
 </section>
 
@@ -141,45 +140,44 @@
 </section>
 <section class="bg-white">
     <div class="container">
-        <div class="header-break">
+        <div class="header-break" data-aos="fade-down">
             จุดเด่น
         </div>
-        <div class="row" style="margin:1.5% 0">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <div class="row" style="margin:1.5% 0" data-aos="fade-up">
+            การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
+            ซึ่งจะทำให้นักท่องเที่ยวได้รับประสบการณ์เกี่ยวกับการช่วยลดคาร์บอน
+            Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง
+            ๆ ในพื้นที่จังหวัดชลบุรี
+            ซึ่งจะช่วยสร้างรายได้ให้ชุมชน และลดโลกร้อนไปด้วยกัน
         </div>
-        <div class="row" style="margin:1.5% 0">
+        <div class="row-max-100">
             <div class="row row-50 justify-content-center">
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">12</span>
                         </div>
-                        <div class="counter-classic-title">Members</div>
+                        <div class="counter-classic-title">สมาชิก</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">194</span>
                         </div>
-                        <div class="counter-classic-title">Partners</div>
+                        <div class="counter-classic-title">ผู้ประกอบการ</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
-                        <div class="counter-classic-number"><span class="counter">2</span><span class="symbol">k</span>
+                    <div class="counter-classic" data-aos="fade-up">
+                        <div class="counter-classic-number"><span class="counter">20</span>
                         </div>
-                        <div class="counter-classic-title">Travelers</div>
+                        <div class="counter-classic-title">กิจกรรม</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic">
+                    <div class="counter-classic" data-aos="fade-up">
                         <div class="counter-classic-number"><span class="counter">25</span>
                         </div>
-                        <div class="counter-classic-title">Team members</div>
+                        <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
                     </div>
                 </div>
             </div>
@@ -188,72 +186,13 @@
 </section>
 <section class="bg-gray">
     <div class="container">
-        <div class="header-break">
+        <div class="header-break" data-aos="fade-down">
             โปรโมชัน
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity1.jpg"
-                            class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>เก็บขยะริมหาด</h3>
-                        </a>
-                        <p class="card-text">จากปัญหาสิ่งแวดล้อมชายฝั่งทะเลในปัจจุบัน
-                            ได้เกิดปัญหาขยะซึ่งเป็นมลพิษทางทะเลส่งผล...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity2.jpg"
-                            class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>ปลูกป่าชายเลน</h3>
-                        </a>
-                        <p class="card-text">จากการทำงานร่วมกันกับกลุ่มอนุรักษ์ต่างๆในประเทศไทย โดยเฉพาะกลุ่มอนุรักษ์ใน
-                            จ.ชลบุรี...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card">
-                    <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg"
-                            class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>วิ่งชมธรรมชาติ</h3>
-                        </a>
-                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ
-                            สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 ">
-                <div class="card">
-                    <a href="#">
-                        <img src="<?php echo base_url() . 'assets/templete/picture' ?>/./activity3.jpg"
-                            class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <a href="#">
-                            <h3>วิ่งชมธรรมชาติ</h3>
-                        </a>
-                        <p class="card-text">ขอเชิญนักวิ่งมาสัมผัสกับธรรมชาติ
-                            สูดอากาศโอโซนให้เต็มปอดและทิวทัศน์อันสวยงามของ...</p>
-                    </div>
-                </div>
-            </div>
+
         </div>
-        <a class="float-right"
+        <a data-aos="fade-left" class="float-right"
             href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
     </div>
 </section>

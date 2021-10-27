@@ -222,7 +222,7 @@ function readMore() {
         <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1"
             nonce="YLQSWYS9"></script>
-        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button_count"
+        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button"
             data-size="small"><a target="_blank"
                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
                 class="fb-xfbml-parse-ignore">แชร์</a></div>
