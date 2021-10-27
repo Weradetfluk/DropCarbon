@@ -205,7 +205,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
     * check_email_entrepreneur_ajax
     * output check username
-    * @input tourist username
+    * @input entrepreneur username
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-10-25
@@ -219,6 +219,52 @@ class Register_entrepreneur extends DCS_controller {
         if ($result) {
             echo 1;
         } else{
+            echo 2;
+        }
+    }
+
+    /*
+    * check_phone_number_entrepreneur_ajax
+    * output check phone number
+    * @input entrepreneur phone number
+    * @output -
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-09-20
+    * @Update Date 2564-09-20
+    */
+    public function check_phone_number_entrepreneur_ajax()
+    {
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+        $this->ment->ent_tel = $this->input->post('ent_tel');
+
+        $result = $this->ment->check_phone_number()->row(); //function in model
+
+        if ($result) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
+
+    /*
+    * check_id_card_entrepreneur_ajax
+    * output check id_card
+    * @input entrepreneur id_card
+    * @output -
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-09-20
+    * @Update Date 2564-09-20
+    */
+    public function check_id_card_entrepreneur_ajax()
+    {
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
+        $this->ment->ent_id_card = $this->input->post('ent_id_card');
+
+        $result = $this->ment->check_id_card()->row(); //function in model
+
+        if ($result) {
+            echo 1;
+        } else {
             echo 2;
         }
     }

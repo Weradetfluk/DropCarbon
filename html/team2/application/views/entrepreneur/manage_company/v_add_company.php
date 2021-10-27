@@ -133,20 +133,20 @@
     });
 
     // openstreet map
-    var map, vectorLayer, selectedFeature;
+    var map, vector_layer, selected_feature;
     var zoom = 16;
     var curpos = new Array();
     var markers = new OpenLayers.Layer.Markers("Markers");
     var position;
-    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
     var count_image = 0;
     var check_btn_name = 0;
 
     OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
         initialize: function(name, options) {
-            var newArguments = [name, options];
-            OpenLayers.Layer.OSM.prototype.initialize.apply(this, newArguments);
+            var new_arguments = [name, options];
+            OpenLayers.Layer.OSM.prototype.initialize.apply(this, new_arguments);
         },
     });
 
@@ -160,13 +160,13 @@
      * @Update 2564-08-10
      */
     function init(lat, lon) {
-        var cntrposition = new OpenLayers.LonLat(lat, lon).transform(fromProjection, toProjection);
+        var cntr_position = new OpenLayers.LonLat(lat, lon).transform(from_projection, to_projection);
         console.log(lat, lon);
 
         map = new OpenLayers.Map("map");
         var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
         map.addLayer(cycleLayer);
-        map.setCenter(cntrposition, zoom);
+        map.setCenter(cntr_position, zoom);
         var click = new OpenLayers.Control.Click();
         map.addControl(click);
         click.activate();
@@ -192,7 +192,7 @@
 
         trigger: function(e) {
             var lonlat = map.getLonLatFromPixel(e.xy);
-            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(to_projection, from_projection);
 
             markers.clearMarkers();
             $('#com_lat').val(lonlat1.lat);
