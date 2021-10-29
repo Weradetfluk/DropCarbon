@@ -61,44 +61,44 @@ if (!isset($_SESSION['tab_number'])) {
     <div class="sidebar-wrapper" style="margin-top: 70px;">
       <ul class="nav" id="active_menu">
       <li class="nav-item <?php if ($_SESSION['tab_number'] == 1) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
+          <a class="nav-link <?php if ($_SESSION['tab_number'] == 1) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">dashboard</i>
             <h5 class="h5-topbar">dashboard</h5>
           </a>
         </li>
-        <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
+        <li class="nav-item <?php if ($_SESSION['tab_number'] == 2) echo "active custom-a"; ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 2) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_banner/Admin_manage_banner' ?>">
             <i class="material-icons">view_list</i>
             <h5 class="h5-topbar">จัดการแบนเนอร์</h5>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active"; ?>" id="home">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 3) echo "active custom-a"; ?>" id="home">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 3) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company' ?>">
             <i class="material-icons">store</i>
             <h5 class="h5-topbar">จัดการสถานที่</h5>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active custom-a"; ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 4) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
             <i class="material-icons">calendar_today</i>
             <h5 class="h5-topbar">จัดการกิจกรรม</h5>
           </a>
         </li>
-        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active"; ?>" id="ent_menu">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur' ?>">
+        <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active custom-a"; ?>" id="ent_menu">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 5) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur' ?>">
             <i class="material-icons">assignment_ind</i>
             <h5 class="h5-topbar">จัดการผู้ประกอบการ</h5>
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active"; ?>" id="tus_menu">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 6) echo "active custom-a"; ?>" id="tus_menu">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 6) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> ">
             <i class="material-icons">perm_identity</i>
             <h5 class="h5-topbar">จัดการนักท่องเที่ยว</h5>
           </a>
         </li>
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active"; ?>">
-          <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> ">
+        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active custom-a"; ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 7) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> ">
             <i class="material-icons">point_of_sale</i>
             <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
           </a>

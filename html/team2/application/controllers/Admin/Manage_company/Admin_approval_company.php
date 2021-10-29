@@ -429,7 +429,7 @@ class Admin_approval_company extends DCS_controller
                           </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-            '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
             <span class="material-icons">search</span>
           </a>';
           } else if ($number_status == 3) {
