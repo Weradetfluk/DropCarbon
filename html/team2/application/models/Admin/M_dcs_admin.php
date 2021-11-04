@@ -17,7 +17,7 @@ class M_dcs_admin extends Da_dcs_admin
     /*
     * login
     * check username and password
-    * @input 
+    * @input adm_username, adm_password
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-12

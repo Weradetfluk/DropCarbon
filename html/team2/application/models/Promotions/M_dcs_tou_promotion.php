@@ -18,6 +18,15 @@ class M_dcs_tou_promotion extends Da_dcs_tou_promotion
         parent::__construct();
     }
 
+    /*
+    * get_promotion_by_tou_id
+    * get promotions by tus_id
+    * @input $tou_id
+    * @output promotions tourist
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-05
+    * @Update Date -
+   */
     function get_promotion_by_tou_id($tou_id)
     {
         $sql = "SELECT * FROM dcs_tou_promotion AS tou_pro

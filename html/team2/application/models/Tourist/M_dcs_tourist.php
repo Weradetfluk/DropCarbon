@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_tourist.php';
-
 /*
 * M_dcs_tourist
 * get data tourist
 * @author Thanisron thumsawanit 62160088
 * @Create Date 2564-08-02
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_tourist.php';
 class M_dcs_tourist extends Da_dcs_tourist
 {
     public function __construct()
@@ -33,8 +32,8 @@ class M_dcs_tourist extends Da_dcs_tourist
     /*
     * get_all_list_tourist
     * get all data tourist
-    * @input -
-    * @output -
+    * @input limit, start
+    * @output list tourist
     * @author Thanisron thumsawanit 62160088
     * @Create Date 2564-08-02
     */

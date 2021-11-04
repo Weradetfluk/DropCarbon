@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once dirname(__FILE__) . "/../DCS_model.php";
 /*
 * Da_dcs_eve_reject
 * Manage reject event
 * @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-09-25
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . "/../DCS_model.php";
 class Da_dcs_eve_reject extends DCS_model
 {
 

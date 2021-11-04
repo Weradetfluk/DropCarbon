@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_pro_category.php";
-
 /*
 * M_dcs_pro_category
 * get data category promotion
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-10-02
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_pro_category.php";
 class M_dcs_pro_category extends Da_dcs_pro_category
 {
 

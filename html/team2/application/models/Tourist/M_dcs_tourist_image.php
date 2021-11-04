@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_tourist_image.php';
-
 /*
 * M_dcs_tourist_image
 * get data image tourist
 * @author Thanisorn thumsawanit 62160088
 * @Create Date 2564-08-10
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_tourist_image.php';
 class M_dcs_tourist_image extends Da_dcs_tourist_image{
 
     /*
