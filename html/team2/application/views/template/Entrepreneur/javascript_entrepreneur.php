@@ -14,3 +14,4 @@
  <script src="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.js' ?>"></script>
 
  <script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
+ <script src="<?php echo base_url() . 'assets/plugin/summernote/summernote.js' ?>"></script>
