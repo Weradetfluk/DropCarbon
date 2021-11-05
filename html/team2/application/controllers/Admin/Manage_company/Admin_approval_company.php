@@ -1,19 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 /*
 * Admin_approval_company
 * Manage Approve reject company
 * @author Kasama Donwong 62160074
 * @Create Date 2564-08-08
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_approval_company extends DCS_controller
 {
   /*
-    * @author Kasama Donwong 62160074
-    */
-
+  * @author Kasama Donwong 62160074
+  */
   public function __construct()
   {
     parent::__construct();
@@ -22,78 +20,72 @@ class Admin_approval_company extends DCS_controller
     $this->load->model('Company/M_dcs_company', 'mdcc');
   }
 
-
   /*
-    * index
-    * call function in Dcs_controller
-    * @input 
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-08-08
-    * @Update Date -
-    */
-
+  * index
+  * call function in Dcs_controller
+  * @input data
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-08-08
+  * @Update Date -
+  */
   public function index($data = NULL)
   {
     redirect('Admin/Manage_company/Admin_approval_company/show_data_consider');
   }
 
-
   /*
-    * show_data_consider
-    * get all data company consider and show table
-    * @input 
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-08-08
-    * @Update Date -
-    */
-
+  * show_data_consider
+  * get all data company consider and show table
+  * @input -
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-08-08
+  * @Update Date -
+  */
   public function show_data_consider()
   {
     $_SESSION['tab_number'] = 3; //set tab number in topbar_admin.php
     $this->output_admin('admin/manage_company/v_list_company_consider', null, 'admin/manage_company/v_data_card_company');
   }
 
-
   /*
-    * show_data_approve
-    * get all data company approve  and show table by ajax
-    * @input -
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-07-17
-    * @Update Date -
-    */
+  * show_data_approve
+  * get all data company approve  and show table by ajax
+  * @input -
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-07-17
+  * @Update Date -
+  */
   public function show_data_approve()
   {
     $this->output_admin('admin/manage_company/v_list_company_approve', null, 'admin/manage_company/v_data_card_company');
   }
 
   /*
-    * show_data_reject
-    * get all data company reject  and show table by ajax
-    * @input 
-    * @output -
-    * @author Nantasiri Saiwaew 62160093
-    * @Create Date 2564-08-10
-    * @Update Date -
-    */
+  * show_data_reject
+  * get all data company reject  and show table by ajax
+  * @input -
+  * @output -
+  * @author Nantasiri Saiwaew 62160093
+  * @Create Date 2564-08-10
+  * @Update Date -
+  */
   public function show_data_reject()
   {
     $this->output_admin('admin/manage_company/v_list_company_reject', null, 'admin/manage_company/v_data_card_company');
   }
 
-
   /*
-    * get_company_by_id_ajax
-    * get all data company by id 
-    * @input 
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-08-08
-    * @Update Date
-    */
+  * get_company_by_id_ajax
+  * get all data company by id 
+  * @input -
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-08-08
+  * @Update Date
+  */
   public function get_company_by_id_ajax()
   {
     $this->load->model('Document/M_dcs_document', 'mdoc');
@@ -105,32 +97,32 @@ class Admin_approval_company extends DCS_controller
   }
 
   /*
-        * get_com_reject_by_id_ajax
-        * get all data reject company by id
-        * @input
-        * @output -
-        * @author Nantasiri Saiwaew 62160110
-        * @Create Date 2564-09-21
-        * @Update Date
-        */
-    public function get_com_reject_by_id_ajax()
-    {
-        $this->load->model('Company/M_dcs_com_reject', 'mdrc');
-        $com_id = $this->input->post('com_id');
-        $data['arr_data'] = $this->mdrc->get_data_rejected_by_id_com($com_id)->result();
+  * get_com_reject_by_id_ajax
+  * get all data reject company by id
+  * @input com_id
+  * @output -
+  * @author Nantasiri Saiwaew 62160110
+  * @Create Date 2564-09-21
+  * @Update Date
+  */
+  public function get_com_reject_by_id_ajax()
+  {
+      $this->load->model('Company/M_dcs_com_reject', 'mdrc');
+      $com_id = $this->input->post('com_id');
+      $data['arr_data'] = $this->mdrc->get_data_rejected_by_id_com($com_id)->result();
 
-        echo json_encode($data['arr_data']);
-    }
+      echo json_encode($data['arr_data']);
+  }
 
   /*
-    * config_pagination
-    * config_pagination codeigniter "1 2 3 4..." page
-    * @input 
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-08-08
-    * @Update Date 2564-0918
-    */
+  * config_pagination
+  * config_pagination codeigniter "1 2 3 4..." page
+  * @input page, all_count, limit
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-08-08
+  * @Update Date 2564-09-18
+  */
   public function config_pagination($page, $all_count, $limit)
   {
     $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
@@ -184,14 +176,14 @@ class Admin_approval_company extends DCS_controller
   }
 
   /*
-    * approval_company
-    * change com_status 
-    * @input 
-    * @output -
-    * @author Kasama Donwong 62160074
-    * @Create Date 2564-08-08
-    * @Update Date -
-    */
+  * approval_company
+  * change com_status 
+  * @input 
+  * @output -
+  * @author Kasama Donwong 62160074
+  * @Create Date 2564-08-08
+  * @Update Date -
+  */
   public function approval_company()
   {
     $this->mdcc->com_id = $this->input->post('com_id');
@@ -200,14 +192,14 @@ class Admin_approval_company extends DCS_controller
   }
 
   /*
-    * reject_company
-    * change com_status and send email to entrepreneur 
-    * @input 
-    * @output -
-    * @author Nantasiri Saiwaew 62160093
-    * @Create Date 2564-08-10
-    * @Update Date -
-    */
+  * reject_company
+  * change com_status and send email to entrepreneur 
+  * @input com_id, admin_reason, email, Admin_id
+  * @output -
+  * @author Nantasiri Saiwaew 62160093
+  * @Create Date 2564-08-10
+  * @Update Date -
+  */
   public function reject_company()
   {
 
@@ -222,7 +214,7 @@ class Admin_approval_company extends DCS_controller
     $mail_subject = 'Admin has rejected your company';
     $mail_content_header = "คุณถูกปฎิเสธการเพิ่มสถานที่";
     $cor_com_id = $this->input->post('com_id');
-    $admin_id =  $this->session->userdata("Admin_id");
+    $admin_id =  $this->session->userdata("admin_id");
 
 
 

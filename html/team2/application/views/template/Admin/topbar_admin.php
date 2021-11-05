@@ -2,7 +2,7 @@
 
 // check session
 
-if (!$this->session->has_userdata("Admin_name")) {
+if (!$this->session->has_userdata("admin_name")) {
   $path = site_url() . "Admin/Auth/Login_admin";
   header("Location: " . $path);
   exit();
@@ -40,7 +40,7 @@ if (!isset($_SESSION['tab_number'])) {
           <li class="nav-item dropdown">
             <a class="nav-link" href="javascript:;" id="navbar_dropdown_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">person</i>
-              <?php echo $this->session->userdata("Admin_name"); ?>
+              <?php echo $this->session->userdata("admin_name"); ?>
               <p class="d-lg-none d-md-block">
                 Account
               </p>

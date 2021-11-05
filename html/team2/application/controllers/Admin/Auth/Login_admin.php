@@ -97,7 +97,7 @@ class Login_admin extends DCS_controller
    /*
     * logout
     * Logout and remove session
-    * @input 
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -120,12 +120,11 @@ class Login_admin extends DCS_controller
     * @Create Date 2564-07-17
     * @Update -
     */
-
   public function set_session($username, $name, $id)
   {
     $this->session->set_userdata("username", "$username");
-    $this->session->set_userdata("Admin_name", "$name");
-    $this->session->set_userdata("Admin_id", "$id");
+    $this->session->set_userdata("admin_name", "$name");
+    $this->session->set_userdata("admin_id", "$id");
 
   }
 
@@ -143,7 +142,8 @@ class Login_admin extends DCS_controller
   public function remove_session()
   {
     $this->session->unset_userdata("username");
-    $this->session->unset_userdata("Admin_name");
+    $this->session->unset_userdata("admin_name");
+    $this->session->unset_userdata("admin_id");
   }
 
 

@@ -213,7 +213,7 @@ class Admin_approval_promotions extends DCS_controller
     $mail_subject = 'Admin has rejected your promotion';
     $prr_pro_id = $this->input->post('pro_id');
     $mail_content_header = "คุณถูกปฎิเสธการเพิ่มโปรโมชัน";
-    $admin_id =  $this->session->userdata("Admin_id");
+    $admin_id =  $this->session->userdata("admin_id");
     //load model for save rejected data
     $this->load->model('Promotions/M_dcs_pro_reject', 'mdpre');
     //save data reject to data base

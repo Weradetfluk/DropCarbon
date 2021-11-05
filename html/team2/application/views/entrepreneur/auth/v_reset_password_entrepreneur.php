@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_reset_password_entrepreneur
+* Display form reset password entrepreneur
+* @input token
+* @output form reset password entrepreneur
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-17
+*/ 
+-->
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
@@ -70,9 +80,9 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 
 <script>
 $(document).ready(function() {
-    confirmpassword();
+    confirm_password();
     $("#ent_password_confirm").on('keyup', function() {
-        confirmpassword();
+        confirm_password();
     }); // Event Keyup
 
     $("#reset_pass").on('click', function() {
@@ -88,15 +98,15 @@ $(document).ready(function() {
 
 
 /*
- * confirmpassword
- * confirmpassword in value
- * @input 
+ * confirm_password
+ * confirm_password in value
+ * @input ent_password_confirm, ent_password
  * @output -
  * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-09-23
  * @Update -
  */
-function confirmpassword() {
+function confirm_password() {
     if ($('#ent_password').val() != $('#ent_password_confirm').val()) {
         $('#err_text').text('รหัสผ่านไม่ตรงกัน');
         $('#reset_pass').prop('disabled', true);
@@ -114,7 +124,7 @@ function confirmpassword() {
 /*
  * reset_password
  * reset password in database
- * @input 
+ * @input password, token
  * @output -
  * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-09-23
@@ -134,8 +144,6 @@ function reset_password(password, token) {
         error: function() {
             alert('เปลี่ยนรหัสผ่านไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
         }
-
-
     });
 }
 </script>

@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_detail_event
+* Display detail event
+* @input - 
+* @output detail event
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-14
+*/ 
+-->
 <style>
     .i {
         position: relative;
@@ -269,14 +279,14 @@
     var long = '<?= $event->eve_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
     var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-    var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+    var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var position = new OpenLayers.LonLat(long, lat).transform(from_projection, to_projection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
     map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-    var mapnik = new OpenLayers.Layer.OSM();
-    map.addLayer(mapnik);
+    var map_nik = new OpenLayers.Layer.OSM();
+    map.addLayer(map_nik);
 
     var markers = new OpenLayers.Layer.Markers("Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 

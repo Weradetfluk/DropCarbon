@@ -1,12 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Tourist_manage
 * Tourist edit controller system
 * @author Naaka punparich 62160082
 * @Create Date 2564-07-24
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
 class Tourist_manage extends DCS_controller
 {
    /*
@@ -22,23 +23,26 @@ class Tourist_manage extends DCS_controller
    public function show_information_tourist()
    {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-      $this->mtou->tus_id = $this->session->userdata("tourist_id");
-      $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-      $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
-      $tus_img_tus_id = $this->mpic->tus_img_tus_id;
-      $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-
       $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
-      $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
-
       $this->load->model('Promotions/M_dcs_reward_tourist', 'mrto');
-      $this->mrto->tus_id = $this->session->userdata("tourist_id");
-      $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
-
       $this->load->model('Event/M_dcs_event', 'mde');
       $this->load->model('Event/M_dcs_eve_category', 'mcat');
       $this->load->model('Checkin/M_dcs_checkin', 'mche');
+      $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
+
+      $this->mtou->tus_id = $this->session->userdata("tourist_id");
+      $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
+      $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+      
+      $tus_img_tus_id = $this->mpic->tus_img_tus_id;
+      $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
+
+      
+      $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
+      $this->mrto->tus_id = $this->session->userdata("tourist_id");
+      $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
+
+
       $number_status = 2;
       $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
       $data['eve_cat'] = $this->mcat->get_all()->result();

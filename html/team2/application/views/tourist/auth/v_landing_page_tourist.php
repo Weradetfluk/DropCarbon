@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_landing_page_tourist
+* Display landing page tourist
+* @input -
+* @output landing page tourist
+* @author Jutamas Thaptong 62160079
+* @Create Date 2564-08-02
+*/ 
+-->
 <!-- carousel slide banner-->
 <div id="carousel_landing" class="carousel slide" data-ride="carousel"></div>
 

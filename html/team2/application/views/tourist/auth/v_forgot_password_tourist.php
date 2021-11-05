@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_forgot_password_tourist
+* Display form email for check email
+* @input -
+* @output form email for check in database
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-08-08
+*/ 
+-->
 <?php
 //check world warnning == username หรือ password incorrect
 $warning = $warning ?? '';

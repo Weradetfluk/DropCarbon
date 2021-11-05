@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_reward_tourist
+* Display reward tourist
+* @input arr_tus
+* @output reward tourist
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2564-10-09
+*/ 
+-->
 <style>
     .absolute {
         position: absolute;
@@ -40,7 +50,7 @@
         </div>
         <div class="col">
             <div style="margin-left: 50px; margin-right: 50px; margin-top: 30px; padding: 45px; border: 2px solid; border-radius: 25px;">
-                <span style="text-align: center; vertical-align: sub; display: block;   margin-left: auto;   margin-right: auto; width: 50%; font-size: 60px;" class="material-icons">emoji_events</span>
+                <span style="text-align: center; vertical-align: sub; display: block; margin-left: auto; margin-right: auto; width: 50%; font-size: 60px;" class="material-icons">emoji_events</span>
                 <h3 style="text-align: center;"><span style="vertical-align: sub; font-size: 40px;" class="material-icons">lock</span> ปลดล็อคระดับ gold</h3><br>
                 <div style="text-align: center;">
                     <h3 style="display:inline; color: #239d58;"><?php echo $arr_tus[0]->tus_score; ?>/1000 point</h3>
@@ -116,8 +126,4 @@
     </div>
 </div>
 </div>
-<!--/row-->
 </div>
-<script>
-
-</script>

@@ -9,10 +9,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_approval_entrepreneur extends DCS_controller
 {
-        /*
-        * @author Weradet Nopsombun 62160110
-        */
-
+    /*
+    * @author Weradet Nopsombun 62160110
+    */
     public function __construct()
     {
         parent::__construct();
@@ -207,7 +206,7 @@ class Admin_approval_entrepreneur extends DCS_controller
         $user_email = $this->input->post('email');
         $mail_subject = 'Admin has been rejected';
         $mail_content_header = "คุณถูกปฎิเสธการลงทะเบียนของผู้ประกอบการ";
-        $admin_id =  $this->session->userdata("Admin_id");
+        $admin_id =  $this->session->userdata("admin_id");
         //load model for save rejected data
         $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
         //save data reject to data base

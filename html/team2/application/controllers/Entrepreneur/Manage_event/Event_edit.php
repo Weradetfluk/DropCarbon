@@ -7,7 +7,6 @@
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 class Event_edit extends DCS_controller
 {
     /*

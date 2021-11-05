@@ -1,4 +1,14 @@
-<!-- carousel slide banner-->
+<!-- 
+/*
+* v_landing_page
+* Display landing page
+* @input arr_eve, arr_com, arr_pro 
+* @output landing page
+* @author Naaka punparich 62160082
+* @Create Date 2564-07-17
+*/ 
+-->
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
 
 <section class="bg-white">

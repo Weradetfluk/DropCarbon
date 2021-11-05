@@ -1,12 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Login_tourist
 * login tourist controller system
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Login_tourist extends DCS_controller
 {
     /*
@@ -20,32 +20,27 @@ class Login_tourist extends DCS_controller
 
     /*
     * index
-    * index 
-    * @input 
+    * show login page tourist
+    * @input data
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
-
-
     public function index($data = null)
     {
         $this->output_login_entrepreneur('tourist/auth/v_login_tourist', $data);
     }
 
-
-
     /*
     * warnning 
-    * show warnning 
-    * @input 
+    * show warnning login
+    * @input data
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
     * @Update -
     */
-
     public function warnning($data)
     {
         $this->output_login_entrepreneur('tourist/auth/v_login_tourist', $data);
@@ -62,7 +57,6 @@ class Login_tourist extends DCS_controller
     * @Create Date 2564-08-05
     * @Update -
     */
-
     function input_login_form()
     {
         $username = $this->input->post('username');
@@ -117,7 +111,6 @@ class Login_tourist extends DCS_controller
     * @Create Date 2564-08-05
     * @Update -
     */
-
     public function logout()
     {
         $this->remove_session();
@@ -127,7 +120,7 @@ class Login_tourist extends DCS_controller
     /*
     * set_session
     * set session data
-    * @input 
+    * @input username, name, id, tus_img_path, tus_score
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-08-05
@@ -169,7 +162,7 @@ class Login_tourist extends DCS_controller
     /*
     * forgot_password_page
     * load view forgot pass
-    * @input 
+    * @input data
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-15

@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_detail_promotions
+* Display detail promotions
+* @input - 
+* @output detail promotion
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-14
+*/ 
+-->
 <div class="container py-5" style="margin-top: 5%;">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>

@@ -191,8 +191,8 @@
         $('#com_lat').val(lat);
         $('#com_lon').val(lon);
         map = new OpenLayers.Map("map");
-        var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
-        map.addLayer(cycleLayer);
+        var cycle_layer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
+        map.addLayer(cycle_layer);
         map.setCenter(cntr_position, zoom);
         var click = new OpenLayers.Control.Click();
         map.addControl(click);
