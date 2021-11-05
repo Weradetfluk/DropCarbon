@@ -101,17 +101,29 @@
         .i {
             width: 300px;
         }
+
+        .breadcrumb {
+            padding-top: 20px !important;
+        }
     }
 
     @media all and (min-width: 370px) {
         .i {
             width: 330px;
         }
+
+        .breadcrumb {
+            padding-top: 20px !important;
+        }
     }
 
     @media all and (min-width: 500px) {
         .i {
             width: 468px;
+        }
+
+        .breadcrumb {
+            padding-top: 20px !important;
         }
     }
 
@@ -148,7 +160,14 @@
     @media all and (min-width: 1920px) {
         .i {
             width: 1410px;
+            height: 600px;
         }
+    }
+
+    .li-padding {
+        padding: 15px;
+        font-size: 18px;
+        list-style-type: disc;
     }
 </style>
 
@@ -183,9 +202,9 @@
     <i class="i">
         <?php for ($i = 0; $i < count($image_event); $i++) { ?>
             <?php if ($i == 0) { ?>
-                <input checked type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i+1 ?>">
+                <input checked type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i + 1 ?>">
             <?php } else { ?>
-                <input type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i+1 ?>">
+                <input type="radio" name="s" style="background-image: url('<?php echo base_url() . 'image_event/' . $image_event[$i]->eve_img_path; ?>');" title="รูปที่ <?php echo $i + 1 ?>">
             <?php } ?>
         <?php } ?>
     </i>
@@ -193,7 +212,7 @@
 
     <div class="row py-3">
         <div class="col">
-            <h3><span class="material-icons" style="font-size: 30px;">description</span> รายละเอียด</h3>
+            <h3><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียด</h3>
             <hr color="#cccccc">
             <p style="text-indent: 50px;"><?php echo $event->eve_description ?></p>
 
@@ -203,7 +222,7 @@
 
     <div class="row py-3">
         <div class="col">
-            <h3><span class="material-icons" style="font-size: 30px;">category</span> ประเภท</h3>
+            <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px"> ประเภท</h3>
             <hr width="100%" size="10" color="#cccccc">
             <p style="text-indent: 50px;">ประเภทของกิจกรรม: <?php echo $event->eve_cat_name; ?></p>
         </div>
@@ -212,7 +231,7 @@
 
     <div class="row py-3">
         <div class="col">
-            <h3><span class="material-icons" style="font-size: 30px;">place</span> ตำแหน่งสถานที่</h3>
+            <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px"> ตำแหน่งสถานที่</h3>
             <div class="card" style="padding-left: 2%; transform: unset;">
                 <h2 style="padding-top: 2%; "> <?php echo $event->eve_name ?></h2>
                 <hr>
@@ -220,18 +239,10 @@
                     <div class="col">
                         <h3>ที่อยู่</h3>
                         <hr>
-                        <div class="row py-3" style="padding-left: 2%;">
-                            <span class="material-icons">info</span>
-                            <div class="col">
-                                <p>158/1 หมู่.9 ตำบล.หนองอิรุณ อำเภอ.บ้านบึง จังหวัด.ชลบุรี 20170</pe=>
-                            </div>
-                        </div>
-                        <div class="row py-3" style="padding-left: 2%;">
-                            <span class="material-icons">contact_phone</span>
-                            <div class="col">
-                                <p>0905530622</pe=>
-                            </div>
-                        </div>
+                        <ul>
+                            <li class="li-padding">158/1 หมู่.9 ตำบล.หนองอิรุณ อำเภอ.บ้านบึง จังหวัด.ชลบุรี 20170</li>
+                            <li class="li-padding">0905530622</li>
+                        </ul>
                     </div>
                     <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
                         <div class="table-responsive">
