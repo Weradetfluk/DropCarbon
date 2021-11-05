@@ -337,11 +337,9 @@ class Admin_approval_company extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->com_id . '\')">
-                              <i class="material-icons">
-                                search
-                              </i>
-                           </button>' .
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+                  <span class="material-icons">search</span>
+               </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
                                 <i class="material-icons">
                                   done
@@ -354,11 +352,9 @@ class Admin_approval_company extends DCS_controller
                             </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->com_id . '\')">
-                                <i class="material-icons">
-                                  search
-                                </i>
-                              </button>';
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+                  <span class="material-icons">search</span>
+               </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -429,9 +425,9 @@ class Admin_approval_company extends DCS_controller
                           </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
-            <span class="material-icons">search</span>
-          </a>';
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+                <span class="material-icons">search</span>
+               </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">

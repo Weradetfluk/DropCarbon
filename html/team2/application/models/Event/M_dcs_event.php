@@ -381,6 +381,7 @@ class M_dcs_event extends Da_dcs_event
         $this->db->from('dcs_event');
         $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->join('dcs_eve_category', 'dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id', 'left');
         $this->db->group_start();
         $this->db->like('eve_name', $search);
         $this->db->or_like('eve_description', $search);
