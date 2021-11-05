@@ -157,11 +157,11 @@ class Tourist_manage extends DCS_controller
          $tus_img_path = $this->mpic->tus_img_path;
          $this->session->set_userdata("tus_img_path", $tus_img_path);
          $this->mpic->insert_img();
-         $this->set_session_regis_tourist('success');
+         $this->set_session_regis_tourist('edit_success');
          redirect("Tourist/Auth/Landing_page_tourist");
          // เลือกรูป
       } else if (isset($_FILES["tourist_img"]) && empty($_FILES["tourist_img"]["name"])) {
-         $this->set_session_regis_tourist('success');
+         $this->set_session_regis_tourist('edit_success');
          $this->mtou->update_tourist();
          $this->set_session($this->mtou->tus_firstname . " " . $this->mtou->tus_lastname);
          redirect('Tourist/Auth/Landing_page_tourist');

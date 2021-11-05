@@ -229,6 +229,10 @@ $(document).ready(function() {
         swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
         <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
     }
+    if (error_register_tourist == "edit_success") {
+        swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+    }
 });
 
 function create_banner(arr_banner) {
