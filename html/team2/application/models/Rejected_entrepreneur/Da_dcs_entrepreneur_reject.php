@@ -1,14 +1,12 @@
 <?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) ."/../DCS_model.php";
-
 /*
 * Da_dcs_entrepreneur_reject
 * Manage entrepreneur reject
 * @author Weradet Nopsombun 62160110
 * @Create Date 2564-08-12
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) ."/../DCS_model.php";
 class Da_dcs_entrepreneur_reject extends Dcs_model
 {
     public $enr_id;

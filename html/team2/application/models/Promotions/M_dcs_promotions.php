@@ -56,7 +56,6 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query->result();
     }
 
-    /* event not over */
     /*
     *get_all_data_not_over
     *get data promotions&entrepreneur&company form database
@@ -76,9 +75,10 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->get();
         return $query->result();
     }
+
     /*
-    *get_count_all_no_score
-    *get data count event by form database
+    *get_count_all_not_over
+    *get data count promotion by form database
     *@input num_status
     *@output -
     *@author Kasama Donwong 62160074
@@ -92,6 +92,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+
     /*
     *get_search_not_over
     *get data with search
@@ -119,14 +120,10 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query;
     }
 
-
-
-    /* event over */
-
-    /*get_all_data_not_over
-       *get data event&entrepreneur&company form database
+    /*get_all_data_over
+       *get data event&entrepreneur&promotion form database
        *@input $limit, $start, $number_status
-       *@output entrepreneur data & company data & event data
+       *@output entrepreneur data & promotion data & event data
        *@author Kasama Donwong 62160074
        *@Create Date 2564-09-24
        */
@@ -141,14 +138,15 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->get();
         return $query->result();
     }
+
     /*
-       *get_count_all_no_score
-       *get data count event by form database
-       *@input num_status
-       *@output -
-       *@author Kasama Donwong 62160074
-       *@Create Date 2564-09-24
-       */
+    *get_count_all_over
+    *get data count event by form database
+    *@input num_status
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
     function get_count_all_over($num_status)
     {
         $this->db->select('*');
@@ -157,15 +155,16 @@ class M_dcs_promotions extends Da_dcs_promotions
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+
     /*
-       *get_search_not_over
-       *get data with search
-       *@input number_status, search
-       *@output -
-       *@author Kasama Donwong 62160074
-       *@Create Date 2564-09-26
-       *@Update Date -
-       */
+    *get_search_over
+    *get data with search
+    *@input number_status, search
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-26
+    *@Update Date -
+    */
     function get_search_over($search, $number_status)
     {
 
@@ -185,8 +184,8 @@ class M_dcs_promotions extends Da_dcs_promotions
     }
 
     /*
-    *get_data_card_event
-    *get data card event form database sum row
+    *get_data_card_promo
+    *get data card promotions form database sum row
     *@input -
     *@output -
     *@author Kasama Donwong 62160074
@@ -204,6 +203,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->query($sql);
         return $query;
     }
+
     /*
     *get_search
     *get data with search
@@ -250,7 +250,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     }
 
     /*
-    *get_promotion_and_img
+    *get_promotions_and_img
     *get data form database
     *@input number_status
     *@output -
@@ -279,8 +279,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $query;
     }
 
-
-      /*
+    /*
     * get_promotions_landing_page
     * get data promotions Landing page
     * @input pro_id
@@ -303,7 +302,14 @@ class M_dcs_promotions extends Da_dcs_promotions
     }
 
 
-
+    /*
+    * get_promotion_by_com_id
+    * get data promotions by com_id
+    * @input com_id
+    * @output -
+    * @author Jutamas Thaptong 62160079
+    * @Create Date 2564-09-14
+    */
     public function get_promotion_by_com_id($com_id)
     {
         $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
@@ -339,6 +345,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->query($sql, array($this->pro_id));
         return $query;
     }
+    
     /*
     *get_all
     *get data form database

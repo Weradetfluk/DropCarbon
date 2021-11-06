@@ -5,10 +5,8 @@
 * @author Acharaporn pornpattanasap 62160344
 * @Create Date 2564-09-25
 */
-
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 class Event_detail extends DCS_controller
 {
 

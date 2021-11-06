@@ -53,7 +53,12 @@ class Entrepreneur_edit extends DCS_controller
      $this->ment->ent_email = $this->input->post('ent_email');
      $this->ment->ent_birthdate = $this->input->post('ent_birthdate');
      $this->ment->ent_id = $this->session->userdata('entrepreneur_id');
-     $this->ment->ent_password = $this->input->post('ent_password'); 
+     if($this->input->post('ent_password') != $this->session->userdata('password')){
+         $this->ment->ent_password = md5($this->input->post('ent_password'));
+     }else{
+         $this->ment->ent_password = $this->session->userdata('password');
+     }
+      
      $this->ment->update_entrepreneur();
      $ent_pre_id = $this->ment->ent_pre_id;
      $ent_name = $this->ment->ent_firstname.' '. $this->ment->ent_lastname;

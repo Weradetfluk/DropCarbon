@@ -270,7 +270,7 @@
     }
 
     /*
-     * check_count_image
+     * check_count_image_btn
      * check count image to disable btn submit
      * @input -
      * @output -

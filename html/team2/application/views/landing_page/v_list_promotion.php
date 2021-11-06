@@ -1,4 +1,13 @@
-<!-- Make by : Chutipon Thermsirisuksin 62160081 -->
+<!-- 
+/*
+* v_list_promotion
+* Display list promotion
+* @input pro_cat, promotions 
+* @output list promotion
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-10-02
+*/ 
+-->
 <div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>

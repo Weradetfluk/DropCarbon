@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_company.php";
-
 /*
 * M_dcs_company
 * get data company
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-07-19
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_company.php";
 class M_dcs_company extends Da_dcs_company
 {
     /*
@@ -36,7 +34,7 @@ class M_dcs_company extends Da_dcs_company
     /*
     * get_company_and_img
     * get data company
-    * @input com_ent_id
+    * @input com_ent_id, number_status, post, com_cat_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -72,7 +70,7 @@ class M_dcs_company extends Da_dcs_company
     * get data company Landing page
     * @input com_ent_id
     * @output -
-    * @author Weradet Nopsombun
+    * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-19
     * @Update 2564-09-16
     */
@@ -258,23 +256,5 @@ class M_dcs_company extends Da_dcs_company
         $sql = "SELECT * FROM dcs_company 
                 WHERE  com_status = 2 AND com_ent_id = ?";
         return $this->db->query($sql, array($this->com_ent_id));
-    }
-
-    /*
-    * get_by_ent_id
-    * get data company by entrepreneur id
-    * @input com_ent_id
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-09-16
-    * @Update -
-    */
-    public function get_com_cat()
-    {
-        $sql = "SELECT * FROM dcs_company AS com
-        LEFT JOIN {$this->db_name}.dcs_com_category AS cat 
-        ON com.com_cat_id = cat.com_cat_id";
-
-        return $this->db->query($sql);
     }
 }

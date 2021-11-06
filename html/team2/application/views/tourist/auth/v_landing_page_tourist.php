@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_landing_page_tourist
+* Display landing page tourist
+* @input -
+* @output landing page tourist
+* @author Jutamas Thaptong 62160079
+* @Create Date 2564-08-02
+*/ 
+-->
 <!-- carousel slide banner-->
 <div id="carousel_landing" class="carousel slide" data-ride="carousel"></div>
 
@@ -227,6 +237,10 @@ $(document).ready(function() {
     }
     if (error_register_tourist == "success") {
         swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+    }
+    if (error_register_tourist == "edit_success") {
+        swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
         <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
     }
 });

@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_list_event_tourist
+* Display list event tourist
+* @input checkin
+* @output list event tourist
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-27
+*/ 
+-->
 <!-- Make by : Naaka Punparich 62160082 -->
 <div class="bg-white">
     <section>
@@ -57,11 +67,6 @@
                 <!-- กิจกรรมที่ 1 -->
                 <?php } ?>
             </div>
-
-
-
-
-
         </div>
     </section>
 </div>

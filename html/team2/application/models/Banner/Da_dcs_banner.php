@@ -35,7 +35,7 @@ class Da_dcs_banner extends DCS_model{
 	}
 
 	/*
-    * delete_image_company
+    * delete_banner
     * delete image banner
     * @input ban_path
     * @output -

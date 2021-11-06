@@ -213,7 +213,7 @@ class Admin_approval_promotions extends DCS_controller
     $mail_subject = 'Admin has rejected your promotion';
     $prr_pro_id = $this->input->post('pro_id');
     $mail_content_header = "คุณถูกปฎิเสธการเพิ่มโปรโมชัน";
-    $admin_id =  $this->session->userdata("Admin_id");
+    $admin_id =  $this->session->userdata("admin_id");
     //load model for save rejected data
     $this->load->model('Promotions/M_dcs_pro_reject', 'mdpre');
     //save data reject to data base
@@ -295,11 +295,11 @@ class Admin_approval_promotions extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->pro_id . '\')">
-                          <i class="material-icons">
-                            search
-                          </i>
-                       </button>' .
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                <i class="material-icons">
+                  search
+                </i>
+              </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
                             <i class="material-icons">
                               done
@@ -312,11 +312,11 @@ class Admin_approval_promotions extends DCS_controller
                         </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->pro_id . '\')">
-                      <i class="material-icons">
-                        search
-                      </i>
-                    </button>' ;
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                <i class="material-icons">
+                  search
+                </i>
+              </a>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -372,10 +372,10 @@ class Admin_approval_promotions extends DCS_controller
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
             '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
-            <i class="material-icons">
-              search
-            </i>
-          </a>' .
+              <i class="material-icons">
+                search
+              </i>
+            </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
                           <i class="material-icons">
                             done

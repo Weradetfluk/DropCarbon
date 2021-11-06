@@ -19,9 +19,9 @@ class M_dcs_checkin extends Da_dcs_checkin
     }
 
     /*
-    * get_by_id
+    * get_checkin_by_eve_id
     * get data checkin by id
-    * @input -
+    * @input tus_id, che_id
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-25
@@ -41,6 +41,7 @@ class M_dcs_checkin extends Da_dcs_checkin
     /*
     * get_all
     * get data checkin all
+    * @input -
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-25
@@ -55,8 +56,9 @@ class M_dcs_checkin extends Da_dcs_checkin
     }
 
     /*
-    * get_all
-    * get data checkin all
+    * get_status_by_tus_id
+    * get data status by tus_id
+    * @input che_tus_id, che_eve_id
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-25

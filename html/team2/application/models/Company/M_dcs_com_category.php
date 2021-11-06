@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_com_category.php";
-
 /*
 * M_dcs_com_category
 * get data category company
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-09-13
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_com_category.php";
 class M_dcs_com_category extends Da_dcs_com_category{
 
     /*

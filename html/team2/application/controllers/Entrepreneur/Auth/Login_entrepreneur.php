@@ -50,7 +50,7 @@ class Login_entrepreneur extends DCS_controller
             $ent_username =  $result->ent_username;
             $ent_name = $result->ent_firstname . ' ' . $result->ent_lastname;
             $ent_id = $result->ent_id;
-            $ent_password = $result->ent_password;
+            $ent_password = $password;
             $ent_tel = $result->ent_tel;
             $ent_id_card = $result->ent_id_card;
             $ent_email = $result->ent_email;

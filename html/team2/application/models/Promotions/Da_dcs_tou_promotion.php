@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once dirname(__FILE__) . "/../DCS_model.php";
 /*
 * Da_dcs_tou_promotion
-* 
+* Manage promotion for tourist
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-10-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . "/../DCS_model.php";
 class Da_dcs_tou_promotion extends DCS_model
 {
 

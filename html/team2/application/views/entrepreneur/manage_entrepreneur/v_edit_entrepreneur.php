@@ -9,14 +9,6 @@
 * @Update Date 2564-09-19
 */ 
 -->
-
-<!DOCTYPE html>
-<html>
-
-<body style="background-color:#3CB371;"></body>
-
-</html>
-
 <style crossorigin='anonymous'>
 .s1 {
     background: no-repeat bottom, 50% calc(100% - 1px);
@@ -154,14 +146,14 @@
                                         <div class="col-6">
                                             <label for="ent_password" style="color:black">รหัสผ่าน</label>
                                             <input type="password" class="form-control" name='ent_password'
-                                                value="<?php echo $arr_ent[0]->ent_password; ?>" required>
+                                                value="<?php echo $arr_ent[0]->ent_password?>" required>
                                         </div>
 
                                         <!-- แก้ไขรหัสผ่าน -->
                                         <div class="col-6">
                                             <label for="ent_password" style="color:black">ยืนยันรหัสผ่าน</label>
                                             <input type="password" class="form-control"
-                                                value="<?php echo $arr_ent[0]->ent_password; ?>" required>
+                                                value="<?php echo $arr_ent[0]->ent_password ?>" required>
                                         </div>
 
 

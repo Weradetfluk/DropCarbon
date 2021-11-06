@@ -90,12 +90,12 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="password">รหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
+                        <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="password">ยืนยันรหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
+                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
                         <div id="errorpassword" class="text-danger">
 
                         </div>
@@ -213,16 +213,16 @@
 
     /*
      * 
-     * confirmpassword
-     * alert confirmpassword not match passwords
+     * confirm_password
+     * alert confirm_password not match passwords
      *@input password
      *@parameter -
-     *output  checkconfirmpassword
+     *output  checkconfirm_password
      *@author Thanisorn thumsawanit 62160088
      *@Create Date 2564-07-31
      *@update Date 2564-09-20
      */
-    function confirmpassword() {
+    function confirm_password() {
         if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
             $('#errorpassword').text('');
             //$('#next_btn').prop('disabled', true);
