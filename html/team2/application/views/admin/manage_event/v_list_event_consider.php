@@ -136,8 +136,8 @@
          //show innformation
          $("#help_information").click(function() {
 
-             let arr_min_point = [1,20,30,40];
-             let arr_max_point = [19,29,39,49];
+             let arr_min_point = [1, 20, 30, 40];
+             let arr_max_point = [19, 29, 39, 49];
              if ($('#infor_eve_cat').is(":hidden")) {
                  $.ajax({
                      url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_data_category'); ?>',
@@ -157,17 +157,17 @@
                          json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
                              html_code += '<tr>';
                              html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
-                             html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] +  'kg' + '</p>' + '</td>';
-                             html_code += '<td>' + '<p>' + arr_min_point[index_eve_cat] + '-' +   arr_max_point[index_eve_cat] + '</p>' + '</td>';
+                             html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
+                             html_code += '<td>' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
                              html_code += '</tr>';
-                        });
+                         });
                          $('#infor_eve_cat').html(html_code);
-                    }
+                     }
                  });
-            }
+             }
              $("#infor_eve_cat").slideToggle("slow");
          });
-        });
+     });
 
      function load_data(page, query = '') {
          console.log(query);
@@ -207,15 +207,11 @@
          $('#eve_cat_name').val(eve_cat_name);
          $('#approves').click(function() {
              let point = document.getElementById('eve_point').value;
-             if (check_point(point)) {
-                 // console.log('pass');
-             }
-
-             //  if (check_point_eve_cat(point,eve_cat_id,eve_cat_name)){
-             //     console.log('pass');
-             //  } 
-             else {
-                 console.log(ent_email)
+             console.log(check_point(point, eve_cat_id));
+             if (check_point(point, eve_cat_id) == true) {
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+                 console.log("xxx");
+             } else {
                  let eve_point = $('#eve_point').val();
                  console.log(eve_point)
                  $('#aprove_modal').modal('toggle');
@@ -233,11 +229,19 @@
       * @Update -
       */
 
-     function check_point(point) {
+     function check_point(point, eve_cat_id) {
+         let arr_min_point = [1, 20, 30, 40];
+         let arr_max_point = [19, 29, 39, 49];
+
+         console.log(eve_cat_id);
+         console.log(arr_min_point[eve_cat_id - 1]);
+         console.log(arr_max_point[eve_cat_id - 1]);
          if (point < 1) {
-             $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-             event.preventDefault();
              return true;
+         } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+             return true;
+         } else {
+             return false;
          }
      }
      /*
@@ -390,6 +394,4 @@
              }
          });
      }
-
-
  </script>
