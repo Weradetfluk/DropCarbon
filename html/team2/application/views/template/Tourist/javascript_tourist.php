@@ -15,7 +15,7 @@
  <script type="text/javascript" src="<?php echo base_url() . 'assets/plugin/slick/slick.js' ?>"></script>
  <!-- AOS - Animate on scroll -->
  <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/aos.js" type="text/javascript"></script>
-
+ <script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
  <script>
      AOS.init({
          offset: 120, // offset (in px) from the original trigger point

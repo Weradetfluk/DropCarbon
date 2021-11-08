@@ -8,7 +8,7 @@
 * @Create Date 2564-09-14
 */ 
 -->
-<div class="container py-5" style="margin-top: 5%;">
+<div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
@@ -175,7 +175,6 @@
     </div>
 
 </div>
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 
 <script>
 var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
