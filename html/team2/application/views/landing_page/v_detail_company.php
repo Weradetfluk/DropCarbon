@@ -437,7 +437,6 @@ function read_more() {
 
     </div>
 </div>
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 var lat =
     '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
