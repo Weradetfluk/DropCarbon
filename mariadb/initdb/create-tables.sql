@@ -42,7 +42,7 @@ CREATE TABLE `dcs_admin` (
 
 INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_email`, `adm_username`, `adm_password`, `adm_status`) VALUES
 (1, 'adminfluk', NULL, 'weradet', '958eab45014e55ca1ffc41ff3b2d808d', 1),
-(2, 'adminpip', NULL, 'suwapat', 'adm2_1234', 1);
+(2, 'adminpip', NULL, 'suwapat', 'd0b924637004a0e161cf113bee7cc60c', 1);
 
 -- --------------------------------------------------------
 
