@@ -70,7 +70,7 @@
                                 <h2 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h2>
                             </a>
                             <p class="card-tex text-dark">
-                                <?php echo iconv_substr($arr_eve[0]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                             </p>
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve_cat[$i]->eve_drop_carbon; ?> กรัม</b></p>
                             <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[$i]->eve_start_date; ?> - <?php echo $arr_eve[$i]->eve_end_date; ?></p>
