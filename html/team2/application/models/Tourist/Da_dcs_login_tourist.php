@@ -1,13 +1,12 @@
 <?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . "/../DCS_model.php";
 /*
 * Da_dcs_login_tourist
 * Manage login tourist
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . "/../DCS_model.php";
 class Da_dcs_login_tourist extends Dcs_model
 {
     public $tus_username;
@@ -20,10 +19,11 @@ class Da_dcs_login_tourist extends Dcs_model
     {
         parent::__construct();
     }
+
     /*
     * update_pass_token
     * update password with number ramdom
-    * @input 
+    * @input token, tus_email
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-15

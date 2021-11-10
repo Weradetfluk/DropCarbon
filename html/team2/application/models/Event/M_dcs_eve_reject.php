@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_eve_reject.php';
-
 /*
 * M_dcs_com_reject
 * get data company reject
 * @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-08-02
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_eve_reject.php';
 class M_dcs_eve_reject extends Da_dcs_eve_reject
 {
     /*

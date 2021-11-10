@@ -21,17 +21,25 @@
                  <div class="nav-tabs-navigation">
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
-                            <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?> "><h5 class="h5-card-header">รออนุมัติ</h5></a>
+                             <li class="nav-item">
+                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?> ">
+                                     <h5 class="h5-card-header">รออนุมัติ</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_not_over'; ?>"><h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_not_over'; ?>">
+                                     <h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_over'; ?>"><h5 class="h5-card-header">สิ้นสุดกิจกรรม</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_event_over'; ?>">
+                                     <h5 class="h5-card-header">สิ้นสุดกิจกรรม</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_reject'; ?>"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_reject'; ?>">
+                                     <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
+                                 </a>
                              </li>
                          </ul>
                      </div>
@@ -57,20 +65,24 @@
 
  <!-- warnning aprove Modal  -->
  <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
-     <div class="modal-dialog" role="document">
+     <div class="modal-dialog" role="document" style="max-width: 600px;">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">แจ้งเตือน</h5>
+                 <h5 class="modal-title">คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></h5>
              </div>
              <div class="modal-body">
-                 <p>คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></p>
-                 <p>เพิ่มคะแนนให้กับ<span id="eve_point_name_confirm"></span> ?</h5><br>
+                 <p>เพิ่มคะแนนให้กับ <span id="eve_point_name_confirm"></span> ?</p>
+                 <p style="font-size: 16px;">กิจกรรมนี้อยู่ในประเภท : <span id="eve_cat_name"></span></p>
+                 <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
                  <input type="hidden" id="eve_id_form" name="eve_id">
                  <input type="hidden" id="eve_cat_id" name="eve_cat_id">
-                 <input type="hidden"id="eve_cat_name" name="eve_cat_name">
-                 <input type="hidden"id="eve_id_name_form" name="eve_name"><br>
-                 <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
+                 <input type="hidden" id="eve_cat_name" name="eve_cat_name">
+                 <input type="hidden" id="eve_id_name_form" name="eve_name"><br>
                  <p id="err_message_point" style="color: red;font-size: 16px"></p>
+                 <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p>
+                 <div style="display: none;" id="infor_eve_cat">
+
+                 </div>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="approves">ยืนยัน</button>
@@ -105,29 +117,6 @@
          </div>
      </div>
  </div>
-  <!-- warnning add score  -->
-  <div class="modal" tabindex="-1" role="dialog" id="add_score_eve">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">กรุณาเพิ่มคะแนนให้กับ <span id="eve_name_confirm"></span> ?</h5>
-             </div>
-             <div class="modal-body">
-                 <p>กรุณาระบุคะแนน</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/add_point_event'; ?>" id="add_point_form">
-                     <input type="hidden" id="email" name="ent_email">
-                     <input type="hidden" id="eve_id_form" name="eve_id">
-                     <input type="number" id="eve_point" name="eve_point" >
-                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
-             </div>
-             <div class="modal-footer">
-                 <button type="submit" class="btn btn-success" id="add_score">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div>
  <script>
      $(document).ready(function() {
          load_data(1);
@@ -142,22 +131,58 @@
              var query = $('#search_box').val();
              load_data(page, query);
          });
+
+
+         //show innformation
+         $("#help_information").click(function() {
+
+             let arr_min_point = [1, 20, 30, 40];
+             let arr_max_point = [19, 29, 39, 49];
+             if ($('#infor_eve_cat').is(":hidden")) {
+                 $.ajax({
+                     url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_data_category'); ?>',
+                     method: "POST",
+                     dataType: "JSON",
+                     success: function(json_data) {
+                         html_code = '';
+                         html_code += '<table class="table">';
+                         html_code += '<thead class="text-white" style="text-align: center;">';
+                         html_code += '<tr>';
+                         html_code += '<th><p>ชื่อกิจกรรม</p></th>';
+                         html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+                         html_code += '<th><p>ช่วงคะแนน</p></th>';
+                         html_code += '</tr>';
+                         html_code += ' </thead>';
+                         html_code += ' <tbody class="text-center">';
+                         json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                             html_code += '<tr>';
+                             html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
+                             html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
+                             html_code += '<td>' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
+                             html_code += '</tr>';
+                         });
+                         $('#infor_eve_cat').html(html_code);
+                     }
+                 });
+             }
+             $("#infor_eve_cat").slideToggle("slow");
+         });
      });
 
      function load_data(page, query = '') {
-             console.log(query);
-             $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_ajax/'); ?>' + 1,
-                 method: "POST",
-                 data: {
-                     page: page,
-                     query: query
-                 },
-                 success: function(data) {
-                     $('#data_event_consider').html(data);
-                 }
-             });
-         }
+         console.log(query);
+         $.ajax({
+             url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/show_data_ajax/'); ?>' + 1,
+             method: "POST",
+             data: {
+                 page: page,
+                 query: query
+             },
+             success: function(data) {
+                 $('#data_event_consider').html(data);
+             }
+         });
+     }
      /*
       * confirm_approve
       * open modal id = Aprovemodal 
@@ -167,34 +192,30 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-     function confirm_approve(eve_id, eve_name, ent_email,eve_cat_id,eve_cat_name) {
-        let form = document.querySelector('#aprove_modal');
+     function confirm_approve(eve_id, eve_name, ent_email, eve_cat_id, eve_cat_name) {
+         let form = document.querySelector('#aprove_modal');
+         console.log(eve_cat_name);
          $('#eve_name_confirm').text(eve_name);
          $('#aprove_modal').modal({
              backdrop: 'static',
              keyboard: false
          });
          $('#eve_point_name_confirm').text(eve_name);
+         $('#eve_cat_name').text(eve_cat_name);
          $('#eve_id_form').val(eve_id);
          $('#eve_cat_id').val(eve_cat_id);
          $('#eve_cat_name').val(eve_cat_name);
-         $('#eve_point').val(eve_point);
-         console.log(eve_point)
          $('#approves').click(function() {
              let point = document.getElementById('eve_point').value;
-             if(check_point(point)){
-                // console.log('pass');
-             }
-             
-            //  if (check_point_eve_cat(point,eve_cat_id,eve_cat_name)){
-            //     console.log('pass');
-            //  } 
-             else {
-                console.log(ent_email)
-                let eve_point = $('#eve_point').val();
-                console.log(eve_point)
-                $('#aprove_modal').modal('toggle');
-                approve_event(eve_id, eve_name, ent_email,eve_point) //function 
+             console.log(check_point(point, eve_cat_id));
+             if (check_point(point, eve_cat_id) == true) {
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+                 console.log("xxx");
+             } else {
+                 let eve_point = $('#eve_point').val();
+                 console.log(eve_point)
+                 $('#aprove_modal').modal('toggle');
+                 approve_event(eve_id, eve_name, ent_email, eve_point) //function 
              }
          });
      }
@@ -208,21 +229,21 @@
       * @Update -
       */
 
-     function check_point(point) {
-         if(point <1){
-             $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-            event.preventDefault();
-            return true;
+     function check_point(point, eve_cat_id) {
+         let arr_min_point = [1, 20, 30, 40];
+         let arr_max_point = [19, 29, 39, 49];
+
+         console.log(eve_cat_id);
+         console.log(arr_min_point[eve_cat_id - 1]);
+         console.log(arr_max_point[eve_cat_id - 1]);
+         if (point < 1) {
+             return true;
+         } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+             return true;
+         } else {
+             return false;
          }
      }
-
-    //  function check_point_eve_cat(point,eve_cat_id,eve_cat_name) {
-    //      if(point> 1 && point <=19){
-    //         $('#err_message_point').html('กิจกรรมอยู่ในประเภทการจัดการทางน้ำ');
-    //         event.preventDefault();
-    //         return true;
-    //      }
-    //  }
      /*
       * confirm_approve_view_data_madal
       * open modal id = Aprovemodal 
@@ -243,9 +264,9 @@
              backdrop: 'static',
              keyboard: false
          });
-         
+
          $('#approves').click(function() {
-            approve_event(eve_id, eve_name, ent_email) //function 
+             approve_event(eve_id, eve_name, ent_email) //function 
          });
      }
      /*
@@ -304,7 +325,7 @@
       * @Create Date 2564-09-26
       * @Update -
       */
-     function approve_event(eve_id, eve_name, ent_email,eve_point) {
+     function approve_event(eve_id, eve_name, ent_email, eve_point) {
          $.ajax({
              type: "POST",
              data: {
@@ -321,10 +342,10 @@
                      showConfirmButton: false,
                      timer: 3000
                  }, function() {
-                    location.reload();
+                     location.reload();
                  })
-                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
-                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม " + eve_name + " ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม " + eve_name;
                  var subject = "Approval";
                  send_mail_ajax(content, ent_email, subject, content_h1);
              },
@@ -342,8 +363,8 @@
       * @Create Date 2564-07-17
       * @Update 2564-09-18
       */
-function confirm_add_score_eve(eve_id, eve_name, ent_email) {
-    let form = document.querySelector('#add_point_form');
+     function confirm_add_score_eve(eve_id, eve_name, ent_email) {
+         let form = document.querySelector('#add_point_form');
          $('#eve_name_confirm').text(eve_name);
          $('#add_score_eve').modal();
          $('#email').val(ent_email);
@@ -352,26 +373,25 @@ function confirm_add_score_eve(eve_id, eve_name, ent_email) {
          console.log(eve_point)
          $('#add_score').click(function() {
              let point = document.getElementById('eve_point').value;
-             if(point < 1){
+             if (point < 1) {
                  $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
                  event.preventDefault();
-             } else{
-                $('#add_score_eve').modal('toggle');
-                swal({
+             } else {
+                 $('#add_score_eve').modal('toggle');
+                 swal({
                      title: "อนุมัติสำเร็จ",
                      text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
                      type: "success",
                      showConfirmButton: false,
                      timer: 3000
                  }, function() {
-                    location.reload();
+                     location.reload();
                  })
-                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
-                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
+                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม " + eve_name + " ของคุณ";
+                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม " + eve_name;
                  var subject = "Approval";
                  send_mail_ajax(content, ent_email, subject, content_h1);
              }
          });
-}
-
+     }
  </script>

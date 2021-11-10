@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_pro_image.php";
-
 /*
 * M_dcs_eve_image
 * get data image event
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-10-02
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_pro_image.php";
 class M_dcs_pro_image extends Da_dcs_pro_image
 {
 

@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_information_tourist
+* Display information tourist
+* @input arr_tus, tou_pro
+* @output information tourist
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-10-05
+*/ 
+-->
 <style>
     .radius {
         border-top-left-radius: 25px;

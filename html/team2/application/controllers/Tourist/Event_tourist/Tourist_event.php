@@ -1,12 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Tourist_event
 * Tourist event controller system
 * @author Naaka punparich 62160082
 * @Create Date 2564-07-24
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Tourist_event extends DCS_controller
 {
     /*
@@ -45,9 +45,9 @@ class Tourist_event extends DCS_controller
     }
 
     /*
-    * show_detaicompany_tourist
-    * show detail company tourist page 
-    * @input -
+    * show_event_detail
+    * show detail event tourist page 
+    * @input eve_id
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-14

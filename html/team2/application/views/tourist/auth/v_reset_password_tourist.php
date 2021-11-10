@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_reset_password_tourist
+* Display from reset password tourist
+* @input -
+* @output from reset password tourist
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-17
+*/ 
+-->
 <?php
 $warning = $warning ?? ''; //check world warnning == username หรือ password incorrect
 ?>
@@ -68,9 +78,9 @@ $warning = $warning ?? ''; //check world warnning == username หรือ passw
 
 <script>
 $(document).ready(function() {
-    confirmpassword();
+    confirm_password();
     $("#tourist_password_confirm").on('keyup', function() {
-        confirmpassword();
+        confirm_password();
     }); // Event Keyup
 
     $("#reset_pass").on('click', function() {
@@ -86,15 +96,15 @@ $(document).ready(function() {
 
 
 /*
- * confirmpassword
- * confirmpassword in value
+ * confirm_password
+ * confirm_password in value
  * @input 
  * @output -
  * @author Chutipon Thermsirisuksin 62160081
  * @Create Date 2564-08-12
  * @Update -
  */
-function confirmpassword() {
+function confirm_password() {
     if ($('#tourist_password').val() != $('#tourist_password_confirm').val()) {
         $('#err_text').text('รหัสผ่านไม่ตรงกัน');
         $('#reset_pass').prop('disabled', true);

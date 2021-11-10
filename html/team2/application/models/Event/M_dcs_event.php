@@ -7,7 +7,6 @@
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once "Da_dcs_event.php";
-
 class M_dcs_event extends Da_dcs_event
 {
     /*
@@ -109,7 +108,14 @@ class M_dcs_event extends Da_dcs_event
     }
 
 
-
+    /*
+    * get_event_by_com_id
+    * get event by com_id
+    * @input com_id
+    * @output -
+    * @author Jutamas Thaptong 62160079
+    * @Create Date 2564-09-14
+    */
     public function get_event_by_com_id($com_id)
     {
         $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
@@ -133,7 +139,8 @@ class M_dcs_event extends Da_dcs_event
     *@author Weradet Nopsombun 62160110
     *@Create Date 2564-10-26
     */
-    public function get_event_landing_page(){
+    public function get_event_landing_page()
+    {
 
         $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_event.eve_start_date, 
         dcs_event.eve_end_date, dcs_eve_category.eve_cat_name, dcs_event.eve_description,
@@ -183,14 +190,15 @@ class M_dcs_event extends Da_dcs_event
         $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('dcs_event');
-        $this->db->join('dcs_eve_category', 'dcs_eve_category.eve_cat_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_eve_category', 'dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id', 'left');
         $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
         $this->db->where("eve_status = '$number_status'");
         $query = $this->db->get();
         return $query->result();
     }
-    /* event not over */
+
+
     /*
     *get_all_data_not_over
     *get data event&entrepreneur&company form database
@@ -210,8 +218,9 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query->result();
     }
+
     /*
-    *get_count_all_no_score
+    *get_count_all_not_over
     *get data count event by form database
     *@input num_status
     *@output -
@@ -226,6 +235,7 @@ class M_dcs_event extends Da_dcs_event
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+
     /*
     *get_search_not_over
     *get data with search
@@ -253,17 +263,14 @@ class M_dcs_event extends Da_dcs_event
         return $query;
     }
 
-
-
-    /* event over */
-
-    /*get_all_data_not_over
-       *get data event&entrepreneur&company form database
-       *@input $limit, $start, $number_status
-       *@output entrepreneur data & company data & event data
-       *@author Kasama Donwong 62160074
-       *@Create Date 2564-09-24
-       */
+    /*
+    *get_all_data_over
+    *get data event&entrepreneur&company form database
+    *@input $limit, $start, $number_status
+    *@output entrepreneur data & company data & event data
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
     function get_all_data_over($limit, $start, $number_status)
     {
         $this->db->limit($limit, $start);
@@ -276,13 +283,13 @@ class M_dcs_event extends Da_dcs_event
         return $query->result();
     }
     /*
-       *get_count_all_no_score
-       *get data count event by form database
-       *@input num_status
-       *@output -
-       *@author Kasama Donwong 62160074
-       *@Create Date 2564-09-24
-       */
+    *get_count_all_over
+    *get data count event by form database
+    *@input num_status
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
     function get_count_all_over($num_status)
     {
         $this->db->select('*');
@@ -291,15 +298,16 @@ class M_dcs_event extends Da_dcs_event
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
+
     /*
-       *get_search_not_over
-       *get data with search
-       *@input number_status, search
-       *@output -
-       *@author Kasama Donwong 62160074
-       *@Create Date 2564-09-26
-       *@Update Date -
-       */
+    *get_search_over
+    *get data with search
+    *@input number_status, search
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-26
+    *@Update Date -
+    */
     function get_search_over($search, $number_status)
     {
 
@@ -373,6 +381,7 @@ class M_dcs_event extends Da_dcs_event
         $this->db->from('dcs_event');
         $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->join('dcs_eve_category', 'dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id', 'left');
         $this->db->group_start();
         $this->db->like('eve_name', $search);
         $this->db->or_like('eve_description', $search);
@@ -384,6 +393,7 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query;
     }
+
     /*
     *get_by_name
     *get data event by com_name
@@ -398,6 +408,7 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
+    
     /*
     *get_event_by_id
     *get data event by id
@@ -412,5 +423,4 @@ class M_dcs_event extends Da_dcs_event
         WHERE  eve_id = ?";
         return $this->db->query($sql, array($this->eve_id));
     }
-
 }

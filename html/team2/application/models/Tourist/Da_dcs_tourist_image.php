@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once dirname(__FILE__) . "/../DCS_model.php";
 /*
 * Da_dcs_tourist_image
 * Manage image tourist
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . "/../DCS_model.php";
 class Da_dcs_tourist_image extends DCS_model
 {
     public $tus_img_path;

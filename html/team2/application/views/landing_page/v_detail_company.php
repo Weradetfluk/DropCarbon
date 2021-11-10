@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_detail_company
+* Display detail company
+* @input - 
+* @output detail company
+* @author Jutamas Thaptong 62160079
+* @Create Date 2564-09-14
+*/ 
+-->
 <style>
 .card-custom {
     border-radius: 20px;
@@ -165,7 +175,7 @@ input:checked+input~input:before {
 
 
 <style>
-#moreText {
+#more_text {
     display: none;
 }
 
@@ -191,10 +201,10 @@ input:checked+input~input:before {
 </style>
 
 <script>
-function readMore() {
-    $("#moreDot").hide();
-    $("#moreText").show(200);
-    $("#btnReadMore").hide();
+function read_more() {
+    $("#more_dot").hide();
+    $("#more_text").show(200);
+    $("#btn_read_more").hide();
 }
 </script>
 
@@ -263,19 +273,19 @@ function readMore() {
                 $subStringLast = "";
                 $readMore = "";
                 if ($getLength > $maxLength) {
-                    $readMore = '<div onclick="readMore()" class="read-more-style" id="btnReadMore">Read more</div>';
-                    $subStringFirst = substr($getString, 0, strrpos($getString, ' ', $maxLength - $getLength)) . " <span id='moreDot'> ... </span>";
+                    $readMore = '<div onclick="read_more()" class="read-more-style" id="btn_read_more">Read more</div>';
+                    $subStringFirst = substr($getString, 0, strrpos($getString, ' ', $maxLength - $getLength)) . " <span id='more_dot'> ... </span>";
                     $subStringLast = substr($getString, strrpos($getString, ' ', $maxLength - $getLength));
                 }
                 ?>
                 <p style="text-indent: 50px;text-align: justify;text-justify: inter-word;">
-                    <?php echo $subStringFirst ?><span id="moreText"><?php echo $subStringLast ?></span>
+                    <?php echo $subStringFirst ?><span id="more_text"><?php echo $subStringLast ?></span>
                 </p>
             </div>
 
             <? //= $readMore 
             ?>
-            <div onclick="readMore()" class="read-more-style" id="btnReadMore">อ่านต่อ>> </div>
+            <div onclick="read_more()" class="read-more-style" id="btn_read_more">อ่านต่อ>> </div>
             <!-- รายละเอียด -->
         </div>
     </div>
@@ -427,8 +437,6 @@ function readMore() {
 
     </div>
 </div>
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
-
 <script>
 var lat =
     '<?= $company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
@@ -436,17 +444,17 @@ var long =
     '<?= $company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
 var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
-    toProjection
+var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+var position = new OpenLayers.LonLat(long, lat).transform(from_projection,
+    to_projection
 ); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
 map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-var mapnik = new OpenLayers.Layer.OSM();
-map.addLayer(mapnik);
+var map_link = new OpenLayers.Layer.OSM();
+map.addLayer(map_link);
 
 var markers = new OpenLayers.Layer.Markers(
     "Markers"

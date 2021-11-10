@@ -1,14 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-include_once "Da_dcs_com_image.php";
-
 /*
 * M_dcs_com_image
 * get data image company
 * @author Suwapat Saowarod 62160340
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once "Da_dcs_com_image.php";
 class M_dcs_com_image extends Da_dcs_com_image
 {
 

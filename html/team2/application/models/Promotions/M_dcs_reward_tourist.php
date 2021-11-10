@@ -18,6 +18,15 @@ class M_dcs_reward_tourist extends Da_dcs_reward_tourist
         parent::__construct();
     }
 
+    /*
+    * get_reward_by_tus_id
+    * get reward by tus_id
+    * @input $data , $tus_img_tus_id
+    * @output reward tourist
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-10-05
+    * @Update Date -
+   */
     function get_reward_by_tus_id($tus_id)
     {
         $sql = "SELECT * FROM dcs_reward_tourist AS rw_tus

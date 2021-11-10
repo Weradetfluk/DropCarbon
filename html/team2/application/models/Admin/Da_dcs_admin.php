@@ -25,7 +25,7 @@ class Da_dcs_admin extends Dcs_model
     /*
     * update_pass_token
     * update password with number ramdom
-    * @input 
+    * @input $token
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-12

@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_login_tourist.php';
-
 /*
 * M_dcs_login_tourist
 * get data login tourist
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-08-05
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_login_tourist.php';
 class M_dcs_login_tourist extends Da_dcs_login_tourist
 {
     /*
@@ -47,7 +46,7 @@ class M_dcs_login_tourist extends Da_dcs_login_tourist
     /*
     * check_email
     * check email user
-    * @input 
+    * @input tus_email
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-15
