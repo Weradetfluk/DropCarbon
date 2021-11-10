@@ -631,3 +631,14 @@ p {
   color     : #27b03e !important;
   transition: 0.3s;
 }
+
+.card-custom {
+  border-radius: 20px;
+}
+
+.card-img-top {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 300px;
+  object-fit: cover;
+}
