@@ -8,6 +8,18 @@
 * @Create Date 2564-09-14
 */ 
 -->
+<style>
+.card-custom {
+    border-radius: 20px;
+}
+
+.card-img-top {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 300px; 
+    object-fit: cover;
+}
+</style>
 <div class="container py-5 section-com">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
@@ -55,7 +67,7 @@
         <?php for ($i = 0; $i < count($company); $i++) { ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
                 <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $company[$i]->com_id; ?>">
-                    <div class="card" style="height: 30rem;" id="card" >
+                    <div class="card card-custom" style="height: 30rem;" id="card" >
                         <img src="<?php echo base_url() . 'image_company/' . $company[$i]->com_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
                         <!-- รูปที่ 1 -->
                         <div class="card-body" align="center">
