@@ -9,40 +9,48 @@
 */ 
 -->
 
+<style>
+    .card-img-wrapper{
+        display: block;
+        width: 100%;
+        height: 250px;
+    }
+</style>
+
 <!-- แบนเนอร์ -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
 
 <!-- กิจกรรมยอดนิยม -->
 <section class="bg-white">
     <div class="container" data-aos="fade-down">
-
         <!-- หัวข้อ -->
         <div class="header-break">
             กิจกรรมยอดนิยม
         </div>
-        <div class="row">
 
+        <div class="row">
             <!-- แสดงกิจกรรม 3 กิจกรรม -->
             <?php for ($i = 0; $i < count($arr_eve); $i++) {  ?>
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
-                        <div class="card card-custom">
-
+                        <div class="card card-custom" style="height: 32rem; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+                            <div class="card-img-wrapper">
                             <!-- รูปกิจกรรม -->
-                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" class="card-img-top">
-
-                            <div class="card-body">
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" class="card-img-top"  style="object-fit: cover;">
+                            </div>
+                            <div class="card-body" style="margin-top: 50px;">
 
                                 <!-- ชื่อกิจกรรม -->
-                                <h2> <?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 20, "UTF-8") . "..."; ?></h2>
+                                <h2> <?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 10, "UTF-8") . "..."; ?></h2>
 
                                 <p class="card-tex text-dark">
                                     <!-- รายละเอียดกิจกรรม -->
-                                    <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                                    <?php echo substr($arr_eve[$i]->eve_description, 0, 100) . "..."; ?>
+                        
                                 </p>
 
                                 <!-- ลดคาร์บอน -->
-                                <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอนได้ <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                                <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
 
                                 <!-- เวลาเริ่ม/จบกิจกรรม -->
                                 <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[$i]->eve_start_date; ?> - <?php echo $arr_eve[$i]->eve_end_date; ?></p>
@@ -53,11 +61,12 @@
                 </div>
             <?php } ?>
         </div>
-
+      
         <!-- ดูเพิ่มเติม -->
         <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม</a>
 
     </div>
+    
 </section>
 
 <!-- สถานที่ยอดนิยม -->

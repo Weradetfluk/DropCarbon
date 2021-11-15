@@ -90,20 +90,20 @@
                         </div>
 
                         <div class="container">
-                        <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px">  รายละเอียดกิจกรรม</h3>
+                            <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียดกิจกรรม</h3>
                             <hr width="100%" size="10" color="#cccccc">
                             <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->eve_description; ?></p>
                         </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-5">
-                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>" width="40px">  คะแนนกิจกรรม</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>" width="40px"> คะแนนกิจกรรม</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม: <?php echo $arr_event[0]->eve_point; ?> คะเเนน</p>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-5">
-                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px">  ประเภท</h3>
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px"> ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
                                     <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_event[0]->eve_cat_name; ?></p>
                                 </div>
@@ -165,7 +165,7 @@
                                 <form>
                                     <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_event[0]->eve_id; ?>">
                                     <div style="text-align: right;">
-                                        <button type="button" class="btn btn-success" id="accept" onclick='confirm_approve("<?php echo $arr_event[0]->eve_id ?>" ,"<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>")' data-dismiss="modal">อนุมัติ</button>
+                                        <button type="button" class="btn btn-success" id="accept" onclick='confirm_approve("<?php echo $arr_event[0]->eve_id ?>" ,"<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>",  "<?php echo $arr_event[0]->eve_cat_id?>", "<?php echo $arr_event[0]->eve_cat_name ?>" )' data-dismiss="modal">อนุมัติ</button>
                                         <button type="button" class="btn btn-danger" id="reject" onclick='confirm_reject("<?php echo $arr_event[0]->eve_id ?>", "<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>")' data-dismiss="modal">ปฏิเสธ</button>
                                     </div>
                                 </form>
@@ -179,23 +179,30 @@
     </div>
 </div>
 
+
 <!-- warnning aprove Modal  -->
 <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="max-width: 600px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">แจ้งเตือน</h5>
+                <h5 class="modal-title">คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></h5>
             </div>
             <div class="modal-body">
-                <p>คุณกำลังอนุมัติกิจกรรม<span id="eve_name_confirm"></span></p>
-                <p>เพิ่มคะแนนให้กับ<span id="eve_point_name_confirm"></span> ?</h5><br>
-                    <input type="hidden" id="eve_id_form" name="eve_id">
-                    <input type="hidden" id="eve_id_name_form" name="eve_name"><br>
-                    <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
+                <p>เพิ่มคะแนนให้กับ <span id="eve_point_name_confirm"></span> ?</p>
+                <p style="font-size: 16px;">กิจกรรมนี้อยู่ในประเภท : <span id="eve_cat_name"></span></p>
+                <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
+                <input type="hidden" id="eve_id_form" name="eve_id">
+                <input type="hidden" id="eve_cat_id" name="eve_cat_id">
+                <input type="hidden" id="eve_cat_name" name="eve_cat_name">
+                <input type="hidden" id="eve_id_name_form" name="eve_name"><br>
                 <p id="err_message_point" style="color: red;font-size: 16px"></p>
+                <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p>
+                <div style="display: none;" id="infor_eve_cat">
+
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
+                <button type="button" class="btn btn-success" id="approves">ยืนยัน</button>
                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
@@ -228,9 +235,6 @@
     </div>
 </div>
 
-
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
-
 <script>
     var lat = '<?= $arr_event[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
     var long = '<?= $arr_event[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
@@ -252,8 +256,43 @@
     markers.addMarker(new OpenLayers.Marker(position));
 
     map.setCenter(position, zoom);
-</script>
-<script>
+
+    $(document).ready(function() {
+        //show innformation
+        $("#help_information").click(function() {
+
+            let arr_min_point = [1, 20, 30, 40];
+            let arr_max_point = [19, 29, 39, 49];
+            if ($('#infor_eve_cat').is(":hidden")) {
+                $.ajax({
+                    url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_data_category'); ?>',
+                    method: "POST",
+                    dataType: "JSON",
+                    success: function(json_data) {
+                        html_code = '';
+                        html_code += '<table class="table">';
+                        html_code += '<thead class="text-white" style="text-align: center;">';
+                        html_code += '<tr>';
+                        html_code += '<th><p>ชื่อกิจกรรม</p></th>';
+                        html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+                        html_code += '<th><p>ช่วงคะแนน</p></th>';
+                        html_code += '</tr>';
+                        html_code += ' </thead>';
+                        html_code += ' <tbody>';
+                        json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                            html_code += '<tr>';
+                            html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
+                            html_code += '</tr>';
+                        });
+                        $('#infor_eve_cat').html(html_code);
+                    }
+                });
+            }
+            $("#infor_eve_cat").slideToggle("slow");
+        });
+    });
     /*
      * confirm_approve
      * open modal id = Aprovemodal 
@@ -263,41 +302,58 @@
      * @Create Date 2564-07-17
      * @Update 2564-09-18
      */
-    /*
-      * confirm_approve
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to confirm approve modal
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update 2564-09-18
-      */
-      function confirm_approve(eve_id, eve_name, ent_email) {
+    function confirm_approve(eve_id, eve_name, ent_email, eve_cat_id, eve_cat_name) {
         let form = document.querySelector('#aprove_modal');
-         $('#eve_name_confirm').text(eve_name);
-         $('#aprove_modal').modal({
-             backdrop: 'static',
-             keyboard: false
-         });
-         $('#eve_point_name_confirm').text(eve_name);
-         $('#eve_id_form').val(eve_id);
-         $('#eve_point').val(eve_point);
-         console.log(eve_point)
-         $('#approves').click(function() {
-             let point = document.getElementById('eve_point').value;
-             if(point < 1){
-                event.preventDefault();
-                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-                 $('#aprove_modal').modal('toggle');
-             } else {
-                console.log(ent_email)
+        console.log(eve_cat_name);
+        $('#eve_name_confirm').text(eve_name);
+        $('#aprove_modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#eve_point_name_confirm').text(eve_name);
+        $('#eve_cat_name').text(eve_cat_name);
+        $('#eve_id_form').val(eve_id);
+        $('#eve_cat_id').val(eve_cat_id);
+        $('#eve_cat_name').val(eve_cat_name);
+        $('#approves').click(function() {
+            let point = document.getElementById('eve_point').value;
+            console.log(check_point(point, eve_cat_id));
+            if (check_point(point, eve_cat_id) == true) {
+                $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+                console.log("xxx");
+            } else {
                 let eve_point = $('#eve_point').val();
                 console.log(eve_point)
-                
-                approve_event(eve_id, eve_name, ent_email,eve_point) //function 
-             }
-         });
-     }
+                $('#aprove_modal').modal('toggle');
+                approve_event(eve_id, eve_name, ent_email, eve_point) //function 
+            }
+        });
+    }
+    /*
+     * check_point
+     * check point inevent
+     * @input point
+     * @output err_message
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-10-11
+     * @Update -
+     */
+
+    function check_point(point, eve_cat_id) {
+        let arr_min_point = [1, 20, 30, 40];
+        let arr_max_point = [19, 29, 39, 49];
+
+        console.log(eve_cat_id);
+        console.log(arr_min_point[eve_cat_id - 1]);
+        console.log(arr_max_point[eve_cat_id - 1]);
+        if (point < 1) {
+            return true;
+        } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
      * confirm_reject
      * open modal id = Aprovemodal 
@@ -345,6 +401,7 @@
             }
         });
     }
+
     /*
      * approve_event
      * change status to approve 
@@ -354,35 +411,35 @@
      * @Create Date 2564-09-26
      * @Update -
      */
-    function approve_event(eve_id, eve_name, ent_email,eve_point) {
-         $.ajax({
-             type: "POST",
-             data: {
-                 eve_id: eve_id,
-                 eve_point: eve_point
-             },
-             url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
-             success: function() {
-                 //sweet alert
-                 swal({
-                     title: "อนุมัติสำเร็จ",
-                     text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
-                     type: "success",
-                     showConfirmButton: false,
-                     timer: 3000
-                 }, function() {
+    function approve_event(eve_id, eve_name, ent_email, eve_point) {
+        $.ajax({
+            type: "POST",
+            data: {
+                eve_id: eve_id,
+                eve_point: eve_point
+            },
+            url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/approval_event'); ?>',
+            success: function() {
+                //sweet alert
+                swal({
+                    title: "อนุมัติสำเร็จ",
+                    text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
+                    type: "success",
+                    showConfirmButton: false,
+                    timer: 3000
+                }, function() {
                     location.reload();
-                 })
-                 var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม "+eve_name+" ของคุณ";
-                 var content_h1 = "คุณได้รับการอนุมัติกิจกรรม "+eve_name;
-                 var subject = "Approval";
-                 send_mail_ajax(content, ent_email, subject, content_h1);
-             },
-             error: function() {
-                 alert('ajax error working');
-             }
-         });
-     }
+                })
+                var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม " + eve_name + " ของคุณ";
+                var content_h1 = "คุณได้รับการอนุมัติกิจกรรม " + eve_name;
+                var subject = "Approval";
+                send_mail_ajax(content, ent_email, subject, content_h1);
+            },
+            error: function() {
+                alert('ajax error working');
+            }
+        });
+    }
 
     /* confirm_add_score_eve
      * open modal id = Aprovemodal 

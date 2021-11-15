@@ -15,7 +15,7 @@
              <h3 class="text-dark custom-h4-card-table" style="margin-top : 0 auto;">แบนเนอร์</h3>
          </div>
          <div class="col">
-             <button class="btn btn-primary" style="float: right; margin-top : 20px;" id="add_banner">เพิ่มแบนเนอร์</button>
+             <button class="btn btn-info" style="float: right; float:right; border-radius: 5px; margin-top : 20px;" id="add_banner">เพิ่มแบนเนอร์</button>
          </div>
      </div>
      <!-- warnning block Modal  -->

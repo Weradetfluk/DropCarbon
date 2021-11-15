@@ -62,7 +62,7 @@
         </div>
     </form>
 
-
+    <div class="container">
     <div class="row py-3">
         <?php for ($i = 0; $i < count($company); $i++) { ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
@@ -81,6 +81,7 @@
                 </a>
             </div>
         <?php } ?>
+    </div>
     </div>
     <!-- กิจกรรมที่ 1 -->
 </div>

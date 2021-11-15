@@ -210,7 +210,6 @@
              console.log(check_point(point, eve_cat_id));
              if (check_point(point, eve_cat_id) == true) {
                  $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-                 console.log("xxx");
              } else {
                  let eve_point = $('#eve_point').val();
                  console.log(eve_point)
