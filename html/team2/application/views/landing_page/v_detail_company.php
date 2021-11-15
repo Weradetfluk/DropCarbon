@@ -266,20 +266,20 @@ function read_more() {
             <hr width="100%" size="10" color="#cccccc">
             <div style="padding-top: 2%;padding-bottom: 3%">
                 <?php
-                $getString = $company->com_description . $company->com_description . $company->com_description . $company->com_description . $company->com_description;
-                $getLength = strlen($getString);
-                $maxLength = 3000;
-                $subStringFirst = $getString;
-                $subStringLast = "";
+                $get_string = $company->com_description . $company->com_description . $company->com_description . $company->com_description . $company->com_description;
+                $get_length = strlen($get_string);
+                $max_length = 3000;
+                $sub_string_first = $get_string;
+                $sub_string_last = "";
                 $readMore = "";
-                if ($getLength > $maxLength) {
+                if ($get_length > $max_length) {
                     $readMore = '<div onclick="read_more()" class="read-more-style" id="btn_read_more">Read more</div>';
-                    $subStringFirst = substr($getString, 0, strrpos($getString, ' ', $maxLength - $getLength)) . " <span id='more_dot'> ... </span>";
-                    $subStringLast = substr($getString, strrpos($getString, ' ', $maxLength - $getLength));
+                    $sub_string_first = substr($get_string, 0, strrpos($get_string, ' ', $max_length - $get_length)) . " <span id='more_dot'> ... </span>";
+                    $sub_string_last = substr($get_string, strrpos($get_string, ' ', $max_length - $get_length));
                 }
                 ?>
                 <p style="text-indent: 50px;text-align: justify;text-justify: inter-word;">
-                    <?php echo $subStringFirst ?><span id="more_text"><?php echo $subStringLast ?></span>
+                    <?php echo $sub_string_first ?><span id="more_text"><?php echo $sub_string_last ?></span>
                 </p>
             </div>
 
