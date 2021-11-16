@@ -12,7 +12,6 @@
     ul.breadcrumb {
         padding: 10px 16px;
         list-style: none;
-        background-color: #eee;
     }
 
     ul.breadcrumb li {
