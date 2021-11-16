@@ -154,7 +154,7 @@
          html_code += '</thead>';
          html_code += '<tbody class="list">';
 
-         data.forEach((row_promo, index_pro) => {
+         data.forEach((row_promo, index_promo) => {
 
              html_code += '<tr>';
              html_code += '<td>' + (index_promo+1) + '</td>';
