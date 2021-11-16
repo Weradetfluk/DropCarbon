@@ -211,7 +211,7 @@ CREATE TABLE `dcs_entrepreneur` (
   `ent_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT ' รหัสผ่าน ของ ผู้ประกอบการ ',
   `ent_birthdate` date NOT NULL COMMENT 'วันเกิดของของผู้ประกอบการ',
   `ent_tel` varchar(12) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เบอร์โทรของผู้ประกอบการ',
-  `ent_id_card` varchar(13) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รหัสประชาชน ของผู้ประกอบการ',
+  `ent_id_card` varchar(17) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รหัสประชาชน ของผู้ประกอบการ',
   `ent_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมลของผู้ประกอบการ',
   `ent_status` int(1) DEFAULT 1 COMMENT ' สถานะของผู้ประกอบการ 1=รออนุมัติ 2=อนุมัติ, 3=ปฏิเสธ, 4=ถูกบล็อค',
   `ent_pre_id` int(1) NOT NULL COMMENT ' คำนำหน้า จากตาราง dcs_prefix',
