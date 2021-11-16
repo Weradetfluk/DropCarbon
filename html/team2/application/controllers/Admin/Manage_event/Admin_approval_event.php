@@ -288,10 +288,8 @@ class Admin_approval_event extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
-                <i class="material-icons">
-                  search
-                </i>
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+                <span class="material-icons">search</span>
               </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
                             <i class="material-icons">
@@ -305,10 +303,8 @@ class Admin_approval_event extends DCS_controller
                         </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
-                <i class="material-icons">
-                  search
-                </i>
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+                <span class="material-icons">search</span>
               </a>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
@@ -364,11 +360,9 @@ class Admin_approval_event extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
-                          <i class="material-icons">
-                            search
-                          </i>
-                        </a>' .
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+                          <span class="material-icons">search</span>
+              </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
                           <i class="material-icons">
                             done
@@ -382,10 +376,8 @@ class Admin_approval_event extends DCS_controller
                       </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
-                    <i class="material-icons">
-                        search
-                      </i>
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
+                    <span class="material-icons">search</span>
                     </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
