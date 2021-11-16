@@ -28,7 +28,7 @@
                         <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                     <?php } ?>
                     <input type="file" id="file" name="tourist_img" accept="image/*">
-                    <label for="file" id="uploadBtn">เลือกรูปภาพ</label>
+                    <label for="file" id="upload_Btn">เลือกรูปภาพ</label>
                 </div><br>
                 <!-- profile pictuce -->
 
@@ -58,7 +58,7 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="tell">เบอร์โทร</label>
                         <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" onblur="check_phone_number_ajax()" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" maxlength="10" required>
-                        <span id="phonenumberavailable" style="color: red;"></span>
+                        <span id="phonenumber_available" style="color: red;"></span>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
@@ -71,7 +71,7 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputemail">อีเมล</label>
                         <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" onblur="check_email_ajax()" placeholder="example@email.com" required>
-                        <span id="emailavailable" style="color: red;"></span>
+                        <span id="emailav_ailable" style="color: red;"></span>
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="username">ชื่อผู้ใช้</label>
                         <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
-                        <span id="usernameavailable" style="color: red;"></span>
+                        <span id="usernameav_ailable" style="color: red;"></span>
                     </div>
                 </div>
 
@@ -96,13 +96,13 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="password">ยืนยันรหัสผ่าน</label>
                         <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
-                        <div id="errorpassword" class="text-danger">
+                        <div id="invalid_password" class="text-danger">
 
                         </div>
                     </div>
                 </div>
                 <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Landing_page/Select_register'; ?>">ยกเลิก</a>
-                <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
+                <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
 
             </form>
 
@@ -125,7 +125,7 @@
                         <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                     <?php } ?>
                     <input type="file" id="file" name="tourist_img" accept="image/*">
-                    <label for="file" id="uploadBtn">เลือกรูปภาพ</label>
+                    <label for="file" id="upload_Btn">เลือกรูปภาพ</label>
                 </div><br>
                 <!-- profile pictuce -->
 
@@ -178,7 +178,7 @@
 
                 <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
                 <!-- ปุ่มยกเลิก -->
-                <button type="submit" id="next_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
+                <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
                 <!-- ปุ่มบันทึก -->
             </form>
             <!-- form -->
@@ -224,18 +224,15 @@
      */
     function confirm_password() {
         if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
-            $('#errorpassword').text('');
-            //$('#next_btn').prop('disabled', true);
+            $('#invalid_password').text('');
             check_password = 1;
             check_btn_submit();
         } else if ($('#pass').val() != $('#confirm').val()) {
-            $('#errorpassword').text('รหัสผ่านไม่ตรงกัน');
-            //$('#next_btn').prop('disabled', true);
+            $('#invalid_password').text('รหัสผ่านไม่ตรงกัน');
             check_password = 1;
             check_btn_submit();
         } else {
-            $('#errorpassword').text('');
-            //$('#next_btn').prop('disabled', false);
+            $('#invalid_password').text('');
             check_password = 0;
             check_btn_submit();
         }
@@ -251,9 +248,9 @@
      */
     function check_btn_submit() {
         if (check_phone_number == 1 || check_email == 1 || check_password == 1 || check_username == 1) {
-            $('#next_btn').prop('disabled', true);
+            $('#confirm_btn').prop('disabled', true);
         } else {
-            $('#next_btn').prop('disabled', false);
+            $('#confirm_btn').prop('disabled', false);
         }
     }
 
@@ -281,13 +278,11 @@
             success: function(data) {
                 console.log(data);
                 if (data == 1) {
-                    $('#usernameavailable').html("ชื่อผู้ใช้นี้มีผู้ใช้อื่นแล้ว");
-                    //$('#next_btn').prop('disabled', true);
+                    $('#usernameav_ailable').html("ชื่อผู้ใช้นี้มีผู้ใช้อื่นแล้ว");           
                     check_username = 1;
                     check_btn_submit();
                 } else {
-                    $('#usernameavailable').html("");
-                    //$('#next_btn').prop('disabled', false);
+                    $('#usernameav_ailable').html("");
                     check_username = 0;
                     check_btn_submit();
                 }
@@ -319,14 +314,12 @@
             success: function(data) {
                 console.log(data);
                 if (data == 1) {
-                    $('#emailavailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
-                    //$('#next_btn').prop('disabled', true);
+                    $('#emailav_ailable').html("อีเมลนี้ได้ใช้ทำการลงทะเบียนแล้ว");
                     check_email = 1;
                     check_btn_submit();
 
                 } else {
-                    $('#emailavailable').html("");
-                    //$('#next_btn').prop('disabled', false);
+                    $('#emailav_ailable').html("");
                     check_email = 0;
                     check_btn_submit();
                 }
@@ -358,14 +351,11 @@
             success: function(data) {
                 console.log(data);
                 if (data == 1) {
-                    $('#phonenumberavailable').html("เบอร์โทรศัพท์นี้ได้ใช้ทำการลงทะเบียนแล้ว");
-                    //$('#next_btn').prop('disabled', true);
+                    $('#phonenumber_available').html("เบอร์โทรศัพท์นี้ได้ใช้ทำการลงทะเบียนแล้ว");
                     check_phone_number = 1;
                     check_btn_submit();
-
                 } else {
-                    $('#phonenumberavailable').html("");
-                    //$('#next_btn').prop('disabled', false);
+                    $('#phonenumber_available').html("");
                     check_phone_number = 0;
                     check_btn_submit();
                 }
@@ -380,14 +370,14 @@
     const imgDiv = document.querySelector('.profile-pic-div');
     const img = document.querySelector('#photo');
     const file = document.querySelector('#file');
-    const uploadBtn = document.querySelector('#uploadBtn');
+    const upload_Btn = document.querySelector('#upload_Btn');
 
     imgDiv.addEventListener('mouseenter', function() {
-        uploadBtn.style.display = "block";
+        upload_Btn.style.display = "block";
     });
 
     imgDiv.addEventListener('mouseleave', function() {
-        uploadBtn.style.display = "none";
+        upload_Btn.style.display = "none";
     });
 
     file.addEventListener('change', function() {
