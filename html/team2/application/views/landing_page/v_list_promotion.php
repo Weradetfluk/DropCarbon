@@ -1,4 +1,5 @@
-/<!-- 
+/
+<!-- 
 /*
 * v_list_promotion
 * Display list promotion
@@ -8,7 +9,20 @@
 * @Create Date 2564-10-02
 */ 
 -->
-<div class="container py-5">
+
+<style>
+.card-custom {
+    border-radius: 20px;
+}
+
+.card-img-top {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 300px;
+    object-fit: cover;
+}
+</style>
+<div class="container py-5 section-com">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
@@ -24,11 +38,13 @@
         </div>
     </div>
     <!-- โปรโมชันทั้งหมด -->
-
-    <form action="" method="post">
+    <?php
+    $value_search = isset($_POST["value_search"]) ? $_POST["value_search"] : "";
+    ?>
+    <form action="<?= site_url() ?>Landing_page/Landing_page/show_promotions_list" class="" method="post">
         <div class="row justify-content-md-center" style="margin: 0px 0px 30px 0px;">
             <div class="col-md-4">
-                <input type="text" class="form-control form-control-custom" name="txt_event" placeholder="ค้นหาโปรโมชัน">
+                <input type="text" value="<?= $value_search ?>" id="search_box" name="value_search" class="form-control form-control-custom" placeholder="ค้นหาโปรโมชัน">
             </div>
             <div class="col-md-2">
                 <select class="form-control form-control-custom" name="pro_cat_id" id="pro_cat_id">
@@ -46,72 +62,12 @@
         </div>
     </form>
 
-    <section class="bg-gray">
-        <div class="container">
-            <div class="header-break">
-                รางวัล
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h3>รางวัล1</h3>
-                                </a>
-                                <p class="card-text">รายละเอียด</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                        </a>
-                        <div class="card-body">
-                            <a href="#">
-                                <h3>รางวัล2</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                        </a>
-                        <div class="card-body">
-                            <a href="#">
-                                <h3>รางวัล3</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top" alt="..." style="vertical-align: sub;" src="<?php echo base_url() . 'assets/templete/picture/gift-box.png' ?> " width="40px">
-                        </a>
-                        <div class="card-body">
-                            <a href="#">
-                                <h3>รางวัล4</h3>
-                            </a>
-                            <p class="card-text">รายละเอียด</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <div class="row">
+    <div class="row py-3">
         <?php for ($i = 0; $i < count($promotions); $i++) { ?>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
             <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
-                <div class="card card-custom" id="card" style="max-height: 30rem;">
+                <div class="card card-custom" style="height: 30rem;" id="card">
                     <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
                     <!-- รูปที่ 1 -->
                     <div class="card-body" align="center">
@@ -124,7 +80,6 @@
                 </div>
             </a>
         </div>
-        <!-- กิจกรรมที่ 1 -->
         <?php } ?>
     </div>
 </div>
