@@ -1,3 +1,13 @@
+<!-- 
+/*
+* v_detail_company
+* Display data detail company by admin
+* @input arr_company, arr_image
+* @output detail data company
+* @author Kasama Donwong 62160074
+* @Create Date 2564-08-20
+*/ 
+-->
 <style>
     ul.breadcrumb {
         padding: 10px 16px;
@@ -26,7 +36,6 @@
         text-decoration: underline;
     }
 </style>
-
 <div class="content">
     <ul class="breadcrumb">
         <li><a href="<?php echo site_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'; ?>" style="color: green;">จัดการสถานที่</a></li>
@@ -46,14 +55,14 @@
                         <br>
                         <div class="card-body">
 
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div id="carousel_example_indicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <?php for ($i = 0; $i < count($arr_image); $i++) { ?>
                                         <?php if ($i == 0) { ?>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="active"></li>
+                                            <li data-target="#carousel_example_indicators" data-slide-to="<?php echo $i; ?>" class="active"></li>
                                         <?php } ?>
                                         <?php if ($i != 0) { ?>
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>"></li>
+                                            <li data-target="#carousel_example_indicators" data-slide-to="<?php echo $i; ?>"></li>
                                         <?php } ?>
                                     <?php } ?>
                                 </ol>
@@ -73,11 +82,11 @@
                                     <?php } ?>
                                     <br>
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <a class="carousel-control-prev" href="#carousel_example_indicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <a class="carousel-control-next" href="#carousel_example_indicators" role="button" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -96,7 +105,7 @@
                                     <div class="col-5">
                                         <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px">  ประเภท</h3>
                                         <hr width="100%" size="10" color="#cccccc">
-                                        <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_company->com_name; ?></p>
+                                        <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท: <?php echo $arr_company->com_cat_name; ?></p>
                                     </div>
                                     <div class="col-2"></div>
                                     <div class="col-5">

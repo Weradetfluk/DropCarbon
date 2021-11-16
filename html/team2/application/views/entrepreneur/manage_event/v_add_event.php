@@ -70,8 +70,9 @@
                             <!-- กรอกที่อยู่ -->        
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="eve_location">ที่อยู่</label>
-                                    <textarea id="eve_location" name="eve_location" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม" required></textarea>
+                                    <label for="eve_location">รายละเอียดที่อยู่สถานที่</label>
+                                    <!-- <textarea id="eve_location" name="eve_location" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม" required></textarea> -->
+                                    <input type="text" id="eve_location" name="eve_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน ซอย หมู่ ถนน ตำบล อำเภอ จังหวัด ไปรษณีย์ ตามลำดับ" required>
                                 </div>
                             </div><br>
                             
@@ -183,8 +184,8 @@
         console.log(lat, lon);
 
         map = new OpenLayers.Map("map");
-        var cycleLayer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
-        map.addLayer(cycleLayer);
+        var cycle_layer = new OpenLayers.Layer.OSM.HikeMap("Hiking Map");
+        map.addLayer(cycle_layer);
         map.setCenter(cntr_position, zoom);
         var click = new OpenLayers.Control.Click();
         map.addControl(click);

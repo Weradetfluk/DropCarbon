@@ -17,6 +17,16 @@ class Admin_manage_banner extends DCS_controller
     {
         parent::__construct();
     }
+
+    /*
+    * index
+    * show page banner list
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
     public function index()
     {
         $this->show_banner_list();
@@ -94,7 +104,7 @@ class Admin_manage_banner extends DCS_controller
             move_uploaded_file($file_tmp_name, $file_destination);
             $this->mmbn->ban_path = $file_new_name . '.' . $file_actaul_ext;
             $this->mmbn->ban_name = $file_name;
-            $this->mmbn->ban_adm_id =  $this->session->userdata("Admin_id");
+            $this->mmbn->ban_adm_id =  $this->session->userdata("admin_id");
             $this->mmbn->insert_banner();
             echo 1;
         } else if ($error_file == 'false') {
@@ -118,9 +128,6 @@ class Admin_manage_banner extends DCS_controller
         $this->mmbn->ban_path = $this->input->post("img_path");
         $this->mmbn->delete_banner();
         unlink('./banner/' . $this->mmbn->ban_path );
-
-
     }
-
 
 }

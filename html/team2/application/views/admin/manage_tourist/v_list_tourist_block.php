@@ -13,7 +13,7 @@
 <div class="content">
  <div class="container-fluid">
  <div>
- <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">บัญชีที่ถูกบล็อค</h3>
+ <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto; ">บัญชีที่ถูกระงับ</h3>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
@@ -26,7 +26,7 @@
                                  <a class="nav-link" href=" <?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> "><h5 class="h5-card-header">บัญชีนักท่องเที่ยว</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link active" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  "><h5 class="h5-card-header">บัญชีที่ถูกบล็อค</h5></a>
+                                 <a class="nav-link active" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  "><h5 class="h5-card-header">บัญชีที่ถูกระงับ</h5></a>
                              </li>
                          </ul>
                      </div>
@@ -186,8 +186,8 @@
                      success: function() {
                          //sweet alert
                          swal({
-                             title: "ปลดบล็อคผู้ใช้งานสำเร็จ",
-                             text: "ปลดบล็อคนักท่องเที่ยวสำเร็จ",
+                             title: "ปลดการระงับบัญชีผู้ใช้งานสำเร็จ",
+                             text: "ปลดการระงับบัญชีนักท่องเที่ยวสำเร็จ",
                              type: "success",
                              showConfirmButton: false,
                              timer: 3000,

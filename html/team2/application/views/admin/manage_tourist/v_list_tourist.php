@@ -27,7 +27,7 @@
                                  <a class="nav-link active" href=" <?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_tourist' ?> "><h5 class="h5-card-header">บัญชีนักท่องเที่ยว</h5></a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  "><h5 class="h5-card-header">บัญชีที่ถูกบล็อค</h5></a>
+                                 <a class="nav-link" href="<?php echo base_url().'Admin/Manage_tourist/Admin_list_tourist/show_data_block' ?>  "><h5 class="h5-card-header">บัญชีที่ถูกระงับ</h5></a>
                              </li>
                          </ul>
                      </div>
@@ -74,7 +74,7 @@
                  <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการบล็อค <span id="tus_block_name_confirm"></span> ?</p>
+                 <p>คุณต้องการระงับบัญชีของ <span id="tus_block_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
@@ -165,16 +165,16 @@
              success: function() {
                  //sweet alert
                  swal({
-                     title: "บล็อคผู้ใช้งานสำเร็จ",
-                     text: "บล็อคนักท่องเที่ยวสำเร็จ",
+                     title: "ระงับบัญชีผู้ใช้งานสำเร็จ",
+                     text: "ระงับบัญชีนักท่องเที่ยวสำเร็จ",
                      type: "success",
                      showConfirmButton: false,
                      timer: 2000
                  }, function() {
                     location.reload();
                  })
-                 var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
-                 var content_h1 = "คุณถูกบล็อคบัญชีการใช้งาน";
+                 var content = "บัญชีของคุณถูกระงับการใช้งานเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
+                 var content_h1 = "คุณถูกระงับบัญชีการใช้งาน";
                  var subject = "Admin has blocked your account.";
                  send_mail_ajax(content, tus_email, subject, content_h1);
              },

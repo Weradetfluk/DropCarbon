@@ -1,13 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . "/../DCS_model.php";
-
 /*
 * Da_dcs_tourist
 * Manage tourist
 * @author Thanisorn thumsawanit 62160088
 * @Create Date 2564-07-15
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . "/../DCS_model.php";
 class Da_dcs_tourist extends DCS_model
 {
     public $tus_id;

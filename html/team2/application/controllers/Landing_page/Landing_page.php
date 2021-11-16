@@ -1,17 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../DCS_controller.php';
 /*
 * Landing_page
 * Landing page controller system
 * @author Naaka punparich 62160082
 * @Create Date 2564-07-24
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../DCS_controller.php';
 class Landing_page extends DCS_controller
 {
 
     /*
-    * show_tourist_companylist
+    * show_company_list
     * show list company tourist page 
     * @input -
     * @output -
@@ -23,7 +23,6 @@ class Landing_page extends DCS_controller
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_category', 'mcat');
         $number_status = 2;
-        $data['arr_com_cat'] = $this->mcom->get_com_cat()->result();
         $data['com_cat'] = $this->mcat->get_all()->result();
 
         if (isset($_POST)) {
@@ -41,7 +40,7 @@ class Landing_page extends DCS_controller
     }
 
     /*
-    * show_detaicompany_tourist
+    * show_company_detail
     * show detail company tourist page 
     * @input -
     * @output -
@@ -135,8 +134,8 @@ class Landing_page extends DCS_controller
     }
 
     /*
-    * show_promotion_list
-    * show list promotion page 
+    * show_promotions_list
+    * show list promotions page 
     * @input -
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
@@ -165,8 +164,8 @@ class Landing_page extends DCS_controller
     }
 
     /*
-    * show_promotion_detail
-    * show detail promotion page 
+    * show_promotions_detail
+    * show detail promotions page 
     * @input -
     * @output -
     * @author Chutipon Thermsirisuksin 62160081

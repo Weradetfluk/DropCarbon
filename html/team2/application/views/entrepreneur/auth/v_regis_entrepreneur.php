@@ -244,12 +244,12 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_password">รหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirmpassword()" required>
+                        <input type="password" class="form-control mt-1" id="pass" name="ent_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="confirm">ยืนยันรหัสผ่าน</label>
-                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirmpassword()" required><br>
+                        <input type="password" class="form-control mt-1" id="confirm" name="cfp" placeholder="ยืนยันรหัสผ่าน" onkeyup="confirm_password()" required><br>
                         <div id="errorpassword" class="text-danger"></div>
                     </div>
                 </div>
@@ -310,18 +310,17 @@
     var check_username = 1;
     var check_password = 0;
 
+
     /*
-     * 
-     * confirmpassword
-     * alert confirmpassword not match passwords
-     *@input password
-     *@parameter -
-     *output  checkconfirmpassword
-     *@author Priyarat Bumrungkit
-     *@Create Date 2564-10-25
-     *@update Date 2564-10-26
+     * confirm_password
+     * alert confirm_password not match passwords
+     * @input password
+     * @output -
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-10-25
+     * @update Date 2564-10-26
      */
-    function confirmpassword() {
+    function confirm_password() {
         if ($('#pass').val() != $('#confirm').val() && $('#confirm').val() == null || $('#confirm').val() == "") {
             $('#errorpassword').text('');
             //$('#next_btn').prop('disabled', true);
@@ -341,7 +340,7 @@
     }
 
     /*
-     * check_username
+     * check_username_ajax
      * check username in database
      * @input ent_username
      * @output -
@@ -402,8 +401,8 @@
     $(document).ready(function() {
         $('#ent_id_card').on('keyup', function() {
             if ($.trim($(this).val()) != '' && $(this).val().length == 13) {
-                id = $(this).val().replace(/-/g, "");
-                var result = check_id_card_number(id);
+                card_id = $(this).val().replace(/-/g, "");
+                var result = check_id_card_number(card_id);
                 if (result === false) {
                     var id_alert = "เลขบัตรผิด";
 
@@ -419,19 +418,37 @@
         })
     });
 
-    function check_id_card_number(id) {
-        if (!is_numeric(id)) return false;
-        if (id.substring(0, 1) == 0) return false;
-        if (id.length != 13) return false;
+    /*
+     * check_id_card_number
+     * check id card number
+     * @input card_id
+     * @output -
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-09-10
+     * @Update -
+     */
+    function check_id_card_number(card_id) {
+        if (!is_numeric(card_id)) return false;
+        if (card_id.substring(0, 1) == 0) return false;
+        if (card_id.length != 13) return false;
         for (i = 0, sum = 0; i < 12; i++)
-            sum += parseFloat(id.charAt(i)) * (13 - i);
-        if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+            sum += parseFloat(card_id.charAt(i)) * (13 - i);
+        if ((11 - sum % 11) % 10 != parseFloat(card_id.charAt(12))) return false;
         return true;
     }
 
-    function is_numeric(input) {
-        var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
-        return (RE.test(input));
+    /*
+     * is_numeric
+     * 
+     * @input input_card
+     * @output -
+     * @author Priyarat Bumrungkit 62160156
+     * @Create Date 2564-09-10
+     * @Update -
+     */
+    function is_numeric(input_card) {
+        var pattern_card = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
+        return (pattern_card.test(input_card));
     }
 
     /*
@@ -590,16 +607,14 @@
     }
 
     /*
-     * 
-     * check_email_ajax
-     * check duplicate email in database
-     *@input tus_email
-     *@parameter -
-     *output  email validation
-     *@author Priyarat Bumrungkit 62160156
-     *@Create Date 2564-10-25
-     * @Update Date 
-     */
+    * check_email_ajax
+    * check duplicate email in database
+    * @input tus_email 
+    * @output email validation
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-10-25
+    * @Update Date -
+    */
     function check_email_ajax() {
         let ent_email = $('#ent_email').val();
         $.ajax({
@@ -629,9 +644,10 @@
     }
 
     /*
-    * Auto Tab 
-    * @input ent_tel 
-    * @output ent_tel 
+    * auto_tab 
+    * auto input - in number phone
+    * @input obj 
+    * @output -
     * @author Thanchanok Thongjumroon 62160089
     * @Create Date 2564-10-07
     * @Update Date 2564-10-09
@@ -640,13 +656,13 @@
 
         var pattern = new String("___-___-____"); // 080-123-4567
         var pattern_ex = new String("-"); //ใช้เครื่องหมาย - ในการแบ่ง
-        var returnText = new String("");
+        var return_text = new String("");
         var obj_l = obj.value.length;
         var obj_l2 = obj_l - 1;
         for (i = 0; i < pattern.length; i++) {
             if (obj_l2 == i && pattern.charAt(i + 1) == pattern_ex) {
-                returnText += obj.value + pattern_ex;
-                obj.value = returnText;
+                return_text += obj.value + pattern_ex;
+                obj.value = return_text;
             }
         }
         if (obj_l >= pattern.length) {
@@ -654,23 +670,26 @@
         }
     }   
 
-    /*
-     * Auto Tab  
-    * @output ent_id_card 
+   /*
+    * auto_tap_id_card
+    * auto input - in card id
+    * @input obj 
+    * @output -
     * @author Thanchanok Thongjumroon 62160089
     * @Create Date 2564-10-26
+    * @Update Date -
     */
     function auto_tap_id_card(obj) {
 
         var pattern = new String("_-____-_____-_-__");
         var pattern_ex = new String("-");
-        var returnText = new String("");
+        var return_text = new String("");
         var obj_l = obj.value.length;
         var obj_l2 = obj_l - 1;
         for (i = 0; i < pattern.length; i++) {
             if (obj_l2 == i && pattern.charAt(i + 1) == pattern_ex) {
-                returnText += obj.value + pattern_ex;
-                obj.value = returnText;
+                return_text += obj.value + pattern_ex;
+                obj.value = return_text;
             }
         }
         if (obj_l >= pattern.length) {
@@ -679,16 +698,14 @@
     }
 
     /*
-     * 
-     * check_email_ajax
-     * check duplicate email in database
-     *@input tus_email
-     *@parameter -
-     *output  email validation
-     *@author Priyarat Bumrungkit 62160156
-     *@Create Date 2564-10-25
-     * @Update Date 
-     */
+    * check_phone_number_ajax
+    * check duplicate number in database 
+    * @input ent_tel
+    * @output -
+    * @author Thanchanok Thongjumroon 62160089
+    * @Create Date 2564-10-25
+    * @Update Date -
+    */
     function check_phone_number_ajax() {
         //console.log("use");
         let ent_tel = $('#ent_tel').val();
@@ -697,7 +714,6 @@
             type: "POST",
             data: {
                 ent_tel: ent_tel
-
             },
             success: function(data) {
                 //console.log(data);
@@ -716,32 +732,26 @@
                 }
             }
         });
-
     }
 
     /*
-     * 
-     * check_id_card_ajax
-     * check duplicate id_card in database
-     *@input ent_id_card
-     *@parameter -
-     *output  id_card validation
-     *@author Priyarat Bumrungkit 62160156
-     *@Create Date 2564-10-26
-     * @Update Date 
-     */
+    * check_id_card_ajax
+    * check duplicate id_card in database
+    * @input ent_id_card
+    * @outputid_card validation-
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-10-26
+    * @Update Date -
+    */
     function check_id_card_ajax() {
-        //console.log("use");
         let ent_id_card = $('#ent_id_card').val();
         $.ajax({
             url: '<?php echo base_url('Entrepreneur/Auth/Register_entrepreneur/check_id_card_entrepreneur_ajax'); ?>',
             type: "POST",
             data: {
                 ent_id_card: ent_id_card
-
             },
             success: function(data) {
-                //console.log(data);
                 if (data == 1) {
                     
                     $('#id_card_available').html("หมายเลขบัตรประชาชนนี้ได้ใช้ทำการลงทะเบียนแล้ว");
@@ -757,6 +767,5 @@
                 }
             }
         });
-
     }
 </script>

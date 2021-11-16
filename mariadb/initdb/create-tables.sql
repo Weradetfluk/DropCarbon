@@ -42,7 +42,7 @@ CREATE TABLE `dcs_admin` (
 
 INSERT INTO `dcs_admin` (`adm_id`, `adm_name`, `adm_email`, `adm_username`, `adm_password`, `adm_status`) VALUES
 (1, 'adminfluk', NULL, 'weradet', '958eab45014e55ca1ffc41ff3b2d808d', 1),
-(2, 'adminpip', NULL, 'suwapat', 'adm2_1234', 1);
+(2, 'adminpip', NULL, 'suwapat', 'd0b924637004a0e161cf113bee7cc60c', 1);
 
 -- --------------------------------------------------------
 
@@ -306,12 +306,10 @@ CREATE TABLE `dcs_eve_category` (
 --
 
 INSERT INTO `dcs_eve_category` (`eve_cat_id`, `eve_cat_name`, `eve_drop_carbon`) VALUES
-(1, 'ปลูกต้นไม้ / ปลูกป่า', 0),
-(2, 'ชมธรรมชาติ', 0),
-(3, 'ออกกำลังกาย', 0),
-(4, 'ผจญภัย', 0),
-(5, 'ล่องเรือ', 0),
-(6, 'อื่นๆ', 0);
+(1, 'การจัดการน้ำและไฟฟ้า', 160),
+(2, 'การจัดการขยะ	', 450),
+(3, 'การเดินทาง ', 580),
+(4, 'การเพิ่มตัวช่วยการลดคาร์บอน 	', 1000);
 
 -- --------------------------------------------------------
 

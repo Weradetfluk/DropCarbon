@@ -1,4 +1,14 @@
-<div class="container py-5" style="margin-top: 5%;">
+<!-- 
+/*
+* v_detail_promotions
+* Display detail promotions
+* @input - 
+* @output detail promotion
+* @author Chutipon Thermsirisuksin 62160081
+* @Create Date 2564-09-14
+*/ 
+-->
+<div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
@@ -16,12 +26,19 @@
     </div>
     <!-- ชื่อกิจกรรม -->
     <div class="row">
+        <?php $share_link_promotion = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        // echo $share_link_promotion; 
+        //https://www.informatics.buu.ac.th/team2/
+        ?>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1" nonce="YLQSWYS9"></script>
-        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1" nonce="YLQSWYS9">
+
+        </script>
+        <div class="fb-share-button" data-href=" <?php $share_link_promotion ?> " data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
     <br>
     <!-- แชร์ -->
+
     <div class="row">
         <div class="col-12">
             <div class="container">
@@ -56,7 +73,7 @@
     $start_day = date("d", strtotime($promotions[0]->pro_start_date));
     $start_month = date("F", strtotime($promotions[0]->pro_start_date));
     $start_year = date("Y", strtotime($promotions[0]->pro_start_date));
-    if ($start_year == date("Y")) {
+    if ($start_year == date("Y") || $start_year > date("Y")) {
         $start_year = (int)$start_year + 543;
     }
 
@@ -76,7 +93,7 @@
     $end_day = date("d", strtotime($promotions[0]->pro_end_date));
     $end_month = date("F", strtotime($promotions[0]->pro_end_date));
     $end_year = date("Y", strtotime($promotions[0]->pro_end_date));
-    if ($end_year == date("Y")) {
+    if ($end_year == date("Y") || $end_year > date("Y")) {
         $end_year = (int)$end_year + 543;
     }
     // echo $day . " " . $month . " " . $year;
@@ -165,7 +182,7 @@
     </div>
 
 </div>
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+
 
 <script>
 var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript

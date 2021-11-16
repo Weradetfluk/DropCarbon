@@ -1,12 +1,12 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once 'Da_dcs_entrepreneur_reject.php';
 /*
 * M_dcs_entrepreneur_reject
 * get data entrepreneur reject
 * @author Weradet Nopsombun 62160110
 * @Create Date 2564-08-12
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once 'Da_dcs_entrepreneur_reject.php';
 class M_dcs_entrepreneur_reject extends Da_dcs_entrepreneur_reject
 {
 
@@ -21,7 +21,7 @@ class M_dcs_entrepreneur_reject extends Da_dcs_entrepreneur_reject
     /*
     * get_data_rejected_by_id
     * get data rejected 
-    * @input 
+    * @input ent_id
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-08-12

@@ -1,12 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../DCS_controller.php';
 /*
 * Select_login
 * show login page
 * @author Naaka page 62160082
 * @Create Date 2564-09-10
 */
+defined('BASEPATH') OR exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../DCS_controller.php';
 class Select_login extends DCS_controller {
     /*
     * index

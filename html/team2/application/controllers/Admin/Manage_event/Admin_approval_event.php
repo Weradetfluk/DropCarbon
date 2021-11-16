@@ -187,18 +187,6 @@ class Admin_approval_event extends DCS_controller
     $this->mdce->update_status($status_number);
     
   }
-
-  // public function add_point_event()
-  // {
-  //   $this->mdce->eve_id = $this->input->post('eve_id');
-
-  //   $eve_point = $this->input->post('eve_point');
-  //   $this->mdce->eve_point =  $eve_point;
-
-  //   $this->mdce->insert_point();
-  //   redirect('Admin/Manage_event/Admin_approval_event/show_data_event_not_over');
-    
-  // }
   /*
         * reject_entrepreneur
         * change ent_status
@@ -218,7 +206,7 @@ class Admin_approval_event extends DCS_controller
     $mail_subject = 'Admin has rejected your event';
     $evr_eve_id = $this->input->post('eve_id');
     $mail_content_header = "คุณถูกปฎิเสธการเพิ่มกิจกรรม";
-    $admin_id =  $this->session->userdata("Admin_id");
+    $admin_id =  $this->session->userdata("admin_id");
     //load model for save rejected data
     $this->load->model('Event/M_dcs_eve_reject', 'mdere');
     //save data reject to data base
@@ -247,24 +235,14 @@ class Admin_approval_event extends DCS_controller
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
   /*
-    * Approval
-    * change ent_status
-    * @input
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-07-17
+  * show_data_consider_ajax
+  * get all data entrepreneur not approve and show table
+  * @input
+  * @output -
+  * @author Weradet Nopsombun 62160110
+  * @Create Date 2564-09-14
     * @Update Date -
     */
-  
-  /*
-         * show_data_consider_ajax
-         * get all data entrepreneur not approve and show table
-         * @input
-         * @output -
-         * @author Weradet Nopsombun 62160110
-         * @Create Date 2564-09-14
-         * @Update Date -
-         */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;
@@ -310,11 +288,11 @@ class Admin_approval_event extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->eve_id . '\')">
-                          <i class="material-icons">
-                            search
-                          </i>
-                       </button>' .
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
+                <i class="material-icons">
+                  search
+                </i>
+              </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
                             <i class="material-icons">
                               done
@@ -327,11 +305,11 @@ class Admin_approval_event extends DCS_controller
                         </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->eve_id . '\')">
-                      <i class="material-icons">
-                        search
-                      </i>
-                    </button>' ;
+              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '">
+                <i class="material-icons">
+                  search
+                </i>
+              </a>' ;
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -459,6 +437,8 @@ class Admin_approval_event extends DCS_controller
     $this->output_admin('admin/manage_event/v_detail_event_admin', $data, null);
   }
 
+
+    //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
   /*
     * get_evenr_data_no_score_ajax
     * show detail
@@ -500,6 +480,8 @@ class Admin_approval_event extends DCS_controller
     }
   }
 
+
+  //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
   /*
     * get_evenr_data_no_score_ajax
     * show detail
@@ -538,5 +520,21 @@ class Admin_approval_event extends DCS_controller
       }
       echo json_encode($data);
     }
+  }
+
+
+  /*
+    * get_data_category
+    * get data eve_cat
+    * @input ข
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-11-06
+    * @Update Date -
+    */
+  public function get_data_category(){
+    $this->load->model('Event/M_dcs_eve_category', 'meca');
+    $data['data_eve_cat'] = $this->meca->get_all()->result();
+    echo json_encode($data);
   }
 }

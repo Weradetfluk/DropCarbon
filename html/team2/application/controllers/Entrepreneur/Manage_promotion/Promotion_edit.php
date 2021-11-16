@@ -38,8 +38,8 @@ class Promotion_edit extends DCS_controller
     * edit promotion 
     * @input pro_name, pro_description, pro_com_id, pro_id, new_img, com_id, del_old_img, del_new_img
     * @output -
-    * @author Acaharaporn pornpattanasap 62160344 
-    * @Create Date 2564-09-25
+    * @author Suwapat Saowarod 62160340 
+    * @Create Date 2564-10-03
     * @Update Date -
     */
     public function edit_promotion()

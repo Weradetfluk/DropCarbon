@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class DCS_controller extends CI_Controller
 {
     /*
-    * index main
+    * index
     * index Main Drop carbon Systems
     * @input
     * @output -

@@ -20,7 +20,10 @@
     
     <link rel="stylesheet" href="<?php echo base_url().'assets/templete'?>/material_icon.css" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/Openlayer/theme/default/style.css'?>" type="text/css">
-
+    <!-- summer note -->
+    <!-- <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/summernote/summernote.css'?>" type="text/css"> -->
+   
+    
 </head>
 
 <body>

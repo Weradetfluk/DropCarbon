@@ -1,12 +1,12 @@
 <?php
+/*
+* Register_tourist
+* register new tourist user
+* @author Thanisorn thumsawanit 62160088
+* @Create Date 2564-07-31
+*/
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
-/*
-    * Register_tourist
-    * register new tourist user
-    * @author Thanisorn thumsawanit 62160088
-    * @Create Date 2564-07-31
-    */
 class Register_tourist extends DCS_controller
 {
     public function __construct()
@@ -16,7 +16,7 @@ class Register_tourist extends DCS_controller
     /*
     * show_regis_tourist
     * output register tourist page
-    * @input
+    * @input - 
     * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
@@ -45,7 +45,7 @@ class Register_tourist extends DCS_controller
     /*
     * insert_tourist
     * output register new tourist
-    * @input tourist data
+    * @input tourist, data
     * @output -
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-07-31
