@@ -232,10 +232,12 @@ function read_more() {
         <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1"
             nonce="YLQSWYS9"></script>
-        <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button"
-            data-size="small"><a target="_blank"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
-                class="fb-xfbml-parse-ignore">แชร์</a></div>
+        <div class="col fb-share-button" data-href="" data-layout="button" data-size="large">
+            <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button"
+                data-size="small"><a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Share</a></div>
+        </div>
     </div>
     <br>
     <!-- แชร์ -->
@@ -260,7 +262,7 @@ function read_more() {
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">description</span>  -->
                 <img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>"
-                    style="width:30px;margin-top:-5px;">
+                    style="width:40px;margin-top:-5px;">
                 รายละเอียด
             </h3>
             <hr width="100%" size="10" color="#cccccc">
@@ -295,11 +297,11 @@ function read_more() {
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">category</span>  -->
                 <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
-                    style="width:30px;margin-top:-5px;">
+                    style="width:40px;margin-top:-5px;">
                 ประเภท
             </h3>
             <hr width="100%" size="10" color="#cccccc">
-            <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท:
+            <p style="font-size: 18px; text-indent: 50px;">ประเภทของสถานที่ :
                 <?php echo $company->com_cat_name; ?></p>
         </div>
     </div>
@@ -309,7 +311,7 @@ function read_more() {
         <div class="col">
             <h3>
                 <img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>"
-                    style="width:30px;margin-top:-5px;">
+                    style="width:40px;margin-top:-5px;">
                 กิจกรรมของ <?php echo $company->com_name ?>
             </h3>
             <hr width="100%" size="10" color="#cccccc">
@@ -322,7 +324,7 @@ function read_more() {
             <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
                 <div class="card card-custom" id="card" style="max-height: 30rem;">
                     <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>"
-                        class="card-img-top" style="max-height: 300px;" alt="...">
+                        class="card-img-top" style="max-height: 220px;" alt="...">
                     <!-- รูปที่ 1 -->
                     <div class="card-body" style="text-align: left;">
                         <h3 class="text-decoration-none text-dark"><?php echo $event[$i]->eve_name ?></h3>
@@ -343,7 +345,7 @@ function read_more() {
         <div class="col">
             <h3>
                 <img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>"
-                    style="width:30px;margin-top:-5px;">
+                    style="width:40px;margin-top:-5px;">
                 โปรโมชั่นของ <?php echo $company->com_name ?>
             </h3>
             <hr width="100%" size="10" color="#cccccc">
@@ -357,7 +359,7 @@ function read_more() {
                 href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
                 <div class="card card-custom" id="card" style="max-height: 30rem;">
                     <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>"
-                        class="card-img-top" style="max-height: 300px;" alt="...">
+                        class="card-img-top" style="max-height: 220px;" alt="...">
                     <!-- รูปที่ 1 -->
                     <div class="card-body" style="text-align: left;">
                         <h3 class="text-decoration-none text-dark"><?php echo $promotions[$i]->pro_name ?></h3>
@@ -379,13 +381,12 @@ function read_more() {
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">place</span> -->
                 <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
-                    style="width:30px;margin-top:-5px;">
+                    style="width:40px;margin-top:-5px;">
                 ตำแหน่งสถานที่
             </h3>
             <div class="card" style="padding-left: 2%; transform: unset;">
                 <h2 style="padding-top: 2%; ">
-                    <img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
-                        style="width:30px;margin-top:-5px;">
+
                     <?php echo $company->com_name ?>
                 </h2>
                 <!-- ชื่อสถานที่ -->
@@ -395,23 +396,15 @@ function read_more() {
                         <h3>ที่อยู่</h3>
                         <hr>
                         <div class="row py-3">
-                            <div class="col-1">
-                                <!-- <span class="material-icons">info</span> -->
-                                <img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
-                                    style="width:30px;margin-top:-5px;">
-                            </div>
+
                             <div class="col">
-                                <p><?php echo $company->com_location ?></p>
+                                <p> &#9679 <?php echo $company->com_location ?></p>
                             </div>
                         </div>
                         <div class="row py-3">
-                            <div class="col-1">
-                                <!-- <span class="material-icons">contact_phone</span> -->
-                                <img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>"
-                                    style="width:30px;margin-top:-5px;">
-                            </div>
+
                             <div class="col">
-                                <p><?php echo $company->com_tel ?></p>
+                                <p> &#9679 <?php echo $company->com_tel ?></p>
                             </div>
                         </div>
                     </div>
