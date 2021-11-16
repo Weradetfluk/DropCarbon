@@ -154,7 +154,7 @@
          html_code += '</thead>';
          html_code += '<tbody class="list">';
 
-         data.forEach((row_promo, index_pro) => {
+         data.forEach((row_promo, index_promo) => {
 
              html_code += '<tr>';
              html_code += '<td>' + (index_promo+1) + '</td>';
@@ -162,7 +162,7 @@
              html_code += '<td>' + (row_promo['com_name']) + '</td>';
              html_code += '<td>' + (row_promo['ent_firstname']) + (' ') + (row_promo['ent_lastname']) + '</td>';
              html_code += '<td style="text-align: center;">';
-             html_code += '<a class="btn btn-info suctom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row_promo['pro_id'])  + '">'         
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row_promo['pro_id'])  + '">'         
              html_code +='<i class="material-icons">'
              html_code +='search'
              html_code +='</i>';

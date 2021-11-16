@@ -97,7 +97,7 @@
                             </div><br><br>
 
                             <div class="container-fluid">
-                                <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="3%">  เลือกสถานที่ตั้ง</h3>
+                                <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px">  เลือกสถานที่ตั้ง</h3>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
@@ -108,7 +108,7 @@
                             </div>
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>

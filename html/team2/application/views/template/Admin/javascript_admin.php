@@ -3,7 +3,6 @@
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
 <!-- Chartist JS -->
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -12,15 +11,45 @@
 <script src="<?php echo base_url() . 'assets/templete/material-dashboard-master' ?>/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 <!-- Sweet alert -->
 <script src="<?php echo base_url() . 'assets/plugin/sweetalert/sweetalert.min.js' ?>"></script>
-
-
 <!-- openstreet map -->
 <!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
 <script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
-
-
-
 <script>
+$(document).ready(function() {
+         //show innformation
+         $("#help_information").click(function() {
+             let arr_min_point = [1, 20, 30, 40];
+             let arr_max_point = [19, 29, 39, 49];
+             if ($('#infor_eve_cat').is(":hidden")) {
+                 $.ajax({
+                     url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_data_category'); ?>',
+                     method: "POST",
+                     dataType: "JSON",
+                     success: function(json_data) {
+                        html_code = '';
+                        html_code += '<table class="table">';
+                        html_code += '<thead class="text-white" style="text-align: center;">';
+                        html_code += '<tr>';
+                        html_code += '<th><p>ชื่อประเภท</p></th>';
+                        html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+                        html_code += '<th><p>ช่วงคะแนน</p></th>';
+                        html_code += '</tr>';
+                        html_code += ' </thead>';
+                        html_code += ' <tbody>';
+                        json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                            html_code += '<tr>';
+                            html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
+                            html_code += '</tr>';
+                        });
+                         $('#infor_eve_cat').html(html_code);
+                     }
+                 });
+             }
+             $("#infor_eve_cat").slideToggle("slow");
+         });
+     });
     /*
      * confirm_approve
      * open modal id = Aprovemodal 
@@ -97,16 +126,12 @@
                 ];
                 let old_date_sub = old_date.substr(0, old_date.indexOf(" "));
                 let year = old_date_sub.substr(0, old_date_sub.indexOf("-"));
-
                 let year_thai = parseInt(year) + 543;
                 let month = old_date_sub.substr(old_date_sub.indexOf("-") + 1, 2);
                 let day   = old_date_sub.substr(old_date_sub.indexOf("-") + 4, 2);
-
                // console.log(old_date_sub);
-
                 let format =  day + " " + month_name[month - 1] + " " + year_thai;
                 console.log(format);
-
                 return  format;
     }
 

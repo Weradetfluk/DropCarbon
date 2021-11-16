@@ -47,15 +47,18 @@ class Promotion_edit extends DCS_controller
 
         $this->load->model('Promotions/M_dcs_pro_image', 'mimg');
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
-
         $this->mpro->pro_name = $this->input->post('pro_name');
-        $this->mpro->pro_point = $this->input->post('pro_point');
         $this->mpro->pro_description = $this->input->post('pro_description');
         $this->mpro->pro_status = 1;
         $this->mpro->pro_start_date = $this->input->post('pro_start_date');
         $this->mpro->pro_end_date = $this->input->post('pro_end_date');
         $this->mpro->pro_com_id = $this->input->post('pro_com_id');
         $this->mpro->pro_cat_id = $this->input->post('pro_cat_id');
+        if($this->input->post('pro_cat_id') == 1){
+            $this->mpro->pro_point = 0;
+        }else{
+            $this->mpro->pro_point = $this->input->post('pro_point');
+        }
         $this->mpro->pro_id = $this->input->post('pro_id');
 
         // save data company to database

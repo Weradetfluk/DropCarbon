@@ -51,7 +51,7 @@
 
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;">
+                                    <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
                                         (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="eve_com_id" id="eve_com_id" class="form-control" required>
                                         <?php if (count($arr_company) != 0) { ?>
@@ -73,6 +73,7 @@
                                     <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
+                                        
                                 </div>
                             </div><br>
 
@@ -132,16 +133,14 @@
                                     <input type="text" id="eve_lon" name="eve_lon" class="form-control" value=""
                                         placeholder="ใส่ลองจิจูด">
                                 </div>
-                                <button class="btn btn-success text-white"
-                                    style="font-size:16px; padding:14px; border-radius: 100%;"
-                                    onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
+                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>
-                                </button>
+                                </a>
                             </div><br><br>
 
                             <div class="container-fluid">
                                 <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
-                                        width="3%"> เลือกสถานที่ตั้ง</h3>
+                                        width="40px"> เลือกสถานที่ตั้ง</h3>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
@@ -154,8 +153,7 @@
                             <!-- Submit button -->
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <button class="btn btn-secondary" style="color: white; background-color: #777777;"
-                                    onclick="unlink_image_go_back()">ยกเลิก</button>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>

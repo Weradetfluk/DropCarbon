@@ -14,7 +14,7 @@
       <h3 id="name_table" style="margin : 0 auto !important;padding-left: 3px !important;padding-bottom: 10px; float:left; font-family: 'Prompt', sans-serif !important;"></h3>
     </div>
     <div class="col">
-      <a class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>">เพิ่มสถานที่</a>
+      <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_add/show_add_company' ?>'">เพิ่มสถานที่</button>
     </div>
   </div>
 
@@ -79,12 +79,12 @@
                             <?php if ($arr_company[$i]->com_status == 1) { ?>
                               <td style="color: #fba004;">รออนุมัติ</td>
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
-                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                </button>
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">edit</span>
-                                </a>
+                                </button>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
                                   <span class="material-icons">delete</span>
                                 </button>
@@ -93,12 +93,12 @@
                             <?php if ($arr_company[$i]->com_status == 2) { ?>
                               <td style="color: #669900;">อนุมัติ</td>
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
-                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                </button>
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">edit</span>
-                                </a>
+                                </button>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
                                   <span class="material-icons">delete</span>
                                 </button>
@@ -107,9 +107,9 @@
                             <?php if ($arr_company[$i]->com_status == 3) { ?>
                               <td style="color: red;">ปฏิเสธ</td>
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
+                                </button>
                               </td>
                             <?php } ?>
                           </tr>
@@ -170,12 +170,12 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
-                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                </button>
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">edit</span>
-                                </a>
+                                </button>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
                                   <span class="material-icons">delete</span>
                                 </button>
@@ -241,12 +241,12 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
-                                <a class="btn btn-warning" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>">
+                                </button>
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">edit</span>
-                                </a>
+                                </button>
                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
                                   <span class="material-icons">delete</span>
                                 </button>
@@ -312,9 +312,9 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <a class="btn btn-info" style="font-size:10px; padding:12px;" href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
                                   <span class="material-icons">search</span>
-                                </a>
+                                </button>
                               </td>
                             </tr>
                             <?php $count_reject++; ?>

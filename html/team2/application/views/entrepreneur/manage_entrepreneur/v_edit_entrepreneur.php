@@ -163,9 +163,9 @@
                             <br>
                             <div style="text-align: right;">
                                 <input type="submit" class="btn btn-success" value="บันทึก"></input>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;"
-                                    href="<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>">ยกเลิก
-                                </a>
+                                <button class="btn btn-secondary" style="color: white; background-color: #777777;"
+                                onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_list/show_list_company'; ?>'">ยกเลิก
+                                </button>
                             </div>
                             <br>
                         </div>
