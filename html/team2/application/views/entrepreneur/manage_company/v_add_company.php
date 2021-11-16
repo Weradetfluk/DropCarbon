@@ -108,7 +108,7 @@
                             </div>
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>

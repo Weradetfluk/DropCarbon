@@ -53,7 +53,7 @@
                             <!-- Text input -->
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label><span style="color: red;">
+                                    <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
                                         (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="eve_com_id" id="eve_com_id" class="form-control" required>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
@@ -83,11 +83,10 @@
                             <!-- ******** -->
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="eve_location">ที่อยู่</label>
-                                    <textarea id="eve_location" name="eve_location" class="form-control"
-                                        style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
-                                        rows="5" placeholder="กรอกรายละเอียดที่อยู่ของกิจกรรม"
-                                        required><?php echo $arr_event[0]->eve_location; ?> </textarea>
+                                    <label for="eve_location">รายละเอียดที่อยู่สถานที่</label>
+                                    <input type="text" id="eve_location" name="eve_location" class="form-control"
+                                        placeholder="ใส่บ้านเลขที่ หมู่บ้าน ซอย หมู่ ถนน ตำบล อำเภอ จังหวัด ไปรษณีย์ ตามลำดับ"
+                                        value="<?php echo $arr_event[0]->eve_location; ?>" required>
                                 </div>
                             </div><br>
 
@@ -156,11 +155,11 @@
                                     <input type="text" id="eve_lon" name="eve_lon" class="form-control"
                                         value="<?php echo $arr_event[0]->eve_lon; ?>">
                                 </div>
-                                <button class="btn btn-success text-white"
+                                <a class="btn btn-success text-white"
                                     style="font-size:16px; padding:14px; border-radius: 100%;"
                                     onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>
-                                </button>
+                                </a>
                             </div><br><br>
 
                             <div class="row">
@@ -184,9 +183,9 @@
                             <div style="text-align: right;">
                                 <button type="button" value="Submit" class="btn btn-success" id="btn_sub"
                                     onclick="confirm_edit('<?php echo $arr_event[0]->eve_name; ?>')">บันทึก</button>
-                                <button class="btn btn-secondary" style="color: white; background-color: #777777;"
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;"
                                     onclick="unlink_image_go_back()">ยกเลิก
-                                </button>
+                                </a>
                             </div>
 
                             <!-- modal edit -->

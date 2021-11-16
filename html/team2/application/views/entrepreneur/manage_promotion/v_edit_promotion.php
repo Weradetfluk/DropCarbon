@@ -8,7 +8,7 @@
 * @Create Date 2564-10-03
 */ 
 -->
-<?php if ($arr_promotion[0]->pro_status == 3 || $arr_promotion[0]->pro_status == 4 || $arr_promotion[0]->pro_end_date > $date_now && $arr_promotion[0]->pro_start_date <= $date_now || $arr_promotion[0]->pro_start_date > $date_now && $arr_promotion[0]->pro_status == 2) {
+<?php if ($arr_promotion[0]->pro_status == 3 || $arr_promotion[0]->pro_status == 4 || $arr_promotion[0]->pro_end_date > $date_now && $arr_promotion[0]->pro_start_date <= $date_now && $arr_promotion[0]->pro_status == 2 || $arr_promotion[0]->pro_start_date > $date_now && $arr_promotion[0]->pro_status == 2) {
     $path = site_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion";
     header("Location: " . $path);
     exit();
@@ -62,8 +62,8 @@
                             </div><br>
 
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label>
+                                <div class="col-lg-6">
+                                    <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="pro_com_id" id="pro_com_id" class="form-control" required>
                                         <?php if (count($arr_company) != 0) { ?>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>

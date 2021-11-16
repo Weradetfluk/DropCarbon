@@ -83,7 +83,7 @@
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
                                             width="40px"> ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
-                                    <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท:
+                                    <p style="font-size: 18px; text-indent: 50px;">
                                         <?php echo $obj_company->com_name; ?></p>
                                 </div>
                                 <div class="col-2"></div>

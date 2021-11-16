@@ -120,7 +120,7 @@
                             <input type="hidden" name="com_id" id="com_id" value="<?php echo $arr_company[0]->com_id; ?>">
                             <div style="text-align: right;">
                                 <button type="button" value="Submit" class="btn btn-success" id="btn_sub" onclick="confirm_edit('<?php echo $arr_company[0]->com_name; ?>')">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 
                             <!-- modal edit -->

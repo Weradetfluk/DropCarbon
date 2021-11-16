@@ -109,7 +109,7 @@
                                                 <td style="color: #669900;">อนุมัติ</td>
                                                 <?php } ?>
                                                 <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_status == 1 || $arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now && $arr_promotion[$i]->pro_status == 2) { ?>
+                                                <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
                                                         onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
@@ -127,7 +127,6 @@
                                                 </td>
                                                 <?php } ?>
                                                 <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
-                                                <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now || $arr_promotion[$i]->pro_start_date > $date_now) { ?>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
                                                         onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
@@ -138,7 +137,6 @@
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                 </td>
-                                                <?php } ?>
                                                 <?php } ?>
 
                                                 <?php } ?>
@@ -287,11 +285,6 @@
                                                         onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
                                                         <span class="material-icons">search</span>
                                                     </button>
-                                                    <button class="btn btn-warning"
-                                                        style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">edit</span>
-                                                    </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
                                                         onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
                                                         <span class="material-icons">delete</span>
@@ -357,11 +350,6 @@
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
                                                         onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
                                                         <span class="material-icons">search</span>
-                                                    </button>
-                                                    <button class="btn btn-warning"
-                                                        style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
                                                         onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">

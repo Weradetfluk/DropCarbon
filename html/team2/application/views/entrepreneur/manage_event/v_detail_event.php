@@ -78,7 +78,7 @@
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>"
                                             width="40px"> คะแนนกิจกรรม</h3>
                                     <hr width="100%" size="10" color="#cccccc">
-                                    <p style="font-size: 18px; text-indent: 50px;">คะแนนที่จะได้รับหลังทำกิจกรรม:
+                                    <p style="font-size: 18px; text-indent: 50px;">
                                         <?php echo $arr_event[0]->eve_point; ?> คะเเนน</p>
                                 </div>
                                 <div class="col-2"></div>
@@ -86,7 +86,7 @@
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
                                             width="40px"> ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
-                                    <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท:
+                                    <p style="font-size: 18px; text-indent: 50px;">
                                         <?php echo $arr_event[0]->eve_cat_name; ?></p>
                                 </div>
                             </div>

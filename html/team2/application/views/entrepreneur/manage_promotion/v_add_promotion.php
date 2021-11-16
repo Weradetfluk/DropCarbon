@@ -50,8 +50,8 @@
                             </div><br>
 
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <label for="com_name">ชื่อสถานที่</label>
+                                <div class="col-lg-6">
+                                    <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="pro_com_id" id="pro_com_id" class="form-control" required>
                                         <?php if (count($arr_company) != 0) { ?>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>

@@ -277,7 +277,7 @@
                                     2.1 ผู้ขอใช้บริการรับรองและรับประกันว่าตนได้อ่าน และรับทราบถึงเนื้อหาของนโยบายคุ้มครองข้อมูลส่วนบุคคลของ Drop Carbon
                                 </p>
                                 <br>
-                                <input type="checkbox" id="agree" onblur="check_box_agree()"> ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
+                                <input type="checkbox" id="agree" onclick="check_box_agree()"> ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวมาข้างต้นนั้นเป็นความจริง และยอมรับข้อตกลงในการใช้บริการ Drop Carbon System
                             </div>
                             <div class="modal-footer">
                                 <button id="submit" class="btn btn-success success">ยืนยัน</button>
