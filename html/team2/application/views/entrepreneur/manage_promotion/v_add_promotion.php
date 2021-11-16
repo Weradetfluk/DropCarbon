@@ -64,7 +64,6 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-lg-2"></div>
                                 <div class="col-lg-4" id="div-point">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
                                     <input type="number" name="pro_point" id="pro_point" class="form-control"

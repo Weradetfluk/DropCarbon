@@ -41,7 +41,8 @@
 
                                 <div class="col-lg-3">
                                     <label for="pro_cat_id">หมวดหมู่</label>
-                                    <select name="pro_cat_id" class="form-control" required>
+                                    <select name="pro_cat_id" id="pro_cat_id" class="form-control"
+                                        onchange="check_category()" required>
                                         <?php if (count($arr_category) != 0) { ?>
                                         <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
                                         <?php if ($arr_category[$i]->pro_cat_id == $arr_promotion[0]->pro_cat_id) { ?>
@@ -82,8 +83,7 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-lg-2"></div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4" id="div-point">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
                                     <input type="number" name="pro_point" id="pro_point" class="form-control"
                                         placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน"
@@ -198,6 +198,7 @@ var count_image = <?= count($arr_promotion) ?>;
  */
 $(document).ready(function() {
     check_count_image_btn();
+    check_category();
 });
 
 /*
@@ -361,5 +362,25 @@ function confirm_edit(pro_name_con) {
     $('#submit').click(function() {
         $('#form_edit_pro').submit();
     });
+}
+
+/*
+ * check_category
+ * check category promotion
+ * @input pro_cat_id
+ * @output -
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-10-13
+ * @Update 
+ */
+function check_category() {
+    let pro_cat_id = $('#pro_cat_id').val();
+    if (pro_cat_id == 1) {
+        $('#div-point').hide();
+        $('#pro_point').prop('required', false);
+    } else {
+        $('#div-point').show();
+        $('#pro_point').prop('required', true);
+    }
 }
 </script>
