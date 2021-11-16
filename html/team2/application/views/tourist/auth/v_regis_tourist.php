@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="tell">เบอร์โทร</label>
-                        <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" onblur="check_phone_number_ajax()" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" maxlength="10" required>
+                        <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" onblur="check_phone_number_ajax()" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" required>
                         <span id="phonenumber_available" style="color: red;"></span>
                     </div>
 
