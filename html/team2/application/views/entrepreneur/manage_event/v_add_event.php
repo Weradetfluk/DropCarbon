@@ -140,7 +140,7 @@
 
                             <div class="container-fluid">
                                 <h3><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
-                                        width="3%"> เลือกสถานที่ตั้ง</h3>
+                                        width="40px"> เลือกสถานที่ตั้ง</h3>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
