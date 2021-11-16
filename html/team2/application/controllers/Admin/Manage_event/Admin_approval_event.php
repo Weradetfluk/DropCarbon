@@ -276,13 +276,13 @@ class Admin_approval_event extends DCS_controller
         foreach ($data['arr_event'] as $row) {
           $output .= '<tr>' .
             '<td class="res-hide">' . $i . '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->eve_name .
             '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->com_name .
             '</td>' .
-            '<td class="res-hide">' .
+            '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
             '</td>';
           if ($number_status == 1) {
@@ -348,13 +348,13 @@ class Admin_approval_event extends DCS_controller
         foreach ($data['arr_event'] as $row) {
           $output .= '<tr>' .
             '<td class="res-hide">' . $i . '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->eve_name .
             '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->com_name .
             '</td>' .
-            '<td class="res-hide">' .
+            '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
             '</td>';
           if ($number_status == 1) {
