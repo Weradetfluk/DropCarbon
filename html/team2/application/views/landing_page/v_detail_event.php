@@ -67,7 +67,7 @@
         <div class="col">
             <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px"> ประเภท</h3>
             <hr width="100%" size="10" color="#cccccc">
-            <p style="text-indent: 50px;">ประเภทของกิจกรรม: <?php echo $event->eve_cat_name; ?></p>
+            <p style="text-indent: 50px;"><?php echo $event->eve_cat_name; ?></p>
         </div>
     </div>
 
@@ -85,8 +85,8 @@
                         <h3>ที่อยู่</h3>
                         <hr>
                         <ul>
-                            <li class="li-padding">158/1 หมู่.9 ตำบล.หนองอิรุณ อำเภอ.บ้านบึง จังหวัด.ชลบุรี 20170</li>
-                            <li class="li-padding">0905530622</li>
+                            <li class="li-padding"><?php echo $event->eve_location ?></li>
+                            <li class="li-padding"><?php echo $event->com_tel ?></li>
                         </ul>
                     </div>
 
