@@ -53,7 +53,7 @@
                                 <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
 
                                 <!-- เวลาเริ่ม/จบกิจกรรม -->
-                                <p style="display:inline; font-size: 16px; float: right;"><?php echo $arr_eve[$i]->eve_start_date; ?> - <?php echo $arr_eve[$i]->eve_end_date; ?></p>
+                                <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . "-" . substr($arr_eve[$i]->eve_start_date, 5, 2) . "-" . substr($arr_eve[$i]->eve_start_date, 0, 4); ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . "-" . substr($arr_eve[$i]->eve_end_date, 5, 2) . "-" . substr($arr_eve[$i]->eve_end_date, 0, 4); ?></p>
 
                             </div>
                         </div>
