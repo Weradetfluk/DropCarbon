@@ -167,13 +167,13 @@ class Admin_list_tourist extends DCS_controller
                 foreach ($data['arr_tourist'] as $row) {
                     $output .= '<tr>' .
                 '<td>' . $i . '</td>' .
-                '<td>'
+                '<td style="text-align: left;">'
                 . $row->tus_firstname . " " . $row->tus_lastname .
                 '</td>' .
                 '<td>'
                 . $row->tus_tel .
                 '</td>' .
-                '<td>' .
+                '<td style="text-align: left;">' .
                 $row->tus_email .
                 '</td>'; 
                   if($number_status == 1){
@@ -233,13 +233,13 @@ class Admin_list_tourist extends DCS_controller
                   foreach ($data['arr_tourist'] as $row) {
                       $output .= '<tr>' .
                   '<td>' . $i . '</td>' .
-                  '<td>'
+                  '<td style="text-align: left;">'
                   . $row->tus_firstname . " " . $row->tus_lastname .
                   '</td>' .
                   '<td>'
                   . $row->tus_tel .
                   '</td>' .
-                  '<td>' .
+                  '<td style="text-align: left;">' .
                   $row->tus_email .
                   '</td>';
                   if($number_status == 1){

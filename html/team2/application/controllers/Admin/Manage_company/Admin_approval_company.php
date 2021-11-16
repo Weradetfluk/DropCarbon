@@ -317,13 +317,13 @@ class Admin_approval_company extends DCS_controller
         foreach ($data['arr_company'] as $row) {
           $output .= '<tr>' .
             '<td class="res-hide">' . $i . '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->com_name .
             '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->ent_firstname . " " . $row->ent_lastname .
             '</td>' .
-            '<td class="res-hide">' .
+            '<td class="res-hide style="text-align: left;">' .
             $row->ent_email .
             '</td>';
           if ($number_status == 1) {
@@ -389,19 +389,19 @@ class Admin_approval_company extends DCS_controller
         foreach ($data['arr_company'] as $row) {
           $output .= '<tr>' .
             '<td class="res-hide">' . $i . '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->com_name .
             '</td>' .
-            '<td>'
+            '<td style="text-align: left;">'
             . $row->ent_firstname . " " . $row->ent_lastname .
             '</td>' .
-            '<td class="res-hide">' .
+            '<td class="res-hide" style="text-align: left;">' .
             $row->ent_email .
             '</td>';
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-              '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
                  <span class="material-icons">search</span>
                </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
