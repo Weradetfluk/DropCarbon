@@ -109,7 +109,7 @@
 
                             <!-- เลือกรูปภาพประกอบกิจกรรม -->
                             <div class="form-group">
-                                <label for="eve_file">รูปภาพประกอบสถานที่ <br><span
+                                <label for="eve_file">รูปภาพประกอบกิจกรรม <br><span
                                         style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ
                                         และขนาดรูปไม่เกิน 3000 KB)</span></label>
                             </div>
@@ -156,11 +156,11 @@
                                     <input type="text" id="eve_lon" name="eve_lon" class="form-control"
                                         value="<?php echo $arr_event[0]->eve_lon; ?>">
                                 </div>
-                                <a class="btn btn-success text-white"
+                                <button class="btn btn-success text-white"
                                     style="font-size:16px; padding:14px; border-radius: 100%;"
                                     onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>
-                                </a>
+                                </button>
                             </div><br><br>
 
                             <div class="row">
@@ -184,9 +184,9 @@
                             <div style="text-align: right;">
                                 <button type="button" value="Submit" class="btn btn-success" id="btn_sub"
                                     onclick="confirm_edit('<?php echo $arr_event[0]->eve_name; ?>')">บันทึก</button>
-                                <a class="btn btn-secondary" style="color: white; background-color: #777777;"
+                                <button class="btn btn-secondary" style="color: white; background-color: #777777;"
                                     onclick="unlink_image_go_back()">ยกเลิก
-                                </a>
+                                </button>
                             </div>
 
                             <!-- modal edit -->
@@ -205,7 +205,7 @@
                                                     id="eve_name_confirm2"></span> จะกลับสู่สถานะรออนุมัติ***</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
+                                            <button id="submit" class="btn btn-success success">ยืนยัน</button>
                                             <button type="button" class="btn btn-secondary"
                                                 style="color: white; background-color: #777777;"
                                                 data-dismiss="modal">ยกเลิก</button>
