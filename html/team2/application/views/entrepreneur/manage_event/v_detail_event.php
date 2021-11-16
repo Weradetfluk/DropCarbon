@@ -35,7 +35,6 @@
                                 <?php } ?>
                             </ol>
                             <div class="carousel-inner">
-                                <hr width="100%" size="5" color="#cccccc">
                                 <?php for ($i = 0; $i < count($arr_event); $i++) { ?>
                                 <?php if ($i == 0) { ?>
                                 <div class="carousel-item image-detail active">
