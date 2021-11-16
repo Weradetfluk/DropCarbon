@@ -33,7 +33,7 @@
             <?php for ($i = 0; $i < count($arr_eve); $i++) {  ?>
                 <div class="col-md-4 ">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
-                        <div class="card card-custom" style="height: 31rem; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+                        <div class="card card-custom" style="height: 31rem;" id="card">
                             <div class="card-img-wrapper">
                                 <!-- รูปกิจกรรม -->
                                 <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" class="card-img-top" style="object-fit: cover;">
@@ -41,12 +41,11 @@
                             <div class="card-body" style="margin-top: 50px;">
 
                                 <!-- ชื่อกิจกรรม -->
-                                <h2> <?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 10, "UTF-8") . "..."; ?></h2>
+                                <h2 class="text-decoration-none text-dark"><?php echo $arr_eve[$i]->eve_name ?></h2>
 
                                 <p class="card-tex text-dark">
                                     <!-- รายละเอียดกิจกรรม -->
-                                    <?php echo substr($arr_eve[$i]->eve_description, 0, 100) . "..."; ?>
-
+                                    <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
                                 </p>
 
                                 <!-- ลดคาร์บอน -->
@@ -54,62 +53,62 @@
 
                                 <!-- เวลาเริ่ม/จบกิจกรรม -->
                                 <?php
-                                    if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "01") {
-                                        $start_month = "ม.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "02"){
-                                        $start_month = "ก.พ.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "03"){
-                                        $start_month = "มี.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "04"){
-                                        $start_month = "เม.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "05"){
-                                        $start_month = "พ.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "06"){
-                                        $start_month = "มิ.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "07"){
-                                        $start_month = "ก.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "08"){
-                                        $start_month = "ส.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "09"){
-                                        $start_month = "ก.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "10"){
-                                        $start_month = "ต.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "11"){
-                                        $start_month = "พ.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_start_date, 5, 2) == "12"){
-                                        $start_month = "ธ.ค.";
-                                    }
+                                if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "01") {
+                                    $start_month = "ม.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "02") {
+                                    $start_month = "ก.พ.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "03") {
+                                    $start_month = "มี.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "04") {
+                                    $start_month = "เม.ย.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "05") {
+                                    $start_month = "พ.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "06") {
+                                    $start_month = "มิ.ย.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "07") {
+                                    $start_month = "ก.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "08") {
+                                    $start_month = "ส.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "09") {
+                                    $start_month = "ก.ย.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "10") {
+                                    $start_month = "ต.ค.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "11") {
+                                    $start_month = "พ.ย.";
+                                } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "12") {
+                                    $start_month = "ธ.ค.";
+                                }
 
-                                    if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "01") {
-                                        $end_month = "ม.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "02"){
-                                        $end_month = "ก.พ.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "03"){
-                                        $end_month = "มี.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "04"){
-                                        $end_month = "เม.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "05"){
-                                        $end_month = "พ.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "06"){
-                                        $end_month = "มิ.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "07"){
-                                        $end_month = "ก.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "08"){
-                                        $end_month = "ส.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "09"){
-                                        $end_month = "ก.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "10"){
-                                        $end_month = "ต.ค.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "11"){
-                                        $end_month = "พ.ย.";
-                                    }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "12"){
-                                        $end_month = "ธ.ค.";
-                                    }
+                                if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "01") {
+                                    $end_month = "ม.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "02") {
+                                    $end_month = "ก.พ.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "03") {
+                                    $end_month = "มี.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "04") {
+                                    $end_month = "เม.ย.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "05") {
+                                    $end_month = "พ.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "06") {
+                                    $end_month = "มิ.ย.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "07") {
+                                    $end_month = "ก.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "08") {
+                                    $end_month = "ส.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "09") {
+                                    $end_month = "ก.ย.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "10") {
+                                    $end_month = "ต.ค.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "11") {
+                                    $end_month = "พ.ย.";
+                                } else if (substr($arr_eve[$i]->eve_end_date, 5, 2) == "12") {
+                                    $end_month = "ธ.ค.";
+                                }
 
-                                    $start_yesr = substr($arr_eve[$i]->eve_start_date, 0, 4);
-                                    $start_yesr = intval($start_yesr) + 543;
-                                    $end_yesr = substr($arr_eve[$i]->eve_end_date, 0, 4);
-                                    $end_yesr = intval($end_yesr) + 543;
+                                $start_yesr = substr($arr_eve[$i]->eve_start_date, 0, 4);
+                                $start_yesr = intval($start_yesr) + 543;
+                                $end_yesr = substr($arr_eve[$i]->eve_end_date, 0, 4);
+                                $end_yesr = intval($end_yesr) + 543;
                                 ?>
                                 <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . $start_yesr; ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . $end_yesr; ?></p>
 
@@ -204,7 +203,7 @@
         </div>
 
         <!-- รายละเอียด -->
-        <div class="row" style="margin:1.5% 0" data-aos="fade-up">
+        <div class="row" style="margin:1.5%; font-size: 18px;" data-aos="fade-up">
             การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
             ซึ่งจะทำให้นักท่องเที่ยวได้รับประสบการณ์เกี่ยวกับการช่วยลดคาร์บอน
             Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง ๆ ในพื้นที่จังหวัดชลบุรี
