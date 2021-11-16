@@ -29,9 +29,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar_dropdown_profile">
-                  <a class="dropdown-item" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">แก้ไขข้อมูลส่วนตัว</a>
+                  <button class="dropdown-item" onclick="location.href='<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>'">แก้ไขข้อมูลส่วนตัว</button>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>">ออกจากระบบ</a>
+                  <button class="dropdown-item" onclick="location.href='<?php echo base_url() . 'Entrepreneur/Auth/Login_entrepreneur/logout'?>'">ออกจากระบบ</button>
                 </div>
               </li>
             </ul>
@@ -45,25 +45,25 @@
       <div class="sidebar-wrapper" style="margin-top: 70px;">
         <ul class="nav">
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "active"; ?>">
-            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
+            <a class="nav-link <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "custom-a"; ?>" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
               <i class="material-icons">store</i>
               <h5 class="h5-topbar">จัดการสถานที่</h5>
             </a>
           </li>
           <li class="nav-item <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "active"; ?>">
-            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_event/Event_list/show_list_event';?>">
+            <a class="nav-link <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "custom-a"; ?>" href="<?php echo site_url().'Entrepreneur/Manage_event/Event_list/show_list_event';?>">
               <i class="material-icons">calendar_today</i>
               <h5 class="h5-topbar">จัดการกิจกรรม</h5>
             </a>
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 3) echo "active"; ?>">
-            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion';?>">
+            <a class="nav-link <?php if ($_SESSION['tab_number_entrepreneur'] == 3) echo "custom-a"; ?>" href="<?php echo site_url().'Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion';?>">
               <i class="material-icons">point_of_sale</i>
               <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
             </a>
           </li>
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 4) echo "active"; ?>" >
-            <a class="nav-link" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">
+            <a class="nav-link <?php if ($_SESSION['tab_number_entrepreneur'] == 4) echo "custom-a"; ?>" href="<?php echo site_url().'Entrepreneur/Manage_entrepreneur/Entrepreneur_edit/show_edit_entrepreneur'?>">
               <i class="material-icons">manage_accounts</i>
               <h5 class="h5-topbar">แก้ไขข้อมูลส่วนตัว</h5>
             </a>
