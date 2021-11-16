@@ -33,7 +33,7 @@
             <?php for ($i = 0; $i < count($arr_eve); $i++) {  ?>
                 <div class="col-md-4 ">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
-                        <div class="card card-custom" style="height: 32rem; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+                        <div class="card card-custom" style="height: 31rem; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
                             <div class="card-img-wrapper">
                                 <!-- รูปกิจกรรม -->
                                 <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" class="card-img-top" style="object-fit: cover;">

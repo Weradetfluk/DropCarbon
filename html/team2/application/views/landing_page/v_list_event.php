@@ -68,7 +68,7 @@
         <?php for ($i = 0; $i < count($event); $i++) { ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
                 <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
-                    <div class="card card-custom" style="height: 35rem;" id="card">
+                    <div class="card card-custom" style="height: 31rem;" id="card">
 
                         <!-- รูป -->
                         <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
@@ -147,7 +147,6 @@
                                 ?>
                                 <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . $start_yesr; ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . $end_yesr; ?></p>
 
-                        
                         </div>
                     </div>
                 </a>
