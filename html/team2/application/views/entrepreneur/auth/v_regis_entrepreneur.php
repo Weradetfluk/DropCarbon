@@ -135,9 +135,6 @@
         background-size: cover;
     }
 
-    .breadcrumb {
-        background-color: #e9ecef;
-    }
 
     .image_container {
         height: 120px;
