@@ -105,8 +105,13 @@
                                     }else if(substr($arr_eve[$i]->eve_end_date, 5, 2) == "12"){
                                         $end_month = "ธ.ค.";
                                     }
+
+                                    $start_yesr = substr($arr_eve[$i]->eve_start_date, 0, 4);
+                                    $start_yesr = intval($start_yesr) + 543;
+                                    $end_yesr = substr($arr_eve[$i]->eve_end_date, 0, 4);
+                                    $end_yesr = intval($end_yesr) + 543;
                                 ?>
-                                <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . substr($arr_eve[$i]->eve_start_date, 0, 4); ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . substr($arr_eve[$i]->eve_end_date, 0, 4); ?></p>
+                                <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . $start_yesr; ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . $end_yesr; ?></p>
 
                             </div>
                         </div>
