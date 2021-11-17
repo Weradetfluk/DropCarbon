@@ -10,11 +10,11 @@
 -->
 
 <style>
-    .card-img-wrapper {
-        display: block;
-        width: 100%;
-        height: 250px;
-    }
+.card-img-wrapper {
+    display: block;
+    width: 100%;
+    height: 250px;
+}
 </style>
 
 <!-- แบนเนอร์ -->
@@ -31,28 +31,31 @@
         <div class="row">
             <!-- แสดงกิจกรรม 3 กิจกรรม -->
             <?php for ($i = 0; $i < count($arr_eve); $i++) {  ?>
-                <div class="col-md-4 ">
-                    <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
-                        <div class="card card-custom" style="height: 31rem;" id="card">
-                            <div class="card-img-wrapper">
-                                <!-- รูปกิจกรรม -->
-                                <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>" class="card-img-top" style="object-fit: cover;">
-                            </div>
-                            <div class="card-body" style="margin-top: 50px;">
+            <div class="col-md-4 ">
+                <a
+                    href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $arr_eve[$i]->eve_id; ?>">
+                    <div class="card card-custom" style="height: 31rem;" id="card">
+                        <div class="card-img-wrapper">
+                            <!-- รูปกิจกรรม -->
+                            <img src="<?php echo base_url() . 'image_event/' . $arr_eve[$i]->eve_img_path; ?>"
+                                class="card-img-top" style="object-fit: cover;">
+                        </div>
+                        <div class="card-body" style="margin-top: 50px;">
 
-                                <!-- ชื่อกิจกรรม -->
-                                <h2 class="text-decoration-none text-dark"><?php echo $arr_eve[$i]->eve_name ?></h2>
+                            <!-- ชื่อกิจกรรม -->
+                            <h2 class="text-decoration-none text-dark"><?php echo $arr_eve[$i]->eve_name ?></h2>
 
-                                <p class="card-tex text-dark">
-                                    <!-- รายละเอียดกิจกรรม -->
-                                    <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
-                                </p>
+                            <p class="card-tex text-dark">
+                                <!-- รายละเอียดกิจกรรม -->
+                                <?php echo iconv_substr($arr_eve[$i]->eve_description, 0, 60, "UTF-8") . "..."; ?>
+                            </p>
 
-                                <!-- ลดคาร์บอน -->
-                                <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                            <!-- ลดคาร์บอน -->
+                            <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
+                                    <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
 
-                                <!-- เวลาเริ่ม/จบกิจกรรม -->
-                                <?php
+                            <!-- เวลาเริ่ม/จบกิจกรรม -->
+                            <?php
                                 if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "01") {
                                     $start_month = "ม.ค.";
                                 } else if (substr($arr_eve[$i]->eve_start_date, 5, 2) == "02") {
@@ -110,17 +113,22 @@
                                 $end_yesr = substr($arr_eve[$i]->eve_end_date, 0, 4);
                                 $end_yesr = intval($end_yesr) + 543;
                                 ?>
-                                <p style="display:inline; font-size: 16px; float: right;"><?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . $start_yesr; ?> - <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . $end_yesr; ?></p>
+                            <p style="display:inline; font-size: 16px; float: right;">
+                                <?php echo substr($arr_eve[$i]->eve_start_date, 8, 2) . " " . $start_month . " " . $start_yesr; ?>
+                                -
+                                <?php echo substr($arr_eve[$i]->eve_end_date, 8, 2) . " " . $end_month . " " . $end_yesr; ?>
+                            </p>
 
-                            </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            </div>
             <?php } ?>
         </div>
 
         <!-- ดูเพิ่มเติม -->
-        <a class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม</a>
+        <a class="float-right"
+            href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">ดูเพิ่มเติม</a>
 
     </div>
 
@@ -139,11 +147,13 @@
 
             <!-- รูปใหญ่ -->
             <div class="col-xl-7 col-lg-6">
-                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $arr_com[0]->com_id; ?>">
+                <a
+                    href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $arr_com[0]->com_id; ?>">
                     <div class="card card-custom" style="height: 50rem;" id="card" data-aos="fade-right">
 
                         <!-- รูป -->
-                        <img src="<?php echo base_url() . 'image_company/' . $arr_com[0]->com_img_path; ?>" style="height: 550px; weight: 810;" class="card-img-top">
+                        <img src="<?php echo base_url() . 'image_company/' . $arr_com[0]->com_img_path; ?>"
+                            style="height: 550px; weight: 810;" class="card-img-top">
 
                         <div class="card-body">
 
@@ -151,7 +161,8 @@
                             <h2><?php echo $arr_com[0]->com_name ?></h2>
 
                             <!-- รายละเอียดสถานที่ -->
-                            <p class="card-text"> <?php echo iconv_substr($arr_com[0]->com_description, 0, 300, "UTF-8") . "..."; ?></p>
+                            <p class="card-text">
+                                <?php echo iconv_substr($arr_com[0]->com_description, 0, 300, "UTF-8") . "..."; ?></p>
 
                         </div>
                     </div>
@@ -163,32 +174,38 @@
                 <div class="row">
                     <!-- แสดงสถานที่ 4 สถานที่ -->
                     <?php for ($i = 0; $i < count($arr_com) - 1; $i++) {  ?>
-                        <div class="col-lg-6">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $arr_com[$i + 1]->com_id; ?>">
-                                <div class="card card-custom" style="height: 23rem;" id="card" data-aos="fade-down">
+                    <div class="col-lg-6">
+                        <a
+                            href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_detail/' . $arr_com[$i + 1]->com_id; ?>">
+                            <div class="card card-custom" style="height: 23rem;" id="card" data-aos="fade-down">
 
-                                    <!-- รูป -->
-                                    <img src="<?php echo base_url() . 'image_company/' . $arr_com[$i + 1]->com_img_path; ?>" style="height: 200px; weight: 270;" class="card-img-top">
+                                <!-- รูป -->
+                                <img src="<?php echo base_url() . 'image_company/' . $arr_com[$i + 1]->com_img_path; ?>"
+                                    style="height: 200px; weight: 270;" class="card-img-top">
 
-                                    <div class="card-body">
+                                <div class="card-body">
 
-                                        <!-- ชื่อสถานที่ -->
-                                        <h3><?php echo iconv_substr($arr_com[$i + 1]->com_name, 0, 20, "UTF-8") . "..."; ?></h3>
+                                    <!-- ชื่อสถานที่ -->
+                                    <h3><?php echo iconv_substr($arr_com[$i + 1]->com_name, 0, 20, "UTF-8") . "..."; ?>
+                                    </h3>
 
-                                        <!-- รายละเอียดสถานที่ -->
-                                        <p class="card-text"> <?php echo iconv_substr($arr_com[$i + 1]->com_description, 0, 35, "UTF-8") . "..."; ?></p>
+                                    <!-- รายละเอียดสถานที่ -->
+                                    <p class="card-text">
+                                        <?php echo iconv_substr($arr_com[$i + 1]->com_description, 0, 35, "UTF-8") . "..."; ?>
+                                    </p>
 
-                                    </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
 
         <!-- ดูเพิ่มเติม -->
-        <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูเพิ่มเติม</a>
+        <a data-aos="fade-left" class="float-right"
+            href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">ดูเพิ่มเติม</a>
 
     </div>
 </section>
@@ -206,7 +223,8 @@
         <div class="row" style="margin:1.5%; font-size: 18px;" data-aos="fade-up">
             การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
             ซึ่งจะทำให้นักท่องเที่ยวได้รับประสบการณ์เกี่ยวกับการช่วยลดคาร์บอน
-            Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง ๆ ในพื้นที่จังหวัดชลบุรี
+            Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง
+            ๆ ในพื้นที่จังหวัดชลบุรี
             ซึ่งจะช่วยสร้างรายได้ให้ชุมชน และลดโลกร้อนไปด้วยกัน
         </div>
 
@@ -257,114 +275,121 @@
 
             <!-- แสดงโปรโมชัน 4 โปรโมชัน -->
             <?php for ($i = 0; $i < count($arr_pro); $i++) {  ?>
-                <div class="col-md-3">
-                    <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
+            <div class="col-md-3">
+                <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
 
-                        <!-- รูป -->
-                        <img src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>"" style=" height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
+                    <!-- รูป -->
+                    <img src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>"" style="
+                        height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
 
-                        <div class="card-body">
+                    <div class="card-body">
 
-                            <!-- ชื่อโปรโมชัน -->
-                            <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
+                        <!-- ชื่อโปรโมชัน -->
+                        <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
 
-                            <!-- รายละเอียดโปรโมชัน -->
-                            <p class="card-text"> <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
+                        <!-- รายละเอียดโปรโมชัน -->
+                        <p class="card-text">
+                            <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
 
-                        </div>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
 
         <!-- ดูเพิ่มเติม -->
-        <a data-aos="fade-left" class="float-right" href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
+        <a data-aos="fade-left" class="float-right"
+            href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_list' ?>">ดูเพิ่มเติม</a>
 
     </div>
 </section>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
 
-        get_data_banner();
+    get_data_banner();
 
-        function get_data_banner() {
-            $.ajax({
-                method: "POST",
-                url: '<?php echo site_url() . "Admin/Manage_banner/Admin_manage_banner/get_banner_list_ajax" ?>',
-                dataType: 'JSON',
-                success: function(json_data) {
+    function get_data_banner() {
+        $.ajax({
+            method: "POST",
+            url: '<?php echo site_url() . "Admin/Manage_banner/Admin_manage_banner/get_banner_list_ajax" ?>',
+            dataType: 'JSON',
+            success: function(json_data) {
 
-                    create_banner(json_data['data_banner_json']);
+                create_banner(json_data['data_banner_json']);
 
-                },
-                error: function() {
-                    alert('ajax Not working');
-                }
-            });
-        }
-
-        let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
-        let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
-        if (error_regis_entrepreneur == "success") {
-            swal("สำเร็จ", "คุณทำการลงทะเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
-            <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
-        }
-        if (error_register_tourist == "success") {
-            swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
-            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-        }
-        if (error_register_tourist == "edit_success") {
-            swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
-            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-        }
-    });
-
-    function create_banner(arr_banner) {
-        let html_code = '';
-
-        html_code += '<ol class="carousel-indicators">';
-
-        for (let i = 0; i < arr_banner.length; i++) {
-            if (i === 0) {
-                html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="' + i + '" class="active"></li>';
-            } else {
-                html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="data-slide-to="' + i + '"></li>';
+            },
+            error: function() {
+                alert('ajax Not working');
             }
-        }
-        html_code += '</ol>';
-        html_code += '<div class="carousel-inner" style="max-height: 678px; !important">'
-
-        if (arr_banner.length != 0) {
-            arr_banner.forEach((row_ban, index_ban) => {
-
-                if (index_ban == 0) {
-                    html_code += '<div class="carousel-item active" >';
-                    html_code += ' <img class="d-block w-100 h-100"  style="object-fit: cover;   " src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image" height="678px"  alt="First slide">';
-                    html_code += '</div>';
-                } else {
-                    html_code += '<div class="carousel-item">';
-                    html_code += ' <img class="d-block w-100 h-100"  style=" object-fit: cover;  " src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '"   alt="Image"  height="678px"  alt="First slide">';
-                    html_code += '</div>';
-                }
-            });
-
-        } else {
-            html_code += '<div class="carousel-item active">';
-            html_code += '<img class="d-block w-100 h-100" src="https://via.placeholder.com/1920x678"  alt="First slide"';
-            html_code += '</div>';
-        }
-        html_code += '</div>';
-        html_code += '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">';
-        html_code += '<span class="material-icons" style="color: black;">arrow_back</span>';
-        html_code += '<span class="sr-only">Previous</span>';
-        html_code += '</a>';
-        html_code += '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">';
-        html_code += '<span class="material-icons" style="color: black;">arrow_forward</span>';
-        html_code += ' <span class="sr-only">Next</span>';
-        html_code += '</a>';
-
-        $('#carouselExampleIndicators').html(html_code);
+        });
     }
+
+    let error_regis_entrepreneur = '<?php echo $this->session->userdata("error_register_entrepreneur"); ?>';
+    let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+    if (error_regis_entrepreneur == "success") {
+        swal("สำเร็จ", "คุณทำการลงทะเบียนสำเร็จ ขณะนี้กำลังรอการอนุมัติ", "success");
+        <?php echo $this->session->unset_userdata("error_register_entrepreneur"); ?>
+    }
+    if (error_register_tourist == "success") {
+        swal("สำเร็จ", "การลงทะเบียนของคุณเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+    }
+    if (error_register_tourist == "edit_success") {
+        swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+    }
+});
+
+function create_banner(arr_banner) {
+    let html_code = '';
+
+    html_code += '<ol class="carousel-indicators">';
+
+    for (let i = 0; i < arr_banner.length; i++) {
+        if (i === 0) {
+            html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="' + i + '" class="active"></li>';
+        } else {
+            html_code += '<li data-target="#carouselExampleIndicators" data-slide-to="data-slide-to="' + i + '"></li>';
+        }
+    }
+    html_code += '</ol>';
+    html_code += '<div class="carousel-inner" style="max-height: 678px; !important">'
+
+    if (arr_banner.length != 0) {
+        arr_banner.forEach((row_ban, index_ban) => {
+
+            if (index_ban == 0) {
+                html_code += '<div class="carousel-item active" >';
+                html_code += ' <img class="d-block w-100 h-100"  style="object-fit: cover;   " src="' +
+                    ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) +
+                    '"   alt="Image" height="678px"  alt="First slide">';
+                html_code += '</div>';
+            } else {
+                html_code += '<div class="carousel-item">';
+                html_code += ' <img class="d-block w-100 h-100"  style=" object-fit: cover;  " src="' +
+                    ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) +
+                    '"   alt="Image"  height="678px"  alt="First slide">';
+                html_code += '</div>';
+            }
+        });
+
+    } else {
+        html_code += '<div class="carousel-item active">';
+        html_code += '<img class="d-block w-100 h-100" src="https://via.placeholder.com/1920x678"  alt="First slide"';
+        html_code += '</div>';
+    }
+    html_code += '</div>';
+    html_code += '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">';
+    html_code += '<span class="material-icons" style="color: black;">arrow_back</span>';
+    html_code += '<span class="sr-only">Previous</span>';
+    html_code += '</a>';
+    html_code += '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">';
+    html_code += '<span class="material-icons" style="color: black;">arrow_forward</span>';
+    html_code += ' <span class="sr-only">Next</span>';
+    html_code += '</a>';
+
+    $('#carouselExampleIndicators').html(html_code);
+}
 </script>

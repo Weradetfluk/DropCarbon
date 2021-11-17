@@ -201,12 +201,17 @@
 
     </div>
 </section>
+<!-- จุดเด่น -->
 <section class="bg-white">
     <div class="container">
+
+        <!-- หัวข้อ -->
         <div class="header-break" data-aos="fade-down">
             จุดเด่น
         </div>
-        <div class="row" style="margin:1.5% 0" data-aos="fade-up">
+
+        <!-- รายละเอียด -->
+        <div class="row" style="margin:1.5%; font-size: 18px;" data-aos="fade-up">
             การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
             ซึ่งจะทำให้นักท่องเที่ยวได้รับประสบการณ์เกี่ยวกับการช่วยลดคาร์บอน
             Drop Carbon จะพาสมาชิก และนักท่องเที่ยวทุกท่านได้มีส่วนร่วมกับกิจกรรมที่ช่วยลดคาร์บอน ไม่ว่าจะเป็นบริการต่าง
