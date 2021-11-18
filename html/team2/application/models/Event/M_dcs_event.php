@@ -118,10 +118,12 @@ class M_dcs_event extends Da_dcs_event
     */
     public function get_event_by_com_id($com_id)
     {
-        $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
+        $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_event.eve_start_date, 
+        dcs_event.eve_end_date, dcs_eve_category.eve_cat_name, dcs_event.eve_description,
+        dcs_eve_image.eve_img_path, dcs_eve_category.eve_drop_carbon
         from dcs_event
-        LEFT JOIN dcs_eve_image
-        ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
+        LEFT JOIN dcs_eve_image ON dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
+        LEFT JOIN dcs_eve_category ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
         WHERE eve_status = '2'
         AND dcs_event.eve_com_id = '" . $com_id . "'
         GROUP BY dcs_event.eve_id
@@ -408,7 +410,7 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
-    
+
     /*
     *get_event_by_id
     *get data event by id

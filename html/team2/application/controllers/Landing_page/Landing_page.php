@@ -61,6 +61,7 @@ class Landing_page extends DCS_controller
         $data["company"] = $this->mcom->get_by_detail()->row();
 
         $data["event"] = $this->mde->get_event_by_com_id($com_id)->result();
+        // $data['event'] = $this->mde->get_event_landing_page()->result();
         $data["promotions"] = $this->mpt->get_promotion_by_com_id($com_id)->result();
 
         if ($this->session->userdata("tourist_id")) {
