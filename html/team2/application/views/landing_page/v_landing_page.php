@@ -276,23 +276,25 @@
             <!-- แสดงโปรโมชัน 4 โปรโมชัน -->
             <?php for ($i = 0; $i < count($arr_pro); $i++) {  ?>
             <div class="col-md-3">
-                <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
+                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $arr_pro[$i]->pro_id; ?>">
+                    <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
 
-                    <!-- รูป -->
-                    <img src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>"" style="
-                        height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
+                        <!-- รูป -->
+                        <img src="<?php echo base_url() . 'image_promotions/' . $arr_pro[$i]->pro_img_path; ?>" style="
+                            height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
 
-                    <div class="card-body">
+                        <div class="card-body">
 
-                        <!-- ชื่อโปรโมชัน -->
-                        <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
+                            <!-- ชื่อโปรโมชัน -->
+                            <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
 
-                        <!-- รายละเอียดโปรโมชัน -->
-                        <p class="card-text">
-                            <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
+                            <!-- รายละเอียดโปรโมชัน -->
+                            <p class="card-text">
+                                <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
 
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <?php } ?>
         </div>
