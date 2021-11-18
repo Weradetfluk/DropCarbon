@@ -104,7 +104,7 @@
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -123,7 +123,7 @@
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -146,7 +146,7 @@
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -164,7 +164,7 @@
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -180,7 +180,7 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                 </td>
@@ -245,7 +245,7 @@
                                                             </button>
                                                             <button class="btn btn-warning"
                                                                 style="font-size:10px; padding:12px;"
-                                                                onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                                 <span class="material-icons">edit</span>
                                                             </button>
                                                             <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -320,7 +320,7 @@
                                                     </button>
                                                     <button class="btn btn-warning"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                         <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -397,7 +397,7 @@
                                                     </button>
                                                     <button class="btn btn-warning"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . '/Entrepreneur/Manage_Event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
                                                         <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"

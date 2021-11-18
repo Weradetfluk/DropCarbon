@@ -106,57 +106,63 @@
         }
     }
     ?>
-    <div class="row" style="padding-top: 5%;">
+
+    <!-- รายละเอียด -->
+    <div class="row py-3">
         <div class="col">
-            <h3 style="font-family: 'Prompt', sans-serif;"><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียดโปรโมชัน</h3>
+            <h3><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียด</h3>
+            <hr color="#cccccc">
+            <p style="text-indent: 50px;"><?php echo $promotions[0]->pro_description ?></p>
+            <p><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ประเภท -->
+    <div class="row py-3">
+        <div class="col">
+            <h3>
+                <!-- <span class="material-icons" style="font-size: 30px;">category</span>  -->
+                <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" style="width:40px;margin-top:-5px;">
+                ประเภท
+            </h3>
             <hr width="100%" size="10" color="#cccccc">
-            <div class="col" style="padding-left: 2%">
-                <div class="container">
-                    <div style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%">
-                        <p style="text-indent: 50px;"><?php echo $promotions[0]->pro_description ?>
-                        </p>
-                        <p style="text-indent: 50px;"><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
-                            <!-- <br><?php echo "Today is " . date("Y") . "<br>"; ?> -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- รายละเอียด -->
+            <p style="font-size: 18px; text-indent: 50px;">
+                <?php echo $promotions[0]->pro_cat_name; ?></p>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-5">
-                <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" width="40px"> ประเภท</h3>
-                <hr width="100%" size="10" color="#cccccc">
-                <p style="font-size: 18px; text-indent: 50px;">โปรโมชันนี้จัดอยู่ในประเภท: <?php echo $promotions[0]->pro_cat_name; ?></p>
-            </div>
-            <div class="col-2"></div>
-        </div>
-    </div>
-    <div class="row" style="padding-top: 5%;">
+
+
+    <div class="row py-3">
         <div class="col">
-            <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px"> ตำแหน่งสถานที่</h4>
-            <div class="card" style="padding-left: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+            <h3>
+                <!-- <span class="material-icons" style="font-size: 30px;">place</span> -->
+                <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" style="width:40px;margin-top:-5px;">
+                ตำแหน่งสถานที่
+            </h3>
+            <div class="card" style="padding-left: 2%; transform: unset;">
+                <h2 style="padding-top: 2%; ">
 
-                <h3 style="padding-top: 2%; "><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>" width="40px"> <?php echo $promotions[0]->com_name ?></h3>
+                    <?php echo $promotions[0]->pro_name ?>
+                </h2>
                 <!-- ชื่อสถานที่ -->
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <h4>ที่อยู่</h4>
+                        <h3>ที่อยู่</h3>
                         <hr>
-                        <div class="row" style="padding-left: 2%; padding-bottom: 5%;">
-                            <span class="material-icons">
-                                location_on
-                            </span> <?php echo $promotions[0]->com_location ?>
-                        </div>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row py-3">
 
-                                <span class="material-icons">contact_phone</span>
-                                <?php echo $promotions[0]->com_tel ?>
+                            <div class="col">
+                                <p> &#9679 <?php echo $promotions[0]->com_location ?></p>
+                            </div>
+                        </div>
+                        <div class="row py-3">
+
+                            <div class="col">
+                                <p> &#9679 <?php echo $promotions[0]->com_tel ?></p>
                             </div>
                         </div>
                     </div>
@@ -165,7 +171,7 @@
                             <table class="table ">
                                 <tr>
                                     <td style="border: 2px solid black;">
-                                        <div id="Map" style="width: 500px; height: 400px;"></div>
+                                        <div id="map" style="width: 700px; height: 300px;"></div>
                                     </td>
                                 </tr>
                             </table>
@@ -179,8 +185,8 @@
             <!-- ตำแหน่ง -->
 
         </div>
-    </div>
 
+    </div>
 </div>
 
 
@@ -194,7 +200,7 @@ var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mer
 var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
-map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
+map = new OpenLayers.Map("map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
 var mapnik = new OpenLayers.Layer.OSM();
 map.addLayer(mapnik);
