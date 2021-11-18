@@ -115,7 +115,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $this->db->or_like('ent_lastname', $search);
         $this->db->or_like('com_name', $search);
         $this->db->group_end();
-        $this->db->where("pro_status = '$number_status'   AND pro_point > 0 AND pro_end_date > CURDATE()");
+        $this->db->where("pro_status = '$number_status' AND pro_end_date > CURDATE()");
         $query = $this->db->get();
         return $query;
     }
