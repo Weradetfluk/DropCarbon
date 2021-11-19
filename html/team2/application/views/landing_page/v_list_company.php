@@ -8,7 +8,18 @@
 * @Create Date 2564-09-14
 */ 
 -->
+<style>
+    .card-custom {
+        border-radius: 20px;
+    }
 
+    .card-img-top {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
 <div class="container py-5 section-com">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
