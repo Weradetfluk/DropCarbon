@@ -176,7 +176,7 @@
                 </div>
                 <!-- อีเมล -->
 
-                <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">ยกเลิก</a>
+                <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
                 <!-- ปุ่มยกเลิก -->
                 <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
                 <!-- ปุ่มบันทึก -->

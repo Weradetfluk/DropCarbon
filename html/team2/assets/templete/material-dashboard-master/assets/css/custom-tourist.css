@@ -823,3 +823,10 @@ p {
 .nav-bottom-shadow {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
+
+.radius {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}

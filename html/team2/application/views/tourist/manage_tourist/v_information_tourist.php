@@ -8,14 +8,6 @@
 * @Create Date 2564-10-05
 */ 
 -->
-<style>
-    .radius {
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
-</style>
 <div class="bg-gray">
     <div class="container py-5" style="border-radius: 25px; padding-bottom: 4% !important">
         <ul class="breadcrumb">
@@ -37,10 +29,21 @@
                         </div>
                     </div>
                     <div class="col">
-                        <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
-                        <h3>คะแนนของฉัน</h3>
-                        <h1 style="display:inline; color: #239d58;"><?php echo $arr_tus[0]->tus_score; ?></h1>
-                        <h3 style="display:inline;">แต้ม</h3>
+                        <div class="row">
+                            <a class="radius" style="border: 2px solid; padding: 10px 24px;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>"><span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว</a>
+                        </div>
+                        <div class="row">
+                            <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
+                        </div>
+                        <div class="row">
+                            <h3>คะแนนของฉัน</h3>
+                            <h1 style="display:inline; color: #239d58; padding: 0px 10px;"><?php echo $arr_tus[0]->tus_score; ?></h1>
+                            <h3 style="display:inline;">แต้ม</h3>
+                        </div>
+                        <div class="row" style="border: 2px solid; padding: 10px 24px;">
+                            <h3 style="margin-left: 20  px;">ต้องการอีก 50 แต้ม</h3>
+                            <h3>เพื่อปลดล็อค ระดับ Silver</h3>
+                        </div>
                     </div>
                     <div class="col"></div>
                     <div class="col" style="margin-right: 30px;">
