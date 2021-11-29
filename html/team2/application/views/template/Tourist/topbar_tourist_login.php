@@ -10,7 +10,7 @@ if (!$this->session->has_userdata("tus_score")) {
     exit();
 }
 ?>
-<nav>
+<nav class="nav-bottom-shadow">
     <ul class="menu">
         <li class="logo">
             <a class="a" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
