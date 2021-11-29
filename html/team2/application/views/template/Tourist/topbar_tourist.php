@@ -1,5 +1,5 @@
 <!-- Make by : Naaka Punparich 62160082 -->
-<nav>
+<nav class="nav-bottom-shadow">
     <ul class="menu">
         <li class="logo">
             <a class="a" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
