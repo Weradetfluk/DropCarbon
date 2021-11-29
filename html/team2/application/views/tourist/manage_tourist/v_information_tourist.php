@@ -41,7 +41,7 @@
                             <h3 style="display:inline;">แต้ม</h3>
                         </div>
                         <div class="row" style="border: 2px solid; padding: 10px 24px;">
-                            <h3 style="margin-left: 20  px;">ต้องการอีก 50 แต้ม</h3>
+                            <h3 style="margin-left: 20px;">ต้องการอีก 50 แต้ม</h3>
                             <h3>เพื่อปลดล็อค ระดับ Silver</h3>
                         </div>
                     </div>
