@@ -30,7 +30,7 @@
                     </div>
                     <div class="col">
                         <div class="row">
-                            <a class="radius" style="border: 2px solid; padding: 10px 24px;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>"><span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว</a>
+                            <a class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>"><span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว</a>
                         </div>
                         <div class="row">
                             <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
@@ -46,9 +46,10 @@
                         </div>
                     </div>
                     <div class="col"></div>
-                    <div class="col" style="margin-right: 30px;">
+                    <div class="col" style="margin-right: 50px;">
                         <p style="border: 2px solid; width: 350px; height: 250px;"></p>
-                        <h3 style="text-align: center;">Drop Carbon Hero</h3>
+                        <h3 style="text-align: center;">สิทธิพิเศษของคุณในระดับ ???</h3>
+                        <h3 style="text-align: center;">ส่วนลดการใช้คะแนน ?% </h3>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
 
         <!-- <section>
             <div class="header-break">
-                โปรโมชันของฉัน
+                    รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
             <h4 align="center">ไม่มีข้อมูลโปรโมชันของคุณ</h4>
