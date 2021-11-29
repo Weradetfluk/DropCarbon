@@ -402,44 +402,4 @@
             }
         });
     }
-
-    /* confirm_add_score_eve
-     * open modal id = Aprovemodal 
-     * @input 
-     * @output modal to confirm approve modal
-     * @author Weradet Nopsombun 62160110
-     * @Create Date 2564-07-17
-     * @Update 2564-09-18
-     */
-    function confirm_add_score_eve(eve_id, eve_name, ent_email) {
-        let form = document.querySelector('#add_point_form');
-        $('#eve_name_confirm').text(eve_name);
-        $('#add_score_eve').modal();
-        $('#email').val(ent_email);
-        $('#eve_id_form').val(eve_id);
-        $('#eve_point').val(eve_point);
-        console.log(eve_point)
-        $('#add_score').click(function() {
-            let point = document.getElementById('eve_point').value;
-            if (point < 1) {
-                $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-                event.preventDefault();
-            } else {
-                $('#add_score_eve').modal('toggle');
-                swal({
-                    title: "อนุมัติสำเร็จ",
-                    text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
-                    type: "success",
-                    showConfirmButton: false,
-                    timer: 3000
-                }, function() {
-                    location.reload();
-                })
-                var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม " + eve_name + " ของคุณ";
-                var content_h1 = "คุณได้รับการอนุมัติกิจกรรม " + eve_name;
-                var subject = "Approval";
-                send_mail_ajax(content, ent_email, subject, content_h1);
-            }
-        });
-    }
 </script>

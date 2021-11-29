@@ -344,7 +344,7 @@
                             err_message.style.display = 'none';
                             swal({
                                 title: "ปฏิเสธสำเร็จ",
-                                text: "ปฏิเสธการเพิ่มกิจกรรมสำเร็จ กำลังจัดส่งอีเมล...",
+                                text: "ปฏิเสธการเพิ่มโปรโมชันสำเร็จ กำลังจัดส่งอีเมล...",
                                 type: "success",
                                 showConfirmButton: false,
                                 timer: 3000,
@@ -355,7 +355,7 @@
                     });
                 }
                 /*
-                 * approve_event
+                 * approve_promotions
                  * change status to approve 
                  * @input 
                  * @output table approve and consider
@@ -374,15 +374,15 @@
                             //sweet alert
                             swal({
                                 title: "อนุมัติสำเร็จ",
-                                text: "อนุมัติกิจกรรมการสำเร็จ กำลังจัดส่งอีเมล...",
+                                text: "อนุมัติโปรโมชันสำเร็จ กำลังจัดส่งอีเมล...",
                                 type: "success",
                                 showConfirmButton: false,
                                 timer: 3000
                             }, function() {
                                 window.location.href = '<?php echo base_url('Admin/Manage_promotions/Admin_approval_promotions/show_data_consider'); ?>'
                             })
-                            var content = "ผู้ดูแลระบบได้ทำการอนุมัติกิจกรรม " + pro_name + " ของคุณ";
-                            var content_h1 = "คุณได้รับการอนุมัติกิจกรรม " + pro_name;
+                            var content = "ผู้ดูแลระบบได้ทำการอนุมัติโปรโมชัน " + pro_name + " ของคุณ";
+                            var content_h1 = "คุณได้รับการอนุมัติโปรโมชัน " + pro_name;
                             var subject = "Approval";
                             send_mail_ajax(content, ent_email, subject, content_h1);
                         },

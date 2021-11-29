@@ -54,49 +54,6 @@
      </div>
  </div>
 
-
- <!-- warnning aprove Modal  -->
- <div class="modal" tabindex="-1" role="dialog" id="aprove_modal">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">คุณแน่ใจหรือไม่ ?</h5>
-             </div>
-             <div class="modal-body">
-                 <p>คุณต้องการอนุมัติ <span id="ent_name_confirm"></span> ?</p>
-             </div>
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-success" id="approves" data-dismiss="modal">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-             </div>
-         </div>
-     </div>
- </div>
-
- <!-- warnning add score  -->
- <div class="modal" tabindex="-1" role="dialog" id="add_score_eve">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">คุณต้องการเพิ่มคะแนนให้กิจกรรม <span id="eve_name_confirm"></span> ?</h5>
-             </div>
-             <div class="modal-body">
-                 <p>กรุณาระบุคะแนน</p>
-                 <form method="POST" action="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/add_point_event'; ?>" id="add_point_form">
-                     <input type="hidden" id="email" name="ent_email">
-                     <input type="hidden" id="eve_id_form" name="eve_id">
-                     <input type="number" id="eve_point" name="eve_point">
-                     <!-- <textarea class="form-control" style="min-width: 100%" id="admin_reason" name="admin_reason" placeholder="กรุณาระบุเหตุผลในการปฏิเสธ..."></textarea> -->
-                     <!-- <span id="err_message" style="display: none; color: red;">กรุณาระบุเหตุผลในการปฏิเสธไม่ต่ำกว่า 6 ตัวอักษร</span> -->
-             </div>
-             <div class="modal-footer">
-                 <button type="submit" class="btn btn-success" id="add_score">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div>
  <script>
      $(document).ready(function() {
          load_data(1);

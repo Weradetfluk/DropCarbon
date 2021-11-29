@@ -1,9 +1,9 @@
  <!-- 
 /*
-* v_list_event_consider
-* table show list event consider
+* v_list_promo_consider
+* table show list promotions consider
 * @input -
-* @output table data entrepreneur consider
+* @output table data promotions consider
 * @author Nantasiri 62160093
 * @Create Date 2564-09-23
 */ 
@@ -81,61 +81,7 @@
          </div>
      </div>
  </div>
-
- <div class="modal fade" role="dialog" id="data_modal">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title">รายละเอียด</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true" style="font-size: 35px;">&times;</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <form>
-                     <div class="form-group">
-                         <div class="row">
-                             <div class="col-md-6">
-                                 <label> โปรโมชัน</label>
-                                 <input type="text" id="pro_name" class="form-control" disabled>
-                                 <input type="hidden" id="pro_id" class="form-control" disabled>
-                             </div>
-                             </div>
-                             <div class="row">
-                             <div class="col">
-                                 <label>รายละเอียดโปรโมชัน</label>
-                                 <input type="text" id="pro_description" class="form-control" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label>วันเริ่มต้นโปรโมชัน</label>
-                                 <input type="text" class="form-control" id="pro_start_date" disabled>
-                             </div>
-                             <div class="col">
-                                 <label>วันสิ้นสุดโปรโมชัน</label>
-                                 <input type="text" class="form-control" id="pro_end_date" disabled>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col">
-                                 <label>เจ้าของโปรโมชัน</label>
-                                 <input type="text" class="form-control" id="ent_name" disabled>
-                             </div>
-                         </div>
-                     </div>
-                     </div>
-                 </form>
-             </div>
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-success" onclick="confirm_approve_view_data_madal()" data-dismiss="modal">อนุมัติ</button>
-                 <button type="button" class="btn btn-danger" onclick="confirm_reject_view_data_madal()" data-dismiss="modal">ปฏิเสธ</button>
-             </div>
-         </div>
-     </div>
- </div>
  
-
  <!-- warnning reject  -->
  <div class="modal" tabindex="-1" role="dialog" id="rejected_pro">
      <div class="modal-dialog" role="document">
@@ -211,30 +157,7 @@
              approve_promotions(pro_id, pro_name, ent_email) //function 
          });
      }
-     /*
-      * confirm_approve_view_data_madal
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to confirm approve modal
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update 2564-09-18
-      */
-
-     function confirm_approve_view_data_madal() {
-         let pro_id = $('#pro_id').val();
-         let pro_name = $('#pro_name').val();
-         let ent_email = $('#ent_email').val();
-         $('#pro_name_confirm').text(pro_name);
-         console.log(pro_name);
-         $('#aprove_modal').modal({
-             backdrop: 'static',
-             keyboard: false
-         });
-         $('#approves').click(function() {
-             approve_promotions(pro_id, pro_name, ent_email) //function 
-         });
-     }
+    
      /*
       * confirm_reject
       * open modal id = Aprovemodal 
@@ -282,61 +205,13 @@
              }
          });
      }
+     
      /*
-      * confirm_reject
-      * open modal id = Aprovemodal 
-      * @input 
-      * @output modal to reject  modal 
-      * @author Weradet Nopsombun 62160110
-      * @Create Date 2564-07-17
-      * @Update -
-      */
-     function confirm_reject_view_data_madal() {
-         let pro_id = $('#pro_id').val();
-         let pro_name = $('#pro_name').val();
-         let ent_email = $('#ent_email').val();
-         let form = document.querySelector('#reject_form');
-
-         $('#ent_reject_name_confirm').text(ent_name);
-         $('#rejected_ent').modal();
-         $('#email').val(ent_email);
-         $('#ent_id_form').val(ent_id);
-         console.log(ent_id);
-         let admin_reson = document.querySelectorAll('#admin_reason');
-         let err_message = document.querySelector('#err_message');
-
-         console.log(admin_reson);
-         $('#rejected').click(function() {
-             let tooshort = false;
-             admin_reson.forEach((reson) => {
-                 if (reson.value.length < 6) {
-                     tooshort = true;
-                 }
-             });
-             if (tooshort) {
-                 event.preventDefault();
-                 err_message.style.display = 'block';
-             } else {
-                 $('#rejected_ent').modal('toggle');
-                 err_message.style.display = 'none';
-                 swal({
-                     title: "ปฏิเสธสำเร็จ",
-                     text: "ปฏิเสธผู้ประกอบการสำเร็จ กำลังจัดส่งอีเมล...",
-                     type: "success",
-                     showConfirmButton: false,
-                     timer: 3000,
-                 }, function() {
-                     location.reload();
-                 });
-             }
-         });
-     }
-     /*
-      * approve_event
+      * approve_promotions
       * change status to approve 
       * @input 
       * @output table approve and consider
-      * @author Kasama Donwong 62160074
+      * @author Nantasiri Saiwaew 62160093
       * @Create Date 2564-09-26
       * @Update -
       */
