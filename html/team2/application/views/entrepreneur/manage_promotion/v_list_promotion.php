@@ -55,6 +55,12 @@
                                 <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($_SESSION['tab_number_promotion'] == 6) echo "active"; ?>"
+                                href="#tab_cancel" data-toggle="tab" onclick="change_tab_number_ajax(6)">
+                                <h5 class="h5-card-header">ถูกระงับ</h5>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -94,60 +100,83 @@
                                                 <td style="text-align: left;">
                                                     <?php echo $arr_promotion[$i]->com_name; ?>
                                                 </td>
-                                                <?php if ($arr_promotion[$i]->pro_status != 3) { ?>
-                                                <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
-                                                <td style="color: #fba004;">รออนุมัติ</td>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
-                                                <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
-                                                <td style="color: #669900;">ยังไม่สิ้นสุด</td>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
-                                                <td style="color: red;">สิ้นสุด</td>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
-                                                <td style="color: #669900;">อนุมัติ</td>
-                                                <?php } ?>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
-                                                <td>
-                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">search</span>
-                                                    </button>
-                                                    <button class="btn btn-warning"
-                                                        style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">edit</span>
-                                                    </button>
-                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                        <span class="material-icons">delete</span>
-                                                    </button>
-                                                </td>
-                                                <?php } ?>
-                                                <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
-                                                <td>
-                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">search</span>
-                                                    </button>
-                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                        <span class="material-icons">delete</span>
-                                                    </button>
-                                                </td>
-                                                <?php } ?>
+                                                <?php if ($arr_promotion[$i]->pro_status != 3 && $arr_promotion[$i]->pro_status != 5) { ?>
+                                                    <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
+                                                        <td style="color: #fba004;">รออนุมัติ</td>
+                                                    <?php } ?>
+                                                    <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
+                                                        <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
+                                                        <td style="color: #669900;">ยังไม่สิ้นสุด</td>
+                                                        <?php } ?>
+                                                        <?php if ($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
+                                                        <td style="color: red;">สิ้นสุด</td>
+                                                        <?php } ?>
+                                                        <?php if ($arr_promotion[$i]->pro_start_date > $date_now) { ?>
+                                                        <td style="color: #669900;">อนุมัติ</td>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                    <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
+                                                    <td>
+                                                        <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            <span class="material-icons">search</span>
+                                                        </button>
+                                                        <button class="btn btn-warning"
+                                                            style="font-size:10px; padding:12px;"
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            <span class="material-icons">edit</span>
+                                                        </button>
+                                                        <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                            onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            <span class="material-icons">delete</span>
+                                                        </button>
+                                                    </td>
+                                                    <?php } ?>
+                                                    <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
+                                                    <td>
+                                                        <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            <span class="material-icons">search</span>
+                                                        </button>
+                                                        <?php
+                                                            if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
+                                                                echo '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                onclick="confirm_cancel(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')">
+                                                                <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                                                </button>';                                                               
+                                                            }else if($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
+                                                                echo '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                onclick="confirm_delete(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')">
+                                                                <span class="material-icons">delete</span>
+                                                                </button>';
+                                                            }
+                                                        ?>
+                                                        
+                                                    </td>
+                                                    <?php } ?>
 
                                                 <?php } ?>
                                                 <?php if ($arr_promotion[$i]->pro_status == 3) { ?>
-                                                <td style="color: red;">ปฏิเสธ</td>
-                                                <td>
-                                                    <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
-                                                        <span class="material-icons">search</span>
-                                                    </button>
-                                                </td>
+                                                    <td style="color: red;">ปฏิเสธ</td>
+                                                    <td>
+                                                        <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            <span class="material-icons">search</span>
+                                                        </button>
+                                                    </td>
+                                                <?php } ?>
+                                                <?php if ($arr_promotion[$i]->pro_status == 5) { ?>
+                                                    <td style="color: red;">ถูกระงับ</td>
+                                                    <td>
+                                                        <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            <span class="material-icons">search</span>
+                                                        </button>
+                                                        <button class="btn btn-success" style="font-size:10px; padding:12px;"
+                                                            onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                                                        </button>
+                                                    </td>
                                                 <?php } ?>
                                             </tr>
                                             <?php } ?>
@@ -285,10 +314,12 @@
                                                         onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
                                                         <span class="material-icons">search</span>
                                                     </button>
-                                                    <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                        <span class="material-icons">delete</span>
-                                                    </button>
+                                                    <?php if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){?>
+                                                        <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                            onclick="confirm_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                                        </button>
+                                                    <?php }?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -401,7 +432,7 @@
                                             } else {
                                                 $count_i = 0;
                                                 for ($i = 0; $i < count($arr_promotion); $i++) {
-                                                    if ($arr_promotion[$i]->pro_status == 1) {
+                                                    if ($arr_promotion[$i]->pro_status == 3) {
                                                         $count_i++ ?>
                                             <tr>
                                                 <td><?php echo $count_i; ?></td>
@@ -438,6 +469,74 @@
                     </div>
                 </div>
 
+                <!-- tab show cancel promotion -->
+                <div class="tab-pane <?php if ($_SESSION['tab_number_promotion'] == 6) echo "active"; ?>"
+                    id="tab_cancel">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped" style="text-align: center;">
+                                        <thead class="text-white"
+                                            style="background-color: #e4a487; text-align: center;">
+                                            <tr>
+                                                <th class="res-hide">ลำดับ</th>
+                                                <th>ชื่อโปรโมชัน</th>
+                                                <th class="res-hide">ของสถานที่</th>
+                                                <th>สถานะโปรโมชัน</th>
+                                                <th>ดำเนินการ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list">
+                                            <?php
+                                            $count_cancel = 0;
+                                            for ($i = 0; $i < count($arr_promotion); $i++) {
+                                                if ($arr_promotion[$i]->pro_status == 5) {
+                                                    $count_cancel++;
+                                                }
+                                            }
+                                            if (sizeof($arr_promotion) == 0 || $count_cancel == 0) {
+                                                echo "<td colspan = '6'>";
+                                                echo "ไม่มีข้อมูลในตารางนี้";
+                                                echo "</td>";
+                                            } else {
+                                                $count_i = 0;
+                                                for ($i = 0; $i < count($arr_promotion); $i++) {
+                                                    if ($arr_promotion[$i]->pro_status == 5) {
+                                                        $count_i++ ?>
+                                                        <tr>
+                                                            <td><?php echo $count_i; ?></td>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->pro_name; ?>
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <?php echo $arr_promotion[$i]->com_name; ?>
+                                                            </td>
+                                                            <td style="color: red;">ถูกระงับ</td>
+                                                            <td>
+                                                                <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                                    <span class="material-icons">search</span>
+                                                                </button>
+                                                                <button class="btn btn-success" style="font-size:10px; padding:12px;"
+                                                                    onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                    <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                                                                </button>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -462,6 +561,43 @@
     </div>
 </div>
 
+<!-- modal cancel promotion  -->
+<div class="modal" tabindex="-1" role="dialog" id="modal_cancel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
+            </div>
+            <div class="modal-body">
+                <p>คุณต้องการที่จะระงับ <span id="pro_name_confirm_cancel"></span> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="cancel_btn" data-dismiss="modal">ยืนยัน</button>
+                <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
+                    data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal dis cancel promotion  -->
+<div class="modal" tabindex="-1" role="dialog" id="modal_dis_cancel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
+            </div>
+            <div class="modal-body">
+                <p>คุณต้องการที่จะยกเลิกระงับ <span id="pro_name_confirm_dis_cancel"></span> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="dis_cancel_btn" data-dismiss="modal">ยืนยัน</button>
+                <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
+                    data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -520,6 +656,8 @@ function check_name_table(tab_promotion) {
         $('#name_table').html('โปรโมชันสิ้นสุดแล้ว');
     } else if (tab_promotion == 5) {
         $('#name_table').html('โปรโมชันที่ถูกปฏิเสธ');
+    } else if (tab_promotion == 6) {
+        $('#name_table').html('โปรโมชันที่ถูกระงับ');
     }
 }
 
@@ -538,29 +676,133 @@ function confirm_delete(pro_name_con, pro_id_con) {
 
     // button
     $('#delete_btn').click(function() {
-        delete_promotion(pro_id_con)
+        delete_promotion_ajax(pro_id_con)
     });
 }
 
 /*
- * delete_promotion
+ * delete_promotion_ajax
  * confirm delete promotion
  * @input pro_id_con
  * @output delete promotion
  * @author Thanchanok Thongjumroon 62160089
  * @Create Date 2564-10-03
  */
-function delete_promotion(pro_id_con) {
+function delete_promotion_ajax(pro_id_con) {
     $.ajax({
         type: "POST",
         data: {
             pro_id: pro_id_con
         },
-        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/delete_promotion/' ?>',
+        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/delete_promotion_ajax/' ?>',
         success: function() {
             swal({
                     title: "ลบโปรโมชัน",
                     text: "คุณได้ทำการลบโปรโมชันเสร็จสิ้น",
+                    type: "success"
+                },
+                function() {
+                    location.reload();
+                })
+
+        },
+        error: function() {
+            alert('ajax error working');
+        }
+    });
+
+}
+
+/*
+ * confirm_cancel
+ * confirm cancel promotion
+ * @input pro_name_con,pro_id_con
+ * @output modal comfirm cancel promotion
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-11-29
+ */
+function confirm_cancel(pro_name_con, pro_id_con) {
+    $('#pro_name_confirm_cancel').text(pro_name_con);
+    $('#modal_cancel').modal();
+
+
+    // button
+    $('#cancel_btn').click(function() {
+        cancel_promotion_ajax(pro_id_con)
+    });
+}
+
+/*
+ * cancel_promotion_ajax
+ * confirm cancel promotion
+ * @input pro_id_con
+ * @output cancel promotion
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-11-29
+ */
+function cancel_promotion_ajax(pro_id_con) {
+    $.ajax({
+        type: "POST",
+        data: {
+            pro_id: pro_id_con
+        },
+        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/cancel_promotion_ajax/' ?>',
+        success: function() {
+            swal({
+                    title: "ระงับโปรโมชัน",
+                    text: "คุณได้ทำการระงับโปรโมชันเสร็จสิ้น",
+                    type: "success"
+                },
+                function() {
+                    location.reload();
+                })
+
+        },
+        error: function() {
+            alert('ajax error working');
+        }
+    });
+
+}
+
+/*
+ * confirm_dis_cancel
+ * confirm cancel promotion
+ * @input pro_name_con,pro_id_con
+ * @output modal comfirm cancel promotion
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-11-29
+ */
+function confirm_dis_cancel(pro_name_con, pro_id_con) {
+    $('#pro_name_confirm_dis_cancel').text(pro_name_con);
+    $('#modal_dis_cancel').modal();
+
+
+    // button
+    $('#dis_cancel_btn').click(function() {
+        dis_cancel_promotion_ajax(pro_id_con)
+    });
+}
+
+/*
+ * dis_cancel_promotion_ajax
+ * confirm dis cancel promotion
+ * @input pro_id_con
+ * @output dis cancel promotion
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-11-29
+ */
+function dis_cancel_promotion_ajax(pro_id_con) {
+    $.ajax({
+        type: "POST",
+        data: {
+            pro_id: pro_id_con
+        },
+        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
+        success: function() {
+            swal({
+                    title: "ยกเลิกระงับโปรโมชัน",
+                    text: "คุณได้ทำการยกเลิกระงับโปรโมชันเสร็จสิ้น",
                     type: "success"
                 },
                 function() {

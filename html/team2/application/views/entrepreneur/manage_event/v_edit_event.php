@@ -416,6 +416,27 @@ function unlink_new_image(img_path) {
     check_count_image_btn();
 }
 
+/*
+ * unlink_old_image
+ * unlink image
+ * @input pro_file, card_image, data
+ * @output -
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-10-03
+ * @Update -
+ */
+function unlink_old_image(img_path) {
+    let html = '';
+    html += '<input name="del_old_img[]" value="' + img_path + '" hidden>';
+    document.getElementById('arr_del_img_old').innerHTML += html;
+
+    let file_name = img_path.split('.');
+    // console.log('#'+file_name[0]+'.'+file_name[1]);
+    document.getElementById(file_name[0] + '.' + file_name[1]).style = "display:none";
+    count_image -= 1;
+    console.log(count_image);
+    check_count_image_btn();
+}
 
 /*
  * unlink_image_go_back

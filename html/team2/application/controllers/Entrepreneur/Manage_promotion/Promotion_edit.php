@@ -120,7 +120,7 @@ class Promotion_edit extends DCS_controller
     }
 
     /*
-    * delete_promotion
+    * delete_promotion_ajax
     * update pro_status 
     * @input pro_id
     * @output -
@@ -128,11 +128,45 @@ class Promotion_edit extends DCS_controller
     * @Create Date 2564-10-02
     * @Update Date 2564-10-05
     */
-   public function delete_promotion()
+   public function delete_promotion_ajax()
    {
       $this->load->model('Promotions/M_dcs_promotions', 'mpro');
       $this->mpro->pro_id = $this->input->post('pro_id');
-      $this->mpro->delete_promotion();
+      $this->mpro->pro_status = 4;
+      $this->mpro->update_status_promotion();
    }
 
+   /*
+    * cancel_promotion_ajax
+    * update pro_status 
+    * @input pro_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-11-29
+    * @Update Date -
+    */
+    public function cancel_promotion_ajax()
+    {
+       $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+       $this->mpro->pro_id = $this->input->post('pro_id');
+       $this->mpro->pro_status = 5;
+       $this->mpro->update_status_promotion();
+    }
+
+    /*
+    * dis_cancel_promotion_ajax
+    * update pro_status 
+    * @input pro_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-11-29
+    * @Update Date -
+    */
+    public function dis_cancel_promotion_ajax()
+    {
+       $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+       $this->mpro->pro_id = $this->input->post('pro_id');
+       $this->mpro->pro_status = 2;
+       $this->mpro->update_status_promotion();
+    }
 }

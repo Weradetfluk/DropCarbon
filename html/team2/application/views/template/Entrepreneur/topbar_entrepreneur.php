@@ -46,8 +46,7 @@
         <ul class="nav">
           <li class="nav-item  <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "active"; ?>">
             <a class="nav-link <?php if ($_SESSION['tab_number_entrepreneur'] == 1) echo "custom-a"; ?>" href="<?php echo site_url().'Entrepreneur/Manage_company/Company_list/show_list_company';?>">
-              <i class="material-icons">store</i>
-              <h5 class="h5-topbar">จัดการสถานที่</h5>
+              <h5 class="h5-topbar"><i class="material-icons">store</i> จัดการสถานที่</h5>
             </a>
           </li>
           <li class="nav-item <?php if ($_SESSION['tab_number_entrepreneur'] == 2) echo "active"; ?>">
