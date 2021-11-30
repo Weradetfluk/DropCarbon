@@ -71,7 +71,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $this->db->from('dcs_promotions');
         $this->db->join('dcs_company', 'dcs_company.com_id = dcs_promotions.pro_com_id', 'left');
         $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
-        $this->db->where("pro_status = '$number_status' AND pro_point > 0 AND pro_end_date > CURDATE()");
+        $this->db->where("pro_status = '$number_status' AND pro_end_date > CURDATE()");
         $query = $this->db->get();
         return $query->result();
     }
@@ -88,7 +88,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     {
         $this->db->select('*');
         $this->db->from('dcs_promotions ');
-        $this->db->where("pro_status = '$num_status'   AND pro_point > 0 AND pro_end_date > CURDATE()");
+        $this->db->where("pro_status = '$num_status'  AND pro_end_date > CURDATE()");
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
@@ -151,7 +151,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     {
         $this->db->select('*');
         $this->db->from('dcs_promotions ');
-        $this->db->where("pro_status = '$num_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
+        $this->db->where("pro_status = '$num_status'  AND pro_end_date < CURDATE()");
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
@@ -178,7 +178,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $this->db->or_like('ent_lastname', $search);
         $this->db->or_like('com_name', $search);
         $this->db->group_end();
-        $this->db->where("pro_status = '$number_status'   AND pro_point > 0 AND pro_end_date < CURDATE()");
+        $this->db->where("pro_status = '$number_status'    AND pro_end_date < CURDATE()");
         $query = $this->db->get();
         return $query;
     }
@@ -194,8 +194,8 @@ class M_dcs_promotions extends Da_dcs_promotions
     function get_data_card_promo()
     {
         $sql = "SELECT count(case when pro_status = 1 then 1 end ) as pro_consider, 
-        count(case when pro_status = 2 and pro_point > 0 and pro_end_date > CURDATE() then 1  end) as pro_not_over , 
-        count(case when pro_status = 2 and pro_point > 0 and pro_end_date < CURDATE() then 1  end) as pro_over , 
+        count(case when pro_status = 2  and pro_end_date > CURDATE() then 1  end) as pro_not_over , 
+        count(case when pro_status = 2  and pro_end_date < CURDATE() then 1  end) as pro_over , 
         count(case when pro_status = 3 then 1  end ) as pro_reject 
         
         FROM dcs_promotions;";
