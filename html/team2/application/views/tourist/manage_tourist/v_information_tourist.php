@@ -41,15 +41,55 @@
                             <h3 style="display:inline;">แต้ม</h3>
                         </div>
                         <div class="row" style="border: 2px solid; padding: 10px 24px;">
-                            <h3 style="margin-left: 20px;">ต้องการอีก 50 แต้ม</h3>
-                            <h3>เพื่อปลดล็อค ระดับ Silver</h3>
+                            <h3 style="margin-left: 20px;">
+                             <?php 
+                            $score = 0; 
+                            if ($arr_tus[0]->tus_score < 50 ) {
+                                $score += 50 - $arr_tus[0]->tus_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Silver";
+                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100 ) {
+                                $score += 100 - $arr_tus[0]->tus_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Gold";
+                            } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150 ) {
+                                $score += 150 - $arr_tus[0]->tus_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Platinum";
+                            } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200 ) {
+                                $score += 200 - $arr_tus[0]->tus_score;
+                            } else {
+                                echo ".";
+                            }?></h3>
                         </div>
                     </div>
                     <div class="col"></div>
                     <div class="col" style="margin-right: 50px;">
                         <p style="border: 2px solid; width: 350px; height: 250px;"></p>
-                        <h3 style="text-align: center;">สิทธิพิเศษของคุณในระดับ ???</h3>
-                        <h3 style="text-align: center;">ส่วนลดการใช้คะแนน ?% </h3>
+                        <h3 style="text-align: center;">
+                        <?php  
+                            if ($arr_tus[0]->tus_score < 50 ) {
+                            echo "สิทธิพิเศษของคุณในระดับ Bronze";
+                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100 ) {
+                            echo "สิทธิพิเศษของคุณในระดับ Silver";
+                            } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150 ) {
+                            echo "สิทธิพิเศษของคุณในระดับ Gold";
+                            } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200 ) {
+                            echo "สิทธิพิเศษของคุณในระดับ Platinum";
+                            } else {
+                            echo ".";
+                            }?></h3>
+                        <h3 style="text-align: center;">
+                        <?php  
+                            if ($arr_tus[0]->tus_score < 50 ) {
+                            echo "ส่วนลดการใช้คะแนน  5%";
+                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100 ) {
+                            echo "ส่วนลดการใช้คะแนน 7%";
+                            } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150 ) {
+                            echo "ส่วนลดการใช้คะแนน 9%";
+                            } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200 ) {
+                            echo "ส่วนลดการใช้คะแนน 11%";
+                            } else {
+                            echo ".";
+                            }?>
+                        </h3>
                     </div>
                 </div>
             </div>
