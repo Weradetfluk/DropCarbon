@@ -8,6 +8,38 @@
 * @Create Date 2564-09-14
 */ 
 -->
+
+<style>
+#more_text {
+    display: none;
+}
+
+.read-more-style {
+    position: relative;
+    top: -60px;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 10%));
+    text-align: center;
+    padding-top: 15px;
+
+}
+
+.read-more-style:hover {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 20%));
+    font-weight: bold;
+}
+
+.card-img-wrapper {
+    display: block;
+    width: 100%;
+    height: 250px;
+}
+</style>
 <div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
@@ -38,7 +70,6 @@
     </div>
     <br>
     <!-- แชร์ -->
-
     <div class="row">
         <div class="col-12">
             <div class="container">
@@ -107,14 +138,45 @@
     }
     ?>
 
-    <!-- รายละเอียด -->
+    <script>
+    function read_more() {
+        $("#more_dot").hide();
+        $("#more_text").show(200);
+        $("#btn_read_more").hide();
+    }
+    </script>
     <div class="row py-3">
         <div class="col">
-            <h3><img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" width="40px"> รายละเอียด</h3>
-            <hr color="#cccccc">
-            <p style="text-indent: 50px;"><?php echo $promotions[0]->pro_description ?></p>
-            <p><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
-            </p>
+            <h3>
+                <!-- <span class="material-icons" style="font-size: 30px;">description</span>  -->
+                <img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" style="width:40px;margin-top:-5px;">
+                รายละเอียด
+            </h3>
+            <hr width="100%" size="10" color="#cccccc">
+            <div style="padding-top: 2%;padding-bottom: 3%">
+                <?php
+                $get_string = $promotions[0]->pro_description;
+                $get_length = strlen($get_string);
+                $max_length = 3000;
+                $sub_string_first = $get_string;
+                $sub_string_last = "";
+                $readMore = "";
+                if ($get_length > $max_length) {
+                    $readMore = '<div onclick="read_more()" class="read-more-style" id="btn_read_more">Read more</div>';
+                    $sub_string_first = substr($get_string, 0, strrpos($get_string, ' ', $max_length - $get_length)) . " <span id='more_dot'> ... </span>";
+                    $sub_string_last = substr($get_string, strrpos($get_string, ' ', $max_length - $get_length));
+                }
+                ?>
+                <p style="text-indent: 50px;text-align: justify;text-justify: inter-word;">
+                    <?php echo $sub_string_first ?><span id="more_text"><?php echo $sub_string_last ?></span>
+                </p>
+                <p><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
+            </div>
+
+            <? //= $readMore 
+            ?>
+            <div onclick="read_more()" class="read-more-style" id="btn_read_more">อ่านต่อ>> </div>
+            <!-- รายละเอียด -->
         </div>
     </div>
 
@@ -188,7 +250,6 @@
 
     </div>
 </div>
-
 
 <script>
 var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
