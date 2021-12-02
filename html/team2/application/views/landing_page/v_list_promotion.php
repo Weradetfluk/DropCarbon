@@ -30,11 +30,11 @@
         <?php if (!$this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
-        <li class="colorchange">ดูรายการโปรโมชัน</li>
+        <li class="colorchange">ดูรายการโปรโมชันและรางวัล</li>
     </ul>
     <div class="row text-left py-3">
         <div class="m-auto">
-            <h1 class="h1" style="padding-bottom: 2%">โปรโมชันทั้งหมด</h1>
+            <h1 class="h1" style="padding-bottom: 2%">โปรโมชันและรางวัล</h1>
         </div>
     </div>
     <!-- โปรโมชันทั้งหมด -->
@@ -44,7 +44,7 @@
     <form action="<?= site_url() ?>Landing_page/Landing_page/show_promotions_list" class="" method="post">
         <div class="row justify-content-md-center" style="margin: 0px 0px 30px 0px;">
             <div class="col-md-4">
-                <input type="text" value="<?= $value_search ?>" id="search_box" name="value_search" class="form-control form-control-custom" placeholder="ค้นหาโปรโมชัน">
+                <input type="text" value="<?= $value_search ?>" id="search_box" name="value_search" class="form-control form-control-custom" placeholder="ค้นหา">
             </div>
             <div class="col-md-2">
                 <select class="form-control form-control-custom" name="pro_cat_id" id="pro_cat_id">

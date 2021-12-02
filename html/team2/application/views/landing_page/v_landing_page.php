@@ -175,16 +175,16 @@
     </div>
 </section>
 
-<!-- โปรโมชัน -->
+<!-- โปรโมชันและรางวัล -->
 <section class="bg-gray">
     <div class="container">
         <!-- หัวข้อ -->
         <div class="header-break" data-aos="fade-down">
-            โปรโมชัน
+            โปรโมชันและรางวัล
         </div>
         <div class="row">
 
-            <!-- แสดงโปรโมชัน 4 โปรโมชัน -->
+            <!-- แสดงโปรโมชันและรางวัล 4 อัน-->
             <?php for ($i = 0; $i < count($arr_pro); $i++) {  ?>
                 <div class="col-md-3">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $arr_pro[$i]->pro_id; ?>">
@@ -195,10 +195,10 @@
 
                             <div class="card-body">
 
-                                <!-- ชื่อโปรโมชัน -->
+                                <!-- ชื่อ -->
                                 <h3><?php echo iconv_substr($arr_pro[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
 
-                                <!-- รายละเอียดโปรโมชัน -->
+                                <!-- รายละเอียด -->
                                 <p class="card-text">
                                     <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
 
