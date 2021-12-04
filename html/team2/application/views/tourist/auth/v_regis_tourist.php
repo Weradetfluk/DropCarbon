@@ -23,7 +23,7 @@
             <form class="container py-3 form-regis" method='POST' action='<?php echo base_url('Tourist/Auth/Register_tourist/insert_tourist') ?>' enctype="multipart/form-data">
                 <div class="profile-pic-div">
                     <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
                     <?php } else { ?>
                         <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                     <?php } ?>
@@ -120,7 +120,7 @@
             <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
                 <div class="profile-pic-div">
                     <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
                     <?php } else { ?>
                         <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                     <?php } ?>
