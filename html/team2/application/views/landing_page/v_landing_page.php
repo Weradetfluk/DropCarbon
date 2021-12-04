@@ -32,8 +32,10 @@
                             <div class="card-body" style="margin-top: 50px;">
 
                                 <div class="col">
+
                                     <!-- ชื่อกิจกรรม -->
-                                    <h2 class="text-decoration-none text-dark"><?php echo $arr_eve[$i]->eve_name ?></h2>
+                                    <h2><?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 9, "UTF-8") . "..."; ?></h2>
+                                    
                                 </div>
 
                                 <div class="col">

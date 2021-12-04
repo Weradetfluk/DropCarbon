@@ -8,42 +8,89 @@
 * @Create Date 2564-10-05
 */ 
 -->
+<style>
+    @media all and (max-width: 1920px) {
+        .change_width {
+            width: 350px;
+            height: 250px;
+        }
+    }
+    @media all and (max-width: 400px) {
+        .change_width {
+            width: 314px;
+            height: 250px;
+        }
+    }
+    @media all and (max-width: 360px) {
+        .change_width {
+            width: 300px;
+            height: 250px;
+        }
+    }
+</style>
+
 <div class="bg-gray">
     <div class="container py-5" style="border-radius: 25px; padding-bottom: 4% !important">
         <ul class="breadcrumb">
+
+            <!-- Nav bar -->
             <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
             <li>ข้อมูลส่วนตัว</li>
+
         </ul>
 
-        <section style="border: 2px solid; width: 1410px; height: 500px;" class="radius">
-            <div class="container">
-                <h2 class="container"> &nbsp; &nbsp;ข้อมูลส่วนตัว</h2>
-                <div class="row">
+        <section>
+            <div class="container radius" style="border: 2px solid;">
+                <div class="row py-5">
                     <div class="col">
-                        <div class="profile-pic-div">
-                            <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
-                            <?php } else { ?>
-                                <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
-                            <?php } ?>
+                        <div class="row">
+
+                            <!-- หัวข้อ -->
+                            <h2 style="margin-left: auto; margin-right: auto; padding-bottom: 30px;">ข้อมูลส่วนตัว</h2>
+
+                        </div>
+                        <div class="row">
+
+                            <!-- รูปโปรไฟล์ -->
+                            <div class="profile-pic-div">
+                                <?php if ($this->session->userdata("tus_img_path") == '') { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
+                                <?php } ?>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col py-5" style="margin-right: 18%;padding-left: 22px;">
                         <div class="row">
-                            <button class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px;" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">
-                                <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
-                            </button>
+
+                            <!-- ปุ่มแก้ไขข้อมูลส่วนตัว -->
+                            <a href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>">
+                                <button class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px;">
+                                    <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
+                                </button>
+                            </a>
+
                         </div>
                         <div class="row">
+
+                            <!-- ชื่อ-นามสกุล -->
                             <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
+
                         </div>
                         <div class="row">
+
+                            <!-- คะแนนของฉัน -->
                             <h3>คะแนนของฉัน</h3>
                             <h1 style="display:inline; color: #239d58; padding: 0px 10px;"><?php echo $arr_tus[0]->tus_score; ?></h1>
                             <h3 style="display:inline;">แต้ม</h3>
+
                         </div>
                         <div class="row" style="border: 2px solid; padding: 10px 24px;">
-                            <p style="margin-left: 20px;padding-left:25px;font-size: 22px;padding-top: 12px;">
+
+                            <!-- อีกกี่แต้มถึงจะอัพ -->
+                            <p style="margin-left: auto; margin-right: auto;font-size: 22px;padding-top: 12px;">
                                 <?php
                                 $score = 0;
                                 if ($arr_tus[0]->tus_score < 50) {
@@ -61,7 +108,7 @@
                                     echo ".";
                                 } ?>
                             </p>
-                            <p style="margin-left: 20px;font-size: 22px;">
+                            <p style="margin-left: auto; margin-right: auto;font-size: 22px;">
                                 <?php
                                 $score = 0;
                                 if ($arr_tus[0]->tus_score < 50) {
@@ -79,11 +126,11 @@
                                     echo ".";
                                 } ?>
                             </p>
+
                         </div>
                     </div>
-                    <div class="col"></div>
-                    <div class="col" style="margin-right: 50px;">
-                        <p style="border: 2px solid; width: 350px; height: 250px;"></p>
+                    <div class="col py-5" style="margin-left: auto; margin-right: auto;">
+                        <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
                         <p style="text-align: center;font-size: 22px;">
                             <?php
                             if ($arr_tus[0]->tus_score < 50) {
@@ -183,10 +230,6 @@
                 <div class="row">
                     <?php for ($i = 0; $i < count($checkin); $i++) { ?>
                         <?php if (count($checkin) < 3) { ?>
-
-
-
-
                             <div class="col-md-4">
                                 <div class="card">
                                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
@@ -200,9 +243,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
 
                             <!-- <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100" id="card">
