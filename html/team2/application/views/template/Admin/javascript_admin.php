@@ -14,6 +14,13 @@
 <!-- openstreet map -->
 <!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
 <script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
+
+<script src="<?php echo base_url() . 'assets/plugin/Chart/highcharts.js'?>"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
 $(document).ready(function() {
          //show innformation
