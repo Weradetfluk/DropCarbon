@@ -35,7 +35,7 @@
 
                                     <!-- ชื่อกิจกรรม -->
                                     <h2><?php echo iconv_substr($arr_eve[$i]->eve_name, 0, 9, "UTF-8") . "..."; ?></h2>
-                                    
+
                                 </div>
 
                                 <div class="col">
@@ -218,28 +218,40 @@
             <div class="row row-50 justify-content-center">
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number"><span class="counter">12</span>
+                        <div class="counter-classic-number">
+                            <span class="counter">
+                                <?php echo count($arr_tou); ?>
+                            </span>
                         </div>
                         <div class="counter-classic-title">สมาชิก</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number"><span class="counter">194</span>
+                        <div class="counter-classic-number">
+                            <span class="counter">
+                                <?php echo count($arr_ent); ?>
+                            </span>
                         </div>
                         <div class="counter-classic-title">ผู้ประกอบการ</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number"><span class="counter">20</span>
+                        <div class="counter-classic-number">
+                            <span class="counter">
+                                <?php echo count($arr_eve); ?>
+                            </span>
                         </div>
                         <div class="counter-classic-title">กิจกรรม</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-3">
                     <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number"><span class="counter">25</span>
+                        <div class="counter-classic-number">
+                            <span class="counter">
+                                <?php echo count($arr_com); ?>
+                            </span>
                         </div>
                         <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
                     </div>

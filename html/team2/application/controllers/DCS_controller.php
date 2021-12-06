@@ -27,8 +27,15 @@ class DCS_controller extends CI_Controller
         $this->load->model('Event/M_dcs_event', 'mde');
 
         $this->load->model('Promotions/M_dcs_promotions', 'mdp');
+
+        $this->load->model('Tourist/M_dcs_tourist', 'mdt');
+
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdet');
         
-     
+        $data['arr_tou'] = $this->mdt->get_tourist()->result();
+
+        $data['arr_ent'] = $this->mdet->get_ent()->result();
+
         $data['arr_pro'] = $this->mdp->get_promotions_landing_page()->result();
        
         $data['arr_com'] = $this->mdc->get_company_landing_page()->result();
