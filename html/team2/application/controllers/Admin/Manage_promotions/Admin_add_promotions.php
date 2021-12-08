@@ -29,9 +29,9 @@ class Admin_add_promotions extends DCS_controller
         * @Create Date 2564-07-17
         * @Update Date 2564-09-13
         */
-    public function show_data_promosions_list()
+    public function show_data_promotions_list()
     {
-        $_SESSION['tab_number'] = 4; //set tab number in topbar_admin.php
-        $this->output_admin('admin/manage_event/v_list_event_consider', null, 'admin/manage_event/v_data_card_event');
+        $_SESSION['tab_number'] = 9; //set tab number in topbar_admin.php
+        $this->output_admin('admin/manage_promotions/v_list_promo_admin', null, 'admin/manage_promotions/v_data_card_promo');
     }
 }

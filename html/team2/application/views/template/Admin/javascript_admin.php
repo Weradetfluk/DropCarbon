@@ -218,4 +218,34 @@ $(document).ready(function() {
 
 
     }
+
+      /*
+     * -
+     * dropdown event menu sidebar 
+     * @input 
+     * @output event sub menu
+     * @author Nantasiri Saiwaew
+     * @Create Date 2564-09-19
+     * @Update -
+     */
+    $(document).ready(function() {
+    $('#eve_menu').click(function () {
+      $(this).next('#eve_sub_menu').slideToggle();
+    });
+  });
+
+    /*
+     * -
+     * dropdown promotions menu sidebar 
+     * @input 
+     * @output promotions sub menu
+     * @author Nantasiri Saiwaew
+     * @Create Date 2564-09-19
+     * @Update -
+     */
+  $(document).ready(function() {
+    $('#pro_menu').click(function () {
+      $(this).next('#pro_sub_menu').slideToggle();
+    });
+  });
 </script>

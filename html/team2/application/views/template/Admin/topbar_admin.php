@@ -77,21 +77,34 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
 
-        <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active custom-a"; ?>">
+        <!-- Drop down list event menu -->
+        <li class="nav-item event_menu">
+          <a class="nav-link" href="#"  id="eve_menu">
+            <i class="material-icons">calendar_today</i>
+            <h5 class="h5-topbar">จัดการกิจกรรม<i class="material-icons dropdown">expand_more</i></h5>
+            
+          </a>
+          
+          <ul class="event_sub_menu" id="eve_sub_menu">
+          <li class="nav-item  <?php if ($_SESSION['tab_number'] == 4) echo "active custom-a"; ?>">
           <a class="nav-link  <?php if ($_SESSION['tab_number'] == 4) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
             <i class="material-icons">calendar_today</i>
-            <h5 class="h5-topbar">จัดการกิจกรรม</h5>
+            <h5 class="h5-topbar">อนุมัติกิจกรรม</h5>
           </a>
         </li>
 
-
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 8) echo "active custom-a"; ?>">
-          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 8) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 8) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_add_event/show_data_event_list' ?>">
             <i class="material-icons">calendar_today</i>
             <h5 class="h5-topbar">เพิ่ม-ลบ กิจกรรม</h5>
           </a>
         </li>
+          </ul>
 
+        </li>
+        
+      <!-- End Drop down list event menu -->
+        
         <!-- <li class="nav-item">
           <div class="dropdawn-container" style="display: none; padding-left: 8px;">
             <a class="nav-link  <?php if ($_SESSION['tab_number'] == 4) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
@@ -100,22 +113,33 @@ if (!isset($_SESSION['tab_number'])) {
             </a>
           </div>
         </li> -->
+
+        <!-- Drop down list promotions menu -->
+        <li class="nav-item ">
+          <a class="nav-link"  href="#" id="pro_menu">
+            <i class="material-icons">point_of_sale</i>
+            <h5 class="h5-topbar">จัดการโปรโมชัน<i class="material-icons dropdown">expand_more</i></h5>
+          </a>
+    
+          <ul class="promo_sub_menu" id="pro_sub_menu">
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 7) echo "active custom-a"; ?>">
           <a class="nav-link  <?php if ($_SESSION['tab_number'] == 7) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_data_consider' ?> ">
             <i class="material-icons">point_of_sale</i>
-            <h5 class="h5-topbar">จัดการโปรโมชัน</h5>
+            <h5 class="h5-topbar">อนุมัติโปรโมชัน</h5>
           </a>
         </li>
 
-
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 9) echo "active custom-a"; ?>">
-          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 9) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_approval_event/show_data_consider' ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 9) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_add_promotions/show_data_promotions_list' ?>">
             <i class="material-icons">calendar_today</i>
             <h5 class="h5-topbar">เพิ่ม-ลบ โปรโมชัน</h5>
           </a>
         </li>
+          </ul>
+        </li>
         <hr>
 
+         <!-- End Drop down list promotions menu -->
 
         <li class="nav-item   <?php if ($_SESSION['tab_number'] == 5) echo "active custom-a"; ?>" id="ent_menu">
           <a class="nav-link  <?php if ($_SESSION['tab_number'] == 5) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur' ?>">
@@ -132,9 +156,6 @@ if (!isset($_SESSION['tab_number'])) {
           </a>
         </li>
        
-
-
-
         <li class="nav-item ">
           <a class="nav-link" href="<?php echo base_url() . 'Admin/Auth/Login_admin/logout' ?>">
             <i class="material-icons">logout</i>
@@ -144,4 +165,23 @@ if (!isset($_SESSION['tab_number'])) {
       </ul>
     </div>
   </div>
+
+
+  <style>
+    .sidebar .nav .dropdown{
+      position: absolute;
+      right: 0;
+    }
+    .sidebar .nav .event_sub_menu{
+      display: none;
+    }
+
+    .sidebar .nav .promo_sub_menu{
+      display: none;
+    }
+
+    </style>
+
   <div class="main-panel">
+
+  

@@ -31,7 +31,7 @@ class Admin_add_event extends DCS_controller
         */
     public function show_data_event_list()
     {
-        $_SESSION['tab_number'] = 4; //set tab number in topbar_admin.php
-        $this->output_admin('admin/manage_event/v_list_event_consider', null, 'admin/manage_event/v_data_card_event');
+        $_SESSION['tab_number'] = 8; //set tab number in topbar_admin.php
+        $this->output_admin('admin/manage_event/v_list_event_admin', null, 'admin/manage_event/v_data_card_event');
     }
 }
