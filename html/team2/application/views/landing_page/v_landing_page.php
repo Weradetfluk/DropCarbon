@@ -214,50 +214,7 @@
         </div>
 
         <!-- บอร์ดแสดงจำนวน -->
-        <div class="row-max-100">
-            <div class="row row-50 justify-content-center">
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number">
-                            <span class="counter">
-                                <?php echo count($arr_tou); ?>
-                            </span>
-                        </div>
-                        <div class="counter-classic-title">สมาชิก</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number">
-                            <span class="counter">
-                                <?php echo count($arr_ent); ?>
-                            </span>
-                        </div>
-                        <div class="counter-classic-title">ผู้ประกอบการ</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number">
-                            <span class="counter">
-                                <?php echo count($arr_eve); ?>
-                            </span>
-                        </div>
-                        <div class="counter-classic-title">กิจกรรม</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-3">
-                    <div class="counter-classic" data-aos="fade-up">
-                        <div class="counter-classic-number">
-                            <span class="counter">
-                                <?php echo count($arr_com); ?>
-                            </span>
-                        </div>
-                        <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="autodata"></div>
     </div>
 </section>
 
@@ -389,4 +346,14 @@
 
         $('#carouselExampleIndicators').html(html_code);
     }
+</script>
+
+<script>
+    $(document).ready(function()
+    {
+        setInterval(function(){
+            $("#autodata").load("application/views/landing_page/v_data_landing_page.php");
+            refresh();
+        },1000);
+    });
 </script>
