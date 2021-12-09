@@ -93,17 +93,17 @@
                             <p style="margin-left: auto; margin-right: auto;font-size: 22px;padding-top: 12px;">
                                 <?php
                                 $score = 0;
-                                if ($arr_tus[0]->tus_score < 50) {
+                                if ($arr_tus[0]->tus_score < 25) {
+                                    $score += 25 - $arr_tus[0]->tus_score;
+                                    echo "ต้องการอีก $score แต้ม ";
+                                } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
                                     $score += 50 - $arr_tus[0]->tus_score;
                                     echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100) {
+                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
+                                    $score += 75 - $arr_tus[0]->tus_score;
+                                    echo "ต้องการอีก $score แต้ม ";
+                                } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
                                     $score += 100 - $arr_tus[0]->tus_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150) {
-                                    $score += 150 - $arr_tus[0]->tus_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200) {
-                                    $score += 200 - $arr_tus[0]->tus_score;
                                 } else {
                                     echo ".";
                                 } ?>
@@ -111,17 +111,17 @@
                             <p style="margin-left: auto; margin-right: auto;font-size: 22px;">
                                 <?php
                                 $score = 0;
-                                if ($arr_tus[0]->tus_score < 50) {
-                                    $score += 50 - $arr_tus[0]->tus_score;
+                                if ($arr_tus[0]->tus_score < 25) {
+                                    $score += 25 - $arr_tus[0]->tus_score;
                                     echo "เพื่อปลดล็อค ระดับ Silver";
-                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
+                                    $score += 50 - $arr_tus[0]->tus_score;
                                     echo "เพื่อปลดล็อค ระดับ Gold";
-                                } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150) {
-                                    $score += 150 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
+                                    $score += 75 - $arr_tus[0]->tus_score;
                                     echo "เพื่อปลดล็อค ระดับ Platinum";
-                                } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200) {
-                                    $score += 200 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
+                                    $score += 100 - $arr_tus[0]->tus_score;
                                 } else {
                                     echo ".";
                                 } ?>
@@ -133,13 +133,13 @@
                         <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
                         <p style="text-align: center;font-size: 22px;">
                             <?php
-                            if ($arr_tus[0]->tus_score < 50) {
+                            if ($arr_tus[0]->tus_score < 25) {
                                 echo "สิทธิพิเศษของคุณในระดับ Bronze";
-                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100) {
+                            } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
                                 echo "สิทธิพิเศษของคุณในระดับ Silver";
-                            } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150) {
+                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
                                 echo "สิทธิพิเศษของคุณในระดับ Gold";
-                            } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200) {
+                            } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
                                 echo "สิทธิพิเศษของคุณในระดับ Platinum";
                             } else {
                                 echo ".";
@@ -147,13 +147,13 @@
                         </p>
                         <p style="text-align: center;font-size: 22px;">
                             <?php
-                            if ($arr_tus[0]->tus_score < 50) {
+                            if ($arr_tus[0]->tus_score < 25) {
                                 echo "ส่วนลดการใช้คะแนน  5%";
-                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 100) {
+                            } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
                                 echo "ส่วนลดการใช้คะแนน 7%";
-                            } else if ($arr_tus[0]->tus_score > 100 && $arr_tus[0]->tus_score <= 150) {
+                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
                                 echo "ส่วนลดการใช้คะแนน 9%";
-                            } else if ($arr_tus[0]->tus_score > 150 && $arr_tus[0]->tus_score <= 200) {
+                            } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
                                 echo "ส่วนลดการใช้คะแนน 11%";
                             } else {
                                 echo ".";
