@@ -37,6 +37,8 @@
 
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/Openlayer/theme/default/style.css'?>" type="text/css">
 
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugin/daterangepicker/daterangepicker.css'?>" type="text/css">
+
 
 </head>
 <body>

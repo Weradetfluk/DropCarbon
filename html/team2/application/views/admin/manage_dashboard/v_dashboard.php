@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">สมาชิกนักท่องเที่ยว</p>
-                                <h3 class="card-text text-amount" id="consider_ent">30 คน</h3>
+                                <h2 class="card-text text-amount" id="tourist_number"></h2>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-area">
@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">ผู้ประกอบการ</p>
-                                <h3 class="card-text" id="approve_ent">10 คน</h3>
+                                <h2 class="card-text" id="entrepreneur_number"></h2>
 
                             </div>
                             <div class="col-auto">
@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">สถานที่</p>
-                                <h3 class="card-text text-amount" id="reject_ent">10 สถานที่</h3>
+                                <h2 class="card-text text-amount" id="company_number"></h2>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-danger">
@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">กิจกรรม</p>
-                                <h3 class="card-text text-amount" id="block_ent">10 กิจกรรม</h3>
+                                <h3 class="card-text text-amount" id="event_number"></h3>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-purple">
@@ -97,7 +97,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">โปรโมชัน</p>
-                                <h3 class="card-text text-amount" id="consider_ent">10 โปรโมชัน</h3>
+                                <h2 class="card-text text-amount" id="promotion_number"></h2>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape icon-area">
@@ -114,7 +114,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">กิจกรรมผู้ดูระบบ</p>
-                                <h3 class="card-text" id="approve_ent">10 กิจกรรม</h3>
+                                <h3 class="card-text" id="event_admin_number">3 กิจกรรม</h3>
 
                             </div>
                             <div class="col-auto">
@@ -132,7 +132,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="card-title text-title">โปรโมชันผู้ดูแลระบบ</p>
-                                <h3 class="card-text text-amount" id="reject_ent">10 โปรโมชัน</h3>
+                                <h3 class="card-text text-amount" id="pro_admin_number">3 โปรโมชัน</h3>
                             </div>
                             <div class="col-auto">
                                 <div class="icon-shape bg-danger">
@@ -177,6 +177,12 @@
                                 การสมัครบัญชีผู้ใช้
                             </label>
                         </div>
+                        <div class="col-sm">
+                            <input class="form-check-input" type="checkbox" value="" checked id="register_checkbox">
+                            <label class="form-check-label" for="defaultCheck1">
+                                โปรโมชันยอดนิยม
+                            </label>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
@@ -184,11 +190,7 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="date" id="eve_start_date" name="eve_start_date" class="form-control" required>
-                        </div>
-                        <p>ถึง</p>
-                        <div class="col-sm">
-                            <input type="date" id="eve_start_date" name="eve_start_date" class="form-control" required>
+                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -207,19 +209,42 @@
 
 
         <!-- กราฟประเภทกิจกรรมที่คนสนใจมากที่สุด -->
-        <div class="card" id="card_event">
-            <div class="card-header custom-header-tab text-center">
-                <h5 class="text-white">ประเภทกิจกรรมที่คนสนใจมากที่สุด</h5>
-            </div>
-            <!-- Tab1 -->
-            <div class="card-body">
-                <div class="card-body">
-                    <div class="chart_event" id="event">
 
+        <div class="row">
+            <div class="col">
+                <div class="card" id="card_event">
+                    <div class="card-header custom-header-tab text-center">
+                        <h5 class="text-white">ประเภทกิจกรรมที่คนสนใจมากที่สุด</h5>
+                    </div>
+                    <!-- Tab1 -->
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="chart_event" id="event">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+            </div>
+            <div class="col">
+                <div class="card" id="card_event_pie">
+                    <div class="card-header custom-header-tab text-center">
+                        <h5 class="text-white">เปอร์เซ็นความนิยมของประเภทกิจกรรม</h5>
+                    </div>
+                    <!-- Tab1 -->
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="chart_event_pie" id="chart_event_pie">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
 
         <!-- การเช็คอินกิจกรรม -->
         <div class="card" id="card_checkin">
@@ -235,6 +260,8 @@
                 </div>
             </div>
         </div>
+
+
 
 
         <div class="card" id="card_regis">
@@ -253,20 +280,55 @@
 
 
         <script>
+            var date_first = "";
+            var date_secon = "";
+            date_secon = $('#date').val().substring(13, 23);
+            date_first = $('#date').val().substring(0, 10);
+            var clear;
             $(document).ready(function() {
 
+                get_data_card_dashboard();
+                get_data_dashboard_event_cat();
+                get_data_dashboard_event_percent();
 
-                //checkbox hide
+
+                $('#date').daterangepicker({
+                    opens: 'left',
+                    cancelButtonClasses: "cancel",
+                    autoUpdateInput: false,
+                    applyButtonClasses: "button-apply",
+                    locale: {
+                        format: "YYYY-MM-DD",
+                        cancelLabel: 'Clear'
+                    }
+                }, function(start, end) {
+                    date_first = start.format('YYYY-MM-DD');
+                    date_secon = end.format('YYYY-MM-DD');
+                });
+
+                $('#date').on('apply.daterangepicker', function(ev, picker) {
+                    if ($('#date').val() == '' && date_first == "" && date_secon == "") {
+                        date_first = clear.substring(0, 10);
+                        date_secon = clear.substring(13, 23);
+                        $('#date').val(date_first + ' - ' + date_secon);
+                    } else {
+                        $('#date').val(date_first + ' - ' + date_secon);
+                    }
+                });
                 //event click hide
                 $("#event_checkbox").click(function() {
 
                     if ($('#event_checkbox').is(':checked')) {
-                        console.log("OK");
+
                         $("#card_event").slideDown()
                     } else {
+                        get_data_dashboard_event();
+
                         $("#card_event").slideUp();
                     }
                 });
+
+
                 //checkin click hide
                 $("#checkin_checkbox").click(function() {
 
@@ -291,191 +353,193 @@
 
             });
 
-            // Create the chart
-            Highcharts.chart('event', {
+
+
+
+            function get_data_dashboard_event_cat() {
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat'); ?>',
+                    dataType: 'json',
+                    success: function() {
+
+                    },
+                    error: function() {
+                        alert('ajax get data user error working');
+                    }
+                }).then(function(json_data) {
+                    create_chart_evet_cat(json_data['arr_data_dashboard']) // line 391
+                });
+            }
+
+            function get_data_dashboard_event_percent() {
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_per'); ?>',
+                    dataType: 'json',
+                    success: function() {
+
+                    },
+                    error: function() {
+                        alert('ajax get data user error working');
+                    }
+                }).then(function(json_data) {
+                     create_chart_evet_per(json_data['arr_data_dashboard'])
+                    console.log(json_data['arr_data_dashboard'])
+                });
+            }
+
+
+
+
+            function create_chart_evet_cat(arr_json_data) {
+
+                var obj_data_eve_cat = [];
+
+                arr_json_data.forEach((row, index) => {
+                    obj_data_eve_cat.push({
+                        name: row['eve_cat_name'],
+                        y: parseInt(row['chekin_number']) // str to int
+                    });
+                });
+
+                console.log( obj_data_eve_cat);
+                // Create the chart
+                Highcharts.chart('event', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'ประเภทของกิจกรรมที่นิยมมากที่สุด'
+                    },
+                    subtitle: {
+                        text: 'คลิกที่บาร์เพื่อดูกิจกรรม'
+                    },
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        }
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'จำนวนการเช็คอินกิจกรรม'
+                        }
+
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+                    },
+                    series: [{
+                        name: "กิจกรรม",
+                        colorByPoint: true,
+                        data: obj_data_eve_cat,
+                    }]
+                 
+                });
+            }
+
+
+
+
+            function create_chart_evet_per(arr_data_eve_cat_per){
+  
+                var obj_data_eve_cat_per = [];
+                arr_data_eve_cat_per.forEach((row, index) => {
+                    obj_data_eve_cat_per.push({
+                        name: row['eve_cat_name'],
+                        y: parseInt(row['chekin_number']) // str to int
+                    });
+                });
+
+
+                Highcharts.chart('chart_event_pie', {
                 chart: {
-                    type: 'column'
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
                 },
                 title: {
-                    text: 'ประเภทของกิจกรรมที่นิยมมากที่สุด'
+                    text: 'Browser market shares in January, 2018'
                 },
-                subtitle: {
-                    text: 'คลิกที่บาร์เพื่อดูกิจกรรม'
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
                 accessibility: {
-                    announceNewData: {
-                        enabled: true
+                    point: {
+                        valueSuffix: '%'
                     }
-                },
-                xAxis: {
-                    type: 'category'
-                },
-                yAxis: {
-                    title: {
-                        text: 'จำนวนการเช็คอินกิจกรรม'
-                    }
-
-                },
-                legend: {
-                    enabled: false
                 },
                 plotOptions: {
-                    series: {
-                        borderWidth: 0,
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
                         dataLabels: {
-                            enabled: true                       
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
                         }
                     }
                 },
-
-                tooltip: {
-                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-                },
                 series: [{
-                    name: "กิจกรรม",
+                    name: 'Brands',
                     colorByPoint: true,
-                    data: [{
-                            name: "ตัวช่วยลดคาร์บอน",
-                            y: 62,
-                            drilldown: "Chrome"
-                        },
-                        {
-                            name: "การเดินทาง",
-                            y: 10,
-                            drilldown: "Firefox"
-                        },
-                        {
-                            name: "การจัดการน้ำและไฟฟ้า",
-                            y: 7,
-                            drilldown: "Internet Explorer"
-                        }
-                    ]
-                }],
-                drilldown: {
-                    series: [{
-                            name: "Chrome",
-                            id: "Chrome",
-                            data: [
-                                [
-                                    "เก็บขยะหาดวอน",
-                                    20
-                                ],
-                                [
-                                    "เก็บขยะรอบอ่าวแสมสาร",
-                                    32
-                                ],
-                                [
-                                    "ลดการใช้น้ำ",
-                                    10
-                                ]
-                            ]
-                        },
-                        {
-                            name: "Firefox",
-                            id: "Firefox",
-                            data: [
-                                [
-                                    "ปั่นจักรยานยชมวิวเขาสามมุข",
-                                    10
-                                ]
-                            ]
-                        },
-                        {
-                            name: "Internet Explorer",
-                            id: "Internet Explorer",
-                            data: [
-                                [
-                                    "v11.0",
-                                    6.2
-                                ],
-                                [
-                                    "v10.0",
-                                    0.29
-                                ],
-                                [
-                                    "v9.0",
-                                    0.27
-                                ],
-                                [
-                                    "v8.0",
-                                    0.47
-                                ]
-                            ]
-                        },
-                        {
-                            name: "Safari",
-                            id: "Safari",
-                            data: [
-                                [
-                                    "v11.0",
-                                    3.39
-                                ],
-                                [
-                                    "v10.1",
-                                    0.96
-                                ],
-                                [
-                                    "v10.0",
-                                    0.36
-                                ],
-                                [
-                                    "v9.1",
-                                    0.54
-                                ],
-                                [
-                                    "v9.0",
-                                    0.13
-                                ],
-                                [
-                                    "v5.1",
-                                    0.2
-                                ]
-                            ]
-                        },
-                        {
-                            name: "Edge",
-                            id: "Edge",
-                            data: [
-                                [
-                                    "v16",
-                                    2.6
-                                ],
-                                [
-                                    "v15",
-                                    0.92
-                                ],
-                                [
-                                    "v14",
-                                    0.4
-                                ],
-                                [
-                                    "v13",
-                                    0.1
-                                ]
-                            ]
-                        },
-                        {
-                            name: "Opera",
-                            id: "Opera",
-                            data: [
-                                [
-                                    "v50.0",
-                                    0.96
-                                ],
-                                [
-                                    "v49.0",
-                                    0.82
-                                ],
-                                [
-                                    "v12.1",
-                                    0.14
-                                ]
-                            ]
-                        }
-                    ]
-                }
+                    data: obj_data_eve_cat_per,
+                }]
             });
+            }
+
+
+            /*
+             * get_data_card_dashboard
+             * get data dashboard <- number of people
+             * @input
+             * @output -
+             * @author Weradet Nopsombun 62160110
+             * @Create Date 2564-12-09
+             * @Update Date -
+             */
+            function get_data_card_dashboard() {
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_card_dashboard'); ?>',
+                    dataType: 'JSON',
+                    success: function(json_data) {
+
+                        console.log(json_data)
+
+                        $("#tourist_number").html(json_data[0].tou + " <span style='font-size: 16px;'>คน</span>");
+
+                        $("#entrepreneur_number").html(json_data[0].ent + " <span style='font-size: 16px;'>คน</span>");
+
+                        $("#company_number").html(json_data[0].com + " <span style='font-size: 16px;'>สถานที่</span>");
+
+                        $("#event_number").html(json_data[0].eve + " <span style='font-size: 16px;'>กิจกรรม</span>");
+
+                        $("#promotion_number").html(json_data[0].pro + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+
+                    },
+                    error: function() {
+                        alert('ajax get data user error working');
+                    }
+                });
+            }
+
 
 
 
@@ -500,8 +564,7 @@
                     accessibility: {
                         rangeDescription: 'วันที่'
                     },
-                    categories: [ '03/12/64','04/12/64','05/12/64'
-                    ]
+                    categories: ['03/12/64', '04/12/64', '05/12/64']
 
                 },
 
@@ -562,8 +625,7 @@
                     accessibility: {
                         rangeDescription: 'เดือน'
                     },
-                    categories: [ '03/12/64','04/12/64','05/12/64'
-                    ]
+                    categories: ['03/12/64', '04/12/64', '05/12/64']
 
                 },
 
@@ -610,4 +672,5 @@
                 }
 
             });
+
         </script>

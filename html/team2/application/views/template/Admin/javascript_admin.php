@@ -15,6 +15,12 @@
 <!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
 <script src="<?php echo base_url() . 'assets/plugin/Openlayer/lib/OpenLayers.js' ?>"></script>
 
+<script src="<?php echo base_url().'assets/plugin/daterangepicker/daterangepicker.js'?>" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
 <script src="<?php echo base_url() . 'assets/plugin/Chart/highcharts.js'?>"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
@@ -22,6 +28,8 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
+
+    
 $(document).ready(function() {
          //show innformation
          $("#help_information").click(function() {
