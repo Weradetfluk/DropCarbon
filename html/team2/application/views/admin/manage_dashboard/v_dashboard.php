@@ -278,197 +278,233 @@
             </div>
         </div>
 
+        <!-- กราฟโปรโมชัน -->
+        <div class="row">
+            <div class="col">
+                <div class="card" id="card_promotion_add">
+                    <div class="card-header custom-header-tab text-center">
+                        <h5 class="text-white">โปรโมชันที่เพิ่มเข้ามาและโปรโมชันที่หมดอายุ</h5>
+                    </div>
+                    <!-- Tab1 -->
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="chart_promotion_add" id="chart_promotion_add">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card" id="card_promotion_use">
+                    <div class="card-header custom-header-tab text-center">
+                        <h5 class="text-white">โปรโมชันที่ใช้งานแต่ละเดือน</h5>
+                    </div>
+                    <!-- Tab1 -->
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="chart_promotion_use" id="chart_promotion_use">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
         <script>
-            var date_first = "";
-            var date_secon = "";
-            date_secon = $('#date').val().substring(13, 23);
-            date_first = $('#date').val().substring(0, 10);
-            var clear;
-            $(document).ready(function() {
+        var date_first = "";
+        var date_secon = "";
+        date_secon = $('#date').val().substring(13, 23);
+        date_first = $('#date').val().substring(0, 10);
+        var clear;
+        $(document).ready(function() {
 
-                get_data_card_dashboard();
-                get_data_dashboard_event_cat();
-                get_data_dashboard_event_percent();
-
-
-                $('#date').daterangepicker({
-                    opens: 'left',
-                    cancelButtonClasses: "cancel",
-                    autoUpdateInput: false,
-                    applyButtonClasses: "button-apply",
-                    locale: {
-                        format: "YYYY-MM-DD",
-                        cancelLabel: 'Clear'
-                    }
-                }, function(start, end) {
-                    date_first = start.format('YYYY-MM-DD');
-                    date_secon = end.format('YYYY-MM-DD');
-                });
-
-                $('#date').on('apply.daterangepicker', function(ev, picker) {
-                    if ($('#date').val() == '' && date_first == "" && date_secon == "") {
-                        date_first = clear.substring(0, 10);
-                        date_secon = clear.substring(13, 23);
-                        $('#date').val(date_first + ' - ' + date_secon);
-                    } else {
-                        $('#date').val(date_first + ' - ' + date_secon);
-                    }
-                });
-                //event click hide
-                $("#event_checkbox").click(function() {
-
-                    if ($('#event_checkbox').is(':checked')) {
-
-                        $("#card_event").slideDown()
-                    } else {
-                        get_data_dashboard_event();
-
-                        $("#card_event").slideUp();
-                    }
-                });
+            get_data_card_dashboard();
+            get_data_dashboard_event_cat();
+            get_data_dashboard_event_percent();
 
 
-                //checkin click hide
-                $("#checkin_checkbox").click(function() {
+            $('#date').daterangepicker({
+                opens: 'left',
+                cancelButtonClasses: "cancel",
+                autoUpdateInput: false,
+                applyButtonClasses: "button-apply",
+                locale: {
+                    format: "YYYY-MM-DD",
+                    cancelLabel: 'Clear'
+                }
+            }, function(start, end) {
+                date_first = start.format('YYYY-MM-DD');
+                date_secon = end.format('YYYY-MM-DD');
+            });
 
-                    if ($('#checkin_checkbox').is(':checked')) {
-                        console.log("OK");
-                        $("#card_checkin").slideDown()
-                    } else {
-                        $("#card_checkin").slideUp();
-                    }
-                });
+            $('#date').on('apply.daterangepicker', function(ev, picker) {
+                if ($('#date').val() == '' && date_first == "" && date_secon == "") {
+                    date_first = clear.substring(0, 10);
+                    date_secon = clear.substring(13, 23);
+                    $('#date').val(date_first + ' - ' + date_secon);
+                } else {
+                    $('#date').val(date_first + ' - ' + date_secon);
+                }
+            });
+            //event click hide
+            $("#event_checkbox").click(function() {
 
-                //register card chart click hide
-                $("#register_checkbox").click(function() {
+                if ($('#event_checkbox').is(':checked')) {
 
-                    if ($('#register_checkbox').is(':checked')) {
-                        console.log("OK");
-                        $("#card_regis").slideDown()
-                    } else {
-                        $("#card_regis").slideUp();
-                    }
-                });
+                    $("#card_event").slideDown()
+                } else {
+                    get_data_dashboard_event();
 
+                    $("#card_event").slideUp();
+                }
             });
 
 
+            //checkin click hide
+            $("#checkin_checkbox").click(function() {
+
+                if ($('#checkin_checkbox').is(':checked')) {
+                    console.log("OK");
+                    $("#card_checkin").slideDown()
+                } else {
+                    $("#card_checkin").slideUp();
+                }
+            });
+
+            //register card chart click hide
+            $("#register_checkbox").click(function() {
+
+                if ($('#register_checkbox').is(':checked')) {
+                    console.log("OK");
+                    $("#card_regis").slideDown()
+                } else {
+                    $("#card_regis").slideUp();
+                }
+            });
+
+        });
 
 
-            function get_data_dashboard_event_cat() {
-                $.ajax({
-                    type: 'post',
-                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat'); ?>',
-                    dataType: 'json',
-                    success: function() {
 
-                    },
-                    error: function() {
-                        alert('ajax get data user error working');
+
+        function get_data_dashboard_event_cat() {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat'); ?>',
+                dataType: 'json',
+                success: function() {
+
+                },
+                error: function() {
+                    alert('ajax get data user error working');
+                }
+            }).then(function(json_data) {
+                create_chart_evet_cat(json_data['arr_data_dashboard']) // line 391
+            });
+        }
+
+        function get_data_dashboard_event_percent() {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_per'); ?>',
+                dataType: 'json',
+                success: function() {
+
+                },
+                error: function() {
+                    alert('ajax get data user error working');
+                }
+            }).then(function(json_data) {
+                create_chart_evet_per(json_data['arr_data_dashboard'])
+                console.log(json_data['arr_data_dashboard'])
+            });
+        }
+
+
+
+
+        function create_chart_evet_cat(arr_json_data) {
+
+            var obj_data_eve_cat = [];
+
+            arr_json_data.forEach((row, index) => {
+                obj_data_eve_cat.push({
+                    name: row['eve_cat_name'],
+                    y: parseInt(row['chekin_number']) // str to int
+                });
+            });
+
+            console.log(obj_data_eve_cat);
+            // Create the chart
+            Highcharts.chart('event', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'ประเภทของกิจกรรมที่นิยมมากที่สุด'
+                },
+                subtitle: {
+                    text: 'คลิกที่บาร์เพื่อดูกิจกรรม'
+                },
+                accessibility: {
+                    announceNewData: {
+                        enabled: true
                     }
-                }).then(function(json_data) {
-                    create_chart_evet_cat(json_data['arr_data_dashboard']) // line 391
-                });
-            }
-
-            function get_data_dashboard_event_percent() {
-                $.ajax({
-                    type: 'post',
-                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_per'); ?>',
-                    dataType: 'json',
-                    success: function() {
-
-                    },
-                    error: function() {
-                        alert('ajax get data user error working');
-                    }
-                }).then(function(json_data) {
-                     create_chart_evet_per(json_data['arr_data_dashboard'])
-                    console.log(json_data['arr_data_dashboard'])
-                });
-            }
-
-
-
-
-            function create_chart_evet_cat(arr_json_data) {
-
-                var obj_data_eve_cat = [];
-
-                arr_json_data.forEach((row, index) => {
-                    obj_data_eve_cat.push({
-                        name: row['eve_cat_name'],
-                        y: parseInt(row['chekin_number']) // str to int
-                    });
-                });
-
-                console.log( obj_data_eve_cat);
-                // Create the chart
-                Highcharts.chart('event', {
-                    chart: {
-                        type: 'column'
-                    },
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
                     title: {
-                        text: 'ประเภทของกิจกรรมที่นิยมมากที่สุด'
-                    },
-                    subtitle: {
-                        text: 'คลิกที่บาร์เพื่อดูกิจกรรม'
-                    },
-                    accessibility: {
-                        announceNewData: {
+                        text: 'จำนวนการเช็คอินกิจกรรม'
+                    }
+
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
                             enabled: true
                         }
-                    },
-                    xAxis: {
-                        type: 'category'
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'จำนวนการเช็คอินกิจกรรม'
-                        }
+                    }
+                },
 
-                    },
-                    legend: {
-                        enabled: false
-                    },
-                    plotOptions: {
-                        series: {
-                            borderWidth: 0,
-                            dataLabels: {
-                                enabled: true
-                            }
-                        }
-                    },
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+                },
+                series: [{
+                    name: "กิจกรรม",
+                    colorByPoint: true,
+                    data: obj_data_eve_cat,
+                }]
 
-                    tooltip: {
-                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
-                    },
-                    series: [{
-                        name: "กิจกรรม",
-                        colorByPoint: true,
-                        data: obj_data_eve_cat,
-                    }]
-                 
+            });
+        }
+
+
+
+
+        function create_chart_evet_per(arr_data_eve_cat_per) {
+
+            var obj_data_eve_cat_per = [];
+            arr_data_eve_cat_per.forEach((row, index) => {
+                obj_data_eve_cat_per.push({
+                    name: row['eve_cat_name'],
+                    y: parseInt(row['chekin_number']) // str to int
                 });
-            }
+            });
 
 
-
-
-            function create_chart_evet_per(arr_data_eve_cat_per){
-  
-                var obj_data_eve_cat_per = [];
-                arr_data_eve_cat_per.forEach((row, index) => {
-                    obj_data_eve_cat_per.push({
-                        name: row['eve_cat_name'],
-                        y: parseInt(row['chekin_number']) // str to int
-                    });
-                });
-
-
-                Highcharts.chart('chart_event_pie', {
+            Highcharts.chart('chart_event_pie', {
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
@@ -500,177 +536,264 @@
                     name: 'Brands',
                     colorByPoint: true,
                     data: obj_data_eve_cat_per,
+
                 }]
             });
+        }
+
+
+        /*
+         * get_data_card_dashboard
+         * get data dashboard <- number of people
+         * @input
+         * @output -
+         * @author Weradet Nopsombun 62160110
+         * @Create Date 2564-12-09
+         * @Update Date -
+         */
+        function get_data_card_dashboard() {
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_card_dashboard'); ?>',
+                dataType: 'JSON',
+                success: function(json_data) {
+
+                    console.log(json_data)
+
+                    $("#tourist_number").html(json_data[0].tou + " <span style='font-size: 16px;'>คน</span>");
+
+                    $("#entrepreneur_number").html(json_data[0].ent + " <span style='font-size: 16px;'>คน</span>");
+
+                    $("#company_number").html(json_data[0].com + " <span style='font-size: 16px;'>สถานที่</span>");
+
+                    $("#event_number").html(json_data[0].eve + " <span style='font-size: 16px;'>กิจกรรม</span>");
+
+                    $("#promotion_number").html(json_data[0].pro + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+
+                },
+                error: function() {
+                    alert('ajax get data user error working');
+                }
+            });
+        }
+
+
+
+
+
+        Highcharts.chart('checkin', {
+
+            title: {
+                text: 'การเช็คอินกิจกรรมในแต่ละวัน'
+            },
+
+            subtitle: {
+                text: 'Source: thesolarfoundation.com'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'จำนวนการเช็คอิน (คน)'
+                }
+            },
+
+            xAxis: {
+                accessibility: {
+                    rangeDescription: 'วันที่'
+                },
+                categories: ['03/12/64', '04/12/64', '05/12/64']
+
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+
+                }
+            },
+
+            series: [{
+                name: 'การเช็คอิน',
+                data: [10, 40, 10]
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
             }
 
+        });
 
-            /*
-             * get_data_card_dashboard
-             * get data dashboard <- number of people
-             * @input
-             * @output -
-             * @author Weradet Nopsombun 62160110
-             * @Create Date 2564-12-09
-             * @Update Date -
-             */
-            function get_data_card_dashboard() {
-                $.ajax({
-                    type: 'post',
-                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_card_dashboard'); ?>',
-                    dataType: 'JSON',
-                    success: function(json_data) {
+        Highcharts.chart('chart_regis', {
 
-                        console.log(json_data)
+            title: {
+                text: 'การสมัครบัญชีผู้ใช้'
+            },
 
-                        $("#tourist_number").html(json_data[0].tou + " <span style='font-size: 16px;'>คน</span>");
+            subtitle: {
+                text: 'Source: thesolarfoundation.com'
+            },
 
-                        $("#entrepreneur_number").html(json_data[0].ent + " <span style='font-size: 16px;'>คน</span>");
+            yAxis: {
+                title: {
+                    text: 'จำนวนการสมัคร (คน)'
+                }
+            },
 
-                        $("#company_number").html(json_data[0].com + " <span style='font-size: 16px;'>สถานที่</span>");
+            xAxis: {
+                accessibility: {
+                    rangeDescription: 'เดือน'
+                },
+                categories: ['03/12/64', '04/12/64', '05/12/64']
 
-                        $("#event_number").html(json_data[0].eve + " <span style='font-size: 16px;'>กิจกรรม</span>");
+            },
 
-                        $("#promotion_number").html(json_data[0].pro + " <span style='font-size: 16px;'>โปรโมชัน</span>");
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
 
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
                     },
-                    error: function() {
-                        alert('ajax get data user error working');
+
+                }
+            },
+
+            series: [{
+                    name: 'ผู้ประกอบการ',
+                    data: [10, 0, 10]
+                },
+                {
+                    name: 'นักท่องเที่ยว',
+                    data: [5, 15, 10],
+
+                }
+            ],
+
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
                     }
-                });
+                }]
             }
 
+        });
 
-
-
-
-            Highcharts.chart('checkin', {
-
-                title: {
-                    text: 'การเช็คอินกิจกรรมในแต่ละวัน'
-                },
-
-                subtitle: {
-                    text: 'Source: thesolarfoundation.com'
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'จำนวนการเช็คอิน (คน)'
-                    }
-                },
-
-                xAxis: {
-                    accessibility: {
-                        rangeDescription: 'วันที่'
-                    },
-                    categories: ['03/12/64', '04/12/64', '05/12/64']
-
-                },
-
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        label: {
-                            connectorAllowed: false
-                        },
-
-                    }
-                },
-
-                series: [{
-                    name: 'การเช็คอิน',
-                    data: [10, 40, 10]
-                }],
-
-                responsive: {
-                    rules: [{
-                        condition: {
-                            maxWidth: 500
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
-                        }
-                    }]
+        Highcharts.chart('chart_promotion_add', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'ร้อยละโปรโมชันที่เพิ่มและหมดอายุ'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
                 }
-
-            });
-
-            Highcharts.chart('chart_regis', {
-
-                title: {
-                    text: 'การสมัครบัญชีผู้ใช้'
-                },
-
-                subtitle: {
-                    text: 'Source: thesolarfoundation.com'
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'จำนวนการสมัคร (คน)'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
                     }
-                },
-
-                xAxis: {
-                    accessibility: {
-                        rangeDescription: 'เดือน'
-                    },
-                    categories: ['03/12/64', '04/12/64', '05/12/64']
-
-                },
-
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        label: {
-                            connectorAllowed: false
-                        },
-
-                    }
-                },
-
-                series: [{
-                        name: 'ผู้ประกอบการ',
-                        data: [10, 0, 10]
-                    },
-                    {
-                        name: 'นักท่องเที่ยว',
-                        data: [5, 15, 10],
-
-                    }
-                ],
-
-
-                responsive: {
-                    rules: [{
-                        condition: {
-                            maxWidth: 500
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
-                        }
-                    }]
                 }
+            },
+            series: [{
+                name: 'ร้อยละ',
+                colorByPoint: true,
+                data: [{
+                    name: 'โปรโมชันที่เพิ่ม',
+                    y: 61,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'โปรโมชันที่หมดอายุ',
+                    y: 11,
+                }, ]
+            }]
+        });
 
-            });
 
+        Highcharts.chart('chart_promotion_use', {
+
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'จำนวนโปรโมชันที่ใช้งาน'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'ร้อยละ',
+                colorByPoint: true,
+                data: [{
+                    name: '03/12/64',
+                    y: 61,
+                }, {
+                    name: '04/12/64',
+                    y: 11,
+                }, ]
+            }]
+
+        });
         </script>
