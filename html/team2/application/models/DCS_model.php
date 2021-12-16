@@ -50,17 +50,16 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    public function get_data_dashboard_event_cat_admin()
+    public function get_data_dashboard_event_cat_admin($date_sql)
     {
-        $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name,count(case when dcs_checkin.che_status = 1 then 1  end) as chekin_number
+        $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name,COUNT(dcs_checkin.che_id) as chekin_number
         FROM dcs_eve_category 
-        LEFT JOIN dcs_event 
-        on dcs_eve_category.eve_cat_id = dcs_event.eve_id
+        CROSS JOIN dcs_event 
+        ON dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id
         LEFT JOIN dcs_checkin 
         ON dcs_event.eve_id = dcs_checkin.che_eve_id
-        WHERE 1
+        where $date_sql
         GROUP BY dcs_eve_category.eve_cat_id";
-
         $query = $this->db->query($sql);
 
         return $query->result();
@@ -75,14 +74,15 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    public function get_data_dashboard_event_per_admin()
+    public function get_data_dashboard_event_per_admin( $date_sql)
     {
         $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name,count(che_id) as chekin_number, (SELECT COUNT(che_id) FROM dcs_checkin) as total_checkin, count(che_id) / (SELECT COUNT(che_id) FROM dcs_checkin) * 100 as per
         FROM dcs_eve_category 
         LEFT JOIN dcs_event 
-        on dcs_eve_category.eve_cat_id = dcs_event.eve_id
+        on dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id
         LEFT JOIN dcs_checkin 
         ON dcs_event.eve_id = dcs_checkin.che_eve_id
+        where $date_sql
         GROUP BY dcs_eve_category.eve_cat_id";
 
         $query = $this->db->query($sql);

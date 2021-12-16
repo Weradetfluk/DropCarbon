@@ -61,7 +61,17 @@ class Admin_view_dashboard extends DCS_controller
     */
     function get_data_chart_event_cat(){
         $this->load->model('DCS_model','dcmd');
-        $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_cat_admin();
+
+        $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
+        $date_end = $this->input->post('date_secon');
+
+        if($date_start != '' &&  $date_end != ''){
+            $date_sql = "dcs_checkin.che_date_time_in between '".$date_start."' AND '". $date_end."'" ;
+        }else{
+            $date_sql = true ;
+        }
+
+        $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_cat_admin($date_sql);
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -77,7 +87,17 @@ class Admin_view_dashboard extends DCS_controller
     */
     function get_data_chart_event_per(){
         $this->load->model('DCS_model','dcmd');
-        $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_per_admin();
+
+        $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
+        $date_end = $this->input->post('date_secon');
+
+        if($date_start != '' &&  $date_end != ''){
+            $date_sql = "dcs_checkin.che_date_time_in between '".$date_start."' AND '". $date_end."'" ;
+        }else{
+            $date_sql = true ;
+        }
+
+        $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_per_admin( $date_sql);
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

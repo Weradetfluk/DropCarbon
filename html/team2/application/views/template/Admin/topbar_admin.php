@@ -15,7 +15,11 @@ if (!isset($_SESSION['tab_number'])) {
 ?>
 
 
-
+<style>
+  ul {
+    list-style-type: none;
+}
+</style>
 
 <div class="wrapper ">
 

@@ -70,7 +70,7 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn btn-primary">ตกลง</button>
+                    <a href="<?php echo base_url(). 'Tourist/Checkin_event/Checkin_event/show_page_checkin'  ?>" class="btn btn-primary">ตกลง</a>
                 </div>
             </div>
 
@@ -130,15 +130,16 @@
                 console.log("Event=" + " " + json_data['arr_event'][0]['eve_lat'] + " " + json_data['arr_event'][0]['eve_lon'] );
                 if ((user_lat == json_data['arr_event'][0]['eve_lat']) && (user_lon == json_data['arr_event'][0]['eve_lon'])) {
                     // กรณีที่เดียวกัน
-                
+                    checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'], json_data['arr_event'][0]['eve_point']);
+                    get_point_and_show();
                 } else {
                     //ต้องคำนวณระยะห่าง
                     let distance = cal_distance(user_lat, user_lon, json_data['arr_event'][0]['eve_lat'], json_data['arr_event'][0]['eve_lon']);
 
                     if (distance < 0.5) {
                         //ระยะห่าง ต่ำกว่า 500m
-                   
-                        checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'], json_data['arr_event'][0]['eve_point'])
+                        checkin_or_check_out(json_data['arr_event'][0]['eve_id'], json_data['arr_event'][0]['eve_name'], json_data['arr_event'][0]['eve_point']);
+                        get_point_and_show();
                     } else {
                         //กรณี Error
                         err_shape.style.display = 'block';

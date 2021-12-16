@@ -204,4 +204,14 @@ class Tourist_manage extends DCS_controller
    {
       $this->session->set_userdata("Tourist_name", "$name");
    }
+
+
+   public function get_point(){
+      $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+
+      $this->mtou->tus_id = $this->session->userdata("tourist_id");
+      $data['arr_score'] = $this->mtou->get_point_tourist_by_id()->result();
+
+      echo json_encode($data['arr_score']);
+   }
 }

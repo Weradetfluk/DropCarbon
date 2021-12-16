@@ -19,7 +19,7 @@ if (!$this->session->has_userdata("tus_score")) {
         </li>
         <li class="item">
             <a href="#" class="a">
-                <h4 style="display: inline;"><?php echo $this->session->userdata("tus_score"); ?></h4> คะแนน
+                <h4 style="display: inline;" id="tus_score_displayed"></h4> คะแนน
             </a>
         </li>
         <li class="item">
@@ -57,5 +57,24 @@ if (!$this->session->has_userdata("tus_score")) {
                 $(this).find("a").html("<span class='material-icons' style='color: #000;'>close</span>");
             }
         });
+        get_point_and_show();
     });
+
+    
+    function get_point_and_show(){
+        $.ajax({
+             method: "POST",
+             url: '<?php echo site_url() . "Tourist/Manage_tourist/Tourist_manage/get_point" ?>',
+             dataType: 'JSON',
+             success: function(json_data) {
+
+                $("#tus_score_displayed").html(json_data[0].tus_score);
+
+             },
+             error: function() {
+                 alert('ajax Not working');
+             }
+         });
+    }
+
 </script>

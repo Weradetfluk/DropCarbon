@@ -248,4 +248,20 @@ class M_dcs_tourist extends Da_dcs_tourist
         $query = $this->db->get();
         return $query;
     }
+
+        /*
+    * check_email
+    * get data tourist by username
+    * @input -
+    * @output -
+    * @author Thanisron thumsawanit 62160088
+    * @Create Date 2564-09-13
+    */
+    public function get_point_tourist_by_id()
+    {
+        $sql = "SELECT tus_score FROM {$this->db_name}.dcs_tourist
+        WHERE tus_id = ?";  
+        $query = $this->db->query($sql, array($this->tus_id));
+        return $query;
+    }
 }

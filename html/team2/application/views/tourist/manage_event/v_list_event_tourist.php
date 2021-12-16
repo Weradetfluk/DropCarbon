@@ -57,7 +57,7 @@
                             <!-- รูปที่ 1 -->
                             <div class="card-body" align="center">
                                 <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
-                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                             
                             </div>
                             <!-- ชื่อของรูปที่ 1 -->
                         </a>
