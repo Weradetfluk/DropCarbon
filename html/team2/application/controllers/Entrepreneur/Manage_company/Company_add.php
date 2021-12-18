@@ -22,7 +22,9 @@ class Company_add extends DCS_controller
     public function show_add_company()
     {
         $this->load->model('Company/M_dcs_com_category', 'mcat');
+        $this->load->model('Province/M_dcs_province', 'mprv');
         $data['arr_com_cat'] = $this->mcat->get_all()->result();
+        $data['arr_province'] = $this->mprv->get_all()->result();
         $view = 'entrepreneur/manage_company/v_add_company';
         $this->output_entrepreneur($view, $data);
     }
@@ -48,7 +50,7 @@ class Company_add extends DCS_controller
         $this->mcom->com_tel = $this->input->post('com_tel');
         $this->mcom->com_cat_id = $this->input->post('com_cat_id');
         $this->mcom->com_location = $this->input->post('com_location');
-    
+        $this->mcom->com_par_id = $this->input->post('par_id');
         $this->mcom->insert_company();
         $this->set_session_add_company('success');
         $result = $this->mcom->get_by_name()->row();
@@ -201,5 +203,38 @@ class Company_add extends DCS_controller
             echo 2;
         }
     }
+
+    /* 
+     * get_district_by_prv_id_ajax
+     * get district by prv_id for ajax
+     * @input prv_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function get_district_by_prv_id_ajax(){
+        $this->load->model('District/M_dcs_district', 'mdis');
+        $this->mdis->dis_prv_id = $this->input->post('prv_id');
+        $data = $this->mdis->get_district_by_prv_id()->result();
+        echo json_encode($data);
+    }
+
+    /* 
+     * get_parish_by_dis_id_ajax
+     * get parish by dis_id for ajax
+     * @input dis_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function get_parish_by_dis_id_ajax(){
+        $this->load->model('Parish/M_dcs_parish', 'mpar');
+        $this->mpar->par_dis_id = $this->input->post('dis_id');
+        $data = $this->mpar->get_parish_by_dis_id()->result();
+        echo json_encode($data);
+    }
+
 }
 
