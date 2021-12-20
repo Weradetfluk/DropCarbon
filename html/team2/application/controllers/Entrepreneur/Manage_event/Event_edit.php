@@ -23,12 +23,14 @@ class Event_edit extends DCS_controller
         $this->load->model('Event/M_dcs_event', 'meve');
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Province/M_dcs_province', 'mprv');
         $this->meve->eve_id = $eve_id;
         $this->mcat->eve_cat_id = $eve_id;
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_ent_id_approve()->result();
+        $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_event/v_edit_event';
@@ -46,7 +48,7 @@ class Event_edit extends DCS_controller
     */
     public function edit_event()
     {
-
+        // print_r($this->input->post());
         $this->load->model('Event/M_dcs_eve_image', 'mimg');
         $this->load->model('Event/M_dcs_event', 'meve');
 
@@ -63,6 +65,7 @@ class Event_edit extends DCS_controller
 
         $this->meve->eve_lat = $this->input->post('eve_lat');
         $this->meve->eve_lon = $this->input->post('eve_lon');
+        $this->meve->eve_par_id = $this->input->post('par_id');
         $this->meve->eve_status = 1;
 
         // save data company to database

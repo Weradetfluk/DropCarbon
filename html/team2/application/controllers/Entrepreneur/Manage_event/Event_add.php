@@ -23,9 +23,11 @@ class Event_add extends DCS_controller
     {
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
+        $this->load->model('Province/M_dcs_province', 'mprv');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company']=$this->mcom->get_by_ent_id_approve()->result();
+        $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'entrepreneur/manage_event/v_add_event';
@@ -54,6 +56,7 @@ class Event_add extends DCS_controller
         $this->meve->eve_end_date = $this->input->post('eve_end_date');
         $this->meve->eve_lat = $this->input->post('eve_lat');
         $this->meve->eve_lon = $this->input->post('eve_lon');
+        $this->meve->eve_par_id = $this->input->post('par_id');
     
         $this->meve->insert_event();
         $this->set_session_add_event('success');

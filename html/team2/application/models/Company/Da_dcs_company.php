@@ -14,10 +14,13 @@ class Da_dcs_company extends DCS_model{
 	public $com_lat; 
 	public $com_lon; 
 	public $com_description;
+    public $com_tel;
 	public $com_status;
 	public $com_num_visitor;
 	public $com_ent_id;
     public $com_cat_id;
+    public $com_adm_id;
+    public $com_par_id;
 
 	/*
     * @author Suwapat Saowarod 62160340
@@ -76,9 +79,10 @@ class Da_dcs_company extends DCS_model{
 					`com_description`=?,
                     `com_cat_id`=?,
                     `com_status`=?,
-                    `com_location`=?
+                    `com_location`=?,
+                    `com_par_id`=?
 				WHERE com_id=?";
-		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_status, $this->com_location, $this->com_id));
+		$this->db->query($sql, array($this->com_name, $this->com_lat, $this->com_lon, $this->com_tel, $this->com_description, $this->com_cat_id, $this->com_status, $this->com_location, $this->com_par_id, $this->com_id));
 	}
 
 	/*

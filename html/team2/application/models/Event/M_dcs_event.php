@@ -72,6 +72,12 @@ class M_dcs_event extends Da_dcs_event
         ON com.com_ent_id = ent.ent_id
         LEFT JOIN {$this->db_name}.dcs_event_reject AS rej 
         ON eve.eve_id = rej.evr_eve_id
+        LEFT JOIN {$this->db_name}.dcs_parish AS par
+        ON eve.eve_par_id = par.par_id
+        LEFT JOIN {$this->db_name}.dcs_district AS dis
+        ON par.par_dis_id = dis.dis_id
+        LEFT JOIN {$this->db_name}.dcs_province AS prv
+        ON dis.dis_prv_id = prv.prv_id
         WHERE eve.eve_id=?";
         $query = $this->db->query($sql, array($this->eve_id));
         return $query;

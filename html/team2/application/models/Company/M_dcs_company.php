@@ -99,7 +99,13 @@ class M_dcs_company extends Da_dcs_company
     */
     public function get_by_id()
     {
-        $sql = "SELECT * FROM dcs_company 
+        $sql = "SELECT com.com_id, com.com_name, com.com_lat, com.com_lon, com.com_description, com.com_num_visitor, com.com_cat_id, com.com_par_id, com.com_tel, com.com_location, dis.dis_id, prv.prv_id  FROM dcs_company AS com
+                LEFT JOIN dcs_parish AS par
+                ON com.com_par_id = par.par_id
+                LEFT JOIN dcs_district AS dis
+                ON par.par_dis_id = dis.dis_id
+                LEFT JOIN dcs_province AS prv
+                ON dis.dis_prv_id = prv.prv_id
                 WHERE com_status != 4 AND com_id = ?";
         return $this->db->query($sql, array($this->com_id));
     }

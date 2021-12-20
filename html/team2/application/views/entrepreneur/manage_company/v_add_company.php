@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-6">
-                                    <label for="com_tel">บ้านเลขที่</label>
+                                    <label for="com_location">บ้านเลขที่</label>
                                     <input type="text" id="com_location" name="com_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
                                 </div>
                             </div><br>
@@ -77,18 +77,9 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-1"></div>
-                                <div class="col-lg-3" id="div_district">
-                                    <!-- <label for="dis_id">อำเภอ</label>
-                                    <select name="dis_id" id="dis_id" class="form-control">
-                                        <?php for($i = 0; $i < count($arr_district); $i++){?>
-                                            <option value="<?php echo $arr_district[$i]->dis_id?>"><?php echo $arr_district[$i]->dis_name_th?></option>
-                                        <?php }?>
-                                    </select> -->
-                                </div>
+                                <div class="col-lg-3" id="div_district"></div>
                                 <div class="col-lg-1"></div>
-                                <div class="col-lg-3" id="div_parish">
-
-                                </div>
+                                <div class="col-lg-3" id="div_parish"></div>
                             </div><br>
                             <!-- สิ้นสุดเลือกรายละเอียดที่อยู่ -->
 
@@ -444,7 +435,6 @@
      */
     function check_dis_by_province(){
         let prv_id = $('#prv_id').val();
-        console.log($('#prv_id').val());
         $.ajax({
             url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_district_by_prv_id_ajax"?>",
             method: "POST",
@@ -477,7 +467,6 @@
      */
     function check_par_by_district(){
         let dis_id = $('#dis_id').val();
-        console.log('hello');
         $.ajax({
             url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_parish_by_dis_id_ajax"?>",
             method: "POST",
@@ -486,8 +475,6 @@
                 dis_id: dis_id
             },
             success: function(arr_parish){
-                console.log('arr_parish');
-                console.log(arr_parish);
                 let html_code = "";
                 html_code += '<label for="par_id">ตำบล</label>';
                 html_code += '<select name="par_id" id="par_id" class="form-control">'

@@ -40,11 +40,13 @@ class Company_edit extends DCS_controller
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->load->model('Company/M_dcs_com_image', 'mimg');
       $this->load->model('Company/M_dcs_com_category', 'mcat');
+      $this->load->model('Province/M_dcs_province', 'mprv');
       $this->mcom->com_id = $com_id;
       $this->mimg->com_img_com_id = $com_id;
       $data['arr_company'] = $this->mcom->get_by_id()->result();
       $data['arr_image'] = $this->mimg->get_by_com_id()->result();
       $data['arr_com_cat'] = $this->mcat->get_all()->result();
+      $data['arr_province'] = $this->mprv->get_all()->result();
       $view = 'entrepreneur/manage_company/v_edit_company';
       $this->output_entrepreneur($view, $data);
    }
@@ -70,6 +72,7 @@ class Company_edit extends DCS_controller
       $this->mcom->com_tel = $this->input->post('com_tel');
       $this->mcom->com_cat_id = $this->input->post('com_cat_id');
       $this->mcom->com_location = $this->input->post('com_location');
+      $this->mcom->com_par_id = $this->input->post('par_id');
       $this->mcom->com_status = 1;
       // save data company to database
       $this->mcom->update_company();
