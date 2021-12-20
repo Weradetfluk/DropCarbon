@@ -221,6 +221,26 @@ class M_dcs_event extends Da_dcs_event
         return $query->result();
     }
 
+      /*
+    *get_all_data_event_admin
+    *get data event belonging to admin 
+    *@input $limit, $start, $number_status
+    *@output event data
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-12-14
+    */
+    function get_all_data_event_admin($limit, $start, $number_status)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->where("eve_status = '$number_status' AND eve_point > 0 AND eve_end_date > CURDATE() AND eve_adm_id != 'NULL'");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     /*
     *get_count_all_not_over
     *get data count event by form database
@@ -234,6 +254,23 @@ class M_dcs_event extends Da_dcs_event
         $this->db->select('*');
         $this->db->from('dcs_event ');
         $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date > CURDATE()");
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
+    /*
+    *get_count_all_event_admin
+    *get data count event belonging to admin form database
+    *@input num_status
+    *@output -
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-12-14
+    */
+    function get_count_all_event_admin($num_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_event ');
+        $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date > CURDATE() AND eve_adm_id != 'NULL'");
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
@@ -266,6 +303,33 @@ class M_dcs_event extends Da_dcs_event
     }
 
     /*
+    *get_search_event_admin
+    *get data with search
+    *@input number_status, search
+    *@output -
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-09-26
+    *@Update Date -
+    */
+    function get_search_event_admin($search, $number_status)
+    {
+
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('eve_name', $search);
+        $this->db->or_like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("eve_status = '$number_status'   AND eve_point > 0 AND eve_end_date > CURDATE() AND eve_adm_id != 'NULL'");
+        $query = $this->db->get();
+        return $query;
+    }
+
+    /*
     *get_all_data_over
     *get data event&entrepreneur&company form database
     *@input $limit, $start, $number_status
@@ -284,6 +348,26 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->get();
         return $query->result();
     }
+
+    /*
+    *get_all_data_event_over_admin
+    *get data event&entrepreneur&company form database
+    *@input $limit, $start, $number_status
+    *@output entrepreneur data & company data & event data
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
+    function get_all_data_event_over_admin($limit, $start, $number_status)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->where("eve_status = '$number_status' AND eve_end_date < CURDATE() AND eve_adm_id != 'NULL'");
+        $query = $this->db->get();
+        return $query->result();
+    }
     /*
     *get_count_all_over
     *get data count event by form database
@@ -297,6 +381,23 @@ class M_dcs_event extends Da_dcs_event
         $this->db->select('*');
         $this->db->from('dcs_event ');
         $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
+        $num_results = $this->db->count_all_results();
+        return $num_results;
+    }
+
+    /*
+    *get_count_all_over
+    *get data count event by form database
+    *@input num_status
+    *@output -
+    *@author Kasama Donwong 62160074
+    *@Create Date 2564-09-24
+    */
+    function get_count_all_event_over_admin($num_status)
+    {
+        $this->db->select('*');
+        $this->db->from('dcs_event ');
+        $this->db->where("eve_status = '$num_status'   AND eve_point > 0 AND eve_end_date < CURDATE() AND eve_adm_id != 'NULL'");
         $num_results = $this->db->count_all_results();
         return $num_results;
     }
@@ -324,6 +425,32 @@ class M_dcs_event extends Da_dcs_event
         $this->db->or_like('com_name', $search);
         $this->db->group_end();
         $this->db->where("eve_status = '$number_status'   AND eve_point > 0 AND eve_end_date < CURDATE()");
+        $query = $this->db->get();
+        return $query;
+    }
+    /*
+    *get_search_over_admin
+    *get data with search
+    *@input number_status, search
+    *@output -
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-12-18
+    *@Update Date -
+    */
+    function get_search_over_admin($search, $number_status)
+    {
+
+        $this->db->select('*');
+        $this->db->from('dcs_event');
+        $this->db->join('dcs_company', 'dcs_company.com_id = dcs_event.eve_com_id', 'left');
+        $this->db->join('dcs_entrepreneur', 'dcs_entrepreneur.ent_id = dcs_company.com_ent_id', 'left');
+        $this->db->group_start();
+        $this->db->like('eve_name', $search);
+        $this->db->or_like('ent_firstname', $search);
+        $this->db->or_like('ent_lastname', $search);
+        $this->db->or_like('com_name', $search);
+        $this->db->group_end();
+        $this->db->where("eve_status = '$number_status'   AND eve_point > 0 AND eve_end_date < CURDATE() AND eve_adm_id != 'NULL'");
         $query = $this->db->get();
         return $query;
     }

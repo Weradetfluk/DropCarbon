@@ -1,11 +1,11 @@
 <!-- 
 /*
-* v_list_event
-* Display data event by admin
+* v_list_event_over_admin
+* Display data event over by admin
 * @input arr_event
 * @output data event
-* @author Nantsiri Saiwaew
-* @Create Date 2564-12-11
+* @author Suwapat Saowarod 62160340
+* @Create Date 2564-09-16
 */ 
 -->
 <script type="text/javascript" src="<?php echo base_url('assets/plugin/QRCODE/qrcode.js') ?>"></script>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
         <div class="col">
-         <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">กิจกรรมที่ยังไม่สิ้นสุด</h3>
+         <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">กิจกรรมที่สิ้นสุดแล้ว</h3>
      </div>
         </div>
         <div class="col">
@@ -99,7 +99,7 @@
 
 
 <script>
-     $(document).ready(function() {
+    $(document).ready(function() {
          load_data(1);
 
          $('#search_box').keyup(function() {
@@ -117,16 +117,65 @@
      function load_data(page, query = '') {
          console.log(query);
          $.ajax({
-             url: '<?php echo base_url('Admin/Manage_event/Admin_list_event/show_data_ajax/'); ?>' + 2,
+             url: '<?php echo base_url('Admin/Manage_event/Admin_list_event/get_event_over_admin_ajax/'); ?>' + 2,
              method: "POST",
+             dataType: "Json",
              data: {
                  page: page,
                  query: query
              },
              success: function(data) {
-                 $('#data_event_consider').html(data);
+                 // console.log(data);
+                 create_table(data['arr_event'], data['paganition']);
+
              }
          });
+     }
+   
+
+     function create_table(data, pagation) 
+     {
+         console.log(data);
+         let html_code = '';
+         html_code += '<table class="table" style="text-align: center;">';
+         html_code += '<thead class="text-white custom-thead">';
+         html_code += '<tr class="custom-tr-header-table">';
+         html_code += '<th class="th-custom res-hide">ลำดับ</th>';
+         html_code += '<th class="th-custom ">ชื่อกิจกรรม</th>';
+         html_code += '<th class="th-custom ">ชื่อสถานที่</th>';
+         html_code += '<th class="th-custom ">ชื่อผู้ประกอบการ</th>';
+         html_code += '<th class="th-custom ">ดำเนินการ</th>';
+         html_code += '</tr>';
+         html_code += '</thead>';
+         html_code += '<tbody class="list">';
+
+         data.forEach((row_eve, index_eve) => {
+
+             html_code += '<tr>';
+             html_code += '<td class ="res-hide">' + (index_eve+1) + '</td>';
+             html_code += '<td>' + (row_eve['eve_name']) + '</td>';
+             html_code += '<td>' + (row_eve['com_name']) + '</td>';
+             html_code += '<td class ="res-hide">' + (row_eve['ent_firstname']) + (' ') +(row_eve['ent_lastname']) + '</td>';
+             html_code += '<td style="text-align: center;">';
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
+             html_code +='<i class="material-icons">'
+             html_code +='search'
+             html_code +='</i>';
+             html_code += '</a>'
+             html_code += '</tr>';
+             html_code += '</tbody>'
+     });
+             html_code += '</table><br>';
+             html_code += '<div class="container-fluid" style="align: center;   position: relative;">';
+             html_code += '<ul class="pagination w-50" id="pagination">';
+            //  $('#pagination').html(pagation);
+
+            if(pagation){
+                html_code += pagation;
+            }
+            //  console.log(pagation);
+             $('#data_event_consider').html(html_code);
+
      }
 
 var qrcode = new QRCode(document.getElementById("qr_code"), {
@@ -175,7 +224,7 @@ function delete_event(eve_id_con) {
         data: {
             eve_id: eve_id_con
         },
-        url: '<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/delete_event_by_admin' ?>',
+        url: '<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/delete_event' ?>',
         success: function() {
             swal({
                     title: "ลบกิจกรรม",

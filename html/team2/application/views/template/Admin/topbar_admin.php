@@ -98,7 +98,7 @@ if (!isset($_SESSION['tab_number'])) {
         </li>
 
         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 8) echo "active custom-a"; ?>">
-          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 8) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_add_event/show_data_event_list' ?>">
+          <a class="nav-link  <?php if ($_SESSION['tab_number'] == 8) echo "custom-a"; ?>" href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list' ?>">
             <i class="material-icons">calendar_today</i>
             <h5 class="h5-topbar">เพิ่ม-ลบ กิจกรรม</h5>
           </a>

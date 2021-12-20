@@ -46,6 +46,27 @@ class Da_dcs_event extends DCS_model
 				VALUES (?,?,?,?,?,?,?,?,?)";
         $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date, $this->eve_location,$this->eve_lat, $this->eve_lon));
     }
+
+    /*
+    * insert_event
+    * insert event by entrepreneur
+    * @input eve_name
+    * @output -
+    * @author Priyarat Bumrungkit 62160156
+    * @Create Date 2564-09-26
+    * @Update -
+    */
+    public function insert_event_by_admin()
+    {
+        $sql = "INSERT INTO `dcs_event`(`eve_name`,
+                             `eve_description`,`eve_com_id`,`eve_cat_id`,
+                            `eve_start_date`, `eve_end_date`, `eve_location`, `eve_lat`, 
+                            `eve_lon`, `eve_par_id`) 
+                VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->eve_name,  $this->eve_description, 
+                        $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, 
+                        $this->eve_end_date, $this->eve_location,$this->eve_lat, $this->eve_lon,$this->eve_par_id));
+    }
     /*
     * update_status
     * update status event

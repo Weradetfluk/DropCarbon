@@ -257,4 +257,20 @@ class M_dcs_company extends Da_dcs_company
                 WHERE  com_status = 2 AND com_ent_id = ?";
         return $this->db->query($sql, array($this->com_ent_id));
     }
+
+     /*
+    * get_by_com_approve
+    * get data company approved by entrepreneur id
+    * @input com_ent_id
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-09-29
+    * @Update -
+    */
+    public function get_by_com_approve()
+    {
+        $sql = "SELECT * FROM dcs_company 
+                WHERE  com_status = 2";
+        return $this->db->query($sql);
+    }
 }
