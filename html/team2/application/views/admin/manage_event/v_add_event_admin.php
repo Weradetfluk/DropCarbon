@@ -84,14 +84,14 @@
                             </div>
                             <!-- เลือกรายละเอียดที่อยู่ -->                
                             <div class="row">
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
                                     <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="12" required>
-                                </div>
-                                <div class="col-lg-1"></div>
+                                </div> -->
+                                <!-- <div class="col-lg-1"></div> -->
                                 <div class="col-lg-6">
-                                    <label for="com_tel">บ้านเลขที่</label>
-                                    <input type="text" id="com_location" name="com_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
+                                    <label for="com_tel">ที่อยู่</label>
+                                    <input type="text" id="eve_location" name="eve_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
                                 </div>
                             </div><br>
                             <div class="row">
@@ -185,7 +185,7 @@
                             <div class="row">
                                 <div class="col">
                                 <label>ผู้เพิ่มกิจกรรม</label>
-                                    <input type="text" id="admin_name" disabled>
+                                    <input type="text" id="admin_id" value="<?php echo $arr_admin ?>" disabled>
                                 </div>
                             </div>
                             <!-- Submit button -->
@@ -209,6 +209,7 @@ $(document).ready(function() {
     check_count_image_btn();
     set_lat_lon();
     change_min_end_date();
+    check_dis_by_province();
 });
 // openstreet map
 var map, vectorLayer, selectedFeature;

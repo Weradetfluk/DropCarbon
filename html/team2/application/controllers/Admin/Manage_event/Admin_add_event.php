@@ -34,7 +34,7 @@ class Admin_add_event extends DCS_controller
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Province/M_dcs_province', 'mprv');
-        // $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
+        $data['arr_admin'] = $this->session->userdata("admin_name");
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company']=$this->mcom->get_by_com_approve()->result();
         $data['arr_province'] = $this->mprv->get_all()->result();
@@ -68,7 +68,8 @@ class Admin_add_event extends DCS_controller
         $this->meve->eve_lat = $this->input->post('eve_lat');
         $this->meve->eve_lon = $this->input->post('eve_lon');
         $this->meve->eve_par_id = $this->input->post('par_id');
-    
+        $this->meve->eve_adm_id = $this->session->userdata("admin_id");
+
         $this->meve->insert_event_by_admin();
         $this->set_session_add_event('success');
         $result = $this->meve->get_by_name()->row();
