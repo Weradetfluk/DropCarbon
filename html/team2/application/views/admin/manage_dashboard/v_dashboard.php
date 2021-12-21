@@ -178,7 +178,7 @@
                             </label>
                         </div>
                         <div class="col-sm">
-                            <input class="form-check-input" type="checkbox" value="" id="register_checkbox">
+                            <input class="form-check-input" type="checkbox" value="" id="promotion_checkbox">
                             <label class="form-check-label" for="defaultCheck1">
                                 โปรโมชันยอดนิยม
                             </label>
@@ -299,7 +299,7 @@
             <div class="col">
                 <div class="card" id="card_promotion_use">
                     <div class="card-header custom-header-tab text-center">
-                        <h5 class="text-white">โปรโมชันที่ใช้งานแต่ละเดือน</h5>
+                        <h5 class="text-white">การใช้งานโปรโมชัน</h5>
                     </div>
                     <!-- Tab1 -->
                     <div class="card-body">
@@ -398,6 +398,19 @@
                         $("#card_regis").slideDown()
                     } else {
                         $("#card_regis").slideUp();
+                    }
+                });
+
+                //register card chart click hide
+                $("#promotion_checkbox").click(function() {
+
+                    if ($('#promotion_checkbox').is(':checked')) {
+                        console.log("OK");
+                        $("#card_promotion_add").slideDown();
+                        $("#card_promotion_use").slideDown();
+                    } else {
+                        $("#card_promotion_add").slideUp();
+                        $("#card_promotion_use").slideUp();
                     }
                 });
 
@@ -740,7 +753,7 @@
                     type: 'pie'
                 },
                 title: {
-                    text: 'ร้อยละโปรโมชันที่เพิ่มและหมดอายุ'
+                    text: ''
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
@@ -764,13 +777,13 @@
                     name: 'ร้อยละ',
                     colorByPoint: true,
                     data: [{
-                        name: 'โปรโมชันที่เพิ่ม',
+                        name: 'เพิ่มเข้ามา',
                         y: 61,
                         sliced: true,
                         selected: true
                     }, {
-                        name: 'โปรโมชันที่หมดอายุ',
-                        y: 11,
+                        name: 'หมดอายุ',
+                        y: 23,
                     }, ]
                 }]
             });
@@ -785,7 +798,7 @@
                     type: 'pie'
                 },
                 title: {
-                    text: 'ร้อยละโปรโมชันที่ใช้งาน'
+                    text: ' '
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
@@ -837,13 +850,13 @@
                         y: 80,
                     }, {
                         name: '10/12/64',
-                        y: 1,
+                        y: 11,
                     }, {
                         name: '11/12/64',
-                        y: 3,
+                        y: 32,
                     }, {
                         name: '12/12/64',
-                        y: 2,
+                        y: 25,
                     }, ]
                 }]
 
