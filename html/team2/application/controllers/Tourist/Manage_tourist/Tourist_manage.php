@@ -162,18 +162,17 @@ class Tourist_manage extends DCS_controller
          $this->session->set_userdata("tus_img_path", $tus_img_path);
          $this->mpic->insert_img();
          $this->set_session_regis_tourist('edit_success');
-         redirect("Tourist/Auth/Landing_page_tourist");
+         redirect("Tourist/Manage_tourist/Tourist_manage/show_information_tourist");
          // เลือกรูป
       } else if (isset($_FILES["tourist_img"]) && empty($_FILES["tourist_img"]["name"])) {
          $this->set_session_regis_tourist('edit_success');
          $this->mtou->update_tourist();
          $this->set_session($this->mtou->tus_firstname . " " . $this->mtou->tus_lastname);
-         redirect('Tourist/Auth/Landing_page_tourist');
+         redirect('Tourist/Manage_tourist/Tourist_manage/show_information_tourist');
          // ไม่ได้เลือกรูป
       } else {
          $this->set_session_regis_tourist('fail');
-         // $this->show_edit_tourist();
-         redirect('Tourist/Manage_tourist/Tourist_edit/show_edit_tourist');
+         redirect('Tourist/Manage_tourist/Tourist_manage/show_information_tourist');
       } // ไฟล์ใหญ่เกิน
    }
    /*
