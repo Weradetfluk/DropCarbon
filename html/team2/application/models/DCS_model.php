@@ -89,4 +89,52 @@ class DCS_model extends CI_Model
 
         return $query->result();
     }
+
+      /*
+    * get_data_dashboard_event_per_admin
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-12-09
+    * @Update Date -
+    */
+    public function get_data_dashboard_event_admin( $date_sql, $eve_cat_id)
+    {
+        $sql = "SELECT  dcs_event.eve_name, count(che_id) AS checkin
+        FROM dcs_event      
+        LEFT JOIN dcs_checkin 
+        ON dcs_event.eve_id = dcs_checkin.che_eve_id
+        WHERE  $date_sql AND  dcs_event.eve_cat_id = '$eve_cat_id'
+        GROUP BY dcs_event.eve_id";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
+
+        /*
+    * get_data_dashboard_event_per_admin
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-12-09
+    * @Update Date -
+    */
+    public function get_data_event_name_cat( $date_sql)
+    {
+        $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name
+        FROM dcs_eve_category 
+        LEFT JOIN dcs_event 
+        on dcs_eve_category.eve_cat_id = dcs_event.eve_cat_id
+        LEFT JOIN dcs_checkin 
+        ON dcs_event.eve_id = dcs_checkin.che_eve_id
+        where $date_sql
+        GROUP BY dcs_eve_category.eve_cat_id";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
 }
