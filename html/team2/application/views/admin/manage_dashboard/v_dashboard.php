@@ -26,6 +26,8 @@
         <!-- ส่วนของการ์ดด้านบน -->
         <div class="row">
             <div class="col-lg-3 col-md-6">
+
+                <!-- การ์ดสมาชิกนักท่องเที่ยว -->
                 <div class="card" class="custom-card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -43,6 +45,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
+                <!-- การ์ดสมาชิกผู้ประกอบการ -->
                 <div class="card" class="custom-card">
                     <div class="card-body border-left-green">
                         <div class="row">
@@ -61,6 +64,8 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
+
+                <!-- การ์ดสถานที่ท่องเที่ยว -->
                 <div class="card" class="custom-card">
                     <div class="card-body border-left-red">
                         <div class="row">
@@ -78,6 +83,8 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
+
+                <!-- การ์ดกิจกรรม -->
                 <div class="card">
                     <div class="card-body border-left-purple" class="custom-card">
                         <div class="row">
@@ -97,6 +104,8 @@
         </div>
         <div class="row" style="margin-top: -30px;">
             <div class="col-sm">
+
+                <!-- การ์ดโปรโมชั่น -->
                 <div class="card">
                     <div class="card-body border-left-yellow">
                         <div class="row">
@@ -114,6 +123,10 @@
                 </div>
             </div>
             <div class="col-sm">
+
+
+
+                <!-- การ์ดกิจกรรมผู้ดูแลระบบ -->
                 <div class="card">
                     <div class="card-body border-left-green">
                         <div class="row">
@@ -132,6 +145,8 @@
                 </div>
             </div>
             <div class="col-sm">
+
+                <!-- การ์ดโปรแกรมผู้ดูแลระบบ -->
                 <div class="card">
                     <div class="card-body border-left-red">
                         <div class="row">
@@ -152,12 +167,13 @@
 
 
         <!-- fiter -->
-
         <div class="card">
             <div class="card-header custom-header-tab">
                 <h5 class="text-white">ค้นหา</h5>
             </div>
-            <!-- Tab1 -->
+
+
+
             <div class="card-body">
                 <div class="card-body">
                     <div class="row">
@@ -195,7 +211,8 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control"
+                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -205,7 +222,6 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn" style="float: right;">รีเซ็ต</button>
                         <button type="button" style="float: right;" id="submit" class="btn btn-success">ค้นหา</button>
                     </div>
                 </div>
@@ -213,7 +229,7 @@
         </div>
 
 
-        <!-- กราฟประเภทกิจกรรมที่คนสนใจมากที่สุด -->
+        <!-- กราฟประเภทกิจกรรมที่คนสนใจมากที่สุด (ภายในเป็นกิจกรรมของแต่ละประเภท) -->
 
         <div class="row">
             <div class="col">
@@ -230,8 +246,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
+            <!-- กราฟเปอร์เซ็นความนิยิม ของประเภทที่คนสนใจมากที่สุด -->
             <div class="col">
                 <div class="card" id="card_event_pie">
                     <div class="card-header custom-header-tab text-center">
@@ -268,7 +285,7 @@
 
 
 
-
+        <!-- กราฟสมัครีบัญชีผู้ใช้ -->
         <div class="card" id="card_regis">
             <div class="card-header custom-header-tab text-center">
                 <h5 class="text-white">การสมัครสมาชิกผู้ใช้</h5>
@@ -282,6 +299,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <!-- กราฟโปรโมชัน -->
         <div class="row">
@@ -321,26 +340,28 @@
 
 
         <script>
-        var date_first = "";
-        var date_secon = "";
-        date_secon = $('#date').val().substring(13, 23);
-        date_first = $('#date').val().substring(0, 10);
+        var date_first = ""; //วันเริ่มต้น
+        var date_secon = ""; // วันสิ้นสุด
+        date_secon = $('#date').val().substring(13, 23); //ตัดสตริงเอาแค่วันสิ้นสุด
+        date_first = $('#date').val().substring(0, 10); //ตัดสตริงเอาแค่วันเริ่มต้น
 
-        var clear;
+        // var clear;
 
+        //ซ่อนทุกกราฟ
         card_checkin.style.display = 'none';
         card_regis.style.display = 'none';
         card_promotion_add.style.display = 'none';
         card_promotion_use.style.display = 'none';
 
-
+        //เมื่อ Jqurey ทำงาน
         $(document).ready(function() {
 
-            get_data_card_dashboard();
-            get_data_dashboard_event_cat();
-            get_data_dashboard_event_percent();
+            get_data_card_dashboard(); // เรียกข้อมูลบนการ์ด
+            get_data_dashboard_event_cat(); //เรียกข้อมูลกราฟประเภทกิจกรรมที่นิยมที่สุด
+            get_data_dashboard_event_percent(); //เรียกข้อมูลกราฟประเภทกิจกรรมที่นิยมที่สุด (Pie chart Percent)
 
             $('#date').daterangepicker({
+                //date picker
                 opens: 'left',
                 cancelButtonClasses: "cancel",
                 autoUpdateInput: false,
@@ -350,11 +371,14 @@
                     cancelLabel: 'Clear'
                 }
             }, function(start, end) {
+                //ใส่ format
                 date_first = start.format('YYYY-MM-DD');
                 date_secon = end.format('YYYY-MM-DD');
             });
 
+
             $('#date').on('apply.daterangepicker', function(ev, picker) {
+                //คลิกเลือกวัน ให้ใช้ค่าใหม่
                 if ($('#date').val() == '' && date_first == "" && date_secon == "") {
                     date_first = clear.substring(0, 10);
                     date_secon = clear.substring(13, 23);
@@ -365,18 +389,22 @@
             });
             //event click hide
             $("#event_checkbox").click(function() {
+                //คลิก checkbox การ์ดกิจกรรม
 
                 if ($('#event_checkbox').is(':checked')) {
 
-                    $("#card_event").slideDown()
+                    $("#card_event").slideDown(); //ซ่อนกราฟ
+
                 } else {
-                    get_data_dashboard_event();
+                    get_data_dashboard_event_cat(); // เรียกฟังก์ชัน
+                    get_data_dashboard_event_percent()
 
                     $("#card_event").slideUp();
                 }
             });
 
             $("#submit").click(function() {
+                //คลิก filter
                 date_secon = $('#date').val().substring(13, 23);
                 date_first = $('#date').val().substring(0, 10);
                 get_data_dashboard_event_cat();
@@ -422,15 +450,25 @@
 
 
 
-
+        /*
+         * get_data_dashboard_event_cat 
+         *  request ไปที่ server เพื่อนำข้อมูลจาก data base มาสร้างกราฟ (ประเภทกิจกรรมที่
+         * คนสนใจที่สุด)
+         *@input -
+         *@output chart 
+         *@author Weradet Nopsombun 62160110
+         *@Create Date 2564-12-10
+         *@update Date -
+         */
         function get_data_dashboard_event_cat() {
             $.ajax({
                 type: 'post',
+                //path ตาม ที่ php เลย
                 url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat'); ?>',
                 dataType: 'json',
                 data: {
-                    date_first: date_first + " 00:00:00",
-                    date_secon: date_secon + "  23:00:00"
+                    date_first: date_first + " 00:00:00", //ตอนนี้ใน database คือมีแค่ date time เลยต่อ String
+                    date_secon: date_secon + "  23:59:59"
                 },
                 success: function() {
 
@@ -439,36 +477,22 @@
                     alert('ajax get data user error working');
                 }
             }).then(function(json_data) {
-                create_chart_evet_cat(json_data['arr_data_dashboard']) // line 391
-            });
-        }
-
-
-        function get_data_dashboard_event() {
-            $.ajax({
-                type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event'); ?>',
-                dataType: 'json',
-                data: {
-                    date_first: date_first + " 00:00:00",
-                    date_secon: date_secon + "  23:00:00"
-                },
-                success: function() {
-
-                },
-                error: function() {
-                    alert('ajax get data user error working');
-                }
-            }).then(function(json_data) {
-                create_chart_evet_cat(json_data['arr_data_dashboard']) // line 391
+                create_chart_evet_cat(json_data['arr_data_dashboard']) // สร้าง chart ตามฟังก์ชัน
             });
         }
 
 
 
-
-
-
+        /*
+         * get_data_dashboard_event_percent 
+         *  request ไปที่ server เพื่อนำข้อมูลจาก data base มาสร้างกราฟ (ประเภทกิจกรรมที่
+         * คนสนใจที่สุด Pie chart)
+         *@input -
+         *@output chart 
+         *@author Weradet Nopsombun 62160110
+         *@Create Date 2564-12-10
+         *@update Date -
+         */
         function get_data_dashboard_event_percent() {
             $.ajax({
                 type: 'post',
@@ -491,24 +515,34 @@
 
 
 
-
+        /*
+         * create_chart_evet_cat 
+         *  สร้างกราฟ และ ดุึงข้อมูล มาทำ กราฟ ซ้อน
+         *@input -
+         *@output chart 
+         *@author Weradet Nopsombun 62160110
+         *@Create Date 2564-12-10
+         *@update Date -
+         */
         function create_chart_evet_cat(arr_json_data) {
 
-            var obj_data_eve_cat = [];
+            var obj_data_eve_cat = []; // อาเรย์ข้อมูลที่ สร้าง Barchart  ประเภทกิจกรรม
             var obj_data_eve = [
-                []
+                [] //รูปแบบ อาเรย์ Two dimentions สำหรับ drill down
             ];
-            var obj_data_event_in_cat = [];
+
 
             arr_json_data.forEach((row, index) => {
+                // นำ Array Json มาใส่ใน obj_data_eve_cat
                 obj_data_eve_cat.push({
                     name: row['eve_cat_name'],
                     y: parseInt(row['chekin_number']), // str to int
                     drilldown: row['eve_cat_id']
                 });
+
+                // จะได้ bar chart
             });
-
-
+            // request ข้อมูล กิจกรรมที่้เกี่ยวข้อง กับ ประเภทนั้นๆ
             $.ajax({
                 type: 'post',
                 url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event'); ?>',
@@ -525,33 +559,34 @@
                 }
             }).then(function(json_data) {
 
-                console.log(json_data);
-
-
-
+                //วนลูปตามข้อมูลที่มี
                 json_data.forEach((row, index) => {
-                    let obj_event = [];
+                    let obj_event = []; // สร้าง อาเรย์ย่อย สำหรับกิจกรรมข้างในประเภท
+
+                    /*
+                    ตัวอย่างข้อมมูลที่ดึงออกมมา
+                        [0] = { 
+                            'ประเภท'
+                            'ไอดี'
+                            data : {
+                                [0] = {ชื่อกิจกรรม, จำนวนการเช็คอิน}
+                            }
+                        } 
+                    */
                     row['data'].forEach((row_event, index) => {
                         obj_event.push([
                             row_event['eve_name'],
                             parseInt(row_event['checkin'])
                         ]);
                     });
-                    console.log(obj_event);
+
                     obj_data_eve.push({
-                        name: row['name'],
-                        id: row['id'],
-                        data: obj_event
+                        name: row['name'], // ชื่อประเภท
+                        id: row['id'], // ไอดี
+                        data: obj_event // กิจกรรมของประเภทนั้นๆ มาจาก aRRAY  ย่อย
                     });
-
                 })
-
-                console.log(obj_data_eve);
-
             });
-
-
-
 
             // Create the chart
             Highcharts.chart('event', {
@@ -614,9 +649,19 @@
         }
 
 
+
+        /*
+         * create_chart_evet_per 
+         *  สร้างกราฟ (Pie chart) ประเภทกิจกรรมที่นิยมที่สุด
+         *@input -
+         *@output chart 
+         *@author Weradet Nopsombun 62160110
+         *@Create Date 2564-12-10
+         *@update Date -
+         */
         function create_chart_evet_per(arr_data_eve_cat_per) {
 
-            var obj_data_eve_cat_per = [];
+            var obj_data_eve_cat_per = []; // วิธีการเดียวกัน
             arr_data_eve_cat_per.forEach((row, index) => {
                 obj_data_eve_cat_per.push({
                     name: row['eve_cat_name'],
@@ -867,7 +912,7 @@
                 name: 'ร้อยละ',
                 colorByPoint: true,
                 data: [{
-                    name: 'โปรโมชันที่เพิ่มเข้ามา',
+                    name: 'โปรโมชันที่เพิ่มเข้าม',
                     y: 61,
                     sliced: true,
                     selected: true
