@@ -21,7 +21,7 @@
                         </center>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/edit_event/' ?>"
+                        <form action="<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/edit_event_by_admin/' ?>"
                             id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="eve_com_id" value="<?php echo $arr_event[0]->com_id; ?>">
                             <div class="row">
@@ -68,7 +68,17 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <div class="col-lg-3">
+                                    <label for="eve_point">คะแนนกิจกรรม</label>
+                                    <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()"
+                                        style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
+                                        rows="5" placeholder="กรอกคะแนนกิจกรรม" required value="<?php echo $arr_event[0]->eve_point; ?>">
+                                    
+                                    <p id="err_message_point" style="color: red;font-size: 16px"></p>
+                                    <!-- <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p> -->
+                                </div>
                             </div><br>
+                            
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -105,6 +115,28 @@
                                         min="<?php echo $date_now ?>" required>
                                 </div>
                             </div><br>
+                             <!-- เลือกรายละเอียดที่อยู่ -->
+                             <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="prv_id">จังหวัด</label>
+                                    <select name="prv_id" id="prv_id" class="form-control" onblur="check_dis_by_province()">
+                                        <?php for($i = 0; $i < count($arr_province); $i++){?>
+                                            <?php if($arr_event[0]->prv_id == $arr_province[$i]->prv_id){?>
+                                                <option value="<?php echo $arr_province[$i]->prv_id?>" selected="selected"><?php echo $arr_province[$i]->prv_name_th?></option>
+                                            <?php }?>
+                                            <?php if($arr_event[0]->prv_id != $arr_province[$i]->prv_id){?>
+                                                <option value="<?php echo $arr_province[$i]->prv_id?>"><?php echo $arr_province[$i]->prv_name_th?></option>
+                                            <?php }?>
+                                            
+                                        <?php }?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-3" id="div_district"></div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-3" id="div_parish"></div>
+                            </div><br>
+                            <!-- สิ้นสุดเลือกรายละเอียดที่อยู่ -->
 
                             <!-- เลือกรูปภาพประกอบกิจกรรม -->
                             <div class="form-group">
@@ -174,10 +206,13 @@
                                         </tr>
                                     </table>
                                 </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col">
+                                <label>ผู้แก้ไขกิจกรรม</label>
+                                    <input type="text" id="admin_id" value="<?php echo $arr_admin ?>" disabled>
+                                </div>
                             </div>
-
-
-
 
                             <!-- Submit button -->
                             <input type="hidden" name="eve_id" id="eve_id" value="<?php echo $arr_event[0]->eve_id; ?>">
@@ -201,8 +236,8 @@
                                         <div class="modal-body">
                                             <p>คุณต้องการที่แก้ไขข้อมูลกิจกรรม <span id="eve_name_confirm"></span> ?</p>
                                             <br>
-                                            <p style="color: red;">***หากทำการแก้ไขข้อมูลกิจกรรม <span
-                                                    id="eve_name_confirm2"></span> จะกลับสู่สถานะรออนุมัติ***</p>
+                                            <!-- <p style="color: red;">***หากทำการแก้ไขข้อมูลกิจกรรม <span
+                                                    id="eve_name_confirm2"></span> จะกลับสู่สถานะรออนุมัติ***</p> -->
                                         </div>
                                         <div class="modal-footer">
                                             <button id="submit" class="btn btn-success success">ยืนยัน</button>
@@ -227,6 +262,7 @@
 $(document).ready(function() {
     init($('#eve_lat').val(), $('#eve_lon').val());
     check_count_image_btn();
+    check_dis_by_province(<?= $arr_event[0]->dis_id?>);
     // console.log(count_image);
 });
 var map, vectorLayer, selectedFeature;
@@ -364,7 +400,7 @@ function upload_image_ajax() {
     }
     // console.log(form_data);
     $.ajax({
-        url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/upload_image_ajax" ?>",
+        url: "<?php echo base_url() . "Admin/Manage_event/Admin_add_event/upload_image_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: form_data,
@@ -454,7 +490,7 @@ function unlink_image_go_back() {
     }).get();
     console.log(arr_image);
     $.ajax({
-        url: "<?php echo base_url() . "Entrepreneur/Manage_event/Event_add/uplink_image_ajax" ?>",
+        url: "<?php echo base_url() . "Admin/Manage_event/Admin_add_event/uplink_image_ajax" ?>",
         method: "POST",
         data: {
             arr_image: arr_image
@@ -462,7 +498,7 @@ function unlink_image_go_back() {
         success: function(data) {
             console.log(data);
             location.replace(
-                "<?php echo base_url() . "Entrepreneur/Manage_event/Event_list/show_list_event" ?>")
+                "<?php echo base_url() . "Admin/Manage_event/Admin_list_event/show_data_event_list" ?>")
         }
     })
 }
@@ -478,7 +514,7 @@ function unlink_image_go_back() {
  */
 function confirm_edit(eve_name_con) {
     $('#eve_name_confirm').text(eve_name_con);
-    $('#eve_name_confirm2').text(eve_name_con);
+    // $('#eve_name_confirm2').text(eve_name_con);
     $('#modal_edit').modal();
 
     $('#submit').click(function() {
@@ -518,7 +554,7 @@ function check_name_event_ajax() {
     var eve_id = $('#eve_id').val();
     console.log(eve_id);
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_event/Event_edit/check_name_event_ajax" ?>",
+        url: "<?php echo site_url() . "Admin/Manage_event/Admin_edit_event/check_name_event_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: {
@@ -543,4 +579,126 @@ function check_name_event_ajax() {
         }
     })
 }
+
+ /*
+     * check_dis_by_province
+     * check district by prv_id by ajax
+     * @input prv_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function check_dis_by_province(dis_id = null){
+        let prv_id = $('#prv_id').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Admin/Manage_event/Admin_edit_event/get_district_by_prv_id_ajax"?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                prv_id: prv_id
+            },
+            success: function(arr_district){
+                if(dis_id == null){
+                    let html_code = "";
+                    html_code += '<label for="dis_id">อำเภอ</label>';
+                    html_code += '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
+                    for (let i = 0; i < arr_district.length; i++) {
+                        html_code += '<option value="' + arr_district[i].dis_id + '">'+ arr_district[i].dis_name_th +'</option>';
+                    }
+                    html_code += '</select>';
+                    $('#div_district').html(html_code);
+                    check_par_by_district();
+                }else{
+                    let html_code = "";
+                    html_code += '<label for="dis_id">อำเภอ</label>';
+                    html_code += '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
+                    for (let i = 0; i < arr_district.length; i++) {
+                        if(dis_id == arr_district[i].dis_id){
+                            html_code += '<option value="' + arr_district[i].dis_id + '" selected="selected">'+ arr_district[i].dis_name_th +'</option>';
+                        }else{
+                            html_code += '<option value="' + arr_district[i].dis_id + '">'+ arr_district[i].dis_name_th +'</option>';
+                        }
+                    }
+                    html_code += '</select>';
+                    $('#div_district').html(html_code);
+                    check_par_by_district(<?= $arr_event[0]->eve_par_id?>);
+                } 
+            }
+        })
+    }
+
+    /*
+     * check_par_by_district
+     * check parish by dis_id by ajax
+     * @input dis_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function check_par_by_district(par_id = null){
+        let dis_id = $('#dis_id').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Admin/Manage_event/Admin_edit_event/get_parish_by_dis_id_ajax"?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                dis_id: dis_id
+            },
+            success: function(arr_parish){
+                if(par_id == null){
+                    let html_code = "";
+                    html_code += '<label for="par_id">ตำบล</label>';
+                    html_code += '<select name="par_id" id="par_id" class="form-control">'
+                    for (let i = 0; i < arr_parish.length; i++) {
+                        html_code += '<option value="' + arr_parish[i].par_id + '">'+ arr_parish[i].par_name_th +'</option>';
+                    }
+                    html_code += '</select>';
+                    $('#div_parish').html(html_code);
+                }else{
+                    let html_code = "";
+                    html_code += '<label for="par_id">ตำบล</label>';
+                    html_code += '<select name="par_id" id="par_id" class="form-control">'
+                    for (let i = 0; i < arr_parish.length; i++) {
+                        if(par_id == arr_parish[i].par_id){
+                            html_code += '<option value="' + arr_parish[i].par_id + '" selected="selected">'+ arr_parish[i].par_name_th +'</option>';
+                        }else{
+                            html_code += '<option value="' + arr_parish[i].par_id + '">'+ arr_parish[i].par_name_th +'</option>';
+                        }
+                    }
+                    html_code += '</select>';
+                    $('#div_parish').html(html_code);
+                }
+                
+            }
+        })
+    }
+
+    function add_point() {
+        let eve_cat_id = $('#eve_cat_id').val();
+        let point = $('#eve_point').val();
+        console.log('pass');
+        console.log(point);
+        if (check_point(point, eve_cat_id) == true) {
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+             } 
+    }
+
+    function check_point(point,eve_cat_id) {
+        let arr_min_point = [1, 20, 30, 40];
+         let arr_max_point = [19, 29, 39, 49];
+
+         console.log(eve_cat_id);
+         console.log(arr_min_point[eve_cat_id - 1]);
+         console.log(arr_max_point[eve_cat_id - 1]);
+         if (point < 1) {
+             return true;
+         } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+             return true;
+         } else {
+             return false;
+         }
+        
+    }
 </script>

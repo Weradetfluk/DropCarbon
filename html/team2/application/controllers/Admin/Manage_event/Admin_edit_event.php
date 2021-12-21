@@ -21,17 +21,20 @@ class Admin_edit_event extends DCS_controller
 
     public function show_edit_event_by_admin($eve_id)
     {
+        $this->load->model('Event/M_dcs_event', 'meve');
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Province/M_dcs_province', 'mprv');
-        // $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
+        $this->meve->eve_id = $eve_id;
+        $this->mcat->eve_cat_id = $eve_id;
+        $data['arr_admin'] = $this->session->userdata("admin_name");
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company']=$this->mcom->get_by_com_approve()->result();
         $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
-        $view = 'admin/manage_event/v_add_event_admin';
+        $view = 'admin/manage_event/v_edit_event_admin';
         $this->output_admin($view, $data,null);
     }
 
@@ -44,13 +47,14 @@ class Admin_edit_event extends DCS_controller
     * @Create Date 2564-09-25
     * @Update Date -
     */
-    public function edit_event()
+    public function edit_event_by_admin()
     {
 
         $this->load->model('Event/M_dcs_eve_image', 'mimg');
         $this->load->model('Event/M_dcs_event', 'meve');
 
         $this->meve->eve_name = $this->input->post('eve_name');
+        $this->meve->eve_point= $this->input->post('eve_point');
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
         $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
@@ -63,10 +67,12 @@ class Admin_edit_event extends DCS_controller
 
         $this->meve->eve_lat = $this->input->post('eve_lat');
         $this->meve->eve_lon = $this->input->post('eve_lon');
-        $this->meve->eve_status = 1;
+        $this->meve->eve_status = 2;
+        $this->meve->eve_par_id = $this->input->post('par_id');
+        $this->meve->eve_adm_id = $this->session->userdata("admin_id");
 
         // save data company to database
-        $this->meve->update_event();
+        $this->meve->update_event_by_admin();
         $this->set_session_edit_event('success');
         $this->mimg->eve_img_eve_id = $this->input->post('eve_id');
 
@@ -106,7 +112,7 @@ class Admin_edit_event extends DCS_controller
             }
         }
 
-        redirect('Entrepreneur/Manage_event/Event_list/show_list_event');
+        redirect('Admin/Manage_event/Admin_list_event/show_data_event_list');
     }
 
     /*
@@ -163,5 +169,36 @@ class Admin_edit_event extends DCS_controller
         } else {
             echo 2;
         }
+    }
+    /* 
+     * get_district_by_prv_id_ajax
+     * get district by prv_id for ajax
+     * @input prv_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function get_district_by_prv_id_ajax(){
+        $this->load->model('District/M_dcs_district', 'mdis');
+        $this->mdis->dis_prv_id = $this->input->post('prv_id');
+        $data = $this->mdis->get_district_by_prv_id()->result();
+        echo json_encode($data);
+    }
+
+    /* 
+     * get_parish_by_dis_id_ajax
+     * get parish by dis_id for ajax
+     * @input dis_id
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-12-18
+     * @Update -
+     */
+    function get_parish_by_dis_id_ajax(){
+        $this->load->model('Parish/M_dcs_parish', 'mpar');
+        $this->mpar->par_dis_id = $this->input->post('dis_id');
+        $data = $this->mpar->get_parish_by_dis_id()->result();
+        echo json_encode($data);
     }
 }

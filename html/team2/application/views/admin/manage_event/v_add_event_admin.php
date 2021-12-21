@@ -42,7 +42,7 @@
                                         <?php } ?>
                                         <?php } ?>
                                         <?php if (count($arr_category) == 0) { ?>
-                                        <option value="0">ไม่มีหมวดหหมู่</option>
+                                        <option value="0">ไม่มีหมวดหมู่</option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -65,12 +65,21 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <div class="col-lg-3">
+                                    <label for="eve_point">คะแนนกิจกรรม</label>
+                                    <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()"
+                                        style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
+                                        rows="5" placeholder="กรอกคะแนนกิจกรรม" required>
+                                    
+                                    <p id="err_message_point" style="color: red;font-size: 16px"></p>
+                                    <!-- <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p> -->
+                                </div>
                             </div><br>
 
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="eve_description">รายละเอียดกิจกรรม</label>
-                                    <textarea id="eve_description" name="eve_description" class="form-control"
+                                    <textarea id="eve_description" name="eve_description" class="form-control" 
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
                                         
@@ -571,4 +580,67 @@ function change_min_end_date() {
             }
         })
     }
+
+    function add_point() {
+        let eve_cat_id = $('#eve_cat_id').val();
+        let point = $('#eve_point').val();
+        console.log('pass');
+        console.log(point);
+        if (check_point(point, eve_cat_id) == true) {
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+             } 
+    }
+
+    function check_point(point,eve_cat_id) {
+        let arr_min_point = [1, 20, 30, 40];
+         let arr_max_point = [19, 29, 39, 49];
+
+         console.log(eve_cat_id);
+         console.log(arr_min_point[eve_cat_id - 1]);
+         console.log(arr_max_point[eve_cat_id - 1]);
+         if (point < 1) {
+             return true;
+         } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+             return true;
+         } else {
+             return false;
+         }
+        
+    }
+
+    $(document).ready(function() {
+         //show innformation
+         $("#help_information").click(function() {
+             let arr_min_point = [1, 20, 30, 40];
+             let arr_max_point = [19, 29, 39, 49];
+             if ($('#infor_eve_cat').is(":hidden")) {
+                 $.ajax({
+                     url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
+                     method: "POST",
+                     dataType: "JSON",
+                     success: function(json_data) {
+                        html_code = '';
+                        html_code += '<table class="table">';
+                        html_code += '<thead class="text-white" style="text-align: center;">';
+                        html_code += '<tr>';
+                        html_code += '<th><p>ชื่อประเภท</p></th>';
+                        html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+                        html_code += '<th><p>ช่วงคะแนน</p></th>';
+                        html_code += '</tr>';
+                        html_code += ' </thead>';
+                        html_code += ' <tbody>';
+                        json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                            html_code += '<tr>';
+                            html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
+                            html_code += '<td class="text-center">' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
+                            html_code += '</tr>';
+                        });
+                         $('#infor_eve_cat').html(html_code);
+                     }
+                 });
+             }
+             $("#infor_eve_cat").slideToggle("slow");
+         });
+     });
 </script>

@@ -58,9 +58,11 @@ class Admin_add_event extends DCS_controller
         $this->load->model('Event/M_dcs_event', 'meve');
         $this->load->model('Event/M_dcs_eve_image', 'mimg');
         $this->meve->eve_name = $this->input->post('eve_name');
+        $this->meve->eve_point= $this->input->post('eve_point');
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
-        $this->meve->eve_cat_id = $this->input->post('eve_cat_id'); 
+        $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
+        $this->meve->eve_status = 2;
         $this->meve->eve_location = $this->input->post('eve_location');
         $this->meve->eve_add_date = $this->input->post('eve_add_date');
         $this->meve->eve_start_date = $this->input->post('eve_start_date');
@@ -72,7 +74,7 @@ class Admin_add_event extends DCS_controller
 
         $this->meve->insert_event_by_admin();
         $this->set_session_add_event('success');
-        $result = $this->meve->get_by_name()->row();
+        $result = $this->meve->get_by_name_by_admin()->row();
         
         
         // save data image to database
@@ -256,4 +258,19 @@ class Admin_add_event extends DCS_controller
         $data = $this->mpar->get_parish_by_dis_id()->result();
         echo json_encode($data);
     }
+
+     /*
+    * get_data_category
+    * get data eve_cat
+    * @input ข
+    * @output -
+    * @author weradet nopsombun 62160110 
+    * @Create Date 2021-11-06
+    * @Update Date -
+    */
+  public function get_data_category(){
+    $this->load->model('Event/M_dcs_eve_category', 'meca');
+    $data['data_eve_cat'] = $this->meca->get_all()->result();
+    echo json_encode($data);
+  }
 }

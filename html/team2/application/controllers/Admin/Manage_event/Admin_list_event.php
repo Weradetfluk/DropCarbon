@@ -163,7 +163,7 @@ class Admin_list_event extends DCS_controller
                 '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                   <span class="material-icons">search</span>
                 </a>' .
-                '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+                '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
                   <span class="material-icons">edit</span>
                 </a>' .
                 '<button class="btn btn-danger custom-btn-table" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">
@@ -222,7 +222,7 @@ class Admin_list_event extends DCS_controller
                 '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                             <span class="material-icons">search</span>
                 </a>' .
-                '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+                '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
                   <span class="material-icons">edit</span>
                 </a>' .
                 '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">

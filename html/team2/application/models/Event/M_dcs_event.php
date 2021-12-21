@@ -544,6 +544,13 @@ class M_dcs_event extends Da_dcs_event
         return $query;
     }
 
+    function get_by_name_by_admin()
+    {
+        $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 2 AND eve_adm_id = 1";
+        $query = $this->db->query($sql, array($this->eve_name));
+        return $query;
+    }
+
     /*
     *get_event_by_id
     *get data event by id

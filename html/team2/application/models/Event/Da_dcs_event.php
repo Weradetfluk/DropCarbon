@@ -59,14 +59,15 @@ class Da_dcs_event extends DCS_model
     */
     public function insert_event_by_admin()
     {
-        $sql = "INSERT INTO `dcs_event`(`eve_name`,
-                             `eve_description`,`eve_com_id`,`eve_cat_id`,
-                            `eve_start_date`, `eve_end_date`, `eve_location`, `eve_lat`, 
-                            `eve_lon`, `eve_par_id`, `eve_adm_id`) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->eve_name,  $this->eve_description, 
-                        $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, 
-                        $this->eve_end_date, $this->eve_location,$this->eve_lat, $this->eve_lon,$this->eve_par_id,$this->eve_adm_id));
+        $sql = "INSERT INTO `dcs_event`(`eve_name`,`eve_point`, `eve_description`, `eve_status`,
+                `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`, 
+                `eve_location`,`eve_lat`, `eve_lon`, `eve_par_id`,`eve_adm_id`) 
+				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($this->eve_name,$this->eve_point,  $this->eve_description, $this->eve_status,
+                    $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, 
+                    $this->eve_end_date, $this->eve_location,
+                    $this->eve_lat, $this->eve_lon, $this->eve_par_id,$this->eve_adm_id));
+                       
     }
     /*
     * update_status
@@ -139,11 +140,43 @@ class Da_dcs_event extends DCS_model
                     `eve_location`=?,
                     `eve_lat`=?,
                     `eve_lon`=?,
-                    `eve_par_id`=?
+                    `eve_par_id`=?,
+                    `eve_adm_id`=?
 				WHERE eve_id=?";
         $this->db->query($sql, array(
             $this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
             $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_par_id, $this->eve_id
+        ));
+    }
+
+     /*
+    *update_event
+    *get data form database
+    *@input 
+    *@output -
+    *@author Acharaporn pornpattanasap
+    *@Create Date 2564-09-25
+    */
+    public function update_event_by_admin()
+    {
+        $sql = "UPDATE `dcs_event` 
+				SET `eve_name`=?,
+                    `eve_point`=?,
+					`eve_description`=?,
+                    `eve_com_id`=?,
+                    `eve_cat_id`=?,
+                    `eve_status`=?,
+                    `eve_start_date`=?,
+                    `eve_end_date`=?,
+                    `eve_location`=?,
+                    `eve_lat`=?,
+                    `eve_lon`=?,
+                    `eve_par_id`=?,
+                    `eve_adm_id`=?
+				WHERE eve_id=?";
+        $this->db->query($sql, array(
+            $this->eve_name,$this->eve_point, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
+            $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_par_id,$this->eve_adm_id, $this->eve_id
         ));
     }
 }
