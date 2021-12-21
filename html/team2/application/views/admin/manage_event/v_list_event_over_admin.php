@@ -164,6 +164,12 @@
              html_code +='<i class="material-icons">'
              html_code +='edit'
              html_code +='</i>';
+             html_code += '</a>'
+             html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row_eve['eve_name']) +'\',\'' + (row_eve['eve_id']) +  '\')" >'         
+             html_code +='<i class="material-icons">'
+             html_code +='delete'
+             html_code +='</i>';
+             html_code += '</button>'
              html_code += '</tr>';
              html_code += '</tbody>'
      });
