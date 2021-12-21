@@ -29,6 +29,10 @@
             height: 250px;
         }
     }
+
+    a:hover {
+        color: white !important;
+    }
 </style>
 
 <div class="bg-gray">
@@ -333,7 +337,7 @@
             </div>
             <!-- อีเมล -->
 
-            <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
+            <a class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
             <!-- ปุ่มยกเลิก -->
             <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
             <!-- ปุ่มบันทึก -->
@@ -379,6 +383,9 @@
         let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
         if (error_register_tourist == "edit_success") {
             swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+        } else if (error_register_tourist == "fail") {
+            swal("สำเร็จ", "การแก้ไขข้อมูลของคุณไม่สำเสร็จ", "unsuccess");
             <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }
     });
