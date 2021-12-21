@@ -195,8 +195,7 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control"
-                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -868,12 +867,12 @@
                 name: 'ร้อยละ',
                 colorByPoint: true,
                 data: [{
-                    name: 'เพิ่มเข้ามา',
+                    name: 'โปรโมชันที่เพิ่มเข้ามา',
                     y: 61,
                     sliced: true,
                     selected: true
                 }, {
-                    name: 'หมดอายุ',
+                    name: 'โปรโมชันที่หมดอายุ',
                     y: 23,
                 }, ]
             }]
