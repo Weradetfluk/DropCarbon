@@ -211,8 +211,7 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control"
-                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -307,14 +306,14 @@
             <div class="col">
                 <div class="card" id="card_promotion_add">
                     <div class="card-header custom-header-tab text-center">
-                        <h5 class="text-white">โปรโมชันที่เพิ่มเข้ามาและโปรโมชันที่หมดอายุ</h5>
+                        <h5 class="text-white">โปรโมชันที่เพิ่มเข้ามาของผู้ดูแลระบบและผู้ประกอบการ</h5>
                     </div>
                     <!-- Tab1 -->
                     <div class="card-body">
                         <div class="card-body">
                             <div class="chart_promotion_add" id="chart_promotion_add">
-
                             </div>
+                            <p align="center">อธิบายใต้กราฟ</p>
                         </div>
                     </div>
                 </div>
@@ -861,8 +860,6 @@
 
                 }
             ],
-
-
             responsive: {
                 rules: [{
                     condition: {
@@ -882,13 +879,14 @@
 
         Highcharts.chart('chart_promotion_add', {
             chart: {
+
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
             },
             title: {
-                text: ''
+                text: 'ร้อยละข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบและผู้ประกอบการ'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
@@ -904,23 +902,39 @@
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        format: '<b style="color:black; text-decoration: none !important;" >{point.name}: {point.percentage:.1f} %</b>',
                     }
                 }
             },
             series: [{
                 name: 'ร้อยละ',
-                colorByPoint: true,
                 data: [{
-                    name: 'โปรโมชันที่เพิ่มเข้าม',
-                    y: 61,
-                    sliced: true,
-                    selected: true
+                    name: 'ผู้ดูแลระบบ',
+                    y: 55,
+                    // drilldown: 'data 1',
+                    style: {
+                        color: "#000000"
+                    },
                 }, {
-                    name: 'โปรโมชันที่หมดอายุ',
-                    y: 23,
+                    name: 'ผู้ประกอบการ',
+                    y: 45,
+                    drilldown: 'data 1'
+                }]
+            }],
+
+            drilldown: {
+                series: [{
+                    name: 'inner 1',
+                    id: 'data 1',
+                    data: [
+                        ['วีรเดช นพสมบูรณ์', 24.13],
+                        ['สุวพัฒน์ เสาวรส', 17.2],
+                        ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
+                        ['ณเอก ปุณย์ปริชญ์', 5.33],
+                        ['ธนิสร ธรรมสวนิต', 1.06],
+                    ]
                 }, ]
-            }]
+            }
         });
 
 
