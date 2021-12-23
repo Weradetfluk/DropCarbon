@@ -330,6 +330,7 @@
                             <div class="chart_promotion_use" id="chart_promotion_use">
 
                             </div>
+                            <p align="center">อธิบายใต้กราฟ</p>
                         </div>
                     </div>
                 </div>
@@ -879,7 +880,9 @@
 
         Highcharts.chart('chart_promotion_add', {
             chart: {
-
+                style: {
+                    fontFamily: 'Prompt',
+                },
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
@@ -909,6 +912,11 @@
             series: [{
                 name: 'ร้อยละ',
                 data: [{
+                    legend: {
+                        itemStyle: {
+                            textDecoration: 'none'
+                        }
+                    },
                     name: 'ผู้ดูแลระบบ',
                     y: 55,
                     // drilldown: 'data 1',
@@ -921,7 +929,6 @@
                     drilldown: 'data 1'
                 }]
             }],
-
             drilldown: {
                 series: [{
                     name: 'inner 1',
@@ -939,75 +946,62 @@
 
 
         Highcharts.chart('chart_promotion_use', {
-
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
+                type: 'column',
+                style: {
+                    fontFamily: 'Prompt',
+                },
             },
             title: {
-                text: ''
+                text: 'Monthly Average Rainfall'
             },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+            subtitle: {
+                text: 'Source: WorldClimate.com'
             },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
+            xAxis: {
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Rainfall (mm)'
                 }
             },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
             plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
                 }
             },
             series: [{
-                name: 'ร้อยละ',
-                colorByPoint: true,
-                data: [{
-                    name: '01/12/64',
-                    y: 45,
-                }, {
-                    name: '02/12/64',
-                    y: 65,
-                }, {
-                    name: '03/12/64',
-                    y: 32,
-                }, {
-                    name: '04/12/64',
-                    y: 11,
-                }, {
-                    name: '05/12/64',
-                    y: 60,
-                }, {
-                    name: '06/12/64',
-                    y: 5,
-                }, {
-                    name: '07/12/64',
-                    y: 32,
-                }, {
-                    name: '08/12/64',
-                    y: 47,
-                }, {
-                    name: '09/12/64',
-                    y: 80,
-                }, {
-                    name: '10/12/64',
-                    y: 11,
-                }, {
-                    name: '11/12/64',
-                    y: 3,
-                }, {
-                    name: '12/12/64',
-                    y: 25,
-                }, ]
-            }]
+                name: 'ผู้ดูแลระบบ',
+                data: [49, 71, 106, 129, 144, 176, 135, 148, 216, 194, 95, 54]
 
+            }, {
+                name: 'ผู้ประกอบการ',
+                data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
+            }]
         });
         </script>
