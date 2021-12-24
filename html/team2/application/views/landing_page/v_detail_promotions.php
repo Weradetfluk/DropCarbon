@@ -28,7 +28,13 @@
     padding-top: 15px;
 
 }
-
+.modal {
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 .read-more-style:hover {
     background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 20%));
     font-weight: bold;
@@ -68,8 +74,47 @@
         </script>
         <div class="fb-share-button" data-href=" <?php $share_link_promotion ?> " data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
-    <br>
     <!-- แชร์ -->
+
+            <h3>
+        <?php echo $promotions[0]->pro_point ?> แต้ม <br>
+        <?php
+        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point){?>
+            <button type="submit"class="btn btn-custom" data-toggle="modal" data-target="#reward_Modal">แลกของรางวัล</button>
+        <?php } ?>
+            </h3>
+            <h3>
+        <?php
+        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
+            <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
+        <?php } ?>
+            </h3>
+    <!-- reward_Modal -->
+    <div id="reward_Modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4> -->
+        </div>
+        <div class="modal-body">
+            <p>คุณต้องการแลกของรางวัลนี้หรือไม่.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" id="get_reward" class="btn btn-custom">ใช่</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+        <!-- <form method='POST' action="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_exchange/update_reward' ?>">
+            <input type="hidden" name="tus_id" value="<?php echo $arr_tus[0]->tus_id ?>">
+            <input type="hidden" name="tus_score" value="<?php echo $arr_tus[0]->tus_score ?>">
+            <input type="hidden" name="pro_id" value="<?php echo $promotion[0]->pro_id ?>">
+        </form>   -->
     <div class="row">
         <div class="col-12">
             <div class="container">
