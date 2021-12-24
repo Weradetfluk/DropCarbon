@@ -214,7 +214,40 @@
         </div>
 
         <!-- บอร์ดแสดงจำนวน -->
-        <div id="autodata"></div>
+        <div class="row" style="text-align : center;">
+            <div class="col">
+                <div class="counter-classic-number">
+                    <span class="counter">
+                        <?php echo count($arr_tou); ?>
+                    </span>
+                </div>
+                <div class="counter-classic-title">สมาชิก</div>
+            </div>
+            <div class="col">
+                <div class="counter-classic-number">
+                    <span class="counter">
+                        <?php echo count($arr_ent); ?>
+                    </span>
+                </div>
+                <div class="counter-classic-title">ผู้ประกอบการ</div>
+            </div>
+            <div class="col">
+                <div class="counter-classic-number">
+                    <span class="counter">
+                        <?php echo count($arr_eve); ?>
+                    </span>
+                </div>
+                <div class="counter-classic-title">กิจกรรม</div>
+            </div>
+            <div class="col">
+                <div class="counter-classic-number">
+                    <span class="counter">
+                        <?php echo count($arr_com); ?>
+                    </span>
+                </div>
+                <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -346,14 +379,4 @@
 
         $('#carouselExampleIndicators').html(html_code);
     }
-</script>
-
-<script>
-    $(document).ready(function()
-    {
-        setInterval(function(){
-            $("#autodata").load("application/views/landing_page/v_data_landing_page.php");
-            refresh();
-        },1000);
-    });
 </script>
