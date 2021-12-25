@@ -41,7 +41,7 @@ class DCS_model extends CI_Model
 
         return $query;
     }
-      /*
+    /*
     * get_data_dashboard_admin
     * get data card dashboard and return data JSON
     * @input
@@ -74,7 +74,7 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    public function get_data_dashboard_event_per_admin( $date_sql)
+    public function get_data_dashboard_event_per_admin($date_sql)
     {
         $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name,count(che_id) as chekin_number, (SELECT COUNT(che_id) FROM dcs_checkin) as total_checkin, count(che_id) / (SELECT COUNT(che_id) FROM dcs_checkin) * 100 as per
         FROM dcs_eve_category 
@@ -90,7 +90,7 @@ class DCS_model extends CI_Model
         return $query->result();
     }
 
-      /*
+    /*
     * get_data_dashboard_event_per_admin
     * get data card dashboard and return data JSON
     * @input
@@ -99,7 +99,7 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    public function get_data_dashboard_event_admin( $date_sql, $eve_cat_id)
+    public function get_data_dashboard_event_admin($date_sql, $eve_cat_id)
     {
         $sql = "SELECT  dcs_event.eve_name, count(che_id) AS checkin
         FROM dcs_event      
@@ -113,7 +113,7 @@ class DCS_model extends CI_Model
         return $query->result();
     }
 
-        /*
+    /*
     * get_data_dashboard_event_per_admin
     * get data card dashboard and return data JSON
     * @input
@@ -122,7 +122,7 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    public function get_data_event_name_cat( $date_sql)
+    public function get_data_event_name_cat($date_sql)
     {
         $sql = "SELECT dcs_eve_category.eve_cat_id, dcs_eve_category.eve_cat_name
         FROM dcs_eve_category 
@@ -132,6 +132,28 @@ class DCS_model extends CI_Model
         ON dcs_event.eve_id = dcs_checkin.che_eve_id
         where $date_sql
         GROUP BY dcs_eve_category.eve_cat_id";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
+
+    /*
+    * get_data_dashboard_event_per_admin
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-12-09
+    * @Update Date -
+    */
+    public function get_data_ckeckin($date_sql)
+    {
+        $sql = "SELECT 
+        COUNT(DATE_FORMAT(`che_date_time_in`, '%Y-%m-%d')) AS count_checkin , 
+        DATE_FORMAT(`che_date_time_in`, '%d %M %Y') AS date_checkin 
+        FROM dcs_checkin  where $date_sql
+        GROUP BY DATE_FORMAT(`che_date_time_in`, '%Y-%m-%d')";
 
         $query = $this->db->query($sql);
 

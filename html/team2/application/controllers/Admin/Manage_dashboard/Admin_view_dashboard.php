@@ -147,4 +147,31 @@ class Admin_view_dashboard extends DCS_controller
         //var_dump($data_json);
         echo json_encode($data_json);
     }
+
+    /*
+    * get_data_chart_checkin
+    * get data chart dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
+    * @Update Date -
+    */
+    function get_data_chart_checkin()
+    {
+        $this->load->model('DCS_model', 'dcmd');
+
+        $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
+        $date_end = $this->input->post('date_secon');
+
+        if ($date_start != '' &&  $date_end != '') {
+            $date_sql = "dcs_checkin.che_date_time_in between '" . $date_start . "' AND '" . $date_end . "'";
+        } else {
+            $date_sql = true;
+        }
+
+        $data['arr_data_checkin'] = $this->dcmd->get_data_ckeckin($date_sql);
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
 }
