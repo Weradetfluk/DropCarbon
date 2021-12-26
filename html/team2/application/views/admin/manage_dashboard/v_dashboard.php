@@ -427,7 +427,8 @@
                 $("#register_checkbox").click(function() {
 
                     if ($('#register_checkbox').is(':checked')) {
-                        console.log("OK");
+                        // console.log("OK");
+                        get_data_register();
                         $("#card_regis").slideDown()
                     } else {
                         $("#card_regis").slideUp();
@@ -566,12 +567,12 @@
                 var obj_data_count_checkin = []; // วิธีการเดียวกัน
                 arr_data_checkin.forEach((row, index) => {
                     obj_data_count_checkin.push(
-                        parseInt(row['count_checkin']), 
+                        parseInt(row['count_checkin']),
                     );
                 });
                 // console.log(obj_data_date_checkin);
                 // console.log(obj_data_count_checkin);
-                
+
                 // Chart
                 Highcharts.chart('checkin', {
 
@@ -616,6 +617,131 @@
                         data: obj_data_count_checkin,
                     }, ],
 
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+
+                });
+            }
+
+            /*
+             * get_data_register 
+             * request ไปที่ server เพื่อนำข้อมูลจาก data base มาสร้างกราฟ 
+             *@input -
+             *@output chart 
+             *@author Naaka Punparich 62160082
+             *@Create Date 2564-12-25
+             *@update Date -
+             */
+            function get_data_register() {
+                console.log("Register");
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_register'); ?>',
+                    dataType: 'json',
+                    data: {
+                        date_first: date_first + " 00:00:00",
+                        date_secon: date_secon + "  23:00:00"
+                    },
+                    success: function() {
+
+                    },
+                    error: function() {
+                        alert('ajax get data user error working');
+                    }
+                }).then(function(json_data) {
+                    create_chart_register(json_data['arr_data_register']);
+                });
+            }
+
+            /*
+             * create_chart_register 
+             * request ไปที่ server เพื่อนำข้อมูลจาก data base มาสร้างกราฟ 
+             *@input -
+             *@output chart 
+             *@author Naaka Punparich 62160082
+             *@Create Date 2564-12-25
+             *@update Date -
+             */
+            function create_chart_register(arr_data_register) {
+
+                var obj_data_date_register = []; // วิธีการเดียวกัน
+                arr_data_register.forEach((row, index) => {
+                    obj_data_date_register.push(
+                        row['date_register'],
+                    );
+                });
+
+                var obj_data_count_register = []; // วิธีการเดียวกัน
+                arr_data_register.forEach((row, index) => {
+                    obj_data_count_register.push(
+                        parseInt(row['count_register']),
+                    );
+                });
+                // console.log(obj_data_date_register);
+                // console.log(obj_data_count_register);
+
+                // Chart
+                Highcharts.chart('chart_regis', {
+
+                    title: {
+                        text: 'การสมัครบัญชีผู้ใช้'
+                    },
+
+                    subtitle: {
+                        text: 'Source: thesolarfoundation.com'
+                    },
+
+                    yAxis: {
+                        title: {
+                            text: 'จำนวนการสมัคร (คน)'
+                        }
+                    },
+
+                    xAxis: {
+                        accessibility: {
+                            rangeDescription: 'เดือน'
+                        },
+                        categories: obj_data_date_register
+
+                    },
+
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+
+                        }
+                    },
+
+                    series: [{
+                            name: 'ผู้ประกอบการ',
+                            data: obj_data_count_register
+                        },
+                            {
+                                name: 'นักท่องเที่ยว',
+                                data: [2, 1, 2, 1, 2],
+
+                            }
+                    ],
                     responsive: {
                         rules: [{
                             condition: {
@@ -866,71 +992,7 @@
                 });
             }
 
-            Highcharts.chart('chart_regis', {
 
-                title: {
-                    text: 'การสมัครบัญชีผู้ใช้'
-                },
-
-                subtitle: {
-                    text: 'Source: thesolarfoundation.com'
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'จำนวนการสมัคร (คน)'
-                    }
-                },
-
-                xAxis: {
-                    accessibility: {
-                        rangeDescription: 'เดือน'
-                    },
-                    categories: ['03/12/64', '04/12/64', '05/12/64']
-
-                },
-
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        label: {
-                            connectorAllowed: false
-                        },
-
-                    }
-                },
-
-                series: [{
-                        name: 'ผู้ประกอบการ',
-                        data: [10, 0, 10]
-                    },
-                    {
-                        name: 'นักท่องเที่ยว',
-                        data: [5, 15, 10],
-
-                    }
-                ],
-                responsive: {
-                    rules: [{
-                        condition: {
-                            maxWidth: 500
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
-                        }
-                    }]
-                }
-
-            });
 
             Highcharts.chart('chart_promotion_add', {
                 chart: {

@@ -147,12 +147,12 @@ class DCS_model extends CI_Model
     * @Create Date 2564-12-25
     * @Update Date -
     */
-    public function get_data_ckeckin($date_sql)
+    public function get_data_checkin($date_sql)
     {
         $sql = "SELECT 
         COUNT(DATE_FORMAT(`che_date_time_in`, '%Y-%m-%d')) AS count_checkin , 
         DATE_FORMAT(`che_date_time_in`, '%d %M %Y') AS date_checkin 
-        FROM dcs_checkin  where $date_sql
+        FROM dcs_checkin WHERE $date_sql
         GROUP BY DATE_FORMAT(`che_date_time_in`, '%Y-%m-%d')";
 
         $query = $this->db->query($sql);
@@ -160,5 +160,26 @@ class DCS_model extends CI_Model
         return $query->result();
     }
 
+    /*
+    * get_data_register
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
+    * @Update Date -
+    */
+    public function get_data_register()
+    {
+        $sql = "SELECT 
+        COUNT(DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')) AS count_register , 
+        DATE_FORMAT(`ent_regis_date`, '%d %M %Y') AS date_register 
+        FROM dcs_entrepreneur WHERE true
+        GROUP BY DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')";
 
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
+    
 }
