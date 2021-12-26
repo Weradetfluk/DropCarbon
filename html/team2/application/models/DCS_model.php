@@ -139,12 +139,12 @@ class DCS_model extends CI_Model
     }
 
     /*
-    * get_data_dashboard_event_per_admin
+    * get_data_ckeckin
     * get data card dashboard and return data JSON
     * @input
     * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-12-09
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
     * @Update Date -
     */
     public function get_data_ckeckin($date_sql)
@@ -159,4 +159,6 @@ class DCS_model extends CI_Model
 
         return $query->result();
     }
+
+
 }
