@@ -12,8 +12,8 @@ class DCS_controller extends CI_Controller
 
     public function __construct()
     {
-		parent::__construct();
-    } 
+        parent::__construct();
+    }
     /*
     * index
     * index Main Drop carbon Systems
@@ -28,7 +28,7 @@ class DCS_controller extends CI_Controller
     {
 
         $this->load->model('Company/M_dcs_company', 'mdc');
-   
+
         $this->load->model('Event/M_dcs_event', 'mde');
 
         $this->load->model('Promotions/M_dcs_promotions', 'mdp');
@@ -36,13 +36,13 @@ class DCS_controller extends CI_Controller
         $this->load->model('Tourist/M_dcs_tourist', 'mdt');
 
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdet');
-        
+
         $data['arr_tou'] = $this->mdt->get_tourist()->result();
 
         $data['arr_ent'] = $this->mdet->get_ent()->result();
 
         $data['arr_pro'] = $this->mdp->get_promotions_landing_page()->result();
-       
+
         $data['arr_com'] = $this->mdc->get_company_landing_page()->result();
 
         $data['arr_eve'] = $this->mde->get_event_landing_page()->result();
@@ -230,5 +230,22 @@ class DCS_controller extends CI_Controller
         $subject = $this->input->post('subject');
         $content_h1 = $this->input->post('content_h1');
         $this->email_send($content, $user_email, $subject, $content_h1);
+    }
+
+    /*
+    * get_data_chart_register
+    * get data chart dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
+    * @Update Date -
+    */
+    function get_data_pros()
+    {
+        $this->load->model('DCS_model', 'dcmd');
+        $data['arr_data_pros'] = $this->dcmd->get_data_pros();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 }

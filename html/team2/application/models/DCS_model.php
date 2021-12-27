@@ -181,5 +181,22 @@ class DCS_model extends CI_Model
 
         return $query->result();
     }
-    
+
+    /*
+    * get_data_pros
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-27
+    * @Update Date -
+    */
+    public function get_data_pros()
+    {
+        $sql = "SELECT COUNT(`tus_id`) as count_tourist FROM `dcs_tourist`;";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
+    }
 }
