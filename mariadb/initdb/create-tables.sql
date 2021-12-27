@@ -10509,7 +10509,8 @@ CREATE TABLE `dcs_tourist` (
   `tus_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมลของนักท่องเที่ยว',
   `tus_cur_score` int(10) DEFAULT 0 COMMENT 'คะแนนสูงสุดของนักท่องเที่ยว เพื่อนำไปเช็คกับ Ranking',
   `tus_status` int(1) DEFAULT 1 COMMENT ' สถานะของนักท่องเที่ยว 1=กำลังใช้งาน 2=ถูกระงับ',
-  `tus_pre_id` int(10) NOT NULL COMMENT 'คำนำหน้า จากตาราง dcs_prefix'
+  `tus_pre_id` int(10) NOT NULL COMMENT 'คำนำหน้า จากตาราง dcs_prefix',
+    `tus_regis_date` timestamp NOT NULL DEFAULT convert_tz(current_timestamp(),@@session.time_zone,'+07:00') COMMENT 'วันที่ลงทะบียน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
