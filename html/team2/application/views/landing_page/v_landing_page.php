@@ -214,7 +214,8 @@
         </div>
 
         <!-- บอร์ดแสดงจำนวน -->
-        <div class="row" style="text-align : center;">
+        <div id="pros" class="pros"></div>
+        <!-- <div class="row" style="text-align : center;" data-aos="fade-up">
             <div class="col">
                 <div class="counter-classic-number">
                     <span class="counter">
@@ -247,7 +248,7 @@
                 </div>
                 <div class="counter-classic-title">สถานที่ท่องเที่ยว</div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -296,6 +297,7 @@
 
 
         get_data_banner();
+        get_data_pros();
 
         function get_data_banner() {
             $.ajax({
@@ -309,6 +311,22 @@
                 },
                 error: function() {
                     alert('ajax Not working');
+                }
+            });
+        }
+
+        function get_data_pros() {
+            $.ajax({
+                method: "POST",
+                url: '<?php echo site_url() . "DCS_controller/get_data_pros" ?>',
+                dataType: 'JSON',
+                success: function(json_data) {
+
+                    create_pros(json_data['arr_data_pros']);
+
+                },
+                error: function() {
+                    alert('ajax Not working in pros');
                 }
             });
         }
@@ -378,5 +396,49 @@
         html_code += '</a>';
 
         $('#carouselExampleIndicators').html(html_code);
+    }
+
+    function create_pros(arr_pros) {
+        let html_code = '';
+
+        // เช็คข้อมูลใน Array
+        // console.log(arr_pros);
+
+        html_code += '<div class="row" style="text-align : center;" data-aos="fade-up">';
+        html_code += '<div class="col">';
+        html_code += '<div class="counter-classic-number">';
+        html_code += '<span class="counter">';
+        html_code += arr_pros[0].count_tourist;
+        html_code += '</span>';
+        html_code += '</div>';
+        html_code += '<div class="counter-classic-title">สมาชิก</div>';
+        html_code += '</div>';
+        html_code += '<div class="col">';
+        html_code += '<div class="counter-classic-number">';
+        html_code += '<span class="counter">';
+        html_code += '<?php echo count($arr_ent); ?>';
+        html_code += '</span>';
+        html_code += '</div>';
+        html_code += '<div class="counter-classic-title">ผู้ประกอบการ</div>';
+        html_code += '</div>';
+        html_code += '<div class="col">';
+        html_code += '<div class="counter-classic-number">';
+        html_code += '<span class="counter">';
+        html_code += '<?php echo count($arr_eve); ?>';
+        html_code += '</span>';
+        html_code += '</div>';
+        html_code += '<div class="counter-classic-title">กิจกรรม</div>';
+        html_code += '</div>';
+        html_code += '<div class="col">';
+        html_code += '<div class="counter-classic-number">';
+        html_code += '<span class="counter">';
+        html_code += '<?php echo count($arr_com); ?>';
+        html_code += '</span>';
+        html_code += '</div>';
+        html_code += '<div class="counter-classic-title">สถานที่ท่องเที่ยว</div>';
+        html_code += '</div>';
+        html_code += '</div>';                                     
+                        
+        $('#pros').html(html_code);
     }
 </script>
