@@ -94,9 +94,9 @@ class Landing_page extends DCS_controller
             $data["event"] = $this->mde->get_event_and_img($number_status)->result();
         }
 
-        if ($this->session->userdata("tourist_id")) {
-            $topbar = 'template/Tourist/topbar_tourist_login';
-        } else {
+        if ($this->session->has_userdata("tourist_id")) {
+            $topbar =  $topbar = 'template/Tourist/topbar_tourist_login';;
+        } else if (!$this->session->has_userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist';
         }
         $this->output_tourist('landing_page/v_list_event', $data, $topbar, 'footer');
@@ -177,7 +177,7 @@ class Landing_page extends DCS_controller
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->mtou->tus_id = $this->session->userdata("tourist_id");
         $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-        
+
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->mpro->pro_id = $pro_id;
         $data["promotions"] = $this->mpro->get_by_detail()->result();

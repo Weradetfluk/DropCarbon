@@ -771,9 +771,12 @@ p {
   }
 }
 
-@media all and (min-width: 768px) {
+@media all and (max-width: 768px) {
   .i {
     width: 700px;
+  }
+  .card-custom{
+    height: 55vh;
   }
 }
 
