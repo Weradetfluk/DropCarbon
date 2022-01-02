@@ -198,7 +198,11 @@ class DCS_model extends CI_Model
     */
     public function get_data_pros()
     {
-        $sql = "SELECT COUNT(`tus_id`) as count_tourist FROM `dcs_tourist`;";
+        $sql = "SELECT (SELECT COUNT(tus_id) FROM dcs_tourist) AS tou , 
+        (SELECT COUNT(ent_id) FROM dcs_entrepreneur WHERE ent_status = 2) As ent,
+        (SELECT COUNT(com_id) FROM dcs_company WHERE com_status = 2) as com, 
+        (SELECT COUNT(eve_id) FROM dcs_event WHERE eve_status = 2) as eve
+        FROM dcs_admin WHERE 1 GROUP BY tou";
 
         $query = $this->db->query($sql);
 

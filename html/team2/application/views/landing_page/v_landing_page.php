@@ -402,13 +402,13 @@
         let html_code = '';
 
         // เช็คข้อมูลใน Array
-        // console.log(arr_pros);
+        console.log(arr_pros);
 
         html_code += '<div class="row" style="text-align : center;" data-aos="fade-up">';
         html_code += '<div class="col">';
         html_code += '<div class="counter-classic-number">';
         html_code += '<span class="counter">';
-        html_code += arr_pros[0].count_tourist;
+        html_code += arr_pros[0].tou;
         html_code += '</span>';
         html_code += '</div>';
         html_code += '<div class="counter-classic-title">สมาชิก</div>';
@@ -416,7 +416,7 @@
         html_code += '<div class="col">';
         html_code += '<div class="counter-classic-number">';
         html_code += '<span class="counter">';
-        html_code += '<?php echo count($arr_ent); ?>';
+        html_code += arr_pros[0].ent;
         html_code += '</span>';
         html_code += '</div>';
         html_code += '<div class="counter-classic-title">ผู้ประกอบการ</div>';
@@ -424,7 +424,7 @@
         html_code += '<div class="col">';
         html_code += '<div class="counter-classic-number">';
         html_code += '<span class="counter">';
-        html_code += '<?php echo count($arr_eve); ?>';
+        html_code += arr_pros[0].eve;
         html_code += '</span>';
         html_code += '</div>';
         html_code += '<div class="counter-classic-title">กิจกรรม</div>';
@@ -432,13 +432,13 @@
         html_code += '<div class="col">';
         html_code += '<div class="counter-classic-number">';
         html_code += '<span class="counter">';
-        html_code += '<?php echo count($arr_com); ?>';
+        html_code += arr_pros[0].com;
         html_code += '</span>';
         html_code += '</div>';
         html_code += '<div class="counter-classic-title">สถานที่ท่องเที่ยว</div>';
         html_code += '</div>';
-        html_code += '</div>';                                     
-                        
+        html_code += '</div>';
+
         $('#pros').html(html_code);
     }
 </script>
