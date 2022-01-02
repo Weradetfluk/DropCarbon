@@ -42,6 +42,7 @@ class Landing_page_tourist extends DCS_controller
         $data['arr_com'] = $this->mdc->get_company_landing_page()->result();
         $data['arr_eve'] = $this->mde->get_event_landing_page()->result();
 
-        $this->output_tourist('tourist/auth/v_landing_page_tourist', $data, 'template/Tourist/topbar_tourist_login', 'footer');
+        // $this->output_tourist('tourist/auth/v_landing_page_tourist', $data, 'template/Tourist/topbar_tourist_login', 'footer');
+        $this->output_tourist('landing_page/v_landing_page', $data, 'template/Tourist/topbar_tourist_login', 'footer');
     }
 }
