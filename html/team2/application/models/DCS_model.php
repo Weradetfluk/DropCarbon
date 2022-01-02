@@ -32,8 +32,10 @@ class DCS_model extends CI_Model
     */
     public function get_data_dashboard_admin()
     {
-        $sql = "SELECT (SELECT COUNT(tus_id) FROM dcs_tourist) AS tou , (SELECT COUNT(ent_id) FROM dcs_entrepreneur WHERE ent_status = 2) As ent,
-        (SELECT COUNT(com_id) FROM dcs_company WHERE com_status = 2) as com, (SELECT COUNT(eve_id) FROM dcs_event WHERE eve_status = 2) as eve, 
+        $sql = "SELECT (SELECT COUNT(tus_id) FROM dcs_tourist) AS tou , 
+        (SELECT COUNT(ent_id) FROM dcs_entrepreneur WHERE ent_status = 2) As ent,
+        (SELECT COUNT(com_id) FROM dcs_company WHERE com_status = 2) as com, 
+        (SELECT COUNT(eve_id) FROM dcs_event WHERE eve_status = 2) as eve, 
         (SELECT COUNT(pro_id) FROM dcs_promotions WHERE pro_status = 2) as pro
         FROM dcs_admin WHERE 1 GROUP BY tou;";
 
@@ -171,11 +173,14 @@ class DCS_model extends CI_Model
     */
     public function get_data_register()
     {
-        $sql = "SELECT 
-        COUNT(DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')) AS count_register , 
-        DATE_FORMAT(`ent_regis_date`, '%d %M %Y') AS date_register 
-        FROM dcs_entrepreneur WHERE true
-        GROUP BY DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')";
+        $sql = "SELECT COUNT(DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')) AS count_register_ent , 
+        DATE_FORMAT(`ent_regis_date`, '%d %M %Y') AS date_register_ent ,
+        COUNT(DATE_FORMAT(dcs_tourist.tus_regis_date, '%Y-%m-%d')) AS count_register_tour,
+        DATE_FORMAT(dcs_tourist.tus_regis_date, '%d %M %Y') AS date_register_tour
+        FROM dcs_entrepreneur
+        LEFT JOIN dcs_prefix ON dcs_prefix.pre_id = ent_pre_id
+        LEFT JOIN dcs_tourist ON dcs_prefix.pre_id = dcs_tourist.tus_pre_id
+        WHERE true";
 
         $query = $this->db->query($sql);
 

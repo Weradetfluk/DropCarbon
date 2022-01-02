@@ -674,21 +674,38 @@
          */
         function create_chart_register(arr_data_register) {
 
-            var obj_data_date_register = []; // วิธีการเดียวกัน
+            var obj_data_date_register_ent = []; // วิธีการเดียวกัน
             arr_data_register.forEach((row, index) => {
-                obj_data_date_register.push(
-                    row['date_register'],
+                obj_data_date_register_ent.push(
+                    row['date_register_ent'],
                 );
             });
 
-            var obj_data_count_register = []; // วิธีการเดียวกัน
+            var obj_data_count_register_ent = []; // วิธีการเดียวกัน
             arr_data_register.forEach((row, index) => {
-                obj_data_count_register.push(
-                    parseInt(row['count_register']),
+                obj_data_count_register_ent.push(
+                    parseInt(row['count_register_ent']),
                 );
             });
-            // console.log(obj_data_date_register);
-            // console.log(obj_data_count_register);
+
+            var obj_data_date_register_tour = []; // วิธีการเดียวกัน
+            arr_data_register.forEach((row, index) => {
+                obj_data_date_register_tour.push(
+                    row['date_register_tour'],
+                );
+            });
+
+            var obj_data_count_register_tour = []; // วิธีการเดียวกัน
+            arr_data_register.forEach((row, index) => {
+                obj_data_count_register_tour.push(
+                    parseInt(row['count_register_tour']),
+                );
+            });
+
+            // console.log(obj_data_date_register_ent);
+            // console.log(obj_data_count_register_ent);
+            console.log(obj_data_date_register_tour);
+            console.log(obj_data_count_register_tour);
 
             // Chart
             Highcharts.chart('chart_regis', {
@@ -711,7 +728,8 @@
                     accessibility: {
                         rangeDescription: 'เดือน'
                     },
-                    categories: obj_data_date_register
+                    categories: obj_data_date_register_ent,
+
 
                 },
 
@@ -732,13 +750,13 @@
 
                 series: [{
                         name: 'ผู้ประกอบการ',
-                        data: obj_data_count_register
+                        data: obj_data_count_register_ent
                     },
                     {
                         name: 'นักท่องเที่ยว',
-                        data: [2, 1, 2, 1, 2],
-
-                    }
+                        // data: obj_data_count_register_tour
+                        data: [1]
+                    },
                 ],
                 responsive: {
                     rules: [{
