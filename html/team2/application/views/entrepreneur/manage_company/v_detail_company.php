@@ -119,8 +119,7 @@
                                             <hr>
                                             <div class="row py-3">
                                                 <div class="col-1">
-                                                    <!-- <span class="material-icons">info</span> -->
-                                                    <img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
+                                                    <img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
                                                         style="width:34px;margin-top:-5px;">
                                                 </div>
                                                 <div class="col">
