@@ -125,7 +125,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <p style="font-size: 18px; text-indent:20px;">
-                                                        <?php echo $obj_company->com_location ?></p>
+                                                        <?php echo $obj_company->com_location." จังหวัด.".$obj_company->prv_name_th." อำเภอ.".$obj_company->dis_name_th." ตำบล.".$obj_company->par_name_th ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,32 +148,35 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <script>
-            var lat =
-                '<?= $obj_company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-            var long =
-                '<?= $obj_company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
-            var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
+<script>
+var lat =
+    '<?= $obj_company->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+var long =
+    '<?= $obj_company->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-            var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-            var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-            var position = new OpenLayers.LonLat(long, lat).transform(from_projection,
-                to_projection
-            ); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+var position = new OpenLayers.LonLat(long, lat).transform(from_projection,
+    to_projection
+); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
-            map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
+map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-            var map_link = new OpenLayers.Layer.OSM();
-            map.addLayer(map_link);
+var map_link = new OpenLayers.Layer.OSM();
+map.addLayer(map_link);
 
-            var markers = new OpenLayers.Layer.Markers(
-                "Markers"
-            ); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+var markers = new OpenLayers.Layer.Markers(
+    "Markers"
+); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
-            map.addLayer(markers);
-            markers.addMarker(new OpenLayers.Marker(position));
+map.addLayer(markers);
+markers.addMarker(new OpenLayers.Marker(position));
 
-            map.setCenter(position, zoom);
-            </script>
+map.setCenter(position, zoom);
+</script>
