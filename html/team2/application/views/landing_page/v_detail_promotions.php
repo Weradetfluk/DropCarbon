@@ -77,10 +77,10 @@
     <!-- แชร์ -->
 
             <h3>
-        <?php echo $promotions[0]->pro_point ?> แต้ม <br>
         <?php
-        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point){?>
-            <button type="submit"class="btn btn-custom" data-toggle="modal" data-target="#reward_Modal">แลกของรางวัล</button>
+        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
+            <?php echo $promotions[0]->pro_point ?> แต้ม <br>
+            <button type="submit"class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
         <?php } ?>
             </h3>
             <h3>
@@ -100,21 +100,16 @@
             <h4 class="modal-title">Modal Header</h4> -->
         </div>
         <div class="modal-body">
-            <p>คุณต้องการแลกของรางวัลนี้หรือไม่.</p>
+        <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
         </div>
         <div class="modal-footer">
-            <button type="submit" id="get_reward" class="btn btn-custom">ใช่</button>
+            <button id="get_reward" class="btn btn-custom" data-dismiss="modal" >ใช่</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
         </div>
         </div>
 
     </div>
     </div>
-        <!-- <form method='POST' action="<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_exchange/update_reward' ?>">
-            <input type="hidden" name="tus_id" value="<?php echo $arr_tus[0]->tus_id ?>">
-            <input type="hidden" name="tus_score" value="<?php echo $arr_tus[0]->tus_score ?>">
-            <input type="hidden" name="pro_id" value="<?php echo $promotion[0]->pro_id ?>">
-        </form>   -->
     <div class="row">
         <div class="col-12">
             <div class="container">
@@ -354,8 +349,55 @@ $(document).ready(function() {
             // instead of a settings object
         ]
     });
-
-
-
 });
+
+function exchange_reward(pro_id,pro_point,tus_score){
+    $.ajax({
+        type: "POST",
+        data: {
+            pro_id: pro_id,
+            pro_point: pro_point,
+            tus_score: tus_score
+        },
+        url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax/') ?>',
+        success: function(data) {
+            if (data == 1) {
+                swal({
+                    title: "แลกของรางวัล",
+                    text: "แลกของรางวัลเสร็จสิ้น",
+                    type: "success"
+                },
+                function() {
+                //  location.reload();
+                    get_point_and_show();
+                })
+            } else {
+                swal({
+                    title: "แลกของรางวัล",
+                    text: "แต้มของคุณมีไม่พอ",
+                    type: "error"
+                })
+            }
+        },
+        error: function() {
+            alert('ajax error working');
+        }
+    });
+}
+/*
+   * confirm_exchange_reward
+   * 
+   * @input pro_id,pro_point,tus_score
+   * @output modal confirm_exchange_reward
+   * @author Thanisorn Thumsawanit 62160088
+   * @Create Date 2564-12-25
+   * @Update -
+   */
+  function confirm_exchange_reward(pro_id,pro_point,tus_score) {
+    $('#confirm').text();
+    $('#reward_Modal').modal();
+    $('#get_reward').click(function() {
+        exchange_reward(pro_id,pro_point,tus_score)
+    });
+    }
 </script>

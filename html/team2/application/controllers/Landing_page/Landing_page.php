@@ -94,9 +94,9 @@ class Landing_page extends DCS_controller
             $data["event"] = $this->mde->get_event_and_img($number_status)->result();
         }
 
-        if ($this->session->has_userdata("tourist_id")) {
-            $topbar =  $topbar = 'template/Tourist/topbar_tourist_login';;
-        } else if (!$this->session->has_userdata("tourist_id")) {
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
             $topbar = 'template/Tourist/topbar_tourist';
         }
         $this->output_tourist('landing_page/v_list_event', $data, $topbar, 'footer');
@@ -177,7 +177,7 @@ class Landing_page extends DCS_controller
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->mtou->tus_id = $this->session->userdata("tourist_id");
         $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-
+        
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->mpro->pro_id = $pro_id;
         $data["promotions"] = $this->mpro->get_by_detail()->result();
@@ -189,4 +189,58 @@ class Landing_page extends DCS_controller
 
         $this->output_tourist('landing_page/v_detail_promotions', $data, $topbar, 'footer');
     }
+    /*
+    * exchange_reward_ajax
+    * exchange_reward tourist 
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-12-24
+    */
+    public function exchange_reward_ajax(){
+        if($this->input->post('tus_score') > $this->input->post('pro_point')){
+            $this->load->model('Tourist/M_dcs_tou_promotion', 'mtoup');
+            $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+            $this->mtou->tus_id = $this->session->userdata("tourist_id");
+            $this->mtoup->tou_pro_id = $this->input->post('pro_id');
+            $this->mtoup->tou_pro_status = 1;
+            $this->mtoup->tou_tus_id = $this->session->userdata("tourist_id");
+            $this->mtoup->insert();
+            $this->mtou->tus_score = $this->input->post('tus_score') - $this->input->post('pro_point'); 
+            $this->mtou->update_score_exchange_reward();
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
+
+     /*
+    * show_reward_list
+    * show_reward_list page 
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-01-03
+    */
+    // public function show_reward_list()
+    // {
+    //     $this->load->model('Promotions/M_dcs_tou_promotion', 'mtp');
+    //     //$this->load->model('Promotions/M_dcs_pro_category', 'mcat');
+    //     $number_status = 2;
+    //       //$data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
+    //     //$data['pro_cat'] = $this->mcat->get_all()->result();
+
+    //     if (isset($_POST)) {
+    //         $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
+    //     } else {
+    //         $data["promotions"] = $this->mpt->get_promotions_and_img($number_status)->result();
+    //     }
+
+    //     if ($this->session->userdata("tourist_id")) {
+    //         $topbar = 'template/Tourist/topbar_tourist_login';
+    //     } else {
+    //         $topbar = 'template/Tourist/topbar_tourist';
+    //     }
+    //     $this->output_tourist('landing_page/v_list_promotion', $data, $topbar, 'footer');
+    // }
 }

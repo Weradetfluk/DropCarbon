@@ -111,4 +111,18 @@ class Da_dcs_tourist extends DCS_model
                SET tus_score=tus_score + ?, tus_cur_score = tus_cur_score + ?  WHERE tus_id = ?";
         $this->db->query($sql, array(  $this->mdct->tus_score,   $this->mdct->tus_score, $this->mdct->tus_id));
     }
+    /*
+    * update_score_exchange_reward
+    * update_score_exchange_reward
+    * @input 
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-12-24
+    * @Update Date -
+    */
+    public function update_score_exchange_reward(){
+        $sql = "UPDATE {$this->db_name}.dcs_tourist 
+               SET tus_score = ? WHERE tus_id = ?";
+        $this->db->query($sql, array(  $this->tus_score, $this->tus_id));
+    }
 }
