@@ -124,7 +124,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <p style="font-size: 18px; text-indent:20px;">
-                                                        <?php echo $obj_company->com_location." จังหวัด.".$obj_company->prv_name_th." อำเภอ.".$obj_company->dis_name_th." ตำบล.".$obj_company->par_name_th ?></p>
+                                                        <?php echo $obj_company->com_location." จังหวัด.".$obj_company->prv_name_th." อำเภอ.".$obj_company->dis_name_th." ตำบล.".$obj_company->par_name_th." รหัสไปรษณีย์ ".$obj_company->par_code ?></p>
                                                 </div>
                                             </div>
                                         </div>
