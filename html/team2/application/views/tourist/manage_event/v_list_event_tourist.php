@@ -5,7 +5,9 @@
 * @input checkin
 * @output list event tourist
 * @author Chutipon Thermsirisuksin 62160081
+* @author Weradet Nopsombun 62160110
 * @Create Date 2564-09-27
+* @Create Date 2564-12-30
 */ 
 -->
 <!-- Make by : Naaka Punparich 62160082 -->
@@ -13,10 +15,11 @@
     <section>
         <div class="container py-5">
             <ul class="breadcrumb">
-                <?php if ($this->session->userdata("tourist_id")) { ?>
-                <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
+                <?php if ($this->session->has_userdata("tourist_id")) { ?>
+                <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>"
+                        style="color: green;">หน้าหลัก</a></li>
                 <?php } ?>
-                <?php if (!$this->session->userdata("tourist_id")) { ?>
+                <?php if (!$this->session->has_userdata("tourist_id")) { ?>
                 <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
                 <?php } ?>
                 <li>ดูรายการกิจกรรมของฉัน</li>
@@ -31,14 +34,17 @@
             <form action="" method="post">
                 <div class="row justify-content-md-center" style="margin: 0px 0px 30px 0px;">
                     <div class="col-md-4">
-                        <input type="text" class="form-control form-control-custom" name="txt_event" placeholder="ค้นหาสถานที่">
+                        <input type="text" class="form-control form-control-custom" name="txt_event"
+                            placeholder="ค้นหากิจกรรม">
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control form-control-custom" name="txt_category">
-                            <option value="" selected>หมวดหมู่</option>
-                            <option value="1">หมวดหมู่ 1</option>
-                            <option value="2">หมวดหมู่ 2</option>
-                            <option value="3">หมวดหมู่ 3</option>
+                        <select class="form-control form-control-custom" name="eve_cat_id" id="eve_cat_id">
+                            <option value="">เลือกทั้งหมด</option>
+                            <?php for ($i = 0; $i < count($eve_cat); $i++) { ?>
+                            <?php $selected = $_POST["eve_cat_id"] == $eve_cat[$i]->eve_cat_id ? "selected" : ""; ?>
+                            <option value="<?php echo $eve_cat[$i]->eve_cat_id ?>" <?= $selected ?>>
+                                <?php echo $eve_cat[$i]->eve_cat_name; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-sm-3">
@@ -52,14 +58,30 @@
                 <?php for ($i = 0; $i < count($checkin); $i++) { ?>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100" id="card">
-                        <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                            <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                        <a
+                            href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                            <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>"
+                                class="card-img-top" style="height: 300px;" alt="...">
                             <!-- รูปที่ 1 -->
                             <div class="card-body" align="center">
                                 <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
-                             
+                                <!-- ชื่อของรูปที่ 1 -->
+                                <?php
+                                    if ($checkin[$i]->che_status == 1) { ?>
+                                <h3 style="color: green;">กำลังเช็คอิน</h3>
+                                <?php } else { ?>
+                                <h3 style="color: green;">เช็คเอาต์แล้ว</h3>
+
+                                <?php } ?>
                             </div>
-                            <!-- ชื่อของรูปที่ 1 -->
+                            <div class="container text-center">
+                                <?php if ($checkin[$i]->che_status == 1) { ?>
+                                <span>เช็คอินเมื่อ : <?php echo $time_format_checkin[$i] ?> </span>
+                                <?php } else { ?>
+                                <span>เช็คอินเมื่อ : <?php echo   $time_format_checkin[$i] ?> </span> <br>
+                                <span>เช็คเอาต์เมื่อ : <?php echo  $time_format_checkout[$i] ?> </span>
+                                <?php } ?>
+                            </div>
                         </a>
                     </div>
                 </div>
