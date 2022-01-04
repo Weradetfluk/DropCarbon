@@ -33,11 +33,11 @@ class Tourist_manage extends DCS_controller
       $this->mtou->tus_id = $this->session->userdata("tourist_id");
       $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
       $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-      
+
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
 
-      
+
       $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
       $this->mrto->tus_id = $this->session->userdata("tourist_id");
       $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
@@ -47,7 +47,7 @@ class Tourist_manage extends DCS_controller
       $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
       $data['eve_cat'] = $this->mcat->get_all()->result();
       $tus_id = $this->session->userdata("tourist_id");
-      $data['checkin'] = $this->mche->get_checkin_by_eve_id($tus_id)->result();
+      $data['checkin'] = $this->mche->get_checkin_by_eve_id($tus_id, NULL)->result();
 
 
       if (isset($_POST)) {
@@ -205,7 +205,8 @@ class Tourist_manage extends DCS_controller
    }
 
 
-   public function get_point(){
+   public function get_point()
+   {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
 
       $this->mtou->tus_id = $this->session->userdata("tourist_id");
