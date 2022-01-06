@@ -140,8 +140,7 @@ class Da_dcs_event extends DCS_model
                     `eve_location`=?,
                     `eve_lat`=?,
                     `eve_lon`=?,
-                    `eve_par_id`=?,
-                    `eve_adm_id`=?
+                    `eve_par_id`=?
 				WHERE eve_id=?";
         $this->db->query($sql, array(
             $this->eve_name, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
