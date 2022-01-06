@@ -34,7 +34,7 @@ class Admin_edit_event extends DCS_controller
         $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
-        $view = 'admin/manage_event/v_edit_event_admin';
+        $view = 'admin/manage_event/manage_add_event_admin/v_edit_event_admin';
         $this->output_admin($view, $data,null);
     }
 

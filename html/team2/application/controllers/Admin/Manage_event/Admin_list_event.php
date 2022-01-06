@@ -32,11 +32,11 @@ class Admin_list_event extends DCS_controller
     public function show_data_event_list()
     {
         $_SESSION['tab_number'] = 8; //set tab number in topbar_admin.php
-        $this->output_admin('admin/manage_event/v_list_event_admin', null, null);
+        $this->output_admin('admin/manage_event/manage_add_event_admin/v_list_event_admin', null, null);
     }
 
       /*
-        * show_data_event_list
+        * show_data_event_over
         * get all data event 
         * @input
         * @output -
@@ -46,7 +46,7 @@ class Admin_list_event extends DCS_controller
         */
         public function show_data_event_over()
         {
-            $this->output_admin('admin/manage_event/v_list_event_over_admin', null, null);
+            $this->output_admin('admin/manage_event/manage_add_event_admin/v_list_event_over_admin', null, null);
         }
      /*
     * show_data_consider_ajax
