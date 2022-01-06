@@ -48,7 +48,7 @@
                                 </div>
                             </div><br>
 
-
+                            
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
@@ -67,7 +67,8 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label for="eve_point">คะแนนกิจกรรม</label>
-                                    <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()"
+                                    <!-- คะแนนที่เพิ่มเข้ามาจะถูกนำไปเช็คที่ฟังก์ชัน add_point -->
+                                    <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()" 
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกคะแนนกิจกรรม" required>
                                     
@@ -464,8 +465,8 @@ function unlink_image_go_back() {
  * check name event by ajax
  * @input eve_name
  * @output -
- * @author Suwapat Saowarod 62160340
- * @Create Date 2564-10-12
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-14
  * @Update -
  */
 function check_name_event_ajax() {
@@ -519,7 +520,7 @@ function change_min_end_date() {
      * check district by prv_id by ajax
      * @input prv_id
      * @output -
-     * @author Suwapat Saowarod 62160340
+     * @author Nantasiri Saiwaew 62160093
      * @Create Date 2564-12-18
      * @Update -
      */
@@ -552,7 +553,7 @@ function change_min_end_date() {
      * check parish by dis_id by ajax
      * @input dis_id
      * @output -
-     * @author Suwapat Saowarod 62160340
+     * @author Nantasiri Saiwaew 62160093
      * @Create Date 2564-12-18
      * @Update -
      */
@@ -581,6 +582,15 @@ function change_min_end_date() {
         })
     }
 
+/*
+     * add_point
+     * check point that admin added
+     * @input -
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
     function add_point() {
         let eve_cat_id = $('#eve_cat_id').val();
         let point = $('#eve_point').val();
@@ -591,6 +601,15 @@ function change_min_end_date() {
              } 
     }
 
+/*
+     * check_point
+     * เช็คคะแนนตามประเภทของกิจกรรม
+     * @input point eve_cat_id
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
     function check_point(point,eve_cat_id) {
         let arr_min_point = [1, 20, 30, 40];
          let arr_max_point = [19, 29, 39, 49];
@@ -608,6 +627,15 @@ function change_min_end_date() {
         
     }
 
+/*
+     * -
+     * ตารางช่วยเหลือการกำหนดคะแนนกิจกรรมตามประเภทของกิจกรรม
+     * @input dis_id
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
     $(document).ready(function() {
          //show innformation
          $("#help_information").click(function() {

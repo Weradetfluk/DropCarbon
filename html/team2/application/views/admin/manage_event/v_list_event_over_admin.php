@@ -155,16 +155,19 @@
              html_code += '<td>' + (row_eve['eve_name']) + '</td>';
              html_code += '<td>' + (row_eve['com_name']) + '</td>';
              html_code += '<td style="text-align: center;">';
-             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
-             html_code +='<i class="material-icons">'
-             html_code +='search'
-             html_code +='</i>';
-             html_code += '</a>'
+             // ปุ่มดูรายละเอียดกิจกรรม
+            //  html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
+            //  html_code +='<i class="material-icons">'
+            //  html_code +='search'
+            //  html_code +='</i>';
+            //  html_code += '</a>'
+            //ปุ่มแก้ไขกิจกรรม
              html_code += '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' ?>'  + (row_eve['eve_id'])  + '">'         
              html_code +='<i class="material-icons">'
              html_code +='edit'
              html_code +='</i>';
              html_code += '</a>'
+             //ปุ่มลบกิจกรรม
              html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row_eve['eve_name']) +'\',\'' + (row_eve['eve_id']) +  '\')" >'         
              html_code +='<i class="material-icons">'
              html_code +='delete'
@@ -221,9 +224,9 @@ function confirm_delete(eve_name_con, eve_id_con) {
  * confirm delete event
  * @input eve_id_con
  * @output delete event
- * @author Thanchanok Thongjumroon 62160089
- * @Create Date 2564-09-24
- * @Update Date 2564-09-25
+ * @author Nantasiri Saiwaew 62160089
+ * @Create Date 2564-12-12
+ * @Update Date -
  */
 function delete_event(eve_id_con) {
 
@@ -232,7 +235,7 @@ function delete_event(eve_id_con) {
         data: {
             eve_id: eve_id_con
         },
-        url: '<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/delete_event' ?>',
+        url: '<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/delete_event_by_admin' ?>',
         success: function() {
             swal({
                     title: "ลบกิจกรรม",

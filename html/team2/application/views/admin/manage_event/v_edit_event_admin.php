@@ -236,8 +236,6 @@
                                         <div class="modal-body">
                                             <p>คุณต้องการที่แก้ไขข้อมูลกิจกรรม <span id="eve_name_confirm"></span> ?</p>
                                             <br>
-                                            <!-- <p style="color: red;">***หากทำการแก้ไขข้อมูลกิจกรรม <span
-                                                    id="eve_name_confirm2"></span> จะกลับสู่สถานะรออนุมัติ***</p> -->
                                         </div>
                                         <div class="modal-footer">
                                             <button id="submit" class="btn btn-success success">ยืนยัน</button>
@@ -545,7 +543,7 @@ function check_count_image_btn() {
  * check name event by ajax
  * @input eve_name
  * @output -
- * @author Suwapat Saowarod 62160340
+ * @author Nantasiri Saiwaew 62160093
  * @Create Date 2564-10-12
  * @Update -
  */
@@ -674,7 +672,15 @@ function check_name_event_ajax() {
             }
         })
     }
-
+/*
+     * add_point
+     * check point that admin added
+     * @input -
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
     function add_point() {
         let eve_cat_id = $('#eve_cat_id').val();
         let point = $('#eve_point').val();
@@ -685,6 +691,15 @@ function check_name_event_ajax() {
              } 
     }
 
+/*
+     * check_point
+     * เช็คคะแนนตามประเภทของกิจกรรม
+     * @input point eve_cat_id
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
     function check_point(point,eve_cat_id) {
         let arr_min_point = [1, 20, 30, 40];
          let arr_max_point = [19, 29, 39, 49];

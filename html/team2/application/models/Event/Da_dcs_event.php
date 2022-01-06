@@ -49,12 +49,12 @@ class Da_dcs_event extends DCS_model
     }
 
     /*
-    * insert_event
-    * insert event by entrepreneur
+    * insert_event_by_admin
+    * insert event by admin
     * @input eve_name
     * @output -
-    * @author Priyarat Bumrungkit 62160156
-    * @Create Date 2564-09-26
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-12-20
     * @Update -
     */
     public function insert_event_by_admin()
@@ -150,12 +150,12 @@ class Da_dcs_event extends DCS_model
     }
 
      /*
-    *update_event
-    *get data form database
+    *update_event_by_admin
+    *update event by admin
     *@input 
     *@output -
-    *@author Acharaporn pornpattanasap
-    *@Create Date 2564-09-25
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-12-21
     */
     public function update_event_by_admin()
     {
