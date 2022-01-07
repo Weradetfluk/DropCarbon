@@ -35,4 +35,19 @@ class M_dcs_tou_promotion extends Da_dcs_tou_promotion
                 WHERE tou_pro.tou_id = '$tou_id'";
         return $this->db->query($sql, array($this->tou_id));
     }
+
+    /*
+    *get_reward_by_id
+    *get data reward by id
+    *@input tou_id
+    *@output -
+    *@author Thanisron thumsawanit 62160088
+    *@Create Date 2564-01-04
+    */
+    function get_reward_by_id()
+    {
+        $sql = "SELECT * FROM {$this->db_name}.dcs_tou_promotion
+                WHERE tou_pro_status != 2";
+        return $this->db->query($sql);
+    }
 }

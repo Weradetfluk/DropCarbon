@@ -199,7 +199,7 @@ class Landing_page extends DCS_controller
     */
     public function exchange_reward_ajax(){
         if($this->input->post('tus_score') > $this->input->post('pro_point')){
-            $this->load->model('Tourist/M_dcs_tou_promotion', 'mtoup');
+            $this->load->model('Promotions/M_dcs_tou_promotion', 'mtoup');
             $this->load->model('Tourist/M_dcs_tourist', 'mtou');
             $this->mtou->tus_id = $this->session->userdata("tourist_id");
             $this->mtoup->tou_pro_id = $this->input->post('pro_id');
@@ -226,7 +226,7 @@ class Landing_page extends DCS_controller
     // {
     //     $this->load->model('Promotions/M_dcs_tou_promotion', 'mtp');
     //     //$this->load->model('Promotions/M_dcs_pro_category', 'mcat');
-    //     $number_status = 2;
+    //     $number_status = 1;
     //       //$data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
     //     //$data['pro_cat'] = $this->mcat->get_all()->result();
 
@@ -241,6 +241,6 @@ class Landing_page extends DCS_controller
     //     } else {
     //         $topbar = 'template/Tourist/topbar_tourist';
     //     }
-    //     $this->output_tourist('landing_page/v_list_promotion', $data, $topbar, 'footer');
+    //     $this->output_tourist('landing_page/v_list_reward', $data, $topbar, 'footer');
     // }
 }

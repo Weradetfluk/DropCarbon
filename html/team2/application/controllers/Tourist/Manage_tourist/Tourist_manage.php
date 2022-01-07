@@ -41,7 +41,9 @@ class Tourist_manage extends DCS_controller
       $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
       $this->mrto->tus_id = $this->session->userdata("tourist_id");
       $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
-
+      // echo "<pre>";
+      // print_r($data['tou_pro']);
+      // echo "</pre>";
 
       $number_status = 2;
       $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
@@ -213,5 +215,22 @@ class Tourist_manage extends DCS_controller
       $data['arr_score'] = $this->mtou->get_point_tourist_by_id()->result();
 
       echo json_encode($data['arr_score']);
+   }
+
+   /*
+    * use_reward_ajax
+    * use_reward
+    * @input tou_id
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2565-01-04
+    * @Update -
+    */
+   public function use_reward_ajax()
+   {
+      $this->load->model('Promotions/M_dcs_tou_promotion', 'mtoup');
+      $this->mtoup->tou_id = $this->input->post('tou_id');
+      $this->mtoup->tou_pro_status = 2;
+      $this->mtoup->update_status_reward();
    }
 }
