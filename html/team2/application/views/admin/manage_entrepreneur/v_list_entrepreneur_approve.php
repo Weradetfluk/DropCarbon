@@ -12,7 +12,8 @@
  <!-- main content -->
  <div class="row">
      <div class="col">
-         <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">ผู้ประกอบการที่อนุมัติแล้ว</h3>
+         <h3 class="text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">
+             ผู้ประกอบการที่อนุมัติแล้ว</h3>
      </div>
  </div>
  <div class="card card-nav-tabs custom-card-tab">
@@ -23,16 +24,28 @@
                      <div class="nav-tabs-wrapper">
                          <ul class="nav nav-tabs" data-tabs="tabs">
                              <li class="nav-item">
-                                 <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> "><h5 class="h5-card-header">รออนุมัติ</h5></a>
+                                 <a class="nav-link"
+                                     href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider' ?> ">
+                                     <h5 class="h5-card-header">รออนุมัติ</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> "><h5 class="h5-card-header">อนุมัติแล้ว</h5></a>
+                                 <a class="nav-link active"
+                                     href=" <?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_approve' ?> ">
+                                     <h5 class="h5-card-header">อนุมัติแล้ว</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>"><h5 class="h5-card-header">ถูกปฏิเสธ</h5></a>
+                                 <a class="nav-link"
+                                     href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_reject'; ?>">
+                                     <h5 class="h5-card-header">ถูกปฏิเสธ</h5>
+                                 </a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>"><h5 class="h5-card-header">ถูกบล็อค</h5></a>
+                                 <a class="nav-link"
+                                     href="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_block'; ?>">
+                                     <h5 class="h5-card-header">ถูกระงับ</h5>
+                                 </a>
                              </li>
                          </ul>
                      </div>
@@ -43,10 +56,13 @@
                  </div>
                  -->
              <div class="col">
-                 <form class="form-inline custom-form-search" action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>" method="POST">
+                 <form class="form-inline custom-form-search"
+                     action="<?php echo base_url() . 'Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_consider'; ?>"
+                     method="POST">
 
                      <div class="input-group ">
-                         <input type="text" value="" id="search_box" name="value_search" class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
+                         <input type="text" value="" id="search_box" name="value_search"
+                             class="form-control custom-search" placeholder="  ค้นหาชื่อได้ที่นี่...">
                      </div>
                  </form>
              </div>
@@ -72,11 +88,12 @@
                  <h5 class="modal-title">แจ้งเตือน</h5>
              </div>
              <div class="modal-body">
-                 <p>คุณต้องการบล็อค <span id="ent_block_name_confirm"></span> ?</p>
+                 <p>คุณต้องการระงับ <span id="ent_block_name_confirm"></span> ?</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-success" id="blocked" data-dismiss="modal">ยืนยัน</button>
-                 <button class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
+                 <button class="btn btn-secondary" style="color: white; background-color: #777777;"
+                     data-dismiss="modal">ยกเลิก</button>
              </div>
          </div>
      </div>
@@ -138,7 +155,8 @@
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" onclick="confirm_block_view_data_madal()" data-dismiss="modal">บล็อค</button>
+                 <button type="button" class="btn btn-danger" onclick="confirm_block_view_data_madal()"
+                     data-dismiss="modal">ระงับ</button>
              </div>
          </div>
      </div>
@@ -147,122 +165,123 @@
 
 
  <script>
-     $(document).ready(function() {
+$(document).ready(function() {
 
-         load_data(1);
-         $('#search_box').keyup(function() {
-             var query = $('#search_box').val();
-             load_data(1, query);
-             // console.log(query);
+    load_data(1);
+    $('#search_box').keyup(function() {
+        var query = $('#search_box').val();
+        load_data(1, query);
+        // console.log(query);
 
-         });
+    });
 
-         $(document).on('click', '.page-link', function() {
-             var page = $(this).data('page_number');
-             var query = $('#search_box').val();
-             load_data(page, query);
-         });
+    $(document).on('click', '.page-link', function() {
+        var page = $(this).data('page_number');
+        var query = $('#search_box').val();
+        load_data(page, query);
+    });
 
-     });
+});
 
-      /*
-      * load_data
-      * load_data
-      * @input 
-      * @output  table data entrepreneur
-      * @author Weradet Nopsombun 62160110 
-      * @Create Date 2564-07-27
-      * @Update -
-      */
-     function load_data(page, query = '') {
-             console.log(query);
-             $.ajax({
-                 url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' + 2,
-                 method: "POST",
-                 data: {
-                     page: page,
-                     query: query
-                 },
-                 success: function(data) {
-                     $('#data_entre_approve').html(data);
-                 }
-             });
-         }
-     /*
-      * confirm_block
-      * open modal id = blockmodal 
-      * @input 
-      * @output modal to confirm block user 
-      * @author Weradet Nopsombun
-      * @Create Date 2564-07-27
-      * @Update -
-      */
+/*
+ * load_data
+ * load_data
+ * @input 
+ * @output  table data entrepreneur
+ * @author Weradet Nopsombun 62160110 
+ * @Create Date 2564-07-27
+ * @Update -
+ */
+function load_data(page, query = '') {
+    console.log(query);
+    $.ajax({
+        url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' +
+            2,
+        method: "POST",
+        data: {
+            page: page,
+            query: query
+        },
+        success: function(data) {
+            $('#data_entre_approve').html(data);
+        }
+    });
+}
+/*
+ * confirm_block
+ * open modal id = blockmodal 
+ * @input 
+ * @output modal to confirm block user 
+ * @author Weradet Nopsombun
+ * @Create Date 2564-07-27
+ * @Update -
+ */
 
-     function confirm_block(ent_id, ent_name, ent_email) {
-         $('#block_modal').modal();
-         $('#ent_block_name_confirm').text(ent_name);
-         $('#blocked').click(function() {
-             console.log("check");
-             block_user(ent_id, ent_email);
-         });
-     }
-     /*
-      * confirm_block
-      * open modal id = blockmodal 
-      * @input 
-      * @output modal to confirm block user 
-      * @author Weradet Nopsombun
-      * @Create Date 2564-07-27
-      * @Update -
-      */
-     function confirm_block_view_data_madal() {
-         $('#block_modal').modal();
-         let ent_id = $('#ent_id').val();
-         console.log(ent_id)
-         let ent_name = $('#ent_name').val();
-         $('#ent_block_name_confirm').text(ent_name);
-         $('#blocked').click(function() {
-             console.log("check");
-             block_user(ent_id, ent_email);
-         });
-     }
+function confirm_block(ent_id, ent_name, ent_email) {
+    $('#block_modal').modal();
+    $('#ent_block_name_confirm').text(ent_name);
+    $('#blocked').click(function() {
+        console.log("check");
+        block_user(ent_id, ent_email);
+    });
+}
+/*
+ * confirm_block
+ * open modal id = blockmodal 
+ * @input 
+ * @output modal to confirm block user 
+ * @author Weradet Nopsombun
+ * @Create Date 2564-07-27
+ * @Update -
+ */
+function confirm_block_view_data_madal() {
+    $('#block_modal').modal();
+    let ent_id = $('#ent_id').val();
+    console.log(ent_id)
+    let ent_name = $('#ent_name').val();
+    $('#ent_block_name_confirm').text(ent_name);
+    $('#blocked').click(function() {
+        console.log("check");
+        block_user(ent_id, ent_email);
+    });
+}
 
-     /*
-      * block_user
-      * send ajax into block_user controller
-      * @input ent_id
-      * @output sweet alert
-      * @author Weradet Nopsombun
-      * @Create Date 2564-07-27
-      * @Update -
-      */
+/*
+ * block_user
+ * send ajax into block_user controller
+ * @input ent_id
+ * @output sweet alert
+ * @author Weradet Nopsombun
+ * @Create Date 2564-07-27
+ * @Update -
+ */
 
-     function block_user(ent_id, ent_email) {
-         $.ajax({
-             type: "POST",
-             data: {
-                 ent_id: ent_id
-             },
-             url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_block_user/block_user_ajax'); ?>',
-             success: function() {
-                 //sweet alert
-                 swal({
-                     title: "บล็อคผู้ใช้งานสำเร็จ",
-                     text: "บล็อคผู้ประกอบการสำเร็จ",
-                     type: "success",
-                     showConfirmButton: false,
-                     timer: 2000
-                 }, function() {
-                    location.reload();
-                 })
-                 var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
-                 var content_h1 = "คุณถูกบล็อคบัญชีการใช้งาน";
-                 var subject = "Admin has blocked your account.";
-                 send_mail_ajax(content, ent_email, subject, content_h1);
-             },
-             error: function() {
-                 alert('ajax block user error working');
-             }
-         });
-     }
+function block_user(ent_id, ent_email) {
+    $.ajax({
+        type: "POST",
+        data: {
+            ent_id: ent_id
+        },
+        url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_block_user/block_user_ajax'); ?>',
+        success: function() {
+            //sweet alert
+            swal({
+                title: "ระงับผู้ใช้งานสำเร็จ",
+                text: "ระงับผู้ประกอบการสำเร็จ",
+                type: "success",
+                showConfirmButton: false,
+                timer: 2000
+            }, function() {
+                location.reload();
+            })
+            var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
+            var content_h1 = "คุณถูกระงับบัญชีการใช้งาน";
+            var subject = "Admin has blocked your account.";
+            send_mail_ajax(content, ent_email, subject, content_h1);
+        },
+        error: function() {
+            alert('ajax block user error working');
+        }
+    });
+}
  </script>

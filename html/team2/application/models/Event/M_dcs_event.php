@@ -360,7 +360,7 @@ class M_dcs_event extends Da_dcs_event
     *get data event&entrepreneur&company form database
     *@input $limit, $start, $number_status
     *@output entrepreneur data & company data & event data
-    *@author Kasama Donwong 62160074
+    *@author Nantasiri Saiwaew 62160093
     *@Create Date 2564-09-24
     */
     function get_all_data_event_over_admin($limit, $start, $number_status)
@@ -543,7 +543,14 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql, array($this->eve_name));
         return $query;
     }
-
+  /*
+    *get_by_name
+    *get data event by com_name that added by admin
+    *@input com_name
+    *@output -
+    *@author Nantasiri Saiwaew 62160093
+    *@Create Date 2564-09-26
+    */
     function get_by_name_by_admin()
     {
         $sql = "SELECT * FROM {$this->db_name}.dcs_event WHERE eve_name = ? AND eve_status = 2 AND eve_adm_id = 1";

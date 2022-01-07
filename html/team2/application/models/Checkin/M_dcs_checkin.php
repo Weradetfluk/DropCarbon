@@ -27,12 +27,23 @@ class M_dcs_checkin extends Da_dcs_checkin
     * @Create Date 2564-09-25
     * @Update -
     */
-    function get_checkin_by_eve_id($tus_id)
+    function get_checkin_by_eve_id($tus_id,  $post)
     {
+
+        $and = "";
+        if (isset($post["txt_event"]) && $post["txt_event"] !== "") {
+            $and .= " AND dcs_event.eve_name LIKE '%" . $post["txt_event"] . "%'";
+        }
+
+        if (isset($post["eve_cat_id"]) && $post["eve_cat_id"] !== "") {
+            $and .= " AND dcs_event.eve_cat_id = " . $post["eve_cat_id"] . "";
+        }
+
         $sql = "SELECT * FROM dcs_checkin  AS checkin
                 LEFT JOIN dcs_event ON checkin.che_eve_id = dcs_event.eve_id
                 LEFT JOIN dcs_eve_image ON dcs_eve_image.eve_img_eve_id = dcs_event.eve_id
                 WHERE checkin.che_tus_id = '$tus_id' 
+                $and
                 GROUP BY dcs_event.eve_id";
         $query = $this->db->query($sql, array($this->che_id));
         return $query;

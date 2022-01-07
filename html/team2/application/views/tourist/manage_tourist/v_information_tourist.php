@@ -85,9 +85,9 @@
                         </div>
                         <div class="row">
 
-                            <!-- คะแนนของฉัน -->
-                            <h3>คะแนนของฉัน</h3>
-                            <h1 style="display:inline; color: #239d58; padding: 0px 10px;"><?php echo $arr_tus[0]->tus_score; ?></h1>
+                            <!-- คะแนนสูงสุดของฉัน -->
+                            <h3>คะแนนสูงสุดของฉัน</h3>
+                            <h1 style="display:inline; color: #239d58; padding: 0px 10px;"><?php echo $arr_tus[0]->tus_cur_score; ?></h1>
                             <h3 style="display:inline;">แต้ม</h3>
 
                         </div>
@@ -97,35 +97,43 @@
                             <p style="margin-left: auto; margin-right: auto;font-size: 22px;padding-top: 12px;">
                                 <?php
                                 $score = 0;
-                                if ($arr_tus[0]->tus_score < 25) {
-                                    $score += 25 - $arr_tus[0]->tus_score;
+                                if ($arr_tus[0]->tus_cur_score < 25) {
+                                    $score += 25 - $arr_tus[0]->tus_cur_score;
                                     echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
-                                    $score += 50 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
+                                    $score += 50 - $arr_tus[0]->tus_cur_score;
                                     echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
-                                    $score += 75 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
+                                    $score += 75 - $arr_tus[0]->tus_cur_score;
                                     echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_score;
-                                } else {
+                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
+                                    $score += 100 - $arr_tus[0]->tus_cur_score;
+                                    echo "ต้องการอีก $score แต้ม ";
+                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
+                                    $score += 100 - $arr_tus[0]->tus_cur_score;
+                                    echo "Dropcarbon Hero";
+                                }else {
                                     echo ".";
                                 } ?>
                             </p>
                             <p style="margin-left: auto; margin-right: auto;font-size: 22px;">
                                 <?php
                                 $score = 0;
-                                if ($arr_tus[0]->tus_score < 25) {
-                                    $score += 25 - $arr_tus[0]->tus_score;
+                                if ($arr_tus[0]->tus_cur_score < 25) {
+                                    $score += 25 - $arr_tus[0]->tus_cur_score;
                                     echo "เพื่อปลดล็อค ระดับ Silver";
-                                } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
-                                    $score += 50 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
+                                    $score += 50 - $arr_tus[0]->tus_cur_score;
                                     echo "เพื่อปลดล็อค ระดับ Gold";
-                                } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
-                                    $score += 75 - $arr_tus[0]->tus_score;
+                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
+                                    $score += 75 - $arr_tus[0]->tus_cur_score;
                                     echo "เพื่อปลดล็อค ระดับ Platinum";
-                                } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_score;
+                                } else if ( $arr_tus[0]->tus_cur_score < 100) {
+                                    $score += 100 - $arr_tus[0]->tus_cur_score;
+                                    echo "เพื่อปลดล็อค ระดับ Dropcarbon Hero";
+                                } else if ( $arr_tus[0]->tus_cur_score >= 100) {
+                                    $score += 100 - $arr_tus[0]->tus_cur_score;
+                                    echo "Dropcarbon Hero";
                                 } else {
                                     echo ".";
                                 } ?>
@@ -137,13 +145,13 @@
                         <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
                         <p style="text-align: center;font-size: 22px;">
                             <?php
-                            if ($arr_tus[0]->tus_score < 25) {
+                            if ($arr_tus[0]->tus_cur_score < 25) {
                                 echo "สิทธิพิเศษของคุณในระดับ Bronze";
-                            } else if ($arr_tus[0]->tus_score > 25 && $arr_tus[0]->tus_score <= 50) {
+                            } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
                                 echo "สิทธิพิเศษของคุณในระดับ Silver";
-                            } else if ($arr_tus[0]->tus_score > 50 && $arr_tus[0]->tus_score <= 75) {
+                            } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
                                 echo "สิทธิพิเศษของคุณในระดับ Gold";
-                            } else if ($arr_tus[0]->tus_score > 75 && $arr_tus[0]->tus_score <= 100) {
+                            } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
                                 echo "สิทธิพิเศษของคุณในระดับ Platinum";
                             } else {
                                 echo ".";
@@ -168,12 +176,12 @@
             </div>
         </section>
 
-        <!-- <section>
+        <section>
             <div class="header-break">
                     รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
-            <h4 align="center">ไม่มีข้อมูลโปรโมชันของคุณ</h4>
+            <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
 
             <div class="container">
@@ -193,9 +201,9 @@
                 <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
             </div>
             <?php } ?>
-        </section> -->
+        </section>
 
-        <section>
+        <!-- <section>
             <div class="header-break">
                 รางวัลของฉัน
             </div>
@@ -212,18 +220,14 @@
                                 <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
                                 <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
                                 <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
-                                <p style="display:inline; font-size: 28px;"> แต้ม</p>
-                            </div>
-                            <div class="col"></div>
-                            <div class="col">
-                                <button class="btn btn-success" style="margin: 100px 30px;">แลก</button>
+                                
                             </div>
                         </div>
                     </div>
                     <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
                 </div>
             <?php } ?>
-        </section>
+        </section> -->
 
         <section>
             <div class="header-break">

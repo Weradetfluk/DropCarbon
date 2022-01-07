@@ -61,7 +61,7 @@ CREATE TABLE `dcs_banner` (
 --
 
 INSERT INTO `dcs_banner` (`ban_path`, `ban_name`, `ban_adm_id`) VALUES
-('615a75194a7a46.49398115.png', 'banner1', 1),
+('615a75194a7a46.49398123.png', 'banner1', 1),
 ('615a75194a7a46.49398115.png', 'banner2', 1);
 
 -- --------------------------------------------------------

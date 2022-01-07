@@ -14,8 +14,8 @@ class Admin_edit_event extends DCS_controller
     * show display edit event
     * @input eve_id
     * @output -
-    * @author Acaharaporn pornpattanasap 62160344 
-    * @Create Date 2564-09-25
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-12-21
     * @Update Date -
     */
 
@@ -34,17 +34,17 @@ class Admin_edit_event extends DCS_controller
         $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
-        $view = 'admin/manage_event/v_edit_event_admin';
+        $view = 'admin/manage_event/manage_add_event_admin/v_edit_event_admin';
         $this->output_admin($view, $data,null);
     }
 
     /*
-    * edit_event
-    * edit event
+    * edit_event_by_admin
+    * edit  by admin
     * @input eve_name, eve_description, eve_com_id, eve_id, new_img, com_id, del_old_img, del_new_img
     * @output -
-    * @author Acaharaporn pornpattanasap 62160344 
-    * @Create Date 2564-09-25
+    * @author Nantasiri Saiwaew 62160093 
+    * @Create Date 2564-12-21
     * @Update Date -
     */
     public function edit_event_by_admin()
@@ -130,7 +130,7 @@ class Admin_edit_event extends DCS_controller
     }
 
     /*
-    * delete_event
+    * delete_event_by_admin
     * update eve_status = 4 in database
     * @input eve_id
     * @output -

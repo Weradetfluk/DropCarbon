@@ -200,12 +200,18 @@ class M_dcs_company extends Da_dcs_company
     {
         $sql = "SELECT * 
         FROM {$this->db_name}.dcs_company AS detail
-        LEFT JOIN {$this->db_name}.dcs_com_image AS com ON com.com_img_com_id 
-        LEFT JOIN {$this->db_name}.dcs_com_category ON detail.com_cat_id = dcs_com_category.com_cat_id
+        LEFT JOIN {$this->db_name}.dcs_com_category 
+        ON detail.com_cat_id = dcs_com_category.com_cat_id
         LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent 
         ON detail.com_ent_id = ent.ent_id
         LEFT JOIN {$this->db_name}.dcs_company_reject AS rej 
         ON detail.com_id = rej.cor_com_id
+        LEFT JOIN {$this->db_name}.dcs_parish AS par
+        ON detail.com_par_id = par.par_id
+        LEFT JOIN {$this->db_name}.dcs_district AS dis
+        ON par.par_dis_id = dis.dis_id
+        LEFT JOIN {$this->db_name}.dcs_province AS prv
+        ON dis.dis_prv_id = prv.prv_id
         WHERE detail.com_id=?";
 
         $query = $this->db->query($sql, array($this->com_id));

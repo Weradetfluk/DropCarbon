@@ -24,6 +24,11 @@ if (!$this->session->has_userdata("tourist_id")) {
             </a>
         </li>
         <li class="item">
+            <a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>" class="a">
+                <span class="material-icons">card_giftcard</span>กิจกรรมของฉัน
+            </a>
+        </li>
+        <li class="item">
             <a class="nav-link a" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
@@ -33,7 +38,9 @@ if (!$this->session->has_userdata("tourist_id")) {
                 <a class="dropdown-item"
                     href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>"><span
                         class="material-icons">person</span> ข้อมูลส่วนตัว</a>
-                <!-- <a class="dropdown-item" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_reward_tourist' ?>"><span class="material-icons">card_giftcard</span> ระดับ Rank ของฉัน</a> -->
+                <!-- <a class="dropdown-item"
+                    href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_reward_tourist' ?>"><span
+                        class="material-icons">card_giftcard</span>กิจกรรมของฉัน</a> -->
                 <!-- <a class="dropdown-item" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_edit_tourist' ?>"><span class="material-icons">manage_accounts</span> แก้ไขข้อมูลส่วนตัว</a> -->
                 <!-- <a class="dropdown-item" href="<?php echo site_url() . 'Tourist/Auth/Register_tourist/show_regis_tourist'; ?>"><span class="material-icons">manage_accounts</span> แก้ไขข้อมูลส่วนตัว</a> -->
                 <div class="dropdown-divider"></div>

@@ -142,22 +142,26 @@
                             <h3><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
                                     width="40px"> <?php echo $arr_event[0]->com_name; ?></h3>
                             <hr width="100%" size="10" color="#cccccc">
-                            <ul>
-                                <li>
-                                    <h4>เบอร์โทรศัพท์: </h4>
-                                </li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel; ?></p>
-                                <br>
-                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
-                                        width="40px"> ตำแหน่งกิจกรรม</h4>
-                                <table class="table table-responsive">
-                                    <tr>
-                                        <td style="border: 2px solid black;">
-                                            <div id="Map" style="width: 900px; height: 400px;"></div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </ul>
+
+                            <!-- เบอร์โทรศัพท์ -->
+                            <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>"
+                                            width="28px"> เบอร์โทรศัพท์</h4>
+                            <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_event[0]->com_tel; ?></p>
+
+                            <!-- รายละเอียดที่อยู่กิจกรรม -->
+                            <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                style="width:34px;"> รายละเอียดที่อยู่</h4>
+                            <p style="font-size: 18px; text-indent:50px;"><?php echo  $arr_event[0]->eve_location." จังหวัด.".$arr_event[0]->prv_name_th." อำเภอ.".$arr_event[0]->dis_name_th." ตำบล.".$arr_event[0]->par_name_th." รหัสไปรษณีย์ ".$arr_event[0]->par_code ?></p>
+                            <br>
+                            <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
+                                    width="40px"> ตำแหน่งกิจกรรม</h4>
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td style="border: 2px solid black;">
+                                        <div id="Map" style="width: 900px; height: 400px;"></div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -164,9 +164,9 @@ function confirm_delete(eve_name_con, eve_id_con) {
  * confirm delete event
  * @input eve_id_con
  * @output delete event
- * @author Thanchanok Thongjumroon 62160089
- * @Create Date 2564-09-24
- * @Update Date 2564-09-25
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-14
+ * @Update Date -
  */
 function delete_event(eve_id_con) {
 

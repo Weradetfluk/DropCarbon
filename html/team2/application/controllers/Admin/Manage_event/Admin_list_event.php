@@ -32,11 +32,11 @@ class Admin_list_event extends DCS_controller
     public function show_data_event_list()
     {
         $_SESSION['tab_number'] = 8; //set tab number in topbar_admin.php
-        $this->output_admin('admin/manage_event/v_list_event_admin', null, null);
+        $this->output_admin('admin/manage_event/manage_add_event_admin/v_list_event_admin', null, null);
     }
 
       /*
-        * show_data_event_list
+        * show_data_event_over
         * get all data event 
         * @input
         * @output -
@@ -46,7 +46,7 @@ class Admin_list_event extends DCS_controller
         */
         public function show_data_event_over()
         {
-            $this->output_admin('admin/manage_event/v_list_event_over_admin', null, null);
+            $this->output_admin('admin/manage_event/manage_add_event_admin/v_list_event_over_admin', null, null);
         }
      /*
     * show_data_consider_ajax
@@ -160,17 +160,21 @@ class Admin_list_event extends DCS_controller
             if ($number_status == 2) {
               // ต่อสตริง
               $output .= '<td style="text-align: center;">' .
+              //ปุ่มดูรายละเอียดกิจกรรม
                 '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                   <span class="material-icons">search</span>
                 </a>' .
+                //ปุ่มแก้ไขกิจกรรม
                 '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
                   <span class="material-icons">edit</span>
                 </a>' .
+                //ปุ่มลบกิจกรรม
                 '<button class="btn btn-danger custom-btn-table" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">
                               <i class="material-icons">
                                 delete
                               </i>
                           </button>'.
+                //ปุ่ม qr_code
                 '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name .'\')">
                     <span class="material-icons">
                               qr_code
@@ -219,17 +223,21 @@ class Admin_list_event extends DCS_controller
             if ($number_status == 2) {
               // ต่อสตริง
               $output .= '<td style="text-align: center;">' .
+              //ปุ่มดูรายละเอียดกิจกรรม
                 '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                             <span class="material-icons">search</span>
                 </a>' .
+                //ปุ่มแก้ไขกิจกรรม
                 '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
                   <span class="material-icons">edit</span>
                 </a>' .
+                //ปุ่มลบกิจกรรม
                 '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">
                             <i class="material-icons">
                             delete
                             </i>
                           </button>' .
+                //ปุ่ม qr_code
                 '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\')">
                           <span class="material-icons">
                             qr_code
