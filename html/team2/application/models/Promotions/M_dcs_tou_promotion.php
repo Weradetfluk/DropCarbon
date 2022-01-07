@@ -32,7 +32,7 @@ class M_dcs_tou_promotion extends Da_dcs_tou_promotion
         $sql = "SELECT * FROM dcs_tou_promotion AS tou_pro
                 LEFT JOIN dcs_promotions ON tou_pro.tou_pro_id = dcs_promotions.pro_id
                 LEFT JOIN dcs_pro_image ON dcs_pro_image.pro_img_pro_id = dcs_promotions.pro_id
-                WHERE tou_pro.tou_id = '$tou_id'";
+                WHERE tou_pro.tou_tus_id = '$tou_id' AND tou_pro_status != 2";
         return $this->db->query($sql, array($this->tou_id));
     }
 

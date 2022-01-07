@@ -222,25 +222,10 @@ class Landing_page extends DCS_controller
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-01-03
     */
-    // public function show_reward_list()
-    // {
-    //     $this->load->model('Promotions/M_dcs_tou_promotion', 'mtp');
-    //     //$this->load->model('Promotions/M_dcs_pro_category', 'mcat');
-    //     $number_status = 1;
-    //       //$data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
-    //     //$data['pro_cat'] = $this->mcat->get_all()->result();
-
-    //     if (isset($_POST)) {
-    //         $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
-    //     } else {
-    //         $data["promotions"] = $this->mpt->get_promotions_and_img($number_status)->result();
-    //     }
-
-    //     if ($this->session->userdata("tourist_id")) {
-    //         $topbar = 'template/Tourist/topbar_tourist_login';
-    //     } else {
-    //         $topbar = 'template/Tourist/topbar_tourist';
-    //     }
-    //     $this->output_tourist('landing_page/v_list_reward', $data, $topbar, 'footer');
-    // }
+    public function show_reward_list()
+    {
+        $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
+        $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
+        $this->output_tourist('landing_page/v_list_reward', $data);
+    }
 }
