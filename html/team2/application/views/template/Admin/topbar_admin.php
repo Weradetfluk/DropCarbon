@@ -140,7 +140,7 @@ ul {
 
                         <li class="nav-item  <?php if ($_SESSION['tab_number'] == 9) echo "active custom-a"; ?>">
                             <a class="nav-link  <?php if ($_SESSION['tab_number'] == 9) echo "custom-a"; ?>"
-                                href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_add_promotions/show_data_promotions_list' ?>">
+                                href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promotions_list' ?>">
                                 <i class="material-icons">calendar_today</i>
                                 <h5 class="h5-topbar">เพิ่ม-ลบ โปรโมชัน</h5>
                             </a>
