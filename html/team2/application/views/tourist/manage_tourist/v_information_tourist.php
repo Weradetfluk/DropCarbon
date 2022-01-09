@@ -33,6 +33,11 @@
     a:hover {
         color: white !important;
     }
+
+    .profile-pic-div {
+        width: 245px;
+        height: 240px;
+    }
 </style>
 
 <div class="bg-gray">
@@ -47,101 +52,92 @@
 
         <section>
             <div class="container radius" style="border: 2px solid;">
-                <div class="row py-5">
+                <div class="row py-3">
                     <div class="col">
-                        <div class="row">
-
-                            <!-- หัวข้อ -->
-                            <h2 style="margin-left: auto; margin-right: auto; padding-bottom: 30px;">ข้อมูลส่วนตัว</h2>
-
-                        </div>
-                        <div class="row">
+                        <div class="row" style="margin-top: 75px;">
 
                             <!-- รูปโปรไฟล์ -->
                             <div class="profile-pic-div">
                                 <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo">
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
                                 <?php } else { ?>
                                     <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                                 <?php } ?>
+                                <input type="file" id="file" name="tourist_img" accept="image/*" disabled>
+                                <label for="file" id="upload_Btn" style="visibility: hidden;">เลือกรูปภาพ</label>
                             </div>
 
-                        </div>
-                    </div>
-                    <div class="col py-5" style="margin-right: 18%;padding-left: 22px;">
-                        <div class="row">
-
-                            <!-- ปุ่มแก้ไขข้อมูลส่วนตัว -->
-                            <button class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px;" data-toggle="modal" data-target="#exampleModal">
-                                <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
-                            </button>
-
-                        </div>
-                        <div class="row">
-
-                            <!-- ชื่อ-นามสกุล -->
-                            <h3><?php echo $arr_tus[0]->tus_firstname; ?> <?php echo $arr_tus[0]->tus_lastname; ?></h3>
-
-                        </div>
-                        <div class="row">
-
-                            <!-- คะแนนสูงสุดของฉัน -->
-                            <h3>คะแนนสูงสุดของฉัน</h3>
-                            <h1 style="display:inline; color: #239d58; padding: 0px 10px;"><?php echo $arr_tus[0]->tus_cur_score; ?></h1>
-                            <h3 style="display:inline;">แต้ม</h3>
-
-                        </div>
-                        <div class="row" style="border: 2px solid; padding: 10px 24px;">
-
-                            <!-- อีกกี่แต้มถึงจะอัพ -->
-                            <p style="margin-left: auto; margin-right: auto;font-size: 22px;padding-top: 12px;">
-                                <?php
-                                $score = 0;
-                                if ($arr_tus[0]->tus_cur_score < 25) {
-                                    $score += 25 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
-                                    $score += 50 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
-                                    $score += 75 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม ";
-                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "Dropcarbon Hero";
-                                }else {
-                                    echo ".";
-                                } ?>
-                            </p>
-                            <p style="margin-left: auto; margin-right: auto;font-size: 22px;">
-                                <?php
-                                $score = 0;
-                                if ($arr_tus[0]->tus_cur_score < 25) {
-                                    $score += 25 - $arr_tus[0]->tus_cur_score;
-                                    echo "เพื่อปลดล็อค ระดับ Silver";
-                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
-                                    $score += 50 - $arr_tus[0]->tus_cur_score;
-                                    echo "เพื่อปลดล็อค ระดับ Gold";
-                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
-                                    $score += 75 - $arr_tus[0]->tus_cur_score;
-                                    echo "เพื่อปลดล็อค ระดับ Platinum";
-                                } else if ( $arr_tus[0]->tus_cur_score < 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "เพื่อปลดล็อค ระดับ Dropcarbon Hero";
-                                } else if ( $arr_tus[0]->tus_cur_score >= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "Dropcarbon Hero";
-                                } else {
-                                    echo ".";
-                                } ?>
-                            </p>
+                            <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
 
                         </div>
                     </div>
-                    <div class="col py-5" style="margin-left: auto; margin-right: auto;">
+                    <div class="col-6" style="padding-left: 22px;">
+                        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
+                            <div class="row">
+                                <!-- หัวข้อ -->
+                                <h2 style="margin-left: auto; margin-right: auto; padding-bottom: 30px;">ข้อมูลส่วนตัว</h2>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
+                                    <label for="prefix" class="label">คำนำหน้า</label><br>
+                                    <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
+                                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
+
+                                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4 mb-3">
+                                    <label for="tus_firstname">ชื่อ</label>
+                                    <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
+                                </div>
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_lastname">นามสกุล</label>
+                                    <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
+                                </div>
+                            </div>
+                            <!-- ชื่อจริง-นามสกุล -->
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
+                                    <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' value="<?php echo $arr_tus[0]->tus_tel; ?>" required>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_birthdate" style="color:black">วันเกิด</label>
+                                    <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required>
+                                </div>
+                            </div>
+                            <!-- เบอร์ วันเกิด -->
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_email" style="color:black">อีเมล</label>
+                                    <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
+                                </div>
+                                <!-- อีเมล -->
+
+                                <div class="col" style="margin-left: 16px;">
+                                    <button class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px; " data-toggle="modal" data-target="#exampleModal">
+                                        <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
+                                    </button>
+                                    <!-- ปุ่มแก้ไขข้อมูล -->
+
+                                    <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; display: none;">บันทึก</button>
+                                    <!-- ปุ่มบันทึก -->
+
+                                    <a class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; display: none;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
+                                    <!-- ปุ่มยกเลิก -->
+                                </div>
+                                <!-- ปุ่ม -->
+
+                            </div>
+                        </form>
+                        <!-- form -->
+                    </div>
+                    <div class="col" style="margin-left: auto; margin-right: auto; margin-top: 75px;">
                         <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
                         <p style="text-align: center;font-size: 22px;">
                             <?php
@@ -153,7 +149,7 @@
                                 echo "สิทธิพิเศษของคุณในระดับ Gold";
                             } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
                                 echo "สิทธิพิเศษของคุณในระดับ Platinum";
-                            }else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
+                            } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
                                 echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero";
                             } else {
                                 echo ".";
@@ -169,8 +165,32 @@
                                 echo "ส่วนลดการใช้คะแนน 9%";
                             } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
                                 echo "ส่วนลดการใช้คะแนน 11%";
-                            }else if ($arr_tus[0]->tus_cur_score >= 100) {
+                            } else if ($arr_tus[0]->tus_cur_score >= 100) {
                                 echo "ส่วนลดการใช้คะแนน 13%";
+                            } else {
+                                echo ".";
+                            } ?>
+                        </p>
+
+                        <!-- อีกกี่แต้มถึงจะอัพ -->
+                        <p style="text-align: center; font-size: 16px;">
+                            <?php
+                            $score = 0;
+                            if ($arr_tus[0]->tus_cur_score < 25) {
+                                $score += 25 - $arr_tus[0]->tus_cur_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Silver";
+                            } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
+                                $score += 50 - $arr_tus[0]->tus_cur_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Gold";
+                            } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
+                                $score += 75 - $arr_tus[0]->tus_cur_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Platinum";
+                            } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
+                                $score += 100 - $arr_tus[0]->tus_cur_score;
+                                echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Dropcarbon Hero";
+                            } else if ($arr_tus[0]->tus_cur_score >= 100) {
+                                $score += 100 - $arr_tus[0]->tus_cur_score;
+                                echo "Dropcarbon Hero";
                             } else {
                                 echo ".";
                             } ?>
@@ -182,30 +202,30 @@
 
         <section>
             <div class="header-break">
-                    รางวัลของฉัน
+                รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
-            <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
+                <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
                 <?php for ($i = 0; $i < count($tou_pro); $i++) { ?>
-            <div class="container">
-                <div class="card">
-                    <div class="row">
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                    <div class="container">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                                </div>
+                                <div class="col-7">
+                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                                </div>
+                                <div class="col" style="margin: 100px 30px;">
+                                    <button type="submit" class="btn btn-success" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-7">
-                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                        </div>
-                        <div class="col" style="margin: 100px 30px;">
-                        <button type="submit"class="btn btn-success" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
                     </div>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-            <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
+                <?php } ?>
+                <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
 
@@ -226,8 +246,8 @@
                                 <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
                                 <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
                                 <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
-                                
-                            <!-- </div>
+
+        <!-- </div>
                         </div>
                     </div>
                     <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
@@ -368,8 +388,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="use_btn" data-dismiss="modal">ยืนยัน</button>
-                <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
-                    data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
     </div>
@@ -419,55 +438,55 @@
         }
     });
 
-/*
- * confirm_use
- * confirm use reward
- * @input tou_id
- * @output modal comfirm use reward
- * @author Thanisorn thumsawanit 62160088
- * @Create Date 2565-01-04
- */
-function confirm_use_reward(tou_id) {
-    $('#use').text();
-    $('#modal_use').modal();
+    /*
+     * confirm_use
+     * confirm use reward
+     * @input tou_id
+     * @output modal comfirm use reward
+     * @author Thanisorn thumsawanit 62160088
+     * @Create Date 2565-01-04
+     */
+    function confirm_use_reward(tou_id) {
+        $('#use').text();
+        $('#modal_use').modal();
 
-    // button
-    $('#use_btn').click(function() {
-        use_reward_ajax(tou_id)
-    });
-}
+        // button
+        $('#use_btn').click(function() {
+            use_reward_ajax(tou_id)
+        });
+    }
 
-/*
- * use_reward_ajax
- * use_reward
- * @input tou_id
- * @output use_reward
- * @author Thanisorn thumsawanit 62160088
- * @Create Date 2565-01-04
- */
-function use_reward_ajax(tou_id) {
-    console.log(tou_id);
-    $.ajax({
-        type: "POST",
-        data: {
-            tou_id: tou_id
-        },
-        url: '<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/use_reward_ajax/' ?>',
-        success: function() {
-            swal({
-                    title: "ใช้ของรางวัล",
-                    text: "คุณได้ทำการใช้ของรางวัลเสร็จสิ้น",
-                    type: "success"
-                },
-                function() {
-                    location.reload();
-                })
+    /*
+     * use_reward_ajax
+     * use_reward
+     * @input tou_id
+     * @output use_reward
+     * @author Thanisorn thumsawanit 62160088
+     * @Create Date 2565-01-04
+     */
+    function use_reward_ajax(tou_id) {
+        console.log(tou_id);
+        $.ajax({
+            type: "POST",
+            data: {
+                tou_id: tou_id
+            },
+            url: '<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/use_reward_ajax/' ?>',
+            success: function() {
+                swal({
+                        title: "ใช้ของรางวัล",
+                        text: "คุณได้ทำการใช้ของรางวัลเสร็จสิ้น",
+                        type: "success"
+                    },
+                    function() {
+                        location.reload();
+                    })
 
-        },
-        error: function() {
-            alert('ajax error working');
-        }
-    });
+            },
+            error: function() {
+                alert('ajax error working');
+            }
+        });
 
-}
+    }
 </script>
