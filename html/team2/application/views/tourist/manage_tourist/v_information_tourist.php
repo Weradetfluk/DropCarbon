@@ -64,7 +64,7 @@
                                     <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                                 <?php } ?>
                                 <input type="file" id="file" name="tourist_img" accept="image/*" disabled>
-                                <label for="file" id="upload_Btn" style="visibility: hidden;">เลือกรูปภาพ</label>
+                                <label for="file" id="upload_btn" style="visibility: hidden;">เลือกรูปภาพ</label>
                             </div>
 
                             <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
@@ -80,7 +80,7 @@
                             <div class="row">
                                 <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
                                     <label for="prefix" class="label">คำนำหน้า</label><br>
-                                    <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
+                                    <select class="form-control mt-1" name="tus_pre_id" id="visible" style="margin-top: -15px !important; " required disabled disabled>
                                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
 
                                             <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
@@ -90,11 +90,11 @@
                                 </div>
                                 <div class="form-group col-md-4 mb-3">
                                     <label for="tus_firstname">ชื่อ</label>
-                                    <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
+                                    <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' id="visible" value='<?php echo $arr_tus[0]->tus_firstname; ?>' required disabled>
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="tus_lastname">นามสกุล</label>
-                                    <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
+                                    <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' id="visible" value='<?php echo $arr_tus[0]->tus_lastname; ?>' required disabled>
                                 </div>
                             </div>
                             <!-- ชื่อจริง-นามสกุล -->
@@ -102,12 +102,12 @@
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
-                                    <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' value="<?php echo $arr_tus[0]->tus_tel; ?>" required>
+                                    <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' id="visible" value="<?php echo $arr_tus[0]->tus_tel; ?>" required disabled>
                                 </div>
 
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="tus_birthdate" style="color:black">วันเกิด</label>
-                                    <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required>
+                                    <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' id="visible" value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required disabled>
                                 </div>
                             </div>
                             <!-- เบอร์ วันเกิด -->
@@ -115,12 +115,12 @@
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="tus_email" style="color:black">อีเมล</label>
-                                    <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
+                                    <input type="text" class="form-control" placeholder="E-mail" name='tus_email' id="visible" value="<?php echo $arr_tus[0]->tus_email; ?>" required disabled>
                                 </div>
                                 <!-- อีเมล -->
 
                                 <div class="col" style="margin-left: 16px;">
-                                    <button class="btn btn-warning" style="border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px; " data-toggle="modal" data-target="#exampleModal">
+                                    <button type="button" class="btn btn-warning" id="edit_information" style="border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px;" onclick="undisabled_text()">
                                         <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
                                     </button>
                                     <!-- ปุ่มแก้ไขข้อมูล -->
@@ -128,7 +128,7 @@
                                     <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; display: none;">บันทึก</button>
                                     <!-- ปุ่มบันทึก -->
 
-                                    <a class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; display: none;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
+                                    <button type="button" class="btn btn-secondary" id="cancel" style="color: white; background-color: #777777; font-size: 18px; display: none;" onclick="disabled_text()">ยกเลิก</button>
                                     <!-- ปุ่มยกเลิก -->
                                 </div>
                                 <!-- ปุ่ม -->
@@ -301,81 +301,6 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="container py-5" style="background-color: white; border-radius: 25px;  padding-right: 1.5%; padding-left: 1.5%; margin-top: 5%;">
-
-        <h1 class="h1" style="text-align: center; padding-bottom: 1%;" class="font-w-500">แก้ไขข้อมูลส่วนตัว</h1>
-        <!-- แก้ไขข้อมูลส่วนตัว -->
-
-        <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
-            <div class="profile-pic-div">
-                <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
-                <?php } else { ?>
-                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
-                <?php } ?>
-                <input type="file" id="file" name="tourist_img" accept="image/*">
-                <label for="file" id="upload_Btn">เลือกรูปภาพ</label>
-            </div><br>
-            <!-- profile pictuce -->
-
-            <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
-
-            <b style="font-size: 30px; text-align: center; padding-bottom: 5%; ">โปรดกรอกข้อมูลของคุณ</b>
-            <br><br>
-            <div class="row">
-                <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
-                    <label for="prefix" class="label">คำนำหน้า</label><br>
-                    <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
-                        <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
-
-                            <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
-
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 mb-3">
-                    <label for="tus_firstname">ชื่อ</label>
-                    <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="tus_lastname">นามสกุล</label>
-                    <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
-                </div>
-            </div>
-            <!-- ชื่อจริง-นามสกุล -->
-
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
-                    <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' value="<?php echo $arr_tus[0]->tus_tel; ?>" required>
-                </div>
-
-                <div class="form-group col-md-6 mb-3">
-                    <label for="tus_birthdate" style="color:black">วันเกิด</label>
-                    <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required>
-                </div>
-            </div>
-            <!-- เบอร์ วันเกิด -->
-
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="tus_email" style="color:black">อีเมล</label>
-                    <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
-                </div><br>
-            </div>
-            <!-- อีเมล -->
-
-            <a class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
-            <!-- ปุ่มยกเลิก -->
-            <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
-            <!-- ปุ่มบันทึก -->
-        </form>
-        <!-- form -->
-    </div>
-</div>
-
 <!-- modal use reward  -->
 <div class="modal" tabindex="-1" role="dialog" id="modal_use">
     <div class="modal-dialog" role="document">
@@ -396,19 +321,23 @@
 
 <script>
     /*
+     * update picture realtime
+     * @input -
+     * @output -
      * @author Naaka punparich 62160082
+     * @Create Date 2565-01-04
      */
     const imgDiv = document.querySelector('.profile-pic-div');
     const img = document.querySelector('#photo');
     const file = document.querySelector('#file');
-    const upload_Btn = document.querySelector('#upload_Btn');
+    const upload_btn = document.querySelector('#upload_btn');
 
     imgDiv.addEventListener('mouseenter', function() {
-        upload_Btn.style.display = "block";
+        upload_btn.style.display = "block";
     });
 
     imgDiv.addEventListener('mouseleave', function() {
-        upload_Btn.style.display = "none";
+        upload_btn.style.display = "none";
     });
 
     file.addEventListener('change', function() {
@@ -488,5 +417,40 @@
             }
         });
 
+    }
+</script>
+
+<script>
+    /*
+     * undisabled_text
+     * @input -
+     * @output -
+     * @author Naaka punparich 62160082
+     * @Create Date 2565-01-04
+     */
+    function undisabled_text() {
+        // change css
+        document.getElementById('upload_btn').style.cssText = 'visibility: visible;';
+        document.getElementById('edit_information').style.cssText = 'border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px; display: none;';
+        document.getElementById('confirm_btn').style.cssText = 'margin-right: 10px; color: white; font-size: 18px;';
+        document.getElementById('cancel').style.cssText = 'color: white; background-color: #777777; font-size: 18px;';
+
+        // change js
+        document.getElementById("visible").disabled = false;
+        $("input[type=file]").prop("disabled", false);
+        $("input[id=visible]").prop("disabled", false);
+    }
+
+    function disabled_text() {
+        // change css
+        document.getElementById('upload_btn').style.cssText = 'visibility: hidden;';
+        document.getElementById('edit_information').style.cssText = 'border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px;';
+        document.getElementById('confirm_btn').style.cssText = 'margin-right: 10px; color: white; font-size: 18px; display: none;';
+        document.getElementById('cancel').style.cssText = 'color: white; background-color: #777777; font-size: 18px; display: none;';
+
+        // change js
+        document.getElementById("visible").disabled = true;
+        $("input[type=file]").prop("disabled", true);
+        $("input[id=visible]").prop("disabled", true);
     }
 </script>
