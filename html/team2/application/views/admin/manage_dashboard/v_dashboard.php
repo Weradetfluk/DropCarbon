@@ -1069,7 +1069,6 @@
             }
         });
 
-
         Highcharts.chart('chart_promotion_use', {
             chart: {
                 type: 'column',
@@ -1077,28 +1076,14 @@
                     fontFamily: 'Prompt',
                 },
             },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.1,
+                    borderWidth: 0
+                }
+            },
             title: {
                 text: 'จำนวนการใช้งานโปรโมชันของนักท่องเที่ยวในแต่ละวัน'
-            },
-            subtitle: {
-                // text: 'Source: WorldClimate.com'
-            },
-            xAxis: {
-                categories: [
-                    '03/12/64',
-                    '04/12/64',
-                    '05/12/64',
-                    '06/12/64',
-                    '07/12/64',
-                    '08/12/64',
-                    '09/12/64',
-                    '10/12/64',
-                    '11/12/64',
-                    '12/12/64',
-                    '13/12/64',
-                    '14/12/64'
-                ],
-                crosshair: true
             },
             yAxis: {
                 min: 0,
@@ -1106,27 +1091,124 @@
                     text: 'จำนวน (ครั้ง)'
                 }
             },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y} ครั้ง</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
+            xAxis: {
+                // if you specify categories here xAxis will have these labels for every drilldown
+                // instead you should specify name for each data point
+                //	categories: ['Animals', 'Plants', 'People'],
+                type: 'category',
+                crosshair: true
             },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.1,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'โปรโมชันของผู้ดูแลระบบ',
-                data: [49, 71, 106, 129, 144, 176, 135, 148, 216, 194, 95, 54]
 
-            }, {
+            legend: {
+                enabled: true
+            },
+
+            series: [{
                 name: 'โปรโมชันของผู้ประกอบการ',
-                data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
-            }]
+                data: [{
+                        name: '03/12/64',
+                        y: 49,
+                        drilldown: 'adm_pro1'
+                    },
+                    {
+                        name: '04/12/64',
+                        y: 71,
+                        drilldown: 'adm_pro2'
+                    },
+                    {
+                        name: '05/12/64',
+                        y: 106,
+                        drilldown: 'adm_pro3'
+                    },
+                ]
+            }, {
+                name: 'โปรโมชันของผู้ดูแลระบบ',
+                data: [{
+                        name: '03/12/64',
+                        y: 83,
+                        drilldown: 'ent_pro1'
+                    },
+                    {
+                        name: '04/12/64',
+                        y: 48,
+                        drilldown: 'ent_pro2'
+                    },
+                    {
+                        name: '05/12/64',
+                        y: 54,
+                        drilldown: 'ent_pro3'
+                    },
+                ]
+            }],
+
+            drilldown: {
+                series: [{
+                        name: 'การใช้งาน',
+                        id: 'adm_pro1',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                    {
+                        name: 'การใช้งาน',
+                        id: 'adm_pro2',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                    {
+                        name: 'การใช้งาน',
+                        id: 'adm_pro3',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                    {
+                        name: 'การใช้งาน',
+                        id: 'ent_pro1',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                    {
+                        name: 'การใช้งาน',
+                        id: 'ent_pro2',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                    {
+                        name: 'การใช้งาน',
+                        id: 'ent_pro3',
+                        data: [{
+                                name: 'ลดราคา 10%',
+                                y: 3,
+                            },
+                            ['ลดราคา 20%', 2],
+                            ['ลดราคา 50%', 4]
+                        ]
+                    },
+                ]
+            }
         });
         </script>
