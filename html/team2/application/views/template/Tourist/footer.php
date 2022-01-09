@@ -21,13 +21,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p><a href="#">เข้าสู่ระบบ</a></p>
-                            <p><a href="#">สถานที่ท่องเที่ยว</a></p>
-                            <p><a href="#">กิจกรรม</a></p>
+                            <p><a href="<?php echo base_url() . 'Landing_page/Select_login' ?>">เข้าสู่ระบบ</a></p>
+                            <p><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_company_list' ?>">สถานที่ท่องเที่ยว</a></p>
+                            <p><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_list' ?>">กิจกรรม</a></p>
                         </div>
                         <div class="col-md-6">
-                            <p><a href="#">ผู้ประกอบการ</a></p>
-                            <p><a href="#">ผู้ดูแลระบบ</a></p>
+                            <p><a href="<?php echo site_url() . 'Entrepreneur/Auth/Login_entrepreneur'; ?>">ผู้ประกอบการ</a></p>
+                            <p><a href="<?php echo site_url() . 'Admin/Auth/Login_admin'; ?>">ผู้ดูแลระบบ</a></p>
                         </div>
                     </div>
                 </div>
