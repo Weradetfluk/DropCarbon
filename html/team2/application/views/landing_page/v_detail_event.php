@@ -123,12 +123,18 @@
 
                     <!-- รายละเอียดที่อยู่ -->
                     <div class="col">
-                        <h3>ที่อยู่</h3>
-                        <hr>
-                        <ul>
-                            <li class="li-padding"><?php echo $event->eve_location ?></li>
-                            <li class="li-padding"><?php echo $event->com_tel ?></li>
-                        </ul>
+                        <!-- เบอร์โทรศัพท์ -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
+                            เบอร์โทรศัพท์</h4>
+                        <p style="font-size: 18px; text-indent: 50px;"><?php echo $event->com_tel; ?></p>
+
+                        <!-- รายละเอียดที่อยู่กิจกรรม -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                style="width:34px;"> รายละเอียดที่อยู่</h4>
+                        <p style="font-size: 18px; text-indent:50px;">
+                            <?php echo  $event->eve_location . " จังหวัด." . $event->prv_name_th . " อำเภอ." . $event->dis_name_th . " ตำบล." . $event->par_name_th . " รหัสไปรษณีย์ " . $event->par_code ?>
+                        </p>
+                        <br>
                     </div>
 
                     <!-- แผนที่ -->
@@ -161,13 +167,13 @@ var from_projection = new OpenLayers.Projection("EPSG:4326"); // Transform from 
 var to_projection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 var position = new OpenLayers.LonLat(long, lat).transform(from_projection,
     to_projection
-    ); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 map = new OpenLayers.Map("Map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 var map_nik = new OpenLayers.Layer.OSM();
 map.addLayer(map_nik);
 var markers = new OpenLayers.Layer.Markers(
     "Markers"
-    ); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 map.addLayer(markers);
 markers.addMarker(new OpenLayers.Marker(position));
 map.setCenter(position, zoom);

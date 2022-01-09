@@ -460,14 +460,19 @@ function read_more() {
 
                 <div class="row">
 
-                    <!-- รายละเอียดที่อยู่ -->
-                    <div class="col-lg">
-                        <h3>ที่อยู่</h3>
-                        <hr>
-                        <ul>
-                            <li class="li-padding"><?php echo $company->com_location ?></li>
-                            <li class="li-padding"><?php echo $company->com_tel ?></li>
-                        </ul>
+                    <div class="col">
+                        <!-- เบอร์โทรศัพท์ -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
+                            เบอร์โทรศัพท์</h4>
+                        <p style="font-size: 18px; text-indent: 50px;"><?php echo $company->com_tel; ?></p>
+
+                        <!-- รายละเอียดที่อยู่กิจกรรม -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                style="width:34px;"> รายละเอียดที่อยู่</h4>
+                        <p style="font-size: 18px; text-indent:50px;">
+                            <?php echo  $company->com_location . " จังหวัด." . $company->prv_name_th . " อำเภอ." . $company->dis_name_th . " ตำบล." . $company->par_name_th . " รหัสไปรษณีย์ " . $company->par_code ?>
+                        </p>
+                        <br>
                     </div>
 
                     <!-- แผนที่ -->

@@ -28,6 +28,7 @@
     padding-top: 15px;
 
 }
+
 .modal {
     position: absolute;
     float: left;
@@ -35,6 +36,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 .read-more-style:hover {
     background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 20%));
     font-weight: bold;
@@ -49,12 +51,14 @@
 <div class="container py-5">
     <ul class="breadcrumb">
         <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
+        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a>
+        </li>
         <?php } ?>
         <?php if (!$this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
         <?php } ?>
-        <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_promotions_list' ?>" style="color: green;">รายการโปรโมชันและรางวัล</a></li>
+        <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_promotions_list' ?>"
+                style="color: green;">รายการโปรโมชันและรางวัล</a></li>
         <li class="colorchange"><?php echo $promotions[0]->pro_name ?></li>
     </ul>
     <div class="row text-left py-3">
@@ -69,66 +73,76 @@
         //https://www.informatics.buu.ac.th/team2/
         ?>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1" nonce="YLQSWYS9">
+        <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1"
+            nonce="YLQSWYS9">
 
         </script>
-        <div class="fb-share-button" data-href=" <?php $share_link_promotion ?> " data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">แชร์</a></div>
+        <div class="fb-share-button" data-href=" <?php $share_link_promotion ?> " data-layout="button"
+            data-size="small"><a target="_blank"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
+                class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
     <!-- แชร์ -->
 
-            <h3>
+    <h3>
         <?php
-        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
-            <?php echo $promotions[0]->pro_point ?> แต้ม <br>
-            <button type="submit"class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
+        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2) { ?>
+        <?php echo $promotions[0]->pro_point ?> แต้ม <br>
+        <button type="submit" class="btn btn-custom"
+            onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
         <?php } ?>
-            </h3>
-            <h3>
+    </h3>
+    <h3>
         <?php
-        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
-            <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
+        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point) { ?>
+        <button type="submit" class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
         <?php } ?>
-            </h3>
+    </h3>
     <!-- reward_Modal -->
     <div id="reward_Modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+        <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-        <div class="modal-header">
-            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Modal Header</h4> -->
-        </div>
-        <div class="modal-body">
-        <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
-        </div>
-        <div class="modal-footer">
-            <button id="get_reward" class="btn btn-custom" data-dismiss="modal" >ใช่</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
-        </div>
-        </div>
+                </div>
+                <div class="modal-body">
+                    <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="get_reward" class="btn btn-custom" data-dismiss="modal">ใช่</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
+                </div>
+            </div>
 
-    </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-12">
             <div class="container">
                 <?php if (count($promotions) == 1) { ?>
-                <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>" style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
+                <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>"
+                    style="object-fit: cover; width: 500px; height: 300px;" id="img_01">
                 <?php } elseif (count($promotions) == 2) { ?>
                 <div class="row">
                     <div class="col">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>" style="object-fit: cover;  height: 300px;" id="img_01">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[0]->pro_img_path; ?>"
+                            style="object-fit: cover;  height: 300px;" id="img_01">
                     </div>
                     <div class="col">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[1]->pro_img_path; ?>" style="object-fit: cover; height: 300px;" id="img_02">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[1]->pro_img_path; ?>"
+                            style="object-fit: cover; height: 300px;" id="img_02">
                     </div>
                 </div>
                 <?php } else { ?>
                 <div class="responsive">
                     <?php for ($i = 0; $i < count($promotions); $i++) { ?>
                     <div class="">
-                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>" style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
+                        <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>"
+                            style="object-fit: cover; width: 100%; height: 300px;" id=" <?php 'img' . $i  ?> ">
                     </div>
                     <?php } ?>
                 </div>
@@ -189,7 +203,8 @@
         <div class="col">
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">description</span>  -->
-                <img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>" style="width:40px;margin-top:-5px;">
+                <img src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>"
+                    style="width:40px;margin-top:-5px;">
                 รายละเอียด
             </h3>
             <hr width="100%" size="10" color="#cccccc">
@@ -226,7 +241,8 @@
         <div class="col">
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">category</span>  -->
-                <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>" style="width:40px;margin-top:-5px;">
+                <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
+                    style="width:40px;margin-top:-5px;">
                 ประเภท
             </h3>
             <hr width="100%" size="10" color="#cccccc">
@@ -241,7 +257,8 @@
         <div class="col">
             <h3>
                 <!-- <span class="material-icons" style="font-size: 30px;">place</span> -->
-                <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" style="width:40px;margin-top:-5px;">
+                <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
+                    style="width:40px;margin-top:-5px;">
                 ตำแหน่งสถานที่
             </h3>
             <div class="card" style="padding-left: 2%; transform: unset;">
@@ -252,22 +269,20 @@
                 <!-- ชื่อสถานที่ -->
                 <hr>
                 <div class="row">
+
                     <div class="col">
-                        <h3>ที่อยู่</h3>
-                        <hr>
-                        <div class="row py-3">
+                        <!-- เบอร์โทรศัพท์ -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
+                            เบอร์โทรศัพท์</h4>
+                        <p style="font-size: 18px; text-indent: 50px;"><?php echo $promotions[0]->com_tel; ?></p>
 
-                            <div class="col">
-                                <p> &#9679 <?php echo $promotions[0]->com_location ?></p>
-                            </div>
-                        </div>
-                        <div class="row py-3">
-
-                            <div class="col">
-                                <p> &#9679 <?php echo $promotions[0]->com_tel ?></p>
-                            </div>
-                        </div>
+                        <!-- รายละเอียดที่อยู่กิจกรรม -->
+                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                style="width:34px;"> รายละเอียดที่อยู่</h4>
+                        <p style="font-size: 18px; text-indent:50px;"><?php echo  $promotions[0]->com_location ?></p>
+                        <br>
                     </div>
+
                     <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
                         <div class="table-responsive">
                             <table class="table ">
@@ -292,13 +307,16 @@
 </div>
 
 <script>
-var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-var long = '<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+var lat =
+'<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+var long =
+'<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
 var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
 var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
 var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-var position = new OpenLayers.LonLat(long, lat).transform(fromProjection, toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
+toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
 map = new OpenLayers.Map("map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
@@ -306,7 +324,8 @@ map = new OpenLayers.Map("map"); //ใช้ Function OpenLayer.Map() ในก�
 var mapnik = new OpenLayers.Layer.OSM();
 map.addLayer(mapnik);
 
-var markers = new OpenLayers.Layer.Markers("Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+var markers = new OpenLayers.Layer.Markers(
+"Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
 map.addLayer(markers);
 markers.addMarker(new OpenLayers.Marker(position));
@@ -351,7 +370,7 @@ $(document).ready(function() {
     });
 });
 
-function exchange_reward(pro_id,pro_point,tus_score){
+function exchange_reward(pro_id, pro_point, tus_score) {
     $.ajax({
         type: "POST",
         data: {
@@ -363,14 +382,14 @@ function exchange_reward(pro_id,pro_point,tus_score){
         success: function(data) {
             if (data == 1) {
                 swal({
-                    title: "แลกของรางวัล",
-                    text: "แลกของรางวัลเสร็จสิ้น",
-                    type: "success"
-                },
-                function() {
-                //  location.reload();
-                    get_point_and_show();
-                })
+                        title: "แลกของรางวัล",
+                        text: "แลกของรางวัลเสร็จสิ้น",
+                        type: "success"
+                    },
+                    function() {
+                        //  location.reload();
+                        get_point_and_show();
+                    })
             } else {
                 swal({
                     title: "แลกของรางวัล",
@@ -385,19 +404,19 @@ function exchange_reward(pro_id,pro_point,tus_score){
     });
 }
 /*
-   * confirm_exchange_reward
-   * 
-   * @input pro_id,pro_point,tus_score
-   * @output modal confirm_exchange_reward
-   * @author Thanisorn Thumsawanit 62160088
-   * @Create Date 2564-12-25
-   * @Update -
-   */
-  function confirm_exchange_reward(pro_id,pro_point,tus_score) {
+ * confirm_exchange_reward
+ * 
+ * @input pro_id,pro_point,tus_score
+ * @output modal confirm_exchange_reward
+ * @author Thanisorn Thumsawanit 62160088
+ * @Create Date 2564-12-25
+ * @Update -
+ */
+function confirm_exchange_reward(pro_id, pro_point, tus_score) {
     $('#confirm').text();
     $('#reward_Modal').modal();
     $('#get_reward').click(function() {
-        exchange_reward(pro_id,pro_point,tus_score)
+        exchange_reward(pro_id, pro_point, tus_score)
     });
-    }
+}
 </script>
