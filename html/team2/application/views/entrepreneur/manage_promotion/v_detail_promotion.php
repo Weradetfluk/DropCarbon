@@ -152,6 +152,11 @@
                                 </li>
                                 <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_promotion[0]->com_tel; ?>
                                 </p><br>
+                                <!-- รายละเอียดที่อยู่กิจกรรม -->
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                    style="width:34px;"> รายละเอียดที่อยู่</h4>
+                                <p style="font-size: 18px; text-indent:50px;"><?php echo  $arr_promotion[0]->com_location." จังหวัด.".$arr_promotion[0]->prv_name_th." อำเภอ.".$arr_promotion[0]->dis_name_th." ตำบล.".$arr_promotion[0]->par_name_th." รหัสไปรษณีย์ ".$arr_promotion[0]->par_code ?></p>
+                                <br>
                                 <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
                                         width="40px"> ตำแหน่งสถานที่</h4>
                                 <table class="table table-responsive">

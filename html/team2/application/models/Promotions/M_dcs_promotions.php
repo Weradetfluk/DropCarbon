@@ -468,6 +468,12 @@ class M_dcs_promotions extends Da_dcs_promotions
         LEFT JOIN {$this->db_name}.dcs_pro_category AS cat ON pro.pro_cat_id = cat.pro_cat_id
         LEFT JOIN {$this->db_name}.dcs_entrepreneur AS ent ON com.com_ent_id = ent.ent_id
         LEFT JOIN {$this->db_name}.dcs_promotion_reject AS rej ON pro.pro_id = rej.prr_pro_id
+        LEFT JOIN {$this->db_name}.dcs_parish AS par
+        ON com.com_par_id = par.par_id
+        LEFT JOIN {$this->db_name}.dcs_district AS dis
+        ON par.par_dis_id = dis.dis_id
+        LEFT JOIN {$this->db_name}.dcs_province AS prv
+        ON dis.dis_prv_id = prv.prv_id
         WHERE pro.pro_id=?";
         $query = $this->db->query($sql, array($this->pro_id));
         return $query;
