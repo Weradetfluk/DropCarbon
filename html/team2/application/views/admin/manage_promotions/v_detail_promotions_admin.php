@@ -149,8 +149,15 @@
                                 <li>
                                     <h4>เบอร์โทรศัพท์: </h4>
                                 </li>
-                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_pro[0]->com_tel; ?></p><br>
-                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" width="40px"> ตำแหน่งสถานที่</h4>
+                                <p style="font-size: 18px; text-indent: 50px;"><?php echo $arr_pro[0]->com_tel; ?></p>
+                                </p><br>
+                                <!-- รายละเอียดที่อยู่กิจกรรม -->
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>" 
+                                    style="width:34px;"> รายละเอียดที่อยู่</h4>
+                                <p style="font-size: 18px; text-indent:50px;"><?php echo  $arr_pro[0]->com_location . " จังหวัด." . $arr_pro[0]->prv_name_th . " อำเภอ." . $arr_pro[0]->dis_name_th . " ตำบล." . $arr_pro[0]->par_name_th . " รหัสไปรษณีย์ " . $arr_pro[0]->par_code ?></p>
+                                <br>
+                                <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>" 
+                                    width="40px"> ตำแหน่งสถานที่</h4>
                                 <table class="table table-responsive">
                                     <tr>
                                         <td style="border: 2px solid black;">
