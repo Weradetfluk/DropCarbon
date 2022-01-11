@@ -12,7 +12,7 @@
 <div class="content">
     <div class="row">
         <div class="col">
-            <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">โปรโมชันที่ยังไม่สิ้นสุด</h3>
+            <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">โปรโมชันที่ถูกระงับ</h3>
         </div>
         <div class="col">
             <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" onclick="location.href='<?php echo base_url() . 'Admin/Manage_promotions/Admin_add_promotions/show_add_promotion' ?>'">เพิ่มโปรโมชัน</button>
@@ -27,7 +27,7 @@
                         <div class="nav-tabs-wrapper">
                             <ul class="nav nav-tabs" data-tabs="tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href=" <?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promotions_list' ?> ">
+                                    <a class="nav-link" href=" <?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promotions_list' ?> ">
                                         <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                                     </a>
                                 </li>
@@ -37,7 +37,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
+                                    <a class="nav-link active" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
                                         <h5 class="h5-card-header">ถูกระงับ</h5>
                                     </a>
                                 </li>
@@ -133,7 +133,7 @@
         function load_data(page, query = '') {
             console.log(query);
             $.ajax({
-                url: '<?php echo base_url('Admin/Manage_promotions/Admin_list_promotions/show_data_ajax/'); ?>' + 2,
+                url: '<?php echo base_url('Admin/Manage_promotions/Admin_list_promotions/show_data_ajax/'); ?>' + 5,
                 method: "POST",
                 data: {
                     page: page,

@@ -36,11 +36,11 @@
                                         <h5 class="h5-card-header">สิ้นสุดแล้ว</h5>
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_reject' ?>">
-                                        <h5 class="h5-card-header">สิ้นสุดแล้ว</h5>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
+                                        <h5 class="h5-card-header">ถูกระงับ</h5>
                                     </a>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -123,6 +123,7 @@
          html_code += '<th class="th-custom res-hide">ลำดับ</th>';
          html_code += '<th class="th-custom ">ชื่อโปรโมชัน</th>';
          html_code += '<th class="th-custom ">ชื่อสถานที่</th>';
+         html_code += '<th class="th-custom ">สถานะโปรโมชัน</th>';
          html_code += '<th class="th-custom ">ดำเนินการ</th>';
          html_code += '</tr>';
          html_code += '</thead>';
@@ -132,18 +133,19 @@
 
              html_code += '<tr>';
              html_code += '<td class ="res-hide">' + (index+1) + '</td>';
-             html_code += '<td>' + (row['pro_name']) + '</td>';
-             html_code += '<td>' + (row['com_name']) + '</td>';
+             html_code += '<td style="text-align: left;">' + (row['pro_name']) + '</td>';
+             html_code += '<td style="text-align: left;">' + (row['com_name']) + '</td>';
+             html_code += '<td style="color: red;">สิ้นสุด</td>';
              html_code += '<td style="text-align: center;">';
              html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row['pro_id'])  + '">'         
              html_code +='<i class="material-icons">'
              html_code +='search'
              html_code +='</i>';
              html_code += '</a>'
-             html_code += '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' ?>'  + (row['pro_id'])  + '">'         
-             html_code +='<i class="material-icons">'
-             html_code +='edit'
-             html_code +='</i>';
+            //  html_code += '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' ?>'  + (row['pro_id'])  + '">'         
+            //  html_code +='<i class="material-icons">'
+            //  html_code +='edit'
+            //  html_code +='</i>';
              html_code += '</a>'
              html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row['pro_name']) +'\',\'' + (row['pro_id']) +  '\')" >'         
              html_code +='<i class="material-icons">'
