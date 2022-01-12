@@ -44,7 +44,7 @@ class M_dcs_checkin extends Da_dcs_checkin
                 LEFT JOIN dcs_eve_image ON dcs_eve_image.eve_img_eve_id = dcs_event.eve_id
                 WHERE checkin.che_tus_id = '$tus_id' 
                 $and
-                GROUP BY dcs_event.eve_id";
+                GROUP BY checkin.che_id";
         $query = $this->db->query($sql, array($this->che_id));
         return $query;
     }

@@ -60,66 +60,7 @@ class Admin_list_promotions extends DCS_controller
     {
         $this->output_admin('admin/manage_promotions/manage_add_promo_admin/v_list_promo_cancle_admin', null, null);
     }
-    /*
-    * show_data_consider_ajax
-    * get all data entrepreneur not approve and show table
-    * @input
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-09-14
-    * @Update Date -
-    */
-    public function config_pagination($page, $all_count, $limit)
-    {
-        $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
-        $previous_link = ''; // ตัวแปร
-        $next_link = ''; //ตัวแปร
-        $page_link = ''; // ตัวแปร
-        for ($count = 1; $count <= $total_links; $count++) {
-            $page_array[] = $count;
-        }
-        for ($count = 0; $count < count($page_array); $count++) {
-            if ($page == $page_array[$count]) {
-                $page_link .= '
-          <li class="page-item active">
-            <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
-          </li>
-          ';
-                $previous_id = $page_array[$count] - 1;
-                if ($previous_id > 0) {
-                    $previous_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $previous_id . '">Previous</a></li>';
-                } else {
-                    $previous_link = '
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">Previous</a>
-                  </li>
-                  ';
-                }
-                $next_id = $page_array[$count] + 1;
-                if ($next_id >= $total_links) {
-                    $next_link = '
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                      ';
-                } else {
-                    $next_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $next_id . '">Next</a></li>';
-                }
-            } else {
-                if ($page_array[$count] == '...') {
-                    $page_link .= '
-            <li class="page-item disabled">
-                <a class="page-link" href="#">...</a>
-            </li>
-            ';
-                } else {
-                    $page_link .= '
-                      <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>';
-                }
-            }
-        } //for
-        return $previous_link . $page_link . $next_link;
-    }
+
     /*
          * show_data_consider_ajax
          * get all data entrepreneur not approve and show table

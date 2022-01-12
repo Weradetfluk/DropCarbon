@@ -107,73 +107,14 @@ class Admin_approval_company extends DCS_controller
   */
   public function get_com_reject_by_id_ajax()
   {
-      $this->load->model('Company/M_dcs_com_reject', 'mdrc');
-      $com_id = $this->input->post('com_id');
-      $data['arr_data'] = $this->mdrc->get_data_rejected_by_id_com($com_id)->result();
+    $this->load->model('Company/M_dcs_com_reject', 'mdrc');
+    $com_id = $this->input->post('com_id');
+    $data['arr_data'] = $this->mdrc->get_data_rejected_by_id_com($com_id)->result();
 
-      echo json_encode($data['arr_data']);
+    echo json_encode($data['arr_data']);
   }
 
-  /*
-  * config_pagination
-  * config_pagination codeigniter "1 2 3 4..." page
-  * @input page, all_count, limit
-  * @output -
-  * @author Kasama Donwong 62160074
-  * @Create Date 2564-08-08
-  * @Update Date 2564-09-18
-  */
-  public function config_pagination($page, $all_count, $limit)
-  {
-    $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
-    $previous_link = ''; // ตัวแปร
-    $next_link = ''; //ตัวแปร
-    $page_link = ''; // ตัวแปร
-    for ($count = 1; $count <= $total_links; $count++) {
-      $page_array[] = $count;
-    }
-    for ($count = 0; $count < count($page_array); $count++) {
-      if ($page == $page_array[$count]) {
-        $page_link .= '
-          <li class="page-item active">
-            <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
-          </li>
-          ';
-        $previous_id = $page_array[$count] - 1;
-        if ($previous_id > 0) {
-          $previous_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $previous_id . '">Previous</a></li>';
-        } else {
-          $previous_link = '
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">Previous</a>
-                  </li>
-                  ';
-        }
-        $next_id = $page_array[$count] + 1;
-        if ($next_id > $total_links) {
-          $next_link = '
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                      ';
-        } else {
-          $next_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $next_id . '">Next</a></li>';
-        }
-      } else {
-        if ($page_array[$count] == '...') {
-          $page_link .= '
-            <li class="page-item disabled">
-                <a class="page-link" href="#">...</a>
-            </li>
-            ';
-        } else {
-          $page_link .= '
-                      <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>';
-        }
-      }
-    } //for
-    return $previous_link . $page_link . $next_link;
-  }
+
 
   /*
   * approval_company
@@ -332,7 +273,7 @@ class Admin_approval_company extends DCS_controller
               '<a class="btn btn-info" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
                   <span class="material-icons">search</span>
                </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email . '\')">
                                 <i class="material-icons">
                                   done
                                 </i>
@@ -404,7 +345,7 @@ class Admin_approval_company extends DCS_controller
               '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_company/Admin_approval_company/show_detail_company/' . $row->com_id . '">
                  <span class="material-icons">search</span>
                </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email.'\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->com_id . '\',\'' . $row->com_name . '\',\'' . $row->ent_email . '\')">
                               <i class="material-icons">
                                 done
                               </i>

@@ -20,66 +20,7 @@ class Admin_approval_promotions extends DCS_controller
     $this->load->library('pagination');
     $this->load->model('Promotions/M_dcs_promotions', 'mdcp');
   }
-  /*
-    * show_data_consider_ajax
-    * get all data entrepreneur not approve and show table
-    * @input
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-09-14
-    * @Update Date -
-    */
-  public function config_pagination($page, $all_count, $limit)
-  {
-    $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
-    $previous_link = ''; // ตัวแปร
-    $next_link = ''; //ตัวแปร
-    $page_link = ''; // ตัวแปร
-    for ($count = 1; $count <= $total_links; $count++) {
-      $page_array[] = $count;
-    }
-    for ($count = 0; $count < count($page_array); $count++) {
-      if ($page == $page_array[$count]) {
-        $page_link .= '
-          <li class="page-item active">
-            <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
-          </li>
-          ';
-        $previous_id = $page_array[$count] - 1;
-        if ($previous_id > 0) {
-          $previous_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $previous_id . '">Previous</a></li>';
-        } else {
-          $previous_link = '
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">Previous</a>
-                  </li>
-                  ';
-        }
-        $next_id = $page_array[$count] + 1;
-        if ($next_id >= $total_links) {
-          $next_link = '
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                      ';
-        } else {
-          $next_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $next_id . '">Next</a></li>';
-        }
-      } else {
-        if ($page_array[$count] == '...') {
-          $page_link .= '
-            <li class="page-item disabled">
-                <a class="page-link" href="#">...</a>
-            </li>
-            ';
-        } else {
-          $page_link .= '
-                      <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>';
-        }
-      }
-    } //for
-    return $previous_link . $page_link . $next_link;
-  }
+
   /*
         * show_data_consider
         * get all data promotions not approve and show table
@@ -121,7 +62,7 @@ class Admin_approval_promotions extends DCS_controller
     $this->output_admin('admin/manage_promotions/v_list_promo_reject', null, 'admin/manage_promotions/v_data_card_promo');
   }
 
-   /*
+  /*
         * show_data_pro_not_over
         * get all data entrepreneur approve  and show table
         * @input
@@ -143,10 +84,10 @@ class Admin_approval_promotions extends DCS_controller
         * @Create Date 2564-10-04
         * @Update Date -
         */
-        public function show_data_pro_over()
-        {
-          $this->output_admin('admin/manage_promotions/v_list_promo_over', null, 'admin/manage_promotions/v_data_card_promo');
-        }
+  public function show_data_pro_over()
+  {
+    $this->output_admin('admin/manage_promotions/v_list_promo_over', null, 'admin/manage_promotions/v_data_card_promo');
+  }
   /*
         * get_entrepreneur_by_id_ajax
         * get all data entrepreneur by id
@@ -312,7 +253,7 @@ class Admin_approval_promotions extends DCS_controller
             $output .= '<td style="text-align: center;">' .
               '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
               <span class="material-icons">search</span>
-              </a>' ;
+              </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -367,7 +308,7 @@ class Admin_approval_promotions extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
-            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
             <span class="material-icons">search</span>
             </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
@@ -383,14 +324,14 @@ class Admin_approval_promotions extends DCS_controller
                       </button>';
           } else if ($number_status == 2) {
             $output .= '<td style="text-align: center;">' .
-            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
             <span class="material-icons">search</span>ไ
           </a>' .
               '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_add_score_eve(\'' . $row->pro_id . '\',\'' . $row->pro_name .  '\',\'' . $row->ent_email . '\')">
                     <i class="material-icons">
                       add
                     </i>
-                </button>' ;
+                </button>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -432,16 +373,16 @@ class Admin_approval_promotions extends DCS_controller
     * @Create Date 2021-10-02
     * @Update Date -
     */
-    public function show_detail_pro($pro_id)
-    {
-  
-      $this->load->model('Promotions/M_dcs_promotions', 'mdpe');
-        $this->mdpe->pro_id = $pro_id;
-        $data["arr_pro"] = $this->mdpe->get_by_detail()->result();
-      $this->output_admin('admin/manage_promotions/v_detail_promotions_admin', $data , null);
-    }
+  public function show_detail_pro($pro_id)
+  {
 
-     /*
+    $this->load->model('Promotions/M_dcs_promotions', 'mdpe');
+    $this->mdpe->pro_id = $pro_id;
+    $data["arr_pro"] = $this->mdpe->get_by_detail()->result();
+    $this->output_admin('admin/manage_promotions/v_detail_promotions_admin', $data, null);
+  }
+
+  /*
     * get_evenr_data_no_score_ajax
     * show detail
     * @input number_status

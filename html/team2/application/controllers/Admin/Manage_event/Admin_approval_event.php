@@ -20,67 +20,7 @@ class Admin_approval_event extends DCS_controller
     $this->load->library('pagination');
     $this->load->model('Event/M_dcs_event', 'mdce');
   }
-  /*
-    * show_data_consider_ajax
-    * get all data entrepreneur not approve and show table
-    * @input
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-09-14
-    * @Update Date -
-    */
-  public function config_pagination($page, $all_count, $limit)
-  {
-    $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
-    $previous_link = ''; // ตัวแปร
-    $next_link = ''; //ตัวแปร
-    $page_link = ''; // ตัวแปร
 
-    for ($count = 1; $count <= $total_links; $count++) {
-      $page_array[] = $count;
-    }
-    for ($count = 0; $count < count($page_array); $count++) {
-      if ($page == $page_array[$count]) {
-        $page_link .= '
-          <li class="page-item active">
-            <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
-          </li>
-          ';
-        $previous_id = $page_array[$count] - 1;
-        if ($previous_id > 0) {
-          $previous_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $previous_id . '">Previous</a></li>';
-        } else {
-          $previous_link = '
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">Previous</a>
-                  </li>
-                  ';
-        }
-        $next_id = $page_array[$count] + 1;
-        if ($next_id >= $total_links) {
-          $next_link = '
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                      ';
-        } else {
-          $next_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $next_id . '">Next</a></li>';
-        }
-      } else {
-        if ($page_array[$count] == '...') {
-          $page_link .= '
-            <li class="page-item disabled">
-                <a class="page-link" href="#">...</a>
-            </li>
-            ';
-        } else {
-          $page_link .= '
-                      <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>';
-        }
-      }
-    } //for
-    return $previous_link . $page_link . $next_link;
-  }
   /*
         * show_data_consider
         * get all data entrepreneur not approve and show table
@@ -178,14 +118,13 @@ class Admin_approval_event extends DCS_controller
         */
   public function approval_event()
   {
-     //update point
+    //update point
     $this->mdce->eve_id = $this->input->post('eve_id');
     $this->mdce->eve_point = $this->input->post('eve_point');
     $this->mdce->update_point();
     //update status
     $status_number = 2;
     $this->mdce->update_status($status_number);
-    
   }
   /*
         * reject_entrepreneur
@@ -305,7 +244,7 @@ class Admin_approval_event extends DCS_controller
             $output .= '<td style="text-align: center;">' .
               '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                 <span class="material-icons">search</span>
-              </a>' ;
+              </a>';
           } else if ($number_status == 3) {
             $output .= '</td>' .
               '<td style="text-align: center;">
@@ -430,7 +369,7 @@ class Admin_approval_event extends DCS_controller
   }
 
 
-    //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
+  //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
   /*
     * get_evenr_data_no_score_ajax
     * show detail
@@ -524,7 +463,8 @@ class Admin_approval_event extends DCS_controller
     * @Create Date 2021-11-06
     * @Update Date -
     */
-  public function get_data_category(){
+  public function get_data_category()
+  {
     $this->load->model('Event/M_dcs_eve_category', 'meca');
     $data['data_eve_cat'] = $this->meca->get_all()->result();
     echo json_encode($data);

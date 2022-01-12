@@ -9,7 +9,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class DCS_controller extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -26,7 +25,6 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
-
         $this->load->model('Company/M_dcs_company', 'mdc');
 
         $this->load->model('Event/M_dcs_event', 'mde');
@@ -62,12 +60,11 @@ class DCS_controller extends CI_Controller
 
     public function output_admin($view, $data = null, $view_card = null)
     {
-
         $this->load->view('template/Admin/header_admin'); // path
         $this->load->view('template/Admin/topbar_admin');
         $this->load->view('template/Admin/javascript_admin');
 
-        if ($view_card != NULL) {
+        if ($view_card != null) {
             $this->load->view($view_card);
         }
         $this->load->view($view, $data);
@@ -157,7 +154,7 @@ class DCS_controller extends CI_Controller
     * output_login_entrepreneur
     * show form login entrepreneur
     * @input data, view
-    * @output - 
+    * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
     * @Update Date -
@@ -241,11 +238,74 @@ class DCS_controller extends CI_Controller
     * @Create Date 2564-12-25
     * @Update Date -
     */
-    function get_data_pros()
+    public function get_data_pros()
     {
         $this->load->model('DCS_model', 'dcmd');
         $data['arr_data_pros'] = $this->dcmd->get_data_pros();
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+
+
+
+    /*
+       * show_data_consider_ajax
+       * get all data entrepreneur not approve and show table
+       * @input
+       * @output -
+       * @author Weradet Nopsombun 62160110
+       * @Create Date 2564-09-14
+       * @Update Date -
+       */
+    public function config_pagination($page, $all_count, $limit)
+    {
+        $total_links = ceil($all_count / $limit);  // จำนวนแถว หารด้วย จำนวน limit ในทีนี้คือ 5 (ปัดเศษขึ้น)
+        $previous_link = ''; // ตัวแปร
+        $next_link = ''; //ตัวแปร
+        $page_link = ''; // ตัวแปร
+        for ($count = 1; $count <= $total_links; $count++) {
+            $page_array[] = $count;
+        }
+        for ($count = 0; $count < count($page_array); $count++) {
+            if ($page == $page_array[$count]) {
+                $page_link .= '
+            <li class="page-item active">
+              <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
+            </li>
+            ';
+                $previous_id = $page_array[$count] - 1;
+                if ($previous_id > 0) {
+                    $previous_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $previous_id . '">Previous</a></li>';
+                } else {
+                    $previous_link = '
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">ก่อนหน้า</a>
+                    </li>
+                    ';
+                }
+                $next_id = $page_array[$count] + 1;
+                if ($next_id >= $total_links) {
+                    $next_link = '
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#">ถัดไป</a>
+                      </li>
+                        ';
+                } else {
+                    $next_link = '<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $next_id . '">Next</a></li>';
+                }
+            } else {
+                if ($page_array[$count] == '...') {
+                    $page_link .= '
+              <li class="page-item disabled">
+                  <a class="page-link" href="#">...</a>
+              </li>
+              ';
+                } else {
+                    $page_link .= '
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>';
+                }
+            }
+        } //for
+        return $previous_link . $page_link . $next_link;
     }
 }
