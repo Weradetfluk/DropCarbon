@@ -140,9 +140,9 @@
                                                         </button>
                                                         <?php
                                                             if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
-                                                                echo '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                echo '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                                                 onclick="confirm_cancel(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')">
-                                                                <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                                                <span class="material-icons" style="font-size: 1.3rem;">lock_open</span>
                                                                 </button>';                                                               
                                                             }else if($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
                                                                 echo '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -172,9 +172,9 @@
                                                             onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
                                                             <span class="material-icons">search</span>
                                                         </button>
-                                                        <button class="btn btn-success" style="font-size:10px; padding:12px;"
+                                                        <button class="btn btn-danger" style="font-size:10px; padding:12px;"
                                                             onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                            <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                                                            <span class="material-icons" style="font-size: 1.3rem;">lock</span>
                                                         </button>
                                                     </td>
                                                 <?php } ?>
@@ -315,9 +315,9 @@
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <?php if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){?>
-                                                        <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                        <button class="btn btn-success" style="font-size:10px; padding:12px;"
                                                             onclick="confirm_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                            <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                                            <span class="material-icons" style="font-size: 1.3rem;">lock_open</span>
                                                         </button>
                                                     <?php }?>
                                                 </td>
@@ -518,9 +518,9 @@
                                                                     onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
                                                                     <span class="material-icons">search</span>
                                                                 </button>
-                                                                <button class="btn btn-success" style="font-size:10px; padding:12px;"
+                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
                                                                     onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
-                                                                    <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                                                                    <span class="material-icons" style="font-size: 1.3rem;">lock</span>
                                                                 </button>
                                                             </td>
 
