@@ -1,4 +1,3 @@
-/
 <!-- 
 /*
 * v_list_promotion
@@ -56,31 +55,97 @@
                     <?php } ?>
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <button type="submit" class="btn btn-custom">ค้นหา</button>
             </div>
         </div>
     </form>
 
-    
-    <div class="row py-3">
-        <?php for ($i = 0; $i < count($promotions); $i++) { ?>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
-            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
-                <div class="card card-custom" style="height: 30rem;" id="card">
-                    <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
-                    <!-- รูปที่ 1 -->
-                    <div class="card-body" align="center">
-                        <h3 class="text-decoration-none text-dark"><?php echo $promotions[$i]->pro_name ?></h3>
-                        <p class="card-tex text-dark">
-                            <?php echo iconv_substr($promotions[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
-                        </p>              
-                        <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $promotions[$i]->pro_point ?> คะแนน</p>
-                    </div>
-                    <!-- ชื่อของรูปที่ 1 -->
-                </div>
-            </a>
-        </div>
-        <?php } ?>
+    <?php if($this->session->has_userdata("tourist_id")){?>
+    <div class="row">
+        <div class="col"> 
+            <input type="checkbox" id="exchangeable" onclick="check_pro_exchangeable(1)"> แสดงของรางวัลที่เเลกได้เท่านั้น
+        </div> 
+    </div>
+    <?php }?>
+    <div class="row py-3" id="loop_promotions">
+        <input type="hidden" id="tus_score" value="<?php echo $this->session->userdata("tus_score")?>">
     </div>
 </div>
+<script>
+    var tus_score = $("#tus_score").val();
+    $(document).ready(function() {
+        let session_tus_id = '<?php echo $this->session->userdata("tourist_id")?>';
+        check_pro_exchangeable(session_tus_id);
+    });
+    /* check_pro_exchangeable
+    * check promotion exchangeable
+    * @input -
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2565-01-14
+    * @Update -
+    */
+    function check_pro_exchangeable(session_tus_id){
+        let arr_promotion = <?php echo json_encode($promotions)?>;
+        let html = '';
+        if(session_tus_id){
+            let check_box = document.getElementById('exchangeable').checked;
+            if(check_box){
+                for(let i = 0; i < arr_promotion.length; i++){
+                    if(arr_promotion[i].pro_point <= tus_score && arr_promotion[i].pro_cat_id == 2){
+                        console.log(1.1);
+                        html += "<div class='col-12 col-sm-6 col-md-4 col-lg-4 py-2'>";
+                        html += "<a href='<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/'?>" + arr_promotion[i].pro_id + "'>";
+                        html += "<div class='card card-custom' style='height: 30rem;' id='card'>";
+                        html += "<img src='<?php echo base_url() . 'image_promotions/'?>" + arr_promotion[i].pro_img_path + "' class='card-img-top' style='height: 300px; object-fit: cover;' alt='...'>";
+                        html += "<div class='card-body' align='center'>";
+                        html += "<h3 class='text-decoration-none text-dark'>" + arr_promotion[i].pro_name + "</h3>";
+                        html += "<p class='card-tex text-dark'>";
+                        html += "</p>";
+                        html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                    }
+                }
+            }else{
+                for(let i = 0; i < arr_promotion.length; i++){
+                    html += "<div class='col-12 col-sm-6 col-md-4 col-lg-4 py-2'>";
+                    html += "<a href='<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/'?>" + arr_promotion[i].pro_id + "'>";
+                    html += "<div class='card card-custom' style='height: 30rem;' id='card'>";
+                    html += "<img src='<?php echo base_url() . 'image_promotions/'?>" + arr_promotion[i].pro_img_path + "' class='card-img-top' style='height: 300px; object-fit: cover;' alt='...'>";
+                    html += "<div class='card-body' align='center'>";
+                    html += "<h3 class='text-decoration-none text-dark'>" + arr_promotion[i].pro_name + "</h3>";
+                    html += "<p class='card-tex text-dark'>";
+                    html += "</p>";
+                    if(arr_promotion[i].pro_cat_id == 2){
+                        html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
+                    }
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                }
+            }
+        }else{
+            for(let i = 0; i < arr_promotion.length; i++){
+                html += "<div class='col-12 col-sm-6 col-md-4 col-lg-4 py-2'>";
+                html += "<a href='<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/'?>" + arr_promotion[i].pro_id + "'>";
+                html += "<div class='card card-custom' style='height: 30rem;' id='card'>";
+                html += "<img src='<?php echo base_url() . 'image_promotions/'?>" + arr_promotion[i].pro_img_path + "' class='card-img-top' style='height: 300px; object-fit: cover;' alt='...'>";
+                html += "<div class='card-body' align='center'>";
+                html += "<h3 class='text-decoration-none text-dark'>" + arr_promotion[i].pro_name + "</h3>";
+                html += "<p class='card-tex text-dark'>";
+                html += "</p>";
+                if(arr_promotion[i].pro_cat_id == 2){
+                    html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
+                }
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+            }
+        }
+        
+        $('#loop_promotions').html(html);
+    }
+</script>

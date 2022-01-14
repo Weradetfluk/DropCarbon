@@ -207,6 +207,7 @@ class Landing_page extends DCS_controller
             $this->mtoup->insert();
             $this->mtou->tus_score = $this->input->post('tus_score') - $this->input->post('pro_point'); 
             $this->mtou->update_score_exchange_reward();
+            $this->session->set_userdata("exchange_promotion", "exchange_success");
             echo 1;
         }else{
             echo 2;

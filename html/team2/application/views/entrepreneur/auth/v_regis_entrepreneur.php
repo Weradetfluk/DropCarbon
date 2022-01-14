@@ -387,14 +387,6 @@
         }
     }
 
-    /*
-     * check_id_card_number
-     * @input 
-     * @output -
-     * @author Priyarat Bumrungkit 62160156
-     * @Create Date 2564-09-20
-     * @Update -
-     */
     $(document).ready(function() {
         $('#ent_id_card').on('keyup', function() {
             if ($.trim($(this).val()) != '' && $(this).val().length == 13) {

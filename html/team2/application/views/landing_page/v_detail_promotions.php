@@ -211,19 +211,23 @@
 
     <div class="row py-3">
         <div class="col">
-        <h3>
-        <?php
-        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
-            <?php echo $promotions[0]->pro_point ?> คะแนน <br>
-            <button type="submit"class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
-        <?php } ?>
-            </h3>
             <h3>
-        <?php
-        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
-            <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
-        <?php } ?>
-    </h3>
+                <?php if($this->session->has_userdata("tourist_id")){?>
+                    <?php
+                    if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
+                        <p><?php echo $promotions[0]->pro_point ?> คะแนน </p>
+                        <button class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
+                    <?php } ?>
+                        </h3>
+                        <h3>
+                    <?php
+                    if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
+                        <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
+                    <?php } ?>
+                <?php } ?>
+            </h3>
+        </div>
+    </div>
 
     <div class="row py-3">
         <div class="col">
@@ -251,7 +255,7 @@
                         <!-- รายละเอียดที่อยู่กิจกรรม -->
                         <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
                                 style="width:34px;"> รายละเอียดที่อยู่</h4>
-                        <p style="font-size: 18px; text-indent:50px;"><?php echo  $promotions[0]->com_location ?></p>
+                        <p style="font-size: 18px; text-indent:50px;"><?php echo  $promotions[0]->com_location." จังหวัด.".$promotions[0]->prv_name_th." อำเภอ.".$promotions[0]->dis_name_th." ตำบล.".$promotions[0]->par_name_th." รหัสไปรษณีย์ ".$promotions[0]->par_code ?></p>
                         <br>
                     </div>
 
@@ -277,26 +281,25 @@
 
     </div>
 </div>
-<!-- reward_modal -->
-<div id="reward_modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <!-- modal exchange promotion  -->
+    <div class="modal" tabindex="-1" role="dialog" id="reward_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
+                </div>
+                <div class="modal-body">
+                    <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" id="get_reward" data-dismiss="modal">ยืนยัน</button>
+                    <button type="button" class="btn btn-default" style="color: white; background-color: #777777;"
+                        data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-        <div class="modal-header">
-            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4> -->
-        </div>
-        <div class="modal-body">
-        <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
-        </div>
-        <div class="modal-footer">
-            <button id="get_reward" class="btn btn-custom" data-dismiss="modal" >ใช่</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
-        </div>
-        </div>
-    </div>
-    </div>
 <script>
     function read_more() {
         $("#more_dot").hide();
@@ -327,8 +330,6 @@ markers.addMarker(new OpenLayers.Marker(position));
 map.setCenter(position, zoom);
 
 $(document).ready(function() {
-
-
     $('.responsive').slick({
 
         infinite: false,
@@ -364,6 +365,14 @@ $(document).ready(function() {
     });
 });
 
+/* exchange_reward
+ * exchange reward
+ * @input pro_id,pro_point,tus_score
+ * @output -
+ * @author Thanisorn Thumsawanit 62160088
+ * @Create Date 2564-12-25
+ * @Update -
+ */
 function exchange_reward(pro_id, pro_point, tus_score) {
     $.ajax({
         type: "POST",
@@ -372,19 +381,11 @@ function exchange_reward(pro_id, pro_point, tus_score) {
             pro_point: pro_point,
             tus_score: tus_score
         },
-        url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax/') ?>',
+        url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax') ?>',
         success: function(data) {
             if (data == 1) {
-                swal({
-                        title: "แลกของรางวัล",
-                        text: "แลกของรางวัลเสร็จสิ้น",
-                        type: "success"
-                    },
-                    function() {
-                        //  location.reload();
-                        get_point_and_show();
-                        window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
-                    })
+                get_point_and_show();
+                window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
             } else {
                 swal({
                     title: "แลกของรางวัล",
@@ -398,18 +399,19 @@ function exchange_reward(pro_id, pro_point, tus_score) {
         }
     });
 }
-/*
- * confirm_exchange_reward
- * 
- * @input pro_id,pro_point,tus_score
+
+/* confirm_exchange_reward
+ * confirm exchange reward
+ * @input pro_id,pro_point,tus_score, pro_name
  * @output modal confirm_exchange_reward
  * @author Thanisorn Thumsawanit 62160088
  * @Create Date 2564-12-25
  * @Update -
  */
-function confirm_exchange_reward(pro_id, pro_point, tus_score) {
-    $('#confirm').text();
-    $('#reward_Modal').modal();
+function confirm_exchange_reward(pro_id, pro_point, tus_score, pro_name) {
+    console.log(1);
+    $('#confirm').text(pro_name);
+    $('#reward_modal').modal();
     $('#get_reward').click(function() {
         exchange_reward(pro_id, pro_point, tus_score)
     });

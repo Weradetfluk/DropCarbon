@@ -214,53 +214,33 @@ a:hover {
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
             <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
-                <?php for ($i = 0; $i < count($tou_pro); $i++) { ?>
-            <div class="container">
-                <div class="card" style="width: 100%">
-                    <div class="row">
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                <?php if (count($tou_pro) > 3) { 
+                    $count_tou_pro = 3;
+                 }else{
+                    $count_tou_pro = count($tou_pro);
+                 } ?>
+                <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
+                    <div class="container">
+                        <div class="card" style="width: 100%">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                                </div>
+                                <div class="col-7">
+                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                                </div>
+                                <div class="col" style="margin: 100px 30px;">
+                                <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                            </div>
+                            </div>
                         </div>
-                        <div class="col-7">
-                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                        </div>
-                        <div class="col" style="margin: 100px 30px;">
-                        <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
                     </div>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
+                <?php } ?>
+                
             <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
-
-        <!-- <section>
-            <div class="header-break">
-                รางวัลของฉัน
-            </div>
-            <?php if (empty($rw_pro[0]->ret_rew_id)) { ?>
-                <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
-            <?php } else { ?>
-                <div class="container">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col">
-                                <img src="<?php echo base_url() . 'image_reward/' . $rw_pro[0]->rew_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
-                            </div>
-                            <div class="col">
-                                <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
-                                <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
-                                <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
-
-        <!-- </div>
-                        </div>
-                    </div>
-                    <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
-                </div>
-            <?php } ?> -->
-        <!-- </section> -->
 
         <section>
             <div class="header-break">
@@ -270,33 +250,33 @@ a:hover {
             <div class="container">
                 <div class="row">
                     <?php for ($i = 0; $i < count($checkin); $i++) { ?>
-                    <?php if (count($checkin) < 3) { ?>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <a href="#">
-                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                        <?php if (count($checkin) < 3) { ?>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
                                 </a>
-                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100" id="card">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
-                                <div class="card-body" align="center">
-                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                    </a>
                                     <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div> -->
-                    <?php } ?>
+
+                        <!-- <div class="col-12 col-md-4 mb-4">
+                            <div class="card h-100" id="card">
+                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                                    <div class="card-body" align="center">
+                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                        <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> -->
+                        <?php } ?>
                     <?php } ?>
 
                 </div>
@@ -356,6 +336,11 @@ file.addEventListener('change', function() {
 });
 
 $(document).ready(function() {
+    let exchange_promotion = "<?php echo $this->session->userdata("exchange_promotion"); ?>";
+    if (exchange_promotion == "exchange_success") {
+        swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
+    }
     let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
     if (error_register_tourist == "edit_success") {
         swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");

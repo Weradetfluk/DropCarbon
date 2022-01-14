@@ -62,7 +62,7 @@
                 </div>
             </div>
             <?php } ?>
-            <?php } ?>
+            <?php } ?> 
         </section>
 <!-- modal use reward  -->
 <div class="modal" tabindex="-1" role="dialog" id="modal_use">

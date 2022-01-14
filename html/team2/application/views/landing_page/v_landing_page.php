@@ -278,7 +278,9 @@
                                 <!-- รายละเอียด -->
                                 <p class="card-text">
                                     <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
+                                    <?php if($arr_pro[$i]->pro_cat_id == 2){?>
                                     <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $arr_pro[$i]-> pro_point ?> คะแนน</p>
+                                    <?php }?>
                             </div>
                         </div>
                     </a>
