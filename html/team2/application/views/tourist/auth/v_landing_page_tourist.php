@@ -200,7 +200,7 @@
                         <!-- รายละเอียดโปรโมชัน -->
                         <p class="card-text">
                             <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
-
+                            <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $promotions[$i]->pro_point ?> คะแนน</p>
                     </div>
                 </div>
             </div>

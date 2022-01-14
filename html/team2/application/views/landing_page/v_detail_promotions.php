@@ -29,13 +29,13 @@
 
 }
 
-.modal {
+/* .modal {
     position: absolute;
     float: left;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .read-more-style:hover {
     background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 20%));
@@ -85,41 +85,6 @@
     </div>
     <!-- แชร์ -->
 
-    <h3>
-        <?php
-        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2) { ?>
-        <?php echo $promotions[0]->pro_point ?> แต้ม <br>
-        <button type="submit" class="btn btn-custom"
-            onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
-        <?php } ?>
-    </h3>
-    <h3>
-        <?php
-        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point) { ?>
-        <button type="submit" class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
-        <?php } ?>
-    </h3>
-    <!-- reward_Modal -->
-    <div id="reward_Modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4> -->
-                </div>
-                <div class="modal-body">
-                    <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button id="get_reward" class="btn btn-custom" data-dismiss="modal">ใช่</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <div class="row">
         <div class="col-12">
             <div class="container">
@@ -192,13 +157,6 @@
     }
     ?>
 
-    <script>
-    function read_more() {
-        $("#more_dot").hide();
-        $("#more_text").show(200);
-        $("#btn_read_more").hide();
-    }
-    </script>
     <div class="row py-3">
         <div class="col">
             <h3>
@@ -251,7 +209,21 @@
         </div>
     </div>
 
-
+    <div class="row py-3">
+        <div class="col">
+        <h3>
+        <?php
+        if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
+            <?php echo $promotions[0]->pro_point ?> คะแนน <br>
+            <button type="submit"class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>)">แลกของรางวัล</button>
+        <?php } ?>
+            </h3>
+            <h3>
+        <?php
+        if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
+            <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
+        <?php } ?>
+    </h3>
 
     <div class="row py-3">
         <div class="col">
@@ -305,12 +277,34 @@
 
     </div>
 </div>
+<!-- reward_modal -->
+<div id="reward_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4> -->
+        </div>
+        <div class="modal-body">
+        <p>คุณต้องการแลกของรางวัลนี้หรือไม่ <span id="confirm"></span> ?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="get_reward" class="btn btn-custom" data-dismiss="modal" >ใช่</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">ไม่</button>
+        </div>
+        </div>
+    </div>
+    </div>
 <script>
-var lat =
-'<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-var long =
-'<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+    function read_more() {
+        $("#more_dot").hide();
+        $("#more_text").show(200);
+        $("#btn_read_more").hide();
+    }
+var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+var long = '<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
 var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
 var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
@@ -389,6 +383,7 @@ function exchange_reward(pro_id, pro_point, tus_score) {
                     function() {
                         //  location.reload();
                         get_point_and_show();
+                        window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
                     })
             } else {
                 swal({

@@ -263,7 +263,7 @@
 
             <!-- แสดงโปรโมชันและรางวัล 4 อัน-->
             <?php for ($i = 0; $i < count($arr_pro); $i++) {  ?>
-                <div class="col-md-3">
+                <div class="col-md-3" align="center">
                     <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $arr_pro[$i]->pro_id; ?>">
                         <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
 
@@ -278,7 +278,7 @@
                                 <!-- รายละเอียด -->
                                 <p class="card-text">
                                     <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
-
+                                    <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $arr_pro[$i]-> pro_point ?> คะแนน</p>
                             </div>
                         </div>
                     </a>

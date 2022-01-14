@@ -395,7 +395,7 @@ class M_dcs_promotions extends Da_dcs_promotions
             $and .= " AND dcs_promotions.pro_cat_id = " . $post["pro_cat_id"] . "";
         }
 
-        $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
+        $sql = "SELECT dcs_promotions.pro_point,dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
         from dcs_promotions
         RIGHT JOIN dcs_pro_image
         ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
@@ -416,7 +416,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     * @Update 2564-10-26
     */
     public function get_promotions_landing_page(){
-        $sql = "SELECT dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
+        $sql = "SELECT dcs_promotions.pro_point,dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_pro_image.pro_img_path 
         from dcs_promotions
         RIGHT JOIN dcs_pro_image
         ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id

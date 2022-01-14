@@ -62,7 +62,7 @@
         </div>
     </form>
 
-
+    
     <div class="row py-3">
         <?php for ($i = 0; $i < count($promotions); $i++) { ?>
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 py-2">
@@ -74,7 +74,8 @@
                         <h3 class="text-decoration-none text-dark"><?php echo $promotions[$i]->pro_name ?></h3>
                         <p class="card-tex text-dark">
                             <?php echo iconv_substr($promotions[$i]->pro_description, 0, 60, "UTF-8") . "..."; ?>
-                        </p>
+                        </p>              
+                        <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $promotions[$i]->pro_point ?> คะแนน</p>
                     </div>
                     <!-- ชื่อของรูปที่ 1 -->
                 </div>

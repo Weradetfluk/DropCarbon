@@ -149,7 +149,6 @@ class Landing_page extends DCS_controller
         $number_status = 2;
         $data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
         $data['pro_cat'] = $this->mcat->get_all()->result();
-
         if (isset($_POST)) {
             $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
         } else {
