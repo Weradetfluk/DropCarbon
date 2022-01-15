@@ -25,21 +25,12 @@ class Register_tourist extends DCS_controller
     */
     public function show_regis_tourist()
     {
-        if ($this->session->userdata("tourist_id") == '') {
-            $this->session->unset_userdata("tus_img_path");
-            $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-            $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-            $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist');
-        } else {
-            $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-            $this->mtou->tus_id = $this->session->userdata("tourist_id");
-            $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-            $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
-            $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
-            $tus_img_tus_id = $this->mpic->tus_img_tus_id;
-            $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-            $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist_login');
-        }
+        date_default_timezone_set('Asia/Bangkok');
+        $data['year_now'] = date("Y");
+        $this->session->unset_userdata("tus_img_path");
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+        $data['arr_prefix'] = $this->mtou->get_all_prefix()->result();
+        $this->output_tourist('tourist/auth/v_regis_tourist', $data, 'template/Tourist/topbar_tourist');
     }
 
     /*
@@ -59,11 +50,12 @@ class Register_tourist extends DCS_controller
         $this->mtou->tus_firstname = $this->input->post('tus_firstname');
         $this->mtou->tus_lastname = $this->input->post('tus_lastname');
         $this->mtou->tus_tel = $this->input->post('tus_tel');
-        $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
         $this->mtou->tus_email = $this->input->post('tus_email');
         $this->mtou->tus_username = $this->input->post('tus_username');
         $this->mtou->tus_password = md5($this->input->post('tus_password'));
         $this->mtou->tus_status = 1;
+        $this->mtou->tus_birthdate = $this->input->post('tus_birth_year').'-'.$this->input->post('tus_birth_month').'-'.$this->input->post('tus_birth_date');
+        
 
         // Create file storage variables
         $file_name = array();

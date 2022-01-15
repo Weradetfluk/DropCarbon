@@ -11,9 +11,6 @@
 <!-- Form Register -->
 <div class="bg" style="padding-top: 3%; padding-bottom: 3%; background-image: url('<?php echo base_url() . 'assets/templete/picture' ?>/./cool-background.png');">
     <div class="container py-5" style="background-color: white; border-radius: 25px;  padding-right: 1.5%; padding-left: 1.5%;">
-
-        <?php if ($this->session->userdata("tourist_id") == '') { ?>
-
             <ul class="breadcrumb">
                 <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
                 <li><a href="<?php echo base_url() . 'Landing_page/Select_register'; ?>" style="color: green;">สมัครสมาชิก</a></li>
@@ -46,42 +43,78 @@
                         </select>
                     </div>
                     <div class="form-group col-md-4 mb-3">
-                        <label for="inputname">ชื่อ</label>
+                        <label for="tus_firstname">ชื่อ</label>
                         <input type="text" class="form-control mt-1" id="tus_firstname" name="tus_firstname" placeholder="ชื่อ" required>
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <label for="inputlastname">นามสกุล</label>
+                        <label for="tus_lastname">นามสกุล</label>
                         <input type="text" class="form-control mt-1" id="tus_lastname" name="tus_lastname" placeholder="นามสกุล" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label for="tell">เบอร์โทร</label>
+                        <label for="tus_tel">เบอร์โทร</label>
                         <input type="text" class="form-control mt-1" id="tus_tel" name="tus_tel" onblur="check_phone_number_ajax()" maxlength="10" minlength="10" placeholder="088-XXX-XXXX" required>
                         <span id="phonenumber_available" style="color: red;"></span>
                     </div>
 
                     <div class="form-group col-md-6 mb-3">
-                        <label for="idcard">วันเกิด</label>
-                        <input type="date" class="form-control mt-1" id="tus_birthdate" name="tus_birthdate" placeholder="วันเกิด" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">อีเมล</label>
+                        <label for="tus_email">อีเมล</label>
                         <input type="email" class="form-control mt-1" id="tus_email" name="tus_email" onblur="check_email_ajax()" placeholder="example@email.com" required>
                         <span id="emailav_ailable" style="color: red;"></span>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-md-2 mb2">
+                        <label for="tus_birth_date">วันเกิด</label>
+                        <select name="tus_birth_date" id="tus_birth_date" class="form-control mt-1">
+                            <!-- วันเกิด -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 mb3">
+                        <label for="tus_birth_month">เดือนเกิด</label>
+                        <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" onblur="check_date_by_month()">
+                            <?php 
+                            $arr_month = array(
+                                "0"=>"มกราคม",
+                                "1"=>"มกราคม",
+                                "2"=>"กุมภาพันธ์",
+                                "3"=>"มีนาคม",
+                                "4"=>"เมษายน",
+                                "5"=>"พฤษภาคม",
+                                "6"=>"มิถุนายน",
+                                "7"=>"กรกฎาคม",
+                                "8"=>"สิงหาคม",
+                                "9"=>"กันยายน",
+                                "10"=>"ตุลาคม",
+                                "11"=>"พฤศจิกายน",
+                                "12"=>"ธันวาคม"
+                                );
+                            echo '<option value="0">ดด</option>';
+                            for($i = 1; $i < 13; $i++){
+                                echo '<option value="'.$i.'">'.$arr_month[$i].'</option>';
+                            }?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 mb2">
+                        <label for="tus_birth_year">ปีเกิด</label>
+                        <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month()">
+                            <?php 
+                            echo '<option value="0">ปป</option>';
+                            for($i = $year_now-100; $i < $year_now; $i++){
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }?>
+                        </select>
+                    </div>
+                </div>
                 <br>
 
                 <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b>
                 <br><br>
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label for="username">ชื่อผู้ใช้</label>
+                        <label for="tus_username">ชื่อผู้ใช้</label>
                         <input type="text" class="form-control mt-1" id="tus_username" name="tus_username" minlength="4" onblur="check_username_ajax()" placeholder="ชื่อผู้ใช้" required>
                         <span id="usernameav_ailable" style="color: red;"></span>
                     </div>
@@ -89,7 +122,7 @@
 
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label for="password">รหัสผ่าน</label>
+                        <label for="tus_password">รหัสผ่าน</label>
                         <input type="password" class="form-control mt-1" id="pass" name="tus_password" minlength="8" placeholder="รหัสผ่าน" onkeyup="confirm_password()" required>
                     </div>
 
@@ -105,86 +138,6 @@
                 <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
 
             </form>
-
-        <?php } else { ?>
-
-            <ul class="breadcrumb">
-                <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
-                <li>แก้ไขข้อมูลส่วนตัว</li>
-            </ul>
-            <!-- path -->
-
-            <h1 class="h1" style="text-align: center; padding-top: 1%; padding-bottom: 1%;" class="font-w-500">แก้ไขข้อมูลส่วนตัว</h1>
-            <!-- แก้ไขข้อมูลส่วนตัว -->
-
-            <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
-                <div class="profile-pic-div">
-                    <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
-                    <?php } else { ?>
-                        <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
-                    <?php } ?>
-                    <input type="file" id="file" name="tourist_img" accept="image/*">
-                    <label for="file" id="upload_Btn">เลือกรูปภาพ</label>
-                </div><br>
-                <!-- profile pictuce -->
-
-                <input type="hidden" name="tus_id" value='<?php echo $arr_tus[0]->tus_id; ?>'>
-
-                <b style="font-size: 30px; text-align: center; padding-bottom: 5%; ">โปรดกรอกข้อมูลของคุณ</b>
-                <br><br>
-                <div class="row">
-                    <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
-                        <label for="prefix" class="label">คำนำหน้า</label><br>
-                        <select class="form-control mt-1" name="tus_pre_id" id="prefix" style="margin-top: -15px !important; " required>
-                            <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
-
-                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
-
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        <label for="tus_firstname">ชื่อ</label>
-                        <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' value='<?php echo $arr_tus[0]->tus_firstname; ?>' required>
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="tus_lastname">นามสกุล</label>
-                        <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' value='<?php echo $arr_tus[0]->tus_lastname; ?>' required>
-                    </div>
-                </div>
-                <!-- ชื่อจริง-นามสกุล -->
-
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
-                        <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' value="<?php echo $arr_tus[0]->tus_tel; ?>" required>
-                    </div>
-
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="tus_birthdate" style="color:black">วันเกิด</label>
-                        <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required>
-                    </div>
-                </div>
-                <!-- เบอร์ วันเกิด -->
-
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="tus_email" style="color:black">อีเมล</label>
-                        <input type="text" class="form-control" placeholder="E-mail" name='tus_email' value="<?php echo $arr_tus[0]->tus_email; ?>" required>
-                    </div><br>
-                </div>
-                <!-- อีเมล -->
-
-                <a id="cancel" class="btn btn-secondary" style="color: white; background-color: #777777; font-size: 18px; float: right;" href="<?php echo base_url() . 'Tourist/Manage_tourist/Tourist_manage/show_information_tourist' ?>">ยกเลิก</a>
-                <!-- ปุ่มยกเลิก -->
-                <button type="submit" id="confirm_btn" class="btn btn-success" style="margin-right: 10px; color: white; font-size: 18px; float: right;">บันทึก</button>
-                <!-- ปุ่มบันทึก -->
-            </form>
-            <!-- form -->
-
-        <?php } ?>
-
     </div>
 </div>
 <script>
@@ -205,6 +158,7 @@
             <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
         }
         check_btn_submit();
+        check_date_by_month();
     });
     var check_phone_number = 0;
     var check_email = 0;
@@ -329,7 +283,6 @@
     }
 
     /*
-     * 
      * check_phone_number_ajax
      * check duplicate phone number in database
      *@input tus_tel
@@ -362,6 +315,43 @@
             }
         });
 
+    }
+
+    /*
+     * check_date_by_month
+     * check birth date by birth month
+     * @input birth_month
+     * @output birth_date
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2565-01-15
+     * @Update - 
+     */
+    function check_date_by_month(){
+        let birth_month = $('#tus_birth_month').val();
+        let birth_year = $('#tus_birth_year').val();
+        let html_code = '';
+        let count_date;
+        if(birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12){
+            count_date = 31;
+        }else if(birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11){
+            count_date = 30;
+        }else{
+            let mod_4, mod_100, mod_400;
+            // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
+            mod_4 = birth_year % 4;
+            mod_100 = birth_year % 100;
+            mod_400 = birth_year % 400;
+            if(mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0){
+                count_date = 28;
+            }else{
+                count_date = 29;
+            }
+        }
+        html_code += '<option value="'+0+'">วว</option>';
+        for(let i = 1; i <= count_date; i++){
+            html_code += '<option value="'+i+'">'+ i +'</option>';
+        }
+        $('#tus_birth_date').html(html_code);
     }
 
     /*
