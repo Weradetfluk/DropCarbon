@@ -54,7 +54,7 @@ class Admin_add_promotions extends DCS_controller
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->load->model('Promotions/M_dcs_pro_image', 'mimg');
         $this->mpro->pro_name = $this->input->post('pro_name');
-        if ($this->input->post('pro_cat_id') == 2) {
+        if ($this->input->post('pro_cat_id') == 1) {
             $this->mpro->pro_point = 0;
         } else {
             $this->mpro->pro_point = $this->input->post('pro_point');

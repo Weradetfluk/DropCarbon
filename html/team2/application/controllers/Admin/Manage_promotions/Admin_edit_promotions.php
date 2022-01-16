@@ -56,7 +56,7 @@ class Admin_edit_promotions extends DCS_controller
         $this->mpro->pro_com_id = $this->input->post('pro_com_id');
         $this->mpro->pro_cat_id = $this->input->post('pro_cat_id');
         $this->mpro->pro_adm_id = $this->session->userdata("admin_id");
-        if ($this->input->post('pro_cat_id') == 2) {
+        if ($this->input->post('pro_cat_id') == 1) {
             $this->mpro->pro_point = 0;
         } else {
             $this->mpro->pro_point = $this->input->post('pro_point');

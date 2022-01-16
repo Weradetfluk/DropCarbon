@@ -122,7 +122,7 @@
 
                             <div class="row">
                                 <div class="col-lg-2">
-                                <label>ผู้แก้ไขกิจกรรม</label>
+                                    <label>ผู้แก้ไขกิจกรรม</label>
                                     <input type="text" id="admin_id" class="form-control" value="<?php echo $arr_admin ?>" disabled>
                                 </div>
                             </div>
@@ -310,7 +310,7 @@
             success: function(data) {
                 // console.log(data);
                 location.replace(
-                    "<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion" ?>"
+                    "<?php echo base_url() . "Admin/Manage_promotions/Admin_list_promotions/show_data_promotions_list" ?>"
                 )
             }
         })
@@ -347,11 +347,11 @@
     function check_category() {
         let pro_cat_id = $('#pro_cat_id').val();
         if (pro_cat_id == 1) {
-            $('#div-point').show();
-            $('#pro_point').prop('required', true);
-        } else {
             $('#div-point').hide();
             $('#pro_point').prop('required', false);
+        } else {
+            $('#div-point').show();
+            $('#pro_point').prop('required', true);
         }
     }
 </script>

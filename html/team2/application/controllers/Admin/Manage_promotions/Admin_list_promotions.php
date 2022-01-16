@@ -123,9 +123,9 @@ class Admin_list_promotions extends DCS_controller
                             <span class="material-icons">edit</span>
                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
-                            $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                            $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
-                                <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                <span class="material-icons" style="font-size: 1.6rem;">lock_open</span>
                                 </button>';
                         } elseif ($row->pro_end_date <= $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -139,9 +139,9 @@ class Admin_list_promotions extends DCS_controller
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
                              </a>' .
-                            '<button class="btn btn-success" style="font-size:10px; padding:12px;"
+                            '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
                             onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
-                            <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                            <span class="material-icons" style="font-size: 1.6rem;">lock</span>
                             </button>';
                     }
                     '</td></tr>';
@@ -195,9 +195,9 @@ class Admin_list_promotions extends DCS_controller
                             <span class="material-icons">edit</span>
                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
-                            $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                            $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
-                                <span class="material-icons" style="font-size: 1.6rem;">toggle_off</span>
+                                <span class="material-icons" style="font-size: 1.6rem;">lock_open</span>
                                 </button>';
                         } elseif ($row->pro_end_date <= $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
@@ -211,9 +211,9 @@ class Admin_list_promotions extends DCS_controller
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
                              </a>' .
-                            '<button class="btn btn-success" style="font-size:10px; padding:12px;"
+                            '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
                             onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
-                            <span class="material-icons" style="font-size: 1.6rem;">toggle_on</span>
+                            <span class="material-icons" style="font-size: 1.6rem;">lock</span>
                             </button>';
                     }
                     '</td></tr>';
