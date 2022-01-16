@@ -107,7 +107,7 @@
                 ลดคาร์บอนไดออกไซด์</h3>
             <hr width="100%" size="10" color="#cccccc">
             <p style="font-size: 18px; text-indent: 50px;">
-                <?php echo $event->eve_drop_carbon; ?> คาร์บอนไดออกไซด์</p>
+                ลดคาร์บอนไดออกไซด์ <?php echo $event->eve_drop_carbon; ?> กิโลกรัม/ปี</p>
         </div>
     </div>
 
