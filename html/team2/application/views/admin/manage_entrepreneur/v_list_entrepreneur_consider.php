@@ -119,7 +119,7 @@
                          </div>
                          <div class="row">
                              <div class="col">
-                                 <label for="">รหัสประจำตัวประชาชน</label>
+                                 <label for="">หมายเลขบัตรประชาชน</label>
                                  <input type="text" id="ent_id_card" class="form-control" disabled>
                              </div>
                          </div>

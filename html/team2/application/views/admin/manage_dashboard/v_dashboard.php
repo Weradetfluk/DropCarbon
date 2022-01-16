@@ -211,7 +211,8 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control"
+                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -726,7 +727,7 @@
 
                 xAxis: {
                     accessibility: {
-                        rangeDescription: 'เดือน'
+                        rangeDescription: 'วันที่'
                     },
                     categories: obj_data_date_register_ent,
 

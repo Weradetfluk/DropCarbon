@@ -62,6 +62,9 @@ class Admin_view_dashboard extends DCS_controller
     */
     function get_data_chart_event_cat()
     {
+        /*
+            สำหรับทำกราฟแท่ง จำนวนการเช็คอินของ ประเภทกิจกรรม
+        */
         $this->load->model('DCS_model', 'dcmd');
 
         $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
@@ -89,12 +92,17 @@ class Admin_view_dashboard extends DCS_controller
     */
     function get_data_chart_event_per()
     {
+
+        /*
+            สำหรับทำกราฟวงกลม จำนวนการเช็คอินของ ประเภทกิจกรรม คิดเป็น percent
+        */
         $this->load->model('DCS_model', 'dcmd');
 
         $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
         $date_end = $this->input->post('date_secon');
 
         if ($date_start != '' &&  $date_end != '') {
+            //สำหรับ เช็ค การ filter วันที่
             $date_sql = "dcs_checkin.che_date_time_in between '" . $date_start . "' AND '" . $date_end . "'";
         } else {
             $date_sql = true;
@@ -135,12 +143,18 @@ class Admin_view_dashboard extends DCS_controller
         $data['name_cat'] =  $this->dcmd->get_data_event_name_cat($date_sql);
 
         for ($i = 0; $i < count($data['name_cat']); $i++) {
-            // var_dump( $data['name_cat'][$i]->eve_cat_name);
+            //สร้างรูปแบบ json และดึงข้อมูลกิจกรรมของทุกประเภท
+            /*
+               name "จัดการน้ำ และไฟฟ้า"
+               id "1"
+               data  "{
+                          name : "พักโรงแรมสีเขียว"
+                          number_checkin : "10"
+               }"
+          */
             $data_json[$i]['name'] =  $data['name_cat'][$i]->eve_cat_name;
             $data_json[$i]['id'] =  $data['name_cat'][$i]->eve_cat_id;
             $data_json[$i]['data'] =  $this->dcmd->get_data_dashboard_event_admin($date_sql, $data['name_cat'][$i]->eve_cat_id);
-
-            //  var_dump($data_json);
         }
 
 

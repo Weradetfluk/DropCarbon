@@ -24,8 +24,9 @@ class M_dcs_checkin extends Da_dcs_checkin
     * @input tus_id, che_id
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
+    * @author Update Weradet Nopsombun 62160110
     * @Create Date 2564-09-25
-    * @Update -
+    * @Update Date 2565-01-02
     */
     function get_checkin_by_eve_id($tus_id,  $post)
     {
