@@ -214,11 +214,55 @@
                         <span id="emailavailable" style="color: red;"></span>
                     </div>
 
-                    <div class="form-group col-md-6 mb-3">
+                    <!-- <div class="form-group col-md-6 mb-3">
                         <label for="idcard">วันเกิด</label>
                         <input type="date" class="form-control mt-1" id="ent_birthdate" name="ent_birthdate" placeholder="วันเกิด" required>
-                    </div>
+                    </div> -->
                 </div>
+
+                <div class="row">
+                    <div class="form-group col-md-2 mb-2">
+                        <label for="ent_birth_date">วันเกิด</label>
+                        <select name="ent_birth_date" id="ent_birth_date" class="form-control mt-1">
+                            <!-- วันเกิด -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 mb-2">
+                        <label for="ent_birth_month">เดือนเกิด</label>
+                        <select name="ent_birth_month" id="ent_birth_month" class="form-control mt-1" onblur="check_date_by_month()">
+                            <?php 
+                            $arr_month = array(
+                                "0"=>"มกราคม",
+                                "1"=>"มกราคม",
+                                "2"=>"กุมภาพันธ์",
+                                "3"=>"มีนาคม",
+                                "4"=>"เมษายน",
+                                "5"=>"พฤษภาคม",
+                                "6"=>"มิถุนายน",
+                                "7"=>"กรกฎาคม",
+                                "8"=>"สิงหาคม",
+                                "9"=>"กันยายน",
+                                "10"=>"ตุลาคม",
+                                "11"=>"พฤศจิกายน",
+                                "12"=>"ธันวาคม"
+                                );
+                            echo '<option value="0">ดด</option>';
+                            for($i = 1; $i < 13; $i++){
+                                echo '<option value="'.$i.'">'.$arr_month[$i].'</option>';
+                            }?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 mb-2">
+                        <label for="ent_birth_year">ปีเกิด</label>
+                        <select name="ent_birth_year" id="ent_birth_year" class="form-control mt-1" onblur="check_date_by_month()">
+                            <?php 
+                            echo '<option value="0">ปป</option>';
+                            for($i = $year_now-100; $i <= $year_now; $i++){
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }?>
+                        </select>
+                    </div>
+                </div><br>
 
                 <div class="form-group">
                     เอกสารยืนยันตัวตน (เช่น รูปถ่ายบัตรประชาชน หรือ เอกสารเชิงพาณิชย์) <br><span style="color: red; font-size: 13px;">*เลือกไฟล์ได้เฉพาะ PDF, JPEG, PNG, JPG และขนาดไฟล์ไม่เกิน 3000 KB</span>
@@ -297,6 +341,7 @@
     $(document).ready(function() {
         check_btn_submit();
         check_box_agree();
+        check_date_by_month();
     });
 
     
@@ -757,4 +802,46 @@
             }
         });
     }
+
+    /*
+     * check_date_by_month
+     * check birth date by birth month
+     * @input ent_birth_month, ent_birth_year
+     * @output ent_birth_date
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2565-01-16
+     * @Update - 
+     */
+    function check_date_by_month(){
+        let birth_month = $('#ent_birth_month').val();
+        let birth_year = $('#ent_birth_year').val();
+        let html_code = '';
+        let count_date;
+        if(birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12){
+            count_date = 31;
+        }else if(birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11){
+            count_date = 30;
+        }else{
+            let mod_4, mod_100, mod_400;
+            // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
+            mod_4 = birth_year % 4;
+            mod_100 = birth_year % 100;
+            mod_400 = birth_year % 400;
+            if(mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0){
+                count_date = 28;
+            }else{
+                count_date = 29;
+            }
+        }
+        html_code += '<option value="'+0+'">วว</option>';
+        for(let i = 1; i <= count_date; i++){
+            if($('#ent_birth_date').val() == i){
+                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
+            }else{
+                html_code += '<option value="'+i+'">'+ i +'</option>';
+            }  
+        }
+        $('#ent_birth_date').html(html_code);
+    }
+
 </script>

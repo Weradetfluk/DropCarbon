@@ -26,6 +26,8 @@ class Entrepreneur_edit extends DCS_controller
      $this->ment->ent_id=$this->session->userdata("entrepreneur_id");
      $data['arr_ent']=$this->ment->get_entrepreneur_by_id()->result();
      $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
+     date_default_timezone_set('Asia/Bangkok');
+      $data['year_now'] = date("Y");
      $view = 'entrepreneur/manage_entrepreneur/v_edit_entrepreneur';
      $this->output_entrepreneur($view, $data);
   }
@@ -51,13 +53,13 @@ class Entrepreneur_edit extends DCS_controller
      $this->ment->ent_lastname = $this->input->post('ent_lastname');
      $this->ment->ent_tel = $this->input->post('ent_tel');
      $this->ment->ent_email = $this->input->post('ent_email');
-     $this->ment->ent_birthdate = $this->input->post('ent_birthdate');
      $this->ment->ent_id = $this->session->userdata('entrepreneur_id');
      if($this->input->post('ent_password') != $this->session->userdata('password')){
          $this->ment->ent_password = md5($this->input->post('ent_password'));
      }else{
          $this->ment->ent_password = $this->session->userdata('password');
      }
+     $this->ment->ent_birthdate = $this->input->post('ent_birth_year').'-'.$this->input->post('ent_birth_month').'-'.$this->input->post('ent_birth_date');
       
      $this->ment->update_entrepreneur();
      $ent_pre_id = $this->ment->ent_pre_id;

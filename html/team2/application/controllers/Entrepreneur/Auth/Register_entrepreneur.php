@@ -27,6 +27,8 @@ class Register_entrepreneur extends DCS_controller {
     */
     public function show_regis_ent() {
         $this->session->unset_userdata("doc_path");
+        date_default_timezone_set('Asia/Bangkok');
+        $data['year_now'] = date("Y");
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
         $data['arr_prefix'] = $this->ment->get_entrepreneur_prefix()->result();
         $this->output_tourist('entrepreneur/auth/v_regis_entrepreneur', $data, 'template/Tourist/topbar_tourist');
@@ -50,10 +52,12 @@ class Register_entrepreneur extends DCS_controller {
         $this->ment->ent_tel = $this->input->post('ent_tel');
         $this->ment->ent_id_card = $this->input->post('ent_id_card');
         $this->ment->ent_email = $this->input->post('ent_email');
-        $this->ment->ent_birthdate = $this->input->post('ent_birthdate');
         $this->ment->ent_username = $this->input->post('ent_username');
         $this->ment->ent_password = md5($this->input->post('ent_password'));
         $this->ment->ent_status = 1;
+
+        $this->ment->ent_birthdate = $this->input->post('ent_birth_year').'-'.$this->input->post('ent_birth_month').'-'.$this->input->post('ent_birth_date');
+
         $this->ment->insert_entrepreneur();
         $this->session->set_userdata("error_register_entrepreneur", "success");
         $result = $this->ment->check_username()->row();

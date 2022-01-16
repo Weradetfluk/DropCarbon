@@ -126,22 +126,66 @@ a:hover {
                                     <label for="tus_tel" style="color:black" class="color-label">เบอร์โทรศัพท์</label>
                                     <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' id="visible" value="<?php echo $arr_tus[0]->tus_tel; ?>" required disabled>
                                 </div>
-
-                                <div class="form-group col-md-6 mb-3">
-                                    <label for="tus_birthdate" style="color:black" class="color-label">วันเกิด</label>
-                                    <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' id="visible" value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required disabled>
-                                </div>
-                            </div>
-                            <!-- เบอร์ วันเกิด -->
-
-                            <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="tus_email" style="color:black" class="color-label">อีเมล</label>
                                     <input type="text" class="form-control" placeholder="E-mail" name='tus_email' id="visible" value="<?php echo $arr_tus[0]->tus_email; ?>" required disabled>
                                 </div>
-                                <!-- อีเมล -->
                             </div>
+                            <!-- เบอร์ อีเมล -->
 
+                            <div class="row">
+                                <div class="form-group col-md-2 mb-2">
+                                    <label for="tus_birth_date">วันเกิด</label>
+                                    <select name="tus_birth_date" id="tus_birth_date" class="form-control mt-1" disabled>
+                                        <!-- วันเกิด -->
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 mb-3">
+                                    <label for="tus_birth_month">เดือนเกิด</label>
+                                    <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
+                                        <?php 
+                                        $tus_birth_month_old = intval(substr($arr_tus[0]->tus_birthdate, 5, 2));
+                                        $arr_month = array(
+                                            "0"=>"มกราคม",
+                                            "1"=>"มกราคม",
+                                            "2"=>"กุมภาพันธ์",
+                                            "3"=>"มีนาคม",
+                                            "4"=>"เมษายน",
+                                            "5"=>"พฤษภาคม",
+                                            "6"=>"มิถุนายน",
+                                            "7"=>"กรกฎาคม",
+                                            "8"=>"สิงหาคม",
+                                            "9"=>"กันยายน",
+                                            "10"=>"ตุลาคม",
+                                            "11"=>"พฤศจิกายน",
+                                            "12"=>"ธันวาคม"
+                                            );
+                                        echo '<option value="0">ดด</option>';
+                                        for($i = 1; $i < 13; $i++){
+                                            if($i == $tus_birth_month_old){
+                                                echo '<option value="'.$i.'" selected>'.$arr_month[$i].'</option>';
+                                            }else{
+                                                echo '<option value="'.$i.'">'.$arr_month[$i].'</option>';
+                                            }
+                                        }?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2 mb-2">
+                                    <label for="tus_birth_year">ปีเกิด</label>
+                                    <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
+                                        <?php
+                                        $tus_birth_year_old = intval(substr($arr_tus[0]->tus_birthdate, 0, 4)); 
+                                        echo '<option value="0">ปป</option>';
+                                        for($i = $year_now-100; $i <= $year_now; $i++){
+                                            if($i == $tus_birth_year_old){
+                                                echo '<option value="'.$i.'" selected>'.$i.'</option>';
+                                            }else{
+                                                echo '<option value="'.$i.'">'.$i.'</option>';
+                                            }
+                                        }?>
+                                    </select>
+                                </div>
+                            </div>
 
                             <!-- ชื่อผู้ใช้ -->
                             <div class="row">
@@ -417,6 +461,8 @@ $(document).ready(function() {
         swal("สำเร็จ", "การแก้ไขข้อมูลของคุณไม่สำเสร็จ", "unsuccess");
         <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
     }
+    let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8)))?>';
+    check_date_by_month(birth_date_old);
 });
 
 /*
@@ -488,6 +534,9 @@ function undisabled_text() {
     document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px;';
 
     // change js
+    document.getElementById('tus_birth_year').disabled = false;
+    document.getElementById('tus_birth_month').disabled = false;
+    document.getElementById('tus_birth_date').disabled = false;
     document.getElementById("visible").disabled = false;
     $("input[type=file]").prop("disabled", false);
     $("input[id=visible]").prop("disabled", false);
@@ -507,6 +556,9 @@ function disabled_text() {
     document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px; display: none;';
 
     // change js
+    document.getElementById('tus_birth_year').disabled = true;
+    document.getElementById('tus_birth_month').disabled = true;
+    document.getElementById('tus_birth_date').disabled = true;
     document.getElementById("visible").disabled = true;
     $("input[type=file]").prop("disabled", true);
     $("input[id=visible]").prop("disabled", true);
@@ -517,5 +569,54 @@ function disabled_text() {
     $("#tus_password").attr('type', "password");
     $("#tus_password_cf").attr('type', "password");
 
+}
+
+/*
+* check_date_by_month
+* check birth date by birth month
+* @input tus_birth_month, tus_birth_year
+* @output tus_birth_date
+* @author Suwapat Saowarod 62160340
+* @Create Date 2565-01-1ุ6
+* @Update - 
+*/
+function check_date_by_month(birth_date_old){
+    let birth_month = $('#tus_birth_month').val();
+    let birth_year = $('#tus_birth_year').val();
+    let html_code = '';
+    let count_date;
+    if(birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12){
+        count_date = 31;
+    }else if(birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11){
+        count_date = 30;
+    }else{
+        let mod_4, mod_100, mod_400;
+        // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
+        mod_4 = birth_year % 4;
+        mod_100 = birth_year % 100;
+        mod_400 = birth_year % 400;
+        if(mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0){
+            count_date = 28;
+        }else{
+            count_date = 29;
+        }
+    }
+    html_code += '<option value="'+0+'">วว</option>';
+    for(let i = 1; i <= count_date; i++){
+        if(birth_date_old == 'not have old date'){
+            if($('#tus_birth_date').val() == i){
+                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
+            }else{
+                html_code += '<option value="'+i+'">'+ i +'</option>';
+            }
+        }else{
+            if(birth_date_old == i){
+                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
+            }else{
+                html_code += '<option value="'+i+'">'+ i +'</option>';
+            }
+        }
+    }
+    $('#tus_birth_date').html(html_code);
 }
 </script>

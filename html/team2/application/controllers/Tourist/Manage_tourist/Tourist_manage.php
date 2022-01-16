@@ -50,20 +50,14 @@ class Tourist_manage extends DCS_controller
       $data['eve_cat'] = $this->mcat->get_all()->result();
       $tus_id = $this->session->userdata("tourist_id");
       $data['checkin'] = $this->mche->get_checkin_by_eve_id($tus_id, NULL)->result();
-
+      date_default_timezone_set('Asia/Bangkok');
+      $data['year_now'] = date("Y");
 
       if (isset($_POST)) {
          $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
       } else {
          $data["event"] = $this->mde->get_event_and_img($number_status)->result();
       }
-
-      if ($this->session->userdata("tourist_id")) {
-         $topbar = 'template/Tourist/topbar_tourist_login';
-      } else {
-         $topbar = 'template/Tourist/topbar_tourist';
-      }
-
       $this->output_tourist('tourist/manage_tourist/v_information_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
    /*
@@ -86,12 +80,6 @@ class Tourist_manage extends DCS_controller
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
 
-      if ($this->session->userdata("tourist_id")) {
-         $topbar = 'template/Tourist/topbar_tourist_login';
-      } else {
-         $topbar = 'template/Tourist/topbar_tourist';
-      }
-
       $this->output_tourist('tourist/manage_tourist/v_reward_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
 
@@ -111,7 +99,7 @@ class Tourist_manage extends DCS_controller
       $this->mtou->tus_firstname = $this->input->post('tus_firstname');
       $this->mtou->tus_lastname = $this->input->post('tus_lastname');
       $this->mtou->tus_tel = $this->input->post('tus_tel');
-      $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
+      $this->mtou->tus_birthdate = $this->input->post('tus_birth_year').'-'.$this->input->post('tus_birth_month').'-'.$this->input->post('tus_birth_date');
       $this->mtou->tus_email = $this->input->post('tus_email');
       $this->mtou->tus_id = $this->input->post('tus_id');
       $tus_pw = $this->input->post('tus_password');

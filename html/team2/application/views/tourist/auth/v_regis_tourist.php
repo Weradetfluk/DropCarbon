@@ -102,7 +102,7 @@
                         <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month()">
                             <?php 
                             echo '<option value="0">ปป</option>';
-                            for($i = $year_now-100; $i < $year_now; $i++){
+                            for($i = $year_now-100; $i <= $year_now; $i++){
                                 echo '<option value="'.$i.'">'.$i.'</option>';
                             }?>
                         </select>
@@ -320,8 +320,8 @@
     /*
      * check_date_by_month
      * check birth date by birth month
-     * @input birth_month
-     * @output birth_date
+     * @input tus_birth_month, tus_birth_year
+     * @output tus_birth_date
      * @author Suwapat Saowarod 62160340
      * @Create Date 2565-01-15
      * @Update - 
@@ -349,7 +349,11 @@
         }
         html_code += '<option value="'+0+'">วว</option>';
         for(let i = 1; i <= count_date; i++){
-            html_code += '<option value="'+i+'">'+ i +'</option>';
+            if($('#tus_birth_date').val() == i){
+                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
+            }else{
+                html_code += '<option value="'+i+'">'+ i +'</option>';
+            }
         }
         $('#tus_birth_date').html(html_code);
     }
