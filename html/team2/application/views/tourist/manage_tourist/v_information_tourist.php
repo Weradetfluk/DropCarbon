@@ -38,6 +38,23 @@ a:hover {
     width: 245px;
     height: 240px;
 }
+
+.color-label {
+    color: #AAAAAA !important;
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    padding-top: 50px;
+    margin: auto;
+}
 </style>
 
 <div class="bg-gray">
@@ -55,7 +72,7 @@ a:hover {
                 <div class="container radius" style="border: 2px solid;">
                     <div class="row py-3">
                         <div class="col">
-                            <div class="row" style="margin-top: 75px;">
+                            <div class="row" style="margin-top: 100px;">
 
                                 <!-- รูปโปรไฟล์ -->
                                 <div class="profile-pic-div">
@@ -106,12 +123,12 @@ a:hover {
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
-                                    <label for="tus_tel" style="color:black">เบอร์โทรศัพท์</label>
+                                    <label for="tus_tel" style="color:black" class="color-label">เบอร์โทรศัพท์</label>
                                     <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' id="visible" value="<?php echo $arr_tus[0]->tus_tel; ?>" required disabled>
                                 </div>
 
                                 <div class="form-group col-md-6 mb-3">
-                                    <label for="tus_birthdate" style="color:black">วันเกิด</label>
+                                    <label for="tus_birthdate" style="color:black" class="color-label">วันเกิด</label>
                                     <input type="date" class="form-control" placeholder="birthdate" name='tus_birthdate' id="visible" value="<?php echo $arr_tus[0]->tus_birthdate; ?>" required disabled>
                                 </div>
                             </div>
@@ -119,11 +136,48 @@ a:hover {
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
-                                    <label for="tus_email" style="color:black">อีเมล</label>
+                                    <label for="tus_email" style="color:black" class="color-label">อีเมล</label>
                                     <input type="text" class="form-control" placeholder="E-mail" name='tus_email' id="visible" value="<?php echo $arr_tus[0]->tus_email; ?>" required disabled>
                                 </div>
                                 <!-- อีเมล -->
+                            </div>
 
+
+                            <!-- ชื่อผู้ใช้ -->
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_username" style="color:black" class="color-label">ชื่อผู้ใช้</label>
+                                    <input type="text" class="form-control" placeholder="username" name='tus_username' id="tus_username" value="<?php echo $arr_tus[0]->tus_username; ?>" required disabled>
+                                </div>
+                            </div>
+                            <!-- ชื่อผู้ใช้ -->
+
+                            <!-- รหัสผ่าน -->
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_password" style="color:black" class="color-label ">รหัสผ่าน</label>
+                                    <input type="password" class="form-control" placeholder="password" name='tus_password' id="tus_password" value="<?php echo $this->session->userdata("tus_password"); ?>" required disabled>
+                                    <span id="toggle_pw" toggle="#visible" class="material-icons field-icon toggle_password">
+                                        visibility
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="tus_password" style="color:black" class="color-label ">ยืนยันรหัสผ่าน</label>
+                                    <input type="password" class="form-control" placeholder="password" name='tus_password' id="tus_password_cf" value="<?php echo $this->session->userdata("tus_password"); ?>" required disabled>
+                                    <span id="toggle_pw_cf" toggle="#visible" class="material-icons field-icon toggle_password">
+                                        visibility
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- รหัสผ่าน -->
+
+                            <div class="row">
+
+                                <div class="col" style="margin-top:18px;">
+                                    <p>คะแนนสูงสุดของฉัน <?php echo $arr_tus[0]->tus_score; ?> คะแนน</p>
+                                </div>
+
+                                <!-- ปุ่ม -->
                                 <div class="col">
                                     <button type="button" class="btn btn-warning" id="edit_information" style="border-color: #ff9800;font-size: 18px; padding: 10px 24px; width: 235px; height: 40px;" onclick="undisabled_text()">
                                         <span class="material-icons">edit</span> แก้ไขข้อมูลส่วนตัว
@@ -137,12 +191,11 @@ a:hover {
                                     <!-- ปุ่มยกเลิก -->
                                 </div>
                                 <!-- ปุ่ม -->
-
                             </div>
 
                         </div>
 
-                        <div class="col" style="margin-left: auto; margin-right: auto; margin-top: 75px;">
+                        <div class="col" style="margin-left: auto; margin-right: 8px; margin-top: 75px;">
                             <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
                             <p style="text-align: center;font-size: 22px;">
                                 <?php
@@ -209,38 +262,58 @@ a:hover {
 
         <section>
             <div class="header-break">
-                    รางวัลของฉัน
+                รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
             <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
-                <?php if (count($tou_pro) > 3) { 
-                    $count_tou_pro = 3;
-                 }else{
-                    $count_tou_pro = count($tou_pro);
-                 } ?>
-                <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
-                    <div class="container">
-                        <div class="card" style="width: 100%">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
-                                </div>
-                                <div class="col-7">
-                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                                </div>
-                                <div class="col" style="margin: 100px 30px;">
-                                <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
-                            </div>
-                            </div>
+            <?php for ($i = 0; $i < count($tou_pro); $i++) { ?>
+            <div class="container">
+                <div class="card">
+                    <div class="row">
+                        <div class="col">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                        </div>
+                        <div class="col-7">
+                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                        </div>
+                        <div class="col" style="margin: 100px 30px;">
+                            <button type="submit" class="btn btn-success" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
                         </div>
                     </div>
-                <?php } ?>
-                
+                </div>
+            </div>
+            <?php } ?>
             <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
+
+        <!-- <section>
+            <div class="header-break">
+                รางวัลของฉัน
+            </div>
+            <?php if (empty($rw_pro[0]->ret_rew_id)) { ?>
+                <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
+            <?php } else { ?>
+                <div class="container">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col">
+                                <img src="<?php echo base_url() . 'image_reward/' . $rw_pro[0]->rew_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
+                            </div>
+                            <div class="col">
+                                <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
+                                <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
+                                <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
+
+        <!-- </div>
+                        </div>
+                    </div>
+                    <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
+                </div>
+            <?php } ?> -->
+        <!-- </section> -->
 
         <section>
             <div class="header-break">
@@ -250,33 +323,33 @@ a:hover {
             <div class="container">
                 <div class="row">
                     <?php for ($i = 0; $i < count($checkin); $i++) { ?>
-                        <?php if (count($checkin) < 3) { ?>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                    <?php if (count($checkin) < 3) { ?>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#">
+                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
                                 </a>
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
-                                    </a>
-                                    <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
-                                </div>
+                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- <div class="col-12 col-md-4 mb-4">
-                            <div class="card h-100" id="card">
-                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
-                                    <div class="card-body" align="center">
-                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
-                                        <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div> -->
-                        <?php } ?>
+                    <!-- <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100" id="card">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                                <div class="card-body" align="center">
+                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                    <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+                    <?php } ?>
                     <?php } ?>
 
                 </div>
@@ -336,11 +409,6 @@ file.addEventListener('change', function() {
 });
 
 $(document).ready(function() {
-    let exchange_promotion = "<?php echo $this->session->userdata("exchange_promotion"); ?>";
-    if (exchange_promotion == "exchange_success") {
-        swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
-        <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
-    }
     let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
     if (error_register_tourist == "edit_success") {
         swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
@@ -423,6 +491,12 @@ function undisabled_text() {
     document.getElementById("visible").disabled = false;
     $("input[type=file]").prop("disabled", false);
     $("input[id=visible]").prop("disabled", false);
+    $("input[id=tus_password]").prop("disabled", false);
+    $("input[id=tus_password_cf]").prop("disabled", false);
+    document.getElementById("toggle_pw").textContent = "visibility_off";
+    document.getElementById("toggle_pw_cf").textContent = "visibility_off";
+    $("#tus_password").attr('type', "text");
+    $("#tus_password_cf").attr('type', "text");
 }
 
 function disabled_text() {
@@ -436,5 +510,12 @@ function disabled_text() {
     document.getElementById("visible").disabled = true;
     $("input[type=file]").prop("disabled", true);
     $("input[id=visible]").prop("disabled", true);
+    $("input[id=tus_password]").prop("disabled", true);
+    $("input[id=tus_password_cf]").prop("disabled", true);
+    document.getElementById("toggle_pw").textContent = "visibility";
+    document.getElementById("toggle_pw_cf").textContent = "visibility";
+    $("#tus_password").attr('type', "password");
+    $("#tus_password_cf").attr('type', "password");
+
 }
 </script>

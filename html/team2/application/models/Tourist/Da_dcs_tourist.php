@@ -91,12 +91,12 @@ class Da_dcs_tourist extends DCS_model
     public function update_tourist()
     {
         $sql = "UPDATE {$this->db_name}.dcs_tourist 
-                SET tus_pre_id = ?, tus_firstname = ?, tus_lastname = ?, tus_tel = ?, tus_birthdate = ?,  tus_email = ?
+                SET tus_pre_id = ?, tus_firstname = ?, tus_lastname = ?, tus_tel = ?, tus_birthdate = ?,  tus_email = ? , tus_password = ?
                 WHERE tus_id = ?";
-        $this->db->query($sql, array($this->tus_pre_id, $this->tus_firstname, $this->tus_lastname, $this->tus_tel, $this->tus_birthdate, $this->tus_email, $this->tus_id));
+        $this->db->query($sql, array($this->tus_pre_id, $this->tus_firstname, $this->tus_lastname, $this->tus_tel, $this->tus_birthdate, $this->tus_email, $this->tus_password, $this->tus_id));
     }
 
-     /*
+    /*
     * update_score
     * Update data  score tourist
     * @input tus_id tus_score
@@ -109,7 +109,7 @@ class Da_dcs_tourist extends DCS_model
     {
         $sql = "UPDATE {$this->db_name}.dcs_tourist 
                SET tus_score=tus_score + ?, tus_cur_score = tus_cur_score + ?  WHERE tus_id = ?";
-        $this->db->query($sql, array(  $this->mdct->tus_score,   $this->mdct->tus_score, $this->mdct->tus_id));
+        $this->db->query($sql, array($this->mdct->tus_score,   $this->mdct->tus_score, $this->mdct->tus_id));
     }
     /*
     * update_score_exchange_reward
@@ -120,9 +120,10 @@ class Da_dcs_tourist extends DCS_model
     * @Create Date 2564-12-24
     * @Update Date -
     */
-    public function update_score_exchange_reward(){
+    public function update_score_exchange_reward()
+    {
         $sql = "UPDATE {$this->db_name}.dcs_tourist 
                SET tus_score = ? WHERE tus_id = ?";
-        $this->db->query($sql, array(  $this->tus_score, $this->tus_id));
+        $this->db->query($sql, array($this->tus_score, $this->tus_id));
     }
 }

@@ -114,6 +114,10 @@ class Tourist_manage extends DCS_controller
       $this->mtou->tus_birthdate = $this->input->post('tus_birthdate');
       $this->mtou->tus_email = $this->input->post('tus_email');
       $this->mtou->tus_id = $this->input->post('tus_id');
+      $tus_pw = $this->input->post('tus_password');
+      $this->session->set_userdata("tus_password", $tus_pw);
+
+      $this->mtou->tus_password = md5($tus_pw);
 
       // set session variable
       $tus_id = $this->mtou->tus_id;
