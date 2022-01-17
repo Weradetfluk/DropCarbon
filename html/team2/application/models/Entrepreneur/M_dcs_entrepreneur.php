@@ -206,7 +206,7 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
     function check_email()
     {
         $sql = "SELECT ent_id FROM {$this->db_name}.dcs_entrepreneur
-        WHERE ent_email = ?";  
+        WHERE ent_email = ?";
         $query = $this->db->query($sql, array($this->ent_email));
         return $query;
     }
@@ -241,5 +241,28 @@ class M_dcs_entrepreneur extends Da_dcs_entrepreneur
         WHERE ent_id_card = ?";
         $query = $this->db->query($sql, array($this->ent_id_card));
         return $query;
+    }
+
+    /*
+    * get_data_register_ent
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
+    * @Update Date 2565-01-17
+    * @Update By Chutipon Thermsirisuksin 62160081
+    */
+    public function get_data_register_ent($date_sql)
+    {
+        $sql = "SELECT COUNT(DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')) AS count_register_ent , 
+        DATE_FORMAT(`ent_regis_date`, '%d %M %Y') AS date_register_ent
+        FROM dcs_entrepreneur
+        WHERE $date_sql
+        GROUP BY DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
     }
 }

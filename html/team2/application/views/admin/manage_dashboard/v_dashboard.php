@@ -211,8 +211,7 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control"
-                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -660,7 +659,7 @@
                     alert('ajax get data user error working');
                 }
             }).then(function(json_data) {
-                create_chart_register(json_data['arr_data_register']);
+                create_chart_register(json_data);
             });
         }
 
@@ -676,37 +675,39 @@
         function create_chart_register(arr_data_register) {
 
             var obj_data_date_register_ent = []; // วิธีการเดียวกัน
-            arr_data_register.forEach((row, index) => {
+            arr_data_register['arr_data_register_ent'].forEach((row, index) => {
                 obj_data_date_register_ent.push(
                     row['date_register_ent'],
                 );
             });
+            console.log(obj_data_date_register_ent);
 
             var obj_data_count_register_ent = []; // วิธีการเดียวกัน
-            arr_data_register.forEach((row, index) => {
+            arr_data_register['arr_data_register_ent'].forEach((row, index) => {
                 obj_data_count_register_ent.push(
                     parseInt(row['count_register_ent']),
                 );
             });
 
             var obj_data_date_register_tour = []; // วิธีการเดียวกัน
-            arr_data_register.forEach((row, index) => {
+            arr_data_register['arr_data_register_tour'].forEach((row, index) => {
                 obj_data_date_register_tour.push(
                     row['date_register_tour'],
                 );
             });
+            console.log(obj_data_date_register_tour);
 
             var obj_data_count_register_tour = []; // วิธีการเดียวกัน
-            arr_data_register.forEach((row, index) => {
+            arr_data_register['arr_data_register_tour'].forEach((row, index) => {
                 obj_data_count_register_tour.push(
                     parseInt(row['count_register_tour']),
                 );
             });
 
-            // console.log(obj_data_date_register_ent);
+            // console.log("asd" + arr_data_register);
             // console.log(obj_data_count_register_ent);
-            console.log(obj_data_date_register_tour);
-            console.log(obj_data_count_register_tour);
+            // console.log(obj_data_date_register_tour);
+            // console.log(obj_data_count_register_tour);
 
             // Chart
             Highcharts.chart('chart_regis', {
@@ -720,6 +721,7 @@
                 },
 
                 yAxis: {
+                    min: 0,
                     title: {
                         text: 'จำนวนการสมัคร (คน)'
                     }
@@ -755,8 +757,8 @@
                     },
                     {
                         name: 'นักท่องเที่ยว',
-                        // data: obj_data_count_register_tour
-                        data: [1]
+                        data: obj_data_count_register_tour
+                        // data: [1]
                     },
                 ],
                 responsive: {

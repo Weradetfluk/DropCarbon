@@ -200,18 +200,22 @@ class Admin_view_dashboard extends DCS_controller
     */
     function get_data_chart_register()
     {
-        $this->load->model('DCS_model', 'dcmd');
+        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
+        $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');
 
         $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
         $date_end = $this->input->post('date_secon');
 
         if ($date_start != '' &&  $date_end != '') {
-            $date_sql = "dcs_checkin.che_date_time_in between '" . $date_start . "' AND '" . $date_end . "'";
+            $date_sql_tour = "dcs_tourist.tus_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
+            $date_sql_ent = "dcs_entrepreneur.ent_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
         } else {
-            $date_sql = true;
+            $date_sql_tour = true;
+            $date_sql_ent = true;
         }
 
-        $data['arr_data_register'] = $this->dcmd->get_data_register($date_sql);
+        $data['arr_data_register_tour'] = $this->mtou->get_data_register_tour($date_sql_tour);
+        $data['arr_data_register_ent'] = $this->ment->get_data_register_ent($date_sql_ent);
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

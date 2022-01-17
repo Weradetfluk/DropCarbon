@@ -58,7 +58,7 @@ class M_dcs_tourist extends Da_dcs_tourist
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-09-18
     */
-    function get_all_data_tourist($limit, $start,$number_status)
+    function get_all_data_tourist($limit, $start, $number_status)
     {
 
         $this->db->limit($limit, $start);
@@ -210,7 +210,7 @@ class M_dcs_tourist extends Da_dcs_tourist
     {
         $sql = "SELECT * 
                 from dcs_prefix";
-        $query = $this->db->query($sql);       
+        $query = $this->db->query($sql);
         return $query;
     }
 
@@ -225,7 +225,7 @@ class M_dcs_tourist extends Da_dcs_tourist
     public function check_email()
     {
         $sql = "SELECT tus_id FROM {$this->db_name}.dcs_tourist
-        WHERE tus_email = ?";  
+        WHERE tus_email = ?";
         $query = $this->db->query($sql, array($this->tus_email));
         return $query;
     }
@@ -243,13 +243,13 @@ class M_dcs_tourist extends Da_dcs_tourist
     {
         $this->db->select('*');
         $this->db->from('dcs_tourist');
-        $this->db->like('tus_firstname', $search,); 
+        $this->db->like('tus_firstname', $search,);
         $this->db->where("tus_status = '$number_status'");
         $query = $this->db->get();
         return $query;
     }
 
-        /*
+    /*
     * check_email
     * get data tourist by username
     * @input -
@@ -260,8 +260,31 @@ class M_dcs_tourist extends Da_dcs_tourist
     public function get_point_tourist_by_id()
     {
         $sql = "SELECT tus_score FROM {$this->db_name}.dcs_tourist
-        WHERE tus_id = ?";  
+        WHERE tus_id = ?";
         $query = $this->db->query($sql, array($this->tus_id));
         return $query;
+    }
+
+    /*
+    * get_data_register_tour
+    * get data card dashboard and return data JSON
+    * @input
+    * @output -
+    * @author Naaka Punparich 62160082
+    * @Create Date 2564-12-25
+    * @Update Date 2565-01-17
+    * @Update By Chutipon Thermsirisuksin 62160081
+    */
+    public function get_data_register_tour($date_sql)
+    {
+        $sql = "SELECT COUNT(DATE_FORMAT(`tus_regis_date`, '%Y-%m-%d')) AS count_register_tour , 
+        DATE_FORMAT(`tus_regis_date`, '%d %M %Y') AS date_register_tour
+        FROM dcs_tourist
+        WHERE $date_sql
+        GROUP BY  DATE_FORMAT(`tus_regis_date`, '%Y-%m-%d')";
+
+        $query = $this->db->query($sql);
+
+        return $query->result();
     }
 }

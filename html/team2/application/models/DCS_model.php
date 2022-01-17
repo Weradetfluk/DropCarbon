@@ -162,30 +162,6 @@ class DCS_model extends CI_Model
         return $query->result();
     }
 
-    /*
-    * get_data_register
-    * get data card dashboard and return data JSON
-    * @input
-    * @output -
-    * @author Naaka Punparich 62160082
-    * @Create Date 2564-12-25
-    * @Update Date -
-    */
-    public function get_data_register()
-    {
-        $sql = "SELECT COUNT(DATE_FORMAT(`ent_regis_date`, '%Y-%m-%d')) AS count_register_ent , 
-        DATE_FORMAT(`ent_regis_date`, '%d %M %Y') AS date_register_ent ,
-        COUNT(DATE_FORMAT(dcs_tourist.tus_regis_date, '%Y-%m-%d')) AS count_register_tour,
-        DATE_FORMAT(dcs_tourist.tus_regis_date, '%d %M %Y') AS date_register_tour
-        FROM dcs_entrepreneur
-        LEFT JOIN dcs_prefix ON dcs_prefix.pre_id = ent_pre_id
-        LEFT JOIN dcs_tourist ON dcs_prefix.pre_id = dcs_tourist.tus_pre_id
-        WHERE true";
-
-        $query = $this->db->query($sql);
-
-        return $query->result();
-    }
 
     /*
     * get_data_pros
