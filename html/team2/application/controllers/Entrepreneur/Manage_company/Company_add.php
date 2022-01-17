@@ -160,15 +160,15 @@ class Company_add extends DCS_controller
     }
 
     /*
-    * uplink_image_ajax
-    * uplink image when cancel add company
+    * unlink_image_ajax
+    * unlink image when cancel add company
     * @input arr_img
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-28
     * @Update Date -
     */
-    public function uplink_image_ajax(){
+    public function unlink_image_ajax(){
         // print_r($this->input->post('arr_image'));
         $data = "";
         if($this->input->post('arr_image') != NULL){

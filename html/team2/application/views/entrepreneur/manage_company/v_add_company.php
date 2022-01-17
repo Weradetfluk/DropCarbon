@@ -374,7 +374,7 @@
         }).get();
         // console.log(arr_image);
         $.ajax({
-            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/uplink_image_ajax" ?>",
+            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/unlink_image_ajax" ?>",
             method: "POST",
             data: {
                 arr_image: arr_image
