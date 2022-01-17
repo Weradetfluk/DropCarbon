@@ -306,29 +306,35 @@ a:hover {
 
         <section>
             <div class="header-break">
-                รางวัลของฉัน
+                    รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
             <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
-            <?php for ($i = 0; $i < count($tou_pro); $i++) { ?>
-            <div class="container">
-                <div class="card">
-                    <div class="row">
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
-                        </div>
-                        <div class="col-7">
-                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                        </div>
-                        <div class="col" style="margin: 100px 30px;">
-                            <button type="submit" class="btn btn-success" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                <?php if (count($tou_pro) > 3) { 
+                    $count_tou_pro = 3;
+                }else{
+                    $count_tou_pro = count($tou_pro);
+                } ?>
+                <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
+                    <div class="container">
+                        <div class="card" style="width: 100%">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
+                                </div>
+                                <div class="col-7">
+                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                                </div>
+                                <div class="col" style="margin: 100px 30px;">
+                                <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php } ?>
+                <?php } ?>
+                
             <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>

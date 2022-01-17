@@ -49,14 +49,14 @@
                 <div class="card">
                     <div class="row">
                         <div class="col">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px;" id="img_01">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
                         </div>
                         <div class="col-7">
                             <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
                             <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
                         </div>
                         <div class="col" style="margin: 100px 30px;">
-                        <button type="submit"class="btn btn-success" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                        <button type="submit"class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
                     </div>
                     </div>
                 </div>
