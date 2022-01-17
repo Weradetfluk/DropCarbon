@@ -156,11 +156,11 @@
              html_code += '<td>' + (row_eve['com_name']) + '</td>';
              html_code += '<td style="text-align: center;">';
              // ปุ่มดูรายละเอียดกิจกรรม
-            //  html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
-            //  html_code +='<i class="material-icons">'
-            //  html_code +='search'
-            //  html_code +='</i>';
-            //  html_code += '</a>'
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
+             html_code +='<i class="material-icons">'
+             html_code +='search'
+             html_code +='</i>';
+             html_code += '</a>'
             //ปุ่มแก้ไขกิจกรรม
              html_code += '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' ?>'  + (row_eve['eve_id'])  + '">'         
              html_code +='<i class="material-icons">'

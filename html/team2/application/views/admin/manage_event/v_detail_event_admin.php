@@ -118,47 +118,59 @@ ul.breadcrumb li a:hover {
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
                                             width="40px"> ประเภท</h3>
                                     <hr width="100%" size="10" color="#cccccc">
-                                    <p style="font-size: 18px; text-indent: 50px;">กิจกรรมนี้จัดอยู่ในประเภท:
+                                    <p style="font-size: 18px; text-indent: 50px;">
                                         <?php echo $arr_event[0]->eve_cat_name; ?></p>
                                 </div>
                             </div>
                         </div><br><br>
                         <div class="container">
-                            <h3><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>"
-                                    width="40px"> ระยะเวลากิจกรรม</h3>
-                            <hr width="100%" size="10" color="#cccccc">
-                            <?php
-                            if (!function_exists('month_convert')) {
-                                function month_convert($full_date = '')
-                                {
-                                    $m = substr($full_date, 5, 2);
-                                    $m = intval($m);
-                                    $arr_month = array('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายยน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
-                                    return $arr_month[$m - 1];
-                                }
-                            }
-                            if (!function_exists('year_convert')) {
-                                function year_convert($full_date = '')
-                                {
-                                    $y = substr($full_date, 0, 4);
-                                    $y = intval($y);
-                                    return $y + 543;
-                                }
-                            }
-                            if (!function_exists('full_date_convert')) {
-                                function full_date_convert($full_date = '')
-                                {
-                                    $d = substr($full_date, 8, 2);
-                                    $d = intval($d);
-                                    return $d . ' ' . month_convert($full_date) . ' ' . year_convert($full_date);
-                                }
-                            }
-                            ?>
-                            <p style="font-size: 18px; text-indent: 50px;">วันที่
-                                <?php echo full_date_convert($arr_event[0]->eve_start_date) ?> -
-                                <?php echo full_date_convert($arr_event[0]->eve_end_date) ?></p>
-                        </div><br><br>
-
+                            <div class="row">
+                                <div class="col-5">
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>"
+                                            width="40px"> ระยะเวลากิจกรรม</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <?php
+                                    if (!function_exists('month_convert')) {
+                                        function month_convert($full_date = '')
+                                        {
+                                            $m = substr($full_date, 5, 2);
+                                            $m = intval($m);
+                                            $arr_month = array('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายยน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
+                                            return $arr_month[$m - 1];
+                                        }
+                                    }
+                                    if (!function_exists('year_convert')) {
+                                        function year_convert($full_date = '')
+                                        {
+                                            $y = substr($full_date, 0, 4);
+                                            $y = intval($y);
+                                            return $y + 543;
+                                        }
+                                    }
+                                    if (!function_exists('full_date_convert')) {
+                                        function full_date_convert($full_date = '')
+                                        {
+                                            $d = substr($full_date, 8, 2);
+                                            $d = intval($d);
+                                            return $d . ' ' . month_convert($full_date) . ' ' . year_convert($full_date);
+                                        }
+                                    }
+                                    ?>
+                                    <p style="font-size: 18px; text-indent: 50px;">วันที่
+                                        <?php echo full_date_convert($arr_event[0]->eve_start_date) ?> -
+                                        <?php echo full_date_convert($arr_event[0]->eve_end_date) ?></p>
+                                </div>
+                            
+                                <div class="col-2"></div>
+                                <div class="col-5">
+                                    <h3><img src="<?php echo base_url() . 'assets/templete/picture/carbon-dioxide.png' ?>"
+                                            width="40px"> ลดคาร์บอนไดออกไซด์</h3>
+                                    <hr width="100%" size="10" color="#cccccc">
+                                    <p style="font-size: 18px; text-indent: 50px;">
+                                        ลดคาร์บอนไดออกไซด์ <?php echo $arr_event[0]->eve_drop_carbon; ?> กิโลกรัม/ปี</p>
+                                </div>
+                            </div>    
+                            </div><br><br>
                         <div class="container">
                             <h3><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
                                     width="40px"> <?php echo $arr_event[0]->com_name; ?></h3>
@@ -171,10 +183,8 @@ ul.breadcrumb li a:hover {
 
                             <!-- รายละเอียดที่อยู่กิจกรรม -->
                             <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
-                                    style="width:34px;"> รายละเอียดที่อยู่</h4>
-                            <p style="font-size: 18px; text-indent:50px;">
-                                <?php echo  $arr_event[0]->eve_location . " จังหวัด." . $arr_event[0]->prv_name_th . " อำเภอ." . $arr_event[0]->dis_name_th . " ตำบล." . $arr_event[0]->par_name_th . " รหัสไปรษณีย์ " . $arr_event[0]->par_code ?>
-                            </p>
+                                style="width:34px;"> รายละเอียดที่อยู่</h4>
+                            <p style="font-size: 18px; text-indent:50px;"><?php echo  $arr_event[0]->eve_location." ตำบล.".$arr_event[0]->par_name_th." อำเภอ.".$arr_event[0]->dis_name_th." จังหวัด.".$arr_event[0]->prv_name_th." รหัสไปรษณีย์ ".$arr_event[0]->par_code ?></p>
                             <br>
                             <h4><img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
                                     width="40px"> ตำแหน่งกิจกรรม</h4>
