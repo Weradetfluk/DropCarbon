@@ -197,7 +197,7 @@ class Landing_page extends DCS_controller
     * @Create Date 2564-12-24
     */
     public function exchange_reward_ajax(){
-        if($this->input->post('tus_score') > $this->input->post('pro_point')){
+        if($this->input->post('tus_score') >= $this->input->post('pro_point')){
             $this->load->model('Promotions/M_dcs_tou_promotion', 'mtoup');
             $this->load->model('Tourist/M_dcs_tourist', 'mtou');
             $this->mtou->tus_id = $this->session->userdata("tourist_id");
@@ -214,7 +214,7 @@ class Landing_page extends DCS_controller
         }
     }
 
-     /*
+    /*
     * show_reward_list
     * show_reward_list page 
     * @input -
