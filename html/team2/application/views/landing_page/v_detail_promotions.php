@@ -384,16 +384,8 @@ function exchange_reward(pro_id, pro_point, tus_score) {
         url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax') ?>',
         success: function(data) {
             if (data == 1) {
-                swal({
-                        title: "แลกของรางวัล",
-                        text: "แลกของรางวัลเสร็จสิ้น",
-                        type: "success"
-                    },
-                    function() {
-                        //  location.reload();
-                        get_point_and_show();
-                        window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
-                    })
+                get_point_and_show();
+                window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
             } else {
                 swal({
                     title: "แลกของรางวัล",

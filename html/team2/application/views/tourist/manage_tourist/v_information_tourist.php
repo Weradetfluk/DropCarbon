@@ -467,6 +467,11 @@ $(document).ready(function() {
         swal("สำเร็จ", "การแก้ไขข้อมูลของคุณไม่สำเสร็จ", "unsuccess");
         <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
     }
+    let exchange_promotion = "<?php echo $this->session->userdata("exchange_promotion"); ?>";
+    if (exchange_promotion == "exchange_success") {
+        swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
+        <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
+    }
     let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8)))?>';
     check_date_by_month(birth_date_old);
 });
