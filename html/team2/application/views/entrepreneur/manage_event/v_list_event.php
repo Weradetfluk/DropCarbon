@@ -549,7 +549,15 @@ var qrcode = new QRCode(document.getElementById("qr_code"), {
     width: 250,
     height: 250 
 });
-
+/*
+ * make_qr_code
+ * make qr code event
+ * @input eve_id, eve_name
+ * @output -
+ * @author Weradet Nopsombun 62160110
+ * @Create Date 2564-10-12
+ * @Update -
+ */
 function make_qr_code(eve_id, eve_name) {
     let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
     qrcode.makeCode( url + eve_id);
