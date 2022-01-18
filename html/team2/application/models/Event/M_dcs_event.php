@@ -102,7 +102,7 @@ class M_dcs_event extends Da_dcs_event
             $and .= " AND dcs_event.eve_cat_id = " . $post["eve_cat_id"] . "";
         }
 
-        $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path 
+        $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path,dcs_event.eve_start_date,dcs_event.eve_end_date
         from dcs_event
         LEFT JOIN dcs_eve_image
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id

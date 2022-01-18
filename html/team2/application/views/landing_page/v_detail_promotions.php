@@ -212,16 +212,17 @@
     <div class="row py-3">
         <div class="col">
             <h3>
-                <?php if($this->session->has_userdata("tourist_id")){?>
+                <?php if($this->session->has_userdata("tus_score")){
+                    $tus_score = $this->session->userdata("tus_score");?>
                     <?php
-                    if ($arr_tus[0]->tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
+                    if ($tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
                         <p><?php echo $promotions[0]->pro_point ?> คะแนน </p>
-                        <button class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $arr_tus[0]->tus_score ?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
+                        <button class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $tus_score?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
                     <?php } ?>
                         </h3>
                         <h3>
                     <?php
-                    if ($arr_tus[0]->tus_score < $promotions[0]->pro_point){?>
+                    if ($tus_score < $promotions[0]->pro_point){?>
                         <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
                     <?php } ?>
                 <?php } ?>
@@ -409,7 +410,7 @@ function exchange_reward(pro_id, pro_point, tus_score) {
  * @Update -
  */
 function confirm_exchange_reward(pro_id, pro_point, tus_score, pro_name) {
-    console.log(1);
+    console.log(tus_score);
     $('#confirm').text(pro_name);
     $('#reward_modal').modal();
     $('#get_reward').click(function() {

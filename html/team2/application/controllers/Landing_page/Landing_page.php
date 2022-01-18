@@ -52,16 +52,13 @@ class Landing_page extends DCS_controller
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->load->model('Event/M_dcs_event', 'mde');
-        $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Promotions/M_dcs_promotions', 'mpt');
         $this->mimg->com_img_com_id = $com_id;
         $this->mcom->com_id = $com_id;
 
         $data["image"] = $this->mimg->get_by_com_id()->result();
         $data["company"] = $this->mcom->get_by_detail()->row();
-
         $data["event"] = $this->mde->get_event_by_com_id($com_id)->result();
-        // $data['event'] = $this->mde->get_event_landing_page()->result();
         $data["promotions"] = $this->mpt->get_promotion_by_com_id($com_id)->result();
 
         if ($this->session->userdata("tourist_id")) {
@@ -85,9 +82,7 @@ class Landing_page extends DCS_controller
         $this->load->model('Event/M_dcs_event', 'mde');
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $number_status = 2;
-        $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
         $data['eve_cat'] = $this->mcat->get_all()->result();
-        $data['arr_eve'] = $this->mde->get_all()->result();
         if (isset($_POST)) {
             $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
         } else {
@@ -112,14 +107,6 @@ class Landing_page extends DCS_controller
     */
     public function show_event_detail($eve_id)
     {
-
-        $this->load->model('Company/M_dcs_company', 'mcom');
-        $this->load->model('Company/M_dcs_com_image', 'mimg');
-        $this->mimg->com_img_com_id = $eve_id;
-        $this->mcom->com_id = $eve_id;
-        $data["image"] = $this->mimg->get_by_com_id()->result();
-        $data["company"] = $this->mcom->get_by_detail()->row();
-
         $this->load->model('Event/M_dcs_event', 'mde');
         $this->load->model('Event/M_dcs_eve_image', 'mdei');
         $this->mdei->eve_img_eve_id = $eve_id;
@@ -147,7 +134,6 @@ class Landing_page extends DCS_controller
         $this->load->model('Promotions/M_dcs_promotions', 'mpt');
         $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
         $number_status = 2;
-        $data['arr_pro_cat'] = $this->mpt->get_pro_cat()->result();
         $data['pro_cat'] = $this->mcat->get_all()->result();
         if (isset($_POST)) {
             $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
@@ -173,10 +159,6 @@ class Landing_page extends DCS_controller
     */
     public function show_promotions_detail($pro_id)
     {
-        $this->load->model('Tourist/M_dcs_tourist', 'mtou');
-        $this->mtou->tus_id = $this->session->userdata("tourist_id");
-        $data['arr_tus'] = $this->mtou->get_tourist_by_id()->result();
-        
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->mpro->pro_id = $pro_id;
         $data["promotions"] = $this->mpro->get_by_detail()->result();

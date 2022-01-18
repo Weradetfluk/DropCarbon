@@ -338,33 +338,6 @@ a:hover {
             <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
-
-        <!-- <section>
-            <div class="header-break">
-                รางวัลของฉัน
-            </div>
-            <?php if (empty($rw_pro[0]->ret_rew_id)) { ?>
-                <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
-            <?php } else { ?>
-                <div class="container">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col">
-                                <img src="<?php echo base_url() . 'image_reward/' . $rw_pro[0]->rew_img_path; ?>" style="border: 2px solid; width: 250px; height: 200px; margin-top: 16px;" id="img_01">
-                            </div>
-                            <div class="col">
-                                <p style="margin-top: 90px; margin-left: 30px; font-size: 28px;"><?php echo $rw_pro[0]->rew_name; ?></p>
-                                <p style="margin-left: 30px; font-size: 28px; display:inline; color: #239d58;">500</p>
-                                <!-- แต้มยังไม่รู้ว่าเอาจากตารางไหนใน Database -->
-
-        <!-- </div>
-                        </div>
-                    </div>
-                    <p class="align-center"><a href="#">ดูเพิ่มเติม</a></p>
-                </div>
-            <?php } ?> -->
-        <!-- </section> -->
-
         <section>
             <div class="header-break">
                 ประวัติการเข้าร่วมกิจกรรม

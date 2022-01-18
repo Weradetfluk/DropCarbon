@@ -24,9 +24,7 @@ class Tourist_manage extends DCS_controller
    {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
       $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
-      $this->load->model('Promotions/M_dcs_reward_tourist', 'mrto');
       $this->load->model('Event/M_dcs_event', 'mde');
-      $this->load->model('Event/M_dcs_eve_category', 'mcat');
       $this->load->model('Checkin/M_dcs_checkin', 'mche');
       $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
 
@@ -39,15 +37,8 @@ class Tourist_manage extends DCS_controller
 
 
       $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
-      $this->mrto->tus_id = $this->session->userdata("tourist_id");
-      $data["rw_pro"] = $this->mrto->get_reward_by_tus_id($this->session->userdata("tourist_id"))->result();
-      // echo "<pre>";
-      // print_r($data['tou_pro']);
-      // echo "</pre>";
 
       $number_status = 2;
-      $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
-      $data['eve_cat'] = $this->mcat->get_all()->result();
       $tus_id = $this->session->userdata("tourist_id");
       $data['checkin'] = $this->mche->get_checkin_by_eve_id($tus_id, NULL)->result();
       date_default_timezone_set('Asia/Bangkok');
@@ -198,7 +189,7 @@ class Tourist_manage extends DCS_controller
       $this->session->set_userdata("Tourist_name", "$name");
    }
 
-     /*
+   /*
     * get_point
     * get point to show display
     * @input -
