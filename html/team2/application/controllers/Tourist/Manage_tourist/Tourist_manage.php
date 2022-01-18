@@ -198,7 +198,15 @@ class Tourist_manage extends DCS_controller
       $this->session->set_userdata("Tourist_name", "$name");
    }
 
-
+     /*
+    * get_point
+    * get point to show display
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-12
+    * @Update Date -
+    */
    public function get_point()
    {
       $this->load->model('Tourist/M_dcs_tourist', 'mtou');
