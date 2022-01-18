@@ -45,7 +45,7 @@ class Da_dcs_event extends DCS_model
     {
         $sql = "INSERT INTO `dcs_event`(`eve_name`, `eve_description`, `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`, `eve_location`,`eve_lat`, `eve_lon`, `eve_par_id`) 
 				VALUES (?,?,?,?,?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date, $this->eve_location,$this->eve_lat, $this->eve_lon, $this->eve_par_id));
+        $this->db->query($sql, array($this->eve_name,  $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_par_id));
     }
 
     /*
@@ -63,11 +63,12 @@ class Da_dcs_event extends DCS_model
                 `eve_com_id`, `eve_cat_id`, `eve_start_date`, `eve_end_date`, 
                 `eve_location`,`eve_lat`, `eve_lon`, `eve_par_id`,`eve_adm_id`) 
 				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $this->db->query($sql, array($this->eve_name,$this->eve_point,  $this->eve_description, $this->eve_status,
-                    $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date, 
-                    $this->eve_end_date, $this->eve_location,
-                    $this->eve_lat, $this->eve_lon, $this->eve_par_id,$this->eve_adm_id));
-                       
+        $this->db->query($sql, array(
+            $this->eve_name, $this->eve_point,  $this->eve_description, $this->eve_status,
+            $this->eve_com_id, $this->eve_cat_id, $this->eve_start_date,
+            $this->eve_end_date, $this->eve_location,
+            $this->eve_lat, $this->eve_lon, $this->eve_par_id, $this->eve_adm_id
+        ));
     }
     /*
     * update_status
@@ -121,7 +122,7 @@ class Da_dcs_event extends DCS_model
 
     /*
     *update_event
-    *get data form database
+    *Update data event
     *@input 
     *@output -
     *@author Acharaporn pornpattanasap
@@ -148,7 +149,7 @@ class Da_dcs_event extends DCS_model
         ));
     }
 
-     /*
+    /*
     *update_event_by_admin
     *update event by admin
     *@input 
@@ -174,8 +175,8 @@ class Da_dcs_event extends DCS_model
                     `eve_adm_id`=?
 				WHERE eve_id=?";
         $this->db->query($sql, array(
-            $this->eve_name,$this->eve_point, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
-            $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_par_id,$this->eve_adm_id, $this->eve_id
+            $this->eve_name, $this->eve_point, $this->eve_description, $this->eve_com_id, $this->eve_cat_id, $this->eve_status,
+            $this->eve_start_date, $this->eve_end_date, $this->eve_location, $this->eve_lat, $this->eve_lon, $this->eve_par_id, $this->eve_adm_id, $this->eve_id
         ));
     }
 }

@@ -43,24 +43,24 @@ class Admin_view_dashboard extends DCS_controller
     * @Create Date 2564-12-09
     * @Update Date -
     */
-    function get_data_card_dashboard()
+    function get_data_card_dashboard_ajax()
     {
         $this->load->model('DCS_model', 'dcmd');
-        $data['arr_datacard_dashboard'] = $this->dcmd->get_data_dashboard_admin()->result();
+        $data['arr_data_card_dashboard'] = $this->dcmd->get_data_dashboard_admin()->result();
 
-        $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_datacard_dashboard']));
+        $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data_card_dashboard']));
     }
 
     /*
     * get_data_chart_event_cat
-    * get data chart dashboard and return data JSON
+    * get data event cat to create bar chart dashboard and return data JSON
     * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
     * @Update Date -
     */
-    function get_data_chart_event_cat()
+    function get_data_chart_event_cat_ajax()
     {
         /*
             สำหรับทำกราฟแท่ง จำนวนการเช็คอินของ ประเภทกิจกรรม
@@ -83,14 +83,14 @@ class Admin_view_dashboard extends DCS_controller
     }
 
     /* get_data_chrt_event_cat
-    * get data chart dashboard and return data JSON 
+    * get data  chart event catgory percent to create pie chart to dashboard and return data JSON 
     * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
     * @Update Date -
     */
-    function get_data_chart_event_per()
+    function get_data_chart_event_per_ajax()
     {
 
         /*
@@ -116,14 +116,14 @@ class Admin_view_dashboard extends DCS_controller
 
     /*
     * get_data_chart_event_cat
-    * get data chart dashboard and return data JSON
+    * get data bar chart drill down 
     * @input
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
     * @Update Date -
     */
-    function get_data_chart_event()
+    function get_data_chart_event_ajax()
     {
         $this->load->model('DCS_model', 'dcmd');
 
@@ -140,9 +140,9 @@ class Admin_view_dashboard extends DCS_controller
 
         $data_json = array();
 
-        $data['name_cat'] =  $this->dcmd->get_data_event_name_cat($date_sql);
+        $data['arr_name_cat'] =  $this->dcmd->get_data_event_name_cat($date_sql);
 
-        for ($i = 0; $i < count($data['name_cat']); $i++) {
+        for ($i = 0; $i < count($data['arr_name_cat']); $i++) {
             //สร้างรูปแบบ json และดึงข้อมูลกิจกรรมของทุกประเภท
             /*
                name "จัดการน้ำ และไฟฟ้า"
@@ -152,9 +152,9 @@ class Admin_view_dashboard extends DCS_controller
                           number_checkin : "10"
                }"
           */
-            $data_json[$i]['name'] =  $data['name_cat'][$i]->eve_cat_name;
-            $data_json[$i]['id'] =  $data['name_cat'][$i]->eve_cat_id;
-            $data_json[$i]['data'] =  $this->dcmd->get_data_dashboard_event_admin($date_sql, $data['name_cat'][$i]->eve_cat_id);
+            $data_json[$i]['name'] =  $data['arr_name_cat'][$i]->eve_cat_name;
+            $data_json[$i]['id'] =  $data['arr_name_cat'][$i]->eve_cat_id;
+            $data_json[$i]['data'] =  $this->dcmd->get_data_dashboard_event_admin($date_sql, $data['arr_name_cat'][$i]->eve_cat_id);
         }
 
 
@@ -171,7 +171,7 @@ class Admin_view_dashboard extends DCS_controller
     * @Create Date 2564-12-25
     * @Update Date -
     */
-    function get_data_chart_checkin()
+    function get_data_chart_checkin_ajax()
     {
         $this->load->model('DCS_model', 'dcmd');
 
@@ -198,7 +198,7 @@ class Admin_view_dashboard extends DCS_controller
     * @Create Date 2564-12-25
     * @Update Date -
     */
-    function get_data_chart_register()
+    function get_data_chart_register_ajax()
     {
         $this->load->model('Tourist/M_dcs_tourist', 'mtou');
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'ment');

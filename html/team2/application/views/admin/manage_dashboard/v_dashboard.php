@@ -211,7 +211,8 @@
                             <h5>วันที่</h5>
                         </div>
                         <div class="col-sm">
-                            <input type="text" id="date" class="form-control" value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
+                            <input type="text" id="date" class="form-control"
+                                value="<?php echo get_date_mouth() . '-01 - ' . get_date_today() ?>">
                         </div>
                     </div>
                     <hr>
@@ -464,7 +465,7 @@
             $.ajax({
                 type: 'post',
                 //path ตาม ที่ php เลย
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_cat_ajax'); ?>',
                 dataType: 'json',
                 data: {
                     date_first: date_first + " 00:00:00", //ตอนนี้ใน database คือมีแค่ date time เลยต่อ String
@@ -496,7 +497,7 @@
         function get_data_dashboard_event_percent() {
             $.ajax({
                 type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_per'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_per_ajax'); ?>',
                 dataType: 'json',
                 data: {
                     date_first: date_first + " 00:00:00",
@@ -527,7 +528,7 @@
             // console.log("Checkin");
             $.ajax({
                 type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_checkin'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_checkin_ajax'); ?>',
                 dataType: 'json',
                 data: {
                     date_first: date_first + " 00:00:00",
@@ -646,7 +647,7 @@
             console.log("Register");
             $.ajax({
                 type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_register'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_register_ajax'); ?>',
                 dataType: 'json',
                 data: {
                     date_first: date_first + " 00:00:00",
@@ -809,7 +810,7 @@
             // request ข้อมูล กิจกรรมที่้เกี่ยวข้อง กับ ประเภทนั้นๆ
             $.ajax({
                 type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_event_ajax'); ?>',
                 dataType: 'json',
                 data: {
                     date_first: date_first + " 00:00:00",
@@ -983,7 +984,7 @@
         function get_data_card_dashboard() {
             $.ajax({
                 type: 'post',
-                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_card_dashboard'); ?>',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_card_dashboard_ajax'); ?>',
                 dataType: 'JSON',
                 success: function(json_data) {
 
