@@ -34,8 +34,6 @@ class Tourist_manage extends DCS_controller
 
       $tus_img_tus_id = $this->mpic->tus_img_tus_id;
       $this->session->set_userdata("tus_img_tus_id", $tus_img_tus_id);
-
-
       $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
 
       $number_status = 2;
