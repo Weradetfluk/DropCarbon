@@ -58,7 +58,7 @@
                         <li class="nav-item">
                             <a class="nav-link <?php if ($_SESSION['tab_number_promotion'] == 6) echo "active"; ?>"
                                 href="#tab_cancel" data-toggle="tab" onclick="change_tab_number_ajax(6)">
-                                <h5 class="h5-card-header">ถูกระงับ</h5>
+                                <h5 class="h5-card-header">หยุดการใช้งาน</h5>
                             </a>
                         </li>
                     </ul>
@@ -166,7 +166,7 @@
                                                     </td>
                                                 <?php } ?>
                                                 <?php if ($arr_promotion[$i]->pro_status == 5) { ?>
-                                                    <td style="color: red;">ถูกระงับ</td>
+                                                    <td style="color: red;">หยุดการใช้งาน</td>
                                                     <td>
                                                         <button class="btn btn-info" style="font-size:10px; padding:12px;"
                                                             onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
@@ -512,7 +512,7 @@
                                                             <td style="text-align: left;">
                                                                 <?php echo $arr_promotion[$i]->com_name; ?>
                                                             </td>
-                                                            <td style="color: red;">ถูกระงับ</td>
+                                                            <td style="color: red;">หยุดการใช้งาน</td>
                                                             <td>
                                                                 <button class="btn btn-info" style="font-size:10px; padding:12px;"
                                                                     onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
@@ -569,7 +569,7 @@
                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
             </div>
             <div class="modal-body">
-                <p>คุณต้องการที่จะระงับ <span id="pro_name_confirm_cancel"></span> ?</p>
+                <p>คุณต้องการที่จะหยุดการใช้งาน <span id="pro_name_confirm_cancel"></span> ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="cancel_btn" data-dismiss="modal">ยืนยัน</button>
@@ -588,7 +588,7 @@
                 <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
             </div>
             <div class="modal-body">
-                <p>คุณต้องการที่จะยกเลิกระงับ <span id="pro_name_confirm_dis_cancel"></span> ?</p>
+                <p>คุณต้องการที่จะเปิดการใช้งาน <span id="pro_name_confirm_dis_cancel"></span> ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" id="dis_cancel_btn" data-dismiss="modal">ยืนยัน</button>
@@ -657,7 +657,7 @@ function check_name_table(tab_promotion) {
     } else if (tab_promotion == 5) {
         $('#name_table').html('โปรโมชันที่ถูกปฏิเสธ');
     } else if (tab_promotion == 6) {
-        $('#name_table').html('โปรโมชันที่ถูกระงับ');
+        $('#name_table').html('โปรโมชันที่หยุดการใช้งาน');
     }
 }
 

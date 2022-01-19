@@ -77,7 +77,6 @@ class Admin_view_dashboard extends DCS_controller
         }
 
         $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_cat_admin($date_sql);
-        $data['arr_data_dashboard'] = $this->dcmd->get_data_dashboard_event_cat_admin($date_sql);
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

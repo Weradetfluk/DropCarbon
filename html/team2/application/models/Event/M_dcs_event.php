@@ -544,7 +544,7 @@ class M_dcs_event extends Da_dcs_event
         return $query;
     }
   /*
-    *get_by_name
+    *get_by_name_by_admin
     *get data event by com_name that added by admin
     *@input com_name
     *@output -

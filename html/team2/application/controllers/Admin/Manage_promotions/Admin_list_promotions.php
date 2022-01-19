@@ -21,7 +21,7 @@ class Admin_list_promotions extends DCS_controller
     }
 
     /*
-        * show_data_event_list
+        * show_data_promotions_list
         * get all data event 
         * @input
         * @output -
