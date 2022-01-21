@@ -34,7 +34,7 @@
 
                                 <div class="col-lg-3">
                                     <label for="eve_cat_id">หมวดหมู่</label>
-                                    <select name="eve_cat_id" class="form-control" required>
+                                    <select name="eve_cat_id" class="form-control" id="eve_cat_id" required>
                                         <?php if (count($arr_category) != 0) { ?>
                                         <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
                                         <option value="<?php echo $i + 1 ?>">
@@ -48,7 +48,7 @@
                                 </div>
                             </div><br>
 
-                            
+
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
@@ -68,22 +68,28 @@
                                 <div class="col-lg-3">
                                     <label for="eve_point">คะแนนกิจกรรม</label>
                                     <!-- คะแนนที่เพิ่มเข้ามาจะถูกนำไปเช็คที่ฟังก์ชัน add_point -->
-                                    <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()" 
+                                    <input type="number" id="eve_point" name="eve_point" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกคะแนนกิจกรรม" required>
-                                    
+
                                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
-                                    <!-- <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p> -->
+                                </div>
+                                <div class="col-lg-3">
+
+                                    <span id="help_information" class="material-icons"
+                                        style="margin-top: 40px; cursor: pointer">
+                                        help
+                                    </span>
                                 </div>
                             </div><br>
 
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="eve_description">รายละเอียดกิจกรรม</label>
-                                    <textarea id="eve_description" name="eve_description" class="form-control" 
+                                    <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
-                                        
+
                                 </div>
                             </div><br>
 
@@ -92,7 +98,7 @@
                                     <label for="eve_location">รายละเอียดที่อยู่ของกิจกรรม</label>
                                 </div>
                             </div>
-                            <!-- เลือกรายละเอียดที่อยู่ -->                
+                            <!-- เลือกรายละเอียดที่อยู่ -->
                             <div class="row">
                                 <!-- <div class="col-lg-4">
                                     <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
@@ -101,25 +107,28 @@
                                 <!-- <div class="col-lg-1"></div> -->
                                 <div class="col-lg-6">
                                     <label for="com_tel">ที่อยู่</label>
-                                    <input type="text" id="eve_location" name="eve_location" class="form-control" placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
+                                    <input type="text" id="eve_location" name="eve_location" class="form-control"
+                                        placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
                                 </div>
                             </div><br>
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label for="prv_id">จังหวัด</label>
-                                    <select name="prv_id" id="prv_id" class="form-control" onblur="check_dis_by_province()">
-                                        <?php for($i = 0; $i < count($arr_province); $i++){?>
-                                            <option value="<?php echo $arr_province[$i]->prv_id?>"><?php echo $arr_province[$i]->prv_name_th?></option>
-                                        <?php }?>
+                                    <select name="prv_id" id="prv_id" class="form-control"
+                                        onblur="check_dis_by_province()">
+                                        <?php for ($i = 0; $i < count($arr_province); $i++) { ?>
+                                        <option value="<?php echo $arr_province[$i]->prv_id ?>">
+                                            <?php echo $arr_province[$i]->prv_name_th ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-3" id="div_district">
                                     <!-- <label for="dis_id">อำเภอ</label>
                                     <select name="dis_id" id="dis_id" class="form-control">
-                                        <?php for($i = 0; $i < count($arr_district); $i++){?>
-                                            <option value="<?php echo $arr_district[$i]->dis_id?>"><?php echo $arr_district[$i]->dis_name_th?></option>
-                                        <?php }?>
+                                        <?php for ($i = 0; $i < count($arr_district); $i++) { ?>
+                                            <option value="<?php echo $arr_district[$i]->dis_id ?>"><?php echo $arr_district[$i]->dis_name_th ?></option>
+                                        <?php } ?>
                                     </select> -->
                                 </div>
                                 <div class="col-lg-1"></div>
@@ -176,7 +185,9 @@
                                     <input type="text" id="eve_lon" name="eve_lon" class="form-control" value=""
                                         placeholder="ใส่ลองจิจูด">
                                 </div>
-                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
+                                <a class="btn btn-success text-white"
+                                    style="font-size:16px; padding:14px; border-radius: 100%;"
+                                    onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>
                                 </a>
                             </div><br><br>
@@ -194,14 +205,15 @@
                             </div><br>
                             <div class="row">
                                 <div class="col">
-                                <label>ผู้เพิ่มกิจกรรม</label>
+                                    <label>ผู้เพิ่มกิจกรรม</label>
                                     <input type="text" id="admin_id" value="<?php echo $arr_admin ?>" disabled>
                                 </div>
                             </div>
                             <!-- Submit button -->
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;"
+                                    onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>
@@ -210,7 +222,23 @@
         </div>
     </div>
 </div>
+<div class="modal fade" role="dialog" id="score_information_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ข้อมูลเพิ่มเติม</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table table-responsive" id="infor_eve_cat_modal">
 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 /*
  * @author Suwapat Saowarod 62160340
@@ -220,6 +248,25 @@ $(document).ready(function() {
     set_lat_lon();
     change_min_end_date();
     check_dis_by_province();
+    /*
+     * -
+     * ตารางช่วยเหลือการกำหนดคะแนนกิจกรรมตามประเภทของกิจกรรม
+     * @input dis_id
+     * @output -
+     * @author Nantasiri Saiwaew 62160093
+     * @Create Date 2564-12-20
+     * @Update -
+     */
+    //show innformation
+    $("#help_information").click(function() {
+        $("#score_information_modal").modal()
+        get_score_show_information()
+    });
+
+    $("#btn_sub").click(function(event) {
+        add_point(event);
+
+    });
 });
 // openstreet map
 var map, vectorLayer, selectedFeature;
@@ -239,6 +286,43 @@ OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
     },
 });
 
+
+function get_score_show_information() {
+    let arr_min_point = [1, 20, 30, 40];
+    let arr_max_point = [19, 29, 39, 49];
+    $.ajax({
+        url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
+        method: "POST",
+        dataType: "JSON",
+        success: function(json_data) {
+            html_code = '';
+            html_code += '<table class="table">';
+            html_code += '<thead class="text-white" style="text-align: center;">';
+            html_code += '<tr>';
+            html_code += '<th><p>ชื่อประเภท</p></th>';
+            html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+            html_code += '<th><p>ช่วงคะแนน</p></th>';
+            html_code += '</tr>';
+            html_code += ' </thead>';
+            html_code += ' <tbody>';
+            json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                html_code += '<tr>';
+                html_code += '<td>' + '<p>' + json_data['data_eve_cat'][
+                    index_eve_cat
+                ]['eve_cat_name'] + '</p>' + '</td>';
+                html_code += '<td class="text-center">' + '<p>' + json_data[
+                        'data_eve_cat'][index_eve_cat]['eve_drop_carbon'] +
+                    'kg' + '</p>' + '</td>';
+                html_code += '<td class="text-center">' + '<p>' +
+                    arr_min_point[index_eve_cat] + '-' + arr_max_point[
+                        index_eve_cat] + '</p>' + '</td>';
+                html_code += '</tr>';
+            });
+            $('#infor_eve_cat_modal').html(html_code);
+        }
+    });
+
+}
 /*
  * init
  * show map and get location event
@@ -516,159 +600,118 @@ function change_min_end_date() {
 }
 
 /*
-     * check_dis_by_province
-     * check district by prv_id by ajax
-     * @input prv_id
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-18
-     * @Update -
-     */
-    function check_dis_by_province(){
-        let prv_id = $('#prv_id').val();
-        console.log($('#prv_id').val());
-        $.ajax({
-            url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_district_by_prv_id_ajax"?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-                prv_id: prv_id
-            },
-            success: function(arr_district){
-                let html_code = "";
-                html_code += '<label for="dis_id">อำเภอ</label>';
-                html_code += '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
-                for (let i = 0; i < arr_district.length; i++) {
-                    html_code += '<option value="' + arr_district[i].dis_id + '">'+ arr_district[i].dis_name_th +'</option>';
-                }
-                html_code += '</select>';
-                $('#div_district').html(html_code);
-                check_par_by_district();
+ * check_dis_by_province
+ * check district by prv_id by ajax
+ * @input prv_id
+ * @output -
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-18
+ * @Update -
+ */
+function check_dis_by_province() {
+    let prv_id = $('#prv_id').val();
+    console.log($('#prv_id').val());
+    $.ajax({
+        url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_district_by_prv_id_ajax" ?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            prv_id: prv_id
+        },
+        success: function(arr_district) {
+            let html_code = "";
+            html_code += '<label for="dis_id">อำเภอ</label>';
+            html_code +=
+                '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
+            for (let i = 0; i < arr_district.length; i++) {
+                html_code += '<option value="' + arr_district[i].dis_id + '">' + arr_district[i]
+                    .dis_name_th + '</option>';
             }
-        })
-    }
+            html_code += '</select>';
+            $('#div_district').html(html_code);
+            check_par_by_district();
+        }
+    })
+}
 
-    /*
-     * check_par_by_district
-     * check parish by dis_id by ajax
-     * @input dis_id
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-18
-     * @Update -
-     */
-    function check_par_by_district(){
-        let dis_id = $('#dis_id').val();
-        console.log('hello');
-        $.ajax({
-            url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_parish_by_dis_id_ajax"?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-                dis_id: dis_id
-            },
-            success: function(arr_parish){
-                console.log('arr_parish');
-                console.log(arr_parish);
-                let html_code = "";
-                html_code += '<label for="par_id">ตำบล</label>';
-                html_code += '<select name="par_id" id="par_id" class="form-control">'
-                for (let i = 0; i < arr_parish.length; i++) {
-                    html_code += '<option value="' + arr_parish[i].par_id + '">'+ arr_parish[i].par_name_th +'</option>';
-                }
-                html_code += '</select>';
-                $('#div_parish').html(html_code);
+/*
+ * check_par_by_district
+ * check parish by dis_id by ajax
+ * @input dis_id
+ * @output -
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-18
+ * @Update -
+ */
+function check_par_by_district() {
+    let dis_id = $('#dis_id').val();
+    console.log('hello');
+    $.ajax({
+        url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_parish_by_dis_id_ajax" ?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            dis_id: dis_id
+        },
+        success: function(arr_parish) {
+            console.log('arr_parish');
+            console.log(arr_parish);
+            let html_code = "";
+            html_code += '<label for="par_id">ตำบล</label>';
+            html_code += '<select name="par_id" id="par_id" class="form-control">'
+            for (let i = 0; i < arr_parish.length; i++) {
+                html_code += '<option value="' + arr_parish[i].par_id + '">' + arr_parish[i].par_name_th +
+                    '</option>';
             }
-        })
-    }
+            html_code += '</select>';
+            $('#div_parish').html(html_code);
+        }
+    })
+}
 
 /*
-     * add_point
-     * check point that admin added
-     * @input -
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-20
-     * @Update -
-     */
-    function add_point() {
-        let eve_cat_id = $('#eve_cat_id').val();
-        let point = $('#eve_point').val();
-        console.log('pass');
-        console.log(point);
-        if (check_point(point, eve_cat_id) == true) {
-                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-             } 
+ * add_point
+ * check point that admin added
+ * @input -
+ * @output -
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-20
+ * @Update -
+ */
+function add_point(event) {
+    let eve_cat_id = $('#eve_cat_id').val();
+    let point = $('#eve_point').val();
+    console.log('pass');
+    console.log(point);
+    if (check_point(point, eve_cat_id) == true) {
+        event.preventDefault();
+        $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
     }
+}
 
 /*
-     * check_point
-     * เช็คคะแนนตามประเภทของกิจกรรม
-     * @input point eve_cat_id
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-20
-     * @Update -
-     */
-    function check_point(point,eve_cat_id) {
-        let arr_min_point = [1, 20, 30, 40];
-         let arr_max_point = [19, 29, 39, 49];
+ * check_point
+ * เช็คคะแนนตามประเภทของกิจกรรม
+ * @input point eve_cat_id
+ * @output -
+ * @author Nantasiri Saiwaew 62160093
+ * @Create Date 2564-12-20
+ * @Update -
+ */
+function check_point(point, eve_cat_id) {
+    let arr_min_point = [1, 20, 30, 40];
+    let arr_max_point = [19, 29, 39, 49];
 
-         console.log(eve_cat_id);
-         console.log(arr_min_point[eve_cat_id - 1]);
-         console.log(arr_max_point[eve_cat_id - 1]);
-         if (point < 1) {
-             return true;
-         } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
-             return true;
-         } else {
-             return false;
-         }
-        
+    console.log(eve_cat_id);
+    console.log(arr_min_point[eve_cat_id - 1]);
+    console.log(arr_max_point[eve_cat_id - 1]);
+    if (point < 1) {
+        return true;
+    } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+        return true;
+    } else {
+        return false;
     }
 
-/*
-     * -
-     * ตารางช่วยเหลือการกำหนดคะแนนกิจกรรมตามประเภทของกิจกรรม
-     * @input dis_id
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-20
-     * @Update -
-     */
-    $(document).ready(function() {
-         //show innformation
-         $("#help_information").click(function() {
-             let arr_min_point = [1, 20, 30, 40];
-             let arr_max_point = [19, 29, 39, 49];
-             if ($('#infor_eve_cat').is(":hidden")) {
-                 $.ajax({
-                     url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
-                     method: "POST",
-                     dataType: "JSON",
-                     success: function(json_data) {
-                        html_code = '';
-                        html_code += '<table class="table">';
-                        html_code += '<thead class="text-white" style="text-align: center;">';
-                        html_code += '<tr>';
-                        html_code += '<th><p>ชื่อประเภท</p></th>';
-                        html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
-                        html_code += '<th><p>ช่วงคะแนน</p></th>';
-                        html_code += '</tr>';
-                        html_code += ' </thead>';
-                        html_code += ' <tbody>';
-                        json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
-                            html_code += '<tr>';
-                            html_code += '<td>' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_cat_name'] + '</p>' + '</td>';
-                            html_code += '<td class="text-center">' + '<p>' + json_data['data_eve_cat'][index_eve_cat]['eve_drop_carbon'] + 'kg' + '</p>' + '</td>';
-                            html_code += '<td class="text-center">' + '<p>' + arr_min_point[index_eve_cat] + '-' + arr_max_point[index_eve_cat] + '</p>' + '</td>';
-                            html_code += '</tr>';
-                        });
-                         $('#infor_eve_cat').html(html_code);
-                     }
-                 });
-             }
-             $("#infor_eve_cat").slideToggle("slow");
-         });
-     });
+}
 </script>

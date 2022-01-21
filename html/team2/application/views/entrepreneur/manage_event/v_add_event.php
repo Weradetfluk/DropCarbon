@@ -73,7 +73,7 @@
                                     <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
-                                        
+
                                 </div>
                             </div><br>
 
@@ -106,9 +106,11 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label for="prv_id">จังหวัด</label>
-                                    <select name="prv_id" id="prv_id" class="form-control" onblur="check_dis_by_province()">
+                                    <select name="prv_id" id="prv_id" class="form-control"
+                                        onblur="check_dis_by_province()">
                                         <?php for($i = 0; $i < count($arr_province); $i++){?>
-                                            <option value="<?php echo $arr_province[$i]->prv_id?>"><?php echo $arr_province[$i]->prv_name_th?></option>
+                                        <option value="<?php echo $arr_province[$i]->prv_id?>">
+                                            <?php echo $arr_province[$i]->prv_name_th?></option>
                                         <?php }?>
                                     </select>
                                 </div>
@@ -150,7 +152,9 @@
                                     <input type="text" id="eve_lon" name="eve_lon" class="form-control" value=""
                                         placeholder="ใส่ลองจิจูด">
                                 </div>
-                                <a class="btn btn-success text-white" style="font-size:16px; padding:14px; border-radius: 100%;" onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
+                                <a class="btn btn-success text-white"
+                                    style="font-size:16px; padding:14px; border-radius: 100%;"
+                                    onclick="show_maker(document.getElementById('eve_lat').value, document.getElementById('eve_lon').value)">
                                     <i class="material-icons" style="font-size:30px;">add_location</i>
                                 </a>
                             </div><br><br>
@@ -170,7 +174,8 @@
                             <!-- Submit button -->
                             <div style="text-align: right;">
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
-                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
+                                <a class="btn btn-secondary custom-a" style="color: white; background-color: #777777;"
+                                    onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
                         </form>
                     </div>
@@ -485,65 +490,68 @@ function change_min_end_date() {
 }
 
 /*
-     * check_dis_by_province
-     * check district by prv_id by ajax
-     * @input prv_id
-     * @output -
-     * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-12-18
-     * @Update -
-     */
-    function check_dis_by_province(){
-        let prv_id = $('#prv_id').val();
-        $.ajax({
-            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_district_by_prv_id_ajax"?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-                prv_id: prv_id
-            },
-            success: function(arr_district){
-                let html_code = "";
-                html_code += '<label for="dis_id">อำเภอ</label>';
-                html_code += '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
-                for (let i = 0; i < arr_district.length; i++) {
-                    html_code += '<option value="' + arr_district[i].dis_id + '">'+ arr_district[i].dis_name_th +'</option>';
-                }
-                html_code += '</select>';
-                $('#div_district').html(html_code);
-                check_par_by_district();
+ * check_dis_by_province
+ * check district by prv_id by ajax
+ * @input prv_id
+ * @output -
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-12-18
+ * @Update -
+ */
+function check_dis_by_province() {
+    let prv_id = $('#prv_id').val();
+    $.ajax({
+        url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_district_by_prv_id_ajax"?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            prv_id: prv_id
+        },
+        success: function(arr_district) {
+            let html_code = "";
+            html_code += '<label for="dis_id">อำเภอ</label>';
+            html_code +=
+                '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
+            for (let i = 0; i < arr_district.length; i++) {
+                html_code += '<option value="' + arr_district[i].dis_id + '">' + arr_district[i]
+                    .dis_name_th + '</option>';
             }
-        })
-    }
+            html_code += '</select>';
+            $('#div_district').html(html_code);
+            check_par_by_district();
+        }
+    })
+}
 
-    /*
-     * check_par_by_district
-     * check parish by dis_id by ajax
-     * @input dis_id
-     * @output -
-     * @author Suwapat Saowarod 62160340
-     * @Create Date 2564-12-18
-     * @Update -
-     */
-    function check_par_by_district(){
-        let dis_id = $('#dis_id').val();
-        $.ajax({
-            url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_parish_by_dis_id_ajax"?>",
-            method: "POST",
-            dataType: "JSON",
-            data: {
-                dis_id: dis_id
-            },
-            success: function(arr_parish){
-                let html_code = "";
-                html_code += '<label for="par_id">ตำบล</label>';
-                html_code += '<select name="par_id" id="par_id" class="form-control">'
-                for (let i = 0; i < arr_parish.length; i++) {
-                    html_code += '<option value="' + arr_parish[i].par_id + '">'+ arr_parish[i].par_name_th +'</option>';
-                }
-                html_code += '</select>';
-                $('#div_parish').html(html_code);
+/*
+ * check_par_by_district
+ * check parish by dis_id by ajax
+ * @input dis_id
+ * @output -
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2564-12-18
+ * @Update -
+ */
+function check_par_by_district() {
+    let dis_id = $('#dis_id').val();
+    $.ajax({
+        url: "<?php echo site_url() . "Entrepreneur/Manage_company/Company_add/get_parish_by_dis_id_ajax"?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            dis_id: dis_id
+        },
+        success: function(arr_parish) {
+            let html_code = "";
+            html_code += '<label for="par_id">ตำบล</label>';
+            html_code += '<select name="par_id" id="par_id" class="form-control">'
+            for (let i = 0; i < arr_parish.length; i++) {
+                html_code += '<option value="' + arr_parish[i].par_id + '">' + arr_parish[i].par_name_th +
+                    '</option>';
             }
-        })
-    }
+            html_code += '</select>';
+            $('#div_parish').html(html_code);
+        }
+    })
+}
 </script>

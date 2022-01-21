@@ -30,12 +30,12 @@ class Admin_edit_event extends DCS_controller
         $data['arr_admin'] = $this->session->userdata("admin_name");
         $data['arr_event'] = $this->meve->get_by_detail()->result();
         $data['arr_category'] = $this->mcat->get_all()->result();
-        $data['arr_company']=$this->mcom->get_by_com_approve()->result();
+        $data['arr_company'] = $this->mcom->get_by_com_approve()->result();
         $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'admin/manage_event/manage_add_event_admin/v_edit_event_admin';
-        $this->output_admin($view, $data,null);
+        $this->output_admin($view, $data, null);
     }
 
     /*
@@ -54,7 +54,7 @@ class Admin_edit_event extends DCS_controller
         $this->load->model('Event/M_dcs_event', 'meve');
 
         $this->meve->eve_name = $this->input->post('eve_name');
-        $this->meve->eve_point= $this->input->post('eve_point');
+        $this->meve->eve_point = $this->input->post('eve_point');
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
         $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
@@ -73,7 +73,7 @@ class Admin_edit_event extends DCS_controller
 
         // save data company to database
         $this->meve->update_event_by_admin();
-        $this->set_session_edit_event('success');
+        $this->set_session_edit_event('success_edit_admin');
         $this->mimg->eve_img_eve_id = $this->input->post('eve_id');
 
         // save data image to database
@@ -179,7 +179,8 @@ class Admin_edit_event extends DCS_controller
      * @Create Date 2564-12-18
      * @Update -
      */
-    function get_district_by_prv_id_ajax(){
+    function get_district_by_prv_id_ajax()
+    {
         $this->load->model('District/M_dcs_district', 'mdis');
         $this->mdis->dis_prv_id = $this->input->post('prv_id');
         $data = $this->mdis->get_district_by_prv_id()->result();
@@ -195,7 +196,8 @@ class Admin_edit_event extends DCS_controller
      * @Create Date 2564-12-18
      * @Update -
      */
-    function get_parish_by_dis_id_ajax(){
+    function get_parish_by_dis_id_ajax()
+    {
         $this->load->model('Parish/M_dcs_parish', 'mpar');
         $this->mpar->par_dis_id = $this->input->post('dis_id');
         $data = $this->mpar->get_parish_by_dis_id()->result();

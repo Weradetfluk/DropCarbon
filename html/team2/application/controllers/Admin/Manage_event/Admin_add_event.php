@@ -36,12 +36,12 @@ class Admin_add_event extends DCS_controller
         $this->load->model('Province/M_dcs_province', 'mprv');
         $data['arr_admin'] = $this->session->userdata("admin_name");
         $data['arr_category'] = $this->mcat->get_all()->result();
-        $data['arr_company']=$this->mcom->get_by_com_approve()->result();
+        $data['arr_company'] = $this->mcom->get_by_com_approve()->result();
         $data['arr_province'] = $this->mprv->get_all()->result();
         date_default_timezone_set('Asia/Bangkok');
         $data['date_now'] = date("Y-m-d");
         $view = 'admin/manage_event/manage_add_event_admin/v_add_event_admin';
-        $this->output_admin($view, $data,null);
+        $this->output_admin($view, $data, null);
     }
 
     /*
@@ -58,7 +58,7 @@ class Admin_add_event extends DCS_controller
         $this->load->model('Event/M_dcs_event', 'meve');
         $this->load->model('Event/M_dcs_eve_image', 'mimg');
         $this->meve->eve_name = $this->input->post('eve_name');
-        $this->meve->eve_point= $this->input->post('eve_point');
+        $this->meve->eve_point = $this->input->post('eve_point');
         $this->meve->eve_description = $this->input->post('eve_description');
         $this->meve->eve_com_id = $this->input->post('eve_com_id');
         $this->meve->eve_cat_id = $this->input->post('eve_cat_id');
@@ -75,8 +75,8 @@ class Admin_add_event extends DCS_controller
         $this->meve->insert_event_by_admin();
         $this->set_session_add_event('success');
         $result = $this->meve->get_by_name_by_admin()->row();
-        
-        
+
+
         // save data image to database
         $arr_img_add = array();
         $arr_name_name = array();
@@ -91,15 +91,15 @@ class Admin_add_event extends DCS_controller
 
         // delete data image to database
         $arr_img_delete = array();
-        $arr_img_delete= $this->input->post('del_new_img');
-        if($arr_img_delete != ''){
+        $arr_img_delete = $this->input->post('del_new_img');
+        if ($arr_img_delete != '') {
             for ($i = 0; $i < count($arr_img_delete); $i++) {
                 $this->mimg->eve_img_path = $arr_img_delete[$i];
                 unlink('./image_event/' . $arr_img_delete[$i]);
                 $this->mimg->delete_image_event();
             }
         }
-          
+
         redirect('Admin/Manage_event/Admin_list_event/show_data_event_list');
     }
 
@@ -112,8 +112,9 @@ class Admin_add_event extends DCS_controller
     * @Create Date 2564-09-25
     * @Update Date -
     */
-    public function set_session_add_event($data){
-        $this->session->set_userdata("error_add_event", $data);
+    public function set_session_add_event($data)
+    {
+        $this->session->set_userdata("error_add_event_admin", $data);
     }
 
     /*
@@ -215,14 +216,15 @@ class Admin_add_event extends DCS_controller
      * @Create Date 2564-10-12
      * @Update -
      */
-    function check_name_event_ajax(){
+    function check_name_event_ajax()
+    {
         $this->load->model('Event/M_dcs_event', 'meve');
         $this->meve->eve_name = $this->input->post('eve_name');
         $event = $this->meve->get_by_name()->row();
-        if($event){
+        if ($event) {
             // have name company
             echo 1;
-        }else{
+        } else {
             echo 2;
         }
     }
@@ -236,7 +238,8 @@ class Admin_add_event extends DCS_controller
      * @Create Date 2564-12-18
      * @Update -
      */
-    function get_district_by_prv_id_ajax(){
+    function get_district_by_prv_id_ajax()
+    {
         $this->load->model('District/M_dcs_district', 'mdis');
         $this->mdis->dis_prv_id = $this->input->post('prv_id');
         $data = $this->mdis->get_district_by_prv_id()->result();
@@ -252,14 +255,15 @@ class Admin_add_event extends DCS_controller
      * @Create Date 2564-12-18
      * @Update -
      */
-    function get_parish_by_dis_id_ajax(){
+    function get_parish_by_dis_id_ajax()
+    {
         $this->load->model('Parish/M_dcs_parish', 'mpar');
         $this->mpar->par_dis_id = $this->input->post('dis_id');
         $data = $this->mpar->get_parish_by_dis_id()->result();
         echo json_encode($data);
     }
 
-     /*
+    /*
     * get_data_category
     * get data eve_cat
     * @input ข
@@ -268,9 +272,10 @@ class Admin_add_event extends DCS_controller
     * @Create Date 2021-11-06
     * @Update Date -
     */
-  public function get_data_category(){
-    $this->load->model('Event/M_dcs_eve_category', 'meca');
-    $data['data_eve_cat'] = $this->meca->get_all()->result();
-    echo json_encode($data);
-  }
+    public function get_data_category()
+    {
+        $this->load->model('Event/M_dcs_eve_category', 'meca');
+        $data['data_eve_cat'] = $this->meca->get_all()->result();
+        echo json_encode($data);
+    }
 }
