@@ -116,6 +116,6 @@ class Admin_edit_promotions extends DCS_controller
     */
     public function set_session_edit_promotion($data)
     {
-        $this->session->set_userdata("error_edit_promotion", $data);
+        $this->session->set_userdata("error_edit_promotion_admin", $data);
     }
 }

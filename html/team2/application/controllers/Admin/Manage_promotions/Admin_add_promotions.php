@@ -108,9 +108,9 @@ class Admin_add_promotions extends DCS_controller
     */
     public function set_session_add_promotion($data)
     {
-        $this->session->set_userdata("error_add_promotion", $data);
+        $this->session->set_userdata("error_add_promotion_admin", $data);
     }
-    
+
     /*
     * upload_image_ajax
     * upload image
@@ -200,5 +200,4 @@ class Admin_add_promotions extends DCS_controller
         }
         echo json_encode($data);
     }
-
 }
