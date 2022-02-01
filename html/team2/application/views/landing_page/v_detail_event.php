@@ -144,7 +144,6 @@
                                 <tr>
                                     <td style="border: 2px solid black;">
                                         <div id="Map" style="width: 700px; height: 300px;"></div>
-                                        <? $event->eve_lat ?>
                                     </td>
                                 </tr>
                             </table>
