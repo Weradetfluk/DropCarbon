@@ -407,7 +407,8 @@
                 date_secon = $('#date').val().substring(13, 23);
                 date_first = $('#date').val().substring(0, 10);
                 get_data_dashboard_event_cat();
-                get_data_dashboard_event_percent()
+                get_data_dashboard_event_percent();
+                get_data_register();
             });
 
             //checkin click hide
@@ -654,7 +655,6 @@
                     date_secon: date_secon + "  23:00:00"
                 },
                 success: function() {
-
                 },
                 error: function() {
                     alert('ajax get data user error working');
@@ -674,6 +674,23 @@
          *@update Date -
          */
         function create_chart_register(arr_data_register) {
+            var date_end_str = date_secon.substr(0, 10);
+            var date_start_str = date_first.substr(0, 10);
+            var date_end = new Date(date_end_str);
+            var date_start = new Date(date_start_str);
+            const diff_time = Math.abs(date_end.getTime() - date_start.getTime());
+            const diff_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24));
+            var date_between = []; //วันแรกถึงวันสุดท้าย
+            const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            var date_count = date_start;
+            for(let i = 0; i <= diff_days; i++){
+                if(i != 0){
+                    date_count.setDate(date_count.getDate() + 1);
+                }
+                date_between.push([String(date_count.getDate()).padStart(2, '0'), months[date_count.getMonth()], date_count.getFullYear()].join(' '));
+            }
+            console.log(date_between);
+            
 
             var obj_data_date_register_ent = []; // วิธีการเดียวกัน
             arr_data_register['arr_data_register_ent'].forEach((row, index) => {
@@ -681,8 +698,7 @@
                     row['date_register_ent'],
                 );
             });
-            console.log(obj_data_date_register_ent);
-
+            // console.log(obj_data_date_register_ent);
             var obj_data_count_register_ent = []; // วิธีการเดียวกัน
             arr_data_register['arr_data_register_ent'].forEach((row, index) => {
                 obj_data_count_register_ent.push(
@@ -696,7 +712,7 @@
                     row['date_register_tour'],
                 );
             });
-            console.log(obj_data_date_register_tour);
+            // console.log(obj_data_date_register_tour);
 
             var obj_data_count_register_tour = []; // วิธีการเดียวกัน
             arr_data_register['arr_data_register_tour'].forEach((row, index) => {
@@ -705,10 +721,25 @@
                 );
             });
 
-            // console.log("asd" + arr_data_register);
-            // console.log(obj_data_count_register_ent);
-            // console.log(obj_data_date_register_tour);
-            // console.log(obj_data_count_register_tour);
+            var arr_data_count_ent = [];
+            var arr_data_count_tou = [];
+            for(let i = 0; i <= diff_days; i++){
+                for(let j = 0; j < obj_data_date_register_ent.length; j++){
+                    if(date_between[i] == obj_data_date_register_ent[j]){
+                        arr_data_count_ent[i] = obj_data_count_register_ent[j];
+                        // console.log(arr_data_count_ent[1]);
+                    }else if(arr_data_count_ent[i] == null || arr_data_count_ent[i] == ''){
+                        arr_data_count_ent[i] = 0;
+                    }
+                }
+                for(let j = 0; j < obj_data_date_register_tour.length; j++){
+                    if(date_between[i] == obj_data_date_register_tour[j]){
+                        arr_data_count_tou[i] = obj_data_count_register_tour[j];
+                    }else if(arr_data_count_tou[i] == null || arr_data_count_tou[i] == ''){
+                        arr_data_count_tou[i] = 0;
+                    }
+                }
+            }
 
             // Chart
             Highcharts.chart('chart_regis', {
@@ -732,7 +763,7 @@
                     accessibility: {
                         rangeDescription: 'วันที่'
                     },
-                    categories: obj_data_date_register_ent,
+                    categories: date_between,
 
 
                 },
@@ -754,11 +785,11 @@
 
                 series: [{
                         name: 'ผู้ประกอบการ',
-                        data: obj_data_count_register_ent
+                        data: arr_data_count_ent
                     },
                     {
                         name: 'นักท่องเที่ยว',
-                        data: obj_data_count_register_tour
+                        data: arr_data_count_tou
                         // data: [1]
                     },
                 ],

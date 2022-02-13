@@ -122,7 +122,7 @@
                 <div class="row">
 
                     <!-- รายละเอียดที่อยู่ -->
-                    <div class="col">
+                    <div class="col-lg">
                         <!-- เบอร์โทรศัพท์ -->
                         <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
                             เบอร์โทรศัพท์</h4>
@@ -138,6 +138,7 @@
                     </div>
 
                     <!-- แผนที่ -->
+<<<<<<< HEAD
                     <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
                         <div class="table-responsive">
                             <table class="table">
@@ -148,6 +149,17 @@
                                 </tr>
                             </table>
                         </div>
+=======
+                    <div class="col-lg mr-2" style="padding-bottom: 1%;">
+                        <table class="table">
+                            <tr>
+                                <td style="border: 2px solid black;">
+                                    <div id="Map" style="height: 300px;"></div>
+
+                                </td>
+                            </tr>
+                        </table>
+>>>>>>> 876e50172b5c076a1a042055718718d7d35ac0fb
                     </div>
                 </div>
             </div>

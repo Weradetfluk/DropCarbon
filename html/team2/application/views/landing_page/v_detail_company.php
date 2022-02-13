@@ -279,9 +279,9 @@ function read_more() {
         <?php for ($i = 0; $i < (count($event)); $i++) { ?>
 
 
-        <div class="col-lg-4">
+        <div class="col-md-4">
             <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $event[$i]->eve_id; ?>">
-                <div class="card card-custom" style="height: 31rem;" id="card">
+                <div class="card card-custom" id="card">
                     <div class="card-img-wrapper">
                         <!-- รูปกิจกรรม -->
                         <img src="<?php echo base_url() . 'image_event/' . $event[$i]->eve_img_path; ?>"
@@ -390,13 +390,12 @@ function read_more() {
 
     <div class="row py-3">
         <?php for ($i = 0; $i < count($promotions); $i++) { ?>
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
             <a
                 href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
                 <div class="card card-custom" id="card" style="max-height: 30rem;">
                     <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>"
                         class="card-img-top" style="max-height: 220px;" alt="...">
-                    <!-- รูปที่ 1 -->
                     <div class="card-body" style="text-align: left;">
                         <h3 class="text-decoration-none text-dark"><?php echo $promotions[$i]->pro_name ?></h3>
                         <p class="card-tex text-dark">
@@ -404,7 +403,32 @@ function read_more() {
                         </p>
                         <button class="btn btn-sm btn-success" style="float:right;">แลก</button>
                     </div>
-                    <!-- ชื่อของรูปที่ 1 -->
+                </div>
+            </a>
+        </div> -->
+
+        <div class="col-md-3" align="center">
+            <a
+                href="<?php echo base_url() . 'Landing_page/Landing_page/show_promotions_detail/' . $promotions[$i]->pro_id; ?>">
+                <div class="card card-custom" data-aos="fade-right" style="height: 23rem;">
+
+                    <!-- รูป -->
+                    <img src="<?php echo base_url() . 'image_promotions/' . $promotions[$i]->pro_img_path; ?>"
+                        style="height: 200px; weight: 270; object-fit: cover;" class="card-img-top">
+
+                    <div class="card-body">
+
+                        <!-- ชื่อ -->
+                        <h3><?php echo iconv_substr($promotions[$i]->pro_name, 0, 20, "UTF-8") . "..."; ?></h3>
+
+                        <!-- รายละเอียด -->
+                        <p class="card-text">
+                            <?php echo iconv_substr($promotions[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
+                        <?php if ($promotions[$i]->pro_cat_id == 2) { ?>
+                        <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000">
+                            <?php echo $promotions[$i]->pro_point ?> คะแนน</p>
+                        <?php } ?>
+                    </div>
                 </div>
             </a>
         </div>
