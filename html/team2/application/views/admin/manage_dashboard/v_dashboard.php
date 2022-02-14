@@ -198,12 +198,12 @@
                                 การสมัครบัญชีผู้ใช้
                             </label>
                         </div>
-                        <div class="col-sm">
+                        <!-- <div class="col-sm">
                             <input class="form-check-input" type="checkbox" value="" id="promotion_checkbox">
                             <label class="form-check-label" for="defaultCheck1">
                                 โปรโมชันยอดนิยม
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                     <hr>
                     <div class="row">

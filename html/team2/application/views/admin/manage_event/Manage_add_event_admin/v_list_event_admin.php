@@ -154,8 +154,8 @@
     });
 
     function make_qr_code(eve_id, eve_name) {
-        qrcode.makeCode("<?php echo base_url('Tourist/Checkin_event/Checkin_event/check_login_before_check_in/') ?>" +
-            eve_id);
+        let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
+        qrcode.makeCode( url + eve_id);
         $('#name_qr').html(eve_name);
         $('#modal_qrcode').modal();
     }
