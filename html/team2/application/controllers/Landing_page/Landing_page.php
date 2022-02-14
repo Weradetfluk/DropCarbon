@@ -158,6 +158,7 @@ class Landing_page extends DCS_controller
     public function show_promotions_detail($pro_id)
     {
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->load->model('Tourist/M_dcs_tourist', 'mdct');
         $this->mpro->pro_id = $pro_id;
         $data["promotions"] = $this->mpro->get_by_detail()->result();
         if ($this->session->userdata("tourist_id")) {

@@ -218,7 +218,7 @@ a:hover {
                             <div class="row">
 
                                 <div class="col" style="margin-top:18px;">
-                                    <p>คะแนนสูงสุดของฉัน <?php echo $arr_tus[0]->tus_score; ?> คะแนน</p>
+                                    <p>คะแนนสูงสุดของฉัน <?php echo $arr_tus[0]->tus_cur_score; ?> คะแนน</p>
                                 </div>
 
                                 <!-- ปุ่ม -->
@@ -254,12 +254,12 @@ a:hover {
                                     <?php echo "สิทธิพิเศษของคุณในระดับ Gold";?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="platinum"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?>
-                                <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="Dropcarbon"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?> 
+                                <?php } else if ($arr_tus[0]->tus_cur_score >= 100) { ?>
+                                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="platinum"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?> 
                                 <?php } else { ?>
-                                    <?php echo "."; ?>
+                                    <?php echo ""; ?>
                                 <?php } ?>
                             </p>
                             <p style="text-align: center;font-size: 22px;">
@@ -272,10 +272,10 @@ a:hover {
                                     echo "ส่วนลดการใช้คะแนน 9%";
                                 } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
                                     echo "ส่วนลดการใช้คะแนน 11%";
-                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
-                                    echo "ส่วนลดการใช้คะแนน 13%";
+                                }else if ($arr_tus[0]->tus_cur_score >= 100) {
+                                    echo "ส่วนลดการใช้คะแนน 11%";
                                 } else {
-                                    echo ".";
+                                    echo "";
                                 } ?>
                             </p>
 
@@ -292,14 +292,8 @@ a:hover {
                                 } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
                                     $score += 75 - $arr_tus[0]->tus_cur_score;
                                     echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Platinum";
-                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Dropcarbon Hero";
-                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
-                                    $score += 100 - $arr_tus[0]->tus_cur_score;
-                                    echo "Dropcarbon Hero";
                                 } else {
-                                    echo ".";
+                                    echo "";
                                 } ?>
                             </p>
                         </div>
