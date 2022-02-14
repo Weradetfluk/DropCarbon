@@ -80,9 +80,7 @@ class Landing_page extends DCS_controller
     public function show_event_list()
     {
         $this->load->model('Event/M_dcs_event', 'mde');
-        $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $number_status = 2;
-        $data['eve_cat'] = $this->mcat->get_all()->result();
         if (isset($_POST)) {
             $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
         } else {
@@ -164,6 +162,10 @@ class Landing_page extends DCS_controller
         $data["promotions"] = $this->mpro->get_by_detail()->result();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
+            $this->mdct->tus_id = $this->session->userdata("tourist_id");
+            $tus_score_new = $this->mdct->get_point_tourist_by_id()->row();
+            $this->session->unset_userdata("tus_score");
+            $this->session->set_userdata("tus_score", $tus_score_new->tus_score);
         } else {
             $topbar = 'template/Tourist/topbar_tourist';
         }

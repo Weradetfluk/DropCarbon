@@ -62,7 +62,6 @@
 
         </div>
     </form>
-
     <!-- แสดงกิจกรรมตามจำนวนที่มี -->
     <div class="row py-3">
         <?php for ($i = 0; $i < count($event); $i++) { ?>
@@ -84,8 +83,9 @@
                         <div class="col">
 
                             <!-- ลดคาร์บอน -->
+
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
-                                    <?php echo $eve_cat[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                                <?php echo $event[$i]->eve_drop_carbon; ?> กิโลกรัม</b></p>
 
                             <!-- เวลาเริ่ม/จบกิจกรรม -->
                             <?php

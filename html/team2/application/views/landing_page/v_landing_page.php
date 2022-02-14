@@ -42,7 +42,7 @@
 
                                     <!-- ลดคาร์บอน -->
                                     <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
-                                            <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                                            <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กิโลกรัม</b></p>
 
                                     <!-- เวลาเริ่ม/จบกิจกรรม -->
                                     <?php
@@ -279,7 +279,7 @@
                                 <p class="card-text">
                                     <?php echo iconv_substr($arr_pro[$i]->pro_description, 0, 35, "UTF-8") . "..."; ?></p>
                                     <?php if($arr_pro[$i]->pro_cat_id == 2){?>
-                                    <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000"><?php echo $arr_pro[$i]-> pro_point ?> คะแนน</p>
+                                    <p class="text-decoration-none" style="display:inline; font-size: 16px; color: #008000">ใช้คะแนน <?php echo $arr_pro[$i]-> pro_point ?> คะแนน</p>
                                     <?php }?>
                             </div>
                         </div>

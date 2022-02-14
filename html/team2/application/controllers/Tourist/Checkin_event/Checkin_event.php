@@ -118,6 +118,9 @@ class Checkin_event extends DCS_controller
 
             $this->mcin->update_checkout($status);
             $this->mdct->update_score();
+            $tus_score_new = $this->mdct->get_point_tourist_by_id()->row();
+            $this->session->unset_userdata("tus_score");
+            $this->session->set_userdata("tus_score", $tus_score_new->tus_score);
          } elseif ($data_checkin_row->che_status == '2') {
             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 2 = เช็คเอาท์
             $status = 1;
