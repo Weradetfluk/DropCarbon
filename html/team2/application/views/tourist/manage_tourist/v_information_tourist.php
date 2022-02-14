@@ -240,22 +240,27 @@ a:hover {
                         </div>
 
                         <div class="col" style="margin-left: auto; margin-right: 8px; margin-top: 75px;">
-                            <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p>
+                            <!-- <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p> -->
                             <p style="text-align: center;font-size: 22px;">
                                 <?php
-                                if ($arr_tus[0]->tus_cur_score < 25) {
-                                    echo "สิทธิพิเศษของคุณในระดับ Bronze";
-                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
-                                    echo "สิทธิพิเศษของคุณในระดับ Silver";
-                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
-                                    echo "สิทธิพิเศษของคุณในระดับ Gold";
-                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
-                                    echo "สิทธิพิเศษของคุณในระดับ Platinum";
-                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) {
-                                    echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero";
-                                } else {
-                                    echo ".";
-                                } ?>
+                                if ($arr_tus[0]->tus_cur_score < 25) { ?>
+                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Bronze";?>
+                                <?php } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?>
+                                <?php } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Gold";?>
+                                <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="platinum"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?>
+                                <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="Dropcarbon"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
+                                <?php } else { ?>
+                                    <?php echo "."; ?>
+                                <?php } ?>
                             </p>
                             <p style="text-align: center;font-size: 22px;">
                                 <?php
@@ -348,9 +353,9 @@ a:hover {
                     <?php for ($i = 0; $i < count($checkin); $i++) { ?>
                     <?php if (count($checkin) < 3) { ?>
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card card-custom">
                             <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="#">
