@@ -25,6 +25,10 @@ class DCS_controller extends CI_Controller
 
     public function index()
     {
+
+        date_default_timezone_set('Asia/Bangkok');
+        $date_now = date("Y-m-d");
+
         $this->load->model('Company/M_dcs_company', 'mdc');
 
         $this->load->model('Event/M_dcs_event', 'mde');
@@ -39,13 +43,19 @@ class DCS_controller extends CI_Controller
 
         $data['arr_ent'] = $this->mdet->get_ent()->result();
 
-        $data['arr_pro'] = $this->mdp->get_promotions_landing_page()->result();
+        $data['arr_pro'] = $this->mdp->get_promotions_landing_page($date_now)->result();
 
         $data['arr_com'] = $this->mdc->get_company_landing_page()->result();
 
         $data['arr_eve'] = $this->mde->get_event_landing_page()->result();
 
-        $this->output_tourist('landing_page/v_landing_page', $data, 'template/Tourist/topbar_tourist', 'footer');
+
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        }
+        $this->output_tourist('landing_page/v_landing_page', $data, $topbar, 'footer');
     }
 
     /*

@@ -143,46 +143,46 @@ a:hover {
                                 <div class="form-group col-md-3 mb-3">
                                     <label for="tus_birth_month">เดือนเกิด</label>
                                     <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
-                                        <?php 
+                                        <?php
                                         $tus_birth_month_old = intval(substr($arr_tus[0]->tus_birthdate, 5, 2));
                                         $arr_month = array(
-                                            "0"=>"มกราคม",
-                                            "1"=>"มกราคม",
-                                            "2"=>"กุมภาพันธ์",
-                                            "3"=>"มีนาคม",
-                                            "4"=>"เมษายน",
-                                            "5"=>"พฤษภาคม",
-                                            "6"=>"มิถุนายน",
-                                            "7"=>"กรกฎาคม",
-                                            "8"=>"สิงหาคม",
-                                            "9"=>"กันยายน",
-                                            "10"=>"ตุลาคม",
-                                            "11"=>"พฤศจิกายน",
-                                            "12"=>"ธันวาคม"
-                                            );
+                                            "0" => "มกราคม",
+                                            "1" => "มกราคม",
+                                            "2" => "กุมภาพันธ์",
+                                            "3" => "มีนาคม",
+                                            "4" => "เมษายน",
+                                            "5" => "พฤษภาคม",
+                                            "6" => "มิถุนายน",
+                                            "7" => "กรกฎาคม",
+                                            "8" => "สิงหาคม",
+                                            "9" => "กันยายน",
+                                            "10" => "ตุลาคม",
+                                            "11" => "พฤศจิกายน",
+                                            "12" => "ธันวาคม"
+                                        );
                                         echo '<option value="0">ดด</option>';
-                                        for($i = 1; $i < 13; $i++){
-                                            if($i == $tus_birth_month_old){
-                                                echo '<option value="'.$i.'" selected>'.$arr_month[$i].'</option>';
-                                            }else{
-                                                echo '<option value="'.$i.'">'.$arr_month[$i].'</option>';
+                                        for ($i = 1; $i < 13; $i++) {
+                                            if ($i == $tus_birth_month_old) {
+                                                echo '<option value="' . $i . '" selected>' . $arr_month[$i] . '</option>';
+                                            } else {
+                                                echo '<option value="' . $i . '">' . $arr_month[$i] . '</option>';
                                             }
-                                        }?>
+                                        } ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2 mb-2">
                                     <label for="tus_birth_year">ปีเกิด</label>
                                     <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
                                         <?php
-                                        $tus_birth_year_old = intval(substr($arr_tus[0]->tus_birthdate, 0, 4)); 
+                                        $tus_birth_year_old = intval(substr($arr_tus[0]->tus_birthdate, 0, 4));
                                         echo '<option value="0">ปป</option>';
-                                        for($i = $year_now-100; $i <= $year_now; $i++){
-                                            if($i == $tus_birth_year_old){
-                                                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-                                            }else{
-                                                echo '<option value="'.$i.'">'.$i.'</option>';
+                                        for ($i = $year_now - 100; $i <= $year_now; $i++) {
+                                            if ($i == $tus_birth_year_old) {
+                                                echo '<option value="' . $i . '" selected>' . $i . '</option>';
+                                            } else {
+                                                echo '<option value="' . $i . '">' . $i . '</option>';
                                             }
-                                        }?>
+                                        } ?>
                                     </select>
                                 </div>
                             </div>
@@ -245,21 +245,21 @@ a:hover {
                                 <?php
                                 if ($arr_tus[0]->tus_cur_score < 25) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Bronze";?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?>
+                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Gold";?>
+                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Gold"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="platinum"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?> 
+                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score >= 100) { ?>
-                                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="platinum"><br><br>
-                                    <?php echo "สิทธิพิเศษของคุณในระดับ Platinum"; ?> 
+                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
                                 <?php } else { ?>
-                                    <?php echo ""; ?>
+                                <?php echo ""; ?>
                                 <?php } ?>
                             </p>
                             <p style="text-align: center;font-size: 22px;">
@@ -272,7 +272,7 @@ a:hover {
                                     echo "ส่วนลดการใช้คะแนน 9%";
                                 } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
                                     echo "ส่วนลดการใช้คะแนน 11%";
-                                }else if ($arr_tus[0]->tus_cur_score >= 100) {
+                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
                                     echo "ส่วนลดการใช้คะแนน 11%";
                                 } else {
                                     echo "";
@@ -291,7 +291,7 @@ a:hover {
                                     echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Gold";
                                 } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
                                     $score += 75 - $arr_tus[0]->tus_cur_score;
-                                    echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Platinum";
+                                    echo "ต้องการอีก $score แต้ม เพื่อปลดล็อค ระดับ Dropcarbon Hero";
                                 } else {
                                     echo "";
                                 } ?>
@@ -305,35 +305,35 @@ a:hover {
 
         <section>
             <div class="header-break">
-                    รางวัลของฉัน
+                รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
             <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
-                <?php if (count($tou_pro) > 3) { 
+            <?php if (count($tou_pro) > 3) {
                     $count_tou_pro = 3;
-                }else{
+                } else {
                     $count_tou_pro = count($tou_pro);
                 } ?>
-                <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
-                    <div class="container">
-                        <div class="card" style="width: 100%">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
-                                </div>
-                                <div class="col-7">
-                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                                </div>
-                                <div class="col" style="margin: 100px 30px;">
-                                <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
-                            </div>
-                            </div>
+            <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
+            <div class="container">
+                <div class="card" style="width: 100%">
+                    <div class="row">
+                        <div class="col">
+                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
+                        </div>
+                        <div class="col-7">
+                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                        </div>
+                        <div class="col" style="margin: 100px 30px;">
+                            <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
                         </div>
                     </div>
-                <?php } ?>
-                
+                </div>
+            </div>
+            <?php } ?>
+
             <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
@@ -341,32 +341,32 @@ a:hover {
             <div class="header-break">
                 ประวัติการเข้าร่วมกิจกรรม
             </div>
-            
+
             <div class="container">
                 <div class="row">
-                    <?php if (count($checkin) <= 3) { 
+                    <?php if (count($checkin) <= 3) {
                         $count_checkin = count($checkin);
-                    }else {
+                    } else {
                         $count_checkin = 3;
-                    }?>
+                    } ?>
                     <?php for ($i = 0; $i < $count_checkin; $i++) { ?>
-                        <div class="col-md-4">
-                            <div class="card card-custom">
-                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
+                    <div class="col-md-4">
+                        <div class="card card-custom">
+                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="#">
+                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
                                 </a>
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
-                                    </a>
-                                    <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
-                                </div>
+                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                             </div>
                         </div>
+                    </div>
                     <?php } ?>
                 </div>
                 <?php if (count($checkin) > 3) { ?>
-                    <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+                <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
                 <?php } ?>
             </div>
         </section>
@@ -434,7 +434,7 @@ $(document).ready(function() {
         swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
         <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
     }
-    let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8)))?>';
+    let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8))) ?>';
     check_date_by_month(birth_date_old);
 });
 
@@ -545,48 +545,48 @@ function disabled_text() {
 }
 
 /*
-* check_date_by_month
-* check birth date by birth month
-* @input tus_birth_month, tus_birth_year
-* @output tus_birth_date
-* @author Suwapat Saowarod 62160340
-* @Create Date 2565-01-1ุ6
-* @Update - 
-*/
-function check_date_by_month(birth_date_old){
+ * check_date_by_month
+ * check birth date by birth month
+ * @input tus_birth_month, tus_birth_year
+ * @output tus_birth_date
+ * @author Suwapat Saowarod 62160340
+ * @Create Date 2565-01-1ุ6
+ * @Update - 
+ */
+function check_date_by_month(birth_date_old) {
     let birth_month = $('#tus_birth_month').val();
     let birth_year = $('#tus_birth_year').val();
     let html_code = '';
     let count_date;
-    if(birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12){
+    if (birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12) {
         count_date = 31;
-    }else if(birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11){
+    } else if (birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11) {
         count_date = 30;
-    }else{
+    } else {
         let mod_4, mod_100, mod_400;
         // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
         mod_4 = birth_year % 4;
         mod_100 = birth_year % 100;
         mod_400 = birth_year % 400;
-        if(mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0){
+        if (mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0) {
             count_date = 28;
-        }else{
+        } else {
             count_date = 29;
         }
     }
-    html_code += '<option value="'+0+'">วว</option>';
-    for(let i = 1; i <= count_date; i++){
-        if(birth_date_old == 'not have old date'){
-            if($('#tus_birth_date').val() == i){
-                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
-            }else{
-                html_code += '<option value="'+i+'">'+ i +'</option>';
+    html_code += '<option value="' + 0 + '">วว</option>';
+    for (let i = 1; i <= count_date; i++) {
+        if (birth_date_old == 'not have old date') {
+            if ($('#tus_birth_date').val() == i) {
+                html_code += '<option value="' + i + '" selected>' + i + '</option>';
+            } else {
+                html_code += '<option value="' + i + '">' + i + '</option>';
             }
-        }else{
-            if(birth_date_old == i){
-                html_code += '<option value="'+i+'" selected>'+ i +'</option>';
-            }else{
-                html_code += '<option value="'+i+'">'+ i +'</option>';
+        } else {
+            if (birth_date_old == i) {
+                html_code += '<option value="' + i + '" selected>' + i + '</option>';
+            } else {
+                html_code += '<option value="' + i + '">' + i + '</option>';
             }
         }
     }

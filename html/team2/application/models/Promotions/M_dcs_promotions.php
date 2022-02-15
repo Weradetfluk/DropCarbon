@@ -384,7 +384,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     *@author Chutipon Thermsirisuksin 62160081
     *@Create Date 2564-10-02
     */
-    public function get_promotions_and_img($number_status, $post)
+    public function get_promotions_and_img($number_status, $post, $date_now)
     {
         $and = "";
         if (isset($post["value_search"]) && $post["value_search"] !== "") {
@@ -399,7 +399,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         from dcs_promotions
         RIGHT JOIN dcs_pro_image
         ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
-        WHERE pro_status = '" . $number_status . "'
+        WHERE pro_status = '$number_status' AND ('$date_now' BETWEEN dcs_promotions.pro_start_date AND dcs_promotions.pro_end_date)
         $and
         GROUP BY dcs_promotions.pro_id";
         $query = $this->db->query($sql);
@@ -415,12 +415,13 @@ class M_dcs_promotions extends Da_dcs_promotions
     * @Create Date 2564-10-26
     * @Update 2564-10-26
     */
-    public function get_promotions_landing_page(){
+    public function get_promotions_landing_page($date_now)
+    {
         $sql = "SELECT dcs_promotions.pro_point,dcs_promotions.pro_id, dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_promotions.pro_cat_id,dcs_pro_image.pro_img_path 
         from dcs_promotions
         RIGHT JOIN dcs_pro_image
         ON  dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
-        WHERE pro_status = 2
+        WHERE pro_status = 2 AND ('$date_now' BETWEEN dcs_promotions.pro_start_date AND dcs_promotions.pro_end_date)
         GROUP BY dcs_promotions.pro_id
         LIMIT 4  ";
 
@@ -478,7 +479,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $query = $this->db->query($sql, array($this->pro_id));
         return $query;
     }
-    
+
     /*
     *get_all
     *get data form database

@@ -133,11 +133,15 @@ class Landing_page extends DCS_controller
         $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
         $number_status = 2;
         $data['pro_cat'] = $this->mcat->get_all()->result();
+        date_default_timezone_set('Asia/Bangkok');
+        $date_now = date("Y-m-d");
         if (isset($_POST)) {
-            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST)->result();
+            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, $_POST, $date_now)->result();
         } else {
-            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status)->result();
+            $data["promotions"] = $this->mpt->get_promotions_and_img($number_status, NULL, $date_now)->result();
         }
+
+
 
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
@@ -181,8 +185,9 @@ class Landing_page extends DCS_controller
     * @author Thanisorn thumsawanit 62160088
     * @Create Date 2564-12-24
     */
-    public function exchange_reward_ajax(){
-        if($this->input->post('tus_score') >= $this->input->post('pro_point')){
+    public function exchange_reward_ajax()
+    {
+        if ($this->input->post('tus_score') >= $this->input->post('pro_point')) {
             $this->load->model('Promotions/M_dcs_tou_promotion', 'mtoup');
             $this->load->model('Tourist/M_dcs_tourist', 'mtou');
             $this->mtou->tus_id = $this->session->userdata("tourist_id");
@@ -190,11 +195,11 @@ class Landing_page extends DCS_controller
             $this->mtoup->tou_pro_status = 1;
             $this->mtoup->tou_tus_id = $this->session->userdata("tourist_id");
             $this->mtoup->insert();
-            $this->mtou->tus_score = $this->input->post('tus_score') - $this->input->post('pro_point'); 
+            $this->mtou->tus_score = $this->input->post('tus_score') - $this->input->post('pro_point');
             $this->mtou->update_score_exchange_reward();
             $this->session->set_userdata("exchange_promotion", "exchange_success");
             echo 1;
-        }else{
+        } else {
             echo 2;
         }
     }

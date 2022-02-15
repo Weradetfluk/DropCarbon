@@ -92,7 +92,7 @@ class Login_tourist extends DCS_controller
             // echo $tus_img_path; test path
 
             if (!isset($_SESSION['number_event'])) {
-                redirect("Tourist/Auth/Landing_page_tourist");
+                redirect("");
             } else {
 
                 redirect("Tourist/Checkin_event/Checkin_event/load_checkin_or_checkout_page");
