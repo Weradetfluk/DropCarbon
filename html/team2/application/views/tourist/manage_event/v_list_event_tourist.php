@@ -53,7 +53,6 @@
                 </div>
             </form>
 
-            <!-- <?php echo count($event); ?> -->
             <div class="row">
                 <?php for ($i = 0; $i < count($checkin); $i++) { ?>
                 <div class="col-12 col-md-4 mb-4">
@@ -78,8 +77,8 @@
                                 <?php if ($checkin[$i]->che_status == 1) { ?>
                                 <span>เช็คอินเมื่อ : <?php echo $time_format_checkin[$i] ?> </span>
                                 <?php } else { ?>
-                                <span>เช็คอินเมื่อ : <?php echo   $time_format_checkin[$i] ?> </span> <br>
-                                <span>เช็คเอาต์เมื่อ : <?php echo  $time_format_checkout[$i] ?> </span>
+                                <span>เช็คอินเมื่อ : <?php echo $time_format_checkin[$i] ?> </span> <br>
+                                <span>เช็คเอาต์เมื่อ : <?php echo $time_format_checkout[$i] ?> </span>
                                 <?php } ?>
                             </div>
                         </a>

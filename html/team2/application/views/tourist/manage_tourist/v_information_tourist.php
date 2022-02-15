@@ -341,42 +341,32 @@ a:hover {
             <div class="header-break">
                 ประวัติการเข้าร่วมกิจกรรม
             </div>
-
+            
             <div class="container">
                 <div class="row">
-                    <?php for ($i = 0; $i < count($checkin); $i++) { ?>
-                    <?php if (count($checkin) < 3) { ?>
-                    <div class="col-md-4">
-                        <div class="card card-custom">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <a href="#">
-                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                    <?php if (count($checkin) <= 3) { 
+                        $count_checkin = count($checkin);
+                    }else {
+                        $count_checkin = 3;
+                    }?>
+                    <?php for ($i = 0; $i < $count_checkin; $i++) { ?>
+                        <div class="col-md-4">
+                            <div class="card card-custom">
+                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
                                 </a>
-                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100" id="card">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px;" alt="...">
-                                <div class="card-body" align="center">
-                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                    </a>
                                     <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div> -->
                     <?php } ?>
-                    <?php } ?>
-
                 </div>
                 <?php if (count($checkin) > 3) { ?>
-                <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Event_tourist/Tourist_event/show_event_list_tourist' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+                    <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
                 <?php } ?>
             </div>
         </section>

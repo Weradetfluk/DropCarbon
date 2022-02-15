@@ -47,6 +47,9 @@ class Tourist_manage extends DCS_controller
       } else {
          $data["event"] = $this->mde->get_event_and_img($number_status)->result();
       }
+      // echo "<pre>";
+      // print_r($data['checkin']);
+      // echo "</pre>";
       $this->output_tourist('tourist/manage_tourist/v_information_tourist', $data, 'template/Tourist/topbar_tourist_login');
    }
    /*

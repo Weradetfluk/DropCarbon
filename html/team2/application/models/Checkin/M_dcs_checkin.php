@@ -40,7 +40,7 @@ class M_dcs_checkin extends Da_dcs_checkin
             $and .= " AND dcs_event.eve_cat_id = " . $post["eve_cat_id"] . "";
         }
 
-        $sql = "SELECT * FROM dcs_checkin  AS checkin
+        $sql = "SELECT * FROM dcs_checkin AS checkin
                 LEFT JOIN dcs_event ON checkin.che_eve_id = dcs_event.eve_id
                 LEFT JOIN dcs_eve_image ON dcs_eve_image.eve_img_eve_id = dcs_event.eve_id
                 WHERE checkin.che_tus_id = '$tus_id' 
