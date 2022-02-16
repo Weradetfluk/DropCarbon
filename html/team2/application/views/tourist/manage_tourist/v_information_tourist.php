@@ -62,7 +62,7 @@ a:hover {
         <ul class="breadcrumb">
 
             <!-- Nav bar -->
-            <li><a href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
             <li>ข้อมูลส่วนตัว</li>
 
         </ul>

@@ -50,13 +50,7 @@
 </style>
 <div class="container py-5">
     <ul class="breadcrumb">
-        <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a>
-        </li>
-        <?php } ?>
-        <?php if (!$this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
+        <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_promotions_list' ?>"
                 style="color: green;">รายการโปรโมชันและรางวัล</a></li>
         <li class="colorchange"><?php echo $promotions[0]->pro_name ?></li>

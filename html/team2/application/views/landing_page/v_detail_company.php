@@ -162,13 +162,7 @@ function read_more() {
 
 <div class="container py-5">
     <ul class="breadcrumb">
-        <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a>
-        </li>
-        <?php } ?>
-        <?php if (!$this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
+        <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_company_list' ?>"
                 style="color: green;">รายการสถานที่</a></li>
         <li class="colorchange"><?php echo $company->com_name ?></li>

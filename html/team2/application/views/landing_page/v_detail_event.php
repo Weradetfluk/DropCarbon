@@ -14,17 +14,7 @@
 
     <!-- nav bar -->
     <ul class="breadcrumb">
-
-        <!-- เข้าสู่ระบบแล้ว -->
-        <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a>
-        </li>
-        <?php } ?>
-
-        <!-- ยังไม่ได้เข้าสู่ระบบ -->
-        <?php if (!$this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
+        <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
 
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_event_list' ?>"
                 style="color: green;">รายการกิจกรรม</a></li>
