@@ -207,6 +207,16 @@
             <p style="font-size: 18px; text-indent: 50px;">
                 <?php echo $promotions[0]->pro_cat_name; ?></p>
         </div>
+        <div class="col">
+            <h3><?php if($promotions[0]->pro_cat_id == 2){  ?>  
+                <img src="<?php echo base_url() . 'assets/templete/picture/exchange_point.png' ?>"
+                    style="width:45px; margin-top:-5px;"> คะแนน  </h3>
+            <hr width="100%" size="10" color="#cccccc">
+                    
+            <p style="margin-left:-45px;font-size: 18px; text-indent: 50px;">
+            คะเเนนที่ใช้แลก <?php echo $promotions[0]->pro_point ?> คะแนน </p> 
+            <?php } ?>
+        </div>
     </div>
 
     <div class="row py-3">
@@ -216,7 +226,6 @@
                     $tus_score = $this->session->userdata("tus_score");?>
                     <?php
                     if ($tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
-                        <p><?php echo $promotions[0]->pro_point ?> คะแนน </p>
                         <button class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $tus_score?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
                     <?php } ?>
                         </h3>
