@@ -244,7 +244,7 @@
             <div class="card" style="padding-left: 2%; transform: unset;">
                 <h2 style="padding-top: 2%; ">
 
-                    <?php echo $promotions[0]->pro_name ?>
+                    <?php echo $promotions[0]->com_name ?>
                 </h2>
                 <!-- ชื่อสถานที่ -->
                 <hr>

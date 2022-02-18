@@ -580,9 +580,9 @@
                     text: 'การเช็คอินกิจกรรมในแต่ละวัน'
                 },
 
-                subtitle: {
-                    text: 'Source: thesolarfoundation.com'
-                },
+                // subtitle: {
+                //     text: 'Source: thesolarfoundation.com'
+                // },
 
                 yAxis: {
                     title: {
@@ -748,9 +748,9 @@
                     text: 'การสมัครบัญชีผู้ใช้'
                 },
 
-                subtitle: {
-                    text: 'Source: thesolarfoundation.com'
-                },
+                // subtitle: {
+                //     text: 'Source: thesolarfoundation.com'
+                // },
 
                 yAxis: {
                     min: 0,

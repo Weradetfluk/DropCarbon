@@ -83,7 +83,7 @@ if (!isset($_SESSION['tab_number'])) {
 
                 <!-- Drop down list event menu -->
                 <li class="nav-item event_menu <?php if ($_SESSION['tab_number'] == 4 || $_SESSION['tab_number'] == 8) echo "active custom-a"; ?>">
-                    <a class="nav-link custom-a" href="#" id="eve_menu">
+                    <a class="nav-link  <?php if ($_SESSION['tab_number'] == 4 || $_SESSION['tab_number'] == 8) echo "active custom-a"; ?>" href="#" id="eve_menu">
                         <i class="material-icons">calendar_today</i>
                         <h5 class="h5-topbar">จัดการกิจกรรม<i class="material-icons dropdown_sub_menu">expand_more</i>
                         </h5>
@@ -113,7 +113,7 @@ if (!isset($_SESSION['tab_number'])) {
 
                 <!-- Drop down list promotions menu -->
                 <li class="nav-item <?php if ($_SESSION['tab_number'] == 7 || $_SESSION['tab_number'] == 9) echo "active custom-a"; ?>">
-                    <a class="nav-link custom-a" href="#" id="pro_menu">
+                    <a class="nav-link <?php if ($_SESSION['tab_number'] == 7 || $_SESSION['tab_number'] == 9) echo "active custom-a"; ?>" href="#" id="pro_menu">
                         <i class="material-icons">point_of_sale</i>
                         <h5 class="h5-topbar">จัดการโปรโมชัน<i class="material-icons dropdown_sub_menu">expand_more</i>
                         </h5>
