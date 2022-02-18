@@ -116,12 +116,7 @@ class Admin_list_promotions extends DCS_controller
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
-                             </a>' .
-                            '<a class="btn btn-warning custom-a"
-                            style="font-size:10px; padding:12px;"
-                            href="' . site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' . $row->pro_id . '">
-                            <span class="material-icons">edit</span>
-                            </a>';
+                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
@@ -188,12 +183,7 @@ class Admin_list_promotions extends DCS_controller
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
-                             </a>' .
-                            '<a class="btn btn-warning custom-a"
-                            style="font-size:10px; padding:12px;"
-                            href="' . site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' . $row->pro_id . '">
-                            <span class="material-icons">edit</span>
-                            </a>';
+                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
