@@ -558,7 +558,7 @@ var qrcode = new QRCode(document.getElementById("qr_code"), {
  * @Create Date 2564-10-12
  * @Update -
  */
-function make_qr_code(eve_id, eve_name, eve_start, eve_end) {
+function make_qr_code(eve_id, eve_name, eve_start, eve_end, eve_point, eve_lat, eve_lon) {
     let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
     qrcode.makeCode( url + eve_id);
     $('#name_qr').html(eve_name);
