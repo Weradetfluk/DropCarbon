@@ -923,7 +923,7 @@
 
                 tooltip: {
                     headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> จากทั้งหมด<br/>'
                 },
                 series: [{
                     name: "กิจกรรม",
@@ -977,7 +977,7 @@
                     text: 'ข้อมูลประเภทกิจกรรมที่ยอดนิยมที่สุด (คิดเป็นเปอร์เซ็น)'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage}%</b>'
                 },
                 accessibility: {
                     point: {
@@ -990,7 +990,7 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                            format: '<b>{point.name}</b>: {point.percentage} %'
                         }
                     }
                 },
