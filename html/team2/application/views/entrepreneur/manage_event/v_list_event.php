@@ -132,7 +132,7 @@
                                                                 </button>
                                                                 <button class="btn btn-success"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>')">
+                                                                    onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')">
                                                                     <span class="material-icons">qr_code</span>
                                                                 </button>
                                                             </td>
@@ -329,7 +329,7 @@
                                                     </button>
                                                     <button class="btn btn-success"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>')">
+                                                        onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')">
                                                         <span class="material-icons">qr_code</span>
                                                     </button>
                                                 </td>
@@ -513,11 +513,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">QR Code</h4>
+                <h3 class="col-12" style="text-align: center;"><span id="name_qr"></span></h3>
             </div>
             <div class="modal-body">
-                <p>กิจกรรม : <span id="name_qr"></span></p>
-                <center><div id="qr_code" style="width:100%; height:100%;"></div></center>
+                <center><div id="qr_code" style="width:100%; height:100%;"></div></center><br>
+                <h5><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>" width="30px"> ระยะเวลา : <span id="event_time"></h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" style="color: white;" data-dismiss="modal">เสร็จสิ้น</button>
@@ -558,11 +558,20 @@ var qrcode = new QRCode(document.getElementById("qr_code"), {
  * @Create Date 2564-10-12
  * @Update -
  */
-function make_qr_code(eve_id, eve_name) {
+function make_qr_code(eve_id, eve_name, eve_start, eve_end) {
     let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
     qrcode.makeCode( url + eve_id);
     $('#name_qr').html(eve_name);
     $('#modal_qrcode').modal();
+    var month_names_thai = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+    let event_start = new Date(eve_start);
+    let event_end = new Date(eve_end);
+    let year_start = event_start.getFullYear()+543;
+    let event_time = event_start.getDate() + ' ' + month_names_thai[event_start.getMonth()] + ' ' + year_start;
+    event_time += ' - ';
+    let year_end = event_end.getFullYear()+543;
+    event_time += event_end.getDate() + ' ' + month_names_thai[event_end.getMonth()] + ' ' + year_end;
+    $('#event_time').html(event_time);
 }
 /*
  * change_tab_number_ajax
