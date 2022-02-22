@@ -32,13 +32,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link active"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>">
-                                        <h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5>
+                                        <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_over'; ?>">
-                                        <h5 class="h5-card-header">สิ้นสุดกิจกรรม</h5>
+                                        <h5 class="h5-card-header">สิ้นสุด</h5>
                                     </a>
                                 </li>
                             </ul>
