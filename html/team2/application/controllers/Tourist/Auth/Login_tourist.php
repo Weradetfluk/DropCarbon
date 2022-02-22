@@ -61,19 +61,14 @@ class Login_tourist extends DCS_controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password'); //รับค่า username & password
-
         //$password = md5($password);
-
         $this->load->model('Tourist/M_dcs_login_tourist', 'mlog');  //load database
         $this->load->model('Tourist/M_dcs_tourist_image', 'mpic');
-
         $this->mlog->tus_username =  $username;
         $this->mlog->real_password = $password;
         // echo $this->mlog->real_password;
         $this->mlog->tus_password = md5($password);
-
         $result = $this->mlog->login(); //function in model
-
         if ($result) {
             $this->mpic->tus_img_tus_id = $result->tus_id;
             $result_img = $this->mpic->get_by_tourist_id()->row();
@@ -91,7 +86,7 @@ class Login_tourist extends DCS_controller
             //echo $tus_name; test name
             // echo $tus_img_path; test path
 
-            if (!isset($_SESSION['number_event'])) {
+            if (!isset($_SESSION['eve_id'])) {
                 redirect("");
             } else {
 

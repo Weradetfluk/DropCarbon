@@ -114,7 +114,7 @@ class Admin_list_event extends DCS_controller
                               </i>
                           </button>' .
               //ปุ่ม qr_code
-              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\')">
+              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')">
                     <span class="material-icons">
                               qr_code
                               </span>
@@ -177,7 +177,7 @@ class Admin_list_event extends DCS_controller
                             </i>
                           </button>' .
               //ปุ่ม qr_code
-              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\')">
+              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')">
                           <span class="material-icons">
                             qr_code
                           </span>

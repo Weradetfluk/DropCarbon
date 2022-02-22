@@ -509,7 +509,7 @@ class M_dcs_promotions extends Da_dcs_promotions
         $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
                 LEFT JOIN dcs_company
                 ON dcs_promotions.pro_com_id = dcs_company.com_id
-                WHERE pro_status != 4 AND com_ent_id = $ent_id";
+                WHERE pro_status != 4 AND dcs_company.com_ent_id = $ent_id AND dcs_promotions.pro_adm_id IS NULL";
         return $this->db->query($sql);
     }
 
