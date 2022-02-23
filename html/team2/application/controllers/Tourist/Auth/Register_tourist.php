@@ -9,6 +9,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Register_tourist extends DCS_controller
 {
+    /*
+    * @author Thanisorn thumsawanit 62160088
+    */
     public function __construct()
     {
         parent::__construct();
@@ -132,8 +135,8 @@ class Register_tourist extends DCS_controller
         }
     }
     /*
-    * set_session_add_tourist
-    * add session 
+    * set_session_regis_tourist
+    * set session 
     * @input $data
     * @output -
     * @author Thanisorn thumsawanit 62160088
