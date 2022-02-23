@@ -54,7 +54,7 @@ class Company_edit extends DCS_controller
    /*
     * edit_company
     * edit company to database
-    * @input com_name, com_description, com_id, com_lat, com_lon, com_tel, com_file
+    * @input com_name, com_description, com_id, com_lat, com_lon, com_tel, com_file, com_cat_id, com_location, par_id, new_img, name_new_image, del_old_img, del_new_img
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -121,8 +121,8 @@ class Company_edit extends DCS_controller
 
    /*
     * set_session_edit_company
-    * edit session 
-    * @input $data
+    * edit session error_edit_company
+    * @input data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-23

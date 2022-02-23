@@ -10,9 +10,9 @@ include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Event_list extends DCS_controller
 {
     /*
-    * show_list_company
-    * show list company by id in database
-    * @input entrepreneur_id
+    * show_list_event
+    * show list event by id in database
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-09-16

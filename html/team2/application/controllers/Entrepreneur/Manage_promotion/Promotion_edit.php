@@ -12,7 +12,7 @@ class Promotion_edit extends DCS_controller
     /*
     * show_edit_promotion
     * show form edit promotion
-    * @input entrepreneur_id
+    * @input pro_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-03
@@ -36,7 +36,7 @@ class Promotion_edit extends DCS_controller
     /*
     * edit_promotion
     * edit promotion 
-    * @input pro_name, pro_description, pro_com_id, pro_id, new_img, com_id, del_old_img, del_new_img
+    * @input pro_name, pro_description, pro_com_id, pro_id, new_img, com_id, del_old_img, del_new_img, pro_start_date, pro_end_date, pro_cat_id, pro_point
     * @output -
     * @author Suwapat Saowarod 62160340 
     * @Create Date 2564-10-03
@@ -107,7 +107,7 @@ class Promotion_edit extends DCS_controller
 
     /*
     * set_session_edit_promotion
-    * edit session 
+    * edit session error_edit_promotion
     * @input $data
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -121,7 +121,7 @@ class Promotion_edit extends DCS_controller
 
     /*
     * delete_promotion_ajax
-    * update pro_status 
+    * update pro_status to status 4
     * @input pro_id
     * @output -
     * @author Thanchanok Thongjumroon 62160089
@@ -155,7 +155,7 @@ class Promotion_edit extends DCS_controller
 
     /*
     * dis_cancel_promotion_ajax
-    * update pro_status 
+    * update pro_status to status 5
     * @input pro_id
     * @output -
     * @author Suwapat Saowarod 62160340

@@ -12,7 +12,6 @@ class Admin_manage_banner extends DCS_controller
     /*
     * @author Weradet Nopsombun 62160110
     */
-
     public function __construct()
     {
         parent::__construct();
@@ -21,7 +20,7 @@ class Admin_manage_banner extends DCS_controller
     /*
     * index
     * show page banner list
-    * @input
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-09-14
@@ -31,10 +30,11 @@ class Admin_manage_banner extends DCS_controller
     {
         $this->show_banner_list();
     }
+
     /*
     * show_banner_list
-    * show page banner
-    * @input
+    * show page manage banner
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-09-14
@@ -48,13 +48,12 @@ class Admin_manage_banner extends DCS_controller
     /*
     * get_banner_list_ajax
     * get banner
-    * @input
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-09-14
     * @Update Date -
     */
-
     public function get_banner_list_ajax(){
         $this->load->model('Banner/M_dcs_banner', 'mmbn');
         $data['data_banner_json'] = $this->mmbn->get_all()->result();
@@ -62,10 +61,11 @@ class Admin_manage_banner extends DCS_controller
 
         echo json_encode($data);
     }
+
     /*
     * insert_banner_ajax
-    * insert data  banner
-    * @input
+    * insert data banner
+    * @input file, file_name, file_tmp_name, file_size, file_error
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-09-14
@@ -114,8 +114,8 @@ class Admin_manage_banner extends DCS_controller
 
     /*
     * delete_banner_ajax
-    * insert data  banner
-    * @input path img
+    * delete banner
+    * @input img_path
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-09-14

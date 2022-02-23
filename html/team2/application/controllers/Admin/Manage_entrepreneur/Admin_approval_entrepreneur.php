@@ -19,73 +19,87 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->load->library('pagination');
     $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
   }
+
+  /*
+    * index
+    * show page manage entrepreneur  
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
   public function index()
   {
     $this->show_data_consider();
   }
 
   /*
-        * show_data_consider
-        * get all data entrepreneur not approve and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_consider
+    * get all data entrepreneur not approve and show table
+    * @input - 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+    */
   public function show_data_consider()
   {
     $_SESSION['tab_number'] = 5; //set tab number in topbar_admin.php
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_consider', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
+
   /*
-        * show_data_approve
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * show_data_approve
+    * get all data entrepreneur approve and show table
+    * @input - 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
   public function show_data_approve()
   {
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
+
   /*
-        * show_data_reject
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_reject
+    * get all data entrepreneur approve  and show table
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-1
+    * @Update Date -
+    */
   public function show_data_reject()
   {
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_reject', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
+
   /*
-        * show_data_block
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_block
+    * get all data entrepreneur block and show table
+    * @input - 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date -
+    */
   public function show_data_block()
   {
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_block', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
+
   /*
-        * get_entrepreneur_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-03
-        * @Update Date
-        */
+    * get_entrepreneur_by_id_ajax
+    * get all data entrepreneur by id
+    * @input ent_id
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-03
+    * @Update Date -
+    */
   public function get_entrepreneur_by_id_ajax()
   {
     $this->load->model('Document/M_dcs_document', 'mdoc');
@@ -95,15 +109,16 @@ class Admin_approval_entrepreneur extends DCS_controller
     $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
     echo json_encode($data);
   }
+
   /*
-        * get_entrepreneur_reject_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-01
-        * @Update Date
-        */
+    * get_entrepreneur_reject_by_id_ajax
+    * get all data reject entrepreneur by id
+    * @input ent_id
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date - 
+    */
   public function get_entrepreneur_reject_by_id_ajax()
   {
     $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
@@ -112,15 +127,16 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     echo json_encode($data['arr_data']);
   }
+
   /*
-        * Approval
-        * change ent_status
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * approval_entrepreneur
+    * change ent_status 
+    * @input ent_id
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
   public function approval_entrepreneur()
   {
     $this->mdce->ent_id = $this->input->post('ent_id');
@@ -129,15 +145,16 @@ class Admin_approval_entrepreneur extends DCS_controller
 
     $this->mdce->update_status($status_number);
   }
+
   /*
-        * reject_entrepreneur
-        * change ent_status
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * reject_entrepreneur
+    * change ent_status
+    * @input ent_id, admin_reason, email
+    * @output - 
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
   public function reject_entrepreneur()
   {
     // set value from font end
@@ -160,30 +177,32 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->mdce->update_status($status_number);
     $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
+
   /*
-        * get_data_card_entrepreneur_ajax
-        * get data consider, approve, rejected, block <- number of people
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * get_data_card_entrepreneur_ajax
+    * get data consider, approve, rejected, block <- number of people
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+    */
   public function get_data_card_entrepreneur_ajax()
   {
     $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result();
 
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
+
   /*
-         * show_data_consider_ajax
-         * get all data entrepreneur not approve and show table
-         * @input
-         * @output -
-         * @author Weradet Nopsombun 62160110
-         * @Create Date 2564-09-14
-         * @Update Date -
-         */
+    * show_data_ajax
+    * get all data entrepreneur not approve and show table
+    * @input number_status, query
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;

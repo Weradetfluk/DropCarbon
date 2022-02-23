@@ -12,7 +12,7 @@ class Promotion_add extends DCS_controller
     /*
     * show_add_promotion
     * show form add promotion
-    * @input entrepreneur_id
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02
@@ -33,7 +33,7 @@ class Promotion_add extends DCS_controller
     /*
     * add_promotion
     * add promotion to database
-    * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point
+    * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point, pro_com_id, pro_cat_id, new_img, name_new_image, del_new_img
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02
@@ -87,8 +87,8 @@ class Promotion_add extends DCS_controller
 
     /*
     * set_session_add_promotion
-    * add session 
-    * @input $data
+    * add session error_add_promotion
+    * @input data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02
@@ -166,7 +166,7 @@ class Promotion_add extends DCS_controller
     /*
     * uplink_image_ajax
     * uplink image when cancel edit and add promotion
-    * @input arr_img
+    * @input arr_image
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02

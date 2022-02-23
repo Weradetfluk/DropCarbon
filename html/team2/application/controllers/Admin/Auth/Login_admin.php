@@ -1,15 +1,18 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 /*
 * Login_admin
 * Class for login
 * @author weradet nopsombun 62160110
 * @Create Date 2564-07-17
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
+
 class Login_admin extends DCS_controller
 {
+  /*
+    * @author Weradet Nopsombun 62160110
+  */
   public function __construct()
   {
     parent::__construct();
@@ -23,43 +26,36 @@ class Login_admin extends DCS_controller
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-07-17
     * @Update -
-    */
-
-
+  */
   public function index()
   {
     $this->output_login_admin('admin/auth/v_login_admin');
   }
 
-
-
   /*
     * warnning 
     * show warnning 
-    * @input 
+    * @input data
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
-
   public function warnning($data)
   {
     $this->output_login_admin('admin/auth/v_login_admin', $data);
     //echo $data['warning'];
   }
 
-
   /*
     * input_login_form
     * Login admin and get data 
-    * @input 
+    * @input username, password
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-07-17
     * @Update -
     */
-
   function input_login_form()
   {
 
@@ -101,7 +97,6 @@ class Login_admin extends DCS_controller
     * @Create Date 2564-07-17
     * @Update -
     */
-
   public function logout()
   {
     $this->remove_session();
@@ -112,7 +107,7 @@ class Login_admin extends DCS_controller
   /*
     * set_session
     * set session data
-    * @input 
+    * @input username, name, id
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
@@ -129,13 +124,12 @@ class Login_admin extends DCS_controller
   /*
     * remove_session
     * remove session data
-    * @input 
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-07-17
     * @Update -
     */
-
   public function remove_session()
   {
     $this->session->unset_userdata("username");
@@ -147,35 +141,26 @@ class Login_admin extends DCS_controller
   /*
     * forgot_password_page
     * load view forgot pass
-    * @input 
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-08-12
     * @Update -
     */
-
-
   public function forgot_password_page()
   {
     $this->output_login_admin('admin/auth/v_forgot_password_admin');
   }
 
-
-
-
-
   /*
     * check_email_admin
     * check email in database
-    * @input 
+    * @input user_email
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-08-12
     * @Update -
     */
-
-
-
   public function check_email_admin()
   {
 
@@ -200,7 +185,7 @@ class Login_admin extends DCS_controller
   /*
     * send_mail_reset
     * check email in database
-    * @input 
+    * @input email
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-08-12
@@ -209,12 +194,8 @@ class Login_admin extends DCS_controller
 
   public function send_mail_reset($email)
   {
-
-
-
     // set userpassword in token 
     $token = rand(1000, 9999);
-
 
     $this->load->model('Admin/M_dcs_admin', 'login');  //load database
 
@@ -262,15 +243,12 @@ class Login_admin extends DCS_controller
   /*
     * reset_password_page
     * check email in database
-    * @input 
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-08-12
     * @Update -
     */
-
-
-
   public function reset_password_page()
   {
     $data['token'] = $this->input->get('token');
@@ -281,15 +259,13 @@ class Login_admin extends DCS_controller
 
   /*
     * update_password_ajax
-    * check email in database
-    * @input 
+    * update password admin
+    * @input password, token
     * @output -
     * @author Weradet Nopsombun 62160110 
     * @Create Date 2564-08-12
     * @Update -
     */
-
-
   public function update_password_ajax()
   {
     $password = $this->input->post('password');

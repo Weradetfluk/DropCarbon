@@ -1,29 +1,27 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_add_event
 * add event admin class
 * @author weradet nopsombun 62160110
 * @Create Date 2564-12-06
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_add_event extends DCS_controller
 {
     /*
-        * @author Nantasiri Saiwaew 62160093
-        */
-
+      * @author Nantasiri Saiwaew 62160093
+    */
     public function __construct()
     {
         parent::__construct();
         $this->load->library('email');
     }
 
-
     /*
     * show_add_event_admin
     * show form add event
-    * @input 
+    * @input -
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-12-14
@@ -46,8 +44,8 @@ class Admin_add_event extends DCS_controller
 
     /*
     * add_event_admin
-    * show form add event
-    * @input 
+    * add event by admin
+    * @input eve_name, eve_point, eve_description, eve_com_id, eve_cat_id, eve_location, eve_add_date, eve_start_date, eve_end_date, eve_lat, eve_lon, par_id, new_img, name_new_image, del_new_img
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-12-14
@@ -105,8 +103,8 @@ class Admin_add_event extends DCS_controller
 
     /*
     * set_session_add_event
-    * add session 
-    * @input $data
+    * add session error_add_event_admin
+    * @input data
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-25
@@ -265,8 +263,8 @@ class Admin_add_event extends DCS_controller
 
     /*
     * get_data_category
-    * get data eve_cat
-    * @input ข
+    * get data event category
+    * @input -
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-11-06

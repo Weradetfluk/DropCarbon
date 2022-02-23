@@ -40,7 +40,7 @@ class Event_edit extends DCS_controller
     /*
     * edit_event
     * edit event
-    * @input eve_name, eve_description, eve_com_id, eve_id, new_img, com_id, del_old_img, del_new_img
+    * @input eve_name, eve_description, eve_com_id, eve_id, new_img, com_id, del_old_img, del_new_img, eve_start_date, eve_end_date, eve_location, eve_lat, eve_lon, par_id
     * @output -
     * @author Acaharaporn pornpattanasap 62160344 
     * @Create Date 2564-09-25
@@ -113,8 +113,8 @@ class Event_edit extends DCS_controller
     }
 
     /*
-    * set_session_edit_company
-    * edit session 
+    * set_session_edit_event
+    * edit session error_edit_event
     * @input $data
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -144,7 +144,7 @@ class Event_edit extends DCS_controller
     /*
      * check_name_event_ajax
      * check name event by ajax
-     * @input eve_name
+     * @input eve_name, eve_id
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-10-12

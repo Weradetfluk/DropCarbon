@@ -12,7 +12,7 @@ class Promotion_list extends DCS_controller
     /*
     * show_list_promotion
     * show list promotion by id in database
-    * @input entrepreneur_id
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-10-02

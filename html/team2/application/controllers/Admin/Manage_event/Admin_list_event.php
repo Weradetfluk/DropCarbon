@@ -1,18 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
-* Admin_add_event
-* add event admin class
+* Admin_list_event
+* manage list event admin class
 * @author weradet nopsombun 62160110
 * @Create Date 2564-12-06
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_list_event extends DCS_controller
 {
   /*
-        * @author Nantasiri Saiwaew 62160093
-        */
-
+    * @author Nantasiri Saiwaew 62160093
+  */
   public function __construct()
   {
     parent::__construct();
@@ -21,14 +20,14 @@ class Admin_list_event extends DCS_controller
   }
 
   /*
-        * show_data_event_list
-        * get all data event 
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_event_list
+    * get all data event 
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+  */
   public function show_data_event_list()
   {
     $_SESSION['tab_number'] = 8; //set tab number in topbar_admin.php
@@ -36,28 +35,28 @@ class Admin_list_event extends DCS_controller
   }
 
   /*
-        * show_data_event_over
-        * get all data event 
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_event_over
+    * get all data event over
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+  */
   public function show_data_event_over()
   {
     $this->output_admin('admin/manage_event/manage_add_event_admin/v_list_event_over_admin', null, null);
   }
 
   /*
-  * show_data_consider_ajax
-  * get all data entrepreneur not approve and show table
-  * @input
-  * @output -
-  * @author Weradet Nopsombun 62160110
-  * @Create Date 2564-09-14
+    * show_data_ajax
+    * get all data event not approve and show table
+    * @input number_status, query
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
     * @Update Date -
-    */
+  */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;
@@ -210,10 +209,10 @@ class Admin_list_event extends DCS_controller
   //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
   /*
     * get_event_over_admin_ajax
-    * show detail
-    * @input number_status
+    * show data event over
+    * @input number_status, query
     * @output -
-    * @author nantasiri saiwaew 62160093
+    * @author Nantasiri saiwaew 62160093
     * @Create Date 2021-12-18
     * @Update Date -
     */

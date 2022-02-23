@@ -1,7 +1,7 @@
 <?php
 /*
 * Admin_approval_company
-* Manage Approve reject company
+* Admin_approval_company
 * @author Kasama Donwong 62160074
 * @Create Date 2564-08-08
 */
@@ -23,15 +23,15 @@ class Admin_approval_company extends DCS_controller
   /*
   * index
   * call function in Dcs_controller
-  * @input data
+  * @input - 
   * @output -
   * @author Kasama Donwong 62160074
   * @Create Date 2564-08-08
   * @Update Date -
   */
-  public function index($data = NULL)
+  public function index()
   {
-    redirect('Admin/Manage_company/Admin_approval_company/show_data_consider');
+    $this->show_data_consider();
   }
 
   /*
@@ -80,8 +80,8 @@ class Admin_approval_company extends DCS_controller
   /*
   * get_company_by_id_ajax
   * get all data company by id 
-  * @input -
-  * @output -
+  * @input com_id
+  * @output data
   * @author Kasama Donwong 62160074
   * @Create Date 2564-08-08
   * @Update Date
@@ -103,7 +103,7 @@ class Admin_approval_company extends DCS_controller
   * @output -
   * @author Nantasiri Saiwaew 62160110
   * @Create Date 2564-09-21
-  * @Update Date
+  * @Update Date -
   */
   public function get_com_reject_by_id_ajax()
   {
@@ -114,12 +114,10 @@ class Admin_approval_company extends DCS_controller
     echo json_encode($data['arr_data']);
   }
 
-
-
   /*
   * approval_company
   * change com_status 
-  * @input 
+  * @input com_id
   * @output -
   * @author Kasama Donwong 62160074
   * @Create Date 2564-08-08
@@ -182,8 +180,8 @@ class Admin_approval_company extends DCS_controller
 
   /*
     * show_detail_company
-    * show detail
-    * @input 
+    * show detail company
+    * @input com_id
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
@@ -191,7 +189,6 @@ class Admin_approval_company extends DCS_controller
     */
   public function show_detail_company($com_id)
   {
-
     $this->load->model('Company/M_dcs_company', 'mcom');
     $this->load->model('Company/M_dcs_com_image', 'mimg');
     $this->mcom->com_id = $com_id;
@@ -205,7 +202,7 @@ class Admin_approval_company extends DCS_controller
   /*
       * get_data_card_company_ajax
       * get data consider, approve, rejected <- number of people
-      * @input
+      * @input - 
       * @output -
       * @author Kasama Donwong 62160074
       * @Create Date 2564-08-25
@@ -216,15 +213,16 @@ class Admin_approval_company extends DCS_controller
     $data['arr_data'] = $this->mdcc->get_data_card_company()->result();
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
+
   /*
-       * show_data_consider_ajax
-       * get all data company consider and show table
-       * @input
-       * @output -
-       * @author Kasama Donwong 62160074
-       * @Create Date 2564-09-18
-       * @Update Date -
-       */
+    * show_data_ajax
+    * get all data company and show table
+    * @input
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-09-18
+    * @Update Date -
+    */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;

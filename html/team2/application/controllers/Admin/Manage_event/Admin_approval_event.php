@@ -1,18 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
-* Admin_approval_entrepreneur
-* Manage Approve reject entrepreneur
+* Admin_approval_event
+* Manage page event
 * @author weradet nopsombun 62160110
 * @Create Date 2564-07-17
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_approval_event extends DCS_controller
 {
   /*
-        * @author Nantasiri Saiwaew 62160093
-        */
-
+    * @author Nantasiri Saiwaew 62160093
+  */
   public function __construct()
   {
     parent::__construct();
@@ -22,83 +21,87 @@ class Admin_approval_event extends DCS_controller
   }
 
   /*
-        * show_data_consider
-        * get all data entrepreneur not approve and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_consider
+    * get all data entrepreneur not approve and show table
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+  */
   public function show_data_consider()
   {
     $_SESSION['tab_number'] = 4; //set tab number in topbar_admin.php
     $this->output_admin('admin/manage_event/v_list_event_consider', null, 'admin/manage_event/v_data_card_event');
   }
+
   /*
-        * show_data_reject
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_reject
+    * get all data entrepreneur approve  and show table
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-1
+    * @Update Date -
+  */
   public function show_data_reject()
   {
     $this->output_admin('admin/manage_event/v_list_event_reject', null, 'admin/manage_event/v_data_card_event');
   }
+
   /*
-        * show_data_block
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_event_not_over
+    * get all data event not over and show table
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date -
+  */
   public function show_data_event_not_over()
   {
     $this->output_admin('admin/manage_event/v_list_event_not_over', null, 'admin/manage_event/v_data_card_event');
   }
+
   /*
-        * show_data_block
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_event_over
+    * get all data event over and show table
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date -
+  */
   public function show_data_event_over()
   {
     $this->output_admin('admin/manage_event/v_list_event_over', null, 'admin/manage_event/v_data_card_event');
   }
 
   /*
-        * get_entrepreneur_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-03
-        * @Update Date
-        */
+    * get_event_by_id_ajax
+    * get data event by id
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-03
+    * @Update Date
+  */
   public function get_event_by_id_ajax()
   {
     $this->mdce->eve_id = $this->input->post('eve_id');
     $data['arr_data'] = $this->mdce->get_event_by_id()->result();
     echo json_encode($data);
   }
+
   /*
-        * get_entrepreneur_reject_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-01
-        * @Update Date
-        */
+    * get_eve_reject_by_id_ajax
+    * get all data event reject by id
+    * @input
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date
+  */
   public function get_eve_reject_by_id_ajax()
   {
     $this->load->model('Event/M_dcs_eve_reject', 'mdere');
@@ -107,15 +110,16 @@ class Admin_approval_event extends DCS_controller
 
     echo json_encode($data['arr_data']);
   }
+
   /*
-        * Approval
-        * change ent_status
-        * @input
-        * @output -
-        * @author Kasama Donwong 62160074
-        * @Create Date 2564-09-26
-        * @Update Date -
-        */
+    * approval_event
+    * change ent_status
+    * @input eve_id, eve_point
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-09-26
+    * @Update Date -
+  */
   public function approval_event()
   {
     //update point
@@ -126,15 +130,16 @@ class Admin_approval_event extends DCS_controller
     $status_number = 2;
     $this->mdce->update_status($status_number);
   }
+
   /*
-        * reject_entrepreneur
-        * change ent_status
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * reject_event
+    * change ent_status
+    * @input eve_id, admin_reason, email
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+  */
   public function reject_event()
   {
     // set value from font end
@@ -158,30 +163,32 @@ class Admin_approval_event extends DCS_controller
     $this->mdce->update_status($status_number);
     $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
+  
   /*
-        * get_data_card_entrepreneur_ajax
-        * get data consider, approve, rejected, block <- number of people
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * get_data_card_event_ajax
+    * get data consider, approve, rejected, block <- number of event
+    * @input - 
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+  */
   public function get_data_card_event_ajax()
   {
     $data['arr_data'] = $this->mdce->get_data_card_event()->result();
 
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
+
   /*
-  * show_data_consider_ajax
-  * get all data entrepreneur not approve and show table
-  * @input
-  * @output -
-  * @author Weradet Nopsombun 62160110
-  * @Create Date 2564-09-14
+    * show_data_ajax
+    * get all data event and show table
+    * @input query
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
     * @Update Date -
-    */
+  */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;
@@ -350,15 +357,16 @@ class Admin_approval_event extends DCS_controller
     } // else  search 
     echo  $output; // to view
   }
+
   /*
     * show_detail_event
     * show detail
-    * @input 
+    * @input eve_id
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
     * @Update Date -
-    */
+  */
   public function show_detail_event($eve_id)
   {
 
@@ -368,12 +376,10 @@ class Admin_approval_event extends DCS_controller
     $this->output_admin('admin/manage_event/v_detail_event_admin', $data, null);
   }
 
-
-  //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
   /*
-    * get_evenr_data_no_score_ajax
-    * show detail
-    * @input number_status
+    * get_event_data_not_over_ajax
+    * show data event not over show in table
+    * @input number_status, query
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
@@ -412,11 +418,11 @@ class Admin_approval_event extends DCS_controller
   }
 
 
-  //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกฺชัน
+  //เพราะ database คิวรี่ข้อมูลไม่เหมือนกัน เลยต้องแยกฟังกชัน
   /*
-    * get_evenr_data_no_score_ajax
-    * show detail
-    * @input number_status
+    * get_event_data_over_ajax
+    * show data event over show in table
+    * @input number_status, query
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
@@ -453,16 +459,15 @@ class Admin_approval_event extends DCS_controller
     }
   }
 
-
   /*
     * get_data_category
     * get data eve_cat
-    * @input ข
+    * @input -
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-11-06
     * @Update Date -
-    */
+  */
   public function get_data_category()
   {
     $this->load->model('Event/M_dcs_eve_category', 'meca');

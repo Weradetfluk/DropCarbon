@@ -1,18 +1,18 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_edit_promotions
 * edit promotion admin class
 * @author Kasama Donwong 62160074
 * @Create Date 2564-12-23
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_edit_promotions extends DCS_controller
 {
     /*
     * show_edit_promotion
     * show form edit promotion
-    * @input entrepreneur_id
+    * @input pro_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-12-23
@@ -34,10 +34,11 @@ class Admin_edit_promotions extends DCS_controller
         $view = 'admin/manage_promotions/manage_add_promo_admin/v_edit_promo_admin';
         $this->output_admin($view, $data, null);
     }
+
     /*
     * edit_promotion
-    * edit promotion 
-    * @input pro_name, pro_description, pro_com_id, pro_id, new_img, com_id, del_old_img, del_new_img
+    * edit promotion by admin 
+    * @input pro_name, pro_description, pro_com_id, pro_id, new_img, com_id, del_old_img, del_new_img, pro_start_date, pro_end_date, pro_cat_id
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2564-12-23
@@ -105,10 +106,11 @@ class Admin_edit_promotions extends DCS_controller
         }
         redirect('Admin/Manage_promotions/Admin_list_promotions/show_data_promotions_list');
     }
+
     /*
     * set_session_edit_promotion
-    * edit session 
-    * @input $data
+    * edit session error_edit_promotion_admin 
+    * @input data
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2564-10-03

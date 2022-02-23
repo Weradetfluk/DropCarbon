@@ -2,7 +2,7 @@
 /*
 * Admin_edit_event
 * Manage list edit event by admin
-* @author 
+* @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-12-19
 */
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -18,7 +18,6 @@ class Admin_edit_event extends DCS_controller
     * @Create Date 2564-12-21
     * @Update Date -
     */
-
     public function show_edit_event_by_admin($eve_id)
     {
         $this->load->model('Event/M_dcs_event', 'meve');
@@ -40,8 +39,8 @@ class Admin_edit_event extends DCS_controller
 
     /*
     * edit_event_by_admin
-    * edit  by admin
-    * @input eve_name, eve_description, eve_com_id, eve_id, new_img, com_id, del_old_img, del_new_img
+    * edit event by admin
+    * @input eve_id, eve_name, eve_point, eve_description, eve_com_id, eve_cat_id, eve_start_date, eve_end_date, eve_location, eve_lat, eve_lon, par_id, new_img, com_id, del_old_img, del_new_img
     * @output -
     * @author Nantasiri Saiwaew 62160093 
     * @Create Date 2564-12-21
@@ -116,9 +115,9 @@ class Admin_edit_event extends DCS_controller
     }
 
     /*
-    * set_session_edit_company
-    * edit session 
-    * @input $data
+    * set_session_edit_event
+    * edit session error_edit_event
+    * @input data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-23
@@ -147,7 +146,7 @@ class Admin_edit_event extends DCS_controller
     /*
      * check_name_event_ajax
      * check name event by ajax
-     * @input eve_name
+     * @input eve_name, eve_id
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-10-12
@@ -170,6 +169,7 @@ class Admin_edit_event extends DCS_controller
             echo 2;
         }
     }
+    
     /* 
      * get_district_by_prv_id_ajax
      * get district by prv_id for ajax

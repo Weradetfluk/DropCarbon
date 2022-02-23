@@ -1,18 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_add_promotions
-* list promotion admin class
+* list promotions admin class
 * @author Kasama Donwong 62160074
 * @Create Date 2564-12-06
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_add_promotions extends DCS_controller
 {
     /*
-        * @author Kasama Donwong 62160074
-        */
-
+     * @author Kasama Donwong 62160074
+    */
     public function __construct()
     {
         parent::__construct();
@@ -40,14 +39,15 @@ class Admin_add_promotions extends DCS_controller
         $view = 'admin/manage_promotions/manage_add_promo_admin/v_add_promo_admin';
         $this->output_admin($view, $data, null);
     }
+
     /*
     * add_promotion
     * add promotion to database
-    * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point, pro_adm_id
+    * @input pro_name, pro_description, pro_status, pro_start_date, pro_end_date, pro_point, pro_adm_id, pro_com_id, pro_cat_id, new_img, name_new_image, del_new_img
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2564-12-14
-    * @Update Date 
+    * @Update Date -
     */
     public function add_promotion()
     {
@@ -99,8 +99,8 @@ class Admin_add_promotions extends DCS_controller
 
     /*
     * set_session_add_promotion
-    * add session 
-    * @input $data
+    * add sessio error_add_promotion_admin
+    * @input data
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2564-12-14
@@ -113,7 +113,7 @@ class Admin_add_promotions extends DCS_controller
 
     /*
     * upload_image_ajax
-    * upload image
+    * upload image promotions
     * @input pro_file
     * @output -
     * @author Kasama Donwong 62160074
