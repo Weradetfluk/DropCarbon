@@ -22,7 +22,7 @@ class Da_dcs_eve_image extends DCS_model
 		parent::__construct();
 	}
 	/*
-    * insert_image_company
+    * insert_image_event
     * insert image company
     * @input com_img_path, com_img_com_id, com_img_name
     * @output -
@@ -38,7 +38,7 @@ class Da_dcs_eve_image extends DCS_model
 	}
 
 	/*
-    * delete_image_company
+    * delete_image_event
     * delete image company
     * @input com_img_path
     * @output -

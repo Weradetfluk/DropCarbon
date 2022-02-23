@@ -9,6 +9,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Da_dcs_tourist.php';
 class M_dcs_tourist extends Da_dcs_tourist
 {
+    /*
+    * @author Thanisron thumsawanit 62160088
+    */
     public function __construct()
     {
         parent::__construct();
@@ -250,7 +253,7 @@ class M_dcs_tourist extends Da_dcs_tourist
     }
 
     /*
-    * check_email
+    * get_point_tourist_by_id
     * get data tourist by username
     * @input -
     * @output -

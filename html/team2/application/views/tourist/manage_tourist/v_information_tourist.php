@@ -245,40 +245,28 @@ a:hover {
                                 <?php
                                 if ($arr_tus[0]->tus_cur_score < 25) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?><br>
+                                <?php echo "ส่วนลดการใช้คะแนน  5%";?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?><br>
+                                <?php echo "ส่วนลดการใช้คะแนน  7%";?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Gold"; ?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Gold"; ?><br>
+                                <?php echo "ส่วนลดการใช้คะแนน  9%";?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
+                                <?php echo "ส่วนลดการใช้คะแนน  11%";?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score >= 100) { ?>
                                 <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?>
+                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
+                                <?php echo "ส่วนลดการใช้คะแนน  11%";?>
                                 <?php } else { ?>
                                 <?php echo ""; ?>
                                 <?php } ?>
-                            </p>
-                            <p style="text-align: center;font-size: 22px;">
-                                <?php
-                                if ($arr_tus[0]->tus_cur_score < 25) {
-                                    echo "ส่วนลดการใช้คะแนน  5%";
-                                } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) {
-                                    echo "ส่วนลดการใช้คะแนน 7%";
-                                } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) {
-                                    echo "ส่วนลดการใช้คะแนน 9%";
-                                } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score < 100) {
-                                    echo "ส่วนลดการใช้คะแนน 11%";
-                                } else if ($arr_tus[0]->tus_cur_score >= 100) {
-                                    echo "ส่วนลดการใช้คะแนน 11%";
-                                } else {
-                                    echo "";
-                                } ?>
-                            </p>
-
+                            </p> 
                             <!-- อีกกี่แต้มถึงจะอัพ -->
                             <p style="text-align: center; font-size: 16px;">
                                 <?php

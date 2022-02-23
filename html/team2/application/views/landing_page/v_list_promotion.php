@@ -98,6 +98,7 @@
                         html += "<h3 class='text-decoration-none text-dark'>" + arr_promotion[i].pro_name + "</h3>";
                         html += "<p class='card-tex text-dark'>";
                         html += "</p>";
+                        html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'> คะแนนที่ใช้แลก </p>";
                         html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
                         html += "</div>";
                         html += "</div>";
@@ -115,6 +116,7 @@
                     html += "<p class='card-tex text-dark'>";
                     html += "</p>";
                     if(arr_promotion[i].pro_cat_id == 2){
+                        html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'> คะแนนที่ใช้แลก </p>";
                         html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
                     }
                     html += "</div>";
@@ -133,6 +135,7 @@
                 html += "<p class='card-tex text-dark'>";
                 html += "</p>";
                 if(arr_promotion[i].pro_cat_id == 2){
+                    html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'> คะแนนที่ใช้แลก </p>";
                     html += "<p class='text-decoration-none' style='display:inline; font-size: 16px; color: #008000'>" + arr_promotion[i].pro_point +  "คะแนน</p>";
                 }
                 html += "</div>";

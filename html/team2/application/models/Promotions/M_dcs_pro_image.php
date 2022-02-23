@@ -1,6 +1,6 @@
 <?php
 /*
-* M_dcs_eve_image
+* M_dcs_pro_image
 * get data image event
 * @author Chutipon Thermsirisuksin 62160081
 * @Create Date 2564-10-02
