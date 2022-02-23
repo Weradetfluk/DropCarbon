@@ -67,11 +67,11 @@ class DCS_controller extends CI_Controller
     * @Create Date 2564-07-17
     * @Update Date 2564-08-28
     */
-
     public function output_admin($view, $data = null, $view_card = null)
     {
         $this->load->view('template/Admin/header_admin'); // path
         $this->load->view('template/Admin/topbar_admin');
+        $this->load->view('template/dcs_javascript');
         $this->load->view('template/Admin/javascript_admin');
 
         if ($view_card != null) {
@@ -115,6 +115,7 @@ class DCS_controller extends CI_Controller
     public function output_entrepreneur($view = null, $data = null)
     {
         $this->load->view('template/Entrepreneur/header_entrepreneur');
+        $this->load->view('template/dcs_javascript');
         $this->load->view('template/Entrepreneur/javascript_entrepreneur');
         $this->load->view('template/Entrepreneur/topbar_entrepreneur');
         $this->load->view($view, $data);

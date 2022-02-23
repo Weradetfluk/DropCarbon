@@ -749,8 +749,8 @@ function cancel_promotion_ajax(pro_id_con) {
         url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/cancel_promotion_ajax/' ?>',
         success: function() {
             swal({
-                    title: "ระงับโปรโมชัน",
-                    text: "คุณได้ทำการระงับโปรโมชันเสร็จสิ้น",
+                    title: "หยุดการใช้งานโปรโมชัน",
+                    text: "คุณได้ทำการหยุดการใช้งานโปรโมชันเสร็จสิ้น",
                     type: "success"
                 },
                 function() {
@@ -801,8 +801,8 @@ function dis_cancel_promotion_ajax(pro_id_con) {
         url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
         success: function() {
             swal({
-                    title: "ยกเลิกระงับโปรโมชัน",
-                    text: "คุณได้ทำการยกเลิกระงับโปรโมชันเสร็จสิ้น",
+                    title: "เปิดการใช้งานโปรโมชัน",
+                    text: "คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น",
                     type: "success"
                 },
                 function() {

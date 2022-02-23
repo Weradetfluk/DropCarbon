@@ -38,7 +38,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
-                                        <h5 class="h5-card-header">ถูกระงับ</h5>
+                                        <h5 class="h5-card-header">หยุดการใช้งาน</h5>
                                     </a>
                                 </li>
                             </ul>

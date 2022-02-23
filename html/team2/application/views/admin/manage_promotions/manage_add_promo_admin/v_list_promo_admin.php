@@ -43,7 +43,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
-                                        <h5 class="h5-card-header">ถูกระงับ</h5>
+                                        <h5 class="h5-card-header">หยุดการใช้งาน</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -96,7 +96,7 @@
                     <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
                 </div>
                 <div class="modal-body">
-                    <p>คุณต้องการที่จะระงับ <span id="pro_name_confirm_cancel"></span> ?</p>
+                    <p>คุณต้องการที่จะหยุดการใช้งาน <span id="pro_name_confirm_cancel"></span> ?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" id="cancel_btn" data-dismiss="modal">ยืนยัน</button>
@@ -115,7 +115,7 @@
                     <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
                 </div>
                 <div class="modal-body">
-                    <p>คุณต้องการที่จะยกเลิกระงับ <span id="pro_name_confirm_dis_cancel"></span> ?</p>
+                    <p>คุณต้องการที่จะเปิดการใช้งาน <span id="pro_name_confirm_dis_cancel"></span> ?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="dis_cancel_btn"
@@ -255,8 +255,8 @@
             url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/cancel_promotion_ajax/' ?>',
             success: function() {
                 swal({
-                        title: "ระงับโปรโมชัน",
-                        text: "คุณได้ทำการระงับโปรโมชันเสร็จสิ้น",
+                        title: "หยุดการใช้งานโปรโมชัน",
+                        text: "คุณได้ทำการหยุดการใช้งานโปรโมชันเสร็จสิ้น",
                         type: "success"
                     },
                     function() {
@@ -307,8 +307,8 @@
             url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
             success: function() {
                 swal({
-                        title: "ยกเลิกระงับโปรโมชัน",
-                        text: "คุณได้ทำการยกเลิกระงับโปรโมชันเสร็จสิ้น",
+                        title: "เปิดการใช้งานโปรโมชัน",
+                        text: "คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น",
                         type: "success"
                     },
                     function() {

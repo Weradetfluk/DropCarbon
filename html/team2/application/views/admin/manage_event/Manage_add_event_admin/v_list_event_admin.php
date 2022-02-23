@@ -155,14 +155,9 @@
         qrcode.makeCode( url + eve_id);
         $('#name_qr').html(eve_name);
         $('#modal_qrcode').modal();
-        var month_names_thai = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
-        let event_start = new Date(eve_start);
-        let event_end = new Date(eve_end);
-        let year_start = event_start.getFullYear()+543;
-        let event_time = event_start.getDate() + ' ' + month_names_thai[event_start.getMonth()] + ' ' + year_start;
+        event_time = format_date(eve_start);
         event_time += ' - ';
-        let year_end = event_end.getFullYear()+543;
-        event_time += event_end.getDate() + ' ' + month_names_thai[event_end.getMonth()] + ' ' + year_end;
+        event_time += format_date(eve_end);
         $('#event_time').html(event_time);
     }
 

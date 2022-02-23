@@ -129,7 +129,7 @@ class Admin_list_promotions extends DCS_controller
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
-                        $output .= '<td style="color: red;">ถูกระงับ</td>' .
+                        $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
@@ -196,7 +196,7 @@ class Admin_list_promotions extends DCS_controller
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
-                        $output .= '<td style="color: red;">ถูกระงับ</td>' .
+                        $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
