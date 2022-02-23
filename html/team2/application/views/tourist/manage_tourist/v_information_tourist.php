@@ -387,16 +387,16 @@ a:hover {
  * @author Naaka punparich 62160082
  * @Create Date 2565-01-04
  */
-const imgDiv = document.querySelector('.profile-pic-div');
+const img_div = document.querySelector('.profile-pic-div');
 const img = document.querySelector('#photo');
 const file = document.querySelector('#file');
 const upload_btn = document.querySelector('#upload_btn');
 
 file.addEventListener('change', function() {
 
-    const choosedFile = this.files[0];
+    const choosed_file = this.files[0];
 
-    if (choosedFile) {
+    if (choosed_file) {
 
         const reader = new FileReader();
 
@@ -404,7 +404,7 @@ file.addEventListener('change', function() {
             img.setAttribute('src', reader.result);
         });
 
-        reader.readAsDataURL(choosedFile);
+        reader.readAsDataURL(choosed_file);
     }
 });
 
