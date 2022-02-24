@@ -10498,7 +10498,7 @@ CREATE TABLE `dcs_reward_tourist` (
 --
 
 CREATE TABLE `dcs_tourist` (
-  `tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว',
+  `tus_id` int(30) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว',
   `tus_firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อจริงของนักท่องเที่ยว',
   `tus_lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'นามสกุลของนักท่องเที่ยว',
   `tus_username` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT ' username ',

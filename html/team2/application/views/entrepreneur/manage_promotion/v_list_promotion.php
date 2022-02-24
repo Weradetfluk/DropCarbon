@@ -456,7 +456,6 @@
                                                     </button>
 
                                                 </td>
-
                                             </tr>
                                             <?php } ?>
                                             <?php } ?>
@@ -535,8 +534,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -676,41 +673,8 @@ function confirm_delete(pro_name_con, pro_id_con) {
 
     // button
     $('#delete_btn').click(function() {
-        delete_promotion_ajax(pro_id_con)
+        edit_status_promotion_ajax(pro_id_con, 4)
     });
-}
-
-/*
- * delete_promotion_ajax
- * confirm delete promotion
- * @input pro_id_con
- * @output delete promotion
- * @author Thanchanok Thongjumroon 62160089
- * @Create Date 2564-10-03
- */
-function delete_promotion_ajax(pro_id_con) {
-    $.ajax({
-        type: "POST",
-        data: {
-            pro_id: pro_id_con
-        },
-        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/delete_promotion_ajax/' ?>',
-        success: function() {
-            swal({
-                    title: "ลบโปรโมชัน",
-                    text: "คุณได้ทำการลบโปรโมชันเสร็จสิ้น",
-                    type: "success"
-                },
-                function() {
-                    location.reload();
-                })
-
-        },
-        error: function() {
-            alert('ajax error working');
-        }
-    });
-
 }
 
 /*
@@ -728,41 +692,8 @@ function confirm_cancel(pro_name_con, pro_id_con) {
 
     // button
     $('#cancel_btn').click(function() {
-        cancel_promotion_ajax(pro_id_con)
+        edit_status_promotion_ajax(pro_id_con, 5)
     });
-}
-
-/*
- * cancel_promotion_ajax
- * confirm cancel promotion
- * @input pro_id_con
- * @output cancel promotion
- * @author Suwapat Saowarod 62160340
- * @Create Date 2564-11-29
- */
-function cancel_promotion_ajax(pro_id_con) {
-    $.ajax({
-        type: "POST",
-        data: {
-            pro_id: pro_id_con
-        },
-        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/cancel_promotion_ajax/' ?>',
-        success: function() {
-            swal({
-                    title: "หยุดการใช้งานโปรโมชัน",
-                    text: "คุณได้ทำการหยุดการใช้งานโปรโมชันเสร็จสิ้น",
-                    type: "success"
-                },
-                function() {
-                    location.reload();
-                })
-
-        },
-        error: function() {
-            alert('ajax error working');
-        }
-    });
-
 }
 
 /*
@@ -780,35 +711,49 @@ function confirm_dis_cancel(pro_name_con, pro_id_con) {
 
     // button
     $('#dis_cancel_btn').click(function() {
-        dis_cancel_promotion_ajax(pro_id_con)
+        edit_status_promotion_ajax(pro_id_con, 2)
     });
 }
 
 /*
- * dis_cancel_promotion_ajax
- * confirm dis cancel promotion
- * @input pro_id_con
- * @output dis cancel promotion
+ * edit_status_promotion_ajax
+ * edit status promotion 
+ * @input pro_id_con, pro_status_edit
+ * @output -
  * @author Suwapat Saowarod 62160340
- * @Create Date 2564-11-29
+ * @Create Date 2565-02-24
  */
-function dis_cancel_promotion_ajax(pro_id_con) {
+function edit_status_promotion_ajax(pro_id_con, pro_status_edit) {
     $.ajax({
         type: "POST",
         data: {
-            pro_id: pro_id_con
+            pro_id: pro_id_con,
+            pro_status: pro_status_edit
         },
-        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
+        url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/edit_status_promotion_ajax/' ?>',
         success: function() {
+            var title = '';
+            var detail = '';
+            if(pro_status_edit == 2){
+                title = 'เปิดการใช้งานโปรโมชัน';
+                detail = 'คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น';
+                
+            }else if(pro_status_edit == 4){
+                title = 'ลบโปรโมชัน';
+                detail = 'คุณได้ทำการลบโปรโมชันเสร็จสิ้น';
+            }else if(pro_status_edit == 5){
+                title = 'หยุดการใช้งานโปรโมชัน';
+                detail = 'คุณได้ทำการหยุดการใช้งานโปรโมชันเสร็จสิ้น';
+            }
             swal({
-                    title: "เปิดการใช้งานโปรโมชัน",
-                    text: "คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น",
+                    title: title,
+                    text: detail,
                     type: "success"
                 },
                 function() {
                     location.reload();
                 })
-
+            
         },
         error: function() {
             alert('ajax error working');

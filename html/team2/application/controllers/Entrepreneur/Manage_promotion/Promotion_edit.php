@@ -120,53 +120,19 @@ class Promotion_edit extends DCS_controller
     }
 
     /*
-    * delete_promotion_ajax
-    * update pro_status to status 4
-    * @input pro_id
-    * @output -
-    * @author Thanchanok Thongjumroon 62160089
-    * @Create Date 2564-10-02
-    * @Update Date 2564-10-05
-    */
-   public function delete_promotion_ajax()
-   {
-      $this->load->model('Promotions/M_dcs_promotions', 'mpro');
-      $this->mpro->pro_id = $this->input->post('pro_id');
-      $this->mpro->pro_status = 4;
-      $this->mpro->update_status_promotion();
-   }
-
-   /*
-    * cancel_promotion_ajax
+    * edit_status_promotion_ajax
     * update pro_status 
     * @input pro_id
     * @output -
     * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-11-29
+    * @Create Date 2565-02-24
     * @Update Date -
     */
-    public function cancel_promotion_ajax()
+    public function edit_status_promotion_ajax()
     {
        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
        $this->mpro->pro_id = $this->input->post('pro_id');
-       $this->mpro->pro_status = 5;
-       $this->mpro->update_status_promotion();
-    }
-
-    /*
-    * dis_cancel_promotion_ajax
-    * update pro_status to status 5
-    * @input pro_id
-    * @output -
-    * @author Suwapat Saowarod 62160340
-    * @Create Date 2564-11-29
-    * @Update Date -
-    */
-    public function dis_cancel_promotion_ajax()
-    {
-       $this->load->model('Promotions/M_dcs_promotions', 'mpro');
-       $this->mpro->pro_id = $this->input->post('pro_id');
-       $this->mpro->pro_status = 2;
+       $this->mpro->pro_status = $this->input->post('pro_status');
        $this->mpro->update_status_promotion();
     }
 }

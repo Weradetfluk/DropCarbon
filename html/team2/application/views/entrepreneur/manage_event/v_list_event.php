@@ -98,41 +98,41 @@
                                                     <?php if ($arr_event[$i]->eve_status == 1) { ?>
                                                         <td style="color: #fba004;">รออนุมัติ</td>
                                                         <td>
-                                                                <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
-                                                                    <span class="material-icons">search</span>
-                                                                </button>
-                                                                <button class="btn btn-warning"
-                                                                    style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
-                                                                    <span class="material-icons">edit</span>
-                                                                </button>
-                                                                <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
-                                                                    <span class="material-icons">delete</span>
-                                                                </button>
-                                                            </td>
+                                                            <button class="btn btn-info" style="font-size:10px; padding:12px;"
+                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
+                                                                <span class="material-icons">search</span>
+                                                            </button>
+                                                            <button class="btn btn-warning"
+                                                                style="font-size:10px; padding:12px;"
+                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
+                                                                <span class="material-icons">edit</span>
+                                                            </button>
+                                                            <button class="btn btn-danger" style="font-size:10px; padding:12px;"
+                                                                onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
+                                                                <span class="material-icons">delete</span>
+                                                            </button>
+                                                        </td>
                                                     <?php } ?>
                                                     <?php if ($arr_event[$i]->eve_status == 2) { ?>
                                                         <?php if ($arr_event[$i]->eve_end_date > $date_now && $arr_event[$i]->eve_start_date <= $date_now) { ?>
                                                             <td style="color: #669900;">ยังไม่สิ้นสุด</td>
                                                             <td>
                                                                 <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                                     <span class="material-icons">search</span>
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                                     <span class="material-icons">delete</span>
                                                                 </button>
                                                                 <button class="btn btn-success"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')">
+                                                                    onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')" title="สร้าง QR Code กิจกรรม">
                                                                     <span class="material-icons">qr_code</span>
                                                                 </button>
                                                             </td>
@@ -146,11 +146,11 @@
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                                     <span class="material-icons">delete</span>
                                                                 </button>
                                                             </td>
@@ -159,16 +159,16 @@
                                                             <td style="color: #669900;">อนุมัติ</td>
                                                             <td>
                                                                 <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                                     <span class="material-icons">search</span>
                                                                 </button>
                                                                 <button class="btn btn-warning"
                                                                     style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                                     <span class="material-icons">edit</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                                    onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                                     <span class="material-icons">delete</span>
                                                                 </button>
                                                             </td>
@@ -180,7 +180,7 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                 </td>
@@ -240,16 +240,16 @@
                                                         <td style="color: #fba004;">รออนุมัติ</td>
                                                         <td>
                                                             <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                                 <span class="material-icons">search</span>
                                                             </button>
                                                             <button class="btn btn-warning"
                                                                 style="font-size:10px; padding:12px;"
-                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                                onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                                 <span class="material-icons">edit</span>
                                                             </button>
                                                             <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                                onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                                 <span class="material-icons">delete</span>
                                                             </button>
                                                         </td>
@@ -315,21 +315,21 @@
                                                 <?php } ?>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <button class="btn btn-warning"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                         <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                     <button class="btn btn-success"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')">
+                                                        onclick="make_qr_code(<?php echo $arr_event[$i]->eve_id ?>, '<?php echo $arr_event[$i]->eve_name ?>', '<?php echo $arr_event[$i]->eve_start_date?>', '<?php echo $arr_event[$i]->eve_end_date?>')" title="สร้าง QR Code กิจกรรม">
                                                         <span class="material-icons">qr_code</span>
                                                     </button>
                                                 </td>
@@ -392,16 +392,16 @@
                                                 <?php } ?>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <button class="btn btn-warning"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_edit/show_edit_event/' . $arr_event[$i]->eve_id; ?>'" title="แก้ไขข้อมูลกิจกรรม">
                                                         <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                 </td>
@@ -461,13 +461,13 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_event/Event_detail/show_detail_event/' . $arr_event[$i]->eve_id; ?>'" title="ดูรายละเอียดกิจกรรม">
                                                         <span class="material-icons">search</span>
                                                     </button>
 
                                                     <!-- clear -->
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_event[$i]->eve_name ?>', <?php echo $arr_event[$i]->eve_id ?>)" title="ลบกิจกรรม">
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                 </td>
