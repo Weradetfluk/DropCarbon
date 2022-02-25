@@ -10498,7 +10498,7 @@ CREATE TABLE `dcs_reward_tourist` (
 --
 
 CREATE TABLE `dcs_tourist` (
-  `tus_id` int(30) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว',
+  `tus_id` int(10) NOT NULL COMMENT 'ไอดีของนักท่องเที่ยว',
   `tus_firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อจริงของนักท่องเที่ยว',
   `tus_lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'นามสกุลของนักท่องเที่ยว',
   `tus_username` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT ' username ',
@@ -10509,6 +10509,7 @@ CREATE TABLE `dcs_tourist` (
   `tus_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมลของนักท่องเที่ยว',
   `tus_cur_score` int(10) DEFAULT 0 COMMENT 'คะแนนสูงสุดของนักท่องเที่ยว เพื่อนำไปเช็คกับ Ranking',
   `tus_status` int(1) DEFAULT 1 COMMENT ' สถานะของนักท่องเที่ยว 1=กำลังใช้งาน 2=ถูกระงับ',
+  `tus_fb_id` varchar(100) COLLATE utf8_unicode_ci COMMENT 'ไอดีของเฟสบุ๊คสำหรับนักท่องเที่ยวที่ล็อคอินด้วยเฟสบุ๊ค', 
   `tus_pre_id` int(10) NOT NULL COMMENT 'คำนำหน้า จากตาราง dcs_prefix',
     `tus_regis_date` timestamp NOT NULL DEFAULT convert_tz(current_timestamp(),@@session.time_zone,'+07:00') COMMENT 'วันที่ลงทะบียน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
