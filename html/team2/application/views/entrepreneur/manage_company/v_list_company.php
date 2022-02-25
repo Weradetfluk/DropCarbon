@@ -79,13 +79,13 @@
                             <?php if ($arr_company[$i]->com_status == 1) { ?>
                               <td style="color: #fba004;">รออนุมัติ</td>
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
-                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'" title="แก้ไขข้อมูลสถานที่">
                                   <span class="material-icons">edit</span>
                                 </button>
-                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)" title="ลบสถานที่">
                                   <span class="material-icons">delete</span>
                                 </button>
                               </td>
@@ -93,13 +93,13 @@
                             <?php if ($arr_company[$i]->com_status == 2) { ?>
                               <td style="color: #669900;">อนุมัติ</td>
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
-                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'" title="แก้ไขข้อมูลสถานที่">
                                   <span class="material-icons">edit</span>
                                 </button>
-                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)" title="ลบสถานที่">
                                   <span class="material-icons">delete</span>
                                 </button>
                               </td>
@@ -107,7 +107,7 @@
                             <?php if ($arr_company[$i]->com_status == 3) { ?>
                               <td style="color: red;">ปฏิเสธ</td>
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
                               </td>
@@ -170,13 +170,13 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
-                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'" title="แก้ไขข้อมูลสถานที่">
                                   <span class="material-icons">edit</span>
                                 </button>
-                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)" title="ลบสถานที่">
                                   <span class="material-icons">delete</span>
                                 </button>
                               </td>
@@ -241,13 +241,13 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
-                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-warning" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_edit/show_edit_company/' . $arr_company[$i]->com_id; ?>'" title="แก้ไขข้อมูลสถานที่">
                                   <span class="material-icons">edit</span>
                                 </button>
-                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)">
+                                <button class="btn btn-danger" style="font-size:10px; padding:12px;" onclick="confirm_delete('<?php echo $arr_company[$i]->com_name ?>', <?php echo $arr_company[$i]->com_id ?>)" title="ลบสถานที่">
                                   <span class="material-icons">delete</span>
                                 </button>
                               </td>
@@ -312,7 +312,7 @@
                               <?php } ?>
 
                               <td style='text-align: center;'>
-                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'">
+                                <button class="btn btn-info" style="font-size:10px; padding:12px;" onclick="location.href='<?php echo site_url() . 'Entrepreneur/Manage_company/Company_detail/show_detail_company/' . $arr_company[$i]->com_id; ?>'" title="ดูรายละเอียดสถานที่">
                                   <span class="material-icons">search</span>
                                 </button>
                               </td>

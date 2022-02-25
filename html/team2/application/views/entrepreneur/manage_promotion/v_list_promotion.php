@@ -118,16 +118,16 @@
                                                     <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
                                                     <td>
                                                         <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                             <span class="material-icons">search</span>
                                                         </button>
                                                         <button class="btn btn-warning"
                                                             style="font-size:10px; padding:12px;"
-                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="แกัไขข้อมูลโปรโมชัน">
                                                             <span class="material-icons">edit</span>
                                                         </button>
                                                         <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                            onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="ลบโปรโมชัน">
                                                             <span class="material-icons">delete</span>
                                                         </button>
                                                     </td>
@@ -135,18 +135,18 @@
                                                     <?php if ($arr_promotion[$i]->pro_status == 2) { ?>
                                                     <td>
                                                         <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                             <span class="material-icons">search</span>
                                                         </button>
                                                         <?php
                                                             if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
                                                                 echo '<button class="btn btn-success" style="font-size:10px; padding:12px;"
-                                                                onclick="confirm_cancel(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')">
+                                                                onclick="confirm_cancel(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')" title="หยุดใช้งานโปรโมชัน">
                                                                 <span class="material-icons" style="font-size: 1.3rem;">lock_open</span>
                                                                 </button>';                                                               
                                                             }else if($arr_promotion[$i]->pro_end_date <= $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){
                                                                 echo '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                onclick="confirm_delete(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')">
+                                                                onclick="confirm_delete(\'' . $arr_promotion[$i]->pro_name . '\' , \'' . $arr_promotion[$i]->pro_id . '\')" title="ลบโปรโมชัน">
                                                                 <span class="material-icons">delete</span>
                                                                 </button>';
                                                             }
@@ -160,7 +160,7 @@
                                                     <td style="color: red;">ปฏิเสธ</td>
                                                     <td>
                                                         <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                             <span class="material-icons">search</span>
                                                         </button>
                                                     </td>
@@ -169,11 +169,11 @@
                                                     <td style="color: red;">หยุดการใช้งาน</td>
                                                     <td>
                                                         <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                            onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                             <span class="material-icons">search</span>
                                                         </button>
                                                         <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                            onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="เปิดใช้งานโปรโมชัน">
                                                             <span class="material-icons" style="font-size: 1.3rem;">lock</span>
                                                         </button>
                                                     </td>
@@ -235,16 +235,16 @@
                                                 <td style="color: #fba004;">รออนุมัติ</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <button class="btn btn-warning"
                                                         style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/show_edit_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="แกัไขข้อมูลโปรโมชัน">
                                                         <span class="material-icons">edit</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="ลบโปรโมชัน">
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                 </td>
@@ -311,12 +311,12 @@
                                                 <?php } ?>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <?php if($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now){?>
                                                         <button class="btn btn-success" style="font-size:10px; padding:12px;"
-                                                            onclick="confirm_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                            onclick="confirm_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="หยุดใช้งานโปรโมชัน">
                                                             <span class="material-icons" style="font-size: 1.3rem;">lock_open</span>
                                                         </button>
                                                     <?php }?>
@@ -379,11 +379,11 @@
                                                 <td style="color: red;">สิ้นสุด</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                         <span class="material-icons">search</span>
                                                     </button>
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="ลบโปรโมชัน">
                                                         <span class="material-icons">delete</span>
                                                     </button>
                                                 </td>
@@ -445,13 +445,13 @@
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
                                                     <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                        onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                         <span class="material-icons">search</span>
                                                     </button>
 
                                                     <!-- clear -->
                                                     <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                        onclick="confirm_delete('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="ลบโปรโมชัน">
                                                         <span class="material-icons">delete</span>
                                                     </button>
 
@@ -514,11 +514,11 @@
                                                             <td style="color: red;">หยุดการใช้งาน</td>
                                                             <td>
                                                                 <button class="btn btn-info" style="font-size:10px; padding:12px;"
-                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'">
+                                                                    onclick="location.href='<?php echo base_url() . 'Entrepreneur/Manage_promotion/Promotion_detail/show_detail_promotion/' . $arr_promotion[$i]->pro_id ?>'" title="ดูรายละเอียดโปรโมชัน">
                                                                     <span class="material-icons">search</span>
                                                                 </button>
                                                                 <button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                                                    onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)">
+                                                                    onclick="confirm_dis_cancel('<?php echo $arr_promotion[$i]->pro_name ?>', <?php echo $arr_promotion[$i]->pro_id ?>)" title="เปิดใช้งานโปรโมชัน">
                                                                     <span class="material-icons" style="font-size: 1.3rem;">lock</span>
                                                                 </button>
                                                             </td>
