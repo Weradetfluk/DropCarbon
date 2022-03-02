@@ -13,7 +13,7 @@ if (!$this->session->has_userdata("tourist_id")) {
 <nav class="nav-bottom-shadow">
     <ul class="menu">
         <li class="logo">
-            <a class="a" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
+            <a class="a" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
                 <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>"
                     style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
             </a>
