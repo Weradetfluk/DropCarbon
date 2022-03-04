@@ -9,52 +9,64 @@
 */ 
 -->
 <style>
-@media all and (max-width: 1920px) {
-    .change_width {
-        width: 350px;
-        height: 250px;
+    @media all and (max-width: 1920px) {
+        .change_width {
+            width: 350px;
+            height: 250px;
+        }
     }
-}
 
-@media all and (max-width: 400px) {
-    .change_width {
-        width: 314px;
-        height: 250px;
+    @media all and (max-width: 400px) {
+        .change_width {
+            width: 314px;
+            height: 250px;
+        }
     }
-}
 
-@media all and (max-width: 360px) {
-    .change_width {
-        width: 300px;
-        height: 250px;
+    @media all and (max-width: 360px) {
+        .change_width {
+            width: 300px;
+            height: 250px;
+        }
     }
-}
 
-a:hover {
-    color: white !important;
-}
+    a:hover {
+        color: white !important;
+    }
 
-.profile-pic-div {
-    width: 245px;
-    height: 240px;
-}
+    .profile-pic-div {
+        width: 245px;
+        height: 240px;
+    }
 
-.color-label {
-    color: #AAAAAA !important;
-}
+    .color-label {
+        color: #AAAAAA !important;
+    }
 
-.field-icon {
-    float: right;
-    margin-left: -25px;
-    margin-top: -25px;
-    position: relative;
-    z-index: 2;
-}
+    .field-icon {
+        float: right;
+        margin-left: -25px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 2;
+    }
 
-.container {
-    padding-top: 50px;
-    margin: auto;
-}
+    .container {
+        padding-top: 50px;
+        margin: auto;
+    }
+
+    @media all and (max-width: 990px) {
+        .change_width_col {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            flex: none;
+            max-width: none;
+            margin: 10%;
+        }
+    }
 </style>
 
 <div class="bg-gray">
@@ -62,7 +74,7 @@ a:hover {
         <ul class="breadcrumb">
 
             <!-- Nav bar -->
-            <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
+            <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
             <li>ข้อมูลส่วนตัว</li>
 
         </ul>
@@ -70,16 +82,20 @@ a:hover {
         <section>
             <form id="verifyForm" class="container py-3" method='POST' action='<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/update_tourist'; ?>' style="margin:0;" enctype="multipart/form-data">
                 <div class="container radius" style="border: 2px solid;">
+                    <div class="row">
+                        <!-- หัวข้อ -->
+                        <h2 style="margin-left: auto; margin-right: auto;">ข้อมูลส่วนตัว</h2>
+                    </div>
                     <div class="row py-3">
                         <div class="col">
-                            <div class="row" style="margin-top: 100px;">
+                            <div class="row" style="margin-top: 5%;">
 
                                 <!-- รูปโปรไฟล์ -->
                                 <div class="profile-pic-div">
                                     <?php if ($this->session->userdata("tus_img_path") == '') { ?>
-                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
+                                        <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
                                     <?php } else { ?>
-                                    <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
+                                        <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                                     <?php } ?>
                                     <input type="file" id="file" name="tourist_img" accept="image/*" disabled>
                                     <label for="file" id="upload_btn" style="visibility: hidden;">เลือกรูปภาพ</label>
@@ -90,22 +106,18 @@ a:hover {
                             </div>
                         </div>
 
-                        <div class="col-6" style="padding-left: 22px;">
-                            <div class="row">
-                                <!-- หัวข้อ -->
-                                <h2 style="margin-left: auto; margin-right: auto; padding-bottom: 30px;">ข้อมูลส่วนตัว</h2>
-                            </div>
+                        <div class="col-6 change_width_col">
                             <div class="row">
                                 <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
                                     <label for="prefix" class="label">คำนำหน้า</label><br>
                                     <select class="form-control mt-1" name="tus_pre_id" id="visible" style="margin-top: -15px !important; " required disabled>
                                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
-                                        <?php if ($i + 1 == $arr_tus[0]->tus_pre_id) { ?>
-                                        <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name ?></option>
+                                            <?php if ($i + 1 == $arr_tus[0]->tus_pre_id) { ?>
+                                                <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name ?></option>
 
-                                        <?php } else { ?>
-                                        <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
-                                        <?php } ?>
+                                            <?php } else { ?>
+                                                <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
+                                            <?php } ?>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -239,34 +251,33 @@ a:hover {
 
                         </div>
 
-                        <div class="col" style="margin-left: auto; margin-right: 8px; margin-top: 75px;">
-                            <!-- <p class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid;"></p> -->
+                        <div class="col" style="margin-left: auto; margin-right: auto;">
                             <p style="text-align: center;font-size: 22px;">
                                 <?php
                                 if ($arr_tus[0]->tus_cur_score < 25) { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?><br>
-                                <?php echo "ส่วนลดการใช้คะแนน  5%";?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?><br>
+                                    <?php echo "ส่วนลดการใช้คะแนน  5%"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 25 && $arr_tus[0]->tus_cur_score <= 50) { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?><br>
-                                <?php echo "ส่วนลดการใช้คะแนน  7%";?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./silver.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="silver"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Silver"; ?><br>
+                                    <?php echo "ส่วนลดการใช้คะแนน  7%"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 50 && $arr_tus[0]->tus_cur_score <= 75) { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Gold"; ?><br>
-                                <?php echo "ส่วนลดการใช้คะแนน  9%";?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./gold.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="gold"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Gold"; ?><br>
+                                    <?php echo "ส่วนลดการใช้คะแนน  9%"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score > 75 && $arr_tus[0]->tus_cur_score <= 100) { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
-                                <?php echo "ส่วนลดการใช้คะแนน  11%";?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
+                                    <?php echo "ส่วนลดการใช้คะแนน  11%"; ?>
                                 <?php } else if ($arr_tus[0]->tus_cur_score >= 100) { ?>
-                                <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
-                                <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
-                                <?php echo "ส่วนลดการใช้คะแนน  11%";?>
+                                    <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./platinum.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="DropcarbonHero"><br><br>
+                                    <?php echo "สิทธิพิเศษของคุณในระดับ Dropcarbon Hero"; ?><br>
+                                    <?php echo "ส่วนลดการใช้คะแนน  11%"; ?>
                                 <?php } else { ?>
-                                <?php echo ""; ?>
+                                    <?php echo ""; ?>
                                 <?php } ?>
-                            </p> 
+                            </p>
                             <!-- อีกกี่แต้มถึงจะอัพ -->
                             <p style="text-align: center; font-size: 16px;">
                                 <?php
@@ -296,33 +307,33 @@ a:hover {
                 รางวัลของฉัน
             </div>
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
-            <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
+                <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
-            <?php if (count($tou_pro) > 3) {
+                <?php if (count($tou_pro) > 3) {
                     $count_tou_pro = 3;
                 } else {
                     $count_tou_pro = count($tou_pro);
                 } ?>
-            <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
-            <div class="container">
-                <div class="card" style="width: 100%">
-                    <div class="row">
-                        <div class="col">
-                            <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
-                        </div>
-                        <div class="col-7">
-                            <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
-                            <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
-                        </div>
-                        <div class="col" style="margin: 100px 30px;">
-                            <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                <?php for ($i = 0; $i < $count_tou_pro; $i++) { ?>
+                    <div class="container">
+                        <div class="card" style="width: 100%">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
+                                </div>
+                                <div class="col-7">
+                                    <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
+                                    <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
+                                </div>
+                                <div class="col" style="margin: 100px 30px;">
+                                    <button type="submit" class="btn btn-primary btn-lg" onclick="confirm_use_reward(<?php echo $tou_pro[$i]->tou_id ?>)">ใช้</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php } ?>
+                <?php } ?>
 
-            <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
+                <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
         <section>
@@ -338,23 +349,23 @@ a:hover {
                         $count_checkin = 3;
                     } ?>
                     <?php for ($i = 0; $i < $count_checkin; $i++) { ?>
-                    <div class="col-md-4">
-                        <div class="card card-custom">
-                            <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
-                                <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <a href="#">
-                                    <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                        <div class="col-md-4">
+                            <div class="card card-custom">
+                                <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
+                                    <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
                                 </a>
-                                <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
+                                    </a>
+                                    <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
                 <?php if (count($checkin) > 3) { ?>
-                <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
+                    <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
                 <?php } ?>
             </div>
         </section>
@@ -380,204 +391,204 @@ a:hover {
 </div>
 
 <script>
-/*
- * update picture realtime
- * @input -
- * @output -
- * @author Naaka punparich 62160082
- * @Create Date 2565-01-04
- */
-const img_div = document.querySelector('.profile-pic-div');
-const img = document.querySelector('#photo');
-const file = document.querySelector('#file');
-const upload_btn = document.querySelector('#upload_btn');
+    /*
+     * update picture realtime
+     * @input -
+     * @output -
+     * @author Naaka punparich 62160082
+     * @Create Date 2565-01-04
+     */
+    const img_div = document.querySelector('.profile-pic-div');
+    const img = document.querySelector('#photo');
+    const file = document.querySelector('#file');
+    const upload_btn = document.querySelector('#upload_btn');
 
-file.addEventListener('change', function() {
+    file.addEventListener('change', function() {
 
-    const choosed_file = this.files[0];
+        const choosed_file = this.files[0];
 
-    if (choosed_file) {
+        if (choosed_file) {
 
-        const reader = new FileReader();
+            const reader = new FileReader();
 
-        reader.addEventListener('load', function() {
-            img.setAttribute('src', reader.result);
-        });
+            reader.addEventListener('load', function() {
+                img.setAttribute('src', reader.result);
+            });
 
-        reader.readAsDataURL(choosed_file);
-    }
-});
-
-$(document).ready(function() {
-    let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
-    if (error_register_tourist == "edit_success") {
-        swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
-        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-    } else if (error_register_tourist == "fail") {
-        swal("สำเร็จ", "การแก้ไขข้อมูลของคุณไม่สำเสร็จ", "unsuccess");
-        <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
-    }
-    let exchange_promotion = "<?php echo $this->session->userdata("exchange_promotion"); ?>";
-    if (exchange_promotion == "exchange_success") {
-        swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
-        <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
-    }
-    let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8))) ?>';
-    check_date_by_month(birth_date_old);
-});
-
-/*
- * confirm_use
- * confirm use reward
- * @input tou_id
- * @output modal comfirm use reward
- * @author Thanisorn thumsawanit 62160088
- * @Create Date 2565-01-04
- */
-function confirm_use_reward(tou_id) {
-    $('#use').text();
-    $('#modal_use').modal();
-
-    // button
-    $('#use_btn').click(function() {
-        use_reward_ajax(tou_id)
-    });
-}
-
-/*
- * use_reward_ajax
- * use_reward
- * @input tou_id
- * @output use_reward
- * @author Thanisorn thumsawanit 62160088
- * @Create Date 2565-01-04
- */
-function use_reward_ajax(tou_id) {
-    console.log(tou_id);
-    $.ajax({
-        type: "POST",
-        data: {
-            tou_id: tou_id
-        },
-        url: '<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/use_reward_ajax/' ?>',
-        success: function() {
-            swal({
-                    title: "ใช้ของรางวัล",
-                    text: "คุณได้ทำการใช้ของรางวัลเสร็จสิ้น",
-                    type: "success"
-                },
-                function() {
-                    location.reload();
-                })
-
-        },
-        error: function() {
-            alert('ajax error working');
+            reader.readAsDataURL(choosed_file);
         }
     });
 
-}
+    $(document).ready(function() {
+        let error_register_tourist = "<?php echo $this->session->userdata("error_register_tourist"); ?>";
+        if (error_register_tourist == "edit_success") {
+            swal("สำเร็จ", "การแก้ไขข้อมูลของคุณเสร็จสิ้น", "success");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+        } else if (error_register_tourist == "fail") {
+            swal("สำเร็จ", "การแก้ไขข้อมูลของคุณไม่สำเสร็จ", "unsuccess");
+            <?php echo $this->session->unset_userdata("error_register_tourist"); ?>
+        }
+        let exchange_promotion = "<?php echo $this->session->userdata("exchange_promotion"); ?>";
+        if (exchange_promotion == "exchange_success") {
+            swal("สำเร็จ", "แลกของรางวัลเสร็จสิ้น", "success");
+            <?php echo $this->session->unset_userdata("exchange_promotion"); ?>
+        }
+        let birth_date_old = '<?php echo json_decode(intval(substr($arr_tus[0]->tus_birthdate, 8))) ?>';
+        check_date_by_month(birth_date_old);
+    });
+
+    /*
+     * confirm_use
+     * confirm use reward
+     * @input tou_id
+     * @output modal comfirm use reward
+     * @author Thanisorn thumsawanit 62160088
+     * @Create Date 2565-01-04
+     */
+    function confirm_use_reward(tou_id) {
+        $('#use').text();
+        $('#modal_use').modal();
+
+        // button
+        $('#use_btn').click(function() {
+            use_reward_ajax(tou_id)
+        });
+    }
+
+    /*
+     * use_reward_ajax
+     * use_reward
+     * @input tou_id
+     * @output use_reward
+     * @author Thanisorn thumsawanit 62160088
+     * @Create Date 2565-01-04
+     */
+    function use_reward_ajax(tou_id) {
+        console.log(tou_id);
+        $.ajax({
+            type: "POST",
+            data: {
+                tou_id: tou_id
+            },
+            url: '<?php echo site_url() . 'Tourist/Manage_tourist/Tourist_manage/use_reward_ajax/' ?>',
+            success: function() {
+                swal({
+                        title: "ใช้ของรางวัล",
+                        text: "คุณได้ทำการใช้ของรางวัลเสร็จสิ้น",
+                        type: "success"
+                    },
+                    function() {
+                        location.reload();
+                    })
+
+            },
+            error: function() {
+                alert('ajax error working');
+            }
+        });
+
+    }
 </script>
 
 <script>
-/*
- * undisabled_text
- * @input -
- * @output -
- * @author Naaka punparich 62160082
- * @Create Date 2565-01-04
- */
-function undisabled_text() {
-    // change css
-    document.getElementById('upload_btn').style.cssText = 'visibility: visible;';
-    document.getElementById('edit_information').style.cssText = 'font-size: 18px; border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px; display: none;';
-    document.getElementById('confirm_btn').style.cssText = ' height: 40px; margin-right: 10px; color: white; font-size: 18px;';
-    document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px;';
+    /*
+     * undisabled_text
+     * @input -
+     * @output -
+     * @author Naaka punparich 62160082
+     * @Create Date 2565-01-04
+     */
+    function undisabled_text() {
+        // change css
+        document.getElementById('upload_btn').style.cssText = 'visibility: visible;';
+        document.getElementById('edit_information').style.cssText = 'font-size: 18px; border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px; display: none;';
+        document.getElementById('confirm_btn').style.cssText = ' height: 40px; margin-right: 10px; color: white; font-size: 18px;';
+        document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px;';
 
-    // change js
-    document.getElementById('tus_birth_year').disabled = false;
-    document.getElementById('tus_birth_month').disabled = false;
-    document.getElementById('tus_birth_date').disabled = false;
-    document.getElementById("visible").disabled = false;
-    $("input[type=file]").prop("disabled", false);
-    $("input[id=visible]").prop("disabled", false);
-    $("input[id=tus_password]").prop("disabled", false);
-    $("input[id=tus_password_cf]").prop("disabled", false);
-    document.getElementById("toggle_pw").textContent = "visibility_off";
-    document.getElementById("toggle_pw_cf").textContent = "visibility_off";
-    $("#tus_password").attr('type', "text");
-    $("#tus_password_cf").attr('type', "text");
-}
-
-function disabled_text() {
-    // change css
-    document.getElementById('upload_btn').style.cssText = 'visibility: hidden;';
-    document.getElementById('edit_information').style.cssText = 'font-size: 18px; border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px;';
-    document.getElementById('confirm_btn').style.cssText = ' height: 40px; margin-right: 10px; color: white; font-size: 18px; display: none;';
-    document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px; display: none;';
-
-    // change js
-    document.getElementById('tus_birth_year').disabled = true;
-    document.getElementById('tus_birth_month').disabled = true;
-    document.getElementById('tus_birth_date').disabled = true;
-    document.getElementById("visible").disabled = true;
-    $("input[type=file]").prop("disabled", true);
-    $("input[id=visible]").prop("disabled", true);
-    $("input[id=tus_password]").prop("disabled", true);
-    $("input[id=tus_password_cf]").prop("disabled", true);
-    document.getElementById("toggle_pw").textContent = "visibility";
-    document.getElementById("toggle_pw_cf").textContent = "visibility";
-    $("#tus_password").attr('type', "password");
-    $("#tus_password_cf").attr('type', "password");
-
-}
-
-/*
- * check_date_by_month
- * check birth date by birth month
- * @input tus_birth_month, tus_birth_year
- * @output tus_birth_date
- * @author Suwapat Saowarod 62160340
- * @Create Date 2565-01-1ุ6
- * @Update - 
- */
-function check_date_by_month(birth_date_old) {
-    let birth_month = $('#tus_birth_month').val();
-    let birth_year = $('#tus_birth_year').val();
-    let html_code = '';
-    let count_date;
-    if (birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12) {
-        count_date = 31;
-    } else if (birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11) {
-        count_date = 30;
-    } else {
-        let mod_4, mod_100, mod_400;
-        // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
-        mod_4 = birth_year % 4;
-        mod_100 = birth_year % 100;
-        mod_400 = birth_year % 400;
-        if (mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0) {
-            count_date = 28;
-        } else {
-            count_date = 29;
-        }
+        // change js
+        document.getElementById('tus_birth_year').disabled = false;
+        document.getElementById('tus_birth_month').disabled = false;
+        document.getElementById('tus_birth_date').disabled = false;
+        document.getElementById("visible").disabled = false;
+        $("input[type=file]").prop("disabled", false);
+        $("input[id=visible]").prop("disabled", false);
+        $("input[id=tus_password]").prop("disabled", false);
+        $("input[id=tus_password_cf]").prop("disabled", false);
+        document.getElementById("toggle_pw").textContent = "visibility_off";
+        document.getElementById("toggle_pw_cf").textContent = "visibility_off";
+        $("#tus_password").attr('type', "text");
+        $("#tus_password_cf").attr('type', "text");
     }
-    html_code += '<option value="' + 0 + '">วว</option>';
-    for (let i = 1; i <= count_date; i++) {
-        if (birth_date_old == 'not have old date') {
-            if ($('#tus_birth_date').val() == i) {
-                html_code += '<option value="' + i + '" selected>' + i + '</option>';
-            } else {
-                html_code += '<option value="' + i + '">' + i + '</option>';
-            }
+
+    function disabled_text() {
+        // change css
+        document.getElementById('upload_btn').style.cssText = 'visibility: hidden;';
+        document.getElementById('edit_information').style.cssText = 'font-size: 18px; border-color: #ff9800; padding: 10px 24px; width: 235px; height: 40px;';
+        document.getElementById('confirm_btn').style.cssText = ' height: 40px; margin-right: 10px; color: white; font-size: 18px; display: none;';
+        document.getElementById('cancel').style.cssText = ' height: 40px; color: white; background-color: #777777; font-size: 18px; display: none;';
+
+        // change js
+        document.getElementById('tus_birth_year').disabled = true;
+        document.getElementById('tus_birth_month').disabled = true;
+        document.getElementById('tus_birth_date').disabled = true;
+        document.getElementById("visible").disabled = true;
+        $("input[type=file]").prop("disabled", true);
+        $("input[id=visible]").prop("disabled", true);
+        $("input[id=tus_password]").prop("disabled", true);
+        $("input[id=tus_password_cf]").prop("disabled", true);
+        document.getElementById("toggle_pw").textContent = "visibility";
+        document.getElementById("toggle_pw_cf").textContent = "visibility";
+        $("#tus_password").attr('type', "password");
+        $("#tus_password_cf").attr('type', "password");
+
+    }
+
+    /*
+     * check_date_by_month
+     * check birth date by birth month
+     * @input tus_birth_month, tus_birth_year
+     * @output tus_birth_date
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2565-01-1ุ6
+     * @Update - 
+     */
+    function check_date_by_month(birth_date_old) {
+        let birth_month = $('#tus_birth_month').val();
+        let birth_year = $('#tus_birth_year').val();
+        let html_code = '';
+        let count_date;
+        if (birth_month == 0 || birth_month == 1 || birth_month == 3 || birth_month == 5 || birth_month == 7 || birth_month == 8 || birth_month == 10 || birth_month == 12) {
+            count_date = 31;
+        } else if (birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11) {
+            count_date = 30;
         } else {
-            if (birth_date_old == i) {
-                html_code += '<option value="' + i + '" selected>' + i + '</option>';
+            let mod_4, mod_100, mod_400;
+            // เช็คว่ามี 28 หรือ 29 วัน อัลกอลิทึม
+            mod_4 = birth_year % 4;
+            mod_100 = birth_year % 100;
+            mod_400 = birth_year % 400;
+            if (mod_4 == 0 && mod_100 == 0 && mod_400 == 0 && birth_year > 0) {
+                count_date = 28;
             } else {
-                html_code += '<option value="' + i + '">' + i + '</option>';
+                count_date = 29;
             }
         }
+        html_code += '<option value="' + 0 + '">วว</option>';
+        for (let i = 1; i <= count_date; i++) {
+            if (birth_date_old == 'not have old date') {
+                if ($('#tus_birth_date').val() == i) {
+                    html_code += '<option value="' + i + '" selected>' + i + '</option>';
+                } else {
+                    html_code += '<option value="' + i + '">' + i + '</option>';
+                }
+            } else {
+                if (birth_date_old == i) {
+                    html_code += '<option value="' + i + '" selected>' + i + '</option>';
+                } else {
+                    html_code += '<option value="' + i + '">' + i + '</option>';
+                }
+            }
+        }
+        $('#tus_birth_date').html(html_code);
     }
-    $('#tus_birth_date').html(html_code);
-}
 </script>
