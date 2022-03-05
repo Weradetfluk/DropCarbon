@@ -152,6 +152,15 @@ input:checked+input~input:before {
 }
 </style>
 
+
+/* read_more
+* read more text if text over 7 line
+* @input -
+* @output -
+* @author Jutamas Thaptong
+* @Create Date 2565-03-05
+* @Update -
+*/
 <script>
 function read_more() {
     $("#more_dot").toggle();
@@ -299,7 +308,7 @@ function read_more() {
 
                             <!-- ลดคาร์บอน -->
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
-                                    <?php echo $event[$i]->eve_drop_carbon; ?> กรัม</b></p>
+                                    <?php echo $event[$i]->eve_drop_carbon; ?> กก./ปี</b></p>
 
                             <!-- เวลาเริ่ม/จบกิจกรรม -->
                             <?php
