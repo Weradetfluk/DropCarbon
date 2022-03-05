@@ -302,9 +302,10 @@
         $.ajax({
             type: "POST",
             data: {
-                pro_id: pro_id_con
+                pro_id: pro_id_con,
+                pro_status: 2
             },
-            url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
+            url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/edit_status_promotion_ajax/' ?>',
             success: function() {
                 swal({
                         title: "เปิดการใช้งานโปรโมชัน",

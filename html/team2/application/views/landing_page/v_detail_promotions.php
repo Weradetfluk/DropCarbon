@@ -309,6 +309,15 @@
     </div>
 
     <script>
+
+    /* read_more
+     * read more text if text over 7 line
+     * @input -
+     * @output -
+     * @author Chutipon Thermsirisuksin
+     * @Create Date 2565-03-05
+     * @Update -
+     */   
     function read_more() {
         $("#more_dot").toggle();
         $("#more_text").toggle(200);

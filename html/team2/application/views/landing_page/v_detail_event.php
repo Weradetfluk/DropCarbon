@@ -30,17 +30,23 @@
 
     <!-- แชร์ -->
     <div class="row">
+        <?php $share_link_event = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        // echo $share_link_event; 
+        //https://www.informatics.buu.ac.th/team2/
+        ?>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=1199702907173830&autoLogAppEvents=1"
-            nonce="YLQSWYS9"></script>
-        <div class="col fb-share-button" data-href="" data-layout="button" data-size="large">
-            <div class="fb-share-button" data-href="https://www.informatics.buu.ac.th/team2/" data-layout="button"
-                data-size="small"><a target="_blank"
-                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
-                    class="fb-xfbml-parse-ignore">Share</a></div>
-        </div>
-    </div><br>
+            nonce="YLQSWYS9">
+
+        </script>
+        <div class="fb-share-button" data-href=" <?php $share_link_promotion ?> " data-layout="button"
+            data-size="small"><a target="_blank"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.informatics.buu.ac.th%2Fteam2%2F&amp;src=sdkpreparse"
+                class="fb-xfbml-parse-ignore">แชร์</a></div>
+    </div>
+    <!-- แชร์ -->
+    <br>
 
     <!-- banner img -->
     <i class="i">
@@ -207,20 +213,16 @@
     });
     </script>
 
-    <!-- script share facebook -->
-    <script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <!-- script read more -->
     <script>
+    /* read_more
+     * read more text if text over 7 line
+     * @input -
+     * @output -
+     * @author Chutipon Thermsirisuksin
+     * @Create Date 2565-03-05
+     * @Update -
+     */   
     function read_more() {
         $("#more_dot").toggle();
         $("#more_text").toggle(200);
