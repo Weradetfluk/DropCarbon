@@ -93,8 +93,10 @@
                                 <!-- รูปโปรไฟล์ -->
                                 <div class="profile-pic-div">
                                     <?php if ($this->session->userdata("tus_img_path") == '') { ?>
+                                        <!-- ถ้าไม่มีรูป -->
                                         <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./person.jpg" id="photo" onclick="document.getElementById('file').click();">
                                     <?php } else { ?>
+                                        <!-- ถ้ามีรูป -->
                                         <img src="<?php echo base_url() . 'profilepicture_tourist/' . $this->session->userdata('tus_img_path'); ?>">
                                     <?php } ?>
                                     <input type="file" id="file" name="tourist_img" accept="image/*" disabled>
@@ -109,24 +111,27 @@
                         <div class="col-6 change_width_col">
                             <div class="row">
                                 <div class="form-group col-md-2 mb-3" style="margin-top: -6px;">
+                                    <!-- ส่วนของคำนำหน้า -->
                                     <label for="prefix" class="label">คำนำหน้า</label><br>
                                     <select class="form-control mt-1" name="tus_pre_id" id="visible" style="margin-top: -15px !important; " required disabled>
                                         <?php for ($i = 0; $i < count($arr_prefix); $i++) { ?>
                                             <?php if ($i + 1 == $arr_tus[0]->tus_pre_id) { ?>
+                                                <!-- ถ้าเลือกแล้ว -->
                                                 <option value="<?php echo $i + 1 ?>" selected><?php echo $arr_prefix[$i]->pre_name ?></option>
-
                                             <?php } else { ?>
+                                                <!-- ยังไม่ได้เลือก -->
                                                 <option value="<?php echo $i + 1 ?>"><?php echo $arr_prefix[$i]->pre_name ?></option>
                                             <?php } ?>
                                         <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4 mb-3">
-
+                                    <!-- ส่วนของชื่อ -->
                                     <label for="tus_firstname">ชื่อ</label>
                                     <input type="text" class="form-control mt-1" placeholder="ชื่อ" name='tus_firstname' id="visible" value='<?php echo $arr_tus[0]->tus_firstname; ?>' required disabled>
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของนามสกุล -->
                                     <label for="tus_lastname">นามสกุล</label>
                                     <input type="text" class="form-control mt-1" placeholder="นามสกุล" name='tus_lastname' id="visible" value='<?php echo $arr_tus[0]->tus_lastname; ?>' required disabled>
                                 </div>
@@ -135,10 +140,12 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของเบอร์โทรศัพท์ -->
                                     <label for="tus_tel" style="color:black" class="color-label">เบอร์โทรศัพท์</label>
                                     <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์" name='tus_tel' id="visible" value="<?php echo $arr_tus[0]->tus_tel; ?>" required disabled>
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของอีเมล -->
                                     <label for="tus_email" style="color:black" class="color-label">อีเมล</label>
                                     <input type="text" class="form-control" placeholder="E-mail" name='tus_email' id="visible" value="<?php echo $arr_tus[0]->tus_email; ?>" required disabled>
                                 </div>
@@ -147,12 +154,14 @@
 
                             <div class="row">
                                 <div class="form-group col-md-2 mb-2">
+                                    <!-- ส่วนของวันเกิด -->
                                     <label for="tus_birth_date">วันเกิด</label>
                                     <select name="tus_birth_date" id="tus_birth_date" class="form-control mt-1" disabled>
                                         <!-- วันเกิด -->
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3 mb-3">
+                                    <!-- ส่วนของเดือนเกิด -->
                                     <label for="tus_birth_month">เดือนเกิด</label>
                                     <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
                                         <?php
@@ -183,6 +192,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2 mb-2">
+                                    <!-- ส่วนของปี -->
                                     <label for="tus_birth_year">ปีเกิด</label>
                                     <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
                                         <?php
@@ -202,6 +212,7 @@
                             <!-- ชื่อผู้ใช้ -->
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของชื่อผู้ใช้ -->
                                     <label for="tus_username" style="color:black" class="color-label">ชื่อผู้ใช้</label>
                                     <input type="text" class="form-control" placeholder="username" name='tus_username' id="tus_username" value="<?php echo $arr_tus[0]->tus_username; ?>" required disabled>
                                 </div>
@@ -211,6 +222,7 @@
                             <!-- รหัสผ่าน -->
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของรหัสผ่าน -->
                                     <label for="tus_password" style="color:black" class="color-label ">รหัสผ่าน</label>
                                     <input type="password" class="form-control" placeholder="password" name='tus_password' id="tus_password" value="<?php echo $this->session->userdata("tus_password"); ?>" required disabled>
                                     <span id="toggle_pw" toggle="#visible" class="material-icons field-icon toggle_password">
@@ -218,6 +230,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
+                                    <!-- ส่วนของยืนยันรหัสผ่าน -->
                                     <label for="tus_password" style="color:black" class="color-label ">ยืนยันรหัสผ่าน</label>
                                     <input type="password" class="form-control" placeholder="password" name='tus_password' id="tus_password_cf" value="<?php echo $this->session->userdata("tus_password"); ?>" required disabled>
                                     <span id="toggle_pw_cf" toggle="#visible" class="material-icons field-icon toggle_password">
@@ -230,6 +243,7 @@
                             <div class="row">
 
                                 <div class="col" style="margin-top:18px;">
+                                    <!-- คะแนนสูงสุดของฉัน -->
                                     <p>คะแนนสูงสุดของฉัน <?php echo $arr_tus[0]->tus_cur_score; ?> คะแนน</p>
                                 </div>
 
@@ -254,6 +268,7 @@
                         <div class="col" style="margin-left: auto; margin-right: auto;">
                             <p style="text-align: center;font-size: 22px;">
                                 <?php
+                                // ส่วนของรูป , สิทธิพิเศษของคุณในระดับ และ ส่วนลดการใช้คะแนน
                                 if ($arr_tus[0]->tus_cur_score < 25) { ?>
                                     <img src="<?php echo base_url() . 'assets/templete/picture/' ?>/./bronze.jpg" class="change_width" style="margin-left: auto; margin-right: auto;border: 2px solid; width: 80%;" id="bronze"><br><br>
                                     <?php echo "สิทธิพิเศษของคุณในระดับ Bronze"; ?><br>
@@ -303,9 +318,11 @@
         </section>
 
         <section>
+            <!-- รางวัลของฉัน -->
             <div class="header-break">
                 รางวัลของฉัน
             </div>
+            <!-- ถ้าไม่มีรางวัลของฉัน -->
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
                 <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>
             <?php } else { ?>
@@ -319,9 +336,11 @@
                         <div class="card" style="width: 100%">
                             <div class="row">
                                 <div class="col">
+                                    <!-- แสดงรูป -->
                                     <img src="<?php echo base_url() . 'image_promotions/' . $tou_pro[$i]->pro_img_path; ?>" style="margin-left: 35px; border: 2px solid; width: 250px; height: 200px; margin-top: 35px; margin-left: 35px;" id="img_01">
                                 </div>
                                 <div class="col-7">
+                                    <!-- แสดงชื่อ -->
                                     <p style="margin: 100px 30px; font-size: 28px;"><?php echo $tou_pro[$i]->pro_name; ?><br><br><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p>
                                     <!-- <p style="margin: 10px 10px; font-size: 20px;"><?php echo substr($tou_pro[$i]->pro_description, 0, 100) . "..."; ?></p> -->
                                 </div>
@@ -333,10 +352,12 @@
                     </div>
                 <?php } ?>
 
+                <!-- ดูเพิ่มเติม -->
                 <p data-aos="fade-left" class="float-right"><a href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_list' ?>">ดูเพิ่มเติม</a></p>
             <?php } ?>
         </section>
         <section>
+            <!-- ประวัติการเข้าร่วมกิจกรรม -->
             <div class="header-break">
                 ประวัติการเข้าร่วมกิจกรรม
             </div>
@@ -351,19 +372,23 @@
                     <?php for ($i = 0; $i < $count_checkin; $i++) { ?>
                         <div class="col-md-4">
                             <div class="card card-custom">
+                                <!-- ส่วนของรูป -->
                                 <a href="<?php echo base_url() . 'Landing_page/Landing_page/show_event_detail/' . $checkin[$i]->eve_id; ?>">
                                     <img src="<?php echo base_url() . 'image_event/' . $checkin[$i]->eve_img_path; ?>" class="card-img-top" style="height: 300px; weight: 270; object-fit: cover;" alt="...">
                                 </a>
                                 <div class="card-body">
+                                    <!-- ส่วนของรูป -->
                                     <a href="#">
                                         <h3 class="text-decoration-none text-dark"><?php echo $checkin[$i]->eve_name ?></h3>
                                     </a>
+                                    <!-- ส่วนของรายละเอียด -->
                                     <p class="card-text"><?php echo iconv_substr($checkin[$i]->eve_description, 0, 120, "UTF-8") . "..."; ?></p>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
+                <!-- ดูเพิ่มเติม -->
                 <?php if (count($checkin) > 3) { ?>
                     <p style="float : right;"><a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>">ดูเพิ่มเติม <span class="material-icons">arrow_right_alt</span></a></p>
                 <?php } ?>
@@ -520,6 +545,13 @@
         $("#tus_password_cf").attr('type', "text");
     }
 
+    /*
+     * disabled_text
+     * @input -
+     * @output -
+     * @author Naaka punparich 62160082
+     * @Create Date 2565-01-04
+     */
     function disabled_text() {
         // change css
         document.getElementById('upload_btn').style.cssText = 'visibility: hidden;';
