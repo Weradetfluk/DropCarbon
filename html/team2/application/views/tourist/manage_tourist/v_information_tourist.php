@@ -292,7 +292,8 @@
                                 <?php } else { ?>
                                     <?php echo ""; ?>
                                 <?php } ?>
-                            </p>
+                            </p>   
+                            <!-- แสดง logo rank สิทธิพิเศษ ส่วนลดการใช้คะแนนของแต่ละ rank-->
                             <!-- อีกกี่แต้มถึงจะอัพ -->
                             <p style="text-align: center; font-size: 16px;">
                                 <?php
