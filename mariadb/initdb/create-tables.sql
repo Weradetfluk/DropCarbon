@@ -10381,7 +10381,7 @@ CREATE TABLE `dcs_eve_category` (
 -- Dumping data for table `dcs_eve_category`
 --
 
-INSERT INTO `dcs_eve_category` (`eve_cat_id`, `eve_cat_name`, `eve_drop_carbon`) VALUES
+INSERT INTO `dcs_eve_category` (`eve_cat_id`, `eve_cat_name`, `eve_drop_carbon`, `eve_max_score`, `eve_min_score`) VALUES
 (1, 'การจัดการน้ำและไฟฟ้า', 160, 19, 1),
 (2, 'การจัดการขยะ	', 450, 29, 20),
 (3, 'การเดินทาง ', 580, 39, 30),
