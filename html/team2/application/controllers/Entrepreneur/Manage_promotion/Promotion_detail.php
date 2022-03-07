@@ -15,6 +15,7 @@ class Promotion_detail extends DCS_controller
     /*
     * show_detail_promotion
     * show detail promotion
+    * @input pro_id
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-10-01

@@ -14,7 +14,7 @@ class Company_list extends DCS_controller
     /*
     * show_list_company
     * show list company by id in database
-    * @input 
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18

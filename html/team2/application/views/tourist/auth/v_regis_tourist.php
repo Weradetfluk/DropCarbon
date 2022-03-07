@@ -361,24 +361,24 @@
     /*
      * @author Naaka punparich 62160082
      */
-    const imgDiv = document.querySelector('.profile-pic-div');
+    const img_div = document.querySelector('.profile-pic-div');
     const img = document.querySelector('#photo');
     const file = document.querySelector('#file');
-    const upload_Btn = document.querySelector('#upload_Btn');
+    const upload_btn = document.querySelector('#upload_Btn');
 
-    imgDiv.addEventListener('mouseenter', function() {
-        upload_Btn.style.display = "block";
+    img_div.addEventListener('mouseenter', function() {
+        upload_btn.style.display = "block";
     });
 
-    imgDiv.addEventListener('mouseleave', function() {
-        upload_Btn.style.display = "none";
+    img_div.addEventListener('mouseleave', function() {
+        upload_btn.style.display = "none";
     });
 
     file.addEventListener('change', function() {
 
-        const choosedFile = this.files[0];
+        const choosed_file = this.files[0];
 
-        if (choosedFile) {
+        if (choosed_file) {
 
             const reader = new FileReader();
 
@@ -386,7 +386,7 @@
                 img.setAttribute('src', reader.result);
             });
 
-            reader.readAsDataURL(choosedFile);
+            reader.readAsDataURL(choosed_file);
         }
     });
 </script>

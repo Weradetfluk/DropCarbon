@@ -35,7 +35,7 @@ class Entrepreneur_edit extends DCS_controller
   /*
    * update_entrepreneur
    * Update information for Entrepreneur by id in database
-   * @input ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_email, entrepreneur_id, 
+   * @input ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_email, ent_password, ent_birth_year, ent_birth_month, ent_birth_date
    * @output -
    * @author Thanchanok Thongjumroon 62160089
    * @Create Date 2564-07-24
@@ -75,8 +75,8 @@ class Entrepreneur_edit extends DCS_controller
 
   /*
    * set_session
-   * set session 
-   * @input -$username, $name, $password, $tel, $card, $email, $pre_id
+   * set session entrepreneur_name, pre_id, tel, email
+   * @input $username, $name, $password, $tel, $card, $email, $pre_id
    * @output -
    * @author Naaka Punparich 62160082
    * @Create Date 2564-07-24

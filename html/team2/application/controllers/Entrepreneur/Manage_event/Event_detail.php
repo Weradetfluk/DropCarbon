@@ -13,6 +13,7 @@ class Event_detail extends DCS_controller
     /*
     * show_detail_event
     * show detail event
+    * @input eve_id
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-05

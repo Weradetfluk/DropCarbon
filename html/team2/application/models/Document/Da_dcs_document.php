@@ -10,7 +10,7 @@ include_once dirname(__FILE__) ."/../DCS_model.php";
 class Da_dcs_document extends DCS_model{
     public $doc_path;
     public $doc_ent_id;
-    public $doc_endoc_namet_id;
+    public $doc_name;
 
     /*
     * insert_document

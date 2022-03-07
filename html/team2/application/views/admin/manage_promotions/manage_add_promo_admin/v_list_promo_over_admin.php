@@ -38,7 +38,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url() . 'Admin/Manage_promotions/Admin_list_promotions/show_data_promo_cancle' ?>">
-                                        <h5 class="h5-card-header">ถูกระงับ</h5>
+                                        <h5 class="h5-card-header">หยุดการใช้งาน</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -199,9 +199,10 @@
             $.ajax({
                 type: "POST",
                 data: {
-                    pro_id: pro_id_con
+                    pro_id: pro_id_con,
+                    pro_status: 4
                 },
-                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/delete_promotion_ajax/' ?>',
+                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/edit_status_promotion_ajax/' ?>',
                 success: function() {
                     swal({
                             title: "ลบโปรโมชัน",

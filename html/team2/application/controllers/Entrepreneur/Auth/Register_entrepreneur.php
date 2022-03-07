@@ -19,7 +19,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
     * show_regis_ent
     * show form register entrepreneur
-    * @input 
+    * @input -
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-07-18
@@ -37,7 +37,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
     * insert_ent
     * insert entrepreneur to database
-    * @input ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_username, ent_password
+    * @input ent_pre_id, ent_firstname, ent_lastname, ent_tel, ent_id_card, ent_email, ent_username, ent_password, ent_birth_year, ent_birth_month, ent_birth_date, new_img, name_new_image, del_new_img
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18
@@ -90,7 +90,7 @@ class Register_entrepreneur extends DCS_controller {
 
     /*
     * check_username_entrepreneur_ajax
-    * check username entrepreneur
+    * check username entrepreneur in database
     * @input ent_username
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -111,7 +111,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
      * upload_file_ajax
      * upload file for entrepreneur
-     * @input 
+     * @input document_ent
      * @output -
      * @author Suwapat Saowarod 62160340
      * @Create Date 2564-09-23
@@ -208,8 +208,8 @@ class Register_entrepreneur extends DCS_controller {
 
     /*
     * check_email_entrepreneur_ajax
-    * output check username
-    * @input entrepreneur username
+    * output check email entrepreneur
+    * @input ent_email
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-10-25
@@ -229,8 +229,8 @@ class Register_entrepreneur extends DCS_controller {
 
     /*
     * check_phone_number_entrepreneur_ajax
-    * output check phone number
-    * @input entrepreneur phone number
+    * output check phone number entrepreneur
+    * @input ent_tel
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-20
@@ -253,7 +253,7 @@ class Register_entrepreneur extends DCS_controller {
     /*
     * check_id_card_entrepreneur_ajax
     * output check id_card
-    * @input entrepreneur id_card
+    * @input ent_id_card
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-20

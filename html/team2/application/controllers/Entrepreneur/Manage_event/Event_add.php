@@ -13,7 +13,7 @@ class Event_add extends DCS_controller
     /*
     * show_add_event
     * show form add event
-    * @input 
+    * @input -
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-25
@@ -33,10 +33,11 @@ class Event_add extends DCS_controller
         $view = 'entrepreneur/manage_event/v_add_event';
         $this->output_entrepreneur($view, $data);
     }
+
     /*
     * add_event
     * add event to database
-    * @input eve_name, eve_description, eve_status, eve_start_date, eve_end_date
+    * @input eve_name, eve_description, eve_status, eve_start_date, eve_end_date, eve_lat, eve_lon, par_id, new_img, name_new_image, del_new_img
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-26
@@ -88,10 +89,11 @@ class Event_add extends DCS_controller
           
         redirect('Entrepreneur/Manage_event/Event_list/show_list_event');
     }
+
     /*
     * set_session_add_event
-    * add session 
-    * @input $data
+    * add session error_add_event
+    * @input data
     * @output -
     * @author Priyarat Bumrungkit 62160156
     * @Create Date 2564-09-25
@@ -169,7 +171,7 @@ class Event_add extends DCS_controller
     /*
     * uplink_image_ajax
     * uplink image when cancel edit and add event
-    * @input arr_img
+    * @input arr_image
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-09-29

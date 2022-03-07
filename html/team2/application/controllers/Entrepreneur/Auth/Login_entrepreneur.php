@@ -13,7 +13,7 @@ class Login_entrepreneur extends DCS_controller
     /*
     * index
     * show form login entrepreneur 
-    * @input 
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -26,7 +26,7 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * input_login_form
-    * Login admin and get data  
+    * Login entrepreneur and get data  
     * @input username, password
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -75,7 +75,7 @@ class Login_entrepreneur extends DCS_controller
     /*
     * logout
     * remove session and back to login  
-    * @input 
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-19
@@ -91,7 +91,7 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * set_session
-    * set_session username and entrepreneur_name
+    * set_session username, entrepreneur_name, entrepreneur_id, password, tel, card, email, pre_id
     * @input username, name, id, password, tel, card, email, pre_id
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -113,7 +113,7 @@ class Login_entrepreneur extends DCS_controller
     /*
     * remove_session
     * unset session username and entrepreneur_name
-    * @input 
+    * @input -
     * @output -
     * @author Suwapat Saowarod
     * @Create Date 2564-07-19
@@ -135,23 +135,21 @@ class Login_entrepreneur extends DCS_controller
     /*
     * forgot_password_page
     * load view forgot pass
-    * @input 
+    * @input data
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-15
     * @Update -
     */
-
-
     public function forgot_password_page($data = null)
     {
         $this->output_login_entrepreneur('entrepreneur/auth/v_forgot_password_entrepreneur', $data);
     }
 
     /*
-    * check_email_admin
+    * check_email_entrepreneur
     * check email in database
-    * @input 
+    * @input user_email
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-17
@@ -180,23 +178,17 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * send_mail_reset
-    * check email in database
-    * @input 
+    * send mail to reset password
+    * @input email
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-17
     * @Update -
     */
-
     public function send_mail_reset($email)
     {
-
-
-
         // set userpassword in token 
         $token = rand(1000, 9999);
-
-
         $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'login');  //load database
 
         $this->login->ent_email = $email;
@@ -220,8 +212,6 @@ class Login_entrepreneur extends DCS_controller
         $mail->charSet = "UTF-8";
 
         $mail->setFrom('dropcarbonsystem@gmail.com', 'Dropcarbonsystem');
-
-
         // Add a recipient
         $mail->addAddress($email);
 
@@ -242,8 +232,8 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * update_password_ajax
-    * check email in database
-    * @input 
+    * update password entrepreneur
+    * @input password, token
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-17
@@ -265,8 +255,8 @@ class Login_entrepreneur extends DCS_controller
 
     /*
     * reset_password_page
-    * check email in database
-    * @input 
+    * show page reset password
+    * @input token
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2564-09-17

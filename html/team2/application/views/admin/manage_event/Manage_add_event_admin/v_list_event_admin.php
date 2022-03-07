@@ -32,13 +32,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link active"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>">
-                                        <h5 class="h5-card-header">กิจกรรมที่ยังไม่สิ้นสุด</h5>
+                                        <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_over'; ?>">
-                                        <h5 class="h5-card-header">สิ้นสุดกิจกรรม</h5>
+                                        <h5 class="h5-card-header">สิ้นสุด</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -90,17 +90,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">QR Code</h4>
+                    <h3 class="col-12" style="text-align: center;"><span id="name_qr"></span></h3>
                 </div>
                 <div class="modal-body">
-                    <p>กิจกรรม : <span id="name_qr"></span></p>
-                    <center>
-                        <div id="qr_code" style="width:100%; height:100%;"></div>
-                    </center>
+                    <center><div id="qr_code" style="width:100%; height:100%;"></div></center><br>
+                    <h5><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>" width="30px"> ระยะเวลา : <span id="event_time"></h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" style="color: white;"
-                        data-dismiss="modal">เสร็จสิ้น</button>
+                    <button type="button" class="btn btn-success" style="color: white;" data-dismiss="modal">เสร็จสิ้น</button>
                 </div>
             </div>
         </div>
@@ -153,11 +150,15 @@
         height: 250
     });
 
-    function make_qr_code(eve_id, eve_name) {
+    function make_qr_code(eve_id, eve_name, eve_start, eve_end) {
         let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
         qrcode.makeCode( url + eve_id);
         $('#name_qr').html(eve_name);
         $('#modal_qrcode').modal();
+        event_time = format_date(eve_start);
+        event_time += ' - ';
+        event_time += format_date(eve_end);
+        $('#event_time').html(event_time);
     }
 
     /*

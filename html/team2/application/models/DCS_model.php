@@ -44,7 +44,7 @@ class DCS_model extends CI_Model
         return $query;
     }
     /*
-    * get_data_dashboard_admin
+    * get_data_dashboard_event_cat_admin
     * get data card dashboard and return data JSON
     * @input
     * @output -
@@ -93,7 +93,7 @@ class DCS_model extends CI_Model
     }
 
     /*
-    * get_data_dashboard_event_per_admin
+    * get_data_dashboard_event_admin
     * get data card dashboard and return data JSON
     * @input
     * @output -
@@ -116,7 +116,7 @@ class DCS_model extends CI_Model
     }
 
     /*
-    * get_data_dashboard_event_per_admin
+    * get_data_event_name_cat
     * get data card dashboard and return data JSON
     * @input
     * @output -

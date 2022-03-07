@@ -1,19 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
-
 /*
 * Admin_list_tourist
 * Manage list tourist
 * @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-08-01
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_list_tourist extends DCS_controller
 {
   /*
     * @author Nantasiri Saiwaew 62160093
-    */
-
+  */
   public function __construct()
   {
     parent::__construct();
@@ -22,13 +20,10 @@ class Admin_list_tourist extends DCS_controller
     $this->load->model('Tourist/M_dcs_tourist', 'mdct');
   }
 
-
-
-
   /*
     * show_data_tourist
     * get all data tourist not block and show table
-    * @input
+    * @input -
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-09-16
@@ -44,7 +39,7 @@ class Admin_list_tourist extends DCS_controller
   /*
     * show_data_block
     * get all data tourist block and show table
-    * @input
+    * @input -
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-09-16
@@ -55,10 +50,11 @@ class Admin_list_tourist extends DCS_controller
   {
     $this->output_admin('admin/manage_tourist/v_list_tourist_block', null);
   }
+
   /*
     * show_data_ajax_tourist
-    * show table all tourist user
-    * @input 
+    * show table all tourist 
+    * @input number_status, query
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-01
@@ -221,8 +217,8 @@ class Admin_list_tourist extends DCS_controller
 
   /*
     * unblock_user_ajax
-    * chage status unblock to database
-    * @input 
+    * change status unblock to database
+    * @input tus_id
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-01

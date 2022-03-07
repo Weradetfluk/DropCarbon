@@ -50,13 +50,7 @@
 </style>
 <div class="container py-5">
     <ul class="breadcrumb">
-        <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a>
-        </li>
-        <?php } ?>
-        <?php if (!$this->session->userdata("tourist_id")) { ?>
         <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
         <li><a href="<?php echo site_url() . 'Landing_page/Landing_page/show_promotions_list' ?>"
                 style="color: green;">รายการโปรโมชันและรางวัล</a></li>
         <li class="colorchange"><?php echo $promotions[0]->pro_name ?></li>
@@ -84,7 +78,7 @@
                 class="fb-xfbml-parse-ignore">แชร์</a></div>
     </div>
     <!-- แชร์ -->
-            <br>
+    <br>
     <div class="row">
         <div class="col-12">
             <div class="container">
@@ -170,12 +164,11 @@
                 <?php
                 $get_string = $promotions[0]->pro_description;
                 $get_length = strlen($get_string);
-                $max_length = 3000;
+                $max_length = 4000;
                 $sub_string_first = $get_string;
                 $sub_string_last = "";
                 $readMore = "";
                 if ($get_length > $max_length) {
-                    $readMore = '<div onclick="read_more()" class="read-more-style" id="btn_read_more">Read more</div>';
                     $sub_string_first = substr($get_string, 0, strrpos($get_string, ' ', $max_length - $get_length)) . " <span id='more_dot'> ... </span>";
                     $sub_string_last = substr($get_string, strrpos($get_string, ' ', $max_length - $get_length));
                 }
@@ -186,102 +179,116 @@
                 <p><?php echo "เริ่มตั้งแต่วันที่ " . $start_day . " " . $convert_start_month . " " . $start_year . " - " . $end_day . " " . $convert_end_month . " " . $end_year ?>
             </div>
 
-            <? //= $readMore 
-            ?>
+            <?php if ($get_length > $max_length) { ?>
             <div onclick="read_more()" class="read-more-style" id="btn_read_more">อ่านต่อ>> </div>
-            <!-- รายละเอียด -->
-        </div>
-    </div>
-
-
-    <!-- ประเภท -->
-    <div class="row py-3">
-        <div class="col">
-            <h3>
-                <!-- <span class="material-icons" style="font-size: 30px;">category</span>  -->
-                <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
-                    style="width:40px;margin-top:-5px;">
-                ประเภท
-            </h3>
-            <hr width="100%" size="10" color="#cccccc">
-            <p style="font-size: 18px; text-indent: 50px;">
-                <?php echo $promotions[0]->pro_cat_name; ?></p>
-        </div>
-    </div>
-
-    <div class="row py-3">
-        <div class="col">
-            <h3>
-                <?php if($this->session->has_userdata("tus_score")){
-                    $tus_score = $this->session->userdata("tus_score");?>
-                    <?php
-                    if ($tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2){?>
-                        <p><?php echo $promotions[0]->pro_point ?> คะแนน </p>
-                        <button class="btn btn-custom" onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $tus_score?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
+            <div onclick="read_more()" class="read-more-style" id="btn_hide_more" style="display: none;">ซ่อน << </div>
                     <?php } ?>
-                        </h3>
-                        <h3>
-                    <?php
-                    if ($tus_score < $promotions[0]->pro_point){?>
-                        <button type="submit"class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
-                    <?php } ?>
+                    <!-- รายละเอียด -->
+            </div>
+        </div>
+
+
+        <!-- ประเภท -->
+        <div class="row py-3">
+            <div class="col">
+                <h3>
+                    <!-- <span class="material-icons" style="font-size: 30px;">category</span>  -->
+                    <img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
+                        style="width:40px;margin-top:-5px;">
+                    ประเภท
+                </h3>
+                <hr width="100%" size="10" color="#cccccc">
+                <p style="font-size: 18px; text-indent: 50px;">
+                    <?php echo $promotions[0]->pro_cat_name; ?></p>
+            </div>
+            <div class="col">
+                <h3><?php if ($promotions[0]->pro_cat_id == 2) {  ?>
+                    <img src="<?php echo base_url() . 'assets/templete/picture/exchange_point.png' ?>"
+                        style="width:45px; margin-top:-5px;"> คะแนน
+                </h3>
+                <hr width="100%" size="10" color="#cccccc">
+
+                <p style="margin-left:-45px;font-size: 18px; text-indent: 50px;">
+                    คะเเนนที่ใช้แลก <?php echo $promotions[0]->pro_point ?> คะแนน </p>
                 <?php } ?>
-            </h3>
+            </div>
         </div>
-    </div>
 
-    <div class="row py-3">
-        <div class="col">
-            <h3>
-                <!-- <span class="material-icons" style="font-size: 30px;">place</span> -->
-                <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
-                    style="width:40px;margin-top:-5px;">
-                ตำแหน่งสถานที่
-            </h3>
-            <div class="card" style="padding-left: 2%; transform: unset;">
-                <h2 style="padding-top: 2%; ">
+        <div class="row py-3">
+            <div class="col">
+                <h3>
+                    <?php if ($this->session->has_userdata("tus_score")) {
+                        $tus_score = $this->session->userdata("tus_score"); ?>
+                    <?php
+                        if ($tus_score >= $promotions[0]->pro_point && $promotions[0]->pro_cat_id == 2) { ?>
+                    <button class="btn btn-custom"
+                        onclick="confirm_exchange_reward(<?php echo $promotions[0]->pro_id ?>, <?php echo $promotions[0]->pro_point ?> ,<?php echo $tus_score ?>, '<?php echo $promotions[0]->pro_name ?>')">แลกของรางวัล</button>
+                    <?php } ?>
+                </h3>
+                <h3>
+                    <?php
+                        if ($tus_score < $promotions[0]->pro_point) { ?>
+                    <button type="submit" class="btn btn-danger">ไม่สามารถแลกของรางวัล</button>
+                    <?php } ?>
+                    <?php } ?>
+                </h3>
+            </div>
+        </div>
 
-                    <?php echo $promotions[0]->pro_name ?>
-                </h2>
-                <!-- ชื่อสถานที่ -->
-                <hr>
-                <div class="row">
+        <div class="row py-3">
+            <div class="col">
+                <h3>
+                    <!-- <span class="material-icons" style="font-size: 30px;">place</span> -->
+                    <img src="<?php echo base_url() . 'assets/templete/picture/location.png' ?>"
+                        style="width:40px;margin-top:-5px;">
+                    ตำแหน่งสถานที่
+                </h3>
+                <div class="card" style="padding-left: 2%; transform: unset;">
+                    <h2 style="padding-top: 2%; ">
 
-                    <div class="col">
-                        <!-- เบอร์โทรศัพท์ -->
-                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
-                            เบอร์โทรศัพท์</h4>
-                        <p style="font-size: 18px; text-indent: 50px;"><?php echo $promotions[0]->com_tel; ?></p>
+                        <?php echo $promotions[0]->com_name ?>
+                    </h2>
+                    <!-- ชื่อสถานที่ -->
+                    <hr>
+                    <div class="row">
 
-                        <!-- รายละเอียดที่อยู่กิจกรรม -->
-                        <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
-                                style="width:34px;"> รายละเอียดที่อยู่</h4>
-                        <p style="font-size: 18px; text-indent:50px;"><?php echo  $promotions[0]->com_location." จังหวัด.".$promotions[0]->prv_name_th." อำเภอ.".$promotions[0]->dis_name_th." ตำบล.".$promotions[0]->par_name_th." รหัสไปรษณีย์ ".$promotions[0]->par_code ?></p>
-                        <br>
-                    </div>
+                        <div class="col">
+                            <!-- เบอร์โทรศัพท์ -->
+                            <h4><img src="<?php echo base_url() . 'assets/templete/picture/phone.png' ?>" width="28px">
+                                เบอร์โทรศัพท์</h4>
+                            <p style="font-size: 18px; text-indent: 50px;"><?php echo $promotions[0]->com_tel; ?></p>
 
-                    <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
-                        <div class="table-responsive">
-                            <table class="table ">
-                                <tr>
-                                    <td style="border: 2px solid black;">
-                                        <div id="map" style="width: 700px; height: 300px;"></div>
-                                    </td>
-                                </tr>
-                            </table>
+                            <!-- รายละเอียดที่อยู่กิจกรรม -->
+                            <h4><img src="<?php echo base_url() . 'assets/templete/picture/information-point.png' ?>"
+                                    style="width:34px;"> รายละเอียดที่อยู่</h4>
+                            <p style="font-size: 18px; text-indent:50px;">
+                                <?php echo  $promotions[0]->com_location . " จังหวัด." . $promotions[0]->prv_name_th . " อำเภอ." . $promotions[0]->dis_name_th . " ตำบล." . $promotions[0]->par_name_th . " รหัสไปรษณีย์ " . $promotions[0]->par_code ?>
+                            </p>
+                            <br>
+                        </div>
 
+                        <div class="col" style="padding-right: 2%; padding-bottom: 1%;">
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <tr>
+                                        <td style="border: 2px solid black;">
+                                            <div id="map" style="width: 700px; height: 300px;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
                         </div>
                     </div>
+                    <!-- ข้อมูลของสถานที่ -->
+
                 </div>
-                <!-- ข้อมูลของสถานที่ -->
+                <!-- ตำแหน่ง -->
 
             </div>
-            <!-- ตำแหน่ง -->
 
         </div>
-
     </div>
-</div>
     <!-- modal exchange promotion  -->
     <div class="modal" tabindex="-1" role="dialog" id="reward_modal">
         <div class="modal-dialog" role="document">
@@ -301,120 +308,136 @@
         </div>
     </div>
 
-<script>
+    <script>
+
+    /* read_more
+     * read more text if text over 7 line
+     * @input -
+     * @output -
+     * @author Chutipon Thermsirisuksin
+     * @Create Date 2565-03-05
+     * @Update -
+     */   
     function read_more() {
-        $("#more_dot").hide();
-        $("#more_text").show(200);
-        $("#btn_read_more").hide();
+        $("#more_dot").toggle();
+        $("#more_text").toggle(200);
+        $("#btn_read_more").toggle();
+        $("#btn_hide_more").toggle();
     }
-var lat = '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
-var long = '<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
-var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
 
-var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
-toProjection); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
+    var lat =
+    '<?= $promotions[0]->com_lat ?>'; //มีการส่งค่าตัวแปร $com_lat php ที่มีการเก็บค่า field lati จากฐานข้อมูลมาเก็บไว้ในตัวแปร lat ของ javascript
+    var long =
+    '<?= $promotions[0]->com_lon ?>'; //มีการส่งค่าตัวแปร $com_lon php ที่มีการเก็บค่า field longti จากฐานข้อมูลมาเก็บไว้ในตัวแปร long ของ javascript
+    var zoom = 16; //มีการกำหนดค่าตัวแปร zoom ให้เป็น 14 , เพื่อทำการขยายภาพตอนเริ่มต้นแสดงแผนที่
+
+    var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var position = new OpenLayers.LonLat(long, lat).transform(fromProjection,
+        toProjection
+        ); //ทำการเก็บค่าตัวแปร lat,long ไว้ในตัวแปร position , เพื่อไว้แสดงค่าพิกัดบนแผนที่ OpenStreetMap ตอนเริ่มต้น
 
 
-map = new OpenLayers.Map("map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
+    map = new OpenLayers.Map("map"); //ใช้ Function OpenLayer.Map() ในการแสดงแผนที่
 
-var mapnik = new OpenLayers.Layer.OSM();
-map.addLayer(mapnik);
+    var mapnik = new OpenLayers.Layer.OSM();
+    map.addLayer(mapnik);
 
-var markers = new OpenLayers.Layer.Markers(
-"Markers"); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
+    var markers = new OpenLayers.Layer.Markers(
+        "Markers"
+        ); //แสดงสัญลักษณ์ Marker ปักหมุดโดยใช้ Function Markers , แต่ต้องมีเรียกใช้งาน Openlayers.js ไม่งั้นจะไม่แสดงสัญลักษณ์ออกมา
 
-map.addLayer(markers);
-markers.addMarker(new OpenLayers.Marker(position));
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(position));
 
-map.setCenter(position, zoom);
+    map.setCenter(position, zoom);
 
-$(document).ready(function() {
-    $('.responsive').slick({
+    $(document).ready(function() {
+        $('.responsive').slick({
 
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+    });
+
+    /* exchange_reward
+     * exchange reward
+     * @input pro_id,pro_point,tus_score
+     * @output -
+     * @author Thanisorn Thumsawanit 62160088
+     * @Create Date 2564-12-25
+     * @Update -
+     */
+    function exchange_reward(pro_id, pro_point, tus_score) {
+        $.ajax({
+            type: "POST",
+            data: {
+                pro_id: pro_id,
+                pro_point: pro_point,
+                tus_score: tus_score
+            },
+            url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax') ?>',
+            success: function(data) {
+                if (data == 1) {
+                    get_point_and_show();
+                    window.location.href =
+                        "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
+                } else {
+                    swal({
+                        title: "แลกของรางวัล",
+                        text: "แต้มของคุณมีไม่พอ",
+                        type: "error"
+                    })
                 }
             },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+            error: function() {
+                alert('ajax error working');
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
-});
+        });
+    }
 
-/* exchange_reward
- * exchange reward
- * @input pro_id,pro_point,tus_score
- * @output -
- * @author Thanisorn Thumsawanit 62160088
- * @Create Date 2564-12-25
- * @Update -
- */
-function exchange_reward(pro_id, pro_point, tus_score) {
-    $.ajax({
-        type: "POST",
-        data: {
-            pro_id: pro_id,
-            pro_point: pro_point,
-            tus_score: tus_score
-        },
-        url: '<?php echo site_url('Landing_page/Landing_page/exchange_reward_ajax') ?>',
-        success: function(data) {
-            if (data == 1) {
-                get_point_and_show();
-                window.location.href = "<?php echo site_url('Tourist/Manage_tourist/Tourist_manage/show_information_tourist') ?>"
-            } else {
-                swal({
-                    title: "แลกของรางวัล",
-                    text: "แต้มของคุณมีไม่พอ",
-                    type: "error"
-                })
-            }
-        },
-        error: function() {
-            alert('ajax error working');
-        }
-    });
-}
-
-/* confirm_exchange_reward
- * confirm exchange reward
- * @input pro_id,pro_point,tus_score, pro_name
- * @output modal confirm_exchange_reward
- * @author Thanisorn Thumsawanit 62160088
- * @Create Date 2564-12-25
- * @Update -
- */
-function confirm_exchange_reward(pro_id, pro_point, tus_score, pro_name) {
-    console.log(tus_score);
-    $('#confirm').text(pro_name);
-    $('#reward_modal').modal();
-    $('#get_reward').click(function() {
-        exchange_reward(pro_id, pro_point, tus_score)
-    });
-}
-</script>
+    /* confirm_exchange_reward
+     * confirm exchange reward
+     * @input pro_id,pro_point,tus_score, pro_name
+     * @output modal confirm_exchange_reward
+     * @author Thanisorn Thumsawanit 62160088
+     * @Create Date 2564-12-25
+     * @Update -
+     */
+    function confirm_exchange_reward(pro_id, pro_point, tus_score, pro_name) {
+        console.log(tus_score);
+        $('#confirm').text(pro_name);
+        $('#reward_modal').modal();
+        $('#get_reward').click(function() {
+            exchange_reward(pro_id, pro_point, tus_score)
+        });
+    }
+    </script>

@@ -20,7 +20,7 @@ class M_dcs_eve_reject extends Da_dcs_eve_reject
     /*
     * get_data_rejected_by_id_com
     * get data that rejected from company id
-    * @input com_id
+    * @input eve_id
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2564-08-02

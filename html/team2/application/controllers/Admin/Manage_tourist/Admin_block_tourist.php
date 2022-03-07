@@ -1,29 +1,27 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_block_tourist
 * Manage block tourist
 * @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-08-01
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_block_tourist extends DCS_controller
 {
     /*
     * @author Nantasiri Saiwaew 62160093
     */
-
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Tourist/M_dcs_tourist', 'mdct');
     }
 
-
     /*
     * index
     * call function in Dcs_controller
-    * @input 
+    * @input -
     * @output -
     * @author Nantasirir Saiwaew 62160093
     * @Create Date 2564-08-01
@@ -37,8 +35,8 @@ class Admin_block_tourist extends DCS_controller
     
     /*
     * block_user_ajax
-    * For block tourist user with ajax
-    * @input 
+    * For block tourist with ajax
+    * @input tus_id
     * @output -
     * @author Nantasirir Saiwaew 62160093
     * @Create Date 2564-08-01

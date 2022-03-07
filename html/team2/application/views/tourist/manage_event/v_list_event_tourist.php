@@ -15,13 +15,7 @@
     <section>
         <div class="container py-5">
             <ul class="breadcrumb">
-                <?php if ($this->session->has_userdata("tourist_id")) { ?>
-                <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>"
-                        style="color: green;">หน้าหลัก</a></li>
-                <?php } ?>
-                <?php if (!$this->session->has_userdata("tourist_id")) { ?>
-                <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-                <?php } ?>
+                <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
                 <li>ดูรายการกิจกรรมของฉัน</li>
             </ul>
             <div class="row text-left py-3">

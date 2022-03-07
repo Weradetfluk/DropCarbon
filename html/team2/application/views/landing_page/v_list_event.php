@@ -13,17 +13,7 @@
 
     <!-- Nav ว่าตอนนี้อยู่ที่ตรงไหนของเว็บ -->
     <ul class="breadcrumb">
-
-        <!-- เข้าสู่ระบบแล้ว -->
-        <?php if ($this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() . 'Tourist/Auth/Landing_page_tourist' ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
-
-        <!-- ยังไม่ได้เข้าสู่ระบบ -->
-        <?php if (!$this->session->userdata("tourist_id")) { ?>
-        <li><a href="<?php echo base_url() ?>" style="color: green;">หน้าหลัก</a></li>
-        <?php } ?>
-
+        <li><a href="<?php echo base_url()?>" style="color: green;">หน้าหลัก</a></li>
         <li class="colorchange">ดูรายการกิจกรรม</li>
     </ul>
 
@@ -85,7 +75,7 @@
                             <!-- ลดคาร์บอน -->
 
                             <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
-                                <?php echo $event[$i]->eve_drop_carbon; ?> กิโลกรัม</b></p>
+                                <?php echo $event[$i]->eve_drop_carbon; ?> กก./ปี</b></p>
 
                             <!-- เวลาเริ่ม/จบกิจกรรม -->
                             <?php

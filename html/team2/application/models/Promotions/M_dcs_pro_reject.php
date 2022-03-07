@@ -1,6 +1,6 @@
 <?php
 /*
-* M_dcs_com_reject
+* M_dcs_pro_reject
 * get data company reject
 * @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-08-02

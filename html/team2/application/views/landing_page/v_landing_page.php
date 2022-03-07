@@ -42,7 +42,7 @@
 
                                     <!-- ลดคาร์บอน -->
                                     <p style="display:inline; font-size: 16px; color: #008000"><b>ลดคาร์บอน
-                                            <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กิโลกรัม</b></p>
+                                            <?php echo $arr_eve[$i]->eve_drop_carbon; ?> กก./ปี</b></p>
 
                                     <!-- เวลาเริ่ม/จบกิจกรรม -->
                                     <?php

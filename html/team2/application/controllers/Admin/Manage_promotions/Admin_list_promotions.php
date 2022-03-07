@@ -1,18 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
 * Admin_list_promotions
 * list promotion admin class
 * @author weradet nopsombun 62160110
 * @Create Date 2564-12-06
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_list_promotions extends DCS_controller
 {
     /*
-        * @author Nantasiri Saiwaew 62160093
-        */
-
+     * @author Nantasiri Saiwaew 62160093
+    */
     public function __construct()
     {
         parent::__construct();
@@ -21,55 +20,57 @@ class Admin_list_promotions extends DCS_controller
     }
 
     /*
-        * show_data_promotions_list
-        * get all data event 
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_promotions_list
+    * get all data promotions list
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+    */
     public function show_data_promotions_list()
     {
         $_SESSION['tab_number'] = 9; //set tab number in topbar_admin.php
         $this->output_admin('admin/manage_promotions/manage_add_promo_admin/v_list_promo_admin', null, null);
     }
+
     /*
-        * show_data_promo_over
-        * get all data event 
-        * @input
-        * @output -
-        * @author Kasama Donwong 62160074
-        * @Create Date 2565-01-04
-        * @Update Date 2565-01-04
-        */
+    * show_data_promo_over
+    * get all data promotions over
+    * @input -
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2565-01-04
+    * @Update Date 2565-01-04
+    */
     public function show_data_promo_over()
     {
         $this->output_admin('admin/manage_promotions/manage_add_promo_admin/v_list_promo_over_admin', null, null);
     }
+
     /*
-        * show_data_promo_over
-        * get all data event 
-        * @input
-        * @output -
-        * @author Kasama Donwong 62160074
-        * @Create Date 2565-01-04
-        * @Update Date 2565-01-04
-        */
+    * show_data_promo_cancle
+    * get all data promotions cancel    
+    * @input -
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2565-01-04
+    * @Update Date 2565-01-04
+    */
     public function show_data_promo_cancle()
     {
         $this->output_admin('admin/manage_promotions/manage_add_promo_admin/v_list_promo_cancle_admin', null, null);
     }
 
     /*
-         * show_data_consider_ajax
-         * get all data entrepreneur not approve and show table
-         * @input
-         * @output -
-         * @author Weradet Nopsombun 62160110
-         * @Create Date 2564-09-14
-         * @Update Date -
-         */
+    * show_data_ajax
+    * get all data promotions not approve and show table
+    * @input number_status, query
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+    */
     public function show_data_ajax($number_status)
     {
         //$number_status = 1;
@@ -116,12 +117,7 @@ class Admin_list_promotions extends DCS_controller
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
-                             </a>' .
-                            '<a class="btn btn-warning custom-a"
-                            style="font-size:10px; padding:12px;"
-                            href="' . site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' . $row->pro_id . '">
-                            <span class="material-icons">edit</span>
-                            </a>';
+                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
@@ -134,7 +130,7 @@ class Admin_list_promotions extends DCS_controller
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
-                        $output .= '<td style="color: red;">ถูกระงับ</td>' .
+                        $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
@@ -188,12 +184,7 @@ class Admin_list_promotions extends DCS_controller
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
-                             </a>' .
-                            '<a class="btn btn-warning custom-a"
-                            style="font-size:10px; padding:12px;"
-                            href="' . site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' . $row->pro_id . '">
-                            <span class="material-icons">edit</span>
-                            </a>';
+                             </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
                                 onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
@@ -206,7 +197,7 @@ class Admin_list_promotions extends DCS_controller
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
-                        $output .= '<td style="color: red;">ถูกระงับ</td>' .
+                        $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
                             '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
                             <span class="material-icons">search</span>
@@ -239,10 +230,11 @@ class Admin_list_promotions extends DCS_controller
         } // else  search 
         echo  $output; // to view
     }
+
     /*
     * get_promo_over_admin_ajax
-    * show detail
-    * @input number_status
+    * get all data promotions over and show table
+    * @input number_status, query
     * @output -
     * @author Kasama Donwong 62160074
     * @Create Date 2021-12-18

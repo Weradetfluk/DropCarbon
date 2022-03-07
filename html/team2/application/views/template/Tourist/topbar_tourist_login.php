@@ -13,26 +13,25 @@ if (!$this->session->has_userdata("tourist_id")) {
 <nav class="nav-bottom-shadow">
     <ul class="menu">
         <li class="logo">
-            <a class="a" href="<?php echo site_url() . 'Tourist/Auth/Landing_page_tourist'; ?>">
+            <a class="a" href="<?php echo site_url() . 'Landing_page/Landing_page'; ?>">
                 <img src="<?php echo base_url() . 'assets/templete/picture/./Logo-web.png' ?>"
                     style="max-width:400px; height: 50px; margin-top: -4px; margin-left: -70px;">
             </a>
         </li>
         <li class="item">
             <a href="#" class="a">
-                <h4 style="display: inline;" id="tus_score_displayed"></h4> คะแนน
+                <h4 style="display: inline;" id="tus_score_displayed">0</h4> คะแนน
             </a>
         </li>
         <li class="item">
             <a href="<?php echo base_url() . 'Tourist/Checkin_event/Checkin_event/show_page_checkin' ?>" class="a">
-                <span class="material-icons">card_giftcard</span>กิจกรรมของฉัน
+                <span class="material-icons">card_giftcard</span> กิจกรรมของฉัน
             </a>
         </li>
         <li class="item">
-            <a class="nav-link a" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">person</i>
-                <?php echo $this->session->userdata("Tourist_name"); ?>
+            <a class="a" href="javascript;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="material-icons">person</i> <?php echo $this->session->userdata("Tourist_name"); ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 <a class="dropdown-item"

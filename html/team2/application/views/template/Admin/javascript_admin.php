@@ -145,7 +145,6 @@
      * @Create Date 2564-09-27
      * @Update -
      */
-
     function format_date_time(old_date) {
         let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
             "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
@@ -161,33 +160,6 @@
         return format;
     }
 
-
-    /*
-     * format_date
-     * open modal 
-     * @input 
-     * @output modal to confirm approve modal
-     * @author Weradet Nopsombun 62160110
-     * @Create Date 2564-09-27
-     * @Update old_date
-     */
-    function format_date(old_date) {
-        let month_name = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-            "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-        ];
-        let year = old_date.substr(0, old_date.indexOf("-"));
-
-        let year_thai = parseInt(year) + 543;
-        let month = old_date.substr(old_date.indexOf("-") + 1, 2);
-        let day = old_date.substr(old_date.indexOf("-") + 4, 2);
-
-        // console.log(old_date_sub);
-
-        let format = day + " " + month_name[month - 1] + " " + year_thai;
-        console.log(format);
-
-        return format;
-    }
 
     /*
      * doc_download

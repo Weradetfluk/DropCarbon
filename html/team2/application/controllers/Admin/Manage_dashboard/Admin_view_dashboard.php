@@ -12,7 +12,6 @@ class Admin_view_dashboard extends DCS_controller
     /*
     * @author Weradet Nopsombun 62160110
     */
-
     public function __construct()
     {
         parent::__construct();
@@ -21,7 +20,7 @@ class Admin_view_dashboard extends DCS_controller
     /*
     * index
     * show page dashboard
-    * @input
+    * @input -
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-11-27
@@ -34,11 +33,12 @@ class Admin_view_dashboard extends DCS_controller
         $this->output_admin('admin/manage_dashboard/v_dashboard', null, null);
         set_time_zone();
     }
+
     /*
-    * get_data_card_dashboard
+    * get_data_card_dashboard_ajax
     * get data card dashboard and return data JSON
-    * @input
-    * @output -
+    * @input -
+    * @output data
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-09
     * @Update Date -
@@ -52,9 +52,9 @@ class Admin_view_dashboard extends DCS_controller
     }
 
     /*
-    * get_data_chart_event_cat
+    * get_data_chart_event_cat_ajax
     * get data event cat to create bar chart dashboard and return data JSON
-    * @input
+    * @input date_first, date_secon
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
@@ -81,9 +81,9 @@ class Admin_view_dashboard extends DCS_controller
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
-    /* get_data_chrt_event_cat
-    * get data  chart event catgory percent to create pie chart to dashboard and return data JSON 
-    * @input
+    /* get_data_chart_event_per_ajax
+    * get data chart event catgory percent to create pie chart to dashboard and return data JSON 
+    * @input date_first, date_secon
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
@@ -112,11 +112,10 @@ class Admin_view_dashboard extends DCS_controller
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
-
     /*
-    * get_data_chart_event_cat
+    * get_data_chart_event_ajax
     * get data bar chart drill down 
-    * @input
+    * @input date_first, date_secon
     * @output -
     * @author Weradet Nopsombun 62160110
     * @Create Date 2564-12-10
@@ -155,16 +154,14 @@ class Admin_view_dashboard extends DCS_controller
             $data_json[$i]['id'] =  $data['arr_name_cat'][$i]->eve_cat_id;
             $data_json[$i]['data'] =  $this->dcmd->get_data_dashboard_event_admin($date_sql, $data['arr_name_cat'][$i]->eve_cat_id);
         }
-
-
         //var_dump($data_json);
         echo json_encode($data_json);
     }
 
     /*
-    * get_data_chart_checkin
+    * get_data_chart_checkin_ajax
     * get data chart dashboard and return data JSON
-    * @input
+    * @input date_first, date_secon
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-12-25
@@ -189,9 +186,9 @@ class Admin_view_dashboard extends DCS_controller
     }
 
     /*
-    * get_data_chart_register
+    * get_data_chart_register_ajax
     * get data chart dashboard and return data JSON
-    * @input
+    * @input date_first, date_secon
     * @output -
     * @author Naaka Punparich 62160082
     * @Create Date 2564-12-25

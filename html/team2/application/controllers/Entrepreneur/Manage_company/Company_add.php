@@ -13,7 +13,7 @@ class Company_add extends DCS_controller
     /*
     * show_add_company
     * show form add company
-    * @input 
+    * @input -
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18
@@ -32,7 +32,7 @@ class Company_add extends DCS_controller
     /*
     * add_company
     * add company to database
-    * @input com_name, com_lat, com_lon, com_description, entrepreneur_id, com_tel
+    * @input com_name, com_lat, com_lon, com_description, entrepreneur_id, com_tel, com_cat_id, com_location, par_id, new_img, name_new_image, del_new_img
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-18
@@ -61,7 +61,7 @@ class Company_add extends DCS_controller
         $arr_name_name = array();
         $arr_img_add = $this->input->post('new_img');
         $arr_name_name = $this->input->post('name_new_image');
-        $this->mimg->com_img_com_id = $result->com_id;
+        $this->mimg->com_img_com_id = $result;
         for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
             $this->mimg->com_img_name = $arr_name_name[$i];
@@ -84,8 +84,8 @@ class Company_add extends DCS_controller
 
     /*
     * set_session_add_company
-    * add session 
-    * @input $data
+    * add session error_add_company
+    * @input data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-23
@@ -162,7 +162,7 @@ class Company_add extends DCS_controller
     /*
     * unlink_image_ajax
     * unlink image when cancel add company
-    * @input arr_img
+    * @input arr_image
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-08-28

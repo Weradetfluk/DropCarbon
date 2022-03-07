@@ -12,7 +12,6 @@ class Checkin_event extends DCS_controller
    /*
     * @author Weradet Nopsombun 62160110
     */
-
    public function __construct()
    {
       parent::__construct();
@@ -20,7 +19,7 @@ class Checkin_event extends DCS_controller
       $this->load->model('Checkin/M_dcs_checkin', 'mcin');
       $this->load->model('Tourist/M_dcs_tourist', 'mdct');
       $this->load->helper('mydate_helper.php');
-      $this->set_time_zone();
+      set_time_zone();
    }
    /*
     * check_login_before_check_in
@@ -34,8 +33,7 @@ class Checkin_event extends DCS_controller
    function check_login_before_check_in($eve_id)
    {
       //เก็บ seesion ไอดี
-      $_SESSION['number_event']     = $eve_id;
-
+      $_SESSION['eve_id'] = $eve_id;
       //เช็คว่ามีการ Login หรือยัง
 
       if (!$this->session->has_userdata("tourist_id")) {
@@ -47,8 +45,6 @@ class Checkin_event extends DCS_controller
          redirect("Tourist/Checkin_event/Checkin_event/load_checkin_or_checkout_page");
       }
    }
-
-
    /*
     * load_checkin_or_checkout_page
     * show page checkin
@@ -62,8 +58,6 @@ class Checkin_event extends DCS_controller
    {
       $this->output_tourist('tourist/manage_event/v_checkin_event', NULL, 'template/Tourist/topbar_tourist_login');
    }
-
-
    /*
     * load_data_checkin_ajax
     * Load data for cal culate lat lon
@@ -79,8 +73,6 @@ class Checkin_event extends DCS_controller
       $data["arr_event"] = $this->meve->get_event_by_id()->result();
       echo json_encode($data);
    }
-
-
    /*
     * checkin_or_checkout_event
     * checkin and check out logic
@@ -95,27 +87,20 @@ class Checkin_event extends DCS_controller
       $che_eve_id = $this->input->post('eve_id');
       $eve_point = $this->input->post('eve_point');
       $this->mcin->che_eve_id =  $che_eve_id;
-
       $this->mcin->che_tus_id = $this->session->userdata("tourist_id");
-
       $data_checkin_row = $this->mcin->get_status_by_tus_id()->row();
       //ตั้งค่าเวลา
-      $data['date_now'] = $this->get_date_today();
-      $data['time_now'] =  $this->get_time_now();
-
+      $data['date_now'] = get_date_today();
+      $data['time_now'] = get_time_now();
       if ($data_checkin_row) {
          //มีข้อมูลเช็คอินหรือไม่ ดูจากข้อมูลล่าสุด
          if ($data_checkin_row->che_status == '1') {
             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 1 = เช็คอิน
             $status = 2;
-            $data['json_message'] = "check-out";
-
             $this->mdct->tus_score =  $eve_point;
             $this->mdct->tus_id = $this->session->userdata("tourist_id");
-
             $this->mcin->che_date_time_out =   $data['date_now'] . " " .  $data['time_now'];
             $this->mcin->che_id =  $data_checkin_row->che_id;
-
             $this->mcin->update_checkout($status);
             $this->mdct->update_score();
             $tus_score_new = $this->mdct->get_point_tourist_by_id()->row();
@@ -125,60 +110,18 @@ class Checkin_event extends DCS_controller
             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 2 = เช็คเอาท์
             $status = 1;
             $this->mcin->insert_checkin($status);
-            $data['json_message'] = "check-in";
          }
       } else {
          // ถ้ากรณีไม่มีข้อมูล
          $status = 1;
          $this->mcin->insert_checkin($status);
-         $data['json_message'] = "check-in";
       }
-      unset($_SESSION['number_event']);
+      unset($_SESSION['eve_id']);
+      unset($_SESSION['eve_point']);
+      unset($_SESSION['eve_lat']);
+      unset($_SESSION['eve_lon']);
       echo json_encode($data);
    }
-
-   /*
-    * set_time_zone
-    * set time zone asia bangkok
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-10-12
-    * @Update Date -
-    */
-   function set_time_zone()
-   {
-      date_default_timezone_set('Asia/Bangkok');
-   }
-
-   /*
-    * get_date_today
-    * get today date format 2021-10-012
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-10-12
-    * @Update Date -
-    */
-   function get_date_today()
-   {
-      return date("Y-m-d");
-   }
-   /*
-    * get_time_now
-    * get time now format 22:00
-    * @input 
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-10-12
-    * @Update Date -
-    */
-   function get_time_now()
-   {
-      return date("H:i");
-   }
-
-
    /*
     * show page checkin
     * show page checkin tourist
@@ -193,24 +136,18 @@ class Checkin_event extends DCS_controller
       $this->load->model('Event/M_dcs_event', 'mde');
       $this->load->model('Event/M_dcs_eve_category', 'mcat');
       $this->load->model('Checkin/M_dcs_checkin', 'mche');
-
       $data['arr_eve_cat'] = $this->mde->get_eve_cat()->result();
       $data['eve_cat'] = $this->mcat->get_all()->result();
       $tus_id = $this->session->userdata("tourist_id");
-
-
       if (isset($_POST)) {
          $data["checkin"] = $this->mche->get_checkin_by_eve_id($tus_id, $_POST)->result();
       } else {
          $data["checkin"] = $this->mche->get_checkin_by_eve_id($tus_id)->result();
       }
-
       for ($i = 0; $i < count($data['checkin']); $i++) {
-
          $data['time_format_checkin'][$i] = to_format($data['checkin'][$i]->che_date_time_in);
          $data['time_format_checkout'][$i] = to_format($data['checkin'][$i]->che_date_time_out);
       }
-
       if ($this->session->has_userdata("tourist_id")) {
          $topbar = 'template/Tourist/topbar_tourist_login';
       } else {

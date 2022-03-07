@@ -1,18 +1,17 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-include_once dirname(__FILE__) . '/../../DCS_controller.php';
 /*
-* Admin_approval_entrepreneur
+* Admin_approval_promotions
 * Manage Approve reject entrepreneur
-* @author weradet nopsombun 62160110
+* @author Nantasiri Saiwaew 62160093
 * @Create Date 2564-07-17
 */
+defined('BASEPATH') or exit('No direct script access allowed');
+include_once dirname(__FILE__) . '/../../DCS_controller.php';
 class Admin_approval_promotions extends DCS_controller
 {
   /*
-        * @author Nantasiri Saiwaew 62160093
-        */
-
+    * @author Nantasiri Saiwaew 62160093
+  */
   public function __construct()
   {
     parent::__construct();
@@ -22,128 +21,134 @@ class Admin_approval_promotions extends DCS_controller
   }
 
   /*
-        * show_data_consider
-        * get all data promotions not approve and show table
-        * @input
-        * @output -
-        * @author Nantasiri Saiwaew 62160093
-        * @Create Date 2564-07-17
-        * @Update Date 2564-09-13
-        */
+    * show_data_consider
+    * get all data promotions not approve and show table
+    * @input -
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-07-17
+    * @Update Date 2564-09-13
+  */
   public function show_data_consider()
   {
     $_SESSION['tab_number'] = 7; //set tab number in topbar_admin.php
     $this->output_admin('admin/manage_promotions/v_list_promo_consider', null, 'admin/manage_promotions/v_data_card_promo');
   }
+
   /*
-        * show_data_approve
-        * get all data data promotions approve  and show table
-        * @input
-        * @output -
-        * @author Nantasiri Saiwaew 62160093
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * show_data_approve
+    * get all data data promotions approve and show table
+    * @input - 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-07-17
+    * @Update Date -
+  */
   public function show_data_approve()
   {
     $this->output_admin('admin/manage_promotions/v_list_promo_approve', null, 'admin/manage_promotions/v_data_card_promo');
   }
+
   /*
-        * show_data_reject
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-1
-        * @Update Date -
-        */
+    * show_data_reject
+    * get all data promotions reject and show table
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-1
+    * @Update Date -
+  */
   public function show_data_reject()
   {
     $this->output_admin('admin/manage_promotions/v_list_promo_reject', null, 'admin/manage_promotions/v_data_card_promo');
   }
 
   /*
-        * show_data_pro_not_over
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-10-04
-        * @Update Date -
-        */
+    * show_data_pro_not_over
+    * get all data promotions not over and show table
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-10-04
+    * @Update Date -
+  */
   public function show_data_pro_not_over()
   {
     $this->output_admin('admin/manage_promotions/v_list_promo_not_over', null, 'admin/manage_promotions/v_data_card_promo');
   }
+   
   /*
-        * show_data_pro_over
-        * get all data entrepreneur approve  and show table
-        * @input
-        * @output -
-        * @author Nantasiri Saiwaew 62160093
-        * @Create Date 2564-10-04
-        * @Update Date -
-        */
+    * show_data_pro_over
+    * get all data promotions over and show table
+    * @input - 
+    * @output -
+    * @author Nantasiri Saiwaew 62160093
+    * @Create Date 2564-10-04
+    * @Update Date -
+  */
   public function show_data_pro_over()
   {
     $this->output_admin('admin/manage_promotions/v_list_promo_over', null, 'admin/manage_promotions/v_data_card_promo');
   }
+
   /*
-        * get_entrepreneur_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-03
-        * @Update Date
-        */
+    * get_promo_by_id_ajax
+    * get all data promotions by id
+    * @input promo_id
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-03
+    * @Update Date -
+  */
   public function get_promo_by_id_ajax()
   {
     $this->mdcp->promo_id = $this->input->post('promo_id');
     $data['arr_data'] = $this->mdcp->get_promo_by_id()->result();
     echo json_encode($data);
   }
+
   /*
-        * get_entrepreneur_reject_by_id_ajax
-        * get all data entrepreneur by id
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-08-01
-        * @Update Date
-        */
+    * get_pro_reject_by_id_ajax
+    * get all data promotions reject by id
+    * @input pro_id
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-08-01
+    * @Update Date -
+  */
   public function get_pro_reject_by_id_ajax()
   {
     $this->load->model('Promotions/M_dcs_pro_reject', 'mdpre');
     $pro_id = $this->input->post('pro_id');
     $data['arr_data'] = $this->mdpre->get_data_pro_rejected_by_id($pro_id)->result();
-
     echo json_encode($data['arr_data']);
   }
+   
   /*
-        * Approval
-        * change ent_status
-        * @input
-        * @output -
-        * @author Kasama Donwong 62160074
-        * @Create Date 2564-09-26
-        * @Update Date -
-        */
+    * approval_promotions
+    * change pro_status
+    * @input pro_id
+    * @output -
+    * @author Kasama Donwong 62160074
+    * @Create Date 2564-09-26
+    * @Update Date -
+  */
   public function approval_promotions()
   {
     $this->mdcp->pro_id = $this->input->post('pro_id');
     $status_number = 2;
     $this->mdcp->update_status($status_number);
   }
+
   /*
-        * reject_entrepreneur
-        * change ent_status
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * reject_pro
+    * change pro_status
+    * @input pro_id, admin_reason, email
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+  */
   public function reject_pro()
   {
     // set value from font end
@@ -167,30 +172,32 @@ class Admin_approval_promotions extends DCS_controller
     $this->mdcp->update_status($status_number);
     $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
+
   /*
-        * get_data_card_entrepreneur_ajax
-        * get data consider, approve, rejected, block <- number of people
-        * @input
-        * @output -
-        * @author Weradet Nopsombun 62160110
-        * @Create Date 2564-07-17
-        * @Update Date -
-        */
+    * get_data_card_promo_ajax
+    * get data consider, approve, rejected, block <- number of promotions
+    * @input -
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-07-17
+    * @Update Date -
+  */
   public function get_data_card_promo_ajax()
   {
     $data['arr_data'] = $this->mdcp->get_data_card_promo()->result();
 
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
+  
   /*
-         * show_data_consider_ajax
-         * get all data entrepreneur not approve and show table
-         * @input
-         * @output -
-         * @author Weradet Nopsombun 62160110
-         * @Create Date 2564-09-14
-         * @Update Date -
-         */
+    * show_data_ajax
+    * get all data promotions not approve and show table
+    * @input number_status, query
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2564-09-14
+    * @Update Date -
+  */
   public function show_data_ajax($number_status)
   {
     //$number_status = 1;
@@ -364,15 +371,16 @@ class Admin_approval_promotions extends DCS_controller
     } // else  search 
     echo  $output; // to view
   }
+
   /*
     * show_detail_pro
-    * show detail
-    * @input 
+    * show detail promotion
+    * @input pro_id
     * @output -
     * @author Nantasiri Saiwaew 62160093
     * @Create Date 2021-10-02
     * @Update Date -
-    */
+  */
   public function show_detail_pro($pro_id)
   {
 
@@ -383,9 +391,9 @@ class Admin_approval_promotions extends DCS_controller
   }
 
   /*
-    * get_evenr_data_no_score_ajax
-    * show detail
-    * @input number_status
+    * get_promo_data_not_over_ajax
+    * get all data promotions not over and show table
+    * @input number_status, query
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
@@ -424,14 +432,14 @@ class Admin_approval_promotions extends DCS_controller
   }
 
   /*
-    * get_evenr_data_no_score_ajax
-    * show detail
-    * @input number_status
+    * get_pro_data_over_ajax
+    * get all data promotions over and show table
+    * @input number_status, query
     * @output -
     * @author weradet nopsombun 62160110 
     * @Create Date 2021-08-20
     * @Update Date -
-    */
+  */
   public function get_pro_data_over_ajax($number_status)
   {
     $value_search = $this->input->post('query');
