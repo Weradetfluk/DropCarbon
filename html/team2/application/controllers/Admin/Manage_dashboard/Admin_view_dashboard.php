@@ -233,16 +233,15 @@ class Admin_view_dashboard extends DCS_controller
         $date_end = $this->input->post('date_secon');
 
         if ($date_start != '' &&  $date_end != '') {
-            $date_sql_tour = "dcs_tourist.tus_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
-            $date_sql_ent = "dcs_entrepreneur.ent_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
+            $date_sql = "dcs_promotions.pro_start_date between '" . $date_start . "' AND '" . $date_end . "'";
         } else {
-            $date_sql_tour = true;
-            $date_sql_ent = true;
+            $date_sql = true;
         }
 
-        $data['arr_data_promotion_ent'] = $this->mpro->get_count_pro_ent_all();
+        $data['arr_data_promotion_ent'] = $this->mpro->get_count_pro_ent_all($date_sql)->result();
         $data['arr_data_promotion_adm'] = $this->mpro->get_count_pro_adm_all();
 
+        // var_dump($data['arr_data_promotion_ent']);
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 }

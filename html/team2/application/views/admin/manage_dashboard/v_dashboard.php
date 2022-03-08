@@ -678,6 +678,7 @@
          *@update Date -
          */
         function create_chart_register(arr_data_register) {
+            console.log('arr_data_register : ' + arr_data_register);
             var date_end_str = date_secon.substr(0, 10);
             var date_start_str = date_first.substr(0, 10);
             var date_end = new Date(date_end_str);
@@ -1069,13 +1070,14 @@
                     date_secon: date_secon + "  23:00:00"
                 },
                 success: function() {
-
+                    
                 },
                 error: function() {
                     alert('ajax get data user error working');
                 }
             }).then(function(json_data) {
-                create_chart_promotion(json_data['arr_data_promotion']);
+                create_chart_promotion(json_data);
+                console.log(json_data);
             });
         
         }
@@ -1090,13 +1092,13 @@
          *@update Date -
          */
         function create_chart_promotion(arr_data_promotion) {
-            // console.log("arr_data_promotion : "+arr_data_promotion);
-            // var obj_data_promotion_ent = []; // วิธีการเดียวกัน
-            // arr_data_promotion['arr_data_promotion_ent'].forEach((row, index) => {
-            //     obj_data_promotion_ent.push(
-            //         parseInt(row['data_pro_ent']),
-            //     );
-            // });
+            var obj_data_promotion_ent = []; // วิธีการเดียวกัน
+            arr_data_promotion['arr_data_promotion_ent'].forEach((row, index) => {
+                obj_data_promotion_ent.push(
+                    row['data_promotion_ent'],
+                );
+            });
+            console.log('arr_data_promotion : ' + arr_data_promotion);
 
             // var obj_data_promotion_adm = []; // วิธีการเดียวกัน
             // arr_data_promotion['arr_data_promotion_adm'].forEach((row, index) => {

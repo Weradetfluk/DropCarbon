@@ -536,14 +536,16 @@ class M_dcs_promotions extends Da_dcs_promotions
     *@author Chutipon Thermsirisuksin 62160081
     *@Create Date 2565-03-08
     */
-    function get_count_pro_ent_all()
+    function get_count_pro_ent_all($date_sql)
     {
         $sql = "SELECT dcs_entrepreneur.ent_firstname , dcs_entrepreneur.ent_lastname , COUNT(dcs_promotions.pro_name) as count_pro
                 FROM dcs_entrepreneur
                 LEFT JOIN dcs_company ON dcs_company.com_ent_id = dcs_entrepreneur.ent_id
                 LEFT JOIN dcs_promotions ON dcs_promotions.pro_com_id = dcs_company.com_id
+                WHERE $date_sql
                 GROUP by dcs_entrepreneur.ent_id";
-        return $this->db->query($sql);
+        $result = $this->db->query($sql);
+        return $result;
     }
 
     /*
