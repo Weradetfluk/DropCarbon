@@ -215,4 +215,34 @@ class Admin_view_dashboard extends DCS_controller
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
+
+    /*
+    * get_data_chart_promotion_add
+    * get data chart dashboard and return data JSON
+    * @input date_first, date_secon
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2565-03-08
+    * @Update Date -
+    */
+    function get_data_chart_promotion_add_ajax()
+    {
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+
+        $date_start = $this->input->post('date_first'); // รับค่าที่userกรอกไป input
+        $date_end = $this->input->post('date_secon');
+
+        if ($date_start != '' &&  $date_end != '') {
+            $date_sql_tour = "dcs_tourist.tus_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
+            $date_sql_ent = "dcs_entrepreneur.ent_regis_date between '" . $date_start . "' AND '" . $date_end . "'";
+        } else {
+            $date_sql_tour = true;
+            $date_sql_ent = true;
+        }
+
+        $data['arr_data_promotion_ent'] = $this->mpro->get_count_pro_ent_all();
+        $data['arr_data_promotion_adm'] = $this->mpro->get_count_pro_adm_all();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
 }

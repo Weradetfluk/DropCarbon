@@ -527,4 +527,38 @@ class M_dcs_promotions extends Da_dcs_promotions
                 WHERE pro_status != 4 AND pro_name = ?";
         return $this->db->query($sql, array($this->pro_name));
     }
+
+    /*
+    *get_count_pro_ent_all
+    *get data count from promotions entrepreneur all
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-08
+    */
+    function get_count_pro_ent_all()
+    {
+        $sql = "SELECT dcs_entrepreneur.ent_firstname , dcs_entrepreneur.ent_lastname , COUNT(dcs_promotions.pro_name) as count_pro
+                FROM dcs_entrepreneur
+                LEFT JOIN dcs_company ON dcs_company.com_ent_id = dcs_entrepreneur.ent_id
+                LEFT JOIN dcs_promotions ON dcs_promotions.pro_com_id = dcs_company.com_id
+                GROUP by dcs_entrepreneur.ent_id";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_count_pro_adm_all
+    *get data count from promotions admin all
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-08
+    */
+    function get_count_pro_adm_all()
+    {
+        $sql = "SELECT COUNT(dcs_promotions.pro_name) as count_pro_adm FROM dcs_promotions 
+                WHERE pro_status != 4 AND dcs_promotions.pro_adm_id = 1";
+        return $this->db->query($sql);
+    }
+
 }

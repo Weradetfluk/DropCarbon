@@ -198,12 +198,12 @@
                                 การสมัครบัญชีผู้ใช้
                             </label>
                         </div>
-                        <!-- <div class="col-sm">
+                        <div class="col-sm">
                             <input class="form-check-input" type="checkbox" value="" id="promotion_checkbox">
                             <label class="form-check-label" for="defaultCheck1">
-                                โปรโมชันยอดนิยม
+                                โปรโมชัน
                             </label>
-                        </div> -->
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
@@ -442,6 +442,7 @@
 
                 if ($('#promotion_checkbox').is(':checked')) {
                     console.log("OK");
+                    get_data_promotion();
                     $("#card_promotion_add").slideDown();
                     $("#card_promotion_use").slideDown();
                 } else {
@@ -544,6 +545,7 @@
                     alert('ajax get data user error working');
                 }
             }).then(function(json_data) {
+                
                 create_chart_checkin(json_data['arr_data_checkin']);
             });
         }
@@ -666,7 +668,7 @@
             });
         }
 
-        /*
+         /*
          * create_chart_register 
          * request ไปที่ server เพื่อนำข้อมูลจาก data base มาสร้างกราฟ 
          *@input -
@@ -691,7 +693,7 @@
                 }
                 date_between.push([String(date_count.getDate()).padStart(2, '0'), months[date_count.getMonth()], date_count.getFullYear()].join(' '));
             }
-            console.log(date_between);
+            // console.log(date_between);
             
 
             var obj_data_date_register_ent = []; // วิธีการเดียวกัน
@@ -755,6 +757,7 @@
                 // },
 
                 yAxis: {
+                    allowDecimals: false,
                     min: 0,
                     title: {
                         text: 'จำนวนการสมัคร (คน)'
@@ -906,6 +909,7 @@
                     type: 'category'
                 },
                 yAxis: {
+                    allowDecimals: false,
                     title: {
                         text: 'จำนวนการเช็คอินกิจกรรม'
                     }
@@ -958,7 +962,7 @@
          *@update Date -
          */
         function create_chart_evet_per(arr_data_eve_cat_per) {
-
+            // console.log('arr_data_eve_cat_per : ' +arr_data_eve_cat_per);
             var obj_data_eve_cat_per = []; // วิธีการเดียวกัน
             arr_data_eve_cat_per.forEach((row, index) => {
                 obj_data_eve_cat_per.push({
@@ -1045,67 +1049,123 @@
             });
         }
 
-
-
-        Highcharts.chart('chart_promotion_add', {
-            chart: {
-                style: {
-                    fontFamily: 'Prompt',
+         /*
+         * get_data_promotion
+         * get data promotion all 
+         *@input 
+         *@output chart 
+         *@author Chutipon Thermsirisuksin 62160081
+         *@Create Date 2565-03-08
+         *@update Date -
+         */
+        function get_data_promotion(){
+            // console.log('promotion');
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_promotion_add_ajax'); ?>',
+                dataType: 'json',
+                data: {
+                    date_first: date_first + " 00:00:00",
+                    date_secon: date_secon + "  23:00:00"
                 },
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie',
-            },
-            title: {
-                text: 'ร้อยละข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบและผู้ประกอบการ'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
+                success: function() {
+
+                },
+                error: function() {
+                    alert('ajax get data user error working');
                 }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b style="color:black; text-decoration: none !important;" >{point.name}: {point.percentage:.1f} %</b>',
+            }).then(function(json_data) {
+                create_chart_promotion(json_data['arr_data_promotion']);
+            });
+        
+        }
+
+        /*
+         * create_chart_promotion
+         * create chart promotion
+         *@input -
+         *@output chart 
+         *@author Chutipon Thermsirisuksin 62160081
+         *@Create Date 2565-03-08
+         *@update Date -
+         */
+        function create_chart_promotion(arr_data_promotion) {
+            // console.log("arr_data_promotion : "+arr_data_promotion);
+            // var obj_data_promotion_ent = []; // วิธีการเดียวกัน
+            // arr_data_promotion['arr_data_promotion_ent'].forEach((row, index) => {
+            //     obj_data_promotion_ent.push(
+            //         parseInt(row['data_pro_ent']),
+            //     );
+            // });
+
+            // var obj_data_promotion_adm = []; // วิธีการเดียวกัน
+            // arr_data_promotion['arr_data_promotion_adm'].forEach((row, index) => {
+            //     obj_data_promotion_adm.push(
+            //         row['data_pro_adm'],
+            //     );
+            // });
+            // console.log("obj_data_promotion_ent" + obj_data_promotion_ent);
+
+            // Chart
+            Highcharts.chart('chart_promotion_add', {
+                chart: {
+                    style: {
+                        fontFamily: 'Prompt',
                     },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'ร้อยละ',
-                data: [{
-                    name: 'ผู้ประกอบการ',
-                    y: 55,
-                    drilldown: 'data 1',
-                }, {
-                    name: 'ผู้ดูแลระบบ',
-                    y: 45,
-                    // drilldown: 'data 1'
-                }, ]
-            }],
-            drilldown: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie',
+                },
+                title: {
+                    text: 'ร้อยละข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบและผู้ประกอบการ'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b style="color:black; text-decoration: none !important;" >{point.name}: {point.percentage:.1f} %</b>',
+                        },
+                        showInLegend: true
+                    }
+                },
                 series: [{
                     name: 'ร้อยละ',
-                    id: 'data 1',
-                    data: [
-                        ['วีรเดช นพสมบูรณ์', 24.13],
-                        ['สุวพัฒน์ เสาวรส', 17.2],
-                        ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
-                        ['ณเอก ปุณย์ปริชญ์', 5.33],
-                        ['ธนิสร ธรรมสวนิต', 1.06],
-                    ]
-                }, ]
-            }
-        });
-
+                    data: [{
+                        name: 'ผู้ประกอบการ',
+                        y: 55,
+                        drilldown: 'data 1',
+                    }, {
+                        name: 'ผู้ดูแลระบบ',
+                        y: 45,
+                        // drilldown: 'data 1'
+                    }, ]
+                }],
+                drilldown: {
+                    series: [{
+                        name: 'ร้อยละ',
+                        id: 'data 1',
+                        data: [
+                            ['วีรเดช นพสมบูรณ์', 24.13],
+                            ['สุวพัฒน์ เสาวรส', 17.2],
+                            ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
+                            ['ณเอก ปุณย์ปริชญ์', 5.33],
+                            ['ธนิสร ธรรมสวนิต', 1.06],
+                        ]
+                    }, ]
+                }
+            });
+        }
         Highcharts.chart('chart_promotion_use', {
             chart: {
                 type: 'column',
