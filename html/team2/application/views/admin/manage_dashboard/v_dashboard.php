@@ -393,12 +393,14 @@
                 if ($('#event_checkbox').is(':checked')) {
 
                     $("#card_event").slideDown(); //ซ่อนกราฟ
+                    $("#card_event_pie").slideDown();
 
                 } else {
                     get_data_dashboard_event_cat(); // เรียกฟังก์ชัน
                     get_data_dashboard_event_percent()
 
                     $("#card_event").slideUp();
+                    $("#card_event_pie").slideUp();
                 }
             });
 
@@ -977,7 +979,7 @@
                     text: 'ข้อมูลประเภทกิจกรรมที่ยอดนิยมที่สุด (คิดเป็นเปอร์เซ็น)'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage}%</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
                 },
                 accessibility: {
                     point: {
@@ -990,7 +992,7 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage} %'
+                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
                         }
                     }
                 },
