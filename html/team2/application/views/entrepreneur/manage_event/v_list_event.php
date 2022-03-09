@@ -75,7 +75,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -89,10 +89,9 @@
                                                 for ($i = 0; $i < count($arr_event); $i++) { ?>
                                             <tr>
                                                 <td class="res-hide"><?php echo $i + 1; ?></td>
-                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
-                                                </td>
+                                                <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?></td>
                                                 <td class="res-hide" style="text-align: left;">
-                                                    <?php echo $arr_event[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_event[$i]->eve_start_date).' - '. to_format_abbreviation($arr_event[$i]->eve_end_date); ?>
                                                 </td>
                                                 <?php if ($arr_event[$i]->eve_status != 3) { ?>
                                                     <?php if ($arr_event[$i]->eve_status == 1) { ?>
@@ -208,7 +207,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -235,7 +234,7 @@
                                                         <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
                                                         </td>
                                                         <td class="res-hide" style="text-align: left;">
-                                                            <?php echo $arr_event[$i]->com_name; ?>
+                                                            <?php echo to_format_abbreviation($arr_event[$i]->eve_start_date).' - '. to_format_abbreviation($arr_event[$i]->eve_end_date); ?>
                                                         </td>
                                                         <td style="color: #fba004;">รออนุมัติ</td>
                                                         <td>
@@ -278,7 +277,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -305,7 +304,7 @@
                                                 <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
                                                 </td>
                                                 <td class="res-hide" style="text-align: left;">
-                                                    <?php echo $arr_event[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_event[$i]->eve_start_date).' - '. to_format_abbreviation($arr_event[$i]->eve_end_date); ?>
                                                 </td>
                                                 <?php if ($arr_event[$i]->eve_start_date <= $date_now && $arr_event[$i]->eve_end_date > $date_now) { ?>
                                                 <td style="color: #669900;">ยังไม่สิ้นสุด</td>
@@ -358,7 +357,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -385,7 +384,7 @@
                                                 <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
                                                 </td>
                                                 <td class="res-hide" style="text-align: left;">
-                                                    <?php echo $arr_event[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_event[$i]->eve_start_date).' - '. to_format_abbreviation($arr_event[$i]->eve_end_date); ?>
                                                 </td>
                                                 <?php if ($arr_event[$i]->eve_end_date <= $date_now && $arr_event[$i]->eve_start_date <= $date_now) { ?>
                                                 <td style="color: red;">สิ้นสุด</td>
@@ -429,7 +428,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อกิจกรรม</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะกิจกรรม</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -456,7 +455,7 @@
                                                 <td style="text-align: left;"><?php echo $arr_event[$i]->eve_name; ?>
                                                 </td>
                                                 <td class="res-hide" style="text-align: left;">
-                                                    <?php echo $arr_event[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_event[$i]->eve_start_date).' - '. to_format_abbreviation($arr_event[$i]->eve_end_date); ?>
                                                 </td>
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
