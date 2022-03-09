@@ -106,7 +106,7 @@ class DCS_controller extends CI_Controller
     /*
     * output_entrepreneur
     * output entrepreneur
-    * @input $view, $data
+    * @input view, data
     * @output -
     * @author Suwapat Saowarod 62160340
     * @Create Date 2564-07-24

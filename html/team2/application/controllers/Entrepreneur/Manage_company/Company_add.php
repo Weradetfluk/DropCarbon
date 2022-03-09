@@ -61,7 +61,7 @@ class Company_add extends DCS_controller
         $arr_name_name = array();
         $arr_img_add = $this->input->post('new_img');
         $arr_name_name = $this->input->post('name_new_image');
-        $this->mimg->com_img_com_id = $result;
+        $this->mimg->com_img_com_id = $result->com_id;
         for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
             $this->mimg->com_img_name = $arr_name_name[$i];

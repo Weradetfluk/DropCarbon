@@ -55,7 +55,7 @@
              </div>
              <div class="row">
                  <div class="col">
-                     <h2 class="text-center py-2" style="display: none;" id="checkout_header">เช็คเอาท์แล้ว</h2>
+                     <h2 class="text-center py-2" style="display: none;" id="checkout_header">เช็คเอาต์แล้ว</h2>
                      <h2 class="text-center py-2" style="display: none;" id="checkin_header">เช็คอินแล้ว</h2>
                      <h2 class="text-center py-2" style="display: none;" id="err_header">ไม่สามารถเช็คอินได้</h2>
                  </div>
