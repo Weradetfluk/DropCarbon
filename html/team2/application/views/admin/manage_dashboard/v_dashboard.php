@@ -1100,12 +1100,21 @@
                     y: parseInt(row['per'])
                 });
             });
-            // console.log('arr_data_promotion : ' + arr_data_promotion);
+            console.log('******************');
             console.log(obj_data_promotion_ent);
             
 
             //ประกาศตัวแปรที่เก็บข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบ
             var obj_data_promotion_adm = []; // วิธีการเดียวกัน
+            arr_data_promotion['arr_data_result_promotion_ent'].forEach((row, index) => {
+                obj_data_promotion_adm.push({
+                    name: 'ผู้ประกอบการ',
+                    drilldown: 'data 1',
+                    y: parseInt(row['per']),
+
+                });
+            });
+
             arr_data_promotion['arr_data_promotion_adm'].forEach((row, index) => {
                 obj_data_promotion_adm.push({
                     name: 'ผู้ดูแลระบบ',
@@ -1114,15 +1123,7 @@
             });
             console.log(obj_data_promotion_adm);
 
-            //ประกาศตัวแปรที่เก็บข้อมูลผลรวมการเพิ่มโปรโมชันของผู้ประกอบการ
-            var obj_data_result_promotion_ent = []; // วิธีการเดียวกัน
-            arr_data_promotion['arr_data_result_promotion_ent'].forEach((row, index) => {
-                obj_data_result_promotion_ent.push({
-                    name: 'ผู้ประกอบการ',
-                    y: parseInt(row['per']),
-                });
-            });
-            console.log(obj_data_result_promotion_ent);
+
 
             // Chart
             Highcharts.chart('chart_promotion_add', {
@@ -1139,7 +1140,7 @@
                     text: 'ร้อยละข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบและผู้ประกอบการ'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
                 },
                 accessibility: {
                     point: {
@@ -1152,38 +1153,22 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b style="color:black; text-decoration: none !important;" >{point.name}: {point.percentage:.1f} %</b>',
+                            format: '<b style="color:black; text-decoration: none !important;" >{point.name}: {point.percentage:.0f} %</b>',
                         },
                         showInLegend: true
                     }
                 },
                 series: [{
                     name: 'ร้อยละ',
-                    data: [{
-                        // name: 'ผู้ประกอบการ',
-                        // y: 67,
-                        // y: obj_data_result_promotion_ent,
-                        obj_data_result_promotion_ent,
-                        // drilldown: 'data 1',
-                    }, {
-                        // name: 'ผู้ดูแลระบบ',
-                        // y: obj_data_promotion_adm,
-                        obj_data_promotion_adm,
-                    }, ]
+                    data: obj_data_promotion_adm,
                 }],
-                // drilldown: {
-                //     series: [{
-                //         name: 'ร้อยละ',
-                //         id: 'data 1',
-                //         data: [
-                //             ['วีรเดช นพสมบูรณ์', 24.13],
-                //             ['สุวพัฒน์ เสาวรส', 17.2],
-                //             ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
-                //             ['ณเอก ปุณย์ปริชญ์', 5.33],
-                //             ['ธนิสร ธรรมสวนิต', 1.06],
-                //         ]
-                //     }, ]
-                // }
+                drilldown: {
+                    series: [{
+                        name: 'ร้อยละ',
+                        id: 'data 1',
+                        data: obj_data_promotion_ent,
+                    }, ]
+                }
             });
         }
         Highcharts.chart('chart_promotion_use', {

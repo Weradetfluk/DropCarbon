@@ -242,6 +242,9 @@ class Admin_view_dashboard extends DCS_controller
         $data['arr_data_promotion_adm'] = $this->mpro->get_count_pro_adm_all($date_sql)->result();
         $data['arr_data_result_promotion_ent'] = $this->mpro->get_result_pro_ent_all($date_sql)->result();
 
+
+        
+
         // var_dump($data['arr_data_promotion_ent']);
         // echo "<br>-------------------------------------------------------------------------------------------------";
 
