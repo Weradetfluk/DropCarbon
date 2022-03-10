@@ -441,7 +441,7 @@
             $("#promotion_checkbox").click(function() {
 
                 if ($('#promotion_checkbox').is(':checked')) {
-                    console.log("OK");
+                    // console.log("OK");
                     get_data_promotion();
                     $("#card_promotion_add").slideDown();
                     $("#card_promotion_use").slideDown();
@@ -560,7 +560,6 @@
          *@update Date -
          */
         function create_chart_checkin(arr_data_checkin) {
-
             var obj_data_date_checkin = []; // วิธีการเดียวกัน
             arr_data_checkin.forEach((row, index) => {
                 obj_data_date_checkin.push(
@@ -649,7 +648,7 @@
          *@update Date -
          */
         function get_data_register() {
-            console.log("Register");
+            // console.log("Register");
             $.ajax({
                 type: 'post',
                 url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_register_ajax'); ?>',
@@ -703,7 +702,7 @@
                     row['date_register_ent'],
                 );
             });
-            // console.log(obj_data_date_register_ent);
+            // console.log("obj_data_date_register_ent : "+obj_data_date_register_ent);
             var obj_data_count_register_ent = []; // วิธีการเดียวกัน
             arr_data_register['arr_data_register_ent'].forEach((row, index) => {
                 obj_data_count_register_ent.push(
@@ -717,7 +716,7 @@
                     row['date_register_tour'],
                 );
             });
-            // console.log(obj_data_date_register_tour);
+            // console.log("obj_data_date_register_tour : "+obj_data_date_register_tour);
 
             var obj_data_count_register_tour = []; // วิธีการเดียวกัน
             arr_data_register['arr_data_register_tour'].forEach((row, index) => {
@@ -1092,21 +1091,38 @@
          *@update Date -
          */
         function create_chart_promotion(arr_data_promotion) {
+
+            //ประกาศตัวแปรที่เก็บข้อมูลการเพิ่มโปรโมชันของผู้ประกอบการ
             var obj_data_promotion_ent = []; // วิธีการเดียวกัน
             arr_data_promotion['arr_data_promotion_ent'].forEach((row, index) => {
-                obj_data_promotion_ent.push(
-                    row['data_promotion_ent'],
-                );
+                obj_data_promotion_ent.push({
+                    name: row['name'],
+                    y: parseInt(row['per'])
+                });
             });
-            console.log('arr_data_promotion : ' + arr_data_promotion);
+            // console.log('arr_data_promotion : ' + arr_data_promotion);
+            console.log(obj_data_promotion_ent);
+            
 
-            // var obj_data_promotion_adm = []; // วิธีการเดียวกัน
-            // arr_data_promotion['arr_data_promotion_adm'].forEach((row, index) => {
-            //     obj_data_promotion_adm.push(
-            //         row['data_pro_adm'],
-            //     );
-            // });
-            // console.log("obj_data_promotion_ent" + obj_data_promotion_ent);
+            //ประกาศตัวแปรที่เก็บข้อมูลการเพิ่มโปรโมชันของผู้ดูแลระบบ
+            var obj_data_promotion_adm = []; // วิธีการเดียวกัน
+            arr_data_promotion['arr_data_promotion_adm'].forEach((row, index) => {
+                obj_data_promotion_adm.push({
+                    name: 'ผู้ดูแลระบบ',
+                    y: parseInt(row['per']),
+                });
+            });
+            console.log(obj_data_promotion_adm);
+
+            //ประกาศตัวแปรที่เก็บข้อมูลผลรวมการเพิ่มโปรโมชันของผู้ประกอบการ
+            var obj_data_result_promotion_ent = []; // วิธีการเดียวกัน
+            arr_data_promotion['arr_data_result_promotion_ent'].forEach((row, index) => {
+                obj_data_result_promotion_ent.push({
+                    name: 'ผู้ประกอบการ',
+                    y: parseInt(row['per']),
+                });
+            });
+            console.log(obj_data_result_promotion_ent);
 
             // Chart
             Highcharts.chart('chart_promotion_add', {
@@ -1144,28 +1160,30 @@
                 series: [{
                     name: 'ร้อยละ',
                     data: [{
-                        name: 'ผู้ประกอบการ',
-                        y: 55,
-                        drilldown: 'data 1',
+                        // name: 'ผู้ประกอบการ',
+                        // y: 67,
+                        // y: obj_data_result_promotion_ent,
+                        obj_data_result_promotion_ent,
+                        // drilldown: 'data 1',
                     }, {
-                        name: 'ผู้ดูแลระบบ',
-                        y: 45,
-                        // drilldown: 'data 1'
+                        // name: 'ผู้ดูแลระบบ',
+                        // y: obj_data_promotion_adm,
+                        obj_data_promotion_adm,
                     }, ]
                 }],
-                drilldown: {
-                    series: [{
-                        name: 'ร้อยละ',
-                        id: 'data 1',
-                        data: [
-                            ['วีรเดช นพสมบูรณ์', 24.13],
-                            ['สุวพัฒน์ เสาวรส', 17.2],
-                            ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
-                            ['ณเอก ปุณย์ปริชญ์', 5.33],
-                            ['ธนิสร ธรรมสวนิต', 1.06],
-                        ]
-                    }, ]
-                }
+                // drilldown: {
+                //     series: [{
+                //         name: 'ร้อยละ',
+                //         id: 'data 1',
+                //         data: [
+                //             ['วีรเดช นพสมบูรณ์', 24.13],
+                //             ['สุวพัฒน์ เสาวรส', 17.2],
+                //             ['ชุติพนธ์ เติมสิริสุขสิน', 8.11],
+                //             ['ณเอก ปุณย์ปริชญ์', 5.33],
+                //             ['ธนิสร ธรรมสวนิต', 1.06],
+                //         ]
+                //     }, ]
+                // }
             });
         }
         Highcharts.chart('chart_promotion_use', {

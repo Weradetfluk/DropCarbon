@@ -538,12 +538,12 @@ class M_dcs_promotions extends Da_dcs_promotions
     */
     function get_count_pro_ent_all($date_sql)
     {
-        $sql = "SELECT dcs_entrepreneur.ent_firstname , dcs_entrepreneur.ent_lastname , COUNT(dcs_promotions.pro_name) as count_pro
+        $sql = "SELECT CONCAT(dcs_entrepreneur.ent_firstname, ' ' , dcs_entrepreneur.ent_lastname) as name , COUNT(dcs_promotions.pro_name) / (SELECT COUNT(*) FROM dcs_entrepreneur)* 100 as per
                 FROM dcs_entrepreneur
                 LEFT JOIN dcs_company ON dcs_company.com_ent_id = dcs_entrepreneur.ent_id
                 LEFT JOIN dcs_promotions ON dcs_promotions.pro_com_id = dcs_company.com_id
-                WHERE $date_sql
-                GROUP by dcs_entrepreneur.ent_id";
+                WHERE $date_sql AND dcs_entrepreneur.ent_status = 2
+                GROUP BY dcs_entrepreneur.ent_id";
         $result = $this->db->query($sql);
         return $result;
     }
@@ -556,10 +556,11 @@ class M_dcs_promotions extends Da_dcs_promotions
     *@author Chutipon Thermsirisuksin 62160081
     *@Create Date 2565-03-08
     */
-    function get_count_pro_adm_all()
+    function get_count_pro_adm_all($date_sql)
     {
-        $sql = "SELECT COUNT(dcs_promotions.pro_name) as count_pro_adm FROM dcs_promotions 
-                WHERE pro_status != 4 AND dcs_promotions.pro_adm_id = 1";
+        $sql = "SELECT COUNT(dcs_promotions.pro_adm_id) * 100 / (SELECT COUNT(*) FROM dcs_promotions) as per
+                FROM dcs_promotions 
+                WHERE $date_sql AND pro_status != 4";
         return $this->db->query($sql);
     }
 
@@ -573,12 +574,9 @@ class M_dcs_promotions extends Da_dcs_promotions
     */
     function get_result_pro_ent_all($date_sql)
     {
-        $sql = "SELECT CONCAT(dcs_entrepreneur.ent_firstname, ' ' , dcs_entrepreneur.ent_lastname) as name , COUNT(dcs_promotions.pro_name) / (SELECT COUNT(*) FROM dcs_entrepreneur)* 100 as per
-                FROM dcs_entrepreneur
-                LEFT JOIN dcs_company ON dcs_company.com_ent_id = dcs_entrepreneur.ent_id
-                LEFT JOIN dcs_promotions ON dcs_promotions.pro_com_id = dcs_company.com_id
-                WHERE $date_sql
-                GROUP BY dcs_entrepreneur.ent_id";
+        $sql = "SELECT ( ((SELECT COUNT(*) FROM dcs_promotions) - COUNT(dcs_promotions.pro_adm_id)) * 100 ) / (SELECT COUNT(*) FROM dcs_promotions) as per
+                FROM dcs_promotions 
+                WHERE $date_sql";
         return $this->db->query($sql);
     }
 
