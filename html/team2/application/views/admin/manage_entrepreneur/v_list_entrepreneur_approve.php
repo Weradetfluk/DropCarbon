@@ -16,6 +16,7 @@
              ผู้ประกอบการที่อนุมัติแล้ว</h3>
      </div>
  </div>
+ <!-- tab แสดงหน้่า -->
  <div class="card card-nav-tabs custom-card-tab">
      <div class="card-header custom-header-tab">
          <div class="row">
@@ -72,7 +73,7 @@
      <div class="card-body">
          <div class="card-body">
 
-             <div class="table-responsive" id="data_entre_approve">
+             <div class="table-responsive" id="data_ent">
                  <!-- table approve ajax  -->
 
              </div>
@@ -99,6 +100,7 @@
      </div>
  </div>
 
+ <!-- มอดอลแสดงรายละเอียด -->
  <div class="modal fade" role="dialog" id="data_modal">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -167,46 +169,19 @@
  <script>
 $(document).ready(function() {
 
-    load_data(1);
+    load_data(2, 1); // function in template/v_javascript_admin
     $('#search_box').keyup(function() {
         var query = $('#search_box').val();
-        load_data(1, query);
+        load_data(2,1, query); 
         // console.log(query);
-
     });
-
     $(document).on('click', '.page-link', function() {
         var page = $(this).data('page_number');
         var query = $('#search_box').val();
-        load_data(page, query);
+        load_data(2, page, query);
     });
-
 });
 
-/*
- * load_data
- * load_data
- * @input 
- * @output  table data entrepreneur
- * @author Weradet Nopsombun 62160110 
- * @Create Date 2564-07-27
- * @Update -
- */
-function load_data(page, query = '') {
-    console.log(query);
-    $.ajax({
-        url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' +
-            2,
-        method: "POST",
-        data: {
-            page: page,
-            query: query
-        },
-        success: function(data) {
-            $('#data_entre_approve').html(data);
-        }
-    });
-}
 /*
  * confirm_block
  * open modal id = blockmodal 
@@ -274,10 +249,12 @@ function block_user(ent_id, ent_email) {
             }, function() {
                 location.reload();
             })
+
+            // สำหรับ ส่งเมล
             var content = "บัญชีของคุณถูกบล็อคเนื่องจากผู้ใช้งานได้ละเมิดกฎของเว็บไซต์ Drop Carbon System";
             var content_h1 = "คุณถูกระงับบัญชีการใช้งาน";
             var subject = "Admin has blocked your account.";
-            send_mail_ajax(content, ent_email, subject, content_h1);
+            send_mail_ajax(content, ent_email, subject, content_h1); // in dcs_controller
         },
         error: function() {
             alert('ajax block user error working');

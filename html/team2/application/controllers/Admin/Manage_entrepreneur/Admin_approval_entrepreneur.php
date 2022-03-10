@@ -19,7 +19,6 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->load->library('pagination');
     $this->load->model('Entrepreneur/M_dcs_entrepreneur', 'mdce');
   }
-
   /*
     * index
     * show page manage entrepreneur  
@@ -33,7 +32,6 @@ class Admin_approval_entrepreneur extends DCS_controller
   {
     $this->show_data_consider();
   }
-
   /*
     * show_data_consider
     * get all data entrepreneur not approve and show table
@@ -45,8 +43,9 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function show_data_consider()
   {
+    // เรียกหน้า view รออนุมัติ
     $_SESSION['tab_number'] = 5; //set tab number in topbar_admin.php
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_consider', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
+    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_consider', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur'); // function ใน dcs_controller
   }
 
   /*
@@ -60,7 +59,8 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function show_data_approve()
   {
-    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
+    //โชว์หน้า view ที่อนุมัติ บน Tab บนหัวตตาราง
+    $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_approve', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur'); // function ใน dcs_controller
   }
 
   /*
@@ -69,11 +69,12 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @input
     * @output -
     * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-08-1
+    * @Create Date 2564-08-01
     * @Update Date -
     */
   public function show_data_reject()
   {
+      //โชว์หน้า view ที่ปฏิเสธ บน Tab บนหัวตตาราง
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_reject', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
 
@@ -88,12 +89,13 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function show_data_block()
   {
+     //โชว์หน้า view ที่ถูกระงับ บน Tab บนหัวตตาราง
     $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur_block', null, 'admin/manage_entrepreneur/v_data_card_entrepreneur');
   }
 
   /*
     * get_entrepreneur_by_id_ajax
-    * get all data entrepreneur by id
+    * get all data entrepreneur by id and file 
     * @input ent_id
     * @output -
     * @author Weradet Nopsombun 62160110
@@ -102,12 +104,14 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function get_entrepreneur_by_id_ajax()
   {
-    $this->load->model('Document/M_dcs_document', 'mdoc');
-    $this->mdoc->doc_ent_id = $this->input->post('ent_id');
-    $data['arr_file'] = $this->mdoc->get_by_ent_id()->result();
-    $this->mdce->ent_id = $this->input->post('ent_id');
-    $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result();
-    echo json_encode($data);
+
+    //สำหรับเรียกค่า ข้อมูลส่วนตัว รวมถึงไฟล์ด้วย 
+    $this->load->model('Document/M_dcs_document', 'mdoc'); // เรัยกใช้ Model 
+    $this->mdoc->doc_ent_id = $this->input->post('ent_id'); //รับค่า Id จากภายนอก สำหรับ file 
+    $data['arr_file'] = $this->mdoc->get_by_ent_id()->result(); // เรียกข้อมูลไฟล์ จากDatabase 
+    $this->mdce->ent_id = $this->input->post('ent_id');  // รับค่าไอดีสำหรับ ดึงข้อมูล
+    $data['arr_data'] = $this->mdce->get_entrepreneur_by_id()->result(); //เรียกข้อมูล ของผุ้ประกอบการ
+    echo json_encode($data); // นำข้อมูลทำเป็น JSON 
   }
 
   /*
@@ -121,11 +125,12 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function get_entrepreneur_reject_by_id_ajax()
   {
-    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre');
-    $ent_id = $this->input->post('ent_id');
-    $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result();
+    //สำหรับเรียกข้อมูลที่ปฎิเสธ
+    $this->load->model('Rejected_entrepreneur/M_dcs_entrepreneur_reject', 'mdre'); // เรียก Moddel 
+    $ent_id = $this->input->post('ent_id');  // ค่าที่รับ Post
+    $data['arr_data'] = $this->mdre->get_data_rejected_by_id($ent_id)->result(); // เรียกค่าที่มีการ Reject
 
-    echo json_encode($data['arr_data']);
+    echo json_encode($data['arr_data']); // ทำเป็น JSON 
   }
 
   /*
@@ -139,11 +144,9 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function approval_entrepreneur()
   {
-    $this->mdce->ent_id = $this->input->post('ent_id');
-
-    $status_number = 2;
-
-    $this->mdce->update_status($status_number);
+    $this->mdce->ent_id = $this->input->post('ent_id'); //รับค่า Post
+    $status_number = 2; // เซ็ตค่าสถานะ 2 = apperove จาก database 
+    $this->mdce->update_status($status_number); // update status
   }
 
   /*
@@ -173,7 +176,7 @@ class Admin_approval_entrepreneur extends DCS_controller
     $this->mdre->enr_adm_id = $admin_id;
     $this->mdre->insert();
     //update status entrepreneur
-    $status_number = 3;
+    $status_number = 3; // status 3 = rejected
     $this->mdce->update_status($status_number);
     $this->email_send($reson_admin, $user_email, $mail_subject, $mail_content_header);
   }
@@ -189,8 +192,8 @@ class Admin_approval_entrepreneur extends DCS_controller
     */
   public function get_data_card_entrepreneur_ajax()
   {
-    $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result();
-
+    //card on top view 
+    $data['arr_data'] = $this->mdce->get_data_card_entrepreneur()->result(); // get number of card
     $this->output->set_content_type('application/json')->set_output(json_encode($data['arr_data']));
   }
 
@@ -203,112 +206,19 @@ class Admin_approval_entrepreneur extends DCS_controller
     * @Create Date 2564-09-14
     * @Update Date -
     */
-  public function show_data_ajax($number_status)
+  public function show_data_ajax2($number_status)
   {
     //$number_status = 1;
     $value_search = $this->input->post('query');
 
-    $output = '';
-    $output = '
-              <table class="table" style="text-align: center;" id="entre_tale">
-              <thead class="text-white custom-thead">
-                  <tr class="custom-tr-header-table">
-                      <th class="th-custom res-hide">ลำดับ</th>
-                      <th class="th-custom ">ชื่อ-นามสกุล</th>
-                      <th class="th-custom ">เบอร์โทร</th>
-                      <th class="th-custom res-hide">อีเมล</th>
-                      <th class="th-custom ">ดำเนินการ</th>
-                  </tr>
-              </thead>
-              <tbody class="list">
-        ';
-
     if ($value_search  != '') {
       //กรณีค้นหา
       $data['arr_entrepreneur'] = $this->mdce->get_search($value_search, $number_status)->result();
-
-      // var_dump($val);
-      // var_dump( $data['arr_entrepreneur']);
-      // มีข้อมูลไหม
-      if ($data['arr_entrepreneur']) {
-        $i = 1;
-        //สร้างตาราง
-        foreach ($data['arr_entrepreneur'] as $row) {
-          $output .= '<tr>' .
-            '<td class="res-hide">' . $i . '</td>' .
-            '<td style="text-align: left;">'
-            . $row->ent_firstname . " " . $row->ent_lastname .
-            '</td>' .
-            '<td>'
-            . $row->ent_tel .
-            '</td>' .
-            '<td class="res-hide" style="text-align: left;">' .
-            $row->ent_email .
-            '</td>';
-          if ($number_status == 1) {
-            // ต่อสตริง
-            $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                          <i class="material-icons">
-                            search
-                          </i>
-                       </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons">
-                              done
-                            </i>
-                        </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->ent_id . '\',\'' . $row->ent_email . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
-                            <i class="material-icons">
-                              clear
-                            </i>
-                        </button>';
-          } else if ($number_status == 2) {
-            $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                      <i class="material-icons">
-                        search
-                      </i>
-                    </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons"><span class="material-icons-outlined">
-                                  highlight_off
-                            </span></i>
-                        </button>';
-          } else if ($number_status == 3) {
-            $output .= '</td>' .
-              '<td style="text-align: center;">
-                    <button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(\'' . $row->ent_id . '\')">
-                        <i class="material-icons"><span class="material-icons-outlined">
-                                search
-                            </span></i>
-                    </button>';
-          } else if ($number_status == 4) {
-            $output .= '<td style="text-align: center;">
-                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\',\'' . $row->ent_email . '\')">
-                        <i class="material-icons"><span class="material-icons-outlined">
-                                cached
-                            </span></i>
-                    </button>';
-          }
-          $output .= '</td></tr>';
-          $i++;
-        }
-        $output .=
-          '</tbody>
-                </table>';
-        // ถ้าไม่มีข้อมูล
-      } else {
-        $output .= '
-                      <td colspan = "5">
-                        ไม่มีข้อมูลในตารางนี้
-                      </td>';
-      }
-      // not search
+      echo json_encode($data);
     } else {
       //กรณีไม่ได้ค้นหา
       //define pagation
-      $limit = '6';
+      $limit = '6'; // limit 6 tablew in table
       $page = 1; // หน้า
       $post_page = $this->input->post("page");
       if ($post_page > 1) {
@@ -319,88 +229,11 @@ class Admin_approval_entrepreneur extends DCS_controller
       }
       $all_count = $this->mdce->get_count_all($number_status);                               //get all count consider
       $data['arr_entrepreneur'] = $this->mdce->get_all_data($limit, $start, $number_status); // query แบบแบ่งหน้า
-      $i = 1;
-      if ($data['arr_entrepreneur']) {
-        foreach ($data['arr_entrepreneur'] as $row) {
-          $output .= '<tr>' .
-            '<td class="res-hide">' . $i . '</td>' .
-            '<td style="text-align: left;">'
-            . $row->ent_firstname . " " . $row->ent_lastname .
-            '</td>' .
-            '<td>'
-            . $row->ent_tel .
-            '</td>' .
-            '<td class="res-hide" style="text-align: left;">' .
-            $row->ent_email .
-            '</td>';
-          if ($number_status == 1) {
-            // ต่อสตริง
-            $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                          <i class="material-icons">
-                            search
-                          </i>
-                        </button>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
-                          <i class="material-icons">
-                            done
-                          </i>
-                        </button>' .
 
-              '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\'' . $row->ent_id . '\',\'' . $row->ent_email . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname . '\')">
-                          <i class="material-icons">
-                            clear
-                          </i>
-                      </button>';
-          } else if ($number_status == 2) {
-            $output .= '<td style="text-align: center;">' .
-              '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' . $row->ent_id . '\')">
-                      <i class="material-icons">
-                        search
-                      </i>
-                    </button>' .
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
-                            <i class="material-icons"><span class="material-icons-outlined">
-                                  highlight_off
-                            </span></i>
-                        </button>';
-          } else if ($number_status == 3) {
-            $output .= '</td>' .
-              '<td style="text-align: center;">
-                  <button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(\'' . $row->ent_id . '\')">
-                      <i class="material-icons"><span class="material-icons-outlined">
-                              search
-                          </span></i>
-                  </button>';
-          } else if ($number_status == 4) {
-            $output .= '<td style="text-align: center;">
-                  <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->ent_id . '\',\'' . $row->ent_firstname . " " . $row->ent_lastname .  '\',\'' . $row->ent_email . '\')">
-                      <i class="material-icons"><span class="material-icons-outlined">
-                              cached
-                          </span></i>
-                  </button>';
-          }
-          '</td></tr>';
-          $i++;
-        }
-        // สร้าง pagination
-        $output .= '</tbody>
-            </table><br>
-          <div class="container-fluid" style="align: center;   position: relative;">
-          <ul class="pagination w-50">
-    ';
-        $output .= $this->config_pagination($page, $all_count, $limit);
-        $output .= '
-          </ul>
-        </div>';
-      } else {
-        $output .= '
-                <tr rowspan="6">
-                <td colspan = "5">
-                ไม่มีข้อมูลในตารางนี้
-              </td><tr>';
+      if ($data['arr_entrepreneur']) {
+        $data['paganition'] = $this->config_pagination($page, $all_count, $limit); // in dddcs_controller
       }
+      echo json_encode($data);
     } // else  search 
-    echo  $output; // to view
   }
 }

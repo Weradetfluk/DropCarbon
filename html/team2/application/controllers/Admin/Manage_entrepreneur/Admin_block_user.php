@@ -17,24 +17,6 @@ class Admin_block_user extends DCS_controller
     {
         parent::__construct();
     }
-
-
-    /*
-    * index
-    * call function in Dcs_controller
-    * @input -
-    * @output -
-    * @author Weradet Nopsombun 62160110
-    * @Create Date 2564-07-17
-    * @Update Date -
-    */
-
-    public function index()
-    {
-        $this->output_admin('admin/manage_entrepreneur/v_list_entrepreneur');
-    }
-
-
     /*
     * block_user_ajax
     * change status block to database

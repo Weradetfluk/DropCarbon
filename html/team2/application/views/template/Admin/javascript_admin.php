@@ -239,4 +239,113 @@
             $(this).next('#pro_sub_menu').slideToggle();
         });
     });
+
+
+      /*
+     * load_data
+     * load_data
+     * @input 
+     * @output  table data entrepreneur
+     * @author Weradet Nopsombun 62160110 
+     * @Create Date 2564-07-27
+     * @Update -
+     */
+    function load_data(status, page, query = '') {
+        console.log(query);
+        $.ajax({
+            url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax2/'); ?>' +
+            status,
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                page: page,
+                query: query
+            },
+            success: function(json_data) {
+                // $('#data_ent').html(data);
+
+                create_table_entrepreneur(status, json_data, json_data['paganition']);
+            }
+        });
+    }
+
+
+    /*
+    * create_table_entrepreneur
+    * get all data entrepreneur and show table
+    * @input number_status, query paganition
+    * @output -
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2565-03-10
+    * @Update Date -
+    */
+
+function create_table_entrepreneur(number_status, arr_data, paganition)
+  {
+//สร้างตารางข้อมูลของผู้ประกอบการ
+    console.log(arr_data + " " + number_status);
+    let output = '';
+    output += '<table class="table" style="text-align: center;" id="entre_tale">';
+    output += '<thead class="text-white custom-thead">';
+    output += '<tr class="custom-tr-header-table">';
+    output += '<th class="th-custom res-hide">ลำดับ</th>';
+    output += '<th class="th-custom ">ชื่อ-นามสกุล</th>';
+    output += '<th class="th-custom ">เบอร์โทร</th>';
+    output += '<th class="th-custom res-hide">อีเมล</th>';
+    output += '<th class="th-custom ">ดำเนินการ</th>';
+    output += '</tr>';
+    output += '</thead>';
+    output += '<tbody class="list">';
+
+      if (arr_data != null) {
+        arr_data['arr_entrepreneur'].forEach((row_ent, index_ent) => {
+        output += '<tr>';
+        output += '<td class="res-hide">' + (index_ent+1) + '</td>';
+        output += '<td style="text-align: left;">';
+        output += row_ent['ent_firstname']  + " " +   (row_ent['ent_lastname']);
+        output += '</td>';
+        output += '<td>';
+        output += (row_ent['ent_tel']);
+        output += '</td>';
+        output += '<td class="res-hide" style="text-align: left;">';
+        output += (row_ent['ent_email']);
+        output +=  '</td>';
+          if (number_status == 1) {
+            // ต่อสตริง
+            output += '<td style="text-align: center;">';
+            output += '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
+            output += '<i class="material-icons">search</i>';
+            output += '</button>';
+            output += '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " +  row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output += '<i class="material-icons">done</i></button>';
+            output += '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\''  + row_ent['ent_id'] + '\',\'' + row_ent['ent_email'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] + '\')">';
+            output += '<i class="material-icons">clear</i></button>';
+          } else if (number_status == 2) {
+  
+            output += '<td style="text-align: center;">';
+            output += '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
+            output += '<i class="material-icons">search</i></button>'; 
+            output += '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output += '<i class="material-icons"><span class="material-icons-outlined">highlight_off</span></i></button>';
+          } else if (number_status == 3) {
+     
+            output += '<td style="text-align: center;">';
+            output +=  '<button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(\'' + row_ent['ent_id'] + '\')">';
+            output +=  '<i class="material-icons"><span class="material-icons-outlined">search</span></i></button>';
+          } else if (number_status == 4) {
+            output += '<td style="text-align: center;">';
+            output += '<button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' + row_ent['ent_id'] + '\',\''+ row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output +=  '<i class="material-icons"><span class="material-icons-outlined">cached</span></i></button>';
+          }
+          output += '</td></tr>';
+        });   
+        output += '</table><br>';
+        output += '<div class="container-fluid" style="align: center;   position: relative;">';
+        output += '<ul class="pagination w-50" id="pagination">';
+        if(paganition){
+            output += paganition;
+            }
+    }
+    $('#data_ent').html(output);
+  }
 </script>

@@ -67,7 +67,7 @@
      <div class="card-body ">
 
          <div class="card-body">
-             <div class="table-responsive" id="data_entre_reject">
+             <div class="table-responsive" id="data_ent">
                  <!-- data entrepreneur reject -->
              </div>
          </div>
@@ -99,42 +99,16 @@
  </div>
  <script>
 $(document).ready(function() {
-    load_data(1);
-
-    /*
-     * load_data
-     * load_data
-     * @input 
-     * @output  table data entrepreneur
-     * @author Weradet Nopsombun 62160110 
-     * @Create Date 2564-07-27
-     * @Update -
-     */
-    function load_data(page, query = '') {
-        console.log(query);
-        $.ajax({
-            url: '<?php echo base_url('Admin/Manage_entrepreneur/Admin_approval_entrepreneur/show_data_ajax/'); ?>' +
-                3,
-            method: "POST",
-            data: {
-                page: page,
-                query: query
-            },
-            success: function(data) {
-                $('#data_entre_reject').html(data);
-            }
-        });
-    }
-
+    load_data(3, 1);
     $('#search_box').keyup(function() {
         var query = $('#search_box').val();
-        load_data(1, query);
+        load_data(3,1, query);
         // console.log(query);
     });
     $(document).on('click', '.page-link', function() {
         var page = $(this).data('page_number');
         var query = $('#search_box').val();
-        load_data(page, query);
+        load_data(3, page, query);
     });
 });
 /*
