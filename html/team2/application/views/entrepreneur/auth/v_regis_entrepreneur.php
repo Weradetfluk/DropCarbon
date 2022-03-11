@@ -172,6 +172,7 @@
         <form class="container py-3" method='POST' id="form_regis_ent" action="<?php echo base_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
+                <!--กรอกข้อมูลลงทะเบียน-->
                 <div class="row">
                     <div class="form-group col-md-2 mb-3"  style="margin-top: -10px;">
                         <label for="prefix" class="label">คำนำหน้า</label><br>
@@ -272,7 +273,8 @@
                 <div class="card-body d-flex flex-wrap justify-content-start" id="card_file"></div>
                 <div id="arr_del_img_new"></div>
                 <br><br>
-
+                
+                <!--สร้างบัญชีผู้ใช้-->
                 <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
 
                 <div class="row">
