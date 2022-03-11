@@ -13,14 +13,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <!--แสดงชื่อโปรโมชัน-->
                     <div class="card-header"
                         style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                         <center>
                             <h2 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">
                                 <?php echo $arr_promotion[0]->pro_name; ?></h2>
                         </center>
-                    </div>
-                    <br>
+                    </div><br>
+
+                    <!--แสดงรูปภาพของโปรโมชัน-->
                     <div class="card-body">
                         <div id="carousel_indicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators" style="bottom: 30px !important;">
@@ -62,7 +64,8 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-
+                        
+                        <!--รายละเอียดโปรโมชัน-->
                         <div class="container">
                             <h3 style="font-family: 'Prompt', sans-serif;"><img
                                     src="<?php echo base_url() . 'assets/templete/picture/description.png' ?>"
@@ -78,6 +81,7 @@
                         </div>
                         <div class="container">
                             <div class="row">
+                                
                                 <?php if($arr_promotion[0]->pro_cat_id == 2){?>
                                     <div class="col-5">
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/point.png' ?>"
@@ -89,6 +93,7 @@
                                     <div class="col-2"></div>                       
                                 <?php }?>  
                                 
+                                <!--แสดงประเภทโปรโมชัน-->
                                 <div class="col-5">
                                     <h3><img src="<?php echo base_url() . 'assets/templete/picture/category.png' ?>"
                                             width="40px"><?php if($arr_promotion[0]->pro_cat_id == 1){
@@ -102,7 +107,8 @@
                                 </div>
                             </div>
                         </div><br><br>
-
+                        
+                        <!--แสดงระยะเวลาของโปรโมชัน-->
                         <div class="container">
                             <h3><img src="<?php echo base_url() . 'assets/templete/picture/promotion_icon.png' ?>"
                                     width="40px"><?php if($arr_promotion[0]->pro_cat_id == 1){
@@ -143,6 +149,7 @@
                                 <?php echo full_date_convert($arr_promotion[0]->pro_end_date) ?></p>
                         </div><br><br>
                         <div class="container">
+                            <!--แสดงสถานที่ของโปรโมชัน-->
                             <h3><img src="<?php echo base_url() . 'assets/templete/picture/company_icon.png' ?>"
                                     width="40px"> <?php echo $arr_promotion[0]->com_name; ?></h3>
                             <hr width="100%" size="10" color="#cccccc">
