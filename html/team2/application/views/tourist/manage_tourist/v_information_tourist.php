@@ -323,6 +323,11 @@
             <div class="header-break">
                 รางวัลของฉัน
             </div>
+            <div>
+                <p align="right">
+            <a class="btn btn-primary" href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_history' ?>">ประวัติการใช้งานของรางวัล <span class="material-icons">arrow_right_alt</span></a>
+                </p>
+            </div>
             <!-- ถ้าไม่มีรางวัลของฉัน -->
             <?php if (empty($tou_pro[0]->tou_pro_id)) { ?>
                 <h4 align="center">ไม่มีข้อมูลรางวัลของคุณ</h4>

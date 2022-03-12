@@ -217,6 +217,31 @@ class Landing_page extends DCS_controller
     {
         $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
         $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
-        $this->output_tourist('landing_page/v_list_reward', $data);
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        }
+        $this->output_tourist('landing_page/v_list_reward', $data, $topbar);
+    }
+    /*
+    * show_reward_history
+    * show reward using history page 
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-03-10
+    */
+    public function show_reward_history()
+    {
+        $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
+        $data["tou_pro"] = $this->mpro->get_promotion_by_tou_status($this->session->userdata("tourist_id"))->result();
+       
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        } 
+        $this->output_tourist('landing_page/v_reward_history', $data, $topbar);
     }
 }
