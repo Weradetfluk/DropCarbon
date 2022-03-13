@@ -8,7 +8,7 @@
 * @Create Date 2564-12-24
 */ 
 -->
-
+<!-- ส่วนการทำงานหลัก -->
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -23,12 +23,13 @@
                     <div class="card-body">
                         <form action="<?php echo base_url() . 'Admin/Manage_promotions/Admin_edit_promotions/edit_promotion' ?>" id="form_edit_pro" method="POST" enctype="multipart/form-data">
                             <div class="row">
+                                <!-- ส่วนการแก้ไขชื่อ -->
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
                                     <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" value="<?php echo $arr_promotion[0]->pro_name ?>" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
-
+                                <!-- ส่วนการแก้ไขหมวดหมู่ -->
                                 <div class="col-lg-3">
                                     <label for="pro_cat_id">หมวดหมู่</label>
                                     <select name="pro_cat_id" id="pro_cat_id" class="form-control" onchange="check_category()" required>
@@ -50,7 +51,7 @@
                                     </select>
                                 </div>
                             </div><br>
-
+                            <!-- ส่วนการแก้ไขสถานที่ -->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
@@ -72,19 +73,20 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <!-- ส่วนการแก้ไขคะแนนโปรโมชัน -->
                                 <div class="col-lg-4" id="div-point">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
                                     <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน" value="<?php echo $arr_promotion[0]->pro_point ?>" required>
                                 </div>
                             </div><br>
-
+                            <!-- ส่วนการแก้ไขรายละเอียดโปรโมชัน -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="pro_description">รายละเอียดโปรโมชัน</label>
                                     <textarea id="pro_description" name="pro_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของโปรโมชัน" required><?php echo $arr_promotion[0]->pro_description ?></textarea>
                                 </div>
                             </div><br>
-
+                            <!-- ส่วนการแก้ไขวันที่เริ่มและสิ้นสุดโปรโมชัน -->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="pro_start_date">วันที่เริ่มโปรโมชัน</label>
@@ -96,8 +98,7 @@
                                     <input type="date" id="pro_end_date" name="pro_end_date" class="form-control" min="<?php echo $date_now ?>" value="<?php echo $arr_promotion[0]->pro_end_date ?>" required>
                                 </div>
                             </div><br>
-
-                            <!-- เลือกรูปภาพโปรโมชัน -->
+                            <!-- ส่วนการแก้ไขรูปภาพโปรโมชัน -->
                             <div class="form-group">
                                 <label for="pro_file">รูปภาพประกอบโปรโมชัน <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ
                                         และขนาดรูปไม่เกิน 3000 KB)</span></label>
@@ -118,23 +119,23 @@
                             </div>
                             <div id="arr_del_img_new"></div>
                             <div id="arr_del_img_old"></div><br>
-                            <!-- ส้นสุดเลือกรูปภาพโปรโมชัน -->
-
+                            <!-- แสดงชื่อผู้แก้ไขกิจกรรม -->
                             <div class="row">
                                 <div class="col-lg-2">
                                     <label>ผู้แก้ไขกิจกรรม</label>
                                     <input type="text" id="admin_id" class="form-control" value="<?php echo $arr_admin ?>" disabled>
                                 </div>
                             </div>
-
+                            <!-- ไอดีโปรโมชัน -->
                             <input type="hidden" name="pro_id" id="pro_id" value="<?php echo $arr_promotion[0]->pro_id; ?>">
-                            <!-- Submit button -->
                             <div style="text-align: right;">
+                                <!-- ปุ่มบันทึก -->
                                 <button type="button" id="btn_sub" class="btn btn-success" onclick="confirm_edit('<?php echo $arr_promotion[0]->pro_name ?>')">บันทึก</button>
+                                <!-- ปุ่มยกเลิก -->
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 
-                            <!-- modal edit -->
+                            <!--  หน้าต่างแสดงผลซ้อนยืนยันการเแก้ไขโปรโมชัน  -->
                             <div class="modal fade" tabindex="-1" role="dialog" id="modal_edit">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -147,7 +148,9 @@
                                             </p>
                                         </div>
                                         <div class="modal-footer">
+                                            <!-- ปุ่มยืนยันการแก้ไข -->
                                             <a href="#" id="submit" class="btn btn-success success">ยืนยัน</a>
+                                            <!-- ปุ่มยกเลิกการแก้ไข -->
                                             <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                                         </div>
                                     </div>
