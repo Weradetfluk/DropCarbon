@@ -32,13 +32,13 @@ class Admin_add_event extends DCS_controller
         $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Province/M_dcs_province', 'mprv');
-        $data['arr_admin'] = $this->session->userdata("admin_name");
+        $data['arr_admin'] = $this->session->userdata("admin_name"); //เช็คชื่อของผู้ดูแลระบบ
         $data['arr_category'] = $this->mcat->get_all()->result();
         $data['arr_company'] = $this->mcom->get_by_com_approve()->result();
         $data['arr_province'] = $this->mprv->get_all()->result();
-        date_default_timezone_set('Asia/Bangkok');
+        date_default_timezone_set('Asia/Bangkok'); //กำหนดไทม์โซน
         $data['date_now'] = date("Y-m-d");
-        $view = 'admin/manage_event/manage_add_event_admin/v_add_event_admin';
+        $view = 'admin/manage_event/manage_add_event_admin/v_add_event_admin'; //path แสดงหน้าจอเพิ่มกิจกรรมของผู้ดูแลระบบ
         $this->output_admin($view, $data, null);
     }
 
@@ -70,7 +70,7 @@ class Admin_add_event extends DCS_controller
         $this->meve->eve_par_id = $this->input->post('par_id');
         $this->meve->eve_adm_id = $this->session->userdata("admin_id");
 
-        $this->meve->insert_event_by_admin();
+        $this->meve->insert_event_by_admin(); 
         $this->set_session_add_event('success');
         $result = $this->meve->get_by_name_by_admin()->row();
 

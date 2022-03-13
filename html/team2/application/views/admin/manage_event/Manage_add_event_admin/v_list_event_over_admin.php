@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="col">
+            <!-- ปุ่มไปหน้าเพิ่มกิจกรรมการท่องเที่ยวของผู้ดูแลระบบ -->
             <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;"
                 onclick="location.href='<?php echo base_url() . 'Admin/Manage_event/Admin_add_event/show_add_event_admin' ?>'">เพิ่มกิจกรรม</button>
         </div>
@@ -30,12 +31,14 @@
                         <div class="nav-tabs-wrapper">
                             <ul class="nav nav-tabs" data-tabs="tabs">
                                 <li class="nav-item">
+                                    <!-- Taps กิจกรรมที่ยังไม่สิ้นสุด -->
                                     <a class="nav-link"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>">
                                         <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <!-- Taps กิจกรรมที่สิ้นสุดแล้ว -->
                                     <a class="nav-link active"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_over'; ?>">
                                         <h5 class="h5-card-header">สิ้นสุด</h5>
@@ -45,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- ส่วนค้นหาข้อมูล -->
                 <div class="col-sm-4">
                     <form class="form-inline custom-form-search "
                         action="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>"
@@ -76,7 +79,9 @@
                     <p>คุณต้องการที่จะลบ <span id="eve_name_confirm"></span> ?</p>
                 </div>
                 <div class="modal-footer">
+                    <!-- ปุ่มยืนยันการลบข้อมูล -->
                     <button type="button" class="btn btn-danger" id="delete_btn" data-dismiss="modal">ยืนยัน</button>
+                    <!-- ปุ่มยกเลิกการลบข้อมูล -->
                     <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
                         data-dismiss="modal">ยกเลิก</button>
                 </div>
@@ -94,6 +99,7 @@
                 </div>
                 <div class="modal-body">
                     <p>กิจกรรม : <span id="name_qr"></span></p>
+                    <!-- ส่วนแสดง qr code -->
                     <center>
                         <div id="qr_code" style="width:100%; height:100%;"></div>
                     </center>
@@ -142,7 +148,7 @@
         });
     }
 
-
+    // ตารางแสดงกิจกรรม
     function create_table(data, pagation) {
         console.log(data);
         let html_code = '';
@@ -250,6 +256,7 @@
             data: {
                 eve_id: eve_id_con
             },
+            // ลบข้อมูลโดยเรียกใช้ delete_event_by_admin จาก controller Admin_edit_event
             url: '<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/delete_event_by_admin' ?>',
             success: function() {
                 swal({

@@ -15,12 +15,14 @@
                 <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
                     <div class="card-header"
                         style="background-color: #8fbacb; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                        <!-- ปุ่มไปหน้าเพิ่มกิจกรรมการท่องเที่ยวของผู้ดูแลระบบ -->
                         <center>
                             <h4 class="card-title text-white" style="font-family: 'Prompt', sans-serif !important;">
                                 เพิ่มกิจกรรมการท่องเที่ยว</h4>
                         </center>
                     </div>
 
+                    <!-- เพิ่มชื่อของกิจกรรม ใช้ Funtion check_name_event_ajax เพื่อเช็คชื่อซ้ำในฐานข้อมูล -->
                     <div class="card-body">
                         <form action="<?php echo base_url() . 'Admin/Manage_event/Admin_add_event/add_event_admin/' ?>"
                             id="form_edit_eve" method="POST" enctype="multipart/form-data">
@@ -32,6 +34,7 @@
                                     <span class="text-danger" id="error_eve_name"></span>
                                 </div>
 
+                                <!-- เลือกหมวดหมู่ -->
                                 <div class="col-lg-3">
                                     <label for="eve_cat_id">หมวดหมู่</label>
                                     <select name="eve_cat_id" class="form-control" id="eve_cat_id" required>
@@ -48,7 +51,7 @@
                                 </div>
                             </div><br>
 
-
+                            <!-- เลือกสถานที่ -->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
@@ -65,6 +68,8 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+
+                                <!-- ใส่คะแนนกิจกรรม -->
                                 <div class="col-lg-3">
                                     <label for="eve_point">คะแนนกิจกรรม</label>
                                     <!-- คะแนนที่เพิ่มเข้ามาจะถูกนำไปเช็คที่ฟังก์ชัน add_point -->
@@ -74,8 +79,8 @@
 
                                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
                                 </div>
+                                <!-- ส่วนช่วยเหลือเรื่องคะแนนกิจกรรม -->
                                 <div class="col-lg-3">
-
                                     <span id="help_information" class="material-icons"
                                         style="margin-top: 40px; cursor: pointer">
                                         help
@@ -83,16 +88,17 @@
                                 </div>
                             </div><br>
 
+                            <!-- ส่วนใส่รายละเอียดกิจกรรม -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="eve_description">รายละเอียดกิจกรรม</label>
                                     <textarea id="eve_description" name="eve_description" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกรายละเอียดของกิจกรรม" required></textarea>
-
                                 </div>
                             </div><br>
-
+                            
+                            <!-- ใส่ที่อยู่ของกิจกรรม -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="eve_location">รายละเอียดที่อยู่ของกิจกรรม</label>
@@ -100,17 +106,14 @@
                             </div>
                             <!-- เลือกรายละเอียดที่อยู่ -->
                             <div class="row">
-                                <!-- <div class="col-lg-4">
-                                    <label for="com_tel">เบอร์โทรศัพท์ติดต่อสถานที่</label>
-                                    <input type="text" id="com_tel" name="com_tel" class="form-control" placeholder="000-000-0000" maxlength="12" required>
-                                </div> -->
-                                <!-- <div class="col-lg-1"></div> -->
                                 <div class="col-lg-6">
                                     <label for="com_tel">ที่อยู่</label>
                                     <input type="text" id="eve_location" name="eve_location" class="form-control"
                                         placeholder="ใส่บ้านเลขที่ หมู่บ้าน" required>
                                 </div>
                             </div><br>
+
+                            <!-- เลือกจังหวัด อำเภอ และตำบล -->
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label for="prv_id">จังหวัด</label>
@@ -203,6 +206,8 @@
                                     </tr>
                                 </table>
                             </div><br>
+
+                            <!-- แสดงชื่อของแอดมินที่เพิ่มกิจกรรมเข้ามา -->
                             <div class="row">
                                 <div class="col">
                                     <label>ผู้เพิ่มกิจกรรม</label>
@@ -222,6 +227,8 @@
         </div>
     </div>
 </div>
+
+<!-- Modal แสดงข้อมูลเพิ่มเติม ซึ่งเป็นข้อมูลคะแนนกิจกรรมของแต่ละประเภท -->
 <div class="modal fade" role="dialog" id="score_information_modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -244,9 +251,13 @@
  * @author Suwapat Saowarod 62160340
  */
 $(document).ready(function() {
+    // เรียกใช้ฟังชัน check_count_image_btn ตรวจสอบจำนวนของรูป
     check_count_image_btn();
+    // เรียกใช้ set_lat_lon ฟังก์ชันกำหนด lat lon
     set_lat_lon();
+    // เรียกใช้ change_min_end_date เปลี่ยนวันหมดอายุ
     change_min_end_date();
+    // เรียกใช้ check_dis_by_province ตรวจสอบอำเภอด้วยจังหวัด
     check_dis_by_province();
     /*
      * -
@@ -264,8 +275,8 @@ $(document).ready(function() {
     });
 
     $("#btn_sub").click(function(event) {
+        // เพิ่มคะแนน
         add_point(event);
-
     });
 });
 // openstreet map
@@ -556,6 +567,7 @@ function unlink_image_go_back() {
 function check_name_event_ajax() {
     var eve_name = $('#eve_name').val();
     $.ajax({
+        // เช็คชื่อกิจกรรมที่ controller ไฟล์ Admin_add_event ที่ฟังก์ชัน check_name_event_ajax
         url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/check_name_event_ajax" ?>",
         method: "POST",
         dataType: "JSON",
@@ -612,15 +624,18 @@ function check_dis_by_province() {
     let prv_id = $('#prv_id').val();
     console.log($('#prv_id').val());
     $.ajax({
+        // เช็คอำเภอโดยใช้จังหวัดที่ controller ไฟล์ Admin_add_event ที่ฟังก์ชัน get_district_by_prv_id_ajax
         url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_district_by_prv_id_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: {
             prv_id: prv_id
         },
+        // เมื่อสำเร็จจะแสดงชื่ออำเภอ
         success: function(arr_district) {
             let html_code = "";
             html_code += '<label for="dis_id">อำเภอ</label>';
+            // นำชื่ออำเภอไปเช็คที่ฟังก์ชัน check_par_by_district เพื่อหาตำบลที่อยู่ในอำเภอนั้นๆ
             html_code +=
                 '<select name="dis_id" id="dis_id" class="form-control" onblur="check_par_by_district()">'
             for (let i = 0; i < arr_district.length; i++) {
@@ -647,6 +662,7 @@ function check_par_by_district() {
     let dis_id = $('#dis_id').val();
     console.log('hello');
     $.ajax({
+        // เช็คตำบลโดยใช้อำเภอที่ controller ไฟล์ Admin_add_event ที่ฟังก์ชัน get_parish_by_dis_id_ajax
         url: "<?php echo site_url() . "Admin/Manage_event/Admin_add_event/get_parish_by_dis_id_ajax" ?>",
         method: "POST",
         dataType: "JSON",
@@ -657,6 +673,7 @@ function check_par_by_district() {
             console.log('arr_parish');
             console.log(arr_parish);
             let html_code = "";
+            // แสดงตำบล
             html_code += '<label for="par_id">ตำบล</label>';
             html_code += '<select name="par_id" id="par_id" class="form-control">'
             for (let i = 0; i < arr_parish.length; i++) {

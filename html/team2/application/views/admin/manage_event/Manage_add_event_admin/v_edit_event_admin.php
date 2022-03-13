@@ -22,16 +22,19 @@
                     <div class="card-body">
                         <form action="<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/edit_event_by_admin/' ?>" id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="eve_com_id" value="<?php echo $arr_event[0]->com_id; ?>">
+                            <!-- ดึงข้อมูลชื่อกิจกรรมจากดาต้าเบส -->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="eve_name">ชื่อกิจกรรม</label>
                                     <input type="text" id="eve_name" name="eve_name" class="form-control" style="width: 300px" placeholder="ใส่ชื่อกิจกรรม" value="<?php echo $arr_event[0]->eve_name; ?>" onkeyup="check_name_event_ajax()" required>
                                     <span class="text-danger" id="error_eve_name"></span>
                                 </div>
+                                <!-- ข้อมูลหมวดหมู่ -->
                                 <div class="col-lg-3">
                                     <label for="eve_cat_id">หมวดหมู่</label>
                                     <select name="eve_cat_id" class="form-control">
                                         <?php for ($i = 0; $i < count($arr_category); $i++) { ?>
+                                            <!-- เงื่อนไขที่แสดงข้อมูลหมวดหมู่เดิมของกิจกรรม -->
                                             <?php if ($arr_category[$i]->eve_cat_id == $arr_event[0]->eve_cat_id) { ?>
                                                 <option value="<?php echo $arr_category[$i]->eve_cat_id ?>" selected="selected">
                                                     <?php echo $arr_category[$i]->eve_cat_name ?></option>
@@ -66,12 +69,10 @@
                                 <div class="col-lg-3">
                                     <label for="eve_point">คะแนนกิจกรรม</label>
                                     <input type="number" id="eve_point" name="eve_point" class="form-control" onblur="add_point()" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกคะแนนกิจกรรม" required value="<?php echo $arr_event[0]->eve_point; ?>">
-
                                     <p id="err_message_point" style="color: red;font-size: 16px"></p>
                                     <!-- <p id="help_information" class="text-success" style="cursor: pointer;"><u>ช่วยเหลือ</u></p> -->
                                 </div>
                                 <div class="col-lg-3">
-
                                     <span id="help_information" class="material-icons" style="margin-top: 40px; cursor: pointer">
                                         help
                                     </span>
@@ -228,6 +229,7 @@
         </div>
     </div>
 </div>
+<!-- Modal แสดงข้อมูลช่วยเหลือการกำหนดคะแนนกิจกรรม -->
 <div class="modal fade" role="dialog" id="score_information_modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -247,24 +249,28 @@
 </div>
 <script>
     $(document).ready(function() {
+        // รับค่าของ eve_lat และ eve_lon
         init($('#eve_lat').val(), $('#eve_lon').val());
+        // นับจำนวนรูปภาพ
         check_count_image_btn();
+        // เช็คอำเภอโดยใช้ไอดีของจังหวัด
         check_dis_by_province(<?= $arr_event[0]->dis_id ?>);
         // console.log(count_image);
-         /*
-     * -
-     * ตารางช่วยเหลือการกำหนดคะแนนกิจกรรมตามประเภทของกิจกรรม
-     * @input dis_id
-     * @output -
-     * @author Nantasiri Saiwaew 62160093
-     * @Create Date 2564-12-20
-     * @Update -
-     */
-    //show innformation
-    $("#help_information").click(function() {
-        $("#score_information_modal").modal()
-        get_score_show_information()
-    });
+        /*
+         * -
+         * ตารางช่วยเหลือการกำหนดคะแนนกิจกรรมตามประเภทของกิจกรรม
+         * @input dis_id
+         * @output -
+         * @author Nantasiri Saiwaew 62160093
+         * @Create Date 2564-12-20
+         * @Update -
+         */
+        //show innformation
+        $("#help_information").click(function() {
+            $("#score_information_modal").modal()
+            // เรียกฟังก์ชัน get_score_show_information 
+            get_score_show_information()
+        });
     });
     var map, vectorLayer, selectedFeature;
     var lat = <?= $arr_event[0]->eve_lat ?>;
@@ -401,6 +407,7 @@
         }
         // console.log(form_data);
         $.ajax({
+            // เรียก path ที่ controller Admin_add_event
             url: "<?php echo base_url() . "Admin/Manage_event/Admin_add_event/upload_image_ajax" ?>",
             method: "POST",
             dataType: "JSON",
@@ -690,6 +697,7 @@
         console.log('pass');
         console.log(point);
         if (check_point(point, eve_cat_id) == true) {
+            event.preventDefault();
             $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
         }
     }
@@ -721,39 +729,39 @@
     }
 
     function get_score_show_information() {
-    let arr_min_point = [1, 20, 30, 40];
-    let arr_max_point = [19, 29, 39, 49];
-    $.ajax({
-        url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
-        method: "POST",
-        dataType: "JSON",
-        success: function(json_data) {
-            html_code = '';
-            html_code += '<table class="table">';
-            html_code += '<thead class="text-white" style="text-align: center;">';
-            html_code += '<tr>';
-            html_code += '<th><p>ชื่อประเภท</p></th>';
-            html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
-            html_code += '<th><p>ช่วงคะแนน</p></th>';
-            html_code += '</tr>';
-            html_code += ' </thead>';
-            html_code += ' <tbody>';
-            json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+        let arr_min_point = [1, 20, 30, 40];
+        let arr_max_point = [19, 29, 39, 49];
+        $.ajax({
+            url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
+            method: "POST",
+            dataType: "JSON",
+            success: function(json_data) {
+                html_code = '';
+                html_code += '<table class="table">';
+                html_code += '<thead class="text-white" style="text-align: center;">';
                 html_code += '<tr>';
-                html_code += '<td>' + '<p>' + json_data['data_eve_cat'][
-                    index_eve_cat
-                ]['eve_cat_name'] + '</p>' + '</td>';
-                html_code += '<td class="text-center">' + '<p>' + json_data[
-                        'data_eve_cat'][index_eve_cat]['eve_drop_carbon'] +
-                    'kg' + '</p>' + '</td>';
-                html_code += '<td class="text-center">' + '<p>' +
-                    arr_min_point[index_eve_cat] + '-' + arr_max_point[
-                        index_eve_cat] + '</p>' + '</td>';
+                html_code += '<th><p>ชื่อประเภท</p></th>';
+                html_code += '<th><p>ลดคาร์บอน (ต่อปี)</p></th>';
+                html_code += '<th><p>ช่วงคะแนน</p></th>';
                 html_code += '</tr>';
-            });
-            $('#infor_eve_cat_modal').html(html_code);
-        }
-    });
+                html_code += ' </thead>';
+                html_code += ' <tbody>';
+                json_data['data_eve_cat'].forEach((row_evecat, index_eve_cat) => {
+                    html_code += '<tr>';
+                    html_code += '<td>' + '<p>' + json_data['data_eve_cat'][
+                        index_eve_cat
+                    ]['eve_cat_name'] + '</p>' + '</td>';
+                    html_code += '<td class="text-center">' + '<p>' + json_data[
+                            'data_eve_cat'][index_eve_cat]['eve_drop_carbon'] +
+                        'kg' + '</p>' + '</td>';
+                    html_code += '<td class="text-center">' + '<p>' +
+                        arr_min_point[index_eve_cat] + '-' + arr_max_point[
+                            index_eve_cat] + '</p>' + '</td>';
+                    html_code += '</tr>';
+                });
+                $('#infor_eve_cat_modal').html(html_code);
+            }
+        });
 
-}
+    }
 </script>

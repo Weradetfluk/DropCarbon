@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="col">
+            <!-- ปุ่มไปหน้าเพิ่มกิจกรรมการท่องเที่ยวของผู้ดูแลระบบ -->
             <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;"
                 onclick="location.href='<?php echo base_url() . 'Admin/Manage_event/Admin_add_event/show_add_event_admin' ?>'">เพิ่มกิจกรรม</button>
         </div>
@@ -30,12 +31,14 @@
                         <div class="nav-tabs-wrapper">
                             <ul class="nav nav-tabs" data-tabs="tabs">
                                 <li class="nav-item">
+                                    <!-- Taps กิจกรรมที่ยังไม่สิ้นสุด -->
                                     <a class="nav-link active"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>">
                                         <h5 class="h5-card-header">ยังไม่สิ้นสุด</h5>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <!-- Taps กิจกรรมที่สิ้นสุดแล้ว-->
                                     <a class="nav-link"
                                         href="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_over'; ?>">
                                         <h5 class="h5-card-header">สิ้นสุด</h5>
@@ -45,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- ส่วนการค้นหาข้อมูล -->
                 <div class="col-sm-4">
                     <form class="form-inline custom-form-search "
                         action="<?php echo base_url() . 'Admin/Manage_event/Admin_list_event/show_data_event_list'; ?>"
@@ -76,7 +79,9 @@
                     <p>คุณต้องการที่จะลบ <span id="eve_name_confirm"></span> ?</p>
                 </div>
                 <div class="modal-footer">
+                    <!-- ปุ่มยืนยันการลบข้อมูล -->
                     <button type="button" class="btn btn-danger" id="delete_btn" data-dismiss="modal">ยืนยัน</button>
+                    <!-- ปุ่มยกเลิกการลบข้อมูล -->
                     <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;"
                         data-dismiss="modal">ยกเลิก</button>
                 </div>
@@ -120,11 +125,13 @@
         });
         var error = '<?php echo $this->session->userdata("error_add_event_admin"); ?>';
         if (error == 'success') {
+            // แจ้งเตือนเพิ่มกิจกรรมสำเร็จ
             swal("เพิ่มกิจกรรมสำเร็จ", "เพิ่มกิจกรรมสำเร็จแล้ว", "success");
             <?php echo $this->session->unset_userdata("error_add_event_admin"); ?>;
         }
         var error = '<?php echo $this->session->userdata("error_edit_event_admin"); ?>';
         if (error == 'success') {
+            // แจ้งเตือนแก้ไขกิจกรรมสำเร็จ
             swal("แก้ไขกิจกรรมสำเร็จ", "กรุณารอการอนุมัติจากผู้ดูเเลระบบภายใน 1 วัน", "success");
             <?php echo $this->session->unset_userdata("error_edit_event_admin"); ?>;
         }
@@ -133,6 +140,7 @@
     function load_data(page, query = '') {
         console.log(query);
         $.ajax({
+            // เรียกข้อมูลจาก show_data_ajax
             url: '<?php echo base_url('Admin/Manage_event/Admin_list_event/show_data_ajax/'); ?>' + 2,
             method: "POST",
             data: {
@@ -144,12 +152,13 @@
             }
         });
     }
-
+    
     var qrcode = new QRCode(document.getElementById("qr_code"), {
         width: 250,
         height: 250
     });
 
+    // สร้าง qr code
     function make_qr_code(eve_id, eve_name, eve_start, eve_end) {
         let url = "https://www.informatics.buu.ac.th/team2/Tourist/Checkin_event/Checkin_event/check_login_before_check_in/";
         qrcode.makeCode( url + eve_id);
@@ -195,6 +204,7 @@
             data: {
                 eve_id: eve_id_con
             },
+            // ลบข้อมูลโดยเรียกใช้ delete_event_by_admin จาก controller Admin_edit_event
             url: '<?php echo base_url() . 'Admin/Manage_event/Admin_edit_event/delete_event_by_admin' ?>',
             success: function() {
                 swal({
