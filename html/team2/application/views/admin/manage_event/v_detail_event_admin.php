@@ -205,7 +205,7 @@ ul.breadcrumb li a:hover {
                                     value="<?php echo $arr_event[0]->eve_id; ?>">
                                 <div style="text-align: right;">
                                     <button type="button" class="btn btn-success" id="accept"
-                                        onclick='confirm_approve("<?php echo $arr_event[0]->eve_id ?>" ,"<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>",  "<?php echo $arr_event[0]->eve_cat_id ?>", "<?php echo $arr_event[0]->eve_cat_name ?>" )'
+                                        onclick='confirm_approve("<?php echo $arr_event[0]->eve_id ?>" ,"<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>",  "<?php echo $arr_event[0]->eve_cat_id ?>", "<?php echo $arr_event[0]->eve_cat_name ?>",  "<?php echo $arr_event[0]->eve_min_score ?>", "<?php echo $arr_event[0]->eve_max_score ?>" )'
                                         data-dismiss="modal">อนุมัติ</button>
                                     <button type="button" class="btn btn-danger" id="reject"
                                         onclick='confirm_reject("<?php echo $arr_event[0]->eve_id ?>", "<?php echo $arr_event[0]->eve_name ?>", "<?php echo $arr_event[0]->ent_email  ?>")'
@@ -233,6 +233,7 @@ ul.breadcrumb li a:hover {
             <div class="modal-body">
                 <p>เพิ่มคะแนนให้กับ <span id="eve_point_name_confirm"></span> ?</p>
                 <p style="font-size: 16px;">กิจกรรมนี้อยู่ในประเภท : <span id="eve_cat_name"></span></p>
+                <p style="font-size: 16px;">แต้มที่ใช้ : <span id="eve_score"></span></p>
                 <input type="number" id="eve_point" name="eve_point" placeholder="กรุณาระบุคะแนน">
                 <input type="hidden" id="eve_id_form" name="eve_id">
                 <input type="hidden" id="eve_cat_id" name="eve_cat_id">
@@ -318,33 +319,33 @@ map.setCenter(position, zoom);
  * @Create Date 2564-07-17
  * @Update 2564-09-18
  */
-function confirm_approve(eve_id, eve_name, ent_email, eve_cat_id, eve_cat_name) {
-    let form = document.querySelector('#aprove_modal');
-    console.log(eve_cat_name);
-    $('#eve_name_confirm').text(eve_name);
-    $('#aprove_modal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-    $('#eve_point_name_confirm').text(eve_name);
-    $('#eve_cat_name').text(eve_cat_name);
-    $('#eve_id_form').val(eve_id);
-    $('#eve_cat_id').val(eve_cat_id);
-    $('#eve_cat_name').val(eve_cat_name);
-    $('#approves').click(function() {
-        let point = document.getElementById('eve_point').value;
-        console.log(check_point(point, eve_cat_id));
-        if (check_point(point, eve_cat_id) == true) {
-            $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
-            console.log("xxx");
-        } else {
-            let eve_point = $('#eve_point').val();
-            console.log(eve_point)
-            $('#aprove_modal').modal('toggle');
-            approve_event(eve_id, eve_name, ent_email, eve_point) //function 
-        }
-    });
-}
+function confirm_approve(eve_id, eve_name, ent_email, eve_cat_id, eve_cat_name, min, max) {
+         let form = document.querySelector('#aprove_modal');
+         console.log(eve_cat_name);
+         $('#eve_name_confirm').text(eve_name);
+         $('#aprove_modal').modal({
+             backdrop: 'static',
+             keyboard: false
+         });
+         $('#eve_point_name_confirm').text(eve_name);
+         $('#eve_score').text(min + '-' + max);
+         $('#eve_cat_name').text(eve_cat_name);
+         $('#eve_id_form').val(eve_id);
+         $('#eve_cat_id').val(eve_cat_id);
+         $('#eve_cat_name').val(eve_cat_name);
+         $('#approves').click(function() {
+             let point = document.getElementById('eve_point').value;
+             console.log(check_point(point, min, max));
+             if (check_point(point, min, max) == true) {
+                 $('#err_message_point').html('กรุณาระบุคะแนนใหม่');
+             } else {
+                 let eve_point = $('#eve_point').val();
+                 console.log(eve_point)
+                 $('#aprove_modal').modal('toggle');
+                 approve_event(eve_id, eve_name, ent_email, eve_point) //function 
+             }
+         });
+     }
 /*
  * check_point
  * check point inevent
@@ -355,16 +356,16 @@ function confirm_approve(eve_id, eve_name, ent_email, eve_cat_id, eve_cat_name) 
  * @Update -
  */
 
-function check_point(point, eve_cat_id) {
-    let arr_min_point = [1, 20, 30, 40];
-    let arr_max_point = [19, 29, 39, 49];
+function check_point(point, min, max) {
+    // let arr_min_point = [1, 20, 30, 40];
+    // let arr_max_point = [19, 29, 39, 49];
 
-    console.log(eve_cat_id);
-    console.log(arr_min_point[eve_cat_id - 1]);
-    console.log(arr_max_point[eve_cat_id - 1]);
+    console.log(min + max);
+    // console.log(arr_min_point[eve_cat_id - 1]);
+    // console.log(arr_max_point[eve_cat_id - 1]);
     if (point < 1) {
         return true;
-    } else if (point < arr_min_point[eve_cat_id - 1] || point > arr_max_point[eve_cat_id - 1]) {
+    } else if (point < min || point > max) {
         return true;
     } else {
         return false;

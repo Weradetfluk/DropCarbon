@@ -35,8 +35,8 @@
     $(document).ready(function() {
         //show innformation
         $("#help_information").click(function() {
-            let arr_min_point = [1, 20, 30, 40];
-            let arr_max_point = [19, 29, 39, 49];
+            // let arr_min_point = [1, 20, 30, 40];
+            // let arr_max_point = [19, 29, 39, 49];
             if ($('#infor_eve_cat').is(":hidden")) {
                 $.ajax({
                     url: '<?php echo base_url('Admin/Manage_event/Admin_approval_event/get_data_category'); ?>',
@@ -62,8 +62,9 @@
                                     'data_eve_cat'][index_eve_cat]['eve_drop_carbon'] +
                                 'kg' + '</p>' + '</td>';
                             html_code += '<td class="text-center">' + '<p>' +
-                                arr_min_point[index_eve_cat] + '-' + arr_max_point[
-                                    index_eve_cat] + '</p>' + '</td>';
+                            json_data[
+                                    'data_eve_cat'][index_eve_cat]['eve_min_score'] + '-' +  json_data[
+                                    'data_eve_cat'][index_eve_cat]['eve_max_score'] + '</p>' + '</td>';
                             html_code += '</tr>';
                         });
                         $('#infor_eve_cat').html(html_code);
@@ -297,7 +298,7 @@ function create_table_entrepreneur(number_status, arr_data, paganition)
     output += '</thead>';
     output += '<tbody class="list">';
 
-      if (arr_data != null) {
+      if (arr_data['arr_entrepreneur'] != null ) {
         arr_data['arr_entrepreneur'].forEach((row_ent, index_ent) => {
         output += '<tr>';
         output += '<td class="res-hide">' + (index_ent+1) + '</td>';
@@ -345,6 +346,14 @@ function create_table_entrepreneur(number_status, arr_data, paganition)
         if(paganition){
             output += paganition;
             }
+    }else{
+        console.log("Test");
+        output += '<tr>';
+        output += '<td>';
+        output += 'ไม่มีข้อมมูล';
+        output += '</td>';
+        output += '</tr>';
+        output += '</table><br>';
     }
     $('#data_ent').html(output);
   }

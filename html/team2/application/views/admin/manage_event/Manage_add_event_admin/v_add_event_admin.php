@@ -77,7 +77,8 @@
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกคะแนนกิจกรรม" required>
 
-                                    <p id="err_message_point" style="color: red;font-size: 16px"></p>
+                                        <p id="score_event" style="color: red;font-size: 16px">100</p>
+                                        <p id="err_message_point" style="color: red;font-size: 16px"></p>
                                 </div>
                                 <!-- ส่วนช่วยเหลือเรื่องคะแนนกิจกรรม -->
                                 <div class="col-lg-3">
@@ -250,6 +251,8 @@
 /*
  * @author Suwapat Saowarod 62160340
  */
+var min_score_event = 0;
+var max_score_event = 0;
 $(document).ready(function() {
     // เรียกใช้ฟังชัน check_count_image_btn ตรวจสอบจำนวนของรูป
     check_count_image_btn();
@@ -299,8 +302,8 @@ OpenLayers.Layer.OSM.HikeMap = OpenLayers.Class(OpenLayers.Layer.OSM, {
 
 
 function get_score_show_information() {
-    let arr_min_point = [1, 20, 30, 40];
-    let arr_max_point = [19, 29, 39, 49];
+    // let arr_min_point = [1, 20, 30, 40];
+    // let arr_max_point = [19, 29, 39, 49];
     $.ajax({
         url: '<?php echo base_url('Admin/Manage_event/Admin_add_event/get_data_category'); ?>',
         method: "POST",
