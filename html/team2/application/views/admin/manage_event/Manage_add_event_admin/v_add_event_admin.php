@@ -76,8 +76,6 @@
                                     <input type="number" id="eve_point" name="eve_point" class="form-control"
                                         style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;"
                                         rows="5" placeholder="กรอกคะแนนกิจกรรม" required>
-
-                                        <p id="score_event" style="color: red;font-size: 16px">100</p>
                                         <p id="err_message_point" style="color: red;font-size: 16px"></p>
                                 </div>
                                 <!-- ส่วนช่วยเหลือเรื่องคะแนนกิจกรรม -->
