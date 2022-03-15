@@ -514,12 +514,18 @@ class M_dcs_event extends Da_dcs_event
     public function get_event_mobile()
     {
 
-        $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_eve_image.eve_img_path, dcs_event.eve_description, dcs_event.eve_lat, dcs_event.eve_lon, dcs_eve_category.eve_cat_name
+        $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_eve_image.eve_img_path, dcs_event.eve_description, dcs_event.eve_lat, dcs_event.eve_lon, dcs_eve_category.eve_cat_name, dcs_eve_category.eve_drop_carbon, par.par_name_th, dis.dis_name_th, prv.prv_name_th
         from dcs_event
         LEFT JOIN dcs_eve_image
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
         LEFT JOIN dcs_eve_category 
         ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
+        LEFT JOIN dcs_parish AS par
+        ON dcs_event.eve_par_id = par.par_id
+        LEFT JOIN dcs_district AS dis
+        ON par.par_dis_id = dis.dis_id
+        LEFT JOIN dcs_province AS prv
+        ON dis.dis_prv_id = prv.prv_id
         WHERE eve_status = 2
         GROUP BY dcs_event.eve_id";
 
