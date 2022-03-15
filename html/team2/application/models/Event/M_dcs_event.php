@@ -502,6 +502,31 @@ class M_dcs_event extends Da_dcs_event
         $query = $this->db->query($sql);
         return $query;
     }
+
+    /*
+    * get_event_mobile
+    * get event mobile
+    * @input -
+    * @output -
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2564-03-13
+    */
+    public function get_event_mobile()
+    {
+
+        $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_eve_image.eve_img_path, dcs_event.eve_description, dcs_event.eve_lat, dcs_event.eve_lon, dcs_eve_category.eve_cat_name
+        from dcs_event
+        LEFT JOIN dcs_eve_image
+        ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
+        LEFT JOIN dcs_eve_category 
+        ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
+        WHERE eve_status = 2
+        GROUP BY dcs_event.eve_id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
     /*
     *get_search
     *get data with search
