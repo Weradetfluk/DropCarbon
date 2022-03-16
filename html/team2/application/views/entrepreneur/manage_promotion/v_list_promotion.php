@@ -80,7 +80,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -98,7 +98,7 @@
                                                     <?php echo $arr_promotion[$i]->pro_name; ?>
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                 </td>
                                                 <?php if ($arr_promotion[$i]->pro_status != 3 && $arr_promotion[$i]->pro_status != 5) { ?>
                                                     <?php if ($arr_promotion[$i]->pro_status == 1) { ?>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- tab show pending promotion -->
                 <div class="tab-pane <?php if ($_SESSION['tab_number_promotion'] == 2) echo "active"; ?>"
                     id="tab_pending">
@@ -202,7 +202,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -230,7 +230,7 @@
                                                     <?php echo $arr_promotion[$i]->pro_name; ?>
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                 </td>
                                                 <td style="color: #fba004;">รออนุมัติ</td>
                                                 <td>
@@ -273,7 +273,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -301,7 +301,7 @@
                                                     <?php echo $arr_promotion[$i]->pro_name; ?>
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                 </td>
                                                 <?php if ($arr_promotion[$i]->pro_end_date > $date_now && $arr_promotion[$i]->pro_start_date <= $date_now) { ?>
                                                 <td style="color: #669900;">ยังไม่สิ้นสุด</td>
@@ -346,7 +346,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -374,7 +374,7 @@
                                                     <?php echo $arr_promotion[$i]->pro_name; ?>
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                 </td>
                                                 <td style="color: red;">สิ้นสุด</td>
                                                 <td>
@@ -412,7 +412,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -440,7 +440,7 @@
                                                     <?php echo $arr_promotion[$i]->pro_name; ?>
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <?php echo $arr_promotion[$i]->com_name; ?>
+                                                    <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                 </td>
                                                 <td style="color: red;">ปฏิเสธ</td>
                                                 <td>
@@ -481,7 +481,7 @@
                                             <tr>
                                                 <th class="res-hide">ลำดับ</th>
                                                 <th>ชื่อโปรโมชัน</th>
-                                                <th class="res-hide">ของสถานที่</th>
+                                                <th class="res-hide">เวลาดำเนินการ</th>
                                                 <th>สถานะโปรโมชัน</th>
                                                 <th>ดำเนินการ</th>
                                             </tr>
@@ -509,7 +509,7 @@
                                                                 <?php echo $arr_promotion[$i]->pro_name; ?>
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <?php echo $arr_promotion[$i]->com_name; ?>
+                                                                <?php echo to_format_abbreviation($arr_promotion[$i]->pro_start_date).' - '. to_format_abbreviation($arr_promotion[$i]->pro_end_date); ?>
                                                             </td>
                                                             <td style="color: red;">หยุดการใช้งาน</td>
                                                             <td>

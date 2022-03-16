@@ -22,6 +22,7 @@ class Promotion_list extends DCS_controller
         if (!isset($_SESSION['tab_number_promotion'])) {
             $_SESSION['tab_number_promotion'] = 1;
         }
+        $this->load->helper('mydate_helper.php');
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $data['arr_promotion'] = $this->mpro->get_promotion_by_ent_id($this->session->userdata("entrepreneur_id"))->result();
         date_default_timezone_set('Asia/Bangkok');
