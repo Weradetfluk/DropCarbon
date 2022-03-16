@@ -56,7 +56,7 @@
         margin: auto;
     }
 
-    @media all and (max-width: 990px) {
+    @media all and (max-width: 991px) {
         .change_width_col {
             display: flex;
             flex-wrap: wrap;
@@ -64,7 +64,18 @@
             margin-left: -15px;
             flex: none;
             max-width: none;
-            margin: 10%;
+            margin: 1%;
+        }
+
+        .fix_row_name {
+            padding-left: 5%;
+        }
+    }
+
+    @media all and (max-width: 767px) {
+        .fix_row_name {
+            padding-left: unset;
+            margin-left: -13px;
         }
     }
 </style>
@@ -153,17 +164,17 @@
                             <!-- เบอร์ อีเมล -->
 
                             <div class="row">
-                                <div class="form-group col-md-2 mb-2">
+                                <div class="form-group col-md-4 mb-4">
                                     <!-- ส่วนของวันเกิด -->
-                                    <label for="tus_birth_date">วันเกิด</label>
-                                    <select name="tus_birth_date" id="tus_birth_date" class="form-control mt-1" disabled>
+                                    <label for="tus_birth_date" class="label">วันเกิด</label>
+                                    <select name="tus_birth_date" id="tus_birth_date" class="form-control mt-1" style="margin-top: -15px !important;" disabled>
                                         <!-- วันเกิด -->
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3 mb-3">
+                                <div class="form-group col-md-4 mb-4">
                                     <!-- ส่วนของเดือนเกิด -->
-                                    <label for="tus_birth_month">เดือนเกิด</label>
-                                    <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
+                                    <label for="tus_birth_month" class="label">เดือนเกิด</label>
+                                    <select name="tus_birth_month" id="tus_birth_month" class="form-control mt-1" style="margin-top: -15px !important;" onblur="check_date_by_month('not have old date')" disabled>
                                         <?php
                                         $tus_birth_month_old = intval(substr($arr_tus[0]->tus_birthdate, 5, 2));
                                         $arr_month = array(
@@ -191,10 +202,10 @@
                                         } ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-2 mb-2">
+                                <div class="form-group col-md-4 mb-4">
                                     <!-- ส่วนของปี -->
-                                    <label for="tus_birth_year">ปีเกิด</label>
-                                    <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" onblur="check_date_by_month('not have old date')" disabled>
+                                    <label for="tus_birth_year" class="label">ปีเกิด</label>
+                                    <select name="tus_birth_year" id="tus_birth_year" class="form-control mt-1" style="margin-top: -15px !important;" onblur="check_date_by_month('not have old date')" disabled>
                                         <?php
                                         $tus_birth_year_old = intval(substr($arr_tus[0]->tus_birthdate, 0, 4));
                                         echo '<option value="0">ปป</option>';
@@ -210,7 +221,7 @@
                             </div>
 
                             <!-- ชื่อผู้ใช้ -->
-                            <div class="row">
+                            <div class="row py-3 fix_row_name">
                                 <div class="form-group col-md-6 mb-3">
                                     <!-- ส่วนของชื่อผู้ใช้ -->
                                     <label for="tus_username" style="color:black" class="color-label">ชื่อผู้ใช้</label>
@@ -292,7 +303,7 @@
                                 <?php } else { ?>
                                     <?php echo ""; ?>
                                 <?php } ?>
-                            </p>   
+                            </p>
                             <!-- แสดง logo rank สิทธิพิเศษ ส่วนลดการใช้คะแนนของแต่ละ rank-->
                             <!-- อีกกี่แต้มถึงจะอัพ -->
                             <p style="text-align: center; font-size: 16px;">
@@ -325,7 +336,7 @@
             </div>
             <div>
                 <p align="right">
-            <a class="btn btn-primary" href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_history' ?>">ประวัติการใช้งานของรางวัล <span class="material-icons">arrow_right_alt</span></a>
+                    <a class="btn btn-primary" href="<?php echo base_url() . 'Landing_page/Landing_page/show_reward_history' ?>">ประวัติการใช้งานของรางวัล <span class="material-icons">arrow_right_alt</span></a>
                 </p>
             </div>
             <!-- ถ้าไม่มีรางวัลของฉัน -->
