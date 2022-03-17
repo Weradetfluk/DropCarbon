@@ -581,4 +581,85 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $this->db->query($sql);
     }
 
+    /*
+    *get_count_pro_end_ent
+    *get count promotion end entrepreneur
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_count_pro_end_ent($date_sql,$date_end)
+    {
+        $sql = "SELECT DATE_FORMAT(dcs_promotions.pro_end_date, '%d %M %Y') as end_date, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NULL
+        AND $date_end)";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_count_pro_end_adm
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_count_pro_end_adm($date_sql,$date_end)
+    {
+        $sql = "SELECT DATE_FORMAT(dcs_promotions.pro_end_date, '%d %M %Y') as end_date, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NOT NULL
+        AND $date_end)";
+        return $this->db->query($sql);
+    }
+
+
+    /*
+    *get_name_count_pro_end_adm
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_name_count_pro_end_adm($date_sql,$date_end)
+    {
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_adm, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NOT NULL
+        AND $date_end)";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_name_count_pro_end_ent
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_name_count_pro_end_ent($date_sql,$date_end)
+    {
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_ent, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NULL
+        AND $date_end)";
+        return $this->db->query($sql);
+    }
+
 }
