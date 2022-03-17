@@ -16,6 +16,7 @@ class Admin_list_promotions extends DCS_controller
     {
         parent::__construct();
         $this->load->library('pagination');
+        $this->load->helper('mydate_helper.php');
         $this->load->model('Promotions/M_dcs_promotions', 'mdcp');
     }
 
@@ -85,7 +86,7 @@ class Admin_list_promotions extends DCS_controller
                   <tr class="custom-tr-header-table">
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อโปรโมชัน</th>
-                      <th class="th-custom ">ชื่อสถานที่</th>
+                      <th class="th-custom ">เวลาดำเนินการ</th>
                       <th class="th-custom ">สถานะโปรโมชัน</th>
                       <th class="th-custom ">ดำเนินการ</th>
                   </tr>
@@ -110,7 +111,7 @@ class Admin_list_promotions extends DCS_controller
                         . $row->pro_name .
                         '</td>' .
                         '<td style="text-align: left;">'
-                        . $row->com_name .
+                        . to_format_abbreviation($row->pro_start_date) . " - " . to_format_abbreviation($row->pro_end_date) .
                         '</td>';
                     if ($number_status == 2) {
                         $output .= '<td style="color: #669900;">ยังไม่สิ้นสุด</td>' .
@@ -177,7 +178,7 @@ class Admin_list_promotions extends DCS_controller
                         . $row->pro_name .
                         '</td>' .
                         '<td style="text-align: left;">'
-                        . $row->com_name .
+                        . to_format_abbreviation($row->pro_start_date) . " - " . to_format_abbreviation($row->pro_end_date) .
                         '</td>';
                     if ($number_status == 2) {
                         $output .= '<td style="color: #669900;">ยังไม่สิ้นสุด</td>' .

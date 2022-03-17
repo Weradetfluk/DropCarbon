@@ -25,7 +25,8 @@
                                 <!-- กรอกชื่อ -->
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
-                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อโปรโมชัน" onkeyup="" required>
+                                    <input type="text" id="pro_name" name="pro_name" class="form-control" 
+                                    placeholder="กรอกชื่อโปรโมชัน" onkeyup="check_pro_name_ajax()" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
                                 <!-- เลือกหมวดหมู่ -->
@@ -284,5 +285,42 @@
             document.getElementById("pro_end_date").min = start_date;
             console.log(start_date);
         });
+    }
+
+    /*
+     * check_pro_name_ajax
+     * check name promotion by ajax
+     * @input pro_name
+     * @output -
+     * @author Kasama Donwong 621600074
+     * @Create Date 2565-03-18
+     * @Update -
+     */
+    function check_pro_name_ajax() {
+        var pro_name = $('#pro_name').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_promotion/Promotion_add/check_pro_name_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                pro_name: pro_name
+            },
+            success: function(data) {
+                // console.log(data);
+                if (data == 1) {
+                    console.log(1);
+                    $('#error_pro_name').html('ชื่อโปรโมชันนี้ได้ถูกใช้งานเเล้ว');
+                    check_btn_name = 1;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', true); 
+                } else if (data == 2) {
+                    console.log(2);
+                    $('#error_pro_name').html('');
+                    check_btn_name = 0;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
     }
 </script>
