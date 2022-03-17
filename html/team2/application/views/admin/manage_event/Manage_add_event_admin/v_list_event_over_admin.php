@@ -157,7 +157,7 @@
         html_code += '<tr class="custom-tr-header-table">';
         html_code += '<th class="th-custom res-hide">ลำดับ</th>';
         html_code += '<th class="th-custom ">ชื่อกิจกรรม</th>';
-        html_code += '<th class="th-custom ">ชื่อสถานที่</th>';
+        html_code += '<th class="th-custom ">เวลาดำเนินการ</th>';
         html_code += '<th class="th-custom ">ดำเนินการ</th>';
         html_code += '</tr>';
         html_code += '</thead>';
@@ -168,7 +168,7 @@
             html_code += '<tr>';
             html_code += '<td class ="res-hide">' + (index_eve + 1) + '</td>';
             html_code += '<td>' + (row_eve['eve_name']) + '</td>';
-            html_code += '<td>' + (row_eve['com_name']) + '</td>';
+            html_code += '<td>' + format_date_to_abbreviation(row_eve['eve_start_date']) + ' - '+format_date_to_abbreviation(row_eve['eve_end_date']) + '</td>';
             html_code += '<td style="text-align: center;">';
             // ปุ่มดูรายละเอียดกิจกรรม
             html_code +=

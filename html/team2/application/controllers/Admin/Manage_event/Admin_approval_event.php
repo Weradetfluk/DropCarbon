@@ -17,6 +17,7 @@ class Admin_approval_event extends DCS_controller
     parent::__construct();
     $this->load->library('email');
     $this->load->library('pagination');
+    $this->load->helper('mydate_helper.php');
     $this->load->model('Event/M_dcs_event', 'mdce');
   }
 
@@ -201,7 +202,7 @@ class Admin_approval_event extends DCS_controller
                   <tr class="custom-tr-header-table">
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อกิจกรรม</th>
-                      <th class="th-custom ">ชื่อสถานที่</th>
+                      <th class="th-custom ">เวลาดำเนินการ</th>
                       <th class="th-custom res-hide">ชื่อผู้ประกอบการ</th>
                       <th class="th-custom ">ดำเนินการ</th>
                   </tr>
@@ -226,7 +227,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td style="text-align: left;">'
-            . $row->com_name .
+            . to_format_abbreviation($row->eve_start_date) . " - " . to_format_abbreviation($row->eve_end_date). 
             '</td>' .
             '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
@@ -298,7 +299,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td style="text-align: left;">'
-            . $row->com_name .
+            .  to_format_abbreviation($row->eve_start_date)   . " - "   . to_format_abbreviation($row->eve_end_date). 
             '</td>' .
             '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
