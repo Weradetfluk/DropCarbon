@@ -153,6 +153,28 @@ class Landing_page extends DCS_controller
     }
 
     /*
+    * get_event_list_ajax
+    * get event list
+    * @input -
+    * @output data
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2565-03-12
+    */
+    public function get_event_list_ajax($search = null)
+    {
+        $this->load->model('Event/M_dcs_event', 'meve');
+        if($search != null){
+            $data["arr_event"] = $this->meve->get_event_mobile($search)->result();
+            // echo $search;
+        }else{
+            $data["arr_event"] = $this->meve->get_event_mobile()->result();
+        }
+        
+        echo json_encode($data);
+        // echo json_encode($search);
+    }
+
+    /*
     * show_promotions_detail
     * show detail promotions page 
     * @input -
