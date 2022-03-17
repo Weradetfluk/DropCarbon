@@ -164,14 +164,13 @@ class Landing_page extends DCS_controller
     {
         $this->load->model('Event/M_dcs_event', 'meve');
         if($search != null){
-            $data["arr_event"] = $this->meve->get_event_mobile($search)->result();
+            $result_search = urldecode($search);
+            $data["arr_event"] = $this->meve->get_event_mobile($result_search)->result();
             // echo $search;
         }else{
             $data["arr_event"] = $this->meve->get_event_mobile()->result();
         }
-        
         echo json_encode($data);
-        // echo json_encode($search);
     }
 
     /*
