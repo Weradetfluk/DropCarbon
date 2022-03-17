@@ -18,7 +18,8 @@ class Promotion_edit extends DCS_controller
     * @Create Date 2564-10-03
     * @Update Date -
     */
-    public function show_edit_promotion($pro_id){
+    public function show_edit_promotion($pro_id)
+    {
         $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
@@ -54,9 +55,9 @@ class Promotion_edit extends DCS_controller
         $this->mpro->pro_end_date = $this->input->post('pro_end_date');
         $this->mpro->pro_com_id = $this->input->post('pro_com_id');
         $this->mpro->pro_cat_id = $this->input->post('pro_cat_id');
-        if($this->input->post('pro_cat_id') == 1){
+        if ($this->input->post('pro_cat_id') == 1) {
             $this->mpro->pro_point = 0;
-        }else{
+        } else {
             $this->mpro->pro_point = $this->input->post('pro_point');
         }
         $this->mpro->pro_id = $this->input->post('pro_id');
@@ -130,9 +131,30 @@ class Promotion_edit extends DCS_controller
     */
     public function edit_status_promotion_ajax()
     {
-       $this->load->model('Promotions/M_dcs_promotions', 'mpro');
-       $this->mpro->pro_id = $this->input->post('pro_id');
-       $this->mpro->pro_status = $this->input->post('pro_status');
-       $this->mpro->update_status_promotion();
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->mpro->pro_id = $this->input->post('pro_id');
+        $this->mpro->pro_status = $this->input->post('pro_status');
+        $this->mpro->update_status_promotion();
+    }
+
+    /*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_pro_name_ajax()
+    {
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->mpro->pro_name = $this->input->post('pro_name');
+        $promotion = $this->mpro->get_by_name()->row();
+        if ($promotion) {
+            echo 1;
+        } else {
+            echo 2;
+        }
     }
 }

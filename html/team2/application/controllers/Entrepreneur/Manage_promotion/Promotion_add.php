@@ -18,7 +18,8 @@ class Promotion_add extends DCS_controller
     * @Create Date 2564-10-02
     * @Update Date -
     */
-    public function show_add_promotion(){
+    public function show_add_promotion()
+    {
         $this->load->model('Promotions/M_dcs_pro_category', 'mcat');
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_ent_id = $this->session->userdata("entrepreneur_id");
@@ -39,13 +40,14 @@ class Promotion_add extends DCS_controller
     * @Create Date 2564-10-02
     * @Update Date 
     */
-    public function add_promotion(){
+    public function add_promotion()
+    {
         $this->load->model('Promotions/M_dcs_promotions', 'mpro');
         $this->load->model('Promotions/M_dcs_pro_image', 'mimg');
         $this->mpro->pro_name = $this->input->post('pro_name');
-        if($this->input->post('pro_cat_id') == 1){
+        if ($this->input->post('pro_cat_id') == 1) {
             $this->mpro->pro_point = 0;
-        }else{
+        } else {
             $this->mpro->pro_point = $this->input->post('pro_point');
         }
         $this->mpro->pro_description = $this->input->post('pro_description');
@@ -59,30 +61,30 @@ class Promotion_add extends DCS_controller
         $this->set_session_add_promotion('success');
         $result = $this->mpro->get_by_name()->row();
 
-         // save data image to database
-         $arr_img_add = array();
-         $arr_name_name = array();
-         $arr_img_add = $this->input->post('new_img');
-         $arr_name_name = $this->input->post('name_new_image');
-         $this->mimg->pro_img_pro_id = $result->pro_id;
-         for ($i = 0; $i < count($arr_img_add); $i++) {
-             $this->mimg->pro_img_path = $arr_img_add[$i];
-             $this->mimg->pro_img_name = $arr_name_name[$i];
-             $this->mimg->insert_image_promotions();
-         }
- 
-         // delete data image to database
-         $arr_img_delete = array();
-         $arr_img_delete= $this->input->post('del_new_img');
-         if($arr_img_delete != ''){
-             for ($i = 0; $i < count($arr_img_delete); $i++) {
-                 $this->mimg->pro_img_path = $arr_img_delete[$i];
-                 unlink('./image_promotions/' . $arr_img_delete[$i]);
-                 $this->mimg->delete_image_promotions();
-             }
-         }
+        // save data image to database
+        $arr_img_add = array();
+        $arr_name_name = array();
+        $arr_img_add = $this->input->post('new_img');
+        $arr_name_name = $this->input->post('name_new_image');
+        $this->mimg->pro_img_pro_id = $result->pro_id;
+        for ($i = 0; $i < count($arr_img_add); $i++) {
+            $this->mimg->pro_img_path = $arr_img_add[$i];
+            $this->mimg->pro_img_name = $arr_name_name[$i];
+            $this->mimg->insert_image_promotions();
+        }
 
-         redirect('Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion');
+        // delete data image to database
+        $arr_img_delete = array();
+        $arr_img_delete = $this->input->post('del_new_img');
+        if ($arr_img_delete != '') {
+            for ($i = 0; $i < count($arr_img_delete); $i++) {
+                $this->mimg->pro_img_path = $arr_img_delete[$i];
+                unlink('./image_promotions/' . $arr_img_delete[$i]);
+                $this->mimg->delete_image_promotions();
+            }
+        }
+
+        redirect('Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion');
     }
 
     /*
@@ -94,7 +96,8 @@ class Promotion_add extends DCS_controller
     * @Create Date 2564-10-02
     * @Update Date -
     */
-    public function set_session_add_promotion($data){
+    public function set_session_add_promotion($data)
+    {
         $this->session->set_userdata("error_add_promotion", $data);
     }
 
@@ -186,5 +189,26 @@ class Promotion_add extends DCS_controller
             $data = "no image";
         }
         echo json_encode($data);
+    }
+
+    /*
+     * check_name_event_ajax
+     * check name event by ajax
+     * @input eve_name
+     * @output -
+     * @author Suwapat Saowarod 62160340
+     * @Create Date 2564-10-12
+     * @Update -
+     */
+    function check_pro_name_ajax()
+    {
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        $this->mpro->pro_name = $this->input->post('pro_name');
+        $promotion = $this->mpro->get_by_name()->row();
+        if ($promotion) {
+            echo 1;
+        } else {
+            echo 2;
+        }
     }
 }
