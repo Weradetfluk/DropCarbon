@@ -89,7 +89,7 @@ class Admin_edit_promotions extends DCS_controller
             $arr_img_delete = $this->input->post('del_new_img');
             if ($arr_img_delete != '') {
                 for ($i = 0; $i < count($arr_img_delete); $i++) {
-                    array_push($arr_img_delete, $arr_img_delete[$i]);
+                    array_push($arr_img_delete_old, $arr_img_delete[$i]);
                 }
             }
         } else {

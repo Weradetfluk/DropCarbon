@@ -82,6 +82,7 @@ $warning = $warning ?? '';
 <script>
     $(document).ready(function() {
         let reset_pass = '<?php echo $this->session->userdata("reset_pass_tourist"); ?>';
+        //ประกาศตัวแปร reset_pass
         if (reset_pass == "success") {
             swal("สำเร็จ", "คุณทำการเปลี่ยนรหัสผ่านสำเร็จ", "success");
             <?php echo $this->session->unset_userdata("reset_pass_tourist"); ?>

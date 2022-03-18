@@ -8,17 +8,18 @@
 * @Create Date 2564-12-24
 */ 
 -->
-<!-- main content -->
+<!-- ส่วนการทำงานหลัก -->
 <div class="content">
     <div class="row">
         <div class="col">
             <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">โปรโมชันที่หยุดการใช้งาน</h3>
         </div>
+        <!-- ปุ่มเพิ่มโปรโมชัน -->
         <div class="col">
             <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" onclick="location.href='<?php echo base_url() . 'Admin/Manage_promotions/Admin_add_promotions/show_add_promotion' ?>'">เพิ่มโปรโมชัน</button>
         </div>
     </div>
-
+    <!-- แถบนำทางผู้ใช้งาน -->
     <div class="card card-nav-tabs custom-card-tab">
         <div class="card-header custom-header-tab">
             <div class="row">
@@ -45,6 +46,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ส่วนการค้นหา -->
                 <div class="col">
                     <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'; ?>" method="POST">
                         <div class="input-group ">
@@ -54,50 +56,14 @@
                 </div>
             </div>
         </div>
-        <!-- Tab1 -->
+        <!-- ตารางโปรโมชันที่ถูกหยุดการใช้งาน -->
         <div class="card-body ">
             <div class="table-responsive" id="data_promo_admin">
             </div>
         </div>
     </div>
 
-    <!-- modal delete promotion  -->
-    <div class="modal" tabindex="-1" role="dialog" id="modal_delete">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
-                </div>
-                <div class="modal-body">
-                    <p>คุณต้องการที่จะลบ <span id="pro_name_confirm"></span> ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="delete_btn" data-dismiss="modal">ยืนยัน</button>
-                    <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- modal cancel promotion  -->
-    <div class="modal" tabindex="-1" role="dialog" id="modal_cancel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" style="font-family: 'Prompt', sans-serif !important;">แจ้งเตือน</h5>
-                </div>
-                <div class="modal-body">
-                    <p>คุณต้องการที่จะหยุดการใช้งาน <span id="pro_name_confirm_cancel"></span> ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="cancel_btn" data-dismiss="modal">ยืนยัน</button>
-                    <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- modal dis cancel promotion  -->
+    <!--  หน้าต่างแสดงผลซ้อนยืนยันการเปิดการใช้งานโปรโมชัน  -->
     <div class="modal" tabindex="-1" role="dialog" id="modal_dis_cancel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -108,7 +74,9 @@
                     <p>คุณต้องการที่จะเปิดการใช้งาน <span id="pro_name_confirm_dis_cancel"></span> ?</p>
                 </div>
                 <div class="modal-footer">
+                    <!-- ปุมยืนยันการเปิดใช้งาน -->
                     <button type="button" class="btn btn-success" id="dis_cancel_btn" data-dismiss="modal">ยืนยัน</button>
+                    <!-- ปุ่มยกเลิกการเปิดใช้งาน -->
                     <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
@@ -145,109 +113,6 @@
             });
         }
 
-        /*
-         * confirm_delete
-         * confirm delete promotion
-         * @input pro_name_con,pro_id_con
-         * @output modal comfirm delete promotion
-         * @author Thanchanok Thonhjumroon 62160089
-         * @Create Date 2564-10-03
-         */
-        function confirm_delete(pro_name_con, pro_id_con) {
-            $('#pro_name_confirm').text(pro_name_con);
-            $('#modal_delete').modal();
-
-
-            // button
-            $('#delete_btn').click(function() {
-                delete_promotion_ajax(pro_id_con)
-            });
-        }
-
-        /*
-         * delete_promotion_ajax
-         * confirm delete promotion
-         * @input pro_id_con
-         * @output delete promotion
-         * @author Thanchanok Thongjumroon 62160089
-         * @Create Date 2564-10-03
-         */
-        function delete_promotion_ajax(pro_id_con) {
-            $.ajax({
-                type: "POST",
-                data: {
-                    pro_id: pro_id_con
-                },
-                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/delete_promotion_ajax/' ?>',
-                success: function() {
-                    swal({
-                            title: "ลบโปรโมชัน",
-                            text: "คุณได้ทำการลบโปรโมชันเสร็จสิ้น",
-                            type: "success"
-                        },
-                        function() {
-                            location.reload();
-                        })
-
-                },
-                error: function() {
-                    alert('ajax error working');
-                }
-            });
-
-        }
-
-        /*
-         * confirm_cancel
-         * confirm cancel promotion
-         * @input pro_name_con,pro_id_con
-         * @output modal comfirm cancel promotion
-         * @author Suwapat Saowarod 62160340
-         * @Create Date 2564-11-29
-         */
-        function confirm_cancel(pro_name_con, pro_id_con) {
-            $('#pro_name_confirm_cancel').text(pro_name_con);
-            $('#modal_cancel').modal();
-
-
-            // button
-            $('#cancel_btn').click(function() {
-                cancel_promotion_ajax(pro_id_con)
-            });
-        }
-
-        /*
-         * cancel_promotion_ajax
-         * confirm cancel promotion
-         * @input pro_id_con
-         * @output cancel promotion
-         * @author Suwapat Saowarod 62160340
-         * @Create Date 2564-11-29
-         */
-        function cancel_promotion_ajax(pro_id_con) {
-            $.ajax({
-                type: "POST",
-                data: {
-                    pro_id: pro_id_con
-                },
-                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/cancel_promotion_ajax/' ?>',
-                success: function() {
-                    swal({
-                            title: "หยุดการใช้งานโปรโมชัน",
-                            text: "คุณได้ทำการหยุดการใช้งานโปรโมชันเสร็จสิ้น",
-                            type: "success"
-                        },
-                        function() {
-                            location.reload();
-                        })
-
-                },
-                error: function() {
-                    alert('ajax error working');
-                }
-            });
-
-        }
 
         /*
          * confirm_dis_cancel
@@ -264,29 +129,36 @@
 
             // button
             $('#dis_cancel_btn').click(function() {
-                dis_cancel_promotion_ajax(pro_id_con)
+                edit_status_promotion_ajax(pro_id_con, 2)
             });
         }
 
         /*
-         * dis_cancel_promotion_ajax
-         * confirm dis cancel promotion
-         * @input pro_id_con
-         * @output dis cancel promotion
+         * edit_status_promotion_ajax
+         * edit status promotion 
+         * @input pro_id_con, pro_status_edit
+         * @output -
          * @author Suwapat Saowarod 62160340
-         * @Create Date 2564-11-29
+         * @Create Date 2565-02-24
          */
-        function dis_cancel_promotion_ajax(pro_id_con) {
+        function edit_status_promotion_ajax(pro_id_con, pro_status_edit) {
             $.ajax({
                 type: "POST",
                 data: {
-                    pro_id: pro_id_con
+                    pro_id: pro_id_con,
+                    pro_status: pro_status_edit
                 },
-                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/dis_cancel_promotion_ajax/' ?>',
+                url: '<?php echo site_url() . 'Entrepreneur/Manage_promotion/Promotion_edit/edit_status_promotion_ajax/' ?>',
                 success: function() {
+                    var title = '';
+                    var detail = '';
+                    if (pro_status_edit == 2) {
+                        title = 'เปิดการใช้งานโปรโมชัน';
+                        detail = 'คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น';
+                    }
                     swal({
-                            title: "เปิดการใช้งานโปรโมชัน",
-                            text: "คุณได้ทำการเปิดการใช้งานโปรโมชันเสร็จสิ้น",
+                            title: title,
+                            text: detail,
                             type: "success"
                         },
                         function() {

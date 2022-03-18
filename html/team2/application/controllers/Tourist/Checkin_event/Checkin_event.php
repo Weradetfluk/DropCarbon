@@ -73,7 +73,7 @@ class Checkin_event extends DCS_controller
       $data["arr_event"] = $this->meve->get_event_by_id()->result();
       echo json_encode($data);
    }
-   /*
+     /*
     * checkin_or_checkout_event
     * checkin and check out logic
     * @input 
@@ -82,46 +82,49 @@ class Checkin_event extends DCS_controller
     * @Create Date 2564-10-12
     * @Update Date -
     */
-   function checkin_or_checkout_event()
-   {
-      $che_eve_id = $this->input->post('eve_id');
-      $eve_point = $this->input->post('eve_point');
-      $this->mcin->che_eve_id =  $che_eve_id;
-      $this->mcin->che_tus_id = $this->session->userdata("tourist_id");
-      $data_checkin_row = $this->mcin->get_status_by_tus_id()->row();
-      //ตั้งค่าเวลา
-      $data['date_now'] = get_date_today();
-      $data['time_now'] = get_time_now();
-      if ($data_checkin_row) {
-         //มีข้อมูลเช็คอินหรือไม่ ดูจากข้อมูลล่าสุด
-         if ($data_checkin_row->che_status == '1') {
-            // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 1 = เช็คอิน
-            $status = 2;
-            $this->mdct->tus_score =  $eve_point;
-            $this->mdct->tus_id = $this->session->userdata("tourist_id");
-            $this->mcin->che_date_time_out =   $data['date_now'] . " " .  $data['time_now'];
-            $this->mcin->che_id =  $data_checkin_row->che_id;
-            $this->mcin->update_checkout($status);
-            $this->mdct->update_score();
-            $tus_score_new = $this->mdct->get_point_tourist_by_id()->row();
-            $this->session->unset_userdata("tus_score");
-            $this->session->set_userdata("tus_score", $tus_score_new->tus_score);
-         } elseif ($data_checkin_row->che_status == '2') {
-            // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 2 = เช็คเอาท์
-            $status = 1;
-            $this->mcin->insert_checkin($status);
-         }
-      } else {
-         // ถ้ากรณีไม่มีข้อมูล
-         $status = 1;
-         $this->mcin->insert_checkin($status);
-      }
-      unset($_SESSION['eve_id']);
-      unset($_SESSION['eve_point']);
-      unset($_SESSION['eve_lat']);
-      unset($_SESSION['eve_lon']);
-      echo json_encode($data);
-   }
+    function checkin_or_checkout_event()
+    {
+       $che_eve_id = $this->input->post('eve_id');
+       $eve_point = $this->input->post('eve_point');
+       $this->mcin->che_eve_id =  $che_eve_id;
+       $this->mcin->che_tus_id = $this->session->userdata("tourist_id");
+       $data_checkin_row = $this->mcin->get_status_by_tus_id()->row();
+       //ตั้งค่าเวลา
+       $data['date_now'] = get_date_today();
+       $data['time_now'] = get_time_now();
+       if ($data_checkin_row) {
+          //มีข้อมูลเช็คอินหรือไม่ ดูจากข้อมูลล่าสุด
+          if ($data_checkin_row->che_status == '1') {
+             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 1 = เช็คอิน
+             $status = 2;
+             $this->mdct->tus_score =  $eve_point;
+             $this->mdct->tus_id = $this->session->userdata("tourist_id");
+             $this->mcin->che_date_time_out =   $data['date_now'] . " " .  $data['time_now'];
+             $this->mcin->che_id =  $data_checkin_row->che_id;
+             $this->mcin->update_checkout($status);
+             $this->mdct->update_score();
+             $tus_score_new = $this->mdct->get_point_tourist_by_id()->row();
+             $this->session->unset_userdata("tus_score");
+             $this->session->set_userdata("tus_score", $tus_score_new->tus_score);
+             $data['json_message'] = 'check-out';
+          } elseif ($data_checkin_row->che_status == '2') {
+             // ถ้ากรณีข้อมูลล่าสุดมีสถานะ 2 = เช็คเอาท์
+             $status = 1;
+             $this->mcin->insert_checkin($status);
+             $data['json_message'] = 'check-in';
+          }
+       } else {
+          // ถ้ากรณีไม่มีข้อมูล
+          $status = 1;
+          $this->mcin->insert_checkin($status);
+          $data['json_message'] = 'check-in';
+       }
+       unset($_SESSION['eve_id']);
+       unset($_SESSION['eve_point']);
+       unset($_SESSION['eve_lat']);
+       unset($_SESSION['eve_lon']);
+       echo json_encode($data);
+    }
    /*
     * show page checkin
     * show page checkin tourist

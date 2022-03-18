@@ -25,13 +25,14 @@
                         <form action="<?php echo base_url() . 'Entrepreneur/Manage_event/Event_add/add_event/' ?>"
                             id="form_edit_eve" method="POST" enctype="multipart/form-data">
                             <div class="row">
+                                <!-- กรอกชื่อกิจกรรม -->
                                 <div class="col-lg-6">
                                     <label for="eve_name">ชื่อกิจกรรม</label>
                                     <input type="text" id="eve_name" name="eve_name" class="form-control"
                                         placeholder="กรอกชื่อกิจกรรม" onkeyup="check_name_event_ajax()" required>
                                     <span class="text-danger" id="error_eve_name"></span>
                                 </div>
-
+                                <!-- เลือกหมวดหมู่ของกิจกรรม -->
                                 <div class="col-lg-3">
                                     <label for="eve_cat_id">หมวดหมู่</label>
                                     <select name="eve_cat_id" class="form-control" required>
@@ -47,8 +48,9 @@
                                     </select>
                                 </div>
                             </div><br>
+                            <!-- สิ้นสุดการเลือกหมวดหมู่กิจกรรม -->
 
-
+                            <!-- เลือกสถานที่ -->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_com_id">ชื่อสถานที่</label><span style="color: red;">
@@ -66,7 +68,9 @@
                                     </select>
                                 </div>
                             </div><br>
-
+                            <!-- สิ้นสุดการเลือกสถานที่ -->
+                            
+                            <!-- กรอกรายละเอียดกิจกรรม -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="eve_description">รายละเอียดกิจกรรม</label>
@@ -76,6 +80,7 @@
 
                                 </div>
                             </div><br>
+                            <!-- สิ้นสุดการกรอกรายละเอียดกิจกรรม -->
 
                             <!-- กรอกที่อยู่ -->
                             <div class="row">
@@ -87,7 +92,9 @@
                                         required>
                                 </div>
                             </div><br>
+                            <!-- สิ้นสุดการกรอกที่อยู่ -->
 
+                            <!-- เลือกวันที่เริ่ม-สิ้นสุดกิจกรรม -->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="eve_start_date">วันที่เริ่มกิจกรรม</label>
@@ -101,6 +108,7 @@
                                         min="<?php echo $date_now ?>" required>
                                 </div>
                             </div><br>
+                            <!-- สิ้นสุดวันที่เริ่ม-สิ้นสุดกิจกรรม -->
 
                             <!-- เลือกรายละเอียดที่อยู่ -->
                             <div class="row">

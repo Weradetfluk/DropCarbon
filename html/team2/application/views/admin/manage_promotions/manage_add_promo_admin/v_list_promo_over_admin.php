@@ -8,17 +8,18 @@
 * @Create Date 2564-12-24
 */ 
 -->
-<!-- main content -->
+<!-- ส่วนการทำงานหลัก -->
 <div class="content">
     <div class="row">
         <div class="col">
             <h3 class=" text-dark custom-h4-card-table" style="padding-bottom: 15px; margin : 0 auto;">โปรโมชันที่สิ้นสุดแล้ว</h3>
         </div>
+        <!-- ปุ่มเพิ่มโปรโมชัน -->
         <div class="col">
             <button class="btn btn-info" style="margin-top: 2px; float:right; border-radius: 5px;" onclick="location.href='<?php echo base_url() . 'Admin/Manage_promotions/Admin_add_promotions/show_add_promotion' ?>'">เพิ่มโปรโมชัน</button>
         </div>
     </div>
-
+    <!-- แถบนำทางผู้ใช้งาน -->
     <div class="card card-nav-tabs custom-card-tab">
         <div class="card-header custom-header-tab">
             <div class="row">
@@ -45,6 +46,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ส่วนการค้นหา -->
                 <div class="col">
                     <form class="form-inline custom-form-search " action="<?php echo base_url() . 'Admin/Manage_company/Admin_approval_company/show_data_consider'; ?>" method="POST">
                         <div class="input-group ">
@@ -54,14 +56,14 @@
                 </div>
             </div>
         </div>
-        <!-- Tab1 -->
+        <!-- ตารางโปรโมชันที่สิ้นสุดแล้ว -->
         <div class="card-body ">
             <div class="table-responsive" id="data_promo_over_admin">
             </div>
         </div>
     </div>
 
-<!-- modal delete promotion  -->
+<!--  หน้าต่างแสดงผลซ้อนยืนยันการลบโปรโมชัน  -->
 <div class="modal" tabindex="-1" role="dialog" id="modal_delete">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -72,7 +74,9 @@
                     <p>คุณต้องการที่จะลบ <span id="pro_name_confirm"></span> ?</p>
                 </div>
                 <div class="modal-footer">
+                    <!-- ปุมยืนยันการเปิดใช้งาน -->
                     <button type="button" class="btn btn-danger" id="delete_btn" data-dismiss="modal">ยืนยัน</button>
+                    <!-- ปุ่มยกเลิกการเปิดใช้งาน -->
                     <button type="button" class="btn btn-secondary" style="color: white; background-color: #777777;" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
@@ -86,7 +90,6 @@
          $('#search_box').keyup(function() {
              var query = $('#search_box').val();
              load_data(1, query);
-             // console.log(query);
          });
          $(document).on('click', '.page-link', function() {
              var page = $(this).data('page_number');
@@ -106,7 +109,6 @@
                  query: query
              },
              success: function(data) {
-                 // console.log(data);
                  create_table(data['arr_promo'], data['paganition']);
 
              }
@@ -122,7 +124,7 @@
          html_code += '<tr class="custom-tr-header-table">';
          html_code += '<th class="th-custom res-hide">ลำดับ</th>';
          html_code += '<th class="th-custom ">ชื่อโปรโมชัน</th>';
-         html_code += '<th class="th-custom ">ชื่อสถานที่</th>';
+         html_code += '<th class="th-custom ">เวลาดำเนินการ</th>';
          html_code += '<th class="th-custom ">สถานะโปรโมชัน</th>';
          html_code += '<th class="th-custom ">ดำเนินการ</th>';
          html_code += '</tr>';
@@ -134,7 +136,7 @@
              html_code += '<tr>';
              html_code += '<td class ="res-hide">' + (index+1) + '</td>';
              html_code += '<td style="text-align: left;">' + (row['pro_name']) + '</td>';
-             html_code += '<td style="text-align: left;">' + (row['com_name']) + '</td>';
+             html_code += '<td style="text-align: left;">' + format_date_to_abbreviation(row['pro_start_date']) + ' - '+format_date_to_abbreviation(row['pro_end_date']) + '</td>';
              html_code += '<td style="color: red;">สิ้นสุด</td>';
              html_code += '<td style="text-align: center;">';
              html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row['pro_id'])  + '">'         
@@ -142,10 +144,6 @@
              html_code +='search'
              html_code +='</i>';
              html_code += '</a>'
-            //  html_code += '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_edit_promotions/show_edit_promotion/' ?>'  + (row['pro_id'])  + '">'         
-            //  html_code +='<i class="material-icons">'
-            //  html_code +='edit'
-            //  html_code +='</i>';
              html_code += '</a>'
              html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row['pro_name']) +'\',\'' + (row['pro_id']) +  '\')" >'         
              html_code +='<i class="material-icons">'
@@ -158,12 +156,10 @@
              html_code += '</table><br>';
              html_code += '<div class="container-fluid" style="align: center;   position: relative;">';
              html_code += '<ul class="pagination w-50" id="pagination">';
-            //  $('#pagination').html(pagation);
 
             if(pagation){
                 html_code += pagation;
             }
-            //  console.log(pagation);
              $('#data_promo_over_admin').html(html_code);
 
      }

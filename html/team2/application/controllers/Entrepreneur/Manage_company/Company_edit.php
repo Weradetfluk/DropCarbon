@@ -23,7 +23,7 @@ class Company_edit extends DCS_controller
    {
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->mcom->com_id = $this->input->post('com_id');
-      $this->mcom->delete_company();
+      $this->mcom->delete_company();// ลบสถานที่ ใน database ตาราง dcs_company ด้วย com_id
    }
 
    /*
@@ -43,12 +43,12 @@ class Company_edit extends DCS_controller
       $this->load->model('Province/M_dcs_province', 'mprv');
       $this->mcom->com_id = $com_id;
       $this->mimg->com_img_com_id = $com_id;
-      $data['arr_company'] = $this->mcom->get_by_id()->result();
-      $data['arr_image'] = $this->mimg->get_by_com_id()->result();
-      $data['arr_com_cat'] = $this->mcat->get_all()->result();
-      $data['arr_province'] = $this->mprv->get_all()->result();
-      $view = 'entrepreneur/manage_company/v_edit_company';
-      $this->output_entrepreneur($view, $data);
+      $data['arr_company'] = $this->mcom->get_by_id()->result(); // ดึงสถานที่ด้วย com_id ใน database จากตาราง dcs_company
+      $data['arr_image'] = $this->mimg->get_by_com_id()->result(); // ดึงรูปภาพสถานที่ด้วย com_id ใน database จากตาราง dcs_com_image
+      $data['arr_com_cat'] = $this->mcat->get_all()->result(); // ดึงประเภทสถานที่ใน database จากตาราง dcs_com_category
+      $data['arr_province'] = $this->mprv->get_all()->result(); // ดึงจังหวัดใน database จากตาราง dcs_province
+      $view = 'entrepreneur/manage_company/v_edit_company'; // กำหนดไปหน้า view ที่ชื่อว่า v_edit_company.php
+      $this->output_entrepreneur($view, $data); // เรียกใช้ฟังก์ชัน output_entrepreneur ในไฟล์ DCS_controller.php
    }
 
    /*
@@ -75,44 +75,47 @@ class Company_edit extends DCS_controller
       $this->mcom->com_par_id = $this->input->post('par_id');
       $this->mcom->com_status = 1;
       // save data company to database
-      $this->mcom->update_company();
-      $this->set_session_edit_company('success');
+      $this->mcom->update_company();// แก้ไขสถานที่ใน database ตาราง dcs_company
+      $this->set_session_edit_company('success'); // set session ว่า เพิ่มสำเร็จ
       $this->mimg->com_img_com_id = $this->input->post('com_id');
 
       // save data image to database
       $arr_img_add = array();
       $arr_name_name = array();
-      $arr_img_add = $this->input->post('new_img');
-      $arr_name_name = $this->input->post('name_new_image');
+      $arr_img_add = $this->input->post('new_img'); // รับค่าจาก view คือ path รูปที่เพิ่มขึ้นมา
+      $arr_name_name = $this->input->post('name_new_image'); // รับค่าจาก view ชื่อรูป
       $this->mimg->com_img_com_id = $this->input->post('com_id');
+      // ถ้ามีรูปที่ต้องการเพิ่มจะเข้า if
       if ($arr_img_add != '') {
          for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
             $this->mimg->com_img_name = $arr_name_name[$i];
-            $this->mimg->insert_image_company();
+            $this->mimg->insert_image_company(); // เพิ่มรูปภาพของสถานที่ ลง database ในตาราง dcs_com_image
          }
       }
 
       // delete data image to database
       $arr_img_delete_old = array();
-      $arr_img_delete_old = $this->input->post('del_old_img');
+      $arr_img_delete_old = $this->input->post('del_old_img'); // รับค่าจาก view คือ path รูปเก่าที่ต้องการจะลบ
+      // ถ้ามีรูปเก่าที่ต้องการลบจะเข้า if เเต่ถ้าไม่มีเข้า else
       if ($arr_img_delete_old != '') {
-         $arr_img_delete = $this->input->post('del_new_img');
+         $arr_img_delete = $this->input->post('del_new_img'); // รับค่าจาก view คือ path รูปใหม่ที่ต้องการจะลบ
          if ($arr_img_delete != '') {
             for ($i = 0; $i < count($arr_img_delete); $i++) {
-               array_push($arr_img_delete, $arr_img_delete[$i]);
-            }
+               array_push($arr_img_delete_old, $arr_img_delete[$i]); // นำรูปใหม่มาต่อ array กับรูปเก่า
+            }// loop for
          }
       } else {
          $arr_img_delete_old = $this->input->post('del_new_img');
       }
 
-      // print_r($arr_img_delete);
+      // ถ้ามีรูปต้องการลบจะเข้า if
       if ($arr_img_delete_old != '') {
+         // วน loop เพื่อลบรูป
          for ($i = 0; $i < count($arr_img_delete_old); $i++) {
             $this->mimg->com_img_path = $arr_img_delete_old[$i];
-            unlink('./image_company/' . $arr_img_delete_old[$i]);
-            $this->mimg->delete_image_company();
+            unlink('./image_company/' . $arr_img_delete_old[$i]);// ลบรูปออกจาก Floder ชื่อ image_company
+            $this->mimg->delete_image_company();// ลบรูปภาพของสถานที่จาก database ในตาราง dcs_com_image
          }
       }
 
@@ -144,6 +147,7 @@ class Company_edit extends DCS_controller
    */
    function check_name_company_ajax()
    {
+      // ฟังก์ชันนี้เช็คว่ามีชื่อสถานที่ใน database หรือยังโดยไม่นับชื่อตัวมันเอง
       $this->load->model('Company/M_dcs_company', 'mcom');
       $this->mcom->com_name = $this->input->post('com_name');
       $company = $this->mcom->get_by_name()->row();

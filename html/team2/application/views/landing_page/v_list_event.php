@@ -30,7 +30,7 @@
 
             <!-- ช่องค้นหา -->
             <div class="col-md-4">
-                <input type="text" class="form-control form-control-custom" name="txt_event" placeholder="ค้นหาสถานที่">
+                <input type="text" class="form-control form-control-custom" name="value_search" placeholder="ค้นหาสถานที่">
             </div>
 
             <!-- เลือกหมวดหมู่ -->

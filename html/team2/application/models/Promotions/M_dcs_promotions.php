@@ -509,7 +509,8 @@ class M_dcs_promotions extends Da_dcs_promotions
         $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
                 LEFT JOIN dcs_company
                 ON dcs_promotions.pro_com_id = dcs_company.com_id
-                WHERE pro_status != 4 AND dcs_company.com_ent_id = $ent_id AND dcs_promotions.pro_adm_id IS NULL";
+                WHERE pro_status != 4 AND dcs_company.com_ent_id = $ent_id AND dcs_promotions.pro_adm_id IS NULL
+                ORDER BY dcs_promotions.pro_add_date DESC";
         return $this->db->query($sql);
     }
 
@@ -526,5 +527,142 @@ class M_dcs_promotions extends Da_dcs_promotions
         $sql = "SELECT * FROM {$this->db_name}.dcs_promotions 
                 WHERE pro_status != 4 AND pro_name = ?";
         return $this->db->query($sql, array($this->pro_name));
+    }
+
+    /*
+    *get_count_pro_ent_all
+    *get data count from promotions entrepreneur all
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-08
+    */
+    function get_count_pro_ent_all($date_sql)
+    {
+        $sql = "SELECT CONCAT(dcs_entrepreneur.ent_firstname, ' ' , dcs_entrepreneur.ent_lastname) as name , COUNT(dcs_promotions.pro_name) / (SELECT COUNT(*) FROM dcs_entrepreneur)* 100 as per
+                FROM dcs_entrepreneur
+                LEFT JOIN dcs_company ON dcs_company.com_ent_id = dcs_entrepreneur.ent_id
+                LEFT JOIN dcs_promotions ON dcs_promotions.pro_com_id = dcs_company.com_id
+                WHERE $date_sql AND dcs_entrepreneur.ent_status = 2
+                GROUP BY dcs_entrepreneur.ent_id";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    /*
+    *get_count_pro_adm_all
+    *get data count from promotions admin all
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-08
+    */
+    function get_count_pro_adm_all($date_sql)
+    {
+        $sql = "SELECT COUNT(dcs_promotions.pro_adm_id) * 100 / (SELECT COUNT(*) FROM dcs_promotions) as per
+                FROM dcs_promotions 
+                WHERE $date_sql AND pro_status != 4";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_result_pro_ent_all
+    *get result promotion entrepreneur
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-08
+    */
+    function get_result_pro_ent_all($date_sql)
+    {
+        $sql = "SELECT ( ((SELECT COUNT(*) FROM dcs_promotions) - COUNT(dcs_promotions.pro_adm_id)) * 100 ) / (SELECT COUNT(*) FROM dcs_promotions) as per
+                FROM dcs_promotions 
+                WHERE $date_sql";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_count_pro_end_ent
+    *get count promotion end entrepreneur
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_count_pro_end_ent($date_sql, $date_end)
+    {
+        $sql = "SELECT DATE_FORMAT(dcs_promotions.pro_end_date, '%d %M %Y') as end_date, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NULL
+        AND $date_end)
+        GROUP BY end_date";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_count_pro_end_adm
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_count_pro_end_adm($date_sql, $date_end)
+    {
+        $sql = "SELECT DATE_FORMAT(dcs_promotions.pro_end_date, '%d %M %Y') as end_date, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NOT NULL
+        AND $date_end)
+        GROUP BY end_date";
+        return $this->db->query($sql);
+    }
+
+
+    /*
+    *get_name_count_pro_end_adm
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_name_count_pro_end_adm($date_sql, $date_end)
+    {
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_adm, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NOT NULL
+        AND $date_end)
+        GROUP BY pro_name_adm";
+        return $this->db->query($sql);
+    }
+
+    /*
+    *get_name_count_pro_end_ent
+    *get count promotion end admin
+    *@input -
+    *@output -
+    *@author Chutipon Thermsirisuksin 62160081
+    *@Create Date 2565-03-17
+    */
+    function get_name_count_pro_end_ent($date_sql, $date_end)
+    {
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_ent, COUNT(*) as count_pro_end 
+        FROM dcs_promotions
+        WHERE $date_sql
+        AND dcs_promotions.pro_end_date 
+        AND (dcs_promotions.pro_status = 2 
+        AND dcs_promotions.pro_adm_id IS NULL
+        AND $date_end)
+        GROUP BY pro_name_ent";
+        return $this->db->query($sql);
     }
 }

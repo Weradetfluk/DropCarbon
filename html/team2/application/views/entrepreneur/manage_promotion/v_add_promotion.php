@@ -28,7 +28,7 @@
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
                                     <input type="text" id="pro_name" name="pro_name" class="form-control"
-                                        placeholder="กรอกชื่อโปรโมชัน" onkeyup="" required>
+                                        placeholder="กรอกชื่อโปรโมชัน" onkeyup="check_pro_name_ajax()" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
 
@@ -51,7 +51,8 @@
 
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
+                                    <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;">
+                                        (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
                                     <select name="pro_com_id" id="pro_com_id" class="form-control" required>
                                         <?php if (count($arr_company) != 0) { ?>
                                         <?php for ($i = 0; $i < count($arr_company); $i++) { ?>
@@ -250,7 +251,7 @@ function unlink_image_go_back() {
             // console.log(data);
             location.replace(
                 "<?php echo base_url() . "Entrepreneur/Manage_promotion/Promotion_list/show_list_promotion" ?>"
-                )
+            )
         }
     })
 }
@@ -291,5 +292,42 @@ function change_min_end_date() {
         document.getElementById("pro_end_date").min = start_date;
         console.log(start_date);
     });
+}
+
+/*
+ * check_promotion_name_ajax
+ * check promotion name by ajax
+ * @input pro_name
+ * @output -
+ * @author Acharaporn pornpattanasap 62160344
+ * @Create Date 2565-03-15
+ * @Update -
+ */
+function check_pro_name_ajax() {
+    var pro_name = $('#pro_name').val();
+    $.ajax({
+        url: "<?php echo site_url() . "Entrepreneur/Manage_promotion/Promotion_add/check_pro_name_ajax" ?>",
+        method: "POST",
+        dataType: "JSON",
+        data: {
+            pro_name: pro_name
+        },
+        success: function(data) {
+            // console.log(data);
+            if (data == 1) {
+                console.log(1);
+                $('#error_pro_name').html('ชื่อโปรโมชันนี้ได้ถูกใช้งานเเล้ว');
+                check_btn_name = 1;
+                check_count_image_btn()
+                // $('#btn_sub').prop('disabled', true); 
+            } else if (data == 2) {
+                console.log(2);
+                $('#error_pro_name').html('');
+                check_btn_name = 0;
+                check_count_image_btn()
+                // $('#btn_sub').prop('disabled', false);
+            }
+        }
+    })
 }
 </script>

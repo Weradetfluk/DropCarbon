@@ -80,13 +80,14 @@ class Landing_page extends DCS_controller
     public function show_event_list()
     {
         $this->load->model('Event/M_dcs_event', 'mde');
+        $this->load->model('Event/M_dcs_eve_category', 'mcat');
         $number_status = 2;
         if (isset($_POST)) {
             $data["event"] = $this->mde->get_event_and_img($number_status, $_POST)->result();
         } else {
             $data["event"] = $this->mde->get_event_and_img($number_status)->result();
         }
-
+        $data['eve_cat'] = $this->mcat->get_all()->result();
         if ($this->session->userdata("tourist_id")) {
             $topbar = 'template/Tourist/topbar_tourist_login';
         } else {
@@ -149,6 +150,27 @@ class Landing_page extends DCS_controller
             $topbar = 'template/Tourist/topbar_tourist';
         }
         $this->output_tourist('landing_page/v_list_promotion', $data, $topbar, 'footer');
+    }
+
+    /*
+    * get_event_list_ajax
+    * get event list
+    * @input -
+    * @output data
+    * @author Suwapat Saowarod 62160340
+    * @Create Date 2565-03-12
+    */
+    public function get_event_list_ajax($search = null)
+    {
+        $this->load->model('Event/M_dcs_event', 'meve');
+        if($search != null){
+            $result_search = urldecode($search);
+            $data["arr_event"] = $this->meve->get_event_mobile($result_search)->result();
+            // echo $search;
+        }else{
+            $data["arr_event"] = $this->meve->get_event_mobile()->result();
+        }
+        echo json_encode($data);
     }
 
     /*
@@ -216,6 +238,61 @@ class Landing_page extends DCS_controller
     {
         $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
         $data["tou_pro"] = $this->mpro->get_promotion_by_tou_id($this->session->userdata("tourist_id"))->result();
-        $this->output_tourist('landing_page/v_list_reward', $data);
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        }
+        $this->output_tourist('landing_page/v_list_reward', $data, $topbar);
+    }
+    /*
+    * show_reward_history
+    * show reward using history page 
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-03-10
+    */
+    public function show_reward_history()
+    {
+        $this->load->model('Promotions/M_dcs_tou_promotion', 'mpro');
+        $data["tou_pro"] = $this->mpro->get_promotion_by_tou_status($this->session->userdata("tourist_id"))->result();
+       
+        if ($this->session->userdata("tourist_id")) {
+            $topbar = 'template/Tourist/topbar_tourist_login';
+        } else {
+            $topbar = 'template/Tourist/topbar_tourist';
+        } 
+        $this->output_tourist('landing_page/v_reward_history', $data, $topbar);
+    }
+
+    /*
+    * get_event_list_landingpage
+    * get event list
+    * @input -
+    * @output data
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2565-03-12
+    */
+    public function get_event_list_landingpage()
+    {
+        $this->load->model('Event/M_dcs_event', 'mde');
+        $data["arr_event"] = $this->mde->get_event_landing_page()->result();
+        echo json_encode($data);
+    }
+
+    /*
+    * get_event_list_ajax
+    * get event list
+    * @input -
+    * @output data
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2565-03-12
+    */
+    public function get_company_list_landingpage()
+    {
+        $this->load->model('Company/M_dcs_company', 'mde');
+        $data["arr_com"] = $this->mde->get_company_landing_page()->result();
+        echo json_encode($data);
     }
 }

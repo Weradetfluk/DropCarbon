@@ -30,7 +30,7 @@ class M_dcs_login_tourist extends Da_dcs_login_tourist
     {
         $sql = "SELECT * 
                 from dcs_tourist 
-                where tus_username = ? AND  tus_password = ? AND tus_status != 0";
+                where tus_username = ? AND  tus_password = ? AND tus_status != 2";
 
         $query = $this->db->query($sql, array($this->tus_username, $this->tus_password));
 

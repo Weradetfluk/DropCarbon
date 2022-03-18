@@ -17,6 +17,7 @@ class Admin_approval_event extends DCS_controller
     parent::__construct();
     $this->load->library('email');
     $this->load->library('pagination');
+    $this->load->helper('mydate_helper.php');
     $this->load->model('Event/M_dcs_event', 'mdce');
   }
 
@@ -201,7 +202,7 @@ class Admin_approval_event extends DCS_controller
                   <tr class="custom-tr-header-table">
                       <th class="th-custom res-hide">ลำดับ</th>
                       <th class="th-custom ">ชื่อกิจกรรม</th>
-                      <th class="th-custom ">ชื่อสถานที่</th>
+                      <th class="th-custom ">เวลาดำเนินการ</th>
                       <th class="th-custom res-hide">ชื่อผู้ประกอบการ</th>
                       <th class="th-custom ">ดำเนินการ</th>
                   </tr>
@@ -226,7 +227,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td style="text-align: left;">'
-            . $row->com_name .
+            . to_format_abbreviation($row->eve_start_date) . " - " . to_format_abbreviation($row->eve_end_date). 
             '</td>' .
             '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
@@ -298,7 +299,7 @@ class Admin_approval_event extends DCS_controller
             . $row->eve_name .
             '</td>' .
             '<td style="text-align: left;">'
-            . $row->com_name .
+            .  to_format_abbreviation($row->eve_start_date)   . " - "   . to_format_abbreviation($row->eve_end_date). 
             '</td>' .
             '<td class="res-hide" style="text-align: left;">' .
             $row->ent_firstname . " " . $row->ent_lastname .
@@ -309,7 +310,7 @@ class Admin_approval_event extends DCS_controller
               '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
                           <span class="material-icons">search</span>
               </a>' .
-              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\')">
+              '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' . $row->eve_id . '\',\'' . $row->eve_name .  '\',\'' . $row->ent_email . '\',\'' . $row->eve_cat_id . '\',\'' . $row->eve_cat_name . '\',\'' . $row->eve_min_score . '\',\'' . $row->eve_max_score . '\')">
                           <i class="material-icons">
                             done
                           </i>

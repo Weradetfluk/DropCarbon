@@ -22,12 +22,14 @@
                     <div class="card-body">
                         <form action="<?php echo base_url() . 'Admin\Manage_promotions\Admin_add_promotions/add_promotion' ?>" id="form_add_pro" method="POST" enctype="multipart/form-data">
                             <div class="row">
+                                <!-- กรอกชื่อ -->
                                 <div class="col-lg-6">
                                     <label for="pro_name">ชื่อโปรโมชัน</label>
-                                    <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="กรอกชื่อโปรโมชัน" onkeyup="" required>
+                                    <input type="text" id="pro_name" name="pro_name" class="form-control" 
+                                    placeholder="กรอกชื่อโปรโมชัน" onkeyup="check_pro_name_ajax()" required>
                                     <span class="text-danger" id="error_pro_name"></span>
                                 </div>
-
+                                <!-- เลือกหมวดหมู่ -->
                                 <div class="col-lg-3">
                                     <label for="pro_cat_id">หมวดหมู่</label>
                                     <select name="pro_cat_id" id="pro_cat_id" class="form-control" onchange="check_category()" required>
@@ -43,7 +45,7 @@
                                     </select>
                                 </div>
                             </div><br>
-
+                            <!-- เลือกสถานที่ -->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="pro_com_id">ชื่อสถานที่</label><span style="color: red;"> (จำเป็นต้องมีสถานที่ที่ได้รับการอนุมัติก่อน)</span>
@@ -59,19 +61,20 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <!-- กรอกคะแนนโปรโมชัน -->
                                 <div class="col-lg-3" id="div-point">
                                     <label for="pro_point">คะเเนนโปรโมชัน</label>
                                     <input type="number" name="pro_point" id="pro_point" class="form-control" placeholder="กรอกคะเเนนที่ใช้เเลกโปรโมชัน" required>
                                 </div>
                             </div><br>
-
+                            <!-- กรอกรายละเอียดโปรโมชัน -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="pro_description">รายละเอียดโปรโมชัน</label>
                                     <textarea id="pro_description" name="pro_description" class="form-control" style="border:solid 0.2px #B3B3E9; text-indent: 10px; padding: 0px 10px 0px 10px;" rows="5" placeholder="กรอกรายละเอียดของโปรโมชัน" required></textarea>
                                 </div>
                             </div><br>
-
+                            <!-- เลือกวันที่เริ่มและสิ้นสุดโปรโมชัน -->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="pro_start_date">วันที่เริ่มโปรโมชัน</label>
@@ -83,7 +86,6 @@
                                     <input type="date" id="pro_end_date" name="pro_end_date" class="form-control" min="<?php echo $date_now ?>" required>
                                 </div>
                             </div><br>
-
                             <!-- เลือกรูปภาพโปรโมชัน -->
                             <div class="form-group">
                                 <label for="pro_file">รูปภาพประกอบโปรโมชัน <br><span style="color: red; font-size: 13px;">(ต้องมีรูปภาพอย่างน้อย 1 ภาพ
@@ -93,17 +95,17 @@
                             <button type="button" class="btn btn-info" onclick="document.getElementById('pro_file').click();">เพิ่มรูปภาพ</button>
                             <div class="card-body d-flex flex-wrap justify-content-start" id="card_image"></div>
                             <div id="arr_del_img_new"></div><br>
-                            <!-- ส้นสุดเลือกรูปภาพโปรโมชัน -->
-
+                            <!-- แสดงผู้เพิ่มโปรโมชัน -->
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <label for="pro_adm_id">ผู้เพิ่มกิจกรรม</label>
+                                    <label for="pro_adm_id">ผู้เพิ่มโปรโมชัน</label>
                                     <input type="text" id="admin_id" class="form-control" value="<?php echo $arr_admin ?>" disabled>
                                 </div>
                             </div>
-                            <!-- Submit button -->
                             <div style="text-align: right;">
+                                <!-- ปุ่มบันทึก -->
                                 <button type="submit" id="btn_sub" class="btn btn-success">บันทึก</button>
+                                <!-- ปุ่มยกเลิก -->
                                 <a class="btn btn-secondary" style="color: white; background-color: #777777;" onclick="unlink_image_go_back()">ยกเลิก</a>
                             </div>
 
@@ -283,5 +285,42 @@
             document.getElementById("pro_end_date").min = start_date;
             console.log(start_date);
         });
+    }
+
+    /*
+     * check_pro_name_ajax
+     * check name promotion by ajax
+     * @input pro_name
+     * @output -
+     * @author Kasama Donwong 621600074
+     * @Create Date 2565-03-18
+     * @Update -
+     */
+    function check_pro_name_ajax() {
+        var pro_name = $('#pro_name').val();
+        $.ajax({
+            url: "<?php echo site_url() . "Entrepreneur/Manage_promotion/Promotion_add/check_pro_name_ajax" ?>",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+                pro_name: pro_name
+            },
+            success: function(data) {
+                // console.log(data);
+                if (data == 1) {
+                    console.log(1);
+                    $('#error_pro_name').html('ชื่อโปรโมชันนี้ได้ถูกใช้งานเเล้ว');
+                    check_btn_name = 1;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', true); 
+                } else if (data == 2) {
+                    console.log(2);
+                    $('#error_pro_name').html('');
+                    check_btn_name = 0;
+                    check_count_image_btn()
+                    // $('#btn_sub').prop('disabled', false);
+                }
+            }
+        })
     }
 </script>

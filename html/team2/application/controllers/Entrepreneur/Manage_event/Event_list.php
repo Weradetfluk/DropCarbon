@@ -22,6 +22,7 @@ class Event_list extends DCS_controller
         if (!isset($_SESSION['tab_number_event'])) {
             $_SESSION['tab_number_event'] = 1;
         }
+        $this->load->helper('mydate_helper.php');
         $this->load->model('Event/M_dcs_event', 'meve');
         $data['arr_event'] = $this->meve->get_event_by_ent_id($this->session->userdata("entrepreneur_id"))->result();
         date_default_timezone_set('Asia/Bangkok');

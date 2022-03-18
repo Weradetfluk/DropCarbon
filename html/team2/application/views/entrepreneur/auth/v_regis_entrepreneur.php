@@ -172,7 +172,9 @@
         <form class="container py-3" method='POST' id="form_regis_ent" action="<?php echo base_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
+                <!--กรอกข้อมูลการลงทะเบียน-->
                 <div class="row">
+                    <!--กรอกข้อมูลบุคคล-->
                     <div class="form-group col-md-2 mb-3"  style="margin-top: -10px;">
                         <label for="prefix" class="label">คำนำหน้า</label><br>
                         <select class="form-control mt-1" name="ent_pre_id" id="prefix" style="margin-top: -12px !important; " required>
@@ -206,7 +208,9 @@
                         <!--<span class="error text-danger"></span>-->
                     </div>
                 </div>
+                <!--สิ้นสุดการกรอกข้อมูลส่วนบุคคล-->
 
+                <!--กรอกข้อมูลอีเมล-->
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="ent_email">อีเมล</label>
@@ -219,8 +223,10 @@
                         <input type="date" class="form-control mt-1" id="ent_birthdate" name="ent_birthdate" placeholder="วันเกิด" required>
                     </div> -->
                 </div>
+                <!--สิ้นสุดการกรอกข้อมูลอีเมล-->
 
                 <div class="row">
+                    <!--กรอกข้อมูลวันเกิด-->
                     <div class="form-group col-md-2 mb-2">
                         <label for="ent_birth_date">วันเกิด</label>
                         <select name="ent_birth_date" id="ent_birth_date" class="form-control mt-1">
@@ -263,7 +269,8 @@
                         </select>
                     </div>
                 </div><br>
-
+                <!--สิ้นสุดการกรอกข้อมูลวันเกิด-->
+                
                 <div class="form-group">
                     เอกสารยืนยันตัวตน (เช่น รูปถ่ายบัตรประชาชน หรือ เอกสารเชิงพาณิชย์) <br><span style="color: red; font-size: 13px;">*เลือกไฟล์ได้เฉพาะ PDF, JPEG, PNG, JPG และขนาดไฟล์ไม่เกิน 3000 KB</span>
                 </div>
@@ -272,7 +279,8 @@
                 <div class="card-body d-flex flex-wrap justify-content-start" id="card_file"></div>
                 <div id="arr_del_img_new"></div>
                 <br><br>
-
+                
+                <!--สร้างบัญชีผู้ใช้-->
                 <b style="font-size: 30px;">สร้างบัญชีผู้ใช้</b><br><br>
 
                 <div class="row">

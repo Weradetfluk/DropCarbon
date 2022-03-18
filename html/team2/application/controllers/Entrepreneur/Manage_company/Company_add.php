@@ -23,10 +23,10 @@ class Company_add extends DCS_controller
     {
         $this->load->model('Company/M_dcs_com_category', 'mcat');
         $this->load->model('Province/M_dcs_province', 'mprv');
-        $data['arr_com_cat'] = $this->mcat->get_all()->result();
-        $data['arr_province'] = $this->mprv->get_all()->result();
-        $view = 'entrepreneur/manage_company/v_add_company';
-        $this->output_entrepreneur($view, $data);
+        $data['arr_com_cat'] = $this->mcat->get_all()->result(); // ดึงข้อมูลประเภทของสถานที่ ใน database จากตาราง dcs_com_category
+        $data['arr_province'] = $this->mprv->get_all()->result(); // ดึงข้อมูลจังหวัด ใน database จากตาราง dcs_province
+        $view = 'entrepreneur/manage_company/v_add_company'; // กำหนดไปหน้า view ที่ชื่อว่า v_add_company.php
+        $this->output_entrepreneur($view, $data); // เรียกใช้ฟังก์ชัน output_entrepreneur ในไฟล์ DCS_controller.php
     }
 
     /*
@@ -51,31 +51,32 @@ class Company_add extends DCS_controller
         $this->mcom->com_cat_id = $this->input->post('com_cat_id');
         $this->mcom->com_location = $this->input->post('com_location');
         $this->mcom->com_par_id = $this->input->post('par_id');
-        $this->mcom->insert_company();
-        $this->set_session_add_company('success');
-        $result = $this->mcom->get_by_name()->row();
+        $this->mcom->insert_company(); // เพิ่มสถานที่ลง database ในตาราง dcs_company
+        $this->set_session_add_company('success'); // set session ว่า เพิ่มสำเร็จ
+        $result = $this->mcom->get_by_name()->row();// ค้นหาสถานที่ด้วยชื่อ เพราะต้องการ id ของสถานที่ที่เพิ่มเข้า database
         
         
         // save data image to database
         $arr_img_add = array();
         $arr_name_name = array();
-        $arr_img_add = $this->input->post('new_img');
-        $arr_name_name = $this->input->post('name_new_image');
-        $this->mimg->com_img_com_id = $result;
+        $arr_img_add = $this->input->post('new_img'); // รับค่าจาก view คือ path รูปที่เพิ่มขึ้นมา
+        $arr_name_name = $this->input->post('name_new_image'); // รับค่าจาก view ชื่อรูป
+        $this->mimg->com_img_com_id = $result->com_id;
+        // วน loop เพือที่จะเอารูปลง database
         for ($i = 0; $i < count($arr_img_add); $i++) {
             $this->mimg->com_img_path = $arr_img_add[$i];
             $this->mimg->com_img_name = $arr_name_name[$i];
-            $this->mimg->insert_image_company();
+            $this->mimg->insert_image_company(); // เพิ่มรูปภาพของสถานที่ ลง database ในตาราง dcs_com_image
         }
 
         // delete data image to database
         $arr_img_delete = array();
-        $arr_img_delete= $this->input->post('del_new_img');
+        $arr_img_delete= $this->input->post('del_new_img'); // รับค่าจาก view คือ path รูปที่ต้องการจะลบ
         if($arr_img_delete != ''){
             for ($i = 0; $i < count($arr_img_delete); $i++) {
                 $this->mimg->com_img_path = $arr_img_delete[$i];
-                unlink('./image_company/' . $arr_img_delete[$i]);
-                $this->mimg->delete_image_company();
+                unlink('./image_company/' . $arr_img_delete[$i]); // ลบรูปออกจาก Floder ชื่อ image_company
+                $this->mimg->delete_image_company(); // ลบรูปภาพของสถานที่จาก database ในตาราง dcs_com_image
             }
         }
           
@@ -97,7 +98,7 @@ class Company_add extends DCS_controller
 
     /*
     * upload_image_ajax
-    * upload image
+    * upload image to floder name image_company
     * @input com_file
     * @output -
     * @author Suwapat Saowarod 62160340
@@ -105,7 +106,9 @@ class Company_add extends DCS_controller
     * @Update Date 2564-08-28
     */
     public function upload_image_ajax(){
-        $file_name = array();
+
+        // สร้างตัวแปรเพื่อรับค่าจาก view
+        $file_name = array(); 
         $file_tmp_name = array();
         $file_size = array();
         $file_error = array();
@@ -113,8 +116,7 @@ class Company_add extends DCS_controller
         $file_actaul_ext = array();
         $error_file = '';
 
-        // Configure file storage
-
+        // นำค่าที่ได้จาก view มาใส่ในตัวแปรที่เตรียม
         $file = $_FILES['com_file'] ?? '';
         $file_name = $_FILES['com_file']['name'] ?? '';
         $file_tmp_name = $_FILES['com_file']['tmp_name'] ?? '';
@@ -122,29 +124,38 @@ class Company_add extends DCS_controller
         $file_error = $_FILES['com_file']['error'] ?? '';
     
         if($file != ''){
+            // วน loop เพื่อแปลงนามสกุลไฟล์ให้เป็นตัวเล็ก
             for ($i = 0; $i < count($file_name); $i++) {
-                $file_ext[$i] = explode('.', $file_name[$i]);
-                $file_actaul_ext[$i] = strtolower(end($file_ext[$i]));
+                $file_ext[$i] = explode('.', $file_name[$i]); // เเยก string ให้เป็น array โดยใช้ ' . ' ในการแยก
 
-                // Check if there is a problem with the image file. or the file size exceeds 1000000?
+                // end() จะดึงค่าสุดท้ายของ array จากนั้นนำมาทำเป็นตัวอักษรพิมพ์เล็ก ด้วยคำสั่ง strtolower()
+                $file_actaul_ext[$i] = strtolower(end($file_ext[$i])); 
+
+                // เช็คว่าไฟล์นั้นมีปัญหาหรือไม่ และรูปขนาดเกิน 30000000 KB หรือไม่
                 if ($file_error[$i] != 0 || $file_size[$i] >= 3000000) {
                     $error_file = 'false';
                     break;
                 }
-            }
+            } // end loop for
         }else { 
             $error_file = 'false';
         }
 
-        $output_image = '';
+        $output_image = ''; // สร้างตัวแปรเพื่อเก็บ string 
+        // ถ้าไม่มีค่าเป็น false จะทำการเข้า if แต่ถ้ามีค่า false จะเข้า else
         if ($error_file != 'false') {
-            // Loop to upload files
+            // วน loop เพื่อ upload file ลง floder ที่ชื่อว่า image_company
             for ($i = 0; $i < count($file_name); $i++) {
-                $file_new_name[$i] = uniqid('', true);
-                $file_destination[$i] = './image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
-                move_uploaded_file($file_tmp_name[$i], $file_destination[$i]);
-                // $this->mimg->com_img_path = $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+                $file_new_name[$i] = uniqid('', true); // uniqid เอาไว้สร้าง id แบบสุ่ม 23 ตัวอักษร
+
+                // ใส่ directory ที่จะเก็บ ลงในตัวแปร file_destination
+                $file_destination[$i] = './image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i]; 
+                move_uploaded_file($file_tmp_name[$i], $file_destination[$i]); // เก็บไฟล์ลง floder ที่ชื่อว่า image_company
+                
+                // สร้าง path รูปภาพเพื่อเข้าถึงภาพที่พึ่งเก็บ
                 $path = base_url() . 'image_company/' . $file_new_name[$i] . '.' . $file_actaul_ext[$i];
+
+                //  สร้าง div ที่แสดงรูปภาพเพื่อที่จะไปโชว์หน้า view 
                 $output_image .= '<div id="' . $file_new_name[$i] . '">
                                         <div class="image_container d-flex justify-content-center position-relative" style="border-radius: 7px; width: 200px; height:200px">
                                         <img src="' . $path . '" alt="Image"><span class="position-absolute" style="font-size: 25px;" 
@@ -156,7 +167,7 @@ class Company_add extends DCS_controller
         } else {
             $output_image .= 'error';
         }
-        echo json_encode($output_image);
+        echo json_encode($output_image);// คืนค่ากับไปเป็นข้อมูลแบบ json
     }
 
     /*
@@ -169,18 +180,19 @@ class Company_add extends DCS_controller
     * @Update Date -
     */
     public function unlink_image_ajax(){
-        // print_r($this->input->post('arr_image'));
-        $data = "";
+        // ทำฟังก์ชันนี้ในกรณีที่ผู้ใช้งานเพิ่ม file แล้วกดยกเลิกการเพิ่มสถานที่
+        $data = ""; 
+        // เช็คค่า arr_image จากหน้า view ว่า ถ้าไม่เท่ากับ NULL จะเข้า if เเต่ ถ้าเท่ากับ NULL เข้า else
         if($this->input->post('arr_image') != NULL){
             $arr_image = $this->input->post('arr_image');
             for($i = 0; $i < count($arr_image); $i++){
-                unlink('./image_company/' . $arr_image[$i]);
+                unlink('./image_company/' . $arr_image[$i]); // ลบ file ใน floder ที่ชื่อว่า image_company
             }
             $data = "success";
         }else{
             $data = "no image";
         }
-        echo json_encode($data);
+        echo json_encode($data);// คืนค่ากับไปเป็นข้อมูลแบบ json
     }
 
     /*
@@ -193,6 +205,7 @@ class Company_add extends DCS_controller
      * @Update -
      */
     function check_name_company_ajax(){
+        // ฟังก์ชันนี้เช็คว่ามีชื่อสถานที่ใน database หรือยัง
         $this->load->model('Company/M_dcs_company', 'mcom');
         $this->mcom->com_name = $this->input->post('com_name');
         $company = $this->mcom->get_by_name()->row();
@@ -214,10 +227,11 @@ class Company_add extends DCS_controller
      * @Update -
      */
     function get_district_by_prv_id_ajax(){
+
         $this->load->model('District/M_dcs_district', 'mdis');
         $this->mdis->dis_prv_id = $this->input->post('prv_id');
-        $data = $this->mdis->get_district_by_prv_id()->result();
-        echo json_encode($data);
+        $data = $this->mdis->get_district_by_prv_id()->result(); // ดึงค่าอำเภอ ใน database จากตาราง dcs_district
+        echo json_encode($data);// คืนค่ากับไปเป็นข้อมูลแบบ json
     }
 
     /* 
@@ -232,8 +246,8 @@ class Company_add extends DCS_controller
     function get_parish_by_dis_id_ajax(){
         $this->load->model('Parish/M_dcs_parish', 'mpar');
         $this->mpar->par_dis_id = $this->input->post('dis_id');
-        $data = $this->mpar->get_parish_by_dis_id()->result();
-        echo json_encode($data);
+        $data = $this->mpar->get_parish_by_dis_id()->result();// ดึงค่าตำบล ใน database จากตาราง dcs_parish
+        echo json_encode($data);// คืนค่ากับไปเป็นข้อมูลแบบ json
     }
 
 }

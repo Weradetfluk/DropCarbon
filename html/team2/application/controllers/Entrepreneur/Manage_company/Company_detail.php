@@ -26,9 +26,9 @@ class Company_detail extends DCS_controller
         $this->load->model('Company/M_dcs_com_image', 'mimg');
         $this->mcom->com_id = $com_id;
         $this->mimg->com_img_com_id = $com_id;
-        $data["obj_company"] = $this->mcom->get_by_detail()->row();
-        $data["arr_image"] = $this->mimg->get_by_com_id()->result();
-        $view = 'entrepreneur/manage_company/v_detail_company';
-        $this->output_entrepreneur($view, $data);
+        $data["obj_company"] = $this->mcom->get_by_detail()->row();// ดึงข้อมูลสถานที่ ใน database ตาราง dcs_company ด้วย com_id
+        $data["arr_image"] = $this->mimg->get_by_com_id()->result();// ดึงข้อมูลรูปภาพสถานที่ ใน database ตาราง dcs_com_image ด้วย com_id
+        $view = 'entrepreneur/manage_company/v_detail_company'; // กำหนดไปหน้า view ที่ชื่อว่า v_detail_company.php
+        $this->output_entrepreneur($view, $data);// เรียกใช้ฟังก์ชัน output_entrepreneur ในไฟล์ DCS_controller.php
     }
 }
