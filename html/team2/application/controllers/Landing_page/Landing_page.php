@@ -265,4 +265,34 @@ class Landing_page extends DCS_controller
         } 
         $this->output_tourist('landing_page/v_reward_history', $data, $topbar);
     }
+
+    /*
+    * get_event_list_landingpage
+    * get event list
+    * @input -
+    * @output data
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2565-03-12
+    */
+    public function get_event_list_landingpage()
+    {
+        $this->load->model('Event/M_dcs_event', 'mde');
+        $data["arr_event"] = $this->mde->get_event_landing_page()->result();
+        echo json_encode($data);
+    }
+
+    /*
+    * get_event_list_ajax
+    * get event list
+    * @input -
+    * @output data
+    * @author Weradet Nopsombun 62160110
+    * @Create Date 2565-03-12
+    */
+    public function get_company_list_landingpage()
+    {
+        $this->load->model('Company/M_dcs_company', 'mde');
+        $data["arr_com"] = $this->mde->get_company_landing_page()->result();
+        echo json_encode($data);
+    }
 }
