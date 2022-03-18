@@ -152,7 +152,7 @@
     function create_table(data, pagation) {
         console.log(data);
         let html_code = '';
-        html_code += '<table class="table" style="text-align: center;">';
+        html_code += '<table class="table" style="text-align: left;">';
         html_code += '<thead class="text-white custom-thead">';
         html_code += '<tr class="custom-tr-header-table">';
         html_code += '<th class="th-custom res-hide">ลำดับ</th>';
@@ -198,7 +198,7 @@
             html_code += '</tbody>'
         });
         html_code += '</table><br>';
-        html_code += '<div class="container-fluid" style="align: center;   position: relative;">';
+        html_code += '<div class="container-fluid" style="align: left;   position: relative;">';
         html_code += '<ul class="pagination w-50" id="pagination">';
         //  $('#pagination').html(pagation);
 
