@@ -152,7 +152,13 @@ class Promotion_edit extends DCS_controller
         $this->mpro->pro_name = $this->input->post('pro_name');
         $promotion = $this->mpro->get_by_name()->row();
         if ($promotion) {
-            echo 1;
+            if ($promotion->pro_id != $this->input->post('pro_id')) {
+                // have name event
+                echo 1;
+            } else {
+                // have name event but is old name           
+                echo 2;
+            }
         } else {
             echo 2;
         }

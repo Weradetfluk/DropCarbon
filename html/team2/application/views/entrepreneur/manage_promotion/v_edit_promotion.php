@@ -387,6 +387,7 @@ function check_category() {
 }
 
 
+
 /*
  * check_promotion_name_ajax
  * check promotion name by ajax
@@ -398,12 +399,14 @@ function check_category() {
  */
 function check_pro_name_ajax() {
     var pro_name = $('#pro_name').val();
+    var pro_id = $('#pro_id').val();
     $.ajax({
-        url: "<?php echo site_url() . "Entrepreneur/Manage_promotion/Promotion_add/check_pro_name_ajax" ?>",
+        url: "<?php echo site_url() . "Entrepreneur/Manage_promotion/Promotion_edit/check_pro_name_ajax" ?>",
         method: "POST",
         dataType: "JSON",
         data: {
-            pro_name: pro_name
+            pro_name: pro_name,
+            pro_id: pro_id
         },
         success: function(data) {
             // console.log(data);
