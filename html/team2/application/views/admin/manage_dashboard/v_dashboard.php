@@ -1185,7 +1185,7 @@
             }
         }).then(function(json_data) {
             create_chart_promotion_end(json_data);
-            console.log(json_data);
+            // console.log(json_data);
         });
 
     }
@@ -1264,7 +1264,7 @@
         var arr_count_ent = [];
         var arr_count_adm = [];
         for (let i = 0; i <= diff_days; i++) {
-            for (let j = 0; j < obj_data_promotion_end_ent.length; j++) {
+            for (let j = 0; j <= obj_data_promotion_end_ent.length; j++) {
                 if (date_between[i] == obj_data_promotion_end_ent[j]) {
                     arr_data_count_ent[i] = obj_data_count_promotion_end_ent[j];
                     arr_count_ent[i] = "ent" + i;
@@ -1273,7 +1273,7 @@
                     arr_count_ent[i] = "ent" + i;
                 }
             }
-            for (let j = 0; j < obj_data_promotion_end_adm.length; j++) {
+            for (let j = 0; j <= obj_data_promotion_end_adm.length; j++) {
                 if (date_between[i] == obj_data_promotion_end_adm[j]) {
                     arr_data_count_adm[i] = obj_data_count_promotion_end_adm[j];
                     arr_count_adm[i] = "adm" + i;
@@ -1301,6 +1301,9 @@
                 y: arr_data_count_adm[i],
             }, );
         }
+
+        // console.log(data_state_ent);
+        // console.log(data_state_adm);
 
         var drilldown_data_ent = [];
         for (let i = 0; i < date_between.length; i++) {
@@ -1340,14 +1343,11 @@
                 arr_count_ent[i],
             );
         }
-        var sum_obj_data_promotion_end = [];
-        for (var i = 0; i < Math.max(obj_data_promotion_end_adm.length, obj_data_promotion_end_ent.length); i++) {
-            sum_obj_data_promotion_end.push((obj_data_promotion_end_adm[i] || 0) + (obj_data_promotion_end_ent[i] || 0));
-        }
 
+        var sum_obj_data_promotion_end = obj_data_promotion_end_adm.length + obj_data_promotion_end_ent.length;
         var drilldown_series = [];
         for (let i = 0; i < date_between.length; i++) {
-            for (let j = 0; j < sum_obj_data_promotion_end.length; j++) {
+            for (let j = 0; j < sum_obj_data_promotion_end; j++) {
                 if (date_between[i] == obj_data_promotion_end_adm[j] || date_between[i] == obj_data_promotion_end_ent[j]) {
                     if (obj_data_count_promotion_end_adm[j] == null || obj_data_count_promotion_end_adm[j] == '') {
                         drilldown_series.push({
@@ -1387,8 +1387,9 @@
                 }
             }
         }
-        console.log(drilldown_data_ent);
+
         console.log(drilldown_series);
+        // console.log(drilldown_data_adm);
 
 
         Highcharts.chart('chart_promotion_end', {
