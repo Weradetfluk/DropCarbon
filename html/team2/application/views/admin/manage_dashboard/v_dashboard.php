@@ -676,7 +676,7 @@
              *@update Date -
              */
             function create_chart_register(arr_data_register) {
-                console.log('arr_data_register : ' + arr_data_register);
+                // console.log('arr_data_register : ' + arr_data_register);
                 var date_end_str = date_secon.substr(0, 10);
                 var date_start_str = date_first.substr(0, 10);
                 var date_end = new Date(date_end_str);
@@ -1024,7 +1024,7 @@
                     dataType: 'JSON',
                     success: function(json_data) {
 
-                        console.log(json_data)
+                        // console.log(json_data)
 
                         $("#tourist_number").html(json_data[0].tou +
                             " <span style='font-size: 16px;'>คน</span>");
@@ -1227,19 +1227,17 @@
                 //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ประกอบการ
                 var obj_data_name_promotion_end_ent = []; // วิธีการเดียวกัน
                 arr_data_promotion_end['arr_data_name_promotion_end_ent'].forEach((row, index) => {
-                    obj_data_name_promotion_end_ent.push({
-                        name: row['pro_name_ent'],
-                        y: parseInt(row['count_pro_end'])
-                    });
+                    obj_data_name_promotion_end_ent.push(
+                        row['pro_name_ent'],
+                    );
                 });
 
                 //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ดูแลระบบ
                 var obj_data_name_promotion_end_adm = []; // วิธีการเดียวกัน
                 arr_data_promotion_end['arr_data_name_promotion_end_adm'].forEach((row, index) => {
-                    obj_data_name_promotion_end_adm.push({
-                        name: row['pro_name_adm'],
-                        y: parseInt(row['count_pro_end'])
-                    });
+                    obj_data_name_promotion_end_adm.push(
+                        row['pro_name_adm'],
+                    );
                 });
 
                 //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ประกอบการ
@@ -1258,9 +1256,6 @@
                     );
                 });
 
-                //////////////////////////////////////////////////
-
-                // console.log('arr_data_register : ' + arr_data_register);
                 var date_end_str = date_secon.substr(0, 10);
                 var date_start_str = date_first.substr(0, 10);
                 var date_end = new Date(date_end_str);
@@ -1276,38 +1271,127 @@
                     }
                     date_between.push([String(date_count.getDate()).padStart(2, '0'), months[date_count.getMonth()], date_count.getFullYear()].join(' '));
                 }
-                
+
 
                 var arr_data_count_ent = [];
                 var arr_data_count_adm = [];
+                var arr_count_ent = [];
+                var arr_count_adm = [];
                 for (let i = 0; i <= diff_days; i++) {
                     for (let j = 0; j < obj_data_promotion_end_ent.length; j++) {
                         if (date_between[i] == obj_data_promotion_end_ent[j]) {
                             arr_data_count_ent[i] = obj_data_count_promotion_end_ent[j];
-                            // console.log(arr_data_count_ent[1]);
+                            arr_count_ent[i] = "ent" + i;
                         } else if (arr_data_count_ent[i] == null || arr_data_count_ent[i] == '') {
                             arr_data_count_ent[i] = 0;
+                            arr_count_ent[i] = "ent" + i;
                         }
                     }
                     for (let j = 0; j < obj_data_promotion_end_adm.length; j++) {
                         if (date_between[i] == obj_data_promotion_end_adm[j]) {
                             arr_data_count_adm[i] = obj_data_count_promotion_end_adm[j];
+                            arr_count_adm[i] = "adm" + i;
                         } else if (arr_data_count_adm[i] == null || arr_data_count_adm[i] == '') {
                             arr_data_count_adm[i] = 0;
+                            arr_count_adm[i] = "adm" + i;
                         }
                     }
                 }
-                console.log("pip//");
-                console.log(date_between);
-                console.log(obj_data_promotion_end_ent);
-                console.log(obj_data_promotion_end_adm);
-                console.log(arr_data_count_ent);
-                console.log(arr_data_count_adm);
-                
-                // console.log("object");
-                // console.log(obj_data_count_promotion_end_ent);
-                // console.log(obj_data_count_promotion_end_adm);
-                
+
+                var data_state_ent = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    data_state_ent.push({
+                        drilldown: arr_count_ent[i],
+                        name: date_between[i],
+                        y: arr_data_count_ent[i],
+                    }, );
+                }
+
+                var data_state_adm = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    data_state_adm.push({
+                        drilldown: arr_count_adm[i],
+                        name: date_between[i],
+                        y: arr_data_count_adm[i],
+                    }, );
+                }
+
+                var drilldown_data_ent = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    for (let j = 0; j < obj_data_promotion_end_ent.length; j++) {
+                        if (date_between[i] == obj_data_promotion_end_ent[j]) {
+                            drilldown_data_ent.push({
+                                name: obj_data_name_promotion_end_ent[j],
+                                y: obj_data_count_promotion_end_ent[j],
+                            }, );
+
+                        }
+                    }
+                }
+
+                var drilldown_data_adm = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    for (let j = 0; j < obj_data_promotion_end_adm.length; j++) {
+                        if (date_between[i] == obj_data_promotion_end_adm[j]) {
+                            drilldown_data_adm.push({
+                                name: obj_data_name_promotion_end_adm[j],
+                                y: obj_data_count_promotion_end_adm[j],
+                            }, );
+                        }
+                    }
+                }
+
+                var drilldown_id_adm = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    drilldown_id_adm.push(
+                        arr_count_adm[i],
+                    );
+                }
+
+                var drilldown_id_ent = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    drilldown_id_ent.push(
+                        arr_count_ent[i],
+                    );
+                }
+                var sum_obj_data_promotion_end = [];
+                for (var i = 0; i < Math.max(obj_data_promotion_end_adm.length, obj_data_promotion_end_ent.length); i++) {
+                    sum_obj_data_promotion_end.push((obj_data_promotion_end_adm[i] || 0) + (obj_data_promotion_end_ent[i] || 0));
+                }
+
+                var drilldown_series = [];
+                for (let i = 0; i < date_between.length; i++) {
+                    for (let j = 0; j < sum_obj_data_promotion_end.length; j++) {
+                        if (date_between[i] == obj_data_promotion_end_adm[j] || date_between[i] == obj_data_promotion_end_ent[j]) {
+                            drilldown_series.push({
+                                color: Highcharts.getOptions().colors[1],
+                                type: 'pie',
+                                name: 'จำนวน',
+                                id: arr_count_adm[i],
+                                data: drilldown_data_adm,
+                            }, {
+                                color: Highcharts.getOptions().colors[1],
+                                type: 'pie',
+                                name: 'จำนวน',
+                                id: arr_count_ent[i],
+                                data: drilldown_data_ent,
+                            }, )
+                        } else {
+                            drilldown_series.push({
+                                color: Highcharts.getOptions().colors[1],
+                                type: 'pie',
+                                name: 'จำนวน',
+                            }, {
+                                color: Highcharts.getOptions().colors[1],
+                                type: 'pie',
+                                name: 'จำนวน',
+                            }, )
+                        }
+                    }
+                }
+                console.log(drilldown_data_ent);
+                console.log(drilldown_series);
+
 
                 Highcharts.chart('chart_promotion_end', {
                     chart: {
@@ -1316,6 +1400,7 @@
                             fontFamily: 'Prompt',
                         },
                     },
+
                     plotOptions: {
                         series: {
                             borderWidth: 0,
@@ -1337,12 +1422,15 @@
                             }
                         }
                     },
+
                     title: {
                         text: 'จำนวนโปรโมชันที่หมดอายุ'
                     },
+
                     yAxis: {
                         visible: false
                     },
+
                     xAxis: {
                         type: 'category',
                         crosshair: true,
@@ -1352,105 +1440,16 @@
                         enabled: true
                     },
 
-                    // series: [{
-                    //     name: 'ผู้ประกอบการ',
-                    //     data: obj_data_promotion_end_ent,
-                    //     drilldown: 'ent_pro1',
-                    // }, {
-                    //     name: 'ผู้ดูแลระบบ',
-                    //     data: obj_data_promotion_end_adm,
-                    //     drilldown: 'adm_pro1',
-                    // }],
                     series: [{
                         name: 'ผู้ประกอบการ',
-                        data: [{
-                                name: date_between,
-                                y: arr_data_count_ent,
-                                drilldown: 'ent_pro1',
-                            },
-                        ]
+                        data: data_state_ent,
                     }, {
                         name: 'ผู้ดูแลระบบ',
-                        data: [{
-                                name: date_between,
-                                y: arr_data_count_adm,
-                                drilldown: 'adm_pro1',
-                            },
-                        ]
+                        data: data_state_adm,
                     }],
 
                     drilldown: {
-                        series: [{
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'adm_pro1',
-                                data: [{
-                                        name: 'ลดราคา 10%',
-                                        y: 3,
-                                    },
-                                    ['ลดราคา 20%', 2],
-                                    ['ลดราคา 50%', 4]
-                                ]
-                            },
-                            {
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'adm_pro2',
-                                data: [{
-                                        name: 'ลดราคา 10%',
-                                        y: 3,
-                                    },
-                                    ['ลดราคา 20%', 2]
-                                ]
-                            },
-                            {
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'adm_pro3',
-                                data: [{
-                                    name: 'ลดราคา 10%',
-                                    y: 3,
-                                }]
-                            },
-                            {
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'ent_pro1',
-                                data: [{
-                                        name: 'ลดราคา 10%',
-                                        y: 3,
-                                    },
-                                    ['ลดราคา 20%', 2]
-                                ]
-                            },
-                            {
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'ent_pro2',
-                                data: [{
-                                    name: 'ลดราคา 10%',
-                                    y: 3,
-                                }]
-                            },
-                            {
-                                color: Highcharts.getOptions().colors[1],
-                                type: 'pie',
-                                name: 'จำนวน',
-                                id: 'ent_pro3',
-                                data: [{
-                                        name: 'ลดราคา 10%',
-                                        y: 3,
-                                    },
-                                    ['ลดราคา 20%', 2],
-                                    ['ลดราคา 50%', 4]
-                                ]
-                            },
-                        ]
+                        series: drilldown_series,
                     }
                 });
             }

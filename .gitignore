@@ -152,3 +152,11 @@ mariadb/data/team2/dcs_pro_image.frm
 mariadb/data/team2/dcs_pro_image.ibd
 mariadb/data/team2/dcs_promotion_reject.frm
 mariadb/data/team2/dcs_promotion_reject.ibd
+mariadb/data/team2/dcs_district.frm
+mariadb/data/team2/dcs_district.ibd
+mariadb/data/team2/dcs_parish.frm
+mariadb/data/team2/dcs_parish.ibd
+mariadb/data/team2/dcs_province.frm
+mariadb/data/team2/dcs_province.ibd
+mariadb/data/team2/dcs_sector.frm
+mariadb/data/team2/dcs_sector.ibd
