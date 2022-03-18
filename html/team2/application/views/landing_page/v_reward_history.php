@@ -34,7 +34,7 @@
     <div>
     </div>
         <section>
-                <?php if (empty($tou_pro[0]->tou_pro_status == 2)) { ?>
+                <?php if (empty($tou_pro[0]->tou_pro_status)) { ?>
                     <h4 align="center">ไม่มีประวัติการใช้งานของรางวัล</h4>
                 <?php } else{ ?>
             <div class='row py-3'>  
