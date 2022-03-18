@@ -172,7 +172,7 @@
         <form class="container py-3" method='POST' id="form_regis_ent" action="<?php echo base_url() . 'Entrepreneur/Auth/Register_entrepreneur/insert_ent'; ?>" enctype="multipart/form-data">
             <b style="font-size: 30px; text-align: center;">โปรดกรอกข้อมูลของคุณ</b><br><br>
             <div>
-                <!--กรอกข้อมูลลงทะเบียน-->
+                <!--กรอกข้อมูลการลงทะเบียน-->
                 <div class="row">
                     <!--กรอกข้อมูลบุคคล-->
                     <div class="form-group col-md-2 mb-3"  style="margin-top: -10px;">
