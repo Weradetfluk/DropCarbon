@@ -1349,19 +1349,31 @@
         for (let i = 0; i < date_between.length; i++) {
             for (let j = 0; j < sum_obj_data_promotion_end.length; j++) {
                 if (date_between[i] == obj_data_promotion_end_adm[j] || date_between[i] == obj_data_promotion_end_ent[j]) {
-                    drilldown_series.push({
-                        color: Highcharts.getOptions().colors[1],
-                        type: 'pie',
-                        name: 'จำนวน',
-                        id: arr_count_adm[i],
-                        data: drilldown_data_adm,
-                    }, {
-                        color: Highcharts.getOptions().colors[1],
-                        type: 'pie',
-                        name: 'จำนวน',
-                        id: arr_count_ent[i],
-                        data: drilldown_data_ent,
-                    }, )
+                    if (obj_data_count_promotion_end_adm[j] == null || obj_data_count_promotion_end_adm[j] == '') {
+                        drilldown_series.push({
+                            color: Highcharts.getOptions().colors[1],
+                            type: 'pie',
+                            name: 'จำนวน',
+                        }, {
+                            color: Highcharts.getOptions().colors[1],
+                            type: 'pie',
+                            name: 'จำนวน',
+                            id: arr_count_ent[i],
+                            data: drilldown_data_ent,
+                        }, )
+                    } else if (obj_data_count_promotion_end_ent[j] == null || obj_data_count_promotion_end_ent[j] == '') {
+                        drilldown_series.push({
+                            color: Highcharts.getOptions().colors[1],
+                            type: 'pie',
+                            name: 'จำนวน',
+                            id: arr_count_adm[i],
+                            data: drilldown_data_adm,
+                        }, {
+                            color: Highcharts.getOptions().colors[1],
+                            type: 'pie',
+                            name: 'จำนวน',
+                        }, )
+                    }
                 } else {
                     drilldown_series.push({
                         color: Highcharts.getOptions().colors[1],
