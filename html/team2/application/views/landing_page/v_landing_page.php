@@ -199,11 +199,6 @@
 <section class="bg-white">
     <div class="container">
 
-        <!-- หัวข้อ -->
-        <div class="header-break" data-aos="fade-down">
-            จุดเด่น
-        </div>
-
         <!-- รายละเอียด -->
         <div class="row" style="margin:1.5%; font-size: 18px;" data-aos="fade-up">
             การท่องเที่ยวแบบลดคาร์บอน เป็นกิจกรรมการท่องเที่ยวที่เป็นทางเลือกในการลดคาร์บอนให้น้อยลง
