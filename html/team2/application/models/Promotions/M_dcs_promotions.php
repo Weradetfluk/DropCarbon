@@ -634,7 +634,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     */
     function get_name_count_pro_end_adm($date_sql, $date_end)
     {
-        $sql = "SELECT dcs_promotions.pro_name as pro_name_adm, COUNT(*) as count_pro_end 
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_adm, COUNT(*) as count_pro_end_adm
         FROM dcs_promotions
         WHERE $date_sql
         AND dcs_promotions.pro_end_date 
@@ -655,7 +655,7 @@ class M_dcs_promotions extends Da_dcs_promotions
     */
     function get_name_count_pro_end_ent($date_sql, $date_end)
     {
-        $sql = "SELECT dcs_promotions.pro_name as pro_name_ent, COUNT(*) as count_pro_end 
+        $sql = "SELECT dcs_promotions.pro_name as pro_name_ent, COUNT(*) as count_pro_end_ent
         FROM dcs_promotions
         WHERE $date_sql
         AND dcs_promotions.pro_end_date 

@@ -1197,7 +1197,6 @@
         arr_data_promotion_end['arr_data_promotion_end_ent'].forEach((row, index) => {
             obj_data_promotion_end_ent.push(
                 row['end_date'],
-                // y: parseInt(row['count_pro_end'])
             );
         });
 
@@ -1206,7 +1205,22 @@
         arr_data_promotion_end['arr_data_promotion_end_adm'].forEach((row, index) => {
             obj_data_promotion_end_adm.push(
                 row['end_date'],
-                // y: parseInt(row['count_pro_end'])
+            );
+        });
+
+        //ประกาศตัวแปรที่เก็บข้อมูล รวมโปรโมชันที่หมดอายุของผู้ประกอบการ
+        var obj_data_count_promotion_end_ent = []; // วิธีการเดียวกัน
+        arr_data_promotion_end['arr_data_promotion_end_ent'].forEach((row, index) => {
+            obj_data_count_promotion_end_ent.push(
+                parseInt(row['count_pro_end']),
+            );
+        });
+
+        //ประกาศตัวแปรที่เก็บข้อมูล รวมโปรโมชันที่หมดอายุของผู้ดูแลระบบ
+        var obj_data_count_promotion_end_adm = []; // วิธีการเดียวกัน
+        arr_data_promotion_end['arr_data_promotion_end_adm'].forEach((row, index) => {
+            obj_data_count_promotion_end_adm.push(
+                parseInt(row['count_pro_end']),
             );
         });
 
@@ -1227,170 +1241,79 @@
         });
 
         //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ประกอบการ
-        var obj_data_count_promotion_end_ent = []; // วิธีการเดียวกัน
+        var obj_data_count_name_promotion_end_ent = []; // วิธีการเดียวกัน
         arr_data_promotion_end['arr_data_name_promotion_end_ent'].forEach((row, index) => {
-            obj_data_count_promotion_end_ent.push(
-                parseInt(row['count_pro_end']),
+            obj_data_count_name_promotion_end_ent.push(
+                parseInt(row['count_pro_end_ent']),
             );
         });
 
         //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ดูแลระบบ
-        var obj_data_count_promotion_end_adm = []; // วิธีการเดียวกัน
+        var obj_data_count_name_promotion_end_adm = []; // วิธีการเดียวกัน
         arr_data_promotion_end['arr_data_name_promotion_end_adm'].forEach((row, index) => {
-            obj_data_count_promotion_end_adm.push(
-                parseInt(row['count_pro_end']),
+            obj_data_count_name_promotion_end_adm.push(
+                parseInt(row['count_pro_end_adm']),
             );
         });
 
-        var date_end_str = date_secon.substr(0, 10);
-        var date_start_str = date_first.substr(0, 10);
-        var date_end = new Date(date_end_str);
-        var date_start = new Date(date_start_str);
-        const diff_time = Math.abs(date_end.getTime() - date_start.getTime());
-        const diff_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24));
-        var date_between = []; //วันแรกถึงวันสุดท้าย
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var date_count = date_start;
-        for (let i = 0; i <= diff_days; i++) {
-            if (i != 0) {
-                date_count.setDate(date_count.getDate() + 1);
-            }
-            date_between.push([String(date_count.getDate()).padStart(2, '0'), months[date_count.getMonth()], date_count.getFullYear()].join(' '));
+        // series ent
+        var series_data_ent = [];
+        for (var i = 0; i < obj_data_promotion_end_ent.length; i++) {
+            series_data_ent.push({
+                name: obj_data_promotion_end_ent[i],
+                y: obj_data_count_promotion_end_ent[i],
+                drilldown: 'ent' + i,
+            });
         }
 
-
-        var arr_data_count_ent = [];
-        var arr_data_count_adm = [];
-        var arr_count_ent = [];
-        var arr_count_adm = [];
-        for (let i = 0; i <= diff_days; i++) {
-            for (let j = 0; j <= obj_data_promotion_end_ent.length; j++) {
-                if (date_between[i] == obj_data_promotion_end_ent[j]) {
-                    arr_data_count_ent[i] = obj_data_count_promotion_end_ent[j];
-                    arr_count_ent[i] = "ent" + i;
-                } else if (arr_data_count_ent[i] == null || arr_data_count_ent[i] == '') {
-                    arr_data_count_ent[i] = 0;
-                    arr_count_ent[i] = "ent" + i;
-                }
-            }
-            for (let j = 0; j <= obj_data_promotion_end_adm.length; j++) {
-                if (date_between[i] == obj_data_promotion_end_adm[j]) {
-                    arr_data_count_adm[i] = obj_data_count_promotion_end_adm[j];
-                    arr_count_adm[i] = "adm" + i;
-                } else if (arr_data_count_adm[i] == null || arr_data_count_adm[i] == '') {
-                    arr_data_count_adm[i] = 0;
-                    arr_count_adm[i] = "adm" + i;
-                }
-            }
+        // series adm
+        var series_data_adm = [];
+        for (var i = 0; i < obj_data_promotion_end_adm.length; i++) {
+            series_data_adm.push({
+                name: obj_data_promotion_end_adm[i],
+                y: obj_data_count_promotion_end_adm[i],
+                drilldown: 'adm' + i,
+            });
         }
 
-        var data_state_ent = [];
-        for (let i = 0; i < date_between.length; i++) {
-            data_state_ent.push({
-                drilldown: arr_count_ent[i],
-                name: date_between[i],
-                y: arr_data_count_ent[i],
-            }, );
-        }
+// -----------------------------------------------------------------------------------------------
 
-        var data_state_adm = [];
-        for (let i = 0; i < date_between.length; i++) {
-            data_state_adm.push({
-                drilldown: arr_count_adm[i],
-                name: date_between[i],
-                y: arr_data_count_adm[i],
-            }, );
-        }
-
-        // console.log(data_state_ent);
-        // console.log(data_state_adm);
-
+        // data ent in drilldown_data
         var drilldown_data_ent = [];
-        for (let i = 0; i < date_between.length; i++) {
-            for (let j = 0; j < obj_data_promotion_end_ent.length; j++) {
-                if (date_between[i] == obj_data_promotion_end_ent[j]) {
-                    drilldown_data_ent.push({
-                        name: obj_data_name_promotion_end_ent[j],
-                        y: obj_data_count_promotion_end_ent[j],
-                    }, );
-
-                }
-            }
+        for (var i = 0; i < obj_data_name_promotion_end_ent.length; i++) {
+            drilldown_data_ent.push({
+                name: obj_data_name_promotion_end_ent[i],
+                y: obj_data_count_name_promotion_end_ent[i],
+            });
         }
 
+        // data adm in drilldown_data
         var drilldown_data_adm = [];
-        for (let i = 0; i < date_between.length; i++) {
-            for (let j = 0; j < obj_data_promotion_end_adm.length; j++) {
-                if (date_between[i] == obj_data_promotion_end_adm[j]) {
-                    drilldown_data_adm.push({
-                        name: obj_data_name_promotion_end_adm[j],
-                        y: obj_data_count_promotion_end_adm[j],
-                    }, );
-                }
-            }
+        for (var i = 0; i < obj_data_name_promotion_end_adm.length; i++) {
+            drilldown_data_adm.push({
+                name: obj_data_name_promotion_end_adm[i],
+                y: obj_data_count_name_promotion_end_adm[i],
+            });
         }
 
-        var drilldown_id_adm = [];
-        for (let i = 0; i < date_between.length; i++) {
-            drilldown_id_adm.push(
-                arr_count_adm[i],
-            );
+// -----------------------------------------------------------------------------------------------
+
+        // drilldown_data
+        var drilldown_data = [];
+        for (var i = 0; i < obj_data_promotion_end_ent.length; i++) {
+            drilldown_data.push({
+                name: 'ผู้ประกอบการ',
+                id: 'ent' + i,
+                data: drilldown_data_ent,
+            });
         }
-
-        var drilldown_id_ent = [];
-        for (let i = 0; i < date_between.length; i++) {
-            drilldown_id_ent.push(
-                arr_count_ent[i],
-            );
+        for (var i = 0; i < obj_data_promotion_end_adm.length; i++) {
+            drilldown_data.push({
+                name: 'ผู้ดูแลระบบ',
+                id: 'adm' + i,
+                data: drilldown_data_adm,
+            });
         }
-
-        var sum_obj_data_promotion_end = obj_data_promotion_end_adm.length + obj_data_promotion_end_ent.length;
-        var drilldown_series = [];
-        for (let i = 0; i < date_between.length; i++) {
-            for (let j = 0; j < sum_obj_data_promotion_end; j++) {
-                if (date_between[i] == obj_data_promotion_end_adm[j] || date_between[i] == obj_data_promotion_end_ent[j]) {
-                    if (obj_data_count_promotion_end_adm[j] == null || obj_data_count_promotion_end_adm[j] == '') {
-                        drilldown_series.push({
-                            color: Highcharts.getOptions().colors[1],
-                            type: 'pie',
-                            name: 'จำนวน',
-                        }, {
-                            color: Highcharts.getOptions().colors[1],
-                            type: 'pie',
-                            name: 'จำนวน',
-                            id: arr_count_ent[i],
-                            data: drilldown_data_ent,
-                        }, )
-                    } else if (obj_data_count_promotion_end_ent[j] == null || obj_data_count_promotion_end_ent[j] == '') {
-                        drilldown_series.push({
-                            color: Highcharts.getOptions().colors[1],
-                            type: 'pie',
-                            name: 'จำนวน',
-                            id: arr_count_adm[i],
-                            data: drilldown_data_adm,
-                        }, {
-                            color: Highcharts.getOptions().colors[1],
-                            type: 'pie',
-                            name: 'จำนวน',
-                        }, )
-                    }
-                } else {
-                    drilldown_series.push({
-                        color: Highcharts.getOptions().colors[1],
-                        type: 'pie',
-                        name: 'จำนวน',
-                    }, {
-                        color: Highcharts.getOptions().colors[1],
-                        type: 'pie',
-                        name: 'จำนวน',
-                    }, )
-                }
-            }
-        }
-
-        console.log(drilldown_series);
-        // console.log(drilldown_data_adm);
-
 
         Highcharts.chart('chart_promotion_end', {
             chart: {
@@ -1400,55 +1323,35 @@
                 },
             },
 
-            plotOptions: {
-                series: {
-                    borderWidth: 0,
-                    dataLabels: {
-                        enabled: true
-                    }
-                },
-                pie: {
-                    cursor: 'pointer',
-                    size: '120%',
-                    innerSize: '120',
-                    startAngle: -90,
-                    endAngle: 90,
-                    center: ['50%', '90%'],
-                    showInLegend: true,
-                    dataLabels: {
-                        enabled: true,
-                        color: '#0072ff'
-                    }
-                }
-            },
-
             title: {
-                text: 'จำนวนโปรโมชันที่หมดอายุ'
-            },
-
-            yAxis: {
-                visible: false
+                text: 'โปรโมชันและรางวัลที่หมดอายุ'
             },
 
             xAxis: {
                 type: 'category',
-                crosshair: true,
             },
 
-            legend: {
-                enabled: true
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'จำนวน'
+                }
             },
 
+            plotOptions: {
+
+            },
             series: [{
                 name: 'ผู้ประกอบการ',
-                data: data_state_ent,
+                data: series_data_ent,
             }, {
                 name: 'ผู้ดูแลระบบ',
-                data: data_state_adm,
+                data: series_data_adm,
             }],
 
             drilldown: {
-                series: drilldown_series,
+                series: drilldown_data,
             }
         });
     }
