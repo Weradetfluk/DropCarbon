@@ -295,4 +295,25 @@ class Landing_page extends DCS_controller
         $data["arr_com"] = $this->mde->get_company_landing_page()->result();
         echo json_encode($data);
     }
+
+    /*
+    * get_company_list_ajax
+    * get event list
+    * @input -
+    * @output data
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2565-03-23
+    */
+    public function get_company_list_ajax($search = null)
+    {
+        $this->load->model('Company/M_dcs_company', 'mde');
+        if($search != null){
+            $result_search = urldecode($search);
+            $data["company"] = $this->mde->get_company_mobile($result_search)->result();
+            // echo $search;
+        }else{
+            $data["company"] = $this->mde->get_company_mobile()->result();
+        }
+        echo json_encode($data);
+    }
 }

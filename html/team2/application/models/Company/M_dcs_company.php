@@ -285,4 +285,36 @@ class M_dcs_company extends Da_dcs_company
                 WHERE  com_status = 2";
         return $this->db->query($sql);
     }
+    
+    /*
+    * get_company_mobile
+    * get_company_mobile
+    * @input -
+    * @output -
+    * @author Thanisorn thumsawanit 62160088
+    * @Create Date 2564-03-13
+    */
+    public function get_company_mobile($and = null)
+    {
+
+        if($and != null){
+            $and = " AND dcs_company.com_name LIKE '%" . $and . "%'";
+        }else{
+            $and = "";
+        }
+        $sql = "SELECT com.com_id, com.com_name, dcs_com_image.com_img_path, com.com_lat, com.com_lon, com.com_description, com.com_cat_id, com.com_cat_name ,com.com_par_id, com.com_tel, com.com_location, dis.dis_id, prv.prv_id FROM dcs_company AS com
+        LEFT JOIN dcs_com_image
+        ON  dcs_company.com_id = dcs_com_image.com_img_com_id
+        LEFT JOIN dcs_parish AS par
+        ON dcs_company.com_par_id = par.par_id
+        LEFT JOIN dcs_district AS dis
+        ON par.par_dis_id = dis.dis_id
+        LEFT JOIN dcs_province AS prv
+        ON dis.dis_prv_id = prv.prv_id
+        WHERE com_status = 2 $and
+        GROUP BY dcs_company.com_id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
