@@ -1350,9 +1350,9 @@
                 data: series_data_adm,
             }],
 
-            // drilldown: {
-            //     series: drilldown_data,
-            // }
+            drilldown: {
+                series: drilldown_data,
+            }
         });
     }
 </script>

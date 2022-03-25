@@ -218,8 +218,8 @@ class Admin_view_dashboard extends DCS_controller
 
     /*
     * get_data_chart_promotion_add
-    * get data chart dashboard and return data JSON
-    * @input date_first, date_secon
+    * get data chart dashboard and return data JSON Pie chart
+    * @input date_first, date_secon 
     * @output -
     * @author Chutipon Thermsirisuksin 62160081
     * @Create Date 2565-03-08

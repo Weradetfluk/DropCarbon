@@ -551,7 +551,7 @@ class M_dcs_promotions extends Da_dcs_promotions
 
     /*
     *get_count_pro_adm_all
-    *get data count from promotions admin all
+    *get data count from promotions admin all pie chart
     *@input -
     *@output -
     *@author Chutipon Thermsirisuksin 62160081
@@ -583,7 +583,7 @@ class M_dcs_promotions extends Da_dcs_promotions
 
     /*
     *get_count_pro_end_ent
-    *get count promotion end entrepreneur
+    *get count promotion end entrepreneur 
     *@input -
     *@output -
     *@author Chutipon Thermsirisuksin 62160081
@@ -604,7 +604,7 @@ class M_dcs_promotions extends Da_dcs_promotions
 
     /*
     *get_count_pro_end_adm
-    *get count promotion end admin
+    *get count promotion end admin pie chart
     *@input -
     *@output -
     *@author Chutipon Thermsirisuksin 62160081
