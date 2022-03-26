@@ -206,7 +206,7 @@ class Login_entrepreneur extends DCS_controller
         $mail->Host     = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'weradet2543@gmail.com';
-        $mail->Password = 'sozftcaimvjxykek';
+        $mail->Password = 'exwcdkscfpjaouei';
         $mail->SMTPSecure = 'tls';
         $mail->Port     = 587;
         $mail->charSet = "UTF-8";

@@ -50,7 +50,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
   /*
     * show_data_approve
-    * get all data entrepreneur approve and show table
+    * show table entrepreneur approve page
     * @input - 
     * @output -
     * @author Weradet Nopsombun 62160110
@@ -65,7 +65,7 @@ class Admin_approval_entrepreneur extends DCS_controller
 
   /*
     * show_data_reject
-    * get all data entrepreneur approve  and show table
+    * show table entrepreneur rejected page
     * @input
     * @output -
     * @author Weradet Nopsombun 62160110
