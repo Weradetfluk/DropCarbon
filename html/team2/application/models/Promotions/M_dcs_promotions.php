@@ -623,46 +623,33 @@ class M_dcs_promotions extends Da_dcs_promotions
         return $this->db->query($sql);
     }
 
-
     /*
-    *get_name_count_pro_end_adm
-    *get count promotion end admin
-    *@input -
-    *@output -
-    *@author Chutipon Thermsirisuksin 62160081
-    *@Create Date 2565-03-17
+    * get_pro_mobile
+    * get_pro_mobile
+    * @input -
+    * @output -
+    * @author Chutipon Thermsirisuksin 62160081
+    * @Create Date 2564-03-13
     */
-    function get_name_count_pro_end_adm($date_sql, $date_end)
+    public function get_pro_mobile($and = null)
     {
-        $sql = "SELECT dcs_promotions.pro_name as pro_name_adm, COUNT(*) as count_pro_end_adm
-        FROM dcs_promotions
-        WHERE $date_sql
-        AND dcs_promotions.pro_end_date 
-        AND (dcs_promotions.pro_status = 2 
-        AND dcs_promotions.pro_adm_id IS NOT NULL
-        AND $date_end)
-        GROUP BY pro_name_adm";
-        return $this->db->query($sql);
-    }
 
-    /*
-    *get_name_count_pro_end_ent
-    *get count promotion end admin
-    *@input -
-    *@output -
-    *@author Chutipon Thermsirisuksin 62160081
-    *@Create Date 2565-03-17
-    */
-    function get_name_count_pro_end_ent($date_sql, $date_end)
-    {
-        $sql = "SELECT dcs_promotions.pro_name as pro_name_ent, COUNT(*) as count_pro_end_ent
+        if($and != null){
+            $and = " AND dcs_promotions.pro_name LIKE '%" . $and . "%'";
+        }else{
+            $and = "";
+        }
+        $sql = "SELECT dcs_promotions.pro_id,dcs_promotions.pro_name,dcs_promotions.pro_description,dcs_promotions.pro_add_date,dcs_promotions.pro_start_date,
+        dcs_promotions.pro_end_date,dcs_pro_category.pro_cat_name,dcs_pro_image.pro_img_path,dcs_pro_image.pro_img_name
         FROM dcs_promotions
-        WHERE $date_sql
-        AND dcs_promotions.pro_end_date 
-        AND (dcs_promotions.pro_status = 2 
-        AND dcs_promotions.pro_adm_id IS NULL
-        AND $date_end)
-        GROUP BY pro_name_ent";
-        return $this->db->query($sql);
+        LEFT JOIN dcs_pro_category
+        ON dcs_promotions.pro_cat_id = dcs_pro_category.pro_cat_id
+        LEFT JOIN dcs_pro_image 
+        ON dcs_promotions.pro_id = dcs_pro_image.pro_img_pro_id
+        WHERE dcs_promotions.pro_status = 2 $and
+        GROUP BY dcs_promotions.pro_id";
+
+        $query = $this->db->query($sql);
+        return $query;
     }
 }

@@ -1224,38 +1224,6 @@
             );
         });
 
-        //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ประกอบการ
-        var obj_data_name_promotion_end_ent = []; // วิธีการเดียวกัน
-        arr_data_promotion_end['arr_data_name_promotion_end_ent'].forEach((row, index) => {
-            obj_data_name_promotion_end_ent.push(
-                row['pro_name_ent'],
-            );
-        });
-
-        //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ดูแลระบบ
-        var obj_data_name_promotion_end_adm = []; // วิธีการเดียวกัน
-        arr_data_promotion_end['arr_data_name_promotion_end_adm'].forEach((row, index) => {
-            obj_data_name_promotion_end_adm.push(
-                row['pro_name_adm'],
-            );
-        });
-
-        //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ประกอบการ
-        var obj_data_count_name_promotion_end_ent = []; // วิธีการเดียวกัน
-        arr_data_promotion_end['arr_data_name_promotion_end_ent'].forEach((row, index) => {
-            obj_data_count_name_promotion_end_ent.push(
-                parseInt(row['count_pro_end_ent']),
-            );
-        });
-
-        //ประกาศตัวแปรที่เก็บข้อมูล ชื่อโปรโมชันที่หมดอายุของผู้ดูแลระบบ
-        var obj_data_count_name_promotion_end_adm = []; // วิธีการเดียวกัน
-        arr_data_promotion_end['arr_data_name_promotion_end_adm'].forEach((row, index) => {
-            obj_data_count_name_promotion_end_adm.push(
-                parseInt(row['count_pro_end_adm']),
-            );
-        });
-
         // series ent
         var series_data_ent = [];
         for (var i = 0; i < obj_data_promotion_end_ent.length; i++) {
@@ -1276,44 +1244,6 @@
             });
         }
 
-// -----------------------------------------------------------------------------------------------
-
-        // data ent in drilldown_data
-        var drilldown_data_ent = [];
-        for (var i = 0; i < obj_data_name_promotion_end_ent.length; i++) {
-            drilldown_data_ent.push({
-                name: obj_data_name_promotion_end_ent[i],
-                y: obj_data_count_name_promotion_end_ent[i],
-            });
-        }
-
-        // data adm in drilldown_data
-        var drilldown_data_adm = [];
-        for (var i = 0; i < obj_data_name_promotion_end_adm.length; i++) {
-            drilldown_data_adm.push({
-                name: obj_data_name_promotion_end_adm[i],
-                y: obj_data_count_name_promotion_end_adm[i],
-            });
-        }
-
-// -----------------------------------------------------------------------------------------------
-
-        // drilldown_data
-        var drilldown_data = [];
-        for (var i = 0; i < obj_data_promotion_end_ent.length; i++) {
-            drilldown_data.push({
-                name: 'ผู้ประกอบการ',
-                id: 'ent' + i,
-                data: drilldown_data_ent,
-            });
-        }
-        for (var i = 0; i < obj_data_promotion_end_adm.length; i++) {
-            drilldown_data.push({
-                name: 'ผู้ดูแลระบบ',
-                id: 'adm' + i,
-                data: drilldown_data_adm,
-            });
-        }
 
         Highcharts.chart('chart_promotion_end', {
             chart: {
@@ -1349,10 +1279,6 @@
                 name: 'ผู้ดูแลระบบ',
                 data: series_data_adm,
             }],
-
-            drilldown: {
-                series: drilldown_data,
-            }
         });
     }
 </script>

@@ -276,8 +276,6 @@ class Admin_view_dashboard extends DCS_controller
 
         $data['arr_data_promotion_end_ent'] = $this->mpro->get_count_pro_end_ent($date_sql,$date_pro_end)->result();
         $data['arr_data_promotion_end_adm'] = $this->mpro->get_count_pro_end_adm($date_sql,$date_pro_end)->result();
-        $data['arr_data_name_promotion_end_adm'] = $this->mpro->get_name_count_pro_end_adm($date_sql,$date_pro_end)->result();
-        $data['arr_data_name_promotion_end_ent'] = $this->mpro->get_name_count_pro_end_ent($date_sql,$date_pro_end)->result();
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

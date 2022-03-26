@@ -316,4 +316,25 @@ class Landing_page extends DCS_controller
         }
         echo json_encode($data);
     }
+
+    /*
+    * get_pro_list_ajax
+    * get pro list ajax
+    * @input -
+    * @output data
+    * @author Chutipon Thermsirisuksin 62160081 & Naaka Punparich 62160082
+    * @Create Date 2565-03-23
+    */
+    public function get_pro_list_ajax($search = null)
+    {
+        $this->load->model('Promotions/M_dcs_promotions', 'mpro');
+        if($search != null){
+            $result_search = urldecode($search);
+            $data["arr_pro"] = $this->mpro->get_pro_mobile($result_search)->result();
+            // echo $search;
+        }else{
+            $data["arr_pro"] = $this->mpro->get_pro_mobile()->result();
+        }
+        echo json_encode($data);
+    }
 }
