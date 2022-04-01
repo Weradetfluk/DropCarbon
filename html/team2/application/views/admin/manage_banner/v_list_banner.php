@@ -236,7 +236,7 @@
                  html_code += '<td>' + i + '</td>';
                  html_code += '<td>' + ' <img src="' + ' <?php echo base_url() . 'banner/' ?>' + (row_ban['ban_path']) + '" style="object-fit: cover;"  alt="Image" width="200px" height="100px">' + '</td>';
                  html_code += '<td>' + (row_ban['adm_name']) + '</td>';
-                 html_code += '<td>' + '<button class="btn btn-danger custom-btn-table" id="delete_banner" onclick="confirm_delete_banner(\'' + row_ban['ban_path'] + '\')">' + '<i class="material-icons">clear</i>' + '</td>';
+                 html_code += '<td>' + '<button class="btn btn-danger custom-btn-table" id="delete_banner" onclick="confirm_delete_banner(\'' + row_ban['ban_path'] + '\')" title="ลบแบรนเนอร์">' + '<i class="material-icons">clear</i>' + '</td>';
                  html_code += '</tr>';
 
                  i++;
