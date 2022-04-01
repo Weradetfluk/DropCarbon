@@ -114,7 +114,7 @@
              html_code += '<td>' + format_date_to_abbreviation(row_eve['eve_start_date']) + ' - '+format_date_to_abbreviation(row_eve['eve_end_date']) + '</td>';
              html_code += '<td class ="res-hide" >' + (row_eve['ent_firstname']) + (' ') +(row_eve['ent_lastname']) + '</td>';
              html_code += '<td style="text-align: center;">';
-             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '">'         
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>'  + (row_eve['eve_id'])  + '" title = "ดูรายละเอียดกิจกรรม">'         
              html_code +='<i class="material-icons">'
              html_code +='search'
              html_code +='</i>';

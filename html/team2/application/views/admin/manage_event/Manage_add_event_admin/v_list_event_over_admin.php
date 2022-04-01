@@ -173,7 +173,7 @@
             // ปุ่มดูรายละเอียดกิจกรรม
             html_code +=
                 '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' ?>' +
-                (row_eve['eve_id']) + '">'
+                (row_eve['eve_id']) + '" title = "ดูรายละเอียดกิจกรรม">'
             html_code += '<i class="material-icons">'
             html_code += 'search'
             html_code += '</i>';
@@ -181,7 +181,7 @@
             //ปุ่มแก้ไขกิจกรรม
             html_code +=
                 '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' ?>' +
-                (row_eve['eve_id']) + '">'
+                (row_eve['eve_id']) + '" title = "แก้ไขกิจกรรม">'
             html_code += '<i class="material-icons">'
             html_code += 'edit'
             html_code += '</i>';
@@ -189,7 +189,7 @@
             //ปุ่มลบกิจกรรม
             html_code +=
                 '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' +
-                (row_eve['eve_name']) + '\',\'' + (row_eve['eve_id']) + '\')" >'
+                (row_eve['eve_name']) + '\',\'' + (row_eve['eve_id']) + '\')" title = "ลบกิจกรรม">'
             html_code += '<i class="material-icons">'
             html_code += 'delete'
             html_code += '</i>';

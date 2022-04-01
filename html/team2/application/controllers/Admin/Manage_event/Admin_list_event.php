@@ -100,21 +100,21 @@ class Admin_list_event extends DCS_controller
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
               //ปุ่มดูรายละเอียดกิจกรรม
-              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" title = "ดูรายละเอียดกิจกรรม">
                   <span class="material-icons">search</span>
                 </a>' .
               //ปุ่มแก้ไขกิจกรรม
-              '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
+              '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" title = "แก้ไขกิจกรรม">
                   <span class="material-icons">edit</span>
                 </a>' .
               //ปุ่มลบกิจกรรม
-              '<button class="btn btn-danger custom-btn-table" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">
+              '<button class="btn btn-danger custom-btn-table" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')" title = "ลบกิจกรรม">
                               <i class="material-icons">
                                 delete
                               </i>
                           </button>' .
               //ปุ่ม qr_code
-              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')">
+              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')" title = "QR Code กิจกรรม">
                     <span class="material-icons">
                               qr_code
                               </span>
@@ -163,21 +163,21 @@ class Admin_list_event extends DCS_controller
             // ต่อสตริง
             $output .= '<td style="text-align: center;">' .
               //ปุ่มดูรายละเอียดกิจกรรม
-              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" >
+              '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_approval_event/show_detail_event/' . $row->eve_id . '" title = "ดูรายละเอียดกิจกรรม">
                             <span class="material-icons">search</span>
                 </a>' .
               //ปุ่มแก้ไขกิจกรรม
-              '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" >
+              '<a class="btn btn-warning custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_event/Admin_edit_event/show_edit_event_by_admin/' . $row->eve_id . '" title = "แก้ไขกิจกรรม">
                   <span class="material-icons">edit</span>
                 </a>' .
               //ปุ่มลบกิจกรรม
-              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')">
+              '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_delete(\'' . $row->eve_name . '\',\'' . $row->eve_id .  '\')" title = "ลบกิจกรรม">
                             <i class="material-icons">
                             delete
                             </i>
                           </button>' .
               //ปุ่ม qr_code
-              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')">
+              '<button class="btn btn-success" style="font-size:10px; padding:12px;" onclick="make_qr_code(\'' . $row->eve_id . '\',\'' . $row->eve_name . '\',\'' . $row->eve_start_date .'\',\'' . $row->eve_end_date .'\')" title = "QR Code กิจกรรม">
                           <span class="material-icons">
                             qr_code
                           </span>
