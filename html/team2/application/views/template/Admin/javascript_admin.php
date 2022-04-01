@@ -314,28 +314,28 @@ function create_table_entrepreneur(number_status, arr_data, paganition)
           if (number_status == 1) {
             // ต่อสตริง
             output += '<td style="text-align: center;">';
-            output += '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
+            output += '<button class="btn btn-info custom-btn-table" title="ดูรายละเอียด" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
             output += '<i class="material-icons">search</i>';
             output += '</button>';
-            output += '<button class="btn btn-success custom-btn-table" id="accept" onclick="confirm_approve(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " +  row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output += '<button class="btn btn-success custom-btn-table" id="accept" title="อนุมัติ" onclick="confirm_approve(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " +  row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
             output += '<i class="material-icons">done</i></button>';
-            output += '<button class="btn btn-danger custom-btn-table" id="reject" onclick="confirm_reject(\''  + row_ent['ent_id'] + '\',\'' + row_ent['ent_email'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] + '\')">';
+            output += '<button class="btn btn-danger custom-btn-table" id="reject" title="ปฏิเสธ" onclick="confirm_reject(\''  + row_ent['ent_id'] + '\',\'' + row_ent['ent_email'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] + '\')">';
             output += '<i class="material-icons">clear</i></button>';
           } else if (number_status == 2) {
   
             output += '<td style="text-align: center;">';
-            output += '<button class="btn btn-info custom-btn-table" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
+            output += '<button class="btn btn-info custom-btn-table" title="ดูราายละเอียด" onclick="view_data(\'' +  row_ent['ent_id'] + '\')">';
             output += '<i class="material-icons">search</i></button>'; 
-            output += '<button class="btn btn-danger custom-btn-table" id="accept" onclick="confirm_block(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output += '<button class="btn btn-danger custom-btn-table" title="ระงับ" id="accept" onclick="confirm_block(\'' + row_ent['ent_id'] + '\',\'' + row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
             output += '<i class="material-icons"><span class="material-icons-outlined">highlight_off</span></i></button>';
           } else if (number_status == 3) {
      
             output += '<td style="text-align: center;">';
-            output +=  '<button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" onclick="view_data_detail_reject(\'' + row_ent['ent_id'] + '\')">';
+            output +=  '<button class="btn btn-info" id="accept" style="font-size:10px; padding:12px;" title="ดูข้อมูลปฏิเสธ" onclick="view_data_detail_reject(\'' + row_ent['ent_id'] + '\')">';
             output +=  '<i class="material-icons"><span class="material-icons-outlined">search</span></i></button>';
           } else if (number_status == 4) {
             output += '<td style="text-align: center;">';
-            output += '<button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' + row_ent['ent_id'] + '\',\''+ row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
+            output += '<button class="btn btn-warning custom-btn-table" id="accept" title="ยกเลิกการระงับ" onclick="confirm_unblock(\'' + row_ent['ent_id'] + '\',\''+ row_ent['ent_firstname'] + " " + row_ent['ent_lastname'] +  '\',\'' + row_ent['ent_email'] + '\')">';
             output +=  '<i class="material-icons"><span class="material-icons-outlined">cached</span></i></button>';
           }
           output += '</td></tr>';
