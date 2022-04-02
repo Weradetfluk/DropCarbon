@@ -108,14 +108,14 @@ class Admin_list_tourist extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style=text-align: center;>' .
-              '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block( \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' . $row->tus_email . '\' )">
+              '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block( \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' . $row->tus_email . '\' )" title = "ระงับบัญชี">
                       <i class="material-icons"><span class="material-icons-outlined">
                               block
                           </span></i>
                   </button>';
           } else if ($number_status == 4) {
             $output .= '<td style="text-align: center;">
-                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->tus_id . '\')">
+                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->tus_id . '\')" title = "ปลดการระงับบัญชี">
                         <i class="material-icons"><span class="material-icons-outlined">
                                 cached
                             </span></i>
@@ -174,14 +174,14 @@ class Admin_list_tourist extends DCS_controller
           if ($number_status == 1) {
             // ต่อสตริง
             $output .= '<td style=text-align: center;>' .
-              '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block(  \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' .  $row->tus_email . '\')">
+              '<button class="btn btn-danger" id="accept"style="font-size:10px; padding:12px;" onclick="confirm_block(  \'' . $row->tus_id . '\',\'' . $row->tus_firstname . " " .  $row->tus_lastname . '\',\'' .  $row->tus_email . '\')" title = "ระงับบัญชีผู้ใช้งาน">
                       <i class="material-icons"><span class="material-icons-outlined">
                               block
                           </span></i>
                   </button>';
           } else if ($number_status == 4) {
             $output .= '<td style="text-align: center;">
-                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->tus_id . '\')">
+                    <button class="btn btn-warning custom-btn-table" id="accept" onclick="confirm_unblock(\'' . $row->tus_id . '\')" title = "ปลดการระงับบัญชี">
                         <i class="material-icons"><span class="material-icons-outlined">
                                 cached
                             </span></i>

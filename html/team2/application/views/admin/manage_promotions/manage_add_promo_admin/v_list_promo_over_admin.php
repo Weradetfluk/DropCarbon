@@ -139,13 +139,13 @@
              html_code += '<td style="text-align: left;">' + format_date_to_abbreviation(row['pro_start_date']) + ' - '+format_date_to_abbreviation(row['pro_end_date']) + '</td>';
              html_code += '<td style="color: red;">สิ้นสุด</td>';
              html_code += '<td style="text-align: center;">';
-             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row['pro_id'])  + '">'         
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row['pro_id'])  + '" title = "ดูรายละเอียดโปรโมชัน">'         
              html_code +='<i class="material-icons">'
              html_code +='search'
              html_code +='</i>';
              html_code += '</a>'
              html_code += '</a>'
-             html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row['pro_name']) +'\',\'' + (row['pro_id']) +  '\')" >'         
+             html_code += '<button class="btn btn-danger custom-a" style="font-size:10px; padding:12px;" onclick="confirm_delete(\'' + (row['pro_name']) +'\',\'' + (row['pro_id']) +  '\')" title = "ลบโปรโมชัน">'         
              html_code +='<i class="material-icons">'
              html_code +='delete'
              html_code +='</i>';

@@ -116,28 +116,28 @@ class Admin_list_promotions extends DCS_controller
                     if ($number_status == 2) {
                         $output .= '<td style="color: #669900;">ยังไม่สิ้นสุด</td>' .
                             '<td style="text-align: center;">' .
-                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '" title = "ดูรายละเอียดโปรโมชัน">
                             <span class="material-icons">search</span>
                              </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
-                                onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
+                                onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')" title = "หยุดการใช้งานโปรโมชัน">
                                 <span class="material-icons" style="font-size: 1.6rem;">lock_open</span>
                                 </button>';
                         } elseif ($row->pro_end_date <= $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                onclick="confirm_delete(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
+                                onclick="confirm_delete(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')" title = "ลบโปรโมชัน">
                                 <span class="material-icons">delete</span>
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
                         $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
-                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '" title = "ดูรายละเอียดโปรโมชัน">
                             <span class="material-icons">search</span>
                              </a>' .
                             '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                            onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
+                            onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')" title = "เปิดการใช้งานโปรโมชัน">
                             <span class="material-icons" style="font-size: 1.6rem;">lock</span>
                             </button>';
                     }
@@ -183,28 +183,28 @@ class Admin_list_promotions extends DCS_controller
                     if ($number_status == 2) {
                         $output .= '<td style="color: #669900;">ยังไม่สิ้นสุด</td>' .
                             '<td style="text-align: center;">' .
-                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '" title = "ดูรายละเอียดโปรโมชัน">
                             <span class="material-icons">search</span>
                              </a>';
                         if ($row->pro_end_date > $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-success" style="font-size:10px; padding:12px;"
-                                onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')">
+                                onclick="confirm_cancel(\'' . $row->pro_name . '\' , \'' . $row->pro_id . '\')" title = "หยุดการใช้งานโปรโมชัน">
                                 <span class="material-icons" style="font-size: 1.6rem;">lock_open</span>
                                 </button>';
                         } elseif ($row->pro_end_date <= $date_now && $row->pro_start_date <= $date_now) {
                             $output .= '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                                onclick="confirm_delete(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
+                                onclick="confirm_delete(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')" title = "ลบโปรโมชัน">
                                 <span class="material-icons">delete</span>
                                 </button>';
                         }
                     } elseif ($number_status == 5) {
                         $output .= '<td style="color: red;">หยุดการใช้งาน</td>' .
                             '<td style="text-align: center;">' .
-                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '">
+                            '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href="' .  site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' . $row->pro_id . '" title = "ดูรายละเอียดโปรโมชัน">
                             <span class="material-icons">search</span>
                              </a>' .
                             '<button class="btn btn-danger" style="font-size:10px; padding:12px;"
-                            onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')">
+                            onclick="confirm_dis_cancel(\'' . $row->pro_name . '\',\'' . $row->pro_id . '\')" title = "เปิดการใช้งานโปรโมชัน">
                             <span class="material-icons" style="font-size: 1.6rem;">lock</span>
                             </button>';
                     }

@@ -118,7 +118,7 @@
              html_code += '<td style="text-align: left;">' + format_date_to_abbreviation(row_promo['pro_start_date']) + ' - '+format_date_to_abbreviation(row_promo['pro_end_date']) + '</td>';
              html_code += '<td style="text-align: left;">' + (row_promo['ent_firstname']) + (' ') + (row_promo['ent_lastname']) + '</td>';
              html_code += '<td style="text-align: center;">';
-             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row_promo['pro_id'])  + '">'         
+             html_code += '<a class="btn btn-info custom-a" style="font-size:10px; padding:12px;" href=" <?php echo site_url() . 'Admin/Manage_promotions/Admin_approval_promotions/show_detail_pro/' ?>'  + (row_promo['pro_id'])  + '" title = "ดูรายละเอียดโปรโมชัน">'         
              html_code +='<i class="material-icons">'
              html_code +='search'
              html_code +='</i>';
