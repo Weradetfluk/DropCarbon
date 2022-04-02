@@ -298,7 +298,7 @@ class M_dcs_company extends Da_dcs_company
     {
 
         if($and != null){
-            $and = " AND dcs_company.com_name LIKE '%" . $and . "%'";
+            $and = " AND com.com_name LIKE '%" . $and . "%'";
         }else{
             $and = "";
         }
