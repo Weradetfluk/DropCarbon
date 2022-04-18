@@ -228,14 +228,14 @@
         },
 
         trigger: function(e) {
-            var lonlat = map.getLonLatFromPixel(e.xy);
-            lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(to_projection, from_projection);
+            var lon_lat = map.getLonLatFromPixel(e.xy);
+            lon_lat1 = new OpenLayers.LonLat(lon_lat.lon, lon_lat.lat).transform(to_projection, from_projection);
             
             // ลบ marker ตัวเก่าออก
             markers.clearMarkers();
-            $('#com_lat').val(lonlat1.lat); //นำค่า lat ไปใส่ใน input id='com_lat'
-            $('#com_lon').val(lonlat1.lon); //นำค่า lon ไปใส่ใน input id='com_lon'
-            show_maker(lonlat1.lat, lonlat1.lon); // ปักหมุดโดยใช้ lat lon ใหม่
+            $('#com_lat').val(lon_lat1.lat); //นำค่า lat ไปใส่ใน input id='com_lat'
+            $('#com_lon').val(lon_lat1.lon); //นำค่า lon ไปใส่ใน input id='com_lon'
+            show_maker(lon_lat1.lat, lon_lat1.lon); // ปักหมุดโดยใช้ lat lon ใหม่
         },
     });
 
