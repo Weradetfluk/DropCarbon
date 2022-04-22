@@ -102,14 +102,15 @@ class M_dcs_event extends Da_dcs_event
         if (isset($post["eve_cat_id"]) && $post["eve_cat_id"] !== "") {
             $and .= " AND dcs_event.eve_cat_id = " . $post["eve_cat_id"] . "";
         }
-
+        date_default_timezone_set('Asia/Bangkok');
+        $date_now = date("Y-m-d");
         $sql = "SELECT dcs_event.eve_id, dcs_event.eve_name,dcs_event.eve_description,dcs_eve_image.eve_img_path,dcs_event.eve_start_date,dcs_event.eve_end_date, dcs_eve_category.eve_drop_carbon
         from dcs_event
         LEFT JOIN dcs_eve_image
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
         LEFT JOIN dcs_eve_category 
         ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
-        WHERE eve_status = '" . $number_status . "'
+        WHERE eve_status = '" . $number_status . "' AND '$date_now' between dcs_event.eve_start_date AND dcs_event.eve_end_date
         $and
         GROUP BY dcs_event.eve_id";
         $query = $this->db->query($sql);
@@ -152,7 +153,9 @@ class M_dcs_event extends Da_dcs_event
     */
     public function get_event_landing_page()
     {
-
+        date_default_timezone_set('Asia/Bangkok');
+        $date_now = date("Y-m-d");
+        
         $sql = "SELECT dcs_event.eve_name, dcs_event.eve_id, dcs_event.eve_start_date, 
         dcs_event.eve_end_date, dcs_eve_category.eve_cat_name, dcs_event.eve_description,
         dcs_eve_image.eve_img_path, dcs_eve_category.eve_drop_carbon
@@ -161,7 +164,7 @@ class M_dcs_event extends Da_dcs_event
         ON  dcs_event.eve_id = dcs_eve_image.eve_img_eve_id
         LEFT JOIN dcs_eve_category 
         ON dcs_event.eve_cat_id = dcs_eve_category.eve_cat_id 
-        WHERE eve_status = 2
+        WHERE eve_status = 2 AND '$date_now' between dcs_event.eve_start_date AND dcs_event.eve_end_date
         GROUP BY dcs_event.eve_id 
         ORDER BY eve_num_visitor DESC
         LIMIT 3 ";

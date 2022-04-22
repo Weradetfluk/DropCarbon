@@ -182,7 +182,8 @@ class Admin_view_dashboard extends DCS_controller
 
         $data['arr_data_checkin'] = $this->dcmd->get_data_checkin($date_sql);
 
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        // $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        echo json_encode($data);
     }
 
     /*

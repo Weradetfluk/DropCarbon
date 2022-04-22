@@ -395,6 +395,7 @@
             date_first = $('#date').val().substring(0, 10);
             get_data_dashboard_event_cat();
             get_data_dashboard_event_percent();
+            get_data_checkin();
             get_data_register();
         });
 
@@ -516,6 +517,8 @@
      */
     function get_data_checkin() {
         // console.log("Checkin");
+        console.log(date_first);
+        console.log(date_secon);
         $.ajax({
             type: 'post',
             url: '<?php echo base_url('Admin/Manage_dashboard/Admin_view_dashboard/get_data_chart_checkin_ajax'); ?>',
@@ -531,7 +534,7 @@
                 alert('ajax get data user error working');
             }
         }).then(function(json_data) {
-
+            console.log(json_data);
             create_chart_checkin(json_data['arr_data_checkin']);
         });
     }
